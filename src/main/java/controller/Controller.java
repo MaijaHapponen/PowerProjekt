@@ -1,4 +1,6 @@
-package model;
+package controller;
+
+import model.IObservable;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -8,7 +10,7 @@ import java.beans.PropertyChangeSupport;
 /**
  * Created by Lisa on 18/04/16.
  */
-public class Controller implements IObservable{
+public class Controller implements IObservable {
 
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
@@ -21,7 +23,7 @@ public class Controller implements IObservable{
     }
 
 
-    KeyListener listener = new KeyListener() {
+    public KeyListener listener = new KeyListener() {
 
         @Override
         public void keyPressed(KeyEvent e) {

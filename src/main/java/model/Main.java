@@ -1,5 +1,7 @@
 package model;
 
+import controller.Controller;
+
 import javax.swing.*;
 
 /**

@@ -1,9 +1,11 @@
 package model;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 /**
  * Created by andrea on 2016-04-11.
  */
-public class Player {
+public class Player implements PropertyChangeListener {
     private Position position;
 
     //Constructor
@@ -14,6 +16,30 @@ public class Player {
     //Constructor
     public Player(int x, int y){
         this.position = new Position(x, y);
+    }
+
+    public void propertyChange(PropertyChangeEvent evt){
+        this.movePlayer(evt.getPropertyName());
+    }
+
+    //Moves the player up, down, right or left.
+    public void movePlayer(String direction){
+
+        if (direction.equals("38")) {
+            this.moveUp();
+
+        } else if (direction.equals("40")) {
+            this.moveDown();
+
+        } else if (direction.equals("37")) {
+            this.moveLeft();
+
+        } else if (direction.equals("39")) {
+            this.moveRight();
+        }
+
+        System.out.println("Player X-coordinate: " + this.getPosition().getX()); //TODO remove later
+        System.out.println("Player Y-coordinate: " + this.getPosition().getY()); //TODO remove later
     }
 
     //Moves the player one step up.
@@ -44,7 +70,9 @@ public class Player {
         }
     }
 
+    //Returns the players Position object.
     public Position getPosition(){
         return this.position;
     }
+
 }

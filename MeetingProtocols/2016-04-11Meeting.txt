@@ -1,0 +1,47 @@
+﻿Meeting Agenda
+
+  Date: 11-04-2016
+ Facilitator: Maija
+  Secretary: Rebecca
+ Participants: Maija, Rebecca and Andrea
+
+1. Objectives 
+* The RAD is not done. We need to sit together and do it. 
+* Use cases are not done.
+* We need to start on the domain model
+
+
+2. Reports
+* Andrea - have looked at Industriellekonomi and think she can answer most questions without interviewing anyone.
+* Maija - have not looked up Maskin and Z, but will do when we will start with questions. Probaby in a few weeks. Have looked into Tile editor. 
+* Rebecca - have not looked up teknisk fysik. have worked on use cases and have looked into tileeditor
+
+
+3. Discussion items
+ - Go through Use cases
+Overall: 
+* Alternate flows’ numbers are different depending on which line is different, i.e. Alternate flow 2.1 is the first alternate flow from the second line in the normal flow and 2.1.1 will be the fist line in the alternate flow and 2.1.2 is the second line ect. 
+CatchMascot
+* Will the “last mascot flow” will be an alternative flow in CatchMascot or ProgressBar discussed? Will be in progressBar.
+* The normal flow in CatchMascot will be the player answers wrong instead of right. 
+* The first two lines in alternative flows will be removed and since the end of the flow is the only thing that is different.
+EnterNewWorld
+* Done for now.
+InteractWithHuman
+* Add a quit option in a new alternate flow
+* More flows added where the player can quit the conversation or ask for more information.
+* The first two lines in alternative flows will be removed and since the end of the flow is the only thing that is different.
+Move
+* Some changes in description of a flow. 
+ProgressBar
+* Alternate flow added, if the progressBar is full.
+
+
+4. Outcomes and assignments
+* The use cases are pretty much done, we will add things if they come up and need to ask our supervisor for help about InteractWithHuman.
+* Everyone: work together with a domain model, an UML and in finishing the RAD. 
+* Tiles - a prototype will be created by one or two to decide the scale. Will be started 
+
+5. Wrap up
+ -Start implementing and prepare the presentation
+ - Next meeting will be thursday 14/4 at 10am.

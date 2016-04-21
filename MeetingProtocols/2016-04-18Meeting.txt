@@ -1,0 +1,73 @@
+﻿Meeting Agenda
+
+  Date:18/4
+ Facilitator: Maija
+  Secretary: Rebecca
+ Participants: Maija, Andrea, Lisa, Rebecca
+
+1. Objectives (5 min). Resolve any issues preventing the team to continue.
+
+* Connect the tilemaps to the code so when running it is showed. 
+   * We need more knowledge to get forward
+   * Will be easier to use framework
+   * Will look into that after the meeting
+   * What we know it will be easier with gradle instead of maven
+* Hard to make our own tests
+
+
+2. Reports (15 min) from previous meeting
+ - Each groupmember reports outcome of assigned issues, see also 4) 
+
+
+Everyone: Prepare presentation for monday presentation. We have not done the UML. 
+
+
+Andrea: Watched tutorials for connect tilemaps, can not use some things in maven, frameworks? 
+
+
+Lisa: Created a moving pattern. Programme prints out coordinates when moving since no fictional character yet. Have not done any JUnit tests
+
+
+Maija: Built two prototype maps over campus. We will use them for now and focus more on code. 
+
+
+Rebecca: Started with the controller class. Do not know if is working yet. 
+
+
+
+
+3. Discussion items (35 min) 
+ - Discuss issues from 1 and 2, possibly new or more general issues (very short notes and/or keywords)
+
+
+* Will tile maps work with our knowledge? 
+* Tests!
+
+
+
+4. Outcomes and assignments (5 min) 
+ - Outcomes from 3). I.e. write down what's decided and why it was decided? Sync with other documentation (add terms to  wordbook)
+ - From outcomes, 1), 2) and 3) (re)assign each groupmember 
+ issues to solve.
+
+
+We need to look at frameworks. We need to look more into tile maps so everyone knows since it is a big part of the project. 
+
+
+Maija: Look into sprites and making a character move
+
+
+Andrea: Continue in making the tilemap readable and visible
+
+
+Lisa: Look into test
+
+
+Rebecca:  Look into collision
+
+5. Wrap up
+ - Write down unresolved issues for next meeting.
+ - Time and location for next meeting
+
+
+Next meeting Friday 22/4 at 12.

@@ -1,4 +1,4 @@
-package model;
+package com.crap.game.model;
 
 /**
  * Created by Lisa on 14/04/16.

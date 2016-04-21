@@ -1,4 +1,4 @@
-package model;
+package com.crap.game.model;
 
 import java.beans.PropertyChangeListener;
 

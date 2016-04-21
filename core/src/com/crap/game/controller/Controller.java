@@ -1,6 +1,6 @@
-package controller;
+package com.crap.game.controller;
 
-import model.IObservable;
+import com.crap.game.model.IObservable;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

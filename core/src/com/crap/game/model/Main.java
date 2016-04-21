@@ -1,6 +1,6 @@
-package model;
+package com.crap.game.model;
 
-import controller.Controller;
+import com.crap.game.controller.Controller;
 
 import javax.swing.*;
 

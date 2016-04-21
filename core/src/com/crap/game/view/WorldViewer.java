@@ -1,11 +1,11 @@
-package view;
+package com.crap.game.view;
 /*
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
-import controller.Controller;
-import model.Player;
+import Controller;
+import Player;
 import tiled.core.Map;
 import tiled.core.MapLayer;
 import tiled.core.TileLayer;

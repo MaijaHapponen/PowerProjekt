@@ -39,4 +39,5 @@ public class Controller implements IObservable {
         public void keyTyped(KeyEvent event) {
         }
     };
+
 }

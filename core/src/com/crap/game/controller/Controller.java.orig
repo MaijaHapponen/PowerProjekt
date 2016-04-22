@@ -45,13 +45,8 @@ public class Controller implements InputProcessor {
     }
 
 
-
     @Override public boolean scrolled(int amount) {
         return false;
     }
-
-
-
-
 }
 

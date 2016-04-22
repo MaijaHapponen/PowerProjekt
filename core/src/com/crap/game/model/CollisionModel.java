@@ -41,10 +41,10 @@ public class CollisionModel {
     }
 
     public boolean isCollision(int x, int y){
-        if(blocked[x][y] == true){
+        if(blocked[x][y] == true){    //The player can't walk there, will be collision
             return true;
         }else{
-            return false;
+            return false;   //No obstacle
         }
     }
 

@@ -25,7 +25,8 @@ public class Player implements PropertyChangeListener {
     //Moves the player up, down, right or left.
     public void movePlayer(String direction){
 
-        if (direction.equals("38")) {
+
+        if (direction.equals("38") && com.crap.game.model.CollisionModel.blocked[position.getX()][position.getY()]) {
             this.moveUp();
 
         } else if (direction.equals("40")) {

@@ -2,6 +2,7 @@ package com.crap.game.model;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 
 /**
  * Created by andrea on 2016-04-11.
@@ -9,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 public class Player extends Sprite{
     private Position position;
     private Texture texture;
+    private CollisionModel collision = new CollisionModel();
 
     //Constructor
     public Player(){
@@ -26,16 +28,16 @@ public class Player extends Sprite{
     public void movePlayer(String direction){
 
 
-        if (direction.equals("38") && com.crap.game.model.CollisionModel.blocked[position.getX()][position.getY()]) {
+        if (direction.equals("38") && !collision.isCollision(position.getX(), position.getY())) {
             this.moveUp();
 
-        } else if (direction.equals("40")) {
+        } else if (direction.equals("40") && !collision.isCollision(position.getX(), position.getY())) {
             this.moveDown();
 
-        } else if (direction.equals("37")) {
+        } else if (direction.equals("37") && !collision.isCollision(position.getX(), position.getY())) {
             this.moveLeft();
 
-        } else if (direction.equals("39")) {
+        } else if (direction.equals("39") && !collision.isCollision(position.getX(), position.getY())) {
             this.moveRight();
         }
 

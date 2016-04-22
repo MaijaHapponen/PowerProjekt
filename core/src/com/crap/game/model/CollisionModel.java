@@ -16,32 +16,30 @@ import java.util.List;
 public class CollisionModel {
 
 
-
-    private boolean blocked[][];
-    private List<TiledMapTileLayer.Cell> collisionCells;
-
-    //private String layer = "Collision";
-    private int numOfTiles = 25;
+    private boolean[][] blocked;
     private TiledMap map;  //The whole map
     private TiledMapTileLayer collisionLayer = (TiledMapTileLayer) map.getLayers().get("Collision");  //The layer with the collision objects
 
+    public CollisionModel(){
+        blocked = new boolean[collisionLayer.getHeight()][collisionLayer.getWidth()];
+    }
 
-    public List<TiledMapTileLayer.Cell> getBlockedTiles(){
-        for(int i = 0; i < numOfTiles; i++){ //tiles top to bottom
-            for(int j = 0;j < numOfTiles; j++ ){ //tiles left to right
+
+    public void setBlockedTiles(){
+        for(int i = 0; i < collisionLayer.getHeight(); i++){
+            for(int j = 0;j < collisionLayer.getWidth(); j++ ){
                 TiledMapTileLayer.Cell cell = collisionLayer.getCell(i, j);
                 if(cell.getTile().getProperties().containsKey("Collision")) {
                     blocked[i][j] = true;
-                    collisionCells.add(cell);
                 }else{
                     blocked[i][j] = false;
                 }
             }
-        } return collisionCells;
+        }
     }
 
     public boolean isCollision(int x, int y){
-        if(blocked[x][y] == true){    //The player can't walk there, will be collision
+        if(blocked[x][y]){    //The player can't walk there, will be collision
             return true;
         }else{
             return false;   //No obstacle

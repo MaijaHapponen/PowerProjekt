@@ -6,6 +6,7 @@ import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.crap.game.model.Player;
 
 import java.util.List;
 
@@ -22,11 +23,7 @@ public class CollisionModel {
     //private String layer = "Collision";
     private int numOfTiles = 25;
     private TiledMap map;  //The whole map
-    private MapLayer collisionLayer = map.getLayers().get("Collision");  //The layer with the collision objects
-
-    MapObjects collisionObjects = collisionLayer.getObjects(); //The objects on the collision layer
-
-
+    private TiledMapTileLayer collisionLayer = (TiledMapTileLayer) map.getLayers().get("Collision");  //The layer with the collision objects
 
 
     public List<TiledMapTileLayer.Cell> getBlockedTiles(){
@@ -41,6 +38,14 @@ public class CollisionModel {
                 }
             }
         } return collisionCells;
+    }
+
+    public boolean isCollision(int x, int y){
+        if(blocked[x][y] == true){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 

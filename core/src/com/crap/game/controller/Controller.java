@@ -1,42 +1,50 @@
 package com.crap.game.controller;
 
-import com.crap.game.model.IObservable;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
+import static com.crap.game.view.WorldView.*;
 
 /**
  * Created by Lisa on 18/04/16.
+ * Edited by Andrea on 2016-05-22
  */
-public class Controller implements IObservable {
+public class Controller implements InputProcessor {
 
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
-
-    public void addObserver(PropertyChangeListener observer){
-        pcs.addPropertyChangeListener(observer);
+    @Override public boolean keyDown(int keycode) {
+        return false;
     }
 
-    public void removeObserver(PropertyChangeListener observer){
-        pcs.removePropertyChangeListener(observer);
+    @Override public boolean keyUp(int keycode) {
+        player.movePlayer(String.valueOf(keycode));
+        int x = player.getPosition().getX();
+        int y = player.getPosition().getY();
+        camera.lookAt(x,y,0);
+        return true;
     }
 
+    @Override public boolean keyTyped(char character) {
 
-    public KeyListener listener = new KeyListener() {
+        return false;
+    }
 
-        @Override
-        public void keyPressed(KeyEvent e) {
-            String keyCode = "" + e.getKeyCode();
-            pcs.firePropertyChange(keyCode, true, false);
-        }
+    @Override public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
 
-        @Override
-        public void keyReleased(KeyEvent event) {
-        }
+    @Override public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
 
-        @Override
-        public void keyTyped(KeyEvent event) {
-        }
-    };
+    @Override public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
+
+    @Override public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override public boolean scrolled(int amount) {
+        return false;
+    }
 }

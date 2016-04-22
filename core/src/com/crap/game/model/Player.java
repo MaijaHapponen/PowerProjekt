@@ -1,25 +1,25 @@
 package com.crap.game.model;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+
 /**
  * Created by andrea on 2016-04-11.
  */
-public class Player implements PropertyChangeListener {
+public class Player extends Sprite{
     private Position position;
+    private Texture texture;
 
     //Constructor
     public Player(){
         this.position = new Position();
+        this.texture = new Texture("character/donald.png");
     }
 
     //Constructor
     public Player(int x, int y){
         this.position = new Position(x, y);
-    }
-
-    public void propertyChange(PropertyChangeEvent evt){
-        this.movePlayer(evt.getPropertyName());
+        this.texture = new Texture("character/donald.png");
     }
 
     //Moves the player up, down, right or left.
@@ -74,5 +74,7 @@ public class Player implements PropertyChangeListener {
     public Position getPosition(){
         return this.position;
     }
+
+    public Texture getTexture() { return this.texture; }
 
 }

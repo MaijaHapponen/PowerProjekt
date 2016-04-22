@@ -46,7 +46,6 @@ public class Player extends Sprite{
             this.moveLeft();
 
         } else if (direction.equals("39") && !collision.getBlockedTiles(position.getX(), position.getY())) {
-
             this.moveRight();
         }
     }

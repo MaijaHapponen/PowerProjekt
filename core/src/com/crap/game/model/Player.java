@@ -2,7 +2,6 @@ package com.crap.game.model;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 
 /**
  * Created by andrea on 2016-04-11.

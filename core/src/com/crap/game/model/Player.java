@@ -77,6 +77,7 @@ public class Player extends Sprite{
         return this.position;
     }
 
+    //Returns the players Position object
     public Texture getTexture() { return this.texture; }
 
 }

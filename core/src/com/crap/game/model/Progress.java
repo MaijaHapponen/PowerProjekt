@@ -7,12 +7,12 @@ import java.util.ArrayList;
  */
 public class Progress {
 
-    private ArrayList<Mascot> mascotsInGame = new ArrayList<>(); //TODO borde denna listan vara här eller i någon annan klass istället? Måste fylla på den när man startar spelet.
+    private ArrayList<Mascot> mascotsInGame = new ArrayList<Mascot>(); //TODO borde denna listan vara här eller i någon annan klass istället? Måste fylla på den när man startar spelet.
     private ArrayList<Mascot> mascotsCaught;
 
     //Constructor
     public Progress(){
-        mascotsCaught = new ArrayList<>();
+        mascotsCaught = new ArrayList<Mascot>();
     }
 
     //Method checking if all mascots has been caught by the player.
@@ -20,9 +20,7 @@ public class Progress {
         if(mascotsInGame.isEmpty()){
             return true;
         }
-        else{
-            return false;
-        }
+        return false;
     }
 
     //Adds the caught mascot to the list of mascots caught and removes it from the list of mascots still in the game.

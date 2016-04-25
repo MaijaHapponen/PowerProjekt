@@ -5,6 +5,7 @@ package com.crap.game.model;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.crap.game.model.Player;
 
@@ -15,15 +16,26 @@ import java.util.List;
  */
 public class CollisionModel {
 
-
+    private enum typeOfTile {WALKABLE_TILE, SOLID_TILE, SLOWER_TILE};
     private boolean[][] blocked;
     private TiledMap map;  //The whole map
     private TiledMapTileLayer collisionLayer = (TiledMapTileLayer) map.getLayers().get("Collision");  //The layer with the collision objects
-
+    Player player = new Player();
 
 
     public CollisionModel(){
         blocked = new boolean[collisionLayer.getHeight()][collisionLayer.getWidth()];
+    }
+
+    public typeOfTile getTypeOfTile(){
+        TiledMapTileLayer.Cell cell = collisionLayer.getCell((int)player.getX(), (int)player.getY());
+        if(cell.getTile().getProperties().containsKey("Collision")){
+            return typeOfTile.SOLID_TILE;
+        }if(cell.getTile().getProperties().containsKey("Slower")){
+            return typeOfTile.SLOWER_TILE;
+        }else{
+            return typeOfTile.WALKABLE_TILE;
+        }
     }
 
 

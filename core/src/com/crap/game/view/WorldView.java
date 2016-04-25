@@ -3,45 +3,57 @@ package com.crap.game.view;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.crap.game.model.Player;
-import com.crap.game.model.WorldRenderer;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.crap.game.model.Position;
 import com.crap.game.controller.Controller;
-import com.crap.game.model.Player;
+import com.crap.game.Main;
 
 /**
  * Created by Maija on 2016-04-21.
  * Edited by Andrea on 2016-04-22.
+ * Edited by Andrea on 2016-04-25
  */
-public class WorldView extends ApplicationAdapter implements Screen, InputProcessor{
+public class WorldView extends ApplicationAdapter implements Screen{
 
     public static OrthographicCamera camera;
-    public static Player player;
-    private Texture texture;
-    private Sprite sprite;
+    private SpriteBatch batch;
     private TiledMap map;
-    private WorldRenderer renderer;
+    private OrthogonalTiledMapRenderer renderer;
+    private Position position;
+    private Controller controller;
+    private Main game;
 
-    @Override
-    public void show() {
+    public WorldView(Main main){
+        this.game = main;
+
+        batch = PlayerView.batch;
+
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, width, height);
-        camera.update();
-
-        texture = new Texture("characters/donald.png");
-        sprite = new Sprite(texture);
 
         map = new TmxMapLoader().load("maps/hubbeneditsand.tmx");
-        renderer = new WorldRenderer(map);
-        renderer.addSprite(sprite);
-        sprite.setPosition(250,250);
-        Gdx.input.setInputProcessor(this);
+        renderer = new OrthogonalTiledMapRenderer(map);
+    }
+
+    @Override
+    public void show() {
+
+        //camera.update();
+
+       // player = new Player();
+        //controller = new Controller();
+        //player = new PlayerView();
+
+        //renderer.addSprite(player.getSprite());
+        //player.setPosition(250, 250);
+        //sprite.setPosition(position.getX(), position.getY());
+        //Gdx.input.setInputProcessor(controller);
     }
 
     @Override
@@ -50,7 +62,10 @@ public class WorldView extends ApplicationAdapter implements Screen, InputProces
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
+        //camera.lookAt(position.getX(),position.getY(),0);
         camera.update();
+
+        game.batch.setProjectionMatrix(camera.combined);
         renderer.setView(camera);
         renderer.render();
     }
@@ -76,57 +91,5 @@ public class WorldView extends ApplicationAdapter implements Screen, InputProces
     public void dispose() {
         map.dispose();
         renderer.dispose();
-    }
-
-    @Override
-    public boolean keyDown(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        if(keycode == Input.Keys.LEFT)
-            sprite.setPosition(sprite.getX()-5,sprite.getY());
-            camera.translate(-5,0);
-        if(keycode == Input.Keys.RIGHT)
-            sprite.setPosition(sprite.getX()+5,sprite.getY());
-            camera.translate(5,0);
-        if(keycode == Input.Keys.UP)
-            sprite.setPosition(sprite.getX(),sprite.getY()+5);
-            camera.translate(0,5);
-        if(keycode == Input.Keys.DOWN)
-            sprite.setPosition(sprite.getX(),sprite.getY()-5);
-            camera.translate(0,-5);
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(char character) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
     }
 }

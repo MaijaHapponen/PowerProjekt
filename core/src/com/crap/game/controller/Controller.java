@@ -1,10 +1,8 @@
 package com.crap.game.controller;
 
 import com.badlogic.gdx.InputProcessor;
-import com.crap.game.view.WorldView;
-
-import static com.crap.game.view.WorldView.camera;
-import static com.crap.game.view.WorldView.player;
+import static com.crap.game.view.PlayerView.camera;
+import static com.crap.game.view.PlayerView.player;
 
 /**
  * Created by Lisa on 18/04/16.
@@ -16,9 +14,9 @@ public class Controller implements  InputProcessor{
     }
 
     @Override public boolean keyUp(int keycode) {
-        player.movePlayer(String.valueOf(keycode));
-        int x = player.getPosition().getX();
-        int y = player.getPosition().getY();
+        player.movePlayer(keycode);
+        float x = player.getX();
+        float y = player.getY();
         camera.lookAt(x,y,0);
         return true;
     }

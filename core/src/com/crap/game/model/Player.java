@@ -1,83 +1,112 @@
 package com.crap.game.model;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 /**
  * Created by andrea on 2016-04-11.
  */
-public class Player extends Sprite{
-    private Position position;
+public class Player extends Sprite {
     private Texture texture;
-    private CollisionModel collision = new CollisionModel();
+    private Sprite sprite;
+    private float x;
+    private float y;
+    //private CollisionModel collision = new CollisionModel();
 
     //Constructor
     public Player(){
-        this.position = new Position();
-        this.texture = new Texture("character/donald.png");
+        this.x = 250;
+        this.y = 250;
+        this.texture = new Texture(Gdx.files.internal("character/donald.png"));
+        this.sprite = new Sprite(texture);
+        sprite.setPosition(this.x,this.y);
     }
 
     //Constructor
     public Player(int x, int y){
-        this.position = new Position(x, y);
-        this.texture = new Texture("character/donald.png");
+        //this.position = new Position(x, y);
+        this.x = 250;
+        this.y = 250;
+        this.texture = new Texture(Gdx.files.internal("character/donald.png"));
+        this.sprite = new Sprite(texture);
+        sprite.setPosition(this.x,this.y);
     }
 
     //Moves the player up, down, right or left.
-    public void movePlayer(String direction){
-
-
-        if (direction.equals("38") && !collision.isCollision(position.getX(), position.getY())) {
+    public void movePlayer(int keycode){
+        if (keycode == Input.Keys.UP){// && !collision.isCollision(position.getX(), position.getY())) {
             this.moveUp();
-
-        } else if (direction.equals("40") && !collision.isCollision(position.getX(), position.getY())) {
+        }
+        else if (keycode == Input.Keys.DOWN){ // && !collision.isCollision(position.getX(), position.getY())) {
             this.moveDown();
-
-        } else if (direction.equals("37") && !collision.isCollision(position.getX(), position.getY())) {
+        }
+        else if (keycode == Input.Keys.LEFT){// && !collision.isCollision(position.getX(), position.getY())) {
             this.moveLeft();
-
-        } else if (direction.equals("39") && !collision.isCollision(position.getX(), position.getY())) {
+        }
+        else if (keycode == Input.Keys.RIGHT){ //&& !collision.isCollision(position.getX(), position.getY())) {
             this.moveRight();
         }
-
-        System.out.println("Player X-coordinate: " + this.getPosition().getX()); //TODO remove later
-        System.out.println("Player Y-coordinate: " + this.getPosition().getY()); //TODO remove later
     }
 
     //Moves the player one step up.
     public void moveUp(){
-        if(this.position.getY() > 0) {
-            this.position.setPosition(position.getX(), position.getY() - 1);
+        if(y>0){//this.position.getY() > 0) {
+            //this.position.setPosition(position.getX(), position.getY() - 1);
+            float ny = y;
+            this.y = ny -1;
+            update();
         }
     }
 
     //Moves the player one step down.
     public void moveDown(){
-        if(this.position.getY() < 100) { //TODO should be changed to the max height of the world later.
-            this.position.setPosition(position.getX(), position.getY() + 1);
+        if(y<1000){//this.position.getY() < 1000) { //TODO should be changed to the max height of the world later.
+            //this.position.setPosition(position.getX(), position.getY() + 1);
+            float ny = y;
+            this.y = ny +1;
+            update();
         }
     }
 
     //Moves the player one step to the right.
     public void moveRight(){
-        if(this.position.getX() < 100) { //TODO should be changed to the max width of the world later.
-            this.position.setPosition(position.getX() + 1, position.getY());
+        if(x<1000){//this.position.getX() < 1000) { //TODO should be changed to the max width of the world later.
+            //this.position.setPosition(position.getX() + 1, position.getY());
+            float nx = x;
+            this.x = nx -1;
+            update();
         }
     }
 
     //Moves the player one step to the left.
     public void moveLeft(){
-        if(this.position.getX() > 0){
-            this.position.setPosition(position.getX() - 1, position.getY());
+        if(x>0){//this.position.getX() > 0){
+            //this.position.setPosition(position.getX() - 1, position.getY());
+            float nx = x;
+            this.x = nx +1;
+            update();
         }
     }
 
-    //Returns the players Position object.
-    public Position getPosition(){
-        return this.position;
+    //Updates the position of the players Sprite
+    public void update(){
+        sprite.setPosition(x,y);//position.getX(), position.getY());
     }
 
-    //Returns the players Position object
+    //Returns the players Position object.
+    //public Position getPosition(){return this.position;  }
+
+    public float getX(){ return this.x;}
+
+
+    public float getY(){ return this.y;}
+
+    //Returns the players Texture object
     public Texture getTexture() { return this.texture; }
+
+    //Returns the players Sprite object
+    public Sprite getSprite() { return this.sprite; }
 
 }

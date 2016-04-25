@@ -36,16 +36,16 @@ public class Player extends Sprite{
     public void movePlayer(String direction){
 
 
-        if (direction.equals("38") && !collision.getBlockedTiles(position.getX(), position.getY())) {
+        if (direction.equals("38") && !collision.getBlockedTiles(getPosition().getX(), getPosition().getY()-1)) {
             this.moveUp();
 
-        } else if (direction.equals("40") && !collision.getBlockedTiles(position.getX(), position.getY())) {
+        } else if (direction.equals("40") && !collision.getBlockedTiles(getPosition().getX(), getPosition().getY()+1)) {
             this.moveDown();
 
-        } else if (direction.equals("37") && !collision.getBlockedTiles(position.getX(), position.getY())) {
+        } else if (direction.equals("37") && !collision.getBlockedTiles(getPosition().getX()-1, getPosition().getY())) {
             this.moveLeft();
 
-        } else if (direction.equals("39") && !collision.getBlockedTiles(position.getX(), position.getY())) {
+        } else if (direction.equals("39") && !collision.getBlockedTiles(getPosition().getX()+1, getPosition().getY())) {
             this.moveRight();
         }
     }

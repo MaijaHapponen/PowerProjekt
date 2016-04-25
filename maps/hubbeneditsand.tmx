@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="20">
  <tileset firstgid="1" name="open_tileset" tilewidth="32" tileheight="32" tilecount="1710" columns="45">
   <image source="open_tileset.png" trans="878787" width="1440" height="1216"/>
  </tileset>
@@ -90,4 +90,25 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup name="Collision">
+  <object id="1" name="Collision" x="4.1958" y="4.1958" width="504.895" height="190.21"/>
+  <object id="2" name="Collision" x="1.3986" y="195.804" width="411.189" height="22.3776"/>
+  <object id="3" name="Collision" x="450.35" y="198.601" width="58.7413" height="25.1748"/>
+  <object id="4" name="Collision" x="450.35" y="253.147" width="58.7413" height="2.7972"/>
+  <object id="5" name="Collision" x="408.392" y="226.573" width="8.39161" height="33.5664"/>
+  <object id="6" name="Collision" x="67.1329" y="341.259" width="344.056" height="107.692"/>
+  <object id="7" name="Collision" x="451.748" y="439.161" width="61.5385" height="9.79021"/>
+  <object id="8" name="Collision" x="447.552" y="346.853" width="64.3357" height="5.59441"/>
+  <object id="9" name="Collision" x="672.727" y="2.7972" width="128.671" height="26.5734"/>
+  <object id="10" name="Collision" x="511.888" y="338.462" width="288.112" height="107.692"/>
+  <object id="11" name="Collision" x="622.378" y="597.203" width="36.3636" height="68.5315"/>
+ </objectgroup>
+ <objectgroup name="SlowLayer">
+  <object id="12" name="Slow" x="640.559" y="65.7343" width="156.643" height="153.846"/>
+  <object id="13" name="Slow" x="33.5664" y="352.448" width="29.3706" height="96.5035"/>
+  <object id="14" name="Slow" x="416.783" y="355.245" width="33.5664" height="89.5105"/>
+  <object id="16" name="Slow" x="461.538" y="341.259" width="34.965" height="29.3706"/>
+  <object id="17" name="Slow" x="448.951" y="390.21" width="30.7692" height="27.972"/>
+  <object id="19" name="Slow" x="415.385" y="261.538" width="30.7692" height="27.972"/>
+ </objectgroup>
 </map>

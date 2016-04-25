@@ -7,31 +7,28 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 /**
  * Created by andrea on 2016-04-11.
+ * Edited by andrea on 2016-04-25.
  */
 public class Player extends Sprite {
     private Texture texture;
     private Sprite sprite;
-    private float x;
-    private float y;
-    //private CollisionModel collision = new CollisionModel();
+    private Position position;
+    private CollisionModel collision = new CollisionModel();
 
     //Constructor
     public Player(){
-        this.x = 250;
-        this.y = 250;
+        this.position = new Position(250, 250);
         this.texture = new Texture(Gdx.files.internal("character/donald.png"));
         this.sprite = new Sprite(texture);
-        sprite.setPosition(this.x,this.y);
+        sprite.setPosition(position.getX(),position.getY());
     }
 
     //Constructor
     public Player(int x, int y){
-        //this.position = new Position(x, y);
-        this.x = 250;
-        this.y = 250;
+        this.position = new Position(x, y);
         this.texture = new Texture(Gdx.files.internal("character/donald.png"));
         this.sprite = new Sprite(texture);
-        sprite.setPosition(this.x,this.y);
+        sprite.setPosition(position.getX(),position.getY());
     }
 
     //Moves the player up, down, right or left.
@@ -52,56 +49,43 @@ public class Player extends Sprite {
 
     //Moves the player one step up.
     public void moveUp(){
-        if(y>0){//this.position.getY() > 0) {
-            //this.position.setPosition(position.getX(), position.getY() - 1);
-            float ny = y;
-            this.y = ny -1;
+        if(this.position.getY() > 0) {
+            this.position.setPosition(position.getX(), position.getY() - 1);
             update();
         }
     }
 
     //Moves the player one step down.
     public void moveDown(){
-        if(y<1000){//this.position.getY() < 1000) { //TODO should be changed to the max height of the world later.
-            //this.position.setPosition(position.getX(), position.getY() + 1);
-            float ny = y;
-            this.y = ny +1;
+        if(this.position.getY() < 1000) { //TODO should be changed to the max height of the world later.
+            this.position.setPosition(position.getX(), position.getY() + 1);
             update();
         }
     }
 
     //Moves the player one step to the right.
     public void moveRight(){
-        if(x<1000){//this.position.getX() < 1000) { //TODO should be changed to the max width of the world later.
-            //this.position.setPosition(position.getX() + 1, position.getY());
-            float nx = x;
-            this.x = nx -1;
+        if(this.position.getX() < 1000) { //TODO should be changed to the max width of the world later.
+            this.position.setPosition(position.getX() + 1, position.getY());
             update();
         }
     }
 
     //Moves the player one step to the left.
     public void moveLeft(){
-        if(x>0){//this.position.getX() > 0){
-            //this.position.setPosition(position.getX() - 1, position.getY());
-            float nx = x;
-            this.x = nx +1;
+        if(this.position.getX() > 0){
+            this.position.setPosition(position.getX() - 1, position.getY());
             update();
         }
     }
 
     //Updates the position of the players Sprite
     public void update(){
-        sprite.setPosition(x,y);//position.getX(), position.getY());
+        sprite.setPosition(position.getX(), position.getY());
     }
 
     //Returns the players Position object.
-    //public Position getPosition(){return this.position;  }
-
-    public float getX(){ return this.x;}
-
-
-    public float getY(){ return this.y;}
+    public Position getPosition(){return this.position;  }
 
     //Returns the players Texture object
     public Texture getTexture() { return this.texture; }

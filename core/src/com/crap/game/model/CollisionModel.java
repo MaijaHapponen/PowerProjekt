@@ -20,6 +20,8 @@ public class CollisionModel {
     private TiledMap map;  //The whole map
     private TiledMapTileLayer collisionLayer = (TiledMapTileLayer) map.getLayers().get("Collision");  //The layer with the collision objects
 
+
+
     public CollisionModel(){
         blocked = new boolean[collisionLayer.getHeight()][collisionLayer.getWidth()];
     }
@@ -38,7 +40,8 @@ public class CollisionModel {
         }
     }
 
-    public boolean isCollision(int x, int y){
+
+    public boolean getBlockedTiles(int x, int y){
         if(blocked[x][y]){    //The player can't walk there, will be collision
             return true;
         }else{

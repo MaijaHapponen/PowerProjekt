@@ -32,17 +32,21 @@ public class Player extends Sprite{
     }
 
     //Moves the player up, down, right or left.
-    public void movePlayer(int keycode){
-        if (keycode == Input.Keys.UP){// && !collision.isCollision(position.getX(), position.getY())) {
+
+    public void movePlayer(String direction){
+
+
+        if (direction.equals("38") && !collision.getBlockedTiles(position.getX(), position.getY())) {
             this.moveUp();
-        }
-        else if (keycode == Input.Keys.DOWN){ // && !collision.isCollision(position.getX(), position.getY())) {
+
+        } else if (direction.equals("40") && !collision.getBlockedTiles(position.getX(), position.getY())) {
             this.moveDown();
-        }
-        else if (keycode == Input.Keys.LEFT){// && !collision.isCollision(position.getX(), position.getY())) {
+
+        } else if (direction.equals("37") && !collision.getBlockedTiles(position.getX(), position.getY())) {
             this.moveLeft();
-        }
-        else if (keycode == Input.Keys.RIGHT){ //&& !collision.isCollision(position.getX(), position.getY())) {
+
+        } else if (direction.equals("39") && !collision.getBlockedTiles(position.getX(), position.getY())) {
+
             this.moveRight();
         }
     }

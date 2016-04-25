@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class CollisionModel {
 
-    public enum typeOfTile {WALKABLE_TILE, SOLID_TILE, SLOWER_TILE};
+    public enum typeOfTile {WALKABLE_TILE, SOLID_TILE, SLOWER_TILE}; //The different types of tiles
     //private boolean[][] blocked;
     private TiledMap map;  //The whole map
     private TiledMapTileLayer collisionLayer = (TiledMapTileLayer) map.getLayers().get("Collision");  //The layer with the collision objects
@@ -27,6 +27,7 @@ public class CollisionModel {
         blocked = new boolean[collisionLayer.getHeight()][collisionLayer.getWidth()];
     }*/
 
+    //Takes a position and check what tyoe of tile it is. 
     public typeOfTile getTypeOfTile(int x, int y){
         TiledMapTileLayer.Cell cell = collisionLayer.getCell(x, y);
         if(cell.getTile().getProperties().containsKey("Collision")){

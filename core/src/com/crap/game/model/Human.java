@@ -1,17 +1,17 @@
 package com.crap.game.model;
 
 /**
- * Created by Lisa on 24/04/16.
+ * Created by Lisa on 25/04/16.
  */
-public class Mascot extends Character{
+public class Human extends Character {
 
     //Constructor
-    public Mascot(){
+    public Human(){
         super();
     }
 
     //Constructor
-    public Mascot(Position position){
+    public Human(Position position){
         super(position);
     }
 }

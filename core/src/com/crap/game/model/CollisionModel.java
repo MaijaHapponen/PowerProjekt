@@ -17,15 +17,15 @@ import java.util.List;
 public class CollisionModel {
 
     public enum typeOfTile {WALKABLE_TILE, SOLID_TILE, SLOWER_TILE};
-    private boolean[][] blocked;
+    //private boolean[][] blocked;
     private TiledMap map;  //The whole map
     private TiledMapTileLayer collisionLayer = (TiledMapTileLayer) map.getLayers().get("Collision");  //The layer with the collision objects
-    Player player = new Player();
+   // Player player = new Player();
 
 
-    public CollisionModel(){
+    /* public CollisionModel(){
         blocked = new boolean[collisionLayer.getHeight()][collisionLayer.getWidth()];
-    }
+    }*/
 
     public typeOfTile getTypeOfTile(int x, int y){
         TiledMapTileLayer.Cell cell = collisionLayer.getCell(x, y);
@@ -39,7 +39,7 @@ public class CollisionModel {
     }
 
 
-    public void setBlockedTiles(){
+  /*  public void setBlockedTiles(){
         for(int i = 0; i < collisionLayer.getHeight(); i++){
             for(int j = 0;j < collisionLayer.getWidth(); j++ ){
                 TiledMapTileLayer.Cell cell = collisionLayer.getCell(i, j);
@@ -59,7 +59,7 @@ public class CollisionModel {
         }else{
             return false;   //No obstacle
         }
-    }
+    }*/
 
 
 }

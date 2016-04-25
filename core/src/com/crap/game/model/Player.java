@@ -16,7 +16,7 @@ public class Player extends Sprite {
     private Texture texture;
     private Sprite sprite;
     private Position position;
-    //private CollisionModel collision = new CollisionModel();
+    private CollisionModel collision = new CollisionModel();
 
     //Constructor
     public Player(){
@@ -39,10 +39,12 @@ public class Player extends Sprite {
     public void movePlayer(String direction){
 
 
-        if (direction.equals("38") && !collision.getBlockedTiles(getPosition().getX(), getPosition().getY()-1)) {
+        if (direction.equals("38") && collision.getTypeOfTile(getPosition().getX(), getPosition().getY()-1) == CollisionModel.typeOfTile.WALKABLE_TILE
+                || collision.getTypeOfTile(getPosition().getX(), getPosition().getY()-1) == CollisionModel.typeOfTile.SLOWER_TILE) {
             this.moveUp();
 
-        } else if (direction.equals("40") && !collision.getBlockedTiles(getPosition().getX(), getPosition().getY()+1)) {
+        } else if (direction.equals("40") && collision.getTypeOfTile(getPosition().getX(), getPosition().getY()-1) == CollisionModel.typeOfTile.WALKABLE_TILE
+                || collision.getTypeOfTile(getPosition().getX(), getPosition().getY()-1) == CollisionModel.typeOfTile.SLOWER_TILE) {
             this.moveDown();
 
         } else if (direction.equals("37") && !collision.getBlockedTiles(getPosition().getX()-1, getPosition().getY())) {

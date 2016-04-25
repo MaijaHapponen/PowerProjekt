@@ -9,26 +9,26 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
  * Created by andrea on 2016-04-11.
  * Edited by andrea on 2016-04-25.
  */
-public class Player extends Sprite {
+public class Player extends Sprite{
     private Texture texture;
     private Sprite sprite;
     private Position position;
-    private CollisionModel collision = new CollisionModel();
+    //private CollisionModel collision = new CollisionModel();
 
     //Constructor
     public Player(){
         this.position = new Position(250, 250);
-        this.texture = new Texture(Gdx.files.internal("character/donald.png"));
+        this.texture = new Texture(Gdx.files.internal("characters/donald.png"));
         this.sprite = new Sprite(texture);
-        sprite.setPosition(position.getX(),position.getY());
+        sprite.setPosition(position.getX(), position.getY());
     }
 
     //Constructor
     public Player(int x, int y){
         this.position = new Position(x, y);
-        this.texture = new Texture(Gdx.files.internal("character/donald.png"));
+        this.texture = new Texture(Gdx.files.internal("characters/donald.png"));
         this.sprite = new Sprite(texture);
-        sprite.setPosition(position.getX(),position.getY());
+        sprite.setPosition(position.getX(), position.getY());
     }
 
     //Moves the player up, down, right or left.

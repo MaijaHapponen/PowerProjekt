@@ -1,20 +1,18 @@
 package com.crap.game;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.crap.game.view.PlayerView;
+import com.crap.game.controller.Controller;
 import com.crap.game.view.WorldView;
 
 public class Main extends Game {
 
-    public SpriteBatch batch;
-    public TiledMap map;
+    public WorldView worldView;
+    public Controller controller;
 
     public void create() {
-        batch = new SpriteBatch();
-        map = new TiledMap();
-        this.setScreen(new WorldView(this));
+        worldView = new WorldView(this);
+        controller = new Controller();
+        setScreen(worldView);
     }
 
 	@Override

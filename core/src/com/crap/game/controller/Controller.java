@@ -1,8 +1,8 @@
 package com.crap.game.controller;
 
 import com.badlogic.gdx.InputProcessor;
-import static com.crap.game.view.PlayerView.camera;
-import static com.crap.game.view.PlayerView.player;
+import static com.crap.game.view.WorldView.camera;
+import static com.crap.game.view.WorldView.player;
 
 /**
  * Created by Lisa on 18/04/16.

@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Player extends Sprite {
 
+
     private Texture texture;
     private Sprite sprite;
     private Position position;

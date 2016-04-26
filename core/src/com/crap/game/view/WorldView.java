@@ -10,7 +10,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.crap.game.model.Human;
 import com.crap.game.model.Player;
+
+import java.util.ArrayList;
 
 /**
  * Created by Maija on 2016-04-21.
@@ -27,6 +30,9 @@ public class WorldView extends ApplicationAdapter implements Screen{
     private Player player;
     private TiledMap world;
     private OrthographicCamera camera;
+
+    private ArrayList<Human> humansList = new ArrayList<Human>();
+    private ArrayList<Sprite> spriteList = new ArrayList<Sprite>();
 
     public WorldView(){
         this.batch = new SpriteBatch();
@@ -46,6 +52,11 @@ public class WorldView extends ApplicationAdapter implements Screen{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
+        for(int i=0; i<humansList.size(); i++){
+            Sprite tmpSprite = humansList.get(i).getSprite();
+            this.spriteList.add(tmpSprite);
+        }
+
         this.sprite = player.getSprite();
         moveCamera(player.getPosition().getX(), player.getPosition().getY());
 
@@ -53,6 +64,9 @@ public class WorldView extends ApplicationAdapter implements Screen{
         renderer.setView(camera);
         renderer.render();
         batch.begin();
+        for(int i=0; i<spriteList.size(); i++){
+            spriteList.get(i).draw(batch);
+        }
         sprite.draw(batch);
         batch.end();
     }
@@ -82,6 +96,13 @@ public class WorldView extends ApplicationAdapter implements Screen{
 
     public void setPlayer(Player player){
         this.player = player;
+    }
+
+    public void setCharacters(ArrayList<Human> humans){
+        for (int i=0; i<humans.size(); i++) {
+            this.humansList.add(humans.get(i));
+
+        }
     }
 
     public void setWorld(TiledMap world) { this.world = world; }

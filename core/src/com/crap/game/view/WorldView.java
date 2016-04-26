@@ -55,11 +55,11 @@ public class WorldView extends ApplicationAdapter implements Screen{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
-        for(int i=0; i<humansList.size(); i++){
+        for (int i = 0; i < humansList.size(); i++) {
             Sprite tmpSprite = humansList.get(i).getSprite();
             this.humansSpriteList.add(tmpSprite);
         }
-        for(int i=0; i<mascotsList.size(); i++){
+        for (int i = 0; i < mascotsList.size(); i++) {
             Sprite tmpSprite = mascotsList.get(i).getSprite();
             this.mascotsSpriteList.add(tmpSprite);
         }
@@ -71,10 +71,10 @@ public class WorldView extends ApplicationAdapter implements Screen{
         renderer.setView(camera);
         renderer.render();
         batch.begin();
-        for(int i = 0; i<humansSpriteList.size(); i++){
+        for (int i = 0; i < humansSpriteList.size(); i++) {
             humansSpriteList.get(i).draw(batch);
         }
-        for(int i = 0; i<mascotsSpriteList.size(); i++){
+        for (int i = 0; i < mascotsSpriteList.size(); i++) {
             mascotsSpriteList.get(i).draw(batch);
         }
         sprite.draw(batch);
@@ -104,6 +104,8 @@ public class WorldView extends ApplicationAdapter implements Screen{
         renderer.dispose();
     }
 
+
+
     public void setPlayer(Player player){
         this.player = player;
     }
@@ -114,8 +116,8 @@ public class WorldView extends ApplicationAdapter implements Screen{
         }
     }
 
-    public void setMascots(ArrayList<Mascot> mascots){
-        for (int i=0; i<mascots.size(); i++) {
+    public void setMascots(ArrayList<Mascot> mascots) {
+        for (int i = 0; i < mascots.size(); i++) {
             this.mascotsList.add(mascots.get(i));
         }
     }

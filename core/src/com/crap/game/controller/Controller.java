@@ -36,7 +36,6 @@ public class Controller extends InputAdapter{
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);
 
-
         Gdx.input.setInputProcessor(this);
     }
 

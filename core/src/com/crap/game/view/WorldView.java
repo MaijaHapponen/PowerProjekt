@@ -2,7 +2,6 @@ package com.crap.game.view;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -21,18 +20,18 @@ import com.crap.game.model.Player;
 public class WorldView extends ApplicationAdapter implements Screen{
 
     private SpriteBatch batch;
-    private TiledMap map;
+    public static TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
     private String level;
     private Sprite sprite;
     private Player player;
+    private TiledMap world;
     private OrthographicCamera camera;
 
     public WorldView(){
         this.batch = new SpriteBatch();
-        this.level = "hubbeneditsand";
+        this.level = "horsalmaskin";
         this.camera = new OrthographicCamera();
-        //this.sprite = player.getSprite();
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
 
@@ -60,7 +59,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
         batch.begin();
         sprite.draw(batch);
         batch.end();
-        camera.lookAt(player.getPosition().getX(),player.getPosition().getY(),0);
+        //camera.lookAt(player.getPosition().getX(),player.getPosition().getY(),0);
     }
 
     @Override
@@ -89,4 +88,6 @@ public class WorldView extends ApplicationAdapter implements Screen{
     public void setPlayer(Player player){
         this.player = player;
     }
+
+    public void setWorld(TiledMap world) { this.world = world; }
 }

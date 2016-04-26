@@ -3,6 +3,7 @@ package com.crap.game.controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.crap.game.model.World;
 import com.crap.game.view.WorldView;
 import com.crap.game.model.Player;
 
@@ -13,25 +14,19 @@ import com.crap.game.model.Player;
 public class Controller implements  InputProcessor{
 
     private WorldView view;
-    private Player model;
+    private World model;
     //private OrthographicCamera camera;
 
-    public Controller(WorldView view, Player player){
+    public Controller(WorldView view, World world){
         //this.camera = new OrthographicCamera();
 
         Gdx.input.setInputProcessor(this);
         this.view = view;
-        this.model = player;
-        this.view.setPlayer(model);
+        this.model = world;
+        this.view.setPlayer(model.player);
+        //this.view.setCollision(model.collision);
+        //this.view.setWorld(model.map);
     }
-
-    //public Player getPlayer(){
-    //    return this.player;
-    //}
-
-    //public WorldView getView(){
-    //    return this.view;
-    //}
 
     @Override
     public boolean keyDown(int keycode) {
@@ -40,10 +35,8 @@ public class Controller implements  InputProcessor{
 
     @Override
     public boolean keyUp(int keycode) {
-        model.movePlayer(keycode);
-        model.update();
-
-        System.out.println(5);
+        model.player.movePlayer(keycode);
+        model.player.update();
         view.render();
         //float x = player.getX();
         //float y = player.getY();

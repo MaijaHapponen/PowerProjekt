@@ -1,13 +1,8 @@
 package com.crap.game.model;
 
-
-
-import com.badlogic.gdx.maps.MapLayer;
-import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.crap.game.model.Player;
+import com.crap.game.view.WorldView;
 
 import java.util.List;
 
@@ -16,14 +11,18 @@ import java.util.List;
  */
 public class CollisionModel {
 
-
     public enum typeOfTile {WALKABLE_TILE, SOLID_TILE, SLOWER_TILE}; //The different types of tiles
+
     //private boolean[][] blocked;
     private TiledMap map;  //The whole map
-    private TiledMapTileLayer collisionLayer = (TiledMapTileLayer) map.getLayers().get("Collision");  //The layer with the collision objects
-   // Player player = new Player();
+    private TiledMapTileLayer collisionLayer;
+     // Player player = new Player();
 
+    public CollisionModel(){
+        this.map = WorldView.map;
+         collisionLayer = (TiledMapTileLayer) map.getLayers().get("Collision");  //The layer with the collision objects
 
+    }
     /* public CollisionModel(){
         blocked = new boolean[collisionLayer.getHeight()][collisionLayer.getWidth()];
     }*/

@@ -2,16 +2,19 @@ package com.crap.game;
 
 import com.badlogic.gdx.Game;
 import com.crap.game.controller.Controller;
+import com.crap.game.model.Player;
 import com.crap.game.view.WorldView;
 
 public class Main extends Game {
 
     public WorldView worldView;
     public Controller controller;
+    public Player player;
 
     public void create() {
-        worldView = new WorldView(this);
-        controller = new Controller();
+        player = new Player();
+        worldView = new WorldView();
+        controller = new Controller(worldView, player);
         setScreen(worldView);
     }
 

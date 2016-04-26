@@ -1,16 +1,16 @@
 package com.crap.game.view;
 
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.crap.game.Main;
-import com.crap.game.controller.Controller;
 import com.crap.game.model.Player;
 
 /**
@@ -20,25 +20,19 @@ import com.crap.game.model.Player;
  */
 public class WorldView extends ApplicationAdapter implements Screen{
 
-    public static OrthographicCamera camera;
     private SpriteBatch batch;
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
-    public static Player player;
     private String level;
     private Sprite sprite;
-    private Texture texture;
-    private Controller controller;
+    private Player player;
+    private OrthographicCamera camera;
 
-    public WorldView(Main main){
+    public WorldView(){
         this.batch = new SpriteBatch();
-        this.camera = new OrthographicCamera();
         this.level = "hubbeneditsand";
-        this.player = new Player();
-        this.sprite = player.getSprite();
-        //this.texture = new Texture(Gdx.files.internal("characters/donald.png"));
-        //this.sprite = new Sprite(texture);
-
+        this.camera = new OrthographicCamera();
+        //this.sprite = player.getSprite();
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
 
@@ -50,14 +44,6 @@ public class WorldView extends ApplicationAdapter implements Screen{
 
     @Override
     public void show() {
-        //camera.update();
-        //player = new Player();
-        //controller = new Controller();
-        //player = new PlayerView();
-        //renderer.addSprite(player.getSprite());
-        //player.setPosition(250, 250);
-        //sprite.setPosition(position.getX(), position.getY());
-        //Gdx.input.setInputProcessor(controller);
     }
 
     @Override
@@ -66,14 +52,15 @@ public class WorldView extends ApplicationAdapter implements Screen{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
-        //camera.lookAt(player.getPosition().getX(),player.getPosition().getY(),0);
+        this.sprite = player.getSprite();
+
         camera.update();
         renderer.setView(camera);
         renderer.render();
         batch.begin();
-        batch.enableBlending();
         sprite.draw(batch);
         batch.end();
+        camera.lookAt(player.getPosition().getX(),player.getPosition().getY(),0);
     }
 
     @Override
@@ -97,5 +84,9 @@ public class WorldView extends ApplicationAdapter implements Screen{
     public void dispose() {
         map.dispose();
         renderer.dispose();
+    }
+
+    public void setPlayer(Player player){
+        this.player = player;
     }
 }

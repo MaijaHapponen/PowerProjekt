@@ -13,6 +13,7 @@ public class Player extends Sprite{
     private Texture texture;
     private Sprite sprite;
     private Position position;
+    private int change = 5;
     //private CollisionModel collision = new CollisionModel();
 
     //Constructor
@@ -49,32 +50,32 @@ public class Player extends Sprite{
 
     //Moves the player one step up.
     public void moveUp(){
-        if(this.position.getY() > 0) {
-            this.position.setPosition(position.getX(), position.getY() - 1);
+        if(this.position.getY() < 1000-change) { //TODO should be changed to the max height of the world later.
+            this.position.setPosition(position.getX(), position.getY() + change);
             update();
         }
     }
 
     //Moves the player one step down.
     public void moveDown(){
-        if(this.position.getY() < 1000) { //TODO should be changed to the max height of the world later.
-            this.position.setPosition(position.getX(), position.getY() + 1);
+        if(this.position.getY() > change){
+            this.position.setPosition(position.getX(), position.getY() - change);
             update();
         }
     }
 
     //Moves the player one step to the right.
     public void moveRight(){
-        if(this.position.getX() < 1000) { //TODO should be changed to the max width of the world later.
-            this.position.setPosition(position.getX() + 1, position.getY());
+        if(this.position.getX() < 1000-change) { //TODO should be changed to the max width of the world later.
+            this.position.setPosition(position.getX() + change, position.getY());
             update();
         }
     }
 
     //Moves the player one step to the left.
     public void moveLeft(){
-        if(this.position.getX() > 0){
-            this.position.setPosition(position.getX() - 1, position.getY());
+        if(this.position.getX() > change){
+            this.position.setPosition(position.getX() - change, position.getY());
             update();
         }
     }

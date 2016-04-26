@@ -1,23 +1,53 @@
 package com.crap.game.controller;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
-import static com.crap.game.view.WorldView.camera;
-import static com.crap.game.view.WorldView.player;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.crap.game.view.WorldView;
+import com.crap.game.model.Player;
 
 /**
  * Created by Lisa on 18/04/16.
  * Edited by Andrea on 2016-05-22
  */
 public class Controller implements  InputProcessor{
-    @Override public boolean keyDown(int keycode) {
+
+    private WorldView view;
+    private Player model;
+    //private OrthographicCamera camera;
+
+    public Controller(WorldView view, Player player){
+        //this.camera = new OrthographicCamera();
+
+        Gdx.input.setInputProcessor(this);
+        this.view = view;
+        this.model = player;
+        this.view.setPlayer(model);
+    }
+
+    //public Player getPlayer(){
+    //    return this.player;
+    //}
+
+    //public WorldView getView(){
+    //    return this.view;
+    //}
+
+    @Override
+    public boolean keyDown(int keycode) {
         return false;
     }
 
-    @Override public boolean keyUp(int keycode) {
-        player.movePlayer(keycode);
-        float x = player.getX();
-        float y = player.getY();
-        camera.lookAt(x,y,0);
+    @Override
+    public boolean keyUp(int keycode) {
+        model.movePlayer(keycode);
+        model.update();
+
+        System.out.println(5);
+        view.render();
+        //float x = player.getX();
+        //float y = player.getY();
+        //camera.lookAt(x,y,0);
         return true;
     }
 

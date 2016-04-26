@@ -12,11 +12,13 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Player extends Sprite {
 
-
+>>>>>>> dadf2d64cbe9ad734d578772db1892260f97ada2
     private Texture texture;
     private Sprite sprite;
     private Position position;
     private CollisionModel collision = new CollisionModel();
+    private int normalSpeed = 4;
+    private int slowerSpeed = 2;
 
     //Constructor
     public Player(){
@@ -34,55 +36,67 @@ public class Player extends Sprite {
         sprite.setPosition(position.getX(), position.getY());
     }
 
-    //Moves the player up, down, right or left.
 
-    public void movePlayer(String direction){
-
-
-        if (direction.equals("38") && collision.getTypeOfTile(getPosition().getX(), getPosition().getY()-1) == CollisionModel.typeOfTile.WALKABLE_TILE
-                || collision.getTypeOfTile(getPosition().getX(), getPosition().getY()-1) == CollisionModel.typeOfTile.SLOWER_TILE) {
+    public void movePlayer(int keycode) {
+        if (keycode == Input.Keys.UP && collision.getTypeOfTile(position.getX(), position.getY()-1) == CollisionModel.typeOfTile.WALKABLE_TILE
+                || collision.getTypeOfTile(position.getX(), position.getY()-1) == CollisionModel.typeOfTile.SLOWER_TILE) {
             this.moveUp();
-
-        } else if (direction.equals("40") && collision.getTypeOfTile(getPosition().getX(), getPosition().getY()-1) == CollisionModel.typeOfTile.WALKABLE_TILE
-                || collision.getTypeOfTile(getPosition().getX(), getPosition().getY()-1) == CollisionModel.typeOfTile.SLOWER_TILE) {
+        } else if (keycode == Input.Keys.DOWN && collision.getTypeOfTile(position.getX(), position.getY()+1) == CollisionModel.typeOfTile.WALKABLE_TILE
+                || collision.getTypeOfTile(position.getX(), position.getY()+1) == CollisionModel.typeOfTile.SLOWER_TILE) {
             this.moveDown();
-
-        } else if (direction.equals("37") && !collision.getBlockedTiles(getPosition().getX()-1, getPosition().getY())) {
+        } else if (keycode == Input.Keys.LEFT && collision.getTypeOfTile(position.getX()-1, position.getY()) == CollisionModel.typeOfTile.WALKABLE_TILE
+                || collision.getTypeOfTile(position.getX()-1, position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE) {
             this.moveLeft();
-
-        } else if (direction.equals("39") && !collision.getBlockedTiles(getPosition().getX()+1, getPosition().getY())) {
+        } else if (keycode == Input.Keys.RIGHT && collision.getTypeOfTile(position.getX()+1, position.getY()) == CollisionModel.typeOfTile.WALKABLE_TILE
+                || collision.getTypeOfTile(position.getX()+1, position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE) {
             this.moveRight();
         }
     }
 
     //Moves the player one step up.
     public void moveUp(){
+        if(this.position.getY() > 0 && collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
+            this.position.setPosition(position.getX(), position.getY() - slowerSpeed);
+            update();
+        }
         if(this.position.getY() > 0) {
-            this.position.setPosition(position.getX(), position.getY() - 1);
+            this.position.setPosition(position.getX(), position.getY() - normalSpeed);
             update();
         }
     }
 
     //Moves the player one step down.
     public void moveDown(){
+        if(this.position.getY() < 1000 && collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
+            this.position.setPosition(position.getX(), position.getY() + slowerSpeed);
+            update();
+        }
         if(this.position.getY() < 1000) { //TODO should be changed to the max height of the world later.
-            this.position.setPosition(position.getX(), position.getY() + 1);
+            this.position.setPosition(position.getX(), position.getY() + normalSpeed);
             update();
         }
     }
 
     //Moves the player one step to the right.
     public void moveRight(){
+        if(this.position.getX() < 1000 && collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
+            this.position.setPosition(position.getX() + slowerSpeed, position.getY() );
+            update();
+        }
         if(this.position.getX() < 1000) { //TODO should be changed to the max width of the world later.
-            this.position.setPosition(position.getX() + 1, position.getY());
+            this.position.setPosition(position.getX() + normalSpeed, position.getY());
             update();
         }
     }
 
     //Moves the player one step to the left.
     public void moveLeft(){
+        if(this.position.getX() > 0 && collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
+            this.position.setPosition(position.getX() - slowerSpeed, position.getY());
+            update();
+        }
         if(this.position.getX() > 0){
-            this.position.setPosition(position.getX() - 1, position.getY());
+            this.position.setPosition(position.getX() - normalSpeed, position.getY());
             update();
         }
     }

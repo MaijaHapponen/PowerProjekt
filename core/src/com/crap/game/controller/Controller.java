@@ -28,10 +28,12 @@ public class Controller extends InputAdapter{
         this.view = view;
         this.model = world;
 
-        this.view.setPlayer(model.player);
-        this.view.setCamera(camera);
+        this.view.setPlayer(this.model.player);
+        this.view.setCamera(this.camera);
         //this.view.setCollision(model.collision);
         //this.view.setWorld(model.map);
+
+        this.view.setCharacters(this.model.humans);
 
         Gdx.input.setInputProcessor(this);
     }

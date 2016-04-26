@@ -20,8 +20,8 @@ public abstract class Character extends Sprite{
     //Constructor
     public Character(){
         this.position = new Position();
-        this.statementList = new ArrayList<String>(nbrOfStatements); //TODO fylla listorna med frågor/ledtrådar. Vart?
-        this.texture = new Texture("characters/giant.png"); //TODO Ska såklart inte var jättar senare.
+        this.statementList = new ArrayList<String>(nbrOfStatements); //TODO fylla listorna med frågor/ledtrådar.
+        this.texture = new Texture("characters/giant.png"); //TODO Ska såklart inte var Kalle senare.
         this.sprite = new Sprite(texture);
         sprite.setPosition(position.getX(), position.getY());
     }

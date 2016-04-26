@@ -1,6 +1,7 @@
 package com.crap.game.model;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -8,8 +9,9 @@ import java.util.Random;
 /**
  * Created by Lisa on 25/04/16.
  */
-public abstract class Character {
+public abstract class Character extends Sprite{
 
+    private Sprite sprite;
     private Position position;
     private Texture texture;
     private ArrayList<String> statementList;
@@ -19,16 +21,18 @@ public abstract class Character {
     public Character(){
         this.position = new Position();
         this.statementList = new ArrayList<String>(nbrOfStatements); //TODO fylla listorna med frågor/ledtrådar.
-        this.texture = new Texture("character/donald.png"); //TODO Ska såklart inte var Kalle senare.
-        //TODO borde ha någon typ av "utseende" också.
+        this.texture = new Texture("characters/donald.png"); //TODO Ska såklart inte var Kalle senare.
+        this.sprite = new Sprite(texture);
+        sprite.setPosition(position.getX(), position.getY());
     }
 
     //Constructor
     public Character(Position position){
         this.position = position;
         this.statementList = new ArrayList<String>(nbrOfStatements); //TODO fylla listorna med frågor/ledtrådar.
-        this.texture = new Texture("character/donald.png"); //TODO Ska såklart inte var Kalle senare.
-        //TODO borde ha någon typ av "utseende" också.
+        this.texture = new Texture("characters/donald.png"); //TODO Ska såklart inte var Kalle senare.
+        this.sprite = new Sprite(texture);
+        sprite.setPosition(position.getX(), position.getY());
     }
 
     //Returns a random of the character's statements.

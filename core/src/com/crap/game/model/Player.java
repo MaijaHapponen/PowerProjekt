@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Player extends Sprite {
 
+
     private Texture texture;
     private Sprite sprite;
     private Position position;
@@ -38,6 +39,7 @@ public class Player extends Sprite {
 
 
     public void movePlayer(int keycode) {
+
         if (keycode == Input.Keys.UP){ //&& collision.getTypeOfTile(position.getX(), position.getY()-1) == CollisionModel.typeOfTile.WALKABLE_TILE
             //  || collision.getTypeOfTile(position.getX(), position.getY()-1) == CollisionModel.typeOfTile.SLOWER_TILE) {
             this.moveUp();

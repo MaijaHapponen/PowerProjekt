@@ -11,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.crap.game.model.Human;
+import com.crap.game.model.Mascot;
 import com.crap.game.model.Player;
 
 import java.util.ArrayList;
@@ -32,7 +33,9 @@ public class WorldView extends ApplicationAdapter implements Screen{
     private OrthographicCamera camera;
 
     private ArrayList<Human> humansList = new ArrayList<Human>();
-    private ArrayList<Sprite> spriteList = new ArrayList<Sprite>();
+    private ArrayList<Sprite> humansSpriteList = new ArrayList<Sprite>();
+    private ArrayList<Mascot> mascotsList = new ArrayList<Mascot>();
+    private ArrayList<Sprite> mascotsSpriteList = new ArrayList<Sprite>();
 
     public WorldView(){
         this.batch = new SpriteBatch();
@@ -54,7 +57,11 @@ public class WorldView extends ApplicationAdapter implements Screen{
 
         for(int i=0; i<humansList.size(); i++){
             Sprite tmpSprite = humansList.get(i).getSprite();
-            this.spriteList.add(tmpSprite);
+            this.humansSpriteList.add(tmpSprite);
+        }
+        for(int i=0; i<mascotsList.size(); i++){
+            Sprite tmpSprite = mascotsList.get(i).getSprite();
+            this.mascotsSpriteList.add(tmpSprite);
         }
 
         this.sprite = player.getSprite();
@@ -64,8 +71,11 @@ public class WorldView extends ApplicationAdapter implements Screen{
         renderer.setView(camera);
         renderer.render();
         batch.begin();
-        for(int i=0; i<spriteList.size(); i++){
-            spriteList.get(i).draw(batch);
+        for(int i = 0; i<humansSpriteList.size(); i++){
+            humansSpriteList.get(i).draw(batch);
+        }
+        for(int i = 0; i<mascotsSpriteList.size(); i++){
+            mascotsSpriteList.get(i).draw(batch);
         }
         sprite.draw(batch);
         batch.end();
@@ -98,10 +108,15 @@ public class WorldView extends ApplicationAdapter implements Screen{
         this.player = player;
     }
 
-    public void setCharacters(ArrayList<Human> humans){
+    public void setHumans(ArrayList<Human> humans){
         for (int i=0; i<humans.size(); i++) {
             this.humansList.add(humans.get(i));
+        }
+    }
 
+    public void setMascots(ArrayList<Mascot> mascots){
+        for (int i=0; i<mascots.size(); i++) {
+            this.mascotsList.add(mascots.get(i));
         }
     }
 

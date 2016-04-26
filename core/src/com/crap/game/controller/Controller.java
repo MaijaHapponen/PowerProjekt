@@ -32,7 +32,9 @@ public class Controller implements  InputProcessor{
         //this.view.setCollision(model.collision);
         //this.view.setWorld(model.map);
 
-        this.view.setCharacters(this.model.humans);
+        this.view.setHumans(this.model.humans);
+        this.view.setMascots(this.model.mascots);
+
 
         Gdx.input.setInputProcessor(this);
     }

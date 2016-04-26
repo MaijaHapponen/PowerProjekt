@@ -1,0 +1,29 @@
+﻿Meeting Agenda
+
+  Date: 2016-04-25
+ Facilitator: Andrea
+  Secretary: Andrea
+ Participants: Lisa, Rebecca, Andrea, Maija (late)
+
+1. Objectives
+We need to do further work on the UML for the structure to be clearer. Also need to combine everything that is of yet - to make it possible to test.
+
+2. Reports 
+Lisa - Done some tests, also started working on the game design, with progress and status. 
+Rebecca - Done tests on collision, but there is some issues. Collision is dependent on further work. Currently refactoring collision.
+Andrea - Started to design the current code to MVC-pattern. Also to connect playerView and worldView to illustrate both - so that collision will work. There are issues that needs to be resolved in how we apply this.
+Maija - Tutorials for basic knowledge of libgdx structure and gradle.
+
+
+3. Discussion items 
+Working on UML - as well as discussing our frustrations.
+It have worked out well, with scheduled work together both Monday, Tuesday, Wednesday and Thursday to continue the structure and finished UML.
+
+
+4. Outcomes and assignments 
+Everyone: Keep working great together!
+We will continue in dividing and conquering the work during our work-hours.
+
+5. Wrap up
+We will need to prioritize the functionalities that will go next after the supervisor meeting.
+ Next meeting will be on the 28th of April at 12.00.

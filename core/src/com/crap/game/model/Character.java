@@ -21,7 +21,7 @@ public abstract class Character extends Sprite{
     public Character(){
         this.position = new Position();
         this.statementList = new ArrayList<String>(nbrOfStatements); //TODO fylla listorna med frågor/ledtrådar.
-        this.texture = new Texture("characters/donald.png"); //TODO Ska såklart inte var Kalle senare.
+        this.texture = new Texture("characters/giant.png"); //TODO Ska såklart inte var Kalle senare.
         this.sprite = new Sprite(texture);
         sprite.setPosition(position.getX(), position.getY());
     }
@@ -30,7 +30,7 @@ public abstract class Character extends Sprite{
     public Character(Position position){
         this.position = position;
         this.statementList = new ArrayList<String>(nbrOfStatements); //TODO fylla listorna med frågor/ledtrådar.
-        this.texture = new Texture("characters/donald.png"); //TODO Ska såklart inte var Kalle senare.
+        this.texture = new Texture("characters/giant.png"); //TODO Ska såklart inte var Kalle senare.
         this.sprite = new Sprite(texture);
         sprite.setPosition(position.getX(), position.getY());
     }

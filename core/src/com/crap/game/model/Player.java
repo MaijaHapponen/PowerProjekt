@@ -56,14 +56,12 @@ public class Player extends Sprite {
     //Moves the player one step up.
     public void moveUp(){
 
-
         if(this.position.getY() < 1000){// && collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
             this.position.setPosition(position.getX(), position.getY() + slowerSpeed);
             update();
         }
         if(this.position.getY() < 1000) { //TODO should be changed to the max height of the world later.
             this.position.setPosition(position.getX(), position.getY() + normalSpeed);
-
             update();
         }
 

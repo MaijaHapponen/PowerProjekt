@@ -31,11 +31,6 @@ public class WorldView extends ApplicationAdapter implements Screen{
     public WorldView(){
         this.batch = new SpriteBatch();
         this.level = "horsalmaskin";
-        this.camera = new OrthographicCamera();
-        float width = Gdx.graphics.getWidth();
-        float height = Gdx.graphics.getHeight();
-
-        camera.setToOrtho(false, width, height);
 
         map = new TmxMapLoader().load("maps/"+level+".tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
@@ -52,14 +47,14 @@ public class WorldView extends ApplicationAdapter implements Screen{
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
         this.sprite = player.getSprite();
+        moveCamera(player.getPosition().getX(), player.getPosition().getY());
 
-        camera.update();
+        batch.setProjectionMatrix(camera.combined);
         renderer.setView(camera);
         renderer.render();
         batch.begin();
         sprite.draw(batch);
         batch.end();
-        //camera.lookAt(player.getPosition().getX(),player.getPosition().getY(),0);
     }
 
     @Override
@@ -90,4 +85,14 @@ public class WorldView extends ApplicationAdapter implements Screen{
     }
 
     public void setWorld(TiledMap world) { this.world = world; }
+
+    public void setCamera(OrthographicCamera camera) { this.camera = camera;}
+
+    public void moveCamera(int x,float y) {
+        if ((player.getPosition().getX() > 500 / 2) || (player.getPosition().getY() > 500 / 2)) {
+            camera.position.set(x, y, 0);
+            camera.update();
+        }
+    }
+
 }

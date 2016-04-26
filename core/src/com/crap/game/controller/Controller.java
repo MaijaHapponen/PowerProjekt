@@ -5,7 +5,6 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.crap.game.model.World;
 import com.crap.game.view.WorldView;
-import com.crap.game.model.Player;
 
 /**
  * Created by Lisa on 18/04/16.
@@ -15,17 +14,25 @@ public class Controller implements  InputProcessor{
 
     private WorldView view;
     private World model;
-    //private OrthographicCamera camera;
+    private OrthographicCamera camera;
 
     public Controller(WorldView view, World world){
-        //this.camera = new OrthographicCamera();
 
-        Gdx.input.setInputProcessor(this);
+        float width = Gdx.graphics.getWidth();
+        float height = Gdx.graphics.getHeight();
+
+        this.camera = new OrthographicCamera();
+        camera.setToOrtho(false, width, height);
+
         this.view = view;
         this.model = world;
+
         this.view.setPlayer(model.player);
+        this.view.setCamera(camera);
         //this.view.setCollision(model.collision);
         //this.view.setWorld(model.map);
+
+        Gdx.input.setInputProcessor(this);
     }
 
     @Override
@@ -38,9 +45,6 @@ public class Controller implements  InputProcessor{
         model.player.movePlayer(keycode);
         model.player.update();
         view.render();
-        //float x = player.getX();
-        //float y = player.getY();
-        //camera.lookAt(x,y,0);
         return true;
     }
 

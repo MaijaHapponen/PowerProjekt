@@ -18,8 +18,8 @@ public class Main extends Game {
         setScreen(worldView);
     }
 
-	@Override
-	public void render () {super.render();}
+    @Override
+    public void render () {super.render();}
 
     @Override
     public void resize(int width, int height) {

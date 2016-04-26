@@ -12,7 +12,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Player extends Sprite {
 
->>>>>>> dadf2d64cbe9ad734d578772db1892260f97ada2
+
     private Texture texture;
     private Sprite sprite;
     private Position position;
@@ -38,17 +38,13 @@ public class Player extends Sprite {
 
 
     public void movePlayer(int keycode) {
-        if (keycode == Input.Keys.UP && collision.getTypeOfTile(position.getX(), position.getY()-1) == CollisionModel.typeOfTile.WALKABLE_TILE
-                || collision.getTypeOfTile(position.getX(), position.getY()-1) == CollisionModel.typeOfTile.SLOWER_TILE) {
+        if (keycode == Input.Keys.UP && !(collision.getTypeOfTile(position.getX(), position.getY() - normalSpeed) == CollisionModel.typeOfTile.SOLID_TILE)) {
             this.moveUp();
-        } else if (keycode == Input.Keys.DOWN && collision.getTypeOfTile(position.getX(), position.getY()+1) == CollisionModel.typeOfTile.WALKABLE_TILE
-                || collision.getTypeOfTile(position.getX(), position.getY()+1) == CollisionModel.typeOfTile.SLOWER_TILE) {
+        } else if (keycode == Input.Keys.DOWN && !(collision.getTypeOfTile(position.getX(), position.getY() + normalSpeed) == CollisionModel.typeOfTile.SOLID_TILE)) {
             this.moveDown();
-        } else if (keycode == Input.Keys.LEFT && collision.getTypeOfTile(position.getX()-1, position.getY()) == CollisionModel.typeOfTile.WALKABLE_TILE
-                || collision.getTypeOfTile(position.getX()-1, position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE) {
+        } else if (keycode == Input.Keys.LEFT && !(collision.getTypeOfTile(position.getX() - normalSpeed, position.getY()) == CollisionModel.typeOfTile.SOLID_TILE)) {
             this.moveLeft();
-        } else if (keycode == Input.Keys.RIGHT && collision.getTypeOfTile(position.getX()+1, position.getY()) == CollisionModel.typeOfTile.WALKABLE_TILE
-                || collision.getTypeOfTile(position.getX()+1, position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE) {
+        } else if (keycode == Input.Keys.RIGHT && !(collision.getTypeOfTile(position.getX() + normalSpeed, position.getY()) == CollisionModel.typeOfTile.SOLID_TILE)) {
             this.moveRight();
         }
     }

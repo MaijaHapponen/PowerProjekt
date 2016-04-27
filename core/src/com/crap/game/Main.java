@@ -12,8 +12,8 @@ public class Main extends Game {
     public World world;
 
     public void create() {
-        world = new World();
         worldView = new WorldView();
+        world = new World();
         controller = new Controller(worldView, world);
         setScreen(worldView);
     }

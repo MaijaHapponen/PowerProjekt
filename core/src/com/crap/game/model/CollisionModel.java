@@ -1,5 +1,6 @@
 package com.crap.game.model;
 
+import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.crap.game.view.WorldView;
@@ -15,12 +16,14 @@ public class CollisionModel {
 
     //private boolean[][] blocked;
     private TiledMap map;  //The whole map
+    private MapLayers allLayers;
     private TiledMapTileLayer collisionLayer;
      // Player player = new Player();
 
     public CollisionModel(){
         this.map = WorldView.map;
-         collisionLayer = (TiledMapTileLayer) map.getLayers().get("Collision");  //The layer with the collision objects
+        allLayers = map.getLayers();
+        collisionLayer = (TiledMapTileLayer) allLayers.get(4);  //The layer with the collision objects
 
     }
     /* public CollisionModel(){

@@ -7,6 +7,8 @@ import java.util.ArrayList;
  */
 public class World {
 
+    public enum Worlds{HORSAL, EDIT, PARKING}
+
     private Progress progress;
     public static Player player;
     public static ArrayList<Human> humans = new ArrayList<Human>();

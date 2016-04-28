@@ -23,7 +23,7 @@ public class Player extends Sprite {
     //Constructor
     public Player(){
         this.position = new Position(250, 250);
-        this.texture = new Texture(Gdx.files.internal("characters/donald.png"));
+        this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
         this.sprite = new Sprite(texture);
         sprite.setPosition(position.getX(), position.getY());
     }
@@ -31,7 +31,7 @@ public class Player extends Sprite {
     //Constructor
     public Player(int x, int y){
         this.position = new Position(x, y);
-        this.texture = new Texture(Gdx.files.internal("characters/donald.png"));
+        this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
         this.sprite = new Sprite(texture);
         sprite.setPosition(position.getX(), position.getY());
     }

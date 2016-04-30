@@ -41,7 +41,6 @@ public class Player extends Sprite {
     public void movePlayer(int keycode) {
 
         if (keycode == Input.Keys.UP && !(collision.getTypeOfTile(position.getX(), position.getY() - normalSpeed) == CollisionModel.typeOfTile.SOLID_TILE)) {
-
             this.moveUp();
         } else if (keycode == Input.Keys.DOWN && !(collision.getTypeOfTile(position.getX(), position.getY() + normalSpeed) == CollisionModel.typeOfTile.SOLID_TILE)) {
             this.moveDown();

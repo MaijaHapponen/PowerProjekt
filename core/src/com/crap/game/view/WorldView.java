@@ -28,7 +28,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
     public static TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
     private String level;
-    private Sprite sprite;
+    //private Sprite sprite;
     private Player player;
     private TiledMap world;
     private OrthographicCamera camera;
@@ -67,7 +67,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
             this.mascotsSpriteList.add(tmpSprite);
         }
 
-        this.sprite = playerController.getSprite();
+        playerController.getSprite();
         moveCamera(player.getPosition().getX(), player.getPosition().getY());
 
         batch.setProjectionMatrix(camera.combined);
@@ -81,7 +81,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
         for(int i = 0; i<mascotsSpriteList.size(); i++){
             mascotsSpriteList.get(i).draw(batch);
         }
-        sprite.draw(batch);
+        playerController.getSprite().draw(batch);
         batch.end();
     }
 

@@ -22,6 +22,7 @@ public class PlayerController {
     public PlayerController(){
         this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
         this.sprite = new Sprite(texture);
+        sprite.setPosition(250, 250);
 
     }
 

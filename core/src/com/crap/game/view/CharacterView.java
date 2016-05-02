@@ -9,28 +9,36 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.crap.game.controller.PlayerController;
-import com.crap.game.model.Player;
-import com.crap.game.model.Position;
+import com.crap.game.model.*;
+import com.crap.game.model.Character;
+
+import java.util.ArrayList;
 
 /**
  * Created by andrea on 2016-04-28.
  */
 
-public class CharacterView extends ApplicationAdapter{ /*implements Screen {
+public class CharacterView extends ApplicationAdapter implements Screen {
 
-    public Player player;
-    public Sprite sprite;
-    private Position position;
+    private com.crap.game.model.Character character;
+    private Sprite sprite;
     private Texture texture;
-    public OrthographicCamera camera;
-    private PlayerController playerController;
+
+    public CharacterView(Character character){
+        this.character = character;
+        this.texture = new Texture("characters/giant.png"); //TODO Ska sklart inte var jttar senare.
+        this.sprite = new Sprite(texture);
+        sprite.setPosition(character.getPosition().getX(), character.getPosition().getY());
+    }
+    public CharacterView(Character character,Texture texture){
+        this.character = character;
+        this.texture = texture;
+        this.sprite = new Sprite(texture);
+        sprite.setPosition(character.getPosition().getX(), character.getPosition().getY());
+    }
 
     @Override
     public void render(float delta) {
-        this.sprite = playerController.getSprite();
-        this.moveCamera(player.getPosition().getX(), player.getPosition().getY());
-
-        super.render();
     }
 
     @Override
@@ -39,30 +47,11 @@ public class CharacterView extends ApplicationAdapter{ /*implements Screen {
     @Override
     public void show() {}
 
-    public void setPlayer(Player player) { this.player = player; }
-
-    public void setSprite(Sprite sprite){
-        this.sprite = sprite;
-    }
-
-    public void setTexture(Texture texture){
-        this.texture = texture;
-    }
-
-    public void setPosition(Position position){
-        this.position = position;
-    }
 
     public void update(){
-        sprite.setPosition(position.getX(), position.getY());
     }
 
-    public void setCamera(OrthographicCamera camera) { this.camera = camera;}
-
-    public void moveCamera(int x,float y) {
-        if ((player.getPosition().getX() > 500 / 2) || (player.getPosition().getY() > 500 / 2)) {
-            camera.position.set(x, y, 0);
-            camera.update();
-        }
-    }*/
+    public Sprite getSprite(){
+        return this.sprite;
+    }
 }

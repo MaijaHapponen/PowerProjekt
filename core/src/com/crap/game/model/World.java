@@ -37,7 +37,7 @@ public class World {
 
     //Populates an arrayList with mascots.
     public void createMascots(){
-        for(int i=0; i<0; i++){
+        for(int i=0; i<3; i++){
             Position position = new Position(i, i*40); //TODO sen borde man nog ha en lista med karaktärernas positioner.
             mascots.add(new Mascot(position)); //TODO och en lista med deras "utseenden"
         }

@@ -1,39 +1,25 @@
 package com.crap.game.model;
-
-/*import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;*/
-
 /**
  * Created by andrea on 2016-04-11.
- * Edited by andrea on 2016-04-25.
  */
 
-public class Player{ //extends Sprite {
-
-
+public class Player{
 
     private Position position;
     //private CollisionModel collision = new CollisionModel();
     private int normalSpeed = 4;
     private int slowerSpeed = 2;
 
-
-    //Constructor
     public Player(){
         this.position = new Position(250, 250);
 
     }
 
-    //Constructor
     public Player(int x, int y){
         this.position = new Position(x, y);
 
     }
 
-
-    //Moves the player one step up.
     public void moveUp(){
 
         if(this.position.getY() < 1000){// && collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
@@ -45,7 +31,6 @@ public class Player{ //extends Sprite {
 
     }
 
-    //Moves the player one step down.
     public void moveDown(){
 
         if(this.position.getY() > 0 ){//&& collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
@@ -57,7 +42,6 @@ public class Player{ //extends Sprite {
 
     }
 
-    //Moves the player one step to the right.
     public void moveRight(){
 
         if(this.position.getX() < 1000) {// && collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
@@ -68,7 +52,6 @@ public class Player{ //extends Sprite {
         }
     }
 
-    //Moves the player one step to the left.
     public void moveLeft(){
 
         if(this.position.getX() > 0){ //&& collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
@@ -78,20 +61,7 @@ public class Player{ //extends Sprite {
             this.position.setPosition(position.getX() - normalSpeed, position.getY());
         }
     }
-
-    //Updates the position of the players Sprite
-   /* public void update(){
-        sprite.setPosition(position.getX(), position.getY());
-    }*/
-
-    //Returns the players Position object.
     public Position getPosition(){return this.position;  }
-
-    //Returns the players Texture object
-    //public Texture getTexture() { return this.texture; }
-
-    //Returns the players Sprite object
-    //public Sprite getSprite() { return this.sprite; }
 
     public int getNormalSpeed(){
         return this.normalSpeed;

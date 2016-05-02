@@ -35,6 +35,7 @@ public class PlayerController {
         } else if (keycode == Input.Keys.RIGHT) { // && !(collision.getTypeOfTile(position.getX() + normalSpeed, position.getY()) == CollisionModel.typeOfTile.SOLID_TILE)) {
             player.moveRight();
         }
+        playerView.moveCamera(player.getPosition().getX(),player.getPosition().getY());
     }
 
     public void update() {

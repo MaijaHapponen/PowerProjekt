@@ -11,9 +11,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.crap.game.controller.PlayerController;
-import com.crap.game.model.Human;
-import com.crap.game.model.Mascot;
-import com.crap.game.model.Player;
+import com.crap.game.model.*;
 
 import java.util.ArrayList;
 
@@ -26,20 +24,19 @@ public class WorldView extends ApplicationAdapter implements Screen{
     public static TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
     private String level;
-    //private Sprite sprite;
     private TiledMap world;
     private OrthographicCamera camera;
 
     private PlayerView playerView;
 
-    private ArrayList<Human> humansList = new ArrayList<Human>();
-    private ArrayList<Sprite> humansSpriteList = new ArrayList<Sprite>();
-    private ArrayList<Mascot> mascotsList = new ArrayList<Mascot>();
-    private ArrayList<Sprite> mascotsSpriteList = new ArrayList<Sprite>();
+    private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
+    private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
+
 
     public WorldView(){
         this.batch = new SpriteBatch();
         this.level = "horsalmaskin";
+
         this.playerView= new PlayerView();
 
         map = new TmxMapLoader().load("maps/"+level+".tmx");
@@ -56,26 +53,20 @@ public class WorldView extends ApplicationAdapter implements Screen{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
-        for(int i=0; i<humansList.size(); i++){
-            Sprite tmpSprite = humansList.get(i).getSprite();
-            this.humansSpriteList.add(tmpSprite);
-        }
-
-        for(int i=0; i<mascotsList.size(); i++){
-            Sprite tmpSprite = mascotsList.get(i).getSprite();
-            this.mascotsSpriteList.add(tmpSprite);
-        }
+        this.camera = playerView.getCamera();
 
         batch.setProjectionMatrix(camera.combined);
+
         renderer.setView(camera);
         renderer.render();
+
         batch.begin();
 
-        for(int i = 0; i<humansSpriteList.size(); i++){
-            humansSpriteList.get(i).draw(batch);
+        for(int i = 0; i<humansList.size(); i++){
+            humansList.get(i).getSprite().draw(batch);
         }
-        for(int i = 0; i<mascotsSpriteList.size(); i++){
-            mascotsSpriteList.get(i).draw(batch);
+        for(int i = 0; i<mascotsList.size(); i++){
+            mascotsList.get(i).getSprite().draw(batch);
         }
         playerView.getSprite().draw(batch);
         batch.end();
@@ -110,27 +101,24 @@ public class WorldView extends ApplicationAdapter implements Screen{
 
     public void setHumans(ArrayList<Human> humans){
         for (int i=0; i<humans.size(); i++) {
-            this.humansList.add(humans.get(i));
+            this.humansList.add(new CharacterView(humans.get(i)));
         }
     }
 
     public void setMascots(ArrayList<Mascot> mascots){
         for (int i=0; i<mascots.size(); i++) {
-            this.mascotsList.add(mascots.get(i));
+            this.mascotsList.add(new CharacterView(mascots.get(i)));
         }
     }
 
     public void setWorld(TiledMap world) { this.world = world; }
 
-    public void setCamera(OrthographicCamera camera) { this.camera = camera;}
-
-    public void moveCamera(int x,float y) {
-        if ((playerView.getPlayer().getPosition().getX() > 500 / 2) || (playerView.getPlayer().getPosition().getY() > 500 / 2)) {
-            camera.position.set(x, y, 0);
-            camera.update();
-        }
+    public void setCamera(OrthographicCamera camera) {
+        playerView.setCamera(camera);
     }
-    public PlayerView getPlayerView(){
+
+
+    public PlayerView getPlayerView() {
         return this.playerView;
     }
 

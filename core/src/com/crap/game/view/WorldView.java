@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.crap.game.controller.PlayerController;
 import com.crap.game.model.Human;
 import com.crap.game.model.Mascot;
 import com.crap.game.model.Player;
@@ -31,6 +32,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
     private Player player;
     private TiledMap world;
     private OrthographicCamera camera;
+    private PlayerController playerController;
 
     private ArrayList<Human> humansList = new ArrayList<Human>();
     private ArrayList<Sprite> humansSpriteList = new ArrayList<Sprite>();
@@ -65,7 +67,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
             this.mascotsSpriteList.add(tmpSprite);
         }
 
-        this.sprite = player.getSprite();
+        this.sprite = playerController.getSprite();
         moveCamera(player.getPosition().getX(), player.getPosition().getY());
 
         batch.setProjectionMatrix(camera.combined);

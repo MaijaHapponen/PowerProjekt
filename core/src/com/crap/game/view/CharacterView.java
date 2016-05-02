@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.crap.game.controller.PlayerController;
 import com.crap.game.model.Player;
 import com.crap.game.model.Position;
 
@@ -21,10 +22,11 @@ public class CharacterView extends ApplicationAdapter implements Screen {
     private Position position;
     private Texture texture;
     public OrthographicCamera camera;
+    private PlayerController playerController;
 
     @Override
     public void render(float delta) {
-        this.sprite = player.getSprite();
+        this.sprite = playerController.getSprite();
         this.moveCamera(player.getPosition().getX(), player.getPosition().getY());
 
         super.render();

@@ -16,9 +16,11 @@ public class Controller extends InputAdapter{
     private WorldView view;
     private World model;
     private OrthographicCamera camera;
+    PlayerController playerController;
 
     public Controller(WorldView view, World world){
 
+        this.playerController = new PlayerController();
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
 
@@ -46,8 +48,8 @@ public class Controller extends InputAdapter{
 
     @Override
     public boolean keyUp(int keycode) {
-        model.player.movePlayer(keycode);
-        model.player.update();
+        playerController.movePlayer(keycode);
+        playerController.update();
         view.render();
         return true;
     }

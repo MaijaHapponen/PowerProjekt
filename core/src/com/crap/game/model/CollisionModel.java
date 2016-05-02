@@ -23,7 +23,7 @@ public class CollisionModel {
     public CollisionModel(){
         this.map = WorldView.map;
         allLayers = map.getLayers();
-        collisionLayer = (TiledMapTileLayer) allLayers.get(4);  //The layer with the collision objects
+//        collisionLayer = (TiledMapTileLayer) allLayers.get(4);  //The layer with the collision objects
 
     }
     /* public CollisionModel(){

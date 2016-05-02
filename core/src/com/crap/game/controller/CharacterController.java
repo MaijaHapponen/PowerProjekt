@@ -11,6 +11,7 @@ public class CharacterController extends InputAdapter{
     private CharacterView view;
     private World game;
     private OrthographicCamera camera;
+    private PlayerController playerController;
 
     public CharacterController(CharacterView view, World game){
 
@@ -25,8 +26,8 @@ public class CharacterController extends InputAdapter{
         camera.setToOrtho(false, width, height);
 
         this.view.setPlayer(game.player);
-        this.view.setTexture(game.player.getTexture());
-        this.view.setSprite(game.player.getSprite());
+        this.view.setTexture(playerController.getTexture());
+        this.view.setSprite(playerController.getSprite());
         this.view.setPosition(game.player.getPosition());
         this.view.setCamera(camera);
     }
@@ -38,8 +39,8 @@ public class CharacterController extends InputAdapter{
 
     @Override
     public boolean keyUp(int keycode) {
-        game.player.movePlayer(keycode);
-        game.player.update();
+        playerController.movePlayer(keycode);
+        playerController.update();
         view.render();
         return true;
     }

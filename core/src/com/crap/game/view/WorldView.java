@@ -19,8 +19,6 @@ import java.util.ArrayList;
 
 /**
  * Created by Maija on 2016-04-21.
- * Edited by Andrea on 2016-04-22.
- * Edited by Andrea on 2016-04-25
  */
 public class WorldView extends ApplicationAdapter implements Screen{
 
@@ -29,10 +27,10 @@ public class WorldView extends ApplicationAdapter implements Screen{
     private OrthogonalTiledMapRenderer renderer;
     private String level;
     //private Sprite sprite;
-    private Player player;
     private TiledMap world;
     private OrthographicCamera camera;
-    private PlayerController playerController;
+
+    private PlayerView playerView;
 
     private ArrayList<Human> humansList = new ArrayList<Human>();
     private ArrayList<Sprite> humansSpriteList = new ArrayList<Sprite>();
@@ -42,6 +40,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
     public WorldView(){
         this.batch = new SpriteBatch();
         this.level = "horsalmaskin";
+        this.playerView= new PlayerView();
 
         map = new TmxMapLoader().load("maps/"+level+".tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
@@ -67,9 +66,6 @@ public class WorldView extends ApplicationAdapter implements Screen{
             this.mascotsSpriteList.add(tmpSprite);
         }
 
-        playerController.getSprite();
-        moveCamera(player.getPosition().getX(), player.getPosition().getY());
-
         batch.setProjectionMatrix(camera.combined);
         renderer.setView(camera);
         renderer.render();
@@ -81,7 +77,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
         for(int i = 0; i<mascotsSpriteList.size(); i++){
             mascotsSpriteList.get(i).draw(batch);
         }
-        playerController.getSprite().draw(batch);
+        playerView.getSprite().draw(batch);
         batch.end();
     }
 
@@ -108,10 +104,8 @@ public class WorldView extends ApplicationAdapter implements Screen{
         renderer.dispose();
     }
 
-
-
     public void setPlayer(Player player){
-        this.player = player;
+        playerView.setPlayer(player);
     }
 
     public void setHumans(ArrayList<Human> humans){
@@ -131,10 +125,13 @@ public class WorldView extends ApplicationAdapter implements Screen{
     public void setCamera(OrthographicCamera camera) { this.camera = camera;}
 
     public void moveCamera(int x,float y) {
-        if ((player.getPosition().getX() > 500 / 2) || (player.getPosition().getY() > 500 / 2)) {
+        if ((playerView.getPlayer().getPosition().getX() > 500 / 2) || (playerView.getPlayer().getPosition().getY() > 500 / 2)) {
             camera.position.set(x, y, 0);
             camera.update();
         }
+    }
+    public PlayerView getPlayerView(){
+        return this.playerView;
     }
 
 }

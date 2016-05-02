@@ -4,36 +4,25 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.crap.game.Main;
 import com.crap.game.model.CollisionModel;
 import com.crap.game.model.Player;
 import com.crap.game.model.Position;
+import com.crap.game.view.PlayerView;
+import com.crap.game.view.WorldView;
 
 /**
  * Created by rebeccafinne on 2016-04-30.
  */
 public class PlayerController {
-
-    Player player = new Player();
+    PlayerView playerView;
+    Player player;
     CollisionModel collision = new CollisionModel();
-    private Texture texture;
-    private Sprite sprite;
 
-    //Constructor
-    public PlayerController(){
-        this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
-        this.sprite = new Sprite(texture);
-        sprite.setPosition(250, 250);
-
+    public PlayerController(PlayerView playerView){
+        this.playerView = playerView;
+        this.player = playerView.getPlayer();
     }
-
-    //Constructor
-    public PlayerController(int x, int y){
-
-        this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
-        this.sprite = new Sprite(texture);
-        sprite.setPosition(player.getPosition().getX(), player.getPosition().getY());
-    }
-
 
     public void movePlayer(int keycode) {
 
@@ -49,13 +38,8 @@ public class PlayerController {
     }
 
     public void update() {
-        sprite.setPosition(player.getPosition().getX(), player.getPosition().getY());
+        playerView.getSprite().setPosition(player.getPosition().getX(), player.getPosition().getY());
     }
 
-    //Returns the players Texture object
-    public Texture getTexture() { return this.texture; }
-
-    //Returns the players Sprite object
-    public Sprite getSprite() { return this.sprite; }
 
 }

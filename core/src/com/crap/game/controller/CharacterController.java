@@ -7,7 +7,7 @@ import com.crap.game.model.World;
 import com.crap.game.view.CharacterView;
 
 public class CharacterController extends InputAdapter{
-
+/*
     private CharacterView view;
     private World game;
     private OrthographicCamera camera;
@@ -45,6 +45,6 @@ public class CharacterController extends InputAdapter{
         return true;
     }
 
-
+*/
 }
 

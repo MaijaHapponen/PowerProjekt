@@ -15,7 +15,7 @@ public class Player{ //extends Sprite {
 
 
     private Position position;
-    private CollisionModel collision = new CollisionModel();
+    //private CollisionModel collision = new CollisionModel();
     private int normalSpeed = 4;
     private int slowerSpeed = 2;
 
@@ -48,7 +48,7 @@ public class Player{ //extends Sprite {
     //Moves the player one step down.
     public void moveDown(){
 
-        if(this.position.getY() > 0 && collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
+        if(this.position.getY() > 0 ){//&& collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
             this.position.setPosition(position.getX(), position.getY() - slowerSpeed);
         }
         if(this.position.getY() > 0) {
@@ -60,7 +60,7 @@ public class Player{ //extends Sprite {
     //Moves the player one step to the right.
     public void moveRight(){
 
-        if(this.position.getX() < 1000 && collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
+        if(this.position.getX() < 1000) {// && collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
             this.position.setPosition(position.getX() + slowerSpeed, position.getY() );
         }
         if(this.position.getX() < 1000) { //TODO should be changed to the max width of the world later.
@@ -71,7 +71,7 @@ public class Player{ //extends Sprite {
     //Moves the player one step to the left.
     public void moveLeft(){
 
-        if(this.position.getX() > 0 && collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
+        if(this.position.getX() > 0){ //&& collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
             this.position.setPosition(position.getX() - slowerSpeed, position.getY());
         }
         if(this.position.getX() > 0){

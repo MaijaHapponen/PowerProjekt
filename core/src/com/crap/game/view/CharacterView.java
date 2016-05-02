@@ -15,7 +15,8 @@ import com.crap.game.model.Position;
 /**
  * Created by andrea on 2016-04-28.
  */
-public class CharacterView extends ApplicationAdapter implements Screen {
+
+public class CharacterView extends ApplicationAdapter{ /*implements Screen {
 
     public Player player;
     public Sprite sprite;
@@ -63,5 +64,5 @@ public class CharacterView extends ApplicationAdapter implements Screen {
             camera.position.set(x, y, 0);
             camera.update();
         }
-    }
+    }*/
 }

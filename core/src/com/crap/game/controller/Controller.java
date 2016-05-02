@@ -5,22 +5,21 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.crap.game.model.World;
+import com.crap.game.view.PlayerView;
 import com.crap.game.view.WorldView;
 
 /**
  * Created by Lisa on 18/04/16.
- * Edited by Andrea on 2016-05-22
  */
 public class Controller extends InputAdapter{
 
     private WorldView view;
     private World model;
     private OrthographicCamera camera;
-    PlayerController playerController;
+    private PlayerController playerController;
 
     public Controller(WorldView view, World world){
 
-        this.playerController = new PlayerController();
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
 
@@ -37,6 +36,8 @@ public class Controller extends InputAdapter{
 
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);
+
+        this.playerController = new PlayerController(this.view.getPlayerView());
 
         Gdx.input.setInputProcessor(this);
     }

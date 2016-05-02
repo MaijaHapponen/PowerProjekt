@@ -10,7 +10,7 @@ public class World {
     public enum Worlds{HORSAL, EDIT, PARKING}
 
     private Progress progress;
-    public static Player player;
+    public Player player;
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
     //public static CollisionModel collision;
@@ -49,5 +49,8 @@ public class World {
             return true;
         }
         return false;
+    }
+    public Player getPlayer(){
+        return player;
     }
 }

@@ -1,18 +1,10 @@
 package com.crap.game.view;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.crap.game.controller.PlayerController;
-import com.crap.game.model.*;
 import com.crap.game.model.Character;
-
-import java.util.ArrayList;
 
 /**
  * Created by andrea on 2016-04-28.
@@ -26,7 +18,7 @@ public class CharacterView extends ApplicationAdapter implements Screen {
 
     public CharacterView(Character character){
         this.character = character;
-        this.texture = new Texture("characters/giant.png"); //TODO Ska sklart inte var jttar senare.
+        this.texture = new Texture("characters/"+character.getName()+".png"); //TODO Ska sklart inte var jttar senare.
         this.sprite = new Sprite(texture);
         sprite.setPosition(character.getPosition().getX(), character.getPosition().getY());
     }

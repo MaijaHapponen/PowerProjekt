@@ -5,14 +5,11 @@ package com.crap.game.model;
  */
 public class Mascot extends Character{
 
-    //Constructor
-    public Mascot(){
-        super();
+    public Mascot(String name){
+        super(name);
     }
 
-    //Constructor
-    public Mascot(Position position){
-        super(position);
+    public Mascot(String name, Position position){
+        super(name, position);
     }
-
 }

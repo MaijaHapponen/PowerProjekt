@@ -13,6 +13,8 @@ public class World {
     public Player player;
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
+    private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
+    private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
     //public static CollisionModel collision;
     //public static TiledMap map;
     //private String level;
@@ -29,17 +31,17 @@ public class World {
 
     //Populates an arrayList with humans.
     public void createHumans(){
-        for(int i=0; i<0; i++){
+        for(int i=0; i<humansNames.length; i++){
             Position position = new Position(i*50, i); //TODO sen borde man nog ha en lista med karaktärernas positioner.
-            humans.add(new Human(position)); //TODO och en lista med deras "utseenden"
+            humans.add(new Human(humansNames[i], position)); //TODO och en lista med deras "utseenden" och namn
         }
     }
 
     //Populates an arrayList with mascots.
     public void createMascots(){
-        for(int i=0; i<3; i++){
+        for(int i=0; i<mascotNames.length; i++){
             Position position = new Position(i, i*40); //TODO sen borde man nog ha en lista med karaktärernas positioner.
-            mascots.add(new Mascot(position)); //TODO och en lista med deras "utseenden"
+            mascots.add(new Mascot(mascotNames[i], position)); //TODO och en lista med deras "utseenden" och namn
         }
     }
 
@@ -50,6 +52,7 @@ public class World {
         }
         return false;
     }
+
     public Player getPlayer(){
         return player;
     }

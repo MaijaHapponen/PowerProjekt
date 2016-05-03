@@ -1,8 +1,5 @@
 package com.crap.game.model;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -11,19 +8,20 @@ import java.util.Random;
  */
 public abstract class Character{
     //TODO: have some kind or String to determine which character we have? Can also decide texture
+    private String name;
     private Position position;
     private ArrayList<String> statementList;
     private int nbrOfStatements = 3;
 
-    //Constructor
-    public Character(){
+    public Character(String name){
+        this.name = name;
         this.position = new Position();
         this.statementList = new ArrayList<String>(nbrOfStatements); //TODO fylla listorna med frågor/ledtrådar. Vart?
 
     }
 
-    //Constructor
-    public Character(Position position){
+    public Character(String name, Position position){
+        this.name = name;
         this.position = position;
         this.statementList = new ArrayList<String>(nbrOfStatements); //TODO fylla listorna med frågor/ledtrådar. Vart?
     }
@@ -45,5 +43,9 @@ public abstract class Character{
 
         //TODO fixa sen när Beccis pushad upp senaste CollisionModel.
 
+    }
+
+    public String getName(){
+        return this.name;
     }
 }

@@ -6,11 +6,11 @@ package com.crap.game.model;
  */
 public class Human extends Character {
 
-    public Human(){
-        super();
+    public Human(String name){
+        super(name);
     }
 
-    public Human(Position position){
-        super(position);
+    public Human(String name, Position position){
+        super(name, position);
     }
 }

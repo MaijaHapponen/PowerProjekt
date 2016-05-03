@@ -31,8 +31,6 @@ public class Controller extends InputAdapter{
 
         this.view.setPlayer(this.model.player);
         this.view.setCamera(this.camera);
-        //this.view.setCollision(model.collision);
-        //this.view.setWorld(model.map);
 
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);

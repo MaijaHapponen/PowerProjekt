@@ -33,7 +33,7 @@ public class World {
     public void createHumans(){
         for(int i=0; i<humansNames.length; i++){
             Position position = new Position(i*50, i); //TODO sen borde man nog ha en lista med karaktärernas positioner.
-            humans.add(new Human(humansNames[i], position)); //TODO och en lista med deras "utseenden" och namn
+            humans.add(new Human(humansNames[i], position));
         }
     }
 
@@ -41,7 +41,7 @@ public class World {
     public void createMascots(){
         for(int i=0; i<mascotNames.length; i++){
             Position position = new Position(i, i*40); //TODO sen borde man nog ha en lista med karaktärernas positioner.
-            mascots.add(new Mascot(mascotNames[i], position)); //TODO och en lista med deras "utseenden" och namn
+            mascots.add(new Mascot(mascotNames[i], position));
         }
     }
 

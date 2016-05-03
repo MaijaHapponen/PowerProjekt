@@ -1,13 +1,18 @@
-package com.crap.game.model;
+package com.crap.game.controller;
 
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapLayers;
+import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.crap.game.model.CollisionModel;
 import com.crap.game.view.WorldView;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by rebeccafinne on 2016-04-22.
@@ -25,7 +30,7 @@ public class CollisionController {
         this.map = WorldView.map;
         allLayers = map.getLayers();
         collisionLayer = allLayers.get("Collision");
-        collisionObjects = collisionLayer.getObjects();  //The layer with the collision objects
+        collisionObjects = collisionLayer.getObjects();//The layer with the collision objects
 
     }
 
@@ -40,21 +45,28 @@ public class CollisionController {
     }
 
     public boolean isSlowerTerrain(){
-        if(collisionModel.isSlow()){
+        if(collisionModel.isSlow()) {
             return true;
         }
         return false;
     }
 
     public void updateCollisionValues(int x, int y){
-        TiledMapTileLayer.Cell cell = collisionLayer.getCell(x/32, y/32);
-        if(cell.getTile().getProperties().containsKey("Collision")) {
-            collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
-        }if(cell.getTile().getProperties().containsKey("Slower")){
-            collisionModel.setTypeOfTile(CollisionModel.tileType.SLOWER_TILE);
-        }else{
-            collisionModel.setTypeOfTile(CollisionModel.tileType.WALKABLE_TILE);
+        Iterator iter = collisionObjects.iterator();
+        if(iter.hasNext()){
+            MapObject tempObj = (MapObject) iter.next();
+            Float positionX = (Float) tempObj.getProperties().get("x");
+            Float positionY = (Float) tempObj.getProperties().get("y");
+            Float width = (Float) tempObj.getProperties().get("width");
+            Float height = (Float) tempObj.getProperties().get("height");
+
+           if(x>positionX.intValue() || x<(positionX.intValue()+width.intValue())
+                  ||y<positionY.intValue() || y> (positionY.intValue()-height.intValue()) ){
+               collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
+               System.out.println("DAFUQ");
+           }else {
+                collisionModel.setTypeOfTile(CollisionModel.tileType.WALKABLE_TILE);
+            }
         }
     }
-
 }

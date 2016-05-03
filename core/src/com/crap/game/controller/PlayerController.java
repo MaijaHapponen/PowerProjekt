@@ -1,7 +1,7 @@
 package com.crap.game.controller;
 
 import com.badlogic.gdx.Input;
-import com.crap.game.model.CollisionController;
+import com.crap.game.controller.CollisionController;
 import com.crap.game.model.Player;
 import com.crap.game.view.PlayerView;
 
@@ -19,6 +19,7 @@ public class PlayerController {
     }
 
     public void movePlayer(int keycode) {
+
         if (keycode == Input.Keys.UP &&
                 !(checkIfCollision(getPlayerPositionX(), getPlayerPositionY() - player.getCurrentSpeed()))) {
             player.moveUp();
@@ -37,7 +38,7 @@ public class PlayerController {
     }
 
     public void update() {
-        playerView.getSprite().setPosition(getPlayerPositionX(), getPlayerPositionX());
+        playerView.getSprite().setPosition(getPlayerPositionX(), getPlayerPositionY());
     }
     public int getPlayerPositionX(){
         return player.getPosition().getX();
@@ -46,6 +47,7 @@ public class PlayerController {
         return player.getPosition().getY();
     }
     public boolean checkIfCollision(int x, int y){
+        collisionController.updateCollisionValues(x,y);
         return collisionController.isCollision(x, y);
     }
     public void updateSpeed(){

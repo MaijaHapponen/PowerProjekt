@@ -1,15 +1,9 @@
 package com.crap.game.controller;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.crap.game.Main;
-import com.crap.game.model.CollisionModel;
+import com.crap.game.model.CollisionController;
 import com.crap.game.model.Player;
-import com.crap.game.model.Position;
 import com.crap.game.view.PlayerView;
-import com.crap.game.view.WorldView;
 
 /**
  * Created by rebeccafinne on 2016-04-30.
@@ -17,7 +11,7 @@ import com.crap.game.view.WorldView;
 public class PlayerController {
     PlayerView playerView;
     Player player;
-    CollisionModel collision = new CollisionModel();
+    CollisionController collisionController = new CollisionController();
 
     public PlayerController(PlayerView playerView){
         this.playerView = playerView;
@@ -25,22 +19,40 @@ public class PlayerController {
     }
 
     public void movePlayer(int keycode) {
-
-        if (keycode == Input.Keys.UP) {// && !(collision.getTypeOfTile(position.getX(), position.getY() - player.getNormalSpeed) == CollisionModel.typeOfTile.SOLID_TILE)) {
+        if (keycode == Input.Keys.UP &&
+                !(checkIfCollision(getPlayerPositionX(), getPlayerPositionY() - player.getCurrentSpeed()))) {
             player.moveUp();
-        } else if (keycode == Input.Keys.DOWN){ //&& !(collision.getTypeOfTile(position.getX(), position.getY() + player.getNormalSpeed) == CollisionModel.typeOfTile.SOLID_TILE)) {
+        } else if (keycode == Input.Keys.DOWN &&
+                !(checkIfCollision(getPlayerPositionX(), getPlayerPositionY() + player.getCurrentSpeed()))) {
             player.moveDown();
-        } else if (keycode == Input.Keys.LEFT){ //) && !(collision.getTypeOfTile(position.getX() - normalSpeed, position.getY()) == CollisionModel.typeOfTile.SOLID_TILE)) {
+        } else if (keycode == Input.Keys.LEFT &&
+                !(checkIfCollision(getPlayerPositionX() - player.getCurrentSpeed(), getPlayerPositionY()))) {
             player.moveLeft();
-        } else if (keycode == Input.Keys.RIGHT) { // && !(collision.getTypeOfTile(position.getX() + normalSpeed, position.getY()) == CollisionModel.typeOfTile.SOLID_TILE)) {
+        } else if (keycode == Input.Keys.RIGHT &&
+                !(checkIfCollision(getPlayerPositionX() + player.getCurrentSpeed(), getPlayerPositionY())))  {
             player.moveRight();
         }
-        playerView.moveCamera(player.getPosition().getX(),player.getPosition().getY());
+        updateSpeed();
+        playerView.moveCamera(getPlayerPositionX(), getPlayerPositionY());
     }
 
     public void update() {
-        playerView.getSprite().setPosition(player.getPosition().getX(), player.getPosition().getY());
+        playerView.getSprite().setPosition(getPlayerPositionX(), getPlayerPositionX());
     }
-
-
+    public int getPlayerPositionX(){
+        return player.getPosition().getX();
+    }
+    public int getPlayerPositionY(){
+        return player.getPosition().getY();
+    }
+    public boolean checkIfCollision(int x, int y){
+        return collisionController.isCollision(x, y);
+    }
+    public void updateSpeed(){
+        if(collisionController.isSlowerTerrain()){
+            player.setCurrentSpeed(player.getSlowerSpeed());
+        }else{
+            player.setCurrentSpeed(player.getNormalSpeed());
+        }
+    }
 }

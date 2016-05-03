@@ -12,59 +12,36 @@ import java.util.List;
  */
 public class CollisionModel {
 
-    public enum typeOfTile {WALKABLE_TILE, SOLID_TILE, SLOWER_TILE}; //The different types of tiles
+    public enum tileType {WALKABLE_TILE, SOLID_TILE, SLOWER_TILE}; //The different types of tiles
 
-    //private boolean[][] blocked;
-    private TiledMap map;  //The whole map
-    private MapLayers allLayers;
-    private TiledMapTileLayer collisionLayer;
-     // Player player = new Player();
+    private boolean blocked;
+    private boolean slow;
 
     public CollisionModel(){
-        this.map = WorldView.map;
-        allLayers = map.getLayers();
-//        collisionLayer = (TiledMapTileLayer) allLayers.get(4);  //The layer with the collision objects
-
+        blocked=false;
+        slow=false;
     }
-    /* public CollisionModel(){
-        blocked = new boolean[collisionLayer.getHeight()][collisionLayer.getWidth()];
-    }*/
 
+    public boolean isBlocked(){
+        return blocked;
+    }
 
-    //Takes a position and check what tyoe of tile it is. 
-    public typeOfTile getTypeOfTile(int x, int y){
-        TiledMapTileLayer.Cell cell = collisionLayer.getCell(x, y);
-        if(cell.getTile().getProperties().containsKey("Collision")){
-            return typeOfTile.SOLID_TILE;
-        }if(cell.getTile().getProperties().containsKey("Slower")){
-            return typeOfTile.SLOWER_TILE;
+    public boolean isSlow(){
+        return slow;
+    }
+
+    public void setTypeOfTile(tileType tile){
+        if(tile==tileType.SOLID_TILE){
+            blocked=true;
+            slow=false;
+        }else if(tile==tileType.SLOWER_TILE){
+            blocked=false;
+            slow=true;
         }else{
-            return typeOfTile.WALKABLE_TILE;
+            blocked = false;
+            slow=false;
         }
     }
-
-
-  /*  public void setBlockedTiles(){
-        for(int i = 0; i < collisionLayer.getHeight(); i++){
-            for(int j = 0;j < collisionLayer.getWidth(); j++ ){
-                TiledMapTileLayer.Cell cell = collisionLayer.getCell(i, j);
-                if(cell.getTile().getProperties().containsKey("Collision")) {
-                    blocked[i][j] = true;
-                }else{
-                    blocked[i][j] = false;
-                }
-            }
-        }
-    }
-
-
-    public boolean getBlockedTiles(int x, int y){
-        if(blocked[x][y]){    //The player can't walk there, will be collision
-            return true;
-        }else{
-            return false;   //No obstacle
-        }
-    }*/
 
 
 }

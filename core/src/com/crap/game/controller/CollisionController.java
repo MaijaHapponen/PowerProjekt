@@ -1,7 +1,8 @@
-package com.crap.game.controller;
+package com.crap.game.model;
 
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapLayers;
+
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+
 
 /**
  * Created by rebeccafinne on 2016-04-22.
@@ -30,13 +32,13 @@ public class CollisionController {
         this.map = WorldView.map;
         allLayers = map.getLayers();
         collisionLayer = allLayers.get("Collision");
-        collisionObjects = collisionLayer.getObjects();//The layer with the collision objects
+        collisionObjects = collisionLayer.getObjects();  //The layer with the collision objects
 
     }
 
     //TODO: Cannot take in a position, trying dividing it in tile size
     //Takes a position and check what type of tile it is.
-    public boolean isCollision(float x, float y){
+    public boolean isCollision(int x, int y){
         updateCollisionValues(x,y);
         if(collisionModel.isBlocked()){
             return true;
@@ -45,12 +47,11 @@ public class CollisionController {
     }
 
     public boolean isSlowerTerrain(){
-        if(collisionModel.isSlow()) {
+        if(collisionModel.isSlow()){
             return true;
         }
         return false;
     }
-
     public void updateCollisionValues(float x, float y){
         Iterator iter = collisionObjects.iterator();
         while(iter.hasNext()){

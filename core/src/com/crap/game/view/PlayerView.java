@@ -65,7 +65,7 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         this.camera = camera;
     }
 
-    public void moveCamera(int x,float y) {
+    public void moveCamera(float x,float y) {
         //TODO: fix so red is not visible
         if ((getPlayerPosition().getX() > 500 / 2) || (getPlayerPosition().getY() > 500 / 2)) {
             camera.position.set(x, y, 0);

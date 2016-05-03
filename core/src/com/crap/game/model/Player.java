@@ -21,7 +21,6 @@ public class Player{
     }
 
     public void moveUp(){
-
         if(this.position.getY() < 1000){// && collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
             this.position.setPosition(position.getX(), position.getY() + slowerSpeed);
         }
@@ -32,7 +31,6 @@ public class Player{
     }
 
     public void moveDown(){
-
         if(this.position.getY() > 0 ){//&& collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
             this.position.setPosition(position.getX(), position.getY() - slowerSpeed);
         }
@@ -43,7 +41,6 @@ public class Player{
     }
 
     public void moveRight(){
-
         if(this.position.getX() < 1000) {// && collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
             this.position.setPosition(position.getX() + slowerSpeed, position.getY() );
         }
@@ -53,7 +50,6 @@ public class Player{
     }
 
     public void moveLeft(){
-
         if(this.position.getX() > 0){ //&& collision.getTypeOfTile(position.getX(), position.getY()) == CollisionModel.typeOfTile.SLOWER_TILE){
             this.position.setPosition(position.getX() - slowerSpeed, position.getY());
         }
@@ -61,7 +57,9 @@ public class Player{
             this.position.setPosition(position.getX() - normalSpeed, position.getY());
         }
     }
-    public Position getPosition(){return this.position;  }
+    public Position getPosition(){
+        return this.position;
+    }
 
     public int getNormalSpeed(){
         return this.normalSpeed;

@@ -1,15 +1,9 @@
 package com.crap.game.controller;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.crap.game.Main;
 import com.crap.game.model.CollisionModel;
 import com.crap.game.model.Player;
-import com.crap.game.model.Position;
 import com.crap.game.view.PlayerView;
-import com.crap.game.view.WorldView;
 
 /**
  * Created by rebeccafinne on 2016-04-30.
@@ -25,7 +19,6 @@ public class PlayerController {
     }
 
     public void movePlayer(int keycode) {
-
         if (keycode == Input.Keys.UP) {// && !(collision.getTypeOfTile(position.getX(), position.getY() - player.getNormalSpeed) == CollisionModel.typeOfTile.SOLID_TILE)) {
             player.moveUp();
         } else if (keycode == Input.Keys.DOWN){ //&& !(collision.getTypeOfTile(position.getX(), position.getY() + player.getNormalSpeed) == CollisionModel.typeOfTile.SOLID_TILE)) {

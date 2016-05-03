@@ -44,15 +44,15 @@ public class Controller extends InputAdapter{
 
     @Override
     public boolean keyDown(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
         playerController.movePlayer(keycode);
         playerController.update();
         view.render();
         return true;
+    }
+
+    @Override
+    public boolean keyUp(int keycode) {
+        return false;
     }
 
 }

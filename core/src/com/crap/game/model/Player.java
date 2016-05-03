@@ -22,7 +22,7 @@ public class Player{
 
     public void moveUp(){
 
-        if(!isOutOfBounds()) { //TODO should be changed to the max height of the world later.
+        if(!isOutOfBounds()) {
             this.position.setPosition(position.getX(), position.getY() + currentSpeed);
         }
 
@@ -40,7 +40,7 @@ public class Player{
 
     public void moveRight(){
 
-        if(!isOutOfBounds()) { //TODO should be changed to the max width of the world later.
+        if(!isOutOfBounds()) {
             this.position.setPosition(position.getX() + currentSpeed, position.getY());
         }
 

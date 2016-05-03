@@ -34,19 +34,19 @@ public class PlayerController {
             player.moveRight();
         }
         updateSpeed();
-        playerView.moveCamera(getPlayerPositionX(), getPlayerPositionY());
+        playerView.moveCamera((int) getPlayerPositionX(), (int)getPlayerPositionY());
     }
 
     public void update() {
         playerView.getSprite().setPosition(getPlayerPositionX(), getPlayerPositionY());
     }
-    public int getPlayerPositionX(){
+    public float getPlayerPositionX(){
         return player.getPosition().getX();
     }
-    public int getPlayerPositionY(){
+    public float getPlayerPositionY(){
         return player.getPosition().getY();
     }
-    public boolean checkIfCollision(int x, int y){
+    public boolean checkIfCollision(float x, float y){
         return collisionController.isCollision(x, y);
     }
     public void updateSpeed(){

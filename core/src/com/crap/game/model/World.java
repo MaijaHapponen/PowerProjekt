@@ -13,7 +13,6 @@ public class World {
     public Player player;
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
-    //public static CollisionModel collision;
     //public static TiledMap map;
     //private String level;
 
@@ -21,7 +20,6 @@ public class World {
     public World(){
         this.progress = new Progress();
         this.player = new Player();
-        //this.collision = new CollisionModel();
 
         createHumans();
         createMascots();

@@ -36,7 +36,7 @@ public class CollisionController {
 
     //TODO: Cannot take in a position, trying dividing it in tile size
     //Takes a position and check what type of tile it is.
-    public boolean isCollision(int x, int y){
+    public boolean isCollision(float x, float y){
         updateCollisionValues(x,y);
         if(collisionModel.isBlocked()){
             return true;
@@ -51,21 +51,22 @@ public class CollisionController {
         return false;
     }
 
-    public void updateCollisionValues(int x, int y){
+    public void updateCollisionValues(float x, float y){
         Iterator iter = collisionObjects.iterator();
-        if(iter.hasNext()){
+        while(iter.hasNext()){
             MapObject tempObj = (MapObject) iter.next();
             Float positionX = (Float) tempObj.getProperties().get("x");
             Float positionY = (Float) tempObj.getProperties().get("y");
             Float width = (Float) tempObj.getProperties().get("width");
             Float height = (Float) tempObj.getProperties().get("height");
 
-           if(x>positionX.intValue() && x<(positionX.intValue()+width.intValue())
-                  ||y<positionY.intValue() && y> (positionY.intValue()-height.intValue()) ){
+           if((x>positionX.floatValue() && x<(positionX.floatValue()+width.floatValue()))
+                  &&(y>positionY.floatValue() && y< (positionY.floatValue()+height.floatValue())) ){
                collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
+               break;
            }else {
                 collisionModel.setTypeOfTile(CollisionModel.tileType.WALKABLE_TILE);
-            }
+           }
         }
     }
 }

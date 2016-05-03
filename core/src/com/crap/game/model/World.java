@@ -15,7 +15,7 @@ public class World {
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
     private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
     private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
-    //public static CollisionModel collision;
+
     //public static TiledMap map;
     //private String level;
 
@@ -23,7 +23,6 @@ public class World {
     public World(){
         this.progress = new Progress();
         this.player = new Player();
-        //this.collision = new CollisionModel();
 
         createHumans();
         createMascots();

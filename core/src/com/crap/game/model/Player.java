@@ -15,7 +15,7 @@ public class Player{
         this.currentSpeed=normalSpeed;
     }
 
-    public Player(int x, int y){
+    public Player(float x, float y){
         this.position = new Position(x, y);
         this.currentSpeed = normalSpeed;
     }

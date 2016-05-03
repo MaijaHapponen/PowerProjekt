@@ -49,11 +49,14 @@ public class PlayerController {
         return player.getPosition().getY();
     }
     public boolean checkIfCollision(float x, float y){
+<<<<<<< 98c7e100642b2a13a44d7f46e9dfab44b587bd79
         return false;
     }
 
 
     public boolean checkIfCollision(int x, int y){
+=======
+>>>>>>> works but not quite, help pls
         return collisionController.isCollision(x, y);
     }
     public void updateSpeed(){

@@ -15,7 +15,6 @@ public class World {
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
     private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
     private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
-
     //public static TiledMap map;
     //private String level;
 

@@ -54,7 +54,6 @@ public class PlayerController {
 
 
     public boolean checkIfCollision(int x, int y){
-        collisionController.updateCollisionValues(x,y);
         return collisionController.isCollision(x, y);
     }
     public void updateSpeed(){

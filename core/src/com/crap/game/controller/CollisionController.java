@@ -59,10 +59,9 @@ public class CollisionController {
             Float width = (Float) tempObj.getProperties().get("width");
             Float height = (Float) tempObj.getProperties().get("height");
 
-           if(x>positionX.intValue() || x<(positionX.intValue()+width.intValue())
-                  ||y<positionY.intValue() || y> (positionY.intValue()-height.intValue()) ){
+           if(x>positionX.intValue() && x<(positionX.intValue()+width.intValue())
+                  ||y<positionY.intValue() && y> (positionY.intValue()-height.intValue()) ){
                collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
-               System.out.println("DAFUQ");
            }else {
                 collisionModel.setTypeOfTile(CollisionModel.tileType.WALKABLE_TILE);
             }

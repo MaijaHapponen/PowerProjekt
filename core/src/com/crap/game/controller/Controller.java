@@ -2,21 +2,22 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.crap.game.model.World;
-import com.crap.game.view.PlayerView;
 import com.crap.game.view.WorldView;
 
 /**
  * Created by Lisa on 18/04/16.
  */
-public class Controller extends InputAdapter{
+public class Controller extends InputAdapter implements Runnable{
 
     private WorldView view;
     private World model;
     private OrthographicCamera camera;
     private PlayerController playerController;
+    private int keyCode;
+
+    private boolean keyPressed = false;
 
     public Controller(WorldView view, World world){
 
@@ -44,16 +45,29 @@ public class Controller extends InputAdapter{
 
     @Override
     public boolean keyDown(int keycode) {
-        playerController.movePlayer(keycode);
-        playerController.update();
-        view.render();
+        keyPressed = true;
+        this.keyCode = keycode;
+        new Thread(this).start();
         return true;
     }
 
     @Override
     public boolean keyUp(int keycode) {
+        keyPressed = false;
         return false;
     }
 
+    public void run() {
+        while (keyPressed) {
+            playerController.movePlayer(this.keyCode);
+            playerController.update();
+            view.render();
+        try {
+            Thread.sleep(50);
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+        }
+    }
 }
 

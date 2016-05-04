@@ -2,6 +2,7 @@ package com.crap.game.view;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -35,7 +36,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
         this.batch = new SpriteBatch();
         this.level = "horsalmaskin";
 
-        this.playerView= new PlayerView();
+        this.playerView = new PlayerView();
 
         map = new TmxMapLoader().load("maps/"+level+".tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
@@ -59,6 +60,8 @@ public class WorldView extends ApplicationAdapter implements Screen{
         renderer.render();
 
         batch.begin();
+
+//        this.movePlayer();
 
         for(int i = 0; i<humansList.size(); i++){
             humansList.get(i).getSprite().draw(batch);
@@ -120,4 +123,42 @@ public class WorldView extends ApplicationAdapter implements Screen{
         return this.playerView;
     }
 
+    public void movePlayer(){ //TODO Probably we wont need this method.
+        if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            playerView.getPlayer().moveUp();
+
+            playerView.getSprite().setPosition(playerView.getPlayer().getPosition().getX(),
+                    playerView.getPlayer().getPosition().getY());
+
+            playerView.moveCamera(playerView.getPlayer().getPosition().getX(),
+                    playerView.getPlayer().getPosition().getY());
+        }
+        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+            playerView.getPlayer().moveDown();
+
+            playerView.getSprite().setPosition(playerView.getPlayer().getPosition().getX(),
+                    playerView.getPlayer().getPosition().getY());
+
+            playerView.moveCamera(playerView.getPlayer().getPosition().getX(),
+                    playerView.getPlayer().getPosition().getY());
+        }
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            playerView.getPlayer().moveLeft();
+
+            playerView.getSprite().setPosition(playerView.getPlayer().getPosition().getX(),
+                    playerView.getPlayer().getPosition().getY());
+
+            playerView.moveCamera(playerView.getPlayer().getPosition().getX(),
+                    playerView.getPlayer().getPosition().getY());
+        }
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            playerView.getPlayer().moveRight();
+
+            playerView.getSprite().setPosition(playerView.getPlayer().getPosition().getX(),
+                    playerView.getPlayer().getPosition().getY());
+
+            playerView.moveCamera(playerView.getPlayer().getPosition().getX(),
+                    playerView.getPlayer().getPosition().getY());
+        }
+    }
 }

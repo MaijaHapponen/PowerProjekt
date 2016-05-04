@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.crap.game.controller.PlayerController;
 import com.crap.game.model.Character;
 
 /**
@@ -15,6 +16,7 @@ public class CharacterView extends ApplicationAdapter implements Screen {
     private com.crap.game.model.Character character;
     private Sprite sprite;
     private Texture texture;
+
 
     public CharacterView(Character character){
         this.character = character;
@@ -31,6 +33,8 @@ public class CharacterView extends ApplicationAdapter implements Screen {
 
     @Override
     public void render(float delta) {
+
+
     }
 
     @Override

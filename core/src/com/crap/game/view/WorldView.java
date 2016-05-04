@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -24,6 +25,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
     private String level;
     private TiledMap world;
     private OrthographicCamera camera;
+    private Sprite sprite;
 
     private PlayerView playerView;
 
@@ -57,6 +59,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
 
         renderer.setView(camera);
         renderer.render();
+
 
         batch.begin();
 

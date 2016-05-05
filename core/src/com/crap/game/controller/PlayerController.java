@@ -22,21 +22,22 @@ public class PlayerController {
     public void movePlayer(int keycode) {
 
         if (keycode == Input.Keys.UP &&
-                !(checkIfCollision(getPlayerPositionX(), getPlayerPositionY() - player.getCurrentSpeed()))) {
+                !(checkIfCollision(getPlayerPositionX(),
+                        (getPlayerPositionY() + playerView.getPlayerSpriteHeight()) + player.getCurrentSpeed()))) {
             player.moveUp();
         } else if (keycode == Input.Keys.DOWN &&
                 !(checkIfCollision(getPlayerPositionX(), getPlayerPositionY() + player.getCurrentSpeed()))) {
             player.moveDown();
         } else if (keycode == Input.Keys.LEFT &&
-                !(checkIfCollision(getPlayerPositionX() - player.getCurrentSpeed(), getPlayerPositionY()))) {
+                !(checkIfCollision((getPlayerPositionX()) - player.getCurrentSpeed(), getPlayerPositionY()))) {
             player.moveLeft();
         } else if (keycode == Input.Keys.RIGHT &&
-                !(checkIfCollision(getPlayerPositionX() + player.getCurrentSpeed(), getPlayerPositionY())))  {
+                !(checkIfCollision(getPlayerPositionX() + playerView.getPlayerSpriteWidth()
+                        + player.getCurrentSpeed(), getPlayerPositionY())))  {
             player.moveRight();
-            //this.direction = Directions.RIGHT;
         }
         updateSpeed();
-        playerView.moveCamera((int) getPlayerPositionX(), (int)getPlayerPositionY());
+        playerView.moveCamera((int) getPlayerPositionX(), (int) getPlayerPositionY());
     }
 
     public void update() {
@@ -49,8 +50,8 @@ public class PlayerController {
         return player.getPosition().getY();
     }
     public boolean checkIfCollision(float x, float y){
-
-        return false;
+        collisionController.updateCollisionValues(x,y);
+        return collisionController.isCollison();
     }
 
 

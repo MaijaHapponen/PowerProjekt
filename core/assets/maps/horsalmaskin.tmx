@@ -123,7 +123,7 @@
   <object id="1" name="Collision" x="65" y="4" width="159" height="186"/>
   <object id="2" name="Collision" x="162" y="209" width="60" height="13"/>
   <object id="3" name="Collision" x="227" y="4" width="415" height="154"/>
-  <object id="4" name="Collision" x="258" y="160" width="381" height="29"/>
+  <object id="4" name="Collision" x="254" y="150" width="383" height="39"/>
   <object id="5" name="Collision" x="387" y="192" width="124" height="28"/>
   <object id="6" name="Collision" x="644" y="4" width="156" height="154"/>
   <object id="7" name="Collision" x="676" y="162" width="127" height="27"/>
@@ -131,10 +131,10 @@
   <object id="9" name="Collision" x="258" y="340" width="61" height="13"/>
   <object id="11" name="Collision" x="261" y="435" width="57" height="12"/>
   <object id="12" name="Collision" x="323" y="341" width="185" height="70"/>
-  <object id="14" name="Collision" x="325" y="417" width="28" height="30"/>
-  <object id="15" name="Collision" x="386" y="416" width="124" height="29"/>
+  <object id="14" name="Collision" x="321" y="408" width="32" height="39"/>
+  <object id="15" name="Collision" x="386" y="406" width="124" height="39"/>
   <object id="16" name="Collision" x="545" y="345" width="63" height="5"/>
-  <object id="17" name="Collision" x="547" y="436" width="58" height="10"/>
+  <object id="17" name="Collision" x="547" y="436" width="73" height="10"/>
   <object id="18" name="Collision" x="610" y="340" width="192" height="104"/>
   <object id="19" name="Collision" x="288" y="579" width="127" height="62"/>
   <object id="20" name="Collision" x="704" y="586" width="96" height="57"/>

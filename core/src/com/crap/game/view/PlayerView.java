@@ -61,6 +61,13 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
     public Texture getTexture() { return this.texture; }
 
+    public int getPlayerSpriteWidth(){
+        return this.texture.getWidth();
+    }
+    public int getPlayerSpriteHeight(){
+        return this.texture.getHeight();
+    }
+
     public void setCamera(OrthographicCamera camera){
         this.camera = camera;
     }

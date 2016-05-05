@@ -80,6 +80,7 @@ public class Controller extends InputAdapter implements ApplicationListener {
 
     @Override
     public void render() {
+
         if(Gdx.input.isKeyPressed(keyCode)) {
             keyDown(keyCode);
         }

@@ -56,8 +56,8 @@ public class CollisionController {
             Float width = (Float) tempObj.getProperties().get("width");
             Float height = (Float) tempObj.getProperties().get("height");
 
-           if((x>positionX.floatValue() && x<(positionX.floatValue()+width.floatValue()))
-                  &&(y>positionY.floatValue() && y< (positionY.floatValue()+height.floatValue())) ){
+           if((x>positionX && x<(positionX+width))
+                  &&(y>positionY && y< (positionY +height)) ){
                collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
                break;
            }else {

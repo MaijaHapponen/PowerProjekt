@@ -10,6 +10,7 @@ public class Player{
     private int normalSpeed = 4;
     private int slowerSpeed = 2;
 
+
     public Player(){
         this.position = new Position(250, 250);
 
@@ -26,6 +27,7 @@ public class Player{
         }
         if(this.position.getY() < 1000) { //TODO should be changed to the max height of the world later.
             this.position.setPosition(position.getX(), position.getY() + normalSpeed);
+
         }
 
     }

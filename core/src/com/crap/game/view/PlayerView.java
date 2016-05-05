@@ -22,6 +22,7 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
         this.playerSprite = new Sprite(texture);
         playerSprite.setPosition(250, 250);
+
     }
     public PlayerView(int x, int y){
         this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
@@ -40,6 +41,8 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
     @Override
     public void render(float delta) {
+
+
     }
 
     @Override

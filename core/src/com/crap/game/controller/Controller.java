@@ -1,7 +1,6 @@
 package com.crap.game.controller;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.crap.game.model.World;
 import com.crap.game.view.WorldView;
@@ -9,7 +8,7 @@ import com.crap.game.view.WorldView;
 /**
  * Created by Lisa on 18/04/16.
  */
-public class Controller extends InputAdapter implements Runnable{
+public class Controller extends InputAdapter implements ApplicationListener {
 
     private WorldView view;
     private World model;
@@ -46,28 +45,62 @@ public class Controller extends InputAdapter implements Runnable{
     @Override
     public boolean keyDown(int keycode) {
         keyPressed = true;
-        this.keyCode = keycode;
-        new Thread(this).start();
+        this.keyCode=keycode;
+        if(Gdx.input.isKeyPressed(keyCode)){
+            movePlayer(keyCode);
+        }
+        view.render();
+
+        //new Thread(this).start();
         return true;
+    }
+
+    public void update(){
+
+
+    }
+
+    public void movePlayer(int keycode){
+        this.keyCode = keycode;
+        playerController.movePlayer(keyCode);
+        playerController.update();
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        keyPressed = false;
         return false;
     }
 
-    public void run() {
-        while (keyPressed) {
-            playerController.movePlayer(this.keyCode);
-            playerController.update();
-            view.render();
-        try {
-            Thread.sleep(50);
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
+    @Override
+    public void create() {
+
+    }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void render() {
+        if(Gdx.input.isKeyPressed(keyCode)) {
+            keyDown(keyCode);
         }
-        }
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void dispose() {
+
     }
 }
 

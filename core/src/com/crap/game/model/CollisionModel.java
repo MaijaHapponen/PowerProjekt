@@ -21,8 +21,8 @@ public class CollisionModel {
      // Player player = new Player();
 
     public CollisionModel(){
-        this.map = WorldView.map;
-        allLayers = map.getLayers();
+        //this.map = WorldView.map;
+        //allLayers = map.getLayers();
 //        collisionLayer = (TiledMapTileLayer) allLayers.get(4);  //The layer with the collision objects
 
     }

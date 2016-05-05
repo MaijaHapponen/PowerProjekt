@@ -10,7 +10,6 @@ public class Player{
     private int normalSpeed = 4;
     private int slowerSpeed = 2;
 
-
     public Player(){
         this.position = new Position(250, 250);
 
@@ -30,6 +29,7 @@ public class Player{
 
         }
 
+
     }
 
     public void moveDown(){
@@ -40,6 +40,7 @@ public class Player{
             this.position.setPosition(position.getX(), position.getY() - normalSpeed);
         }
 
+
     }
 
     public void moveRight(){
@@ -49,6 +50,7 @@ public class Player{
         if(this.position.getX() < 1000) { //TODO should be changed to the max width of the world later.
             this.position.setPosition(position.getX() + normalSpeed, position.getY());
         }
+
     }
 
     public void moveLeft(){
@@ -58,6 +60,7 @@ public class Player{
         if(this.position.getX() > 0){
             this.position.setPosition(position.getX() - normalSpeed, position.getY());
         }
+
     }
     public Position getPosition(){
         return this.position;

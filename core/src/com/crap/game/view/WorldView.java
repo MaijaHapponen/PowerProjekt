@@ -61,10 +61,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
         renderer.setView(camera);
         renderer.render();
 
-
         batch.begin();
-
-//        this.movePlayer();
 
         for(int i = 0; i<humansList.size(); i++){
             humansList.get(i).getSprite().draw(batch);
@@ -121,47 +118,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
         playerView.setCamera(camera);
     }
 
-
-    public PlayerView getPlayerView() {
+    public PlayerView getPlayerView(){
         return this.playerView;
-    }
-
-    public void movePlayer(){ //TODO Probably we wont need this method.
-        if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            playerView.getPlayer().moveUp();
-
-            playerView.getSprite().setPosition(playerView.getPlayer().getPosition().getX(),
-                    playerView.getPlayer().getPosition().getY());
-
-            playerView.moveCamera(playerView.getPlayer().getPosition().getX(),
-                    playerView.getPlayer().getPosition().getY());
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            playerView.getPlayer().moveDown();
-
-            playerView.getSprite().setPosition(playerView.getPlayer().getPosition().getX(),
-                    playerView.getPlayer().getPosition().getY());
-
-            playerView.moveCamera(playerView.getPlayer().getPosition().getX(),
-                    playerView.getPlayer().getPosition().getY());
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            playerView.getPlayer().moveLeft();
-
-            playerView.getSprite().setPosition(playerView.getPlayer().getPosition().getX(),
-                    playerView.getPlayer().getPosition().getY());
-
-            playerView.moveCamera(playerView.getPlayer().getPosition().getX(),
-                    playerView.getPlayer().getPosition().getY());
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            playerView.getPlayer().moveRight();
-
-            playerView.getSprite().setPosition(playerView.getPlayer().getPosition().getX(),
-                    playerView.getPlayer().getPosition().getY());
-
-            playerView.moveCamera(playerView.getPlayer().getPosition().getX(),
-                    playerView.getPlayer().getPosition().getY());
-        }
     }
 }

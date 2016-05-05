@@ -19,7 +19,8 @@ public class Main extends Game {
     }
 
     @Override
-    public void render () {super.render();}
+    public void render () {super.render();
+    controller.render();}
 
     @Override
     public void resize(int width, int height) {

@@ -25,7 +25,7 @@ public class CollisionController {
     private MapLayer collisionLayer;
     private MapObjects collisionObjects;
 
-    public CollisionController(){
+    public CollisionController() {
         collisionModel = new CollisionModel();
         this.map = WorldView.map;
         allLayers = map.getLayers();
@@ -33,19 +33,14 @@ public class CollisionController {
         collisionObjects = collisionLayer.getObjects();//The layer with the collision objects
 
     }
-
-    //TODO: Cannot take in a position, trying dividing it in tile size
-    //Takes a position and check what type of tile it is.
-    public boolean isCollision(float x, float y){
-        updateCollisionValues(x,y);
-        if(collisionModel.isBlocked()){
+    public boolean isSlowerTerrain(){
+        if(collisionModel.isSlow()) {
             return true;
         }
         return false;
     }
-
-    public boolean isSlowerTerrain(){
-        if(collisionModel.isSlow()) {
+    public boolean isCollison(){
+        if(collisionModel.isBlocked()) {
             return true;
         }
         return false;

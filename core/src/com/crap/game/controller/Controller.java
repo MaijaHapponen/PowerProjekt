@@ -45,15 +45,15 @@ public class Controller extends InputAdapter implements Runnable{
 
     @Override
     public boolean keyDown(int keycode) {
-        keyPressed = true;
-        this.keyCode = keycode;
-        new Thread(this).start();
+//        keyPressed = true;
+//        this.keyCode = keycode;
+//        new Thread(this).start();
         return true;
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        keyPressed = false;
+//        keyPressed = false;
         return false;
     }
 

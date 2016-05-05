@@ -51,7 +51,6 @@ public class Controller extends InputAdapter implements ApplicationListener {
         }
         view.render();
 
-        //new Thread(this).start();
         return true;
     }
 

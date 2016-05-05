@@ -62,7 +62,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
         renderer.render();
 
         batch.begin();
-
+        
         for(int i = 0; i<humansList.size(); i++){
             humansList.get(i).getSprite().draw(batch);
         }

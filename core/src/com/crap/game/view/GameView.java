@@ -27,6 +27,7 @@ public class GameView extends ApplicationAdapter implements Screen{
     public static TiledMap world;
     private PlayerView playerView;
     private BitmapFont font;
+    private ProgressView progressView;
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
@@ -39,6 +40,7 @@ public class GameView extends ApplicationAdapter implements Screen{
         //setWorld(world);
         this.playerView = new PlayerView();
         this.batch = new SpriteBatch();
+        this.progressView = new ProgressView();
 
         font = new BitmapFont();
 
@@ -56,6 +58,7 @@ public class GameView extends ApplicationAdapter implements Screen{
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
         this.camera = playerView.getCamera();
+        
 
         batch.setProjectionMatrix(camera.combined);
 
@@ -70,6 +73,7 @@ public class GameView extends ApplicationAdapter implements Screen{
         for(int i = 0; i<mascotsList.size(); i++){
             mascotsList.get(i).getSprite().draw(batch);
         }
+        progressView.getSprite().draw(batch);
         playerView.getSprite().draw(batch);
         batch.end();
     }

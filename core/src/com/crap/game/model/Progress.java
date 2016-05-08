@@ -76,4 +76,26 @@ public class Progress {
     public Mascot getNewMascotToBar(){
         return this.newMascotToBar;
     }
+
+    public ArrayList<Mascot> getMascotsCaught() {
+        return this.mascotsCaught;
+    }
+
+    public ArrayList<Mascot> getMascotsInGame() {
+        return mascotsInGame;
+    }
+
+    public void charactersOnBar(ArrayList<Mascot> mascotsCaught) {
+        for (int i = 0; i < mascotsCaught.size(); i++) {
+            // if(mascotsCaught.get(i).getName().equals(g));
+
+
+            //  }
+        }
+
+    }
+
+    public Position getPosition(){
+        return this.position;
+    }
 }

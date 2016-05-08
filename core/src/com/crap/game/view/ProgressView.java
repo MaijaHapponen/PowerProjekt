@@ -15,6 +15,9 @@ import com.crap.game.model.Progress;
 
 import java.util.ArrayList;
 
+import com.crap.game.model.Position;
+import com.crap.game.model.Progress;
+
 /**
  * Created by rebeccafinne on 2016-05-05.
  */
@@ -53,13 +56,8 @@ public class ProgressView extends ApplicationAdapter implements Screen {
     }
 
 
-    /*public void moveCamera(int x,float y) {
-        //TODO: fix so red is not visible
-        if ((getPosition().getX() > 500 / 2) || (getPosition().getY() > 500 / 2)) {
-            camera.position.set(x, y, 0);
-            camera.update();
-        }
-    }*/
+
+    }
 
     public Position getPosition(){
         return progress.getPosition();

@@ -129,7 +129,7 @@
   <object id="7" name="Collision" x="676" y="162" width="127" height="27"/>
   <object id="8" name="Collision" x="3" y="340" width="218" height="106"/>
   <object id="9" name="Collision" x="258" y="340" width="61" height="13"/>
-  <object id="11" name="Collision" x="261" y="435" width="57" height="12"/>
+  <object id="11" name="Collision" x="254" y="412" width="64" height="35"/>
   <object id="12" name="Collision" x="323" y="341" width="185" height="70"/>
   <object id="14" name="Collision" x="321" y="408" width="32" height="39"/>
   <object id="15" name="Collision" x="386" y="406" width="124" height="39"/>
@@ -143,7 +143,7 @@
   <object id="25" name="Slow" x="218.657" y="187.42" width="35.4962" height="35.4962"/>
   <object id="26" name="Slow" x="577.879" y="193.1" width="61.0535" height="26.9771"/>
   <object id="27" name="Slow" x="675.848" y="193.1" width="59.6337" height="31.2367"/>
-  <object id="28" name="Slow" x="224.336" y="353.543" width="29.8168" height="96.5498"/>
+  <object id="28" name="Slow" x="221" y="345.543" width="33.1528" height="96.5498"/>
   <object id="29" name="Slow" x="506.886" y="356.382" width="39.7558" height="85.191"/>
   <object id="30" name="Slow" x="274.031" y="345.023" width="28.397" height="24.1374"/>
   <object id="31" name="Slow" x="259.832" y="391.878" width="26.9771" height="32.6565"/>

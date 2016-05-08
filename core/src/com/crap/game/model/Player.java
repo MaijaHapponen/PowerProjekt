@@ -7,7 +7,7 @@ public class Player{
 
     private Position position;
     private int currentSpeed;
-    private int normalSpeed = 4;
+    private int normalSpeed = 1;
     private int slowerSpeed = 2;
 
     public Player(){

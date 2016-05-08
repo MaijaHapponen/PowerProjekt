@@ -20,20 +20,27 @@ public class PlayerController {
     }
 
     public void movePlayer(int keycode) {
-
+        int width = playerView.getPlayerSpriteWidth();
+        int height = playerView.getPlayerSpriteHeight();
         if (keycode == Input.Keys.UP &&
                 !(checkIfCollision(getPlayerPositionX(),
-                        (getPlayerPositionY() + playerView.getPlayerSpriteHeight()) + player.getCurrentSpeed()))) {
+                        (getPlayerPositionY()+height  + player.getCurrentSpeed()))) &&
+                !(checkIfCollision(getPlayerPositionX() + width,
+                        (getPlayerPositionY() +height+ player.getCurrentSpeed())))) {
             player.moveUp();
         } else if (keycode == Input.Keys.DOWN &&
-                !(checkIfCollision(getPlayerPositionX(), getPlayerPositionY() + player.getCurrentSpeed()))) {
+                !(checkIfCollision(getPlayerPositionX(), getPlayerPositionY()- player.getCurrentSpeed())) &&
+                !(checkIfCollision(getPlayerPositionX()+width, getPlayerPositionY() - player.getCurrentSpeed()))) {
             player.moveDown();
         } else if (keycode == Input.Keys.LEFT &&
-                !(checkIfCollision((getPlayerPositionX()) - player.getCurrentSpeed(), getPlayerPositionY()))) {
+                !(checkIfCollision((getPlayerPositionX()) - player.getCurrentSpeed(), getPlayerPositionY()))&&
+                !(checkIfCollision((getPlayerPositionX()) - player.getCurrentSpeed(), getPlayerPositionY()+height))) {
             player.moveLeft();
         } else if (keycode == Input.Keys.RIGHT &&
-                !(checkIfCollision(getPlayerPositionX() + playerView.getPlayerSpriteWidth()
-                        + player.getCurrentSpeed(), getPlayerPositionY())))  {
+                !(checkIfCollision(getPlayerPositionX() + width
+                        + player.getCurrentSpeed(), getPlayerPositionY())) &&
+                !(checkIfCollision(getPlayerPositionX() + width
+                        + player.getCurrentSpeed(), getPlayerPositionY()+height)) )  {
             player.moveRight();
         }
         updateSpeed();

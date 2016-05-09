@@ -12,6 +12,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.crap.game.Main;
 import com.crap.game.model.*;
+import com.badlogic.gdx.math.Intersector;
 
 import java.util.ArrayList;
 
@@ -58,7 +59,12 @@ public class GameView extends ApplicationAdapter implements Screen{
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
         this.camera = playerView.getCamera();
+
+        progressView.getVector2Length();
         
+        if(distanceSegmentPoint(progressView.getVector2(), progressView.getPosition(), 250) == 0){
+
+        }
 
         batch.setProjectionMatrix(camera.combined);
 
@@ -76,6 +82,8 @@ public class GameView extends ApplicationAdapter implements Screen{
         progressView.getSprite().draw(batch);
         playerView.getSprite().draw(batch);
         batch.end();
+
+
     }
 
     @Override

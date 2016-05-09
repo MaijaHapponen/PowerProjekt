@@ -15,9 +15,6 @@ import com.crap.game.model.Progress;
 
 import java.util.ArrayList;
 
-import com.crap.game.model.Position;
-import com.crap.game.model.Progress;
-
 /**
  * Created by rebeccafinne on 2016-05-05.
  */
@@ -38,7 +35,11 @@ public class ProgressView extends ApplicationAdapter implements Screen {
         this.textureBack = new Texture("Progress/html5-progress-bar.jpg");
         this.spriteBack = new Sprite(textureBack);
         this.progress = new Progress();
-        this.spriteBack.setPosition(0, 0);
+
+        this.sprite.setPosition(0, 0);
+        this.camera = new OrthographicCamera();
+
+    }
 
 
     }
@@ -88,7 +89,7 @@ public class ProgressView extends ApplicationAdapter implements Screen {
             this.spriteMascots = new Sprite(textureMascots);
             progress.getCaractersOnBar().add(progress.getNewMascotToBar());
         }
-    }
+
 
 
 

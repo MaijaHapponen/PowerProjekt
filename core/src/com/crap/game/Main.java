@@ -6,6 +6,7 @@ import com.crap.game.model.Game;
 import com.crap.game.view.GameView;
 import com.crap.game.view.MenuView;
 
+
 public class Main extends com.badlogic.gdx.Game {
 
     public GameView worldView;
@@ -27,14 +28,17 @@ public class Main extends com.badlogic.gdx.Game {
         gameMode = true;
     }
 
-    public GameView getWorldView(){
+    public GameView getWorldView() {
         return this.worldView;
     }
 
     @Override
     public void render () {
         super.render();
-        if(gameMode) controller.render();
+
+        controller.render();
+
+
     }
 
     @Override

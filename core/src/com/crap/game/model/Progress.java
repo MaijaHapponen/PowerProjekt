@@ -2,6 +2,8 @@ package com.crap.game.model;
 
 import java.util.ArrayList;
 
+import com.crap.game.model.Mascot;
+
 /**
  * Created by Lisa on 24/04/16.
  */
@@ -9,7 +11,10 @@ public class Progress {
 
     private ArrayList<Mascot> mascotsInGame = new ArrayList<Mascot>(); //TODO borde denna listan vara här eller i någon annan klass istället? Måste fylla på den när man startar spelet.
     private ArrayList<Mascot> mascotsCaught;
+    private ArrayList<Mascot> charactersOnBar;
     private Position position;
+    private boolean newMascotCaught = false;
+    private Mascot newMascotToBar;
 
     //Constructor
     public Progress() {
@@ -29,9 +34,12 @@ public class Progress {
         for (int i = 0; i < mascotsInGame.size(); i++) {
             if (mascotsInGame.get(i).equals(mascot)) {
                 mascotsInGame.remove(i);
+                newMascotCaught = true;
             }
         }
         mascotsCaught.add(mascot);
+        newMascotToBar =  mascot;
+        newMascotCaught = false;
     }
 
 
@@ -43,7 +51,7 @@ public class Progress {
         return mascotsInGame;
     }
 
-    public void charactersOnBar(ArrayList<Mascot> mascotsCaught) {
+    public void charactersOnBar() {
         for (int i = 0; i < mascotsCaught.size(); i++) {
             // if(mascotsCaught.get(i).getName().equals(g));
 
@@ -53,7 +61,19 @@ public class Progress {
 
     }
 
+    public ArrayList<Mascot> getCaractersOnBar(){
+        return this.charactersOnBar;
+    }
+
+    public boolean isNewMascotCaught(){
+        return this.newMascotCaught;
+    }
+
     public Position getPosition(){
         return this.position;
+    }
+
+    public Mascot getNewMascotToBar(){
+        return this.newMascotToBar;
     }
 }

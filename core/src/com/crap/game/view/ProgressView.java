@@ -6,7 +6,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -29,7 +31,9 @@ public class ProgressView extends ApplicationAdapter implements Screen {
     private Sprite spriteMascots;
     private Progress progress;
 
+
     private TextureRegion textureRegion; //To make the progressbar a region and put caught mascots on there easier
+
 
 
 

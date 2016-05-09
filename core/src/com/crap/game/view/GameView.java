@@ -41,7 +41,9 @@ public class GameView extends ApplicationAdapter implements Screen{
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
     private ArrayList<ProgressView> mascotsOnBar = new ArrayList<ProgressView>();
 
+
     public GameView(){
+
         this.batch = new SpriteBatch();
         this.level = "horsalmaskin";
 
@@ -78,8 +80,10 @@ public class GameView extends ApplicationAdapter implements Screen{
             mascotsList.get(i).getSprite().draw(batch);
         }
 
+
         for(int i = 0; i < mascotsOnBar.size(); i++ ){
             mascotsOnBar.get(i).getSpriteMascots().draw(batch);
+
         }
 
         progressView.getSpriteBack().draw(batch);

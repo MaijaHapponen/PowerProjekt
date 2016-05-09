@@ -25,44 +25,74 @@ public class CollisionController {
     private MapLayer collisionLayer;
     private MapObjects collisionObjects;
 
+    private MapLayer slowLayer;
+    private MapObjects slowObjects;
+
+    private MapLayer newWorldLayer;
+    private MapObjects newWorldObjects;
+
     public CollisionController() {
         collisionModel = new CollisionModel();
         this.map = WorldView.map;
         allLayers = map.getLayers();
         collisionLayer = allLayers.get("Collision");
-        collisionObjects = collisionLayer.getObjects();//The layer with the collision objects
+        collisionObjects = collisionLayer.getObjects();
 
+        slowLayer = allLayers.get("SlowLayer");
+        slowObjects = slowLayer.getObjects();
+
+        newWorldLayer = allLayers.get("NewWorld");
+        newWorldObjects = newWorldLayer.getObjects();
     }
-    public boolean isSlowerTerrain(){
+    public boolean isSlowerTerrain(float x, float y){
+        updateSlowTerrainValues(x, y);
+
         if(collisionModel.isSlow()) {
             return true;
         }
         return false;
     }
-    public boolean isCollison(){
+    public boolean isCollison(float x, float y){
+        updateCollisionValues(x, y);
+
         if(collisionModel.isBlocked()) {
             return true;
         }
         return false;
     }
 
-    public void updateCollisionValues(float x, float y){
+    public void updateSlowTerrainValues(float x, float y){
+        if(isMapObjectHit(slowObjects.iterator(), x, y)) {
+            collisionModel.setTypeOfTile(CollisionModel.tileType.SLOWER_TILE);
+        }else {
+            collisionModel.setTypeOfTile(CollisionModel.tileType.WALKABLE_TILE);
+        }
+    }
 
-        Iterator iter = collisionObjects.iterator();
-        while(iter.hasNext()){
+    public void seeIfNewWorld(float x, float y){
+        if(isMapObjectHit(newWorldObjects.iterator(),x,y)){
+            collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
+        }
+    }
+
+    public boolean isMapObjectHit(Iterator iter, float x, float y){
+        while(iter.hasNext()) {
             MapObject tempObj = (MapObject) iter.next();
             Float positionX = (Float) tempObj.getProperties().get("x");
             Float positionY = (Float) tempObj.getProperties().get("y");
             Float width = (Float) tempObj.getProperties().get("width");
             Float height = (Float) tempObj.getProperties().get("height");
-
-           if((x>positionX && x<(positionX+width))
-                  &&(y>positionY && y< (positionY +height)) ){
-               collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
-               break;
-           }else {
-                collisionModel.setTypeOfTile(CollisionModel.tileType.WALKABLE_TILE);
-           }
-        }
+            if((x>positionX && x<(positionX+width))
+                    &&(y>positionY && y< (positionY +height)) ){
+                return true;
+            }
+        }return false;
     }
+
+    public void updateCollisionValues(float x, float y){
+       if(isMapObjectHit(collisionObjects.iterator(), x, y)){
+           collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
+       }
+    }
+
 }

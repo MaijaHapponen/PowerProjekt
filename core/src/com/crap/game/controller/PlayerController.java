@@ -20,6 +20,8 @@ public class PlayerController {
     }
 
     public void movePlayer(int keycode) {
+
+        updateSpeed();
         int width = playerView.getPlayerSpriteWidth();
         int height = playerView.getPlayerSpriteHeight();
         if (keycode == Input.Keys.UP &&
@@ -43,7 +45,6 @@ public class PlayerController {
                         + player.getCurrentSpeed(), getPlayerPositionY()+height)) )  {
             player.moveRight();
         }
-        updateSpeed();
         playerView.moveCamera((int) getPlayerPositionX(), (int) getPlayerPositionY());
     }
 
@@ -57,13 +58,14 @@ public class PlayerController {
         return player.getPosition().getY();
     }
     public boolean checkIfCollision(float x, float y){
-        collisionController.updateCollisionValues(x,y);
-        return collisionController.isCollison();
+        return collisionController.isCollison(x,y);
     }
 
 
     public void updateSpeed(){
-        if(collisionController.isSlowerTerrain()){
+        collisionController.seeIfNewWorld(getPlayerPositionX() + (playerView.getPlayerSpriteWidth()/2), getPlayerPositionY());
+        if(collisionController.isSlowerTerrain(getPlayerPositionX() + (playerView.getPlayerSpriteWidth()/2),
+                getPlayerPositionY() + (playerView.getPlayerSpriteHeight()/2)) ){
             player.setCurrentSpeed(player.getSlowerSpeed());
         }else{
             player.setCurrentSpeed(player.getNormalSpeed());

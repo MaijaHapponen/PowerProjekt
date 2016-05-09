@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="33">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="47">
  <tileset firstgid="1" name="open_tileset" tilewidth="32" tileheight="32" tilecount="1710" columns="45">
   <image source="open_tileset.png" trans="878787" width="1440" height="1216"/>
  </tileset>
@@ -120,33 +120,40 @@
 </data>
  </layer>
  <objectgroup name="Collision">
-  <object id="1" name="Collision" x="65" y="4" width="159" height="186"/>
-  <object id="2" name="Collision" x="162" y="209" width="60" height="13"/>
+  <object id="1" name="Collision" x="65" y="4" width="159" height="172"/>
   <object id="3" name="Collision" x="227" y="4" width="415" height="154"/>
-  <object id="4" name="Collision" x="254" y="150" width="383" height="39"/>
-  <object id="5" name="Collision" x="387" y="192" width="124" height="28"/>
+  <object id="4" name="Collision" x="257" y="5" width="382" height="172"/>
+  <object id="5" name="Collision" x="383" y="156" width="129" height="53"/>
   <object id="6" name="Collision" x="644" y="4" width="156" height="154"/>
-  <object id="7" name="Collision" x="676" y="162" width="127" height="27"/>
-  <object id="8" name="Collision" x="3" y="340" width="218" height="106"/>
-  <object id="9" name="Collision" x="258" y="340" width="61" height="13"/>
-  <object id="11" name="Collision" x="254" y="412" width="64" height="35"/>
-  <object id="12" name="Collision" x="323" y="341" width="185" height="70"/>
-  <object id="14" name="Collision" x="321" y="408" width="32" height="39"/>
-  <object id="15" name="Collision" x="386" y="406" width="124" height="39"/>
-  <object id="16" name="Collision" x="545" y="345" width="63" height="5"/>
-  <object id="17" name="Collision" x="547" y="436" width="73" height="10"/>
-  <object id="18" name="Collision" x="610" y="340" width="192" height="104"/>
-  <object id="19" name="Collision" x="288" y="579" width="127" height="62"/>
-  <object id="20" name="Collision" x="704" y="586" width="96" height="57"/>
+  <object id="7" name="Collision" x="672" y="157" width="127" height="20"/>
+  <object id="8" name="Collision" x="-1" y="333" width="225" height="103"/>
+  <object id="9" name="Collision" x="260" y="327" width="61" height="19"/>
+  <object id="11" name="Collision" x="261" y="419" width="62" height="16"/>
+  <object id="12" name="Collision" x="323" y="334" width="188" height="77"/>
+  <object id="14" name="Collision" x="322" y="336" width="28" height="99"/>
+  <object id="15" name="Collision" x="385" y="335" width="127" height="101"/>
+  <object id="16" name="Collision" x="548" y="326" width="60" height="18"/>
+  <object id="17" name="Collision" x="550" y="422" width="59" height="15"/>
+  <object id="18" name="Collision" x="610" y="332" width="192" height="103"/>
+  <object id="19" name="Collision" x="320" y="574" width="71" height="54"/>
+  <object id="20" name="Collision" x="704" y="576" width="77" height="53"/>
  </objectgroup>
  <objectgroup name="SlowLayer">
   <object id="25" name="Slow" x="218.657" y="187.42" width="35.4962" height="35.4962"/>
-  <object id="26" name="Slow" x="577.879" y="193.1" width="61.0535" height="26.9771"/>
-  <object id="27" name="Slow" x="675.848" y="193.1" width="59.6337" height="31.2367"/>
-  <object id="28" name="Slow" x="221" y="345.543" width="33.1528" height="96.5498"/>
-  <object id="29" name="Slow" x="506.886" y="356.382" width="39.7558" height="85.191"/>
-  <object id="30" name="Slow" x="274.031" y="345.023" width="28.397" height="24.1374"/>
-  <object id="31" name="Slow" x="259.832" y="391.878" width="26.9771" height="32.6565"/>
-  <object id="32" name="Slow" x="560.841" y="369.161" width="34.0764" height="38.3359"/>
+  <object id="26" name="Slow" x="158.879" y="192.1" width="61.0535" height="26.9771"/>
+  <object id="27" name="Slow" x="675.848" y="193.1" width="59.6337" height="24.9"/>
+  <object id="28" name="Slow" x="224.336" y="353.543" width="33.664" height="93.457"/>
+  <object id="30" name="Slow" x="270" y="349.023" width="39.428" height="18.977"/>
+  <object id="31" name="Slow" x="255.832" y="381" width="35.168" height="36.5345"/>
+  <object id="32" name="Slow" x="557" y="364" width="37.9174" height="43.4969"/>
+  <object id="33" name="Collision" x="725.5" y="592" width="76.5" height="37"/>
+  <object id="34" name="Collision" x="288.5" y="592" width="45.5" height="36"/>
+  <object id="35" name="Collision" x="372.25" y="591" width="45.5" height="36"/>
+  <object id="36" name="Slow" x="513.092" y="351.272" width="33.9084" height="93.457"/>
+  <object id="37" name="Slow" x="575.473" y="191.511" width="61.0535" height="26.9771"/>
+  <object id="38" name="Collision" x="158.5" y="210" width="61" height="11.5"/>
+ </objectgroup>
+ <objectgroup name="NewWorld">
+  <object id="41" name="NewWorld" x="347" y="410" width="37" height="29"/>
  </objectgroup>
 </map>

@@ -7,8 +7,8 @@ public class Player{
 
     private Position position;
     private int currentSpeed;
-    private int normalSpeed = 1;
-    private int slowerSpeed = 2;
+    private int normalSpeed = 2;
+    private int slowerSpeed = 1;
 
     public Player(){
         this.position = new Position(250, 250);

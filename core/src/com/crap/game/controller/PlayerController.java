@@ -24,6 +24,8 @@ public class PlayerController {
         updateSpeed();
         int width = playerView.getPlayerSpriteWidth();
         int height = playerView.getPlayerSpriteHeight();
+
+        //TODO: refactor this code, too long if-statements
         if (keycode == Input.Keys.UP &&
                 !(checkIfCollision(getPlayerPositionX(),
                         (getPlayerPositionY()+height  + player.getCurrentSpeed()))) &&

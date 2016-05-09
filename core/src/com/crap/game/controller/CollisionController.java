@@ -46,23 +46,21 @@ public class CollisionController {
     }
     public boolean isSlowerTerrain(float x, float y){
         updateTileValues(x, y);
-
         return collisionModel.isSlow();
     }
     public boolean isCollison(float x, float y){
-        updateTileValues(x,y);
+        updateCollisionValues(x,y);
         return collisionModel.isBlocked();
     }
 
     public void updateTileValues(float x, float y){
         if(isMapObjectHit(slowObjects.iterator(), x, y)) {
             collisionModel.setTypeOfTile(CollisionModel.tileType.SLOWER_TILE);
-        }else if(isMapObjectHit(newWorldObjects.iterator(), x, y)){
-            System.out.println("NEW WORLD!");
-        }else if(isMapObjectHit(collisionObjects.iterator(),x,y)){
-            collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
         }else{
             collisionModel.setTypeOfTile(CollisionModel.tileType.WALKABLE_TILE);
+        }
+        if(isMapObjectHit(newWorldObjects.iterator(), x, y)){
+            System.out.println("NEW WORLD!");
         }
     }
 

@@ -1,0 +1,31 @@
+﻿Meeting Agenda
+  Date: 2016-05-09
+ Facilitator: Rebecca                                 
+  Secretary: Andrea
+ Participants: Rebecca, Maija, Andrea
+
+1. Objectives 
+* Size of objects in different worlds: The player is now changed to be smaller in the outside world, should be bigger though for inside worlds.
+* Outside maps: Should continue onto eachother when moving, not move to end of map and then transport. Look into positions for the maps for this to work.
+* SDD: We need to continue working on the SDD - with focus on the class diagram.
+
+
+2. Reports
+Everyone: As a group we haven’t finished the class model as well as the SDD. Since it has been both a holiday and there was a report due. We will continue working on this during this week.
+The git looks awesome!
+Andrea: Have started to look into how the interaction with both mascots and human would work. We decided together that we will start with hardcoding the questions and the information for the mascots and the humans. The camera still needs fixing - now also to work with the new world-handling.
+Lisa: Have continued work on animation. But have been sick.
+Rebecca: Have looked into the progress bar, it still needs to load the mascots and be appropriate size.
+Maija: Collision is working for the player with both slower and collision terrain. Yet to implement new world collision.
+
+
+3. Discussion items
+* Start-menu: We need a start-menu for rules of the game as well as start game. In the main method we can set the screen, and have a new view and controller for it.
+* What to implement where: Discussion!
+
+
+4. Outcomes and assignments 
+Everyone: Continue with the SDD and the class diagram. Continue working on the assignments from last week, and if done continue along the requirement documents priority.
+
+5. Wrap up
+Next meeting will be on Thursday the 12th of May at 10.

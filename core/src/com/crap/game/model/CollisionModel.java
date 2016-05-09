@@ -1,12 +1,5 @@
 package com.crap.game.model;
 
-import com.badlogic.gdx.maps.MapLayers;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.crap.game.view.WorldView;
-
-import java.util.List;
-
 /**
  * Created by rebeccafinne on 2016-04-22.
  */

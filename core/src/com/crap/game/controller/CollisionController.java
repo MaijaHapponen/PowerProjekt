@@ -5,14 +5,10 @@ import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.crap.game.model.CollisionModel;
-import com.crap.game.view.WorldView;
+import com.crap.game.view.GameView;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 /**
  * Created by rebeccafinne on 2016-04-22.
@@ -33,7 +29,7 @@ public class CollisionController {
 
     public CollisionController() {
         collisionModel = new CollisionModel();
-        this.map = WorldView.map;
+        this.map = GameView.map;
         allLayers = map.getLayers();
         collisionLayer = allLayers.get("Collision");
         collisionObjects = collisionLayer.getObjects();

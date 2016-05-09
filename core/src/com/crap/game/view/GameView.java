@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  * Created by Maija on 2016-04-21.
  */
-public class WorldView extends ApplicationAdapter implements Screen{
+public class GameView extends ApplicationAdapter implements Screen{
 
     private SpriteBatch batch;
     public static TiledMap map;
@@ -34,7 +34,7 @@ public class WorldView extends ApplicationAdapter implements Screen{
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
 
 
-    public WorldView(){
+    public GameView(){
         this.batch = new SpriteBatch();
         this.level = "horsalmaskin";
 

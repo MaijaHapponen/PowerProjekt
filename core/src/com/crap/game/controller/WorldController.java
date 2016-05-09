@@ -1,8 +1,8 @@
 package com.crap.game.controller;
 
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.crap.game.model.World;
-import com.crap.game.view.WorldView;
+import com.crap.game.model.Game;
+import com.crap.game.view.GameView;
 
 
 /**
@@ -10,16 +10,16 @@ import com.crap.game.view.WorldView;
  */
 public class WorldController {
 
-    private World world;
-    private WorldView view;
-    private World.Worlds worlds;
+    private Game world;
+    private GameView view;
+    private Game.Worlds worlds;
 
-    public WorldController(WorldView view, World world) {
+    public WorldController(GameView view, Game world) {
         this.view = view;
         this.world = world;
     }
 
-    public void changeWorld(World.Worlds worlds){
+    public void changeWorld(Game.Worlds worlds){
         switch (worlds) {
             case HORSAL:
                 view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));

@@ -58,7 +58,27 @@ public class ProgressView extends ApplicationAdapter implements Screen {
 
 
 
+
+    public Texture getTextureBack(){
+        return this.textureBack;
     }
+
+    public Sprite getSpriteBack(){
+        return this.spriteBack;
+    }
+
+    public Sprite getSpriteMascots(){
+        return this.spriteMascots;
+    }
+
+
+    /*public void moveCamera(int x,float y) {
+        //TODO: fix so red is not visible
+        if ((getPosition().getX() > 500 / 2) || (getPosition().getY() > 500 / 2)) {
+            camera.position.set(x, y, 0);
+            camera.update();
+        }
+    }*/
 
     public Position getPosition(){
         return progress.getPosition();
@@ -81,7 +101,13 @@ public class ProgressView extends ApplicationAdapter implements Screen {
     @Override
     public void hide() {
 
-    }
+
+
+
+
+
+
+
 
     public void update(){
         if(progress.isNewMascotCaught()){
@@ -89,7 +115,7 @@ public class ProgressView extends ApplicationAdapter implements Screen {
             this.spriteMascots = new Sprite(textureMascots);
             progress.getCaractersOnBar().add(progress.getNewMascotToBar());
         }
-
+    }
 
 
 

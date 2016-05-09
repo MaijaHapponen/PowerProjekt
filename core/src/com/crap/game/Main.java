@@ -1,5 +1,9 @@
 package com.crap.game;
 
+import com.crap.game.model.World;
+import com.crap.game.view.GameView;
+
+
 import com.crap.game.controller.GameController;
 import com.crap.game.controller.MenuController;
 import com.crap.game.model.Game;
@@ -7,7 +11,9 @@ import com.crap.game.view.GameView;
 import com.crap.game.view.MenuView;
 
 
+
 public class Main extends com.badlogic.gdx.Game {
+
 
     public GameView worldView;
     public GameController controller;
@@ -30,11 +36,12 @@ public class Main extends com.badlogic.gdx.Game {
 
     public GameView getWorldView() {
         return this.worldView;
+
+
     }
 
     @Override
     public void render () {
-        super.render();
 
         controller.render();
 

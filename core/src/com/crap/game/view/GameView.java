@@ -14,6 +14,7 @@ import com.crap.game.Main;
 import com.crap.game.model.*;
 import com.badlogic.gdx.math.Intersector;
 
+import java.lang.Character;
 import java.util.ArrayList;
 
 /**
@@ -29,11 +30,15 @@ public class GameView extends ApplicationAdapter implements Screen{
     private PlayerView playerView;
     private BitmapFont font;
     private ProgressView progressView;
+    private Progress progress;
+    private Character character;
+
+
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
-
     public Main main;
+    private ArrayList<ProgressView> mascotsOnBar = new ArrayList<ProgressView>();
 
     public GameView(Main main){
         this.main = main;
@@ -44,6 +49,7 @@ public class GameView extends ApplicationAdapter implements Screen{
         this.progressView = new ProgressView();
 
         font = new BitmapFont();
+
 
         renderer = new OrthogonalTiledMapRenderer(world);
     }
@@ -60,12 +66,6 @@ public class GameView extends ApplicationAdapter implements Screen{
 
         this.camera = playerView.getCamera();
 
-        progressView.getVector2Length();
-        
-        if(distanceSegmentPoint(progressView.getVector2(), progressView.getPosition(), 250) == 0){
-
-        }
-
         batch.setProjectionMatrix(camera.combined);
 
         renderer.setView(camera);
@@ -79,7 +79,12 @@ public class GameView extends ApplicationAdapter implements Screen{
         for(int i = 0; i<mascotsList.size(); i++){
             mascotsList.get(i).getSprite().draw(batch);
         }
-        progressView.getSprite().draw(batch);
+
+        for(int i = 0; i < progress.getCaractersOnBar().size(); i++ ){
+            progress.getCaractersOnBar().get(i).getSpriteMascot().draw(batch);
+        }
+
+        progressView.getSpriteBack().draw(batch);
         playerView.getSprite().draw(batch);
         batch.end();
 

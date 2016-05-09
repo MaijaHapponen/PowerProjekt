@@ -1,57 +1,24 @@
 package com.crap.game.model;
 
-import java.util.ArrayList;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 /**
- * Created by Lisa on 24/04/16.
+ * Created by andrea on 2016-04-26.
  */
-public class World {
+public class World extends TiledMap{
 
-    public enum Worlds{HORSAL, EDIT, PARKING}
+    private String level;
+    private TiledMap map;
+    private OrthogonalTiledMapRenderer renderer;
 
-    private Progress progress;
-    public Player player;
-    public static ArrayList<Human> humans = new ArrayList<Human>();
-    public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
-    private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
-    private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
-    //public static TiledMap map;
-    //private String level;
-
-    //Constructor
-    public World(){
-        this.progress = new Progress();
-        this.player = new Player();
-
-        createHumans();
-        createMascots();
+    public World() {
+        this.level = "hubbeneditsand";
+        map = new TmxMapLoader().load("maps/" + level + ".tmx");
     }
 
-    //Populates an arrayList with humans.
-    public void createHumans(){
-        for(int i=0; i<humansNames.length; i++){
-            Position position = new Position(i*50, i); //TODO sen borde man nog ha en lista med karaktärernas positioner.
-            humans.add(new Human(humansNames[i], position));
-        }
-    }
-
-    //Populates an arrayList with mascots.
-    public void createMascots(){
-        for(int i=0; i<mascotNames.length; i++){
-            Position position = new Position(i, i*40); //TODO sen borde man nog ha en lista med karaktärernas positioner.
-            mascots.add(new Mascot(mascotNames[i], position));
-        }
-    }
-
-    //Checks if the game is over.
-    public boolean isGameOver(){
-        if(progress.areAllMascotsCaught()){
-            return true;
-        }
-        return false;
-    }
-
-    public Player getPlayer(){
-        return player;
+    public TiledMap getMap(){
+        return map;
     }
 }

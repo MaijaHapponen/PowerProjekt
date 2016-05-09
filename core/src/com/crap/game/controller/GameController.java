@@ -2,23 +2,23 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.crap.game.model.World;
-import com.crap.game.view.WorldView;
+import com.crap.game.model.Game;
+import com.crap.game.view.GameView;
 
 /**
  * Created by Lisa on 18/04/16.
  */
-public class Controller extends InputAdapter implements ApplicationListener {
+public class GameController extends InputAdapter implements ApplicationListener {
 
-    private WorldView view;
-    private World model;
+    private GameView view;
+    private Game model;
     private OrthographicCamera camera;
     private PlayerController playerController;
     private int keyCode;
 
     private boolean keyPressed = false;
 
-    public Controller(WorldView view, World world){
+    public GameController(GameView view, Game world){
 
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();

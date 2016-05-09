@@ -1,19 +1,15 @@
 package com.crap.game.controller;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.crap.game.model.World;
-import com.crap.game.view.CharacterView;
 
 public class CharacterController extends InputAdapter{
 /*
     private CharacterView view;
-    private World game;
+    private Game game;
     private OrthographicCamera camera;
     private PlayerController playerController;
 
-    public CharacterController(CharacterView view, World game){
+    public CharacterController(CharacterView view, Game game){
 
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();

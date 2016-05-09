@@ -1,10 +1,16 @@
 package com.crap.game;
 
+import com.crap.game.model.World;
+import com.crap.game.view.GameView;
+
+
 import com.crap.game.controller.GameController;
 import com.crap.game.model.Game;
 import com.crap.game.view.GameView;
 
+
 public class Main extends com.badlogic.gdx.Game {
+
 
     public GameView worldView;
     public GameController controller;
@@ -14,12 +20,18 @@ public class Main extends com.badlogic.gdx.Game {
         worldView = new GameView();
         world = new Game();
         controller = new GameController(worldView, world);
+
         setScreen(worldView);
+
     }
 
     @Override
-    public void render () {super.render();
-    controller.render();}
+    public void render () {
+        super.render();
+        controller.render();
+
+
+    }
 
     @Override
     public void resize(int width, int height) {

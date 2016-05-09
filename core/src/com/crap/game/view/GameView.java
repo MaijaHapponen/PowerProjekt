@@ -80,8 +80,8 @@ public class GameView extends ApplicationAdapter implements Screen{
             mascotsList.get(i).getSprite().draw(batch);
         }
 
-        for(int i = 0; i < progress.getCaractersOnBar().size(); i++ ){
-            progress.getCaractersOnBar().get(i).getSpriteMascot().draw(batch);
+        for(int i = 0; i < mascotsOnBar.size(); i++ ){
+            mascotsOnBar.get(i).getSpriteMascots().draw(batch);
         }
 
         progressView.getSpriteBack().draw(batch);
@@ -135,6 +135,12 @@ public class GameView extends ApplicationAdapter implements Screen{
     public ArrayList<CharacterView> getMascotsList(){
         return this.mascotsList;
     }
+    public void setMascotsOnBar(ArrayList<Mascot> mascotsOnBarl){
+        for(int i = 0; i < mascotsOnBarl.size(); i++){
+            this.mascotsOnBar.add(new ProgressView(character));
+        }
+    }
+
 
     public void setCamera(OrthographicCamera camera) {
         playerView.setCamera(camera);

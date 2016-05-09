@@ -5,83 +5,67 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.crap.game.model.Mascot;
 import com.crap.game.model.Position;
 import com.crap.game.model.Progress;
+
+import java.util.ArrayList;
 
 /**
  * Created by rebeccafinne on 2016-05-05.
  */
 public class ProgressView extends ApplicationAdapter implements Screen {
 
-
-    private Texture texture;
+    private Character character;
+    private Texture textureBack;
+    private Texture textureMascots;
     private Position position;
-    private Sprite sprite;
-    private float width;
-    private float height;
-    private OrthographicCamera camera;
+    private Sprite spriteBack;
+    private Sprite spriteMascots;
     private Progress progress;
-    private Vector2 vector2;
-    private float length = 250;
-    // private SpriteBatch batch;
 
-    public ProgressView(){
-        this.texture = new Texture("Progress/html5-progress-bar.jpg");
-        this.sprite = new Sprite(texture);
-        this.width = 40;
-        this.height = 30;
+
+
+    public ProgressView(Character character){
+        this.character = character;
+        this.textureBack = new Texture("Progress/html5-progress-bar.jpg");
+        this.spriteBack = new Sprite(textureBack);
         this.progress = new Progress();
-        this.sprite.setPosition(0, 0);
-        this.camera = new OrthographicCamera();
-        vector2 = new Vector2();
-        vector2.setLength(length);
+        this.spriteBack.setPosition(0, 0);
+
+
     }
 
-    public Texture getProgress(){
-        return this.texture;
+    public Texture getTextureBack(){
+        return this.textureBack;
     }
 
-    public Sprite getSprite(){
-        return this.sprite;
+    public Sprite getSpriteBack(){
+        return this.spriteBack;
     }
 
-    public void setSize(float w, float h){
-        this.height = h;
-        this.width = w;
+    public Sprite getSpriteMascots(){
+        return this.spriteMascots;
     }
 
-    public float getWidth(){
-        return this.width;
-    }
 
-    public float getHeight(){
-        return this.height;
-    }
-
-    public OrthographicCamera getCamera(){
-        return this.camera;
-    }
-    public void setCamera(OrthographicCamera camera){
-        this.camera = camera;
-    }
-
-    public void moveCamera(int x,float y) {
+    /*public void moveCamera(int x,float y) {
         //TODO: fix so red is not visible
         if ((getPosition().getX() > 500 / 2) || (getPosition().getY() > 500 / 2)) {
             camera.position.set(x, y, 0);
             camera.update();
         }
-    }
+    }*/
 
     public Position getPosition(){
         return progress.getPosition();
     }
 
-    /* public void setPosition(float x, float y){
-          x = getPosition().getX();
-          y = getPosition().getY();
-      }*/
+
     @Override
     public void show() {
 
@@ -92,21 +76,20 @@ public class ProgressView extends ApplicationAdapter implements Screen {
 
     }
 
+
+
+
     @Override
     public void hide() {
 
     }
 
-    public Vector2 getVector2(){
-        return this.vector2;
-    }
-
-    public void setVector2(float x, float y){
-        vector2.add(x, y);
-    }
-
-    public float getVector2Length(){
-        return length;
+    public void update(){
+        if(progress.isNewMascotCaught()){
+            this.textureMascots = new Texture(progress.getNewMascotToBar().getName());
+            this.spriteMascots = new Sprite(textureMascots);
+            progress.getCaractersOnBar().add(progress.getNewMascotToBar());
+        }
     }
 
 

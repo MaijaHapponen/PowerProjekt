@@ -14,6 +14,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.crap.game.model.*;
 import com.badlogic.gdx.math.Intersector;
 
+import java.lang.Character;
 import java.util.ArrayList;
 
 /**
@@ -31,17 +32,21 @@ public class WorldView extends ApplicationAdapter implements Screen{
 
     private PlayerView playerView;
     private ProgressView progressView;
+    private Progress progress;
+    private Character character;
+
+
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
-
+    private ArrayList<ProgressView> mascotsOnBar = new ArrayList<ProgressView>();
 
     public WorldView(){
         this.batch = new SpriteBatch();
         this.level = "horsalmaskin";
 
         this.playerView = new PlayerView();
-        this.progressView = new ProgressView();
+        this.progressView = new ProgressView(character);
 
         map = new TmxMapLoader().load("maps/"+level+".tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
@@ -59,12 +64,6 @@ public class WorldView extends ApplicationAdapter implements Screen{
 
         this.camera = playerView.getCamera();
 
-        progressView.getVector2Length();
-        
-        if(distanceSegmentPoint(progressView.getVector2(), progressView.getPosition(), 250) == 0){
-
-        }
-
         batch.setProjectionMatrix(camera.combined);
 
         renderer.setView(camera);
@@ -78,7 +77,12 @@ public class WorldView extends ApplicationAdapter implements Screen{
         for(int i = 0; i<mascotsList.size(); i++){
             mascotsList.get(i).getSprite().draw(batch);
         }
-        progressView.getSprite().draw(batch);
+
+        for(int i = 0; i < progress.getCaractersOnBar().size(); i++ ){
+            progress.getCaractersOnBar().get(i).getSpriteMascot().draw(batch);
+        }
+
+        progressView.getSpriteBack().draw(batch);
         playerView.getSprite().draw(batch);
         batch.end();
 

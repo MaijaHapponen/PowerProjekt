@@ -38,7 +38,7 @@ public class GameAnimation {
         return createAnimation(texture, width, height, rows, columns, 2, 2);
     }
 
-    public Animation getAnimationRight(Texture texture, int width, int height, int rows, int columns){
+    public Animation getAnimationRight(Texture texture, int width, int height, int rows, int columns) {
         return createAnimation(texture, width, height, rows, columns, 3, 3);
     }
 }

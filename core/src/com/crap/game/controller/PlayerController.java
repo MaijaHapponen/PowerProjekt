@@ -63,7 +63,6 @@ public class PlayerController {
 
 
     public void updateSpeed(){
-        collisionController.seeIfNewWorld(getPlayerPositionX() + (playerView.getPlayerSpriteWidth()/2), getPlayerPositionY());
         if(collisionController.isSlowerTerrain(getPlayerPositionX() + (playerView.getPlayerSpriteWidth()/2),
                 getPlayerPositionY() + (playerView.getPlayerSpriteHeight()/2)) ){
             player.setCurrentSpeed(player.getSlowerSpeed());

@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
  * Created by rebeccafinne on 2016-05-10.
  */
 public class ProgressTest {
-    
+
 
     @Test
     public void testAreAllMascotsCaught(){
@@ -25,6 +25,7 @@ public class ProgressTest {
         Mascot mascot = new Mascot("TJO");
         progress.getMascotsInGame().add(mascot);
         progress.mascotCaught(mascot);
+        assertTrue(progress.getMascotsCaught().contains(mascot) == true);
 
     }
 }

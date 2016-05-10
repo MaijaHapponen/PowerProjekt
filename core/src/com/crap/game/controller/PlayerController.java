@@ -12,45 +12,37 @@ import com.crap.game.model.Player;
 public class PlayerController {
     PlayerView playerView;
     Player player;
-    CollisionController collisionController = new CollisionController();
+    CollisionController collisionController;
 
     public PlayerController(PlayerView playerView){
         this.playerView = playerView;
         this.player = playerView.getPlayer();
+
+        this.collisionController = new CollisionController();
+        collisionController.setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
     }
 
     public void movePlayer(int keycode) {
 
         updateSpeed();
-        int width = playerView.getPlayerSpriteWidth();
-        int height = playerView.getPlayerSpriteHeight();
-
-        //TODO: refactor this code, too long if-statements
         if (keycode == Input.Keys.UP &&
-                !(checkIfCollision(getPlayerPositionX(),
-                        (getPlayerPositionY()+height  + player.getCurrentSpeed()))) &&
-                !(checkIfCollision(getPlayerPositionX() + width,
-                        (getPlayerPositionY() +height+ player.getCurrentSpeed())))) {
+                !(checkIfCollision(getPlayerPositionX(), (getPlayerPositionY() + player.getCurrentSpeed())))) {
             player.moveUp();
         } else if (keycode == Input.Keys.DOWN &&
-                !(checkIfCollision(getPlayerPositionX(), getPlayerPositionY()- player.getCurrentSpeed())) &&
-                !(checkIfCollision(getPlayerPositionX()+width, getPlayerPositionY() - player.getCurrentSpeed()))) {
+                !(checkIfCollision(getPlayerPositionX(), getPlayerPositionY()- player.getCurrentSpeed()))){
             player.moveDown();
         } else if (keycode == Input.Keys.LEFT &&
-                !(checkIfCollision((getPlayerPositionX()) - player.getCurrentSpeed(), getPlayerPositionY()))&&
-                !(checkIfCollision((getPlayerPositionX()) - player.getCurrentSpeed(), getPlayerPositionY()+height))) {
+                !(checkIfCollision((getPlayerPositionX()) - player.getCurrentSpeed(), getPlayerPositionY()))){
             player.moveLeft();
         } else if (keycode == Input.Keys.RIGHT &&
-                !(checkIfCollision(getPlayerPositionX() + width
-                        + player.getCurrentSpeed(), getPlayerPositionY())) &&
-                !(checkIfCollision(getPlayerPositionX() + width
-                        + player.getCurrentSpeed(), getPlayerPositionY()+height)) )  {
+                !(checkIfCollision(getPlayerPositionX()+ player.getCurrentSpeed(), getPlayerPositionY())) )  {
             player.moveRight();
         }
+        updateSprite();
         playerView.moveCamera((int) getPlayerPositionX(), (int) getPlayerPositionY());
     }
 
-    public void update() {
+    public void updateSprite() {
         playerView.getSprite().setPosition(getPlayerPositionX(), getPlayerPositionY());
     }
     public float getPlayerPositionX(){
@@ -65,8 +57,7 @@ public class PlayerController {
 
 
     public void updateSpeed(){
-        if(collisionController.isSlowerTerrain(getPlayerPositionX() + (playerView.getPlayerSpriteWidth()/2),
-                getPlayerPositionY() + (playerView.getPlayerSpriteHeight()/2)) ){
+        if(collisionController.isSlowerTerrain(getPlayerPositionX(), getPlayerPositionY()) ){
             player.setCurrentSpeed(player.getSlowerSpeed());
         }else{
             player.setCurrentSpeed(player.getNormalSpeed());

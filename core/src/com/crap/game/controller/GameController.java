@@ -60,7 +60,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
     public void movePlayer(int keycode){
         this.keyCode = keycode;
         playerController.movePlayer(keyCode);
-        playerController.update();
     }
 
     @Override

@@ -24,7 +24,6 @@ public class ProgressView extends ApplicationAdapter implements Screen {
     private Character character;
     private Texture textureBack;
     private Texture textureMascots;
-    private Position position;
     private Sprite spriteBack;
     private Sprite spriteMascots;
     private Progress progress;
@@ -83,9 +82,6 @@ public class ProgressView extends ApplicationAdapter implements Screen {
         }
     }*/
 
-    public Position getPosition(){
-        return progress.getPosition();
-    }
 
 
     @Override

@@ -12,13 +12,16 @@ public class Progress {
     private ArrayList<Mascot> mascotsInGame = new ArrayList<Mascot>(); //TODO borde denna listan vara här eller i någon annan klass istället? Måste fylla på den när man startar spelet.
     private ArrayList<Mascot> mascotsCaught;
     private ArrayList<Mascot> charactersOnBar;
-    private Position position;
+    ArrayList<String> nameOnBar;
     private boolean newMascotCaught = false;
     private Mascot newMascotToBar;
 
     //Constructor
     public Progress() {
+
         mascotsCaught = new ArrayList<Mascot>();
+        charactersOnBar = new ArrayList<Mascot>();
+        nameOnBar = new ArrayList<String>();
     }
 
     //Method checking if all mascots has been caught by the player.
@@ -39,7 +42,6 @@ public class Progress {
         }
         mascotsCaught.add(mascot);
         newMascotToBar =  mascot;
-        newMascotCaught = false;
     }
 
 
@@ -53,10 +55,18 @@ public class Progress {
 
     public void charactersOnBar() {
         for (int i = 0; i < mascotsCaught.size(); i++) {
-            // if(mascotsCaught.get(i).getName().equals(g));
+            for(int j = 0; j < charactersOnBar.size(); j++){
+                if(mascotsCaught.get(i).getName().equals(charactersOnBar.get(j).getName())){
+                    charactersOnBar.add(mascotsCaught.get(i));
+                    newMascotCaught = false;
+
+                }
 
 
-            //  }
+
+
+            }
+
         }
 
     }
@@ -65,13 +75,17 @@ public class Progress {
         return this.charactersOnBar;
     }
 
+    public ArrayList<String> getNameCharactersOnBar(){
+        for(int i = 0; i < charactersOnBar.size(); i++){
+             nameOnBar.add(charactersOnBar.get(i).getName());
+        }
+        return nameOnBar;
+    }
+
     public boolean isNewMascotCaught(){
         return this.newMascotCaught;
     }
 
-    public Position getPosition(){
-        return this.position;
-    }
 
     public Mascot getNewMascotToBar(){
         return this.newMascotToBar;

@@ -32,4 +32,8 @@ public class Progress {
         }
         mascotsCaught.add(mascot);
     }
+
+    public ArrayList<Mascot> getMascotsInGame(){
+        return mascotsInGame;
+    }
 }

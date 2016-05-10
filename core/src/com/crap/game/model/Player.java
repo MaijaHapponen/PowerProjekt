@@ -60,6 +60,7 @@ public class Player{
     }
     public Position getPosition(){return this.position;  }
 
+
     public void setCurrentSpeed(int speed){
         this.currentSpeed = speed;
     }

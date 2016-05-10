@@ -2,9 +2,6 @@ package com.crap.game;
 
 
 import com.crap.game.view.GameView;
-
-
-
 import com.crap.game.controller.GameController;
 import com.crap.game.model.Game;
 

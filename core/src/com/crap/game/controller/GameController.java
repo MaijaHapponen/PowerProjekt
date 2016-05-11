@@ -21,7 +21,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private Game model;
     private OrthographicCamera camera;
     private PlayerController playerController;
-    //private WorldController worldController;
     private int keyCode;
     private boolean keyPressed = false;
 
@@ -46,8 +45,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
         setWorld(Game.Worlds.HORSAL);
-        //this.worldController = new WorldController(view, model);
-        //setWorld(Game.Worlds.HORSAL);
 
         Gdx.input.setInputProcessor(this);
     }
@@ -116,7 +113,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
     }
 
     @Override
-    public void render(){
+    public void render() {
         if(Gdx.input.isKeyPressed(keyCode)) {
             movePlayer(keyCode);
         }

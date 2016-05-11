@@ -58,6 +58,9 @@ public class Player{
         return this.position.getX() < 0 || this.position.getX() > 1000 ||
                 this.position.getY() < 0  || this.position.getY() > 1000;
     }
+
+
+
     public Position getPosition(){return this.position;  }
 
 

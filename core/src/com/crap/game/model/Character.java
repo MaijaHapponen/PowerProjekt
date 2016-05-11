@@ -48,4 +48,8 @@ public abstract class Character{
     public String getName(){
         return this.name;
     }
-}
+
+    public ArrayList<String> getStatementList(){
+        return this.statementList;
+    }
+ }

@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.crap.game.model.Player;
 import com.crap.game.model.Position;
@@ -18,11 +19,19 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     private Sprite playerSprite;
     private Texture texture;
     private OrthographicCamera camera;
+    private GameAnimation gameAnimation; //TODO animation
 
     public PlayerView(){
         this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
         this.playerSprite = new Sprite(texture);
         playerSprite.setPosition(250, 250);
+
+        //TODO animation
+        this.gameAnimation = new GameAnimation();
+//        this.gameAnimation = new GameAnimation(texture2, 129/5, 190/5, 4, 0, 2);
+
+        //TODO animation
+
 
     }
     public PlayerView(int x, int y){
@@ -86,5 +95,9 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
     public OrthographicCamera getCamera(){
         return this.camera;
+    }
+
+    public Animation getAnimation(){
+        return gameAnimation.getAnimation();
     }
 }

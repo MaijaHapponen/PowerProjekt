@@ -21,7 +21,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private Game model;
     private OrthographicCamera camera;
     private PlayerController playerController;
-    private WorldController worldController;
+    //private WorldController worldController;
     private int keyCode;
     private boolean keyPressed = false;
 
@@ -81,7 +81,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.keyCode = keycode;
         playerController.movePlayer(keyCode);
     }
-
 
     public void setWorld(Game.Worlds worlds){
         switch (worlds) {

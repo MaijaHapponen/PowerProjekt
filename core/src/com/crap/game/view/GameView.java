@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -75,9 +74,10 @@ public class GameView extends ApplicationAdapter implements Screen{
             mascotsList.get(i).getSprite().draw(batch);
         }
 
-        batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime,true),50,50); //TODO change position.
+        batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime,true), playerView.getPlayerPosition().getX(),
+                playerView.getPlayerPosition().getY());
 
-        playerView.getSprite().draw(batch);
+//        playerView.getSprite().draw(batch);
 
         batch.end();
     }

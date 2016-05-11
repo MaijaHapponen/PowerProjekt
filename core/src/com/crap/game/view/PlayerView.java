@@ -20,20 +20,15 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     private OrthographicCamera camera;
     private int pixelPerTile = 30;
     private int halfOfScreen = 250;
-    private GameAnimation gameAnimation; //TODO animation
+    private GameAnimation gameAnimation = new GameAnimation();
+    private Animation animation;
 
     public PlayerView(){
-        this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
+        this.texture = new Texture(Gdx.files.internal("characters/kalleAnka.png"));
         this.playerSprite = new Sprite(texture);
         playerSprite.setPosition(250, 250);
 
-        //TODO animation
-        this.gameAnimation = new GameAnimation();
-//        this.gameAnimation = new GameAnimation(texture2, 129/5, 190/5, 4, 0, 2);
-
-        //TODO animation
-
-
+        this.animation = this.gameAnimation.getAnimationFront(this.texture, 129, 190, 4, 4); //TODO animation
     }
     public PlayerView(int x, int y){
         this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
@@ -53,7 +48,6 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     @Override
     public void render(float delta) {
 
-
     }
 
     @Override
@@ -71,11 +65,11 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
     public Texture getTexture() { return this.texture; }
 
-    public float getPlayerSpriteWidth(){
-        return this.texture.getWidth();
+    public int getPlayerSpriteWidth(){
+        return this.texture.getWidth()/4; //TODO snyggare lösning än hårdkodat /4
     }
-    public float getPlayerSpriteHeight(){
-        return this.texture.getHeight();
+    public int getPlayerSpriteHeight(){
+        return this.texture.getHeight()/4; //TODO snyggare lösning än hårdkodat /4
     }
 
     public void setCamera(OrthographicCamera camera){
@@ -166,6 +160,22 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     }
 
     public Animation getAnimation(){
-        return gameAnimation.getAnimation();
+        return this.animation;
     }
+
+    public void turnAround(int i){
+        if(i==0){
+            this.animation = this.gameAnimation.getAnimationFront(this.texture, 129, 190, 4, 4); //TODO animation
+        }
+        else if(i==1){
+            this.animation = this.gameAnimation.getAnimationLeft(this.texture, 129, 190, 4, 4); //TODO animation
+        }
+        else if(i==2){
+            this.animation = this.gameAnimation.getAnimationRight(this.texture, 129, 190, 4, 4); //TODO animation
+        }
+        else if(i==03){
+            this.animation = this.gameAnimation.getAnimationBack(this.texture, 129, 190, 4, 4); //TODO animation
+        }
+    }
+
 }

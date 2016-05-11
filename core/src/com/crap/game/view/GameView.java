@@ -66,9 +66,10 @@ public class GameView extends ApplicationAdapter implements Screen{
             mascotsList.get(i).getSprite().draw(batch);
         }*/
 
-        batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime,true),50,50); //TODO change position.
+        batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime,true), playerView.getPlayerPosition().getX(),
+                playerView.getPlayerPosition().getY());
 
-        playerView.getSprite().draw(batch);
+//        playerView.getSprite().draw(batch);
 
         batch.end();
     }

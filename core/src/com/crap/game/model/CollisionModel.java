@@ -10,11 +10,13 @@ public class CollisionModel {
     private boolean blocked;
     private boolean slow;
     private boolean newWorld;
+    private boolean interaction;
 
     public CollisionModel(){
         blocked=false;
         slow=false;
         newWorld=false;
+        interaction=false;
     }
 
     public boolean isBlocked(){
@@ -26,6 +28,8 @@ public class CollisionModel {
     }
 
     public boolean isNewWorld() {return newWorld; }
+
+    public boolean isInteraction() {return interaction; }
 
     public void setTypeOfTile(tileType tile){
         if(tile==tileType.SOLID_TILE){

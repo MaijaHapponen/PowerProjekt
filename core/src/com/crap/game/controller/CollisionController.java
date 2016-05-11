@@ -17,7 +17,6 @@ import java.util.Iterator;
  */
 public class CollisionController {
 
-    private WorldView view;
     CollisionModel collisionModel;
 
     private TiledMap map;  //The whole map

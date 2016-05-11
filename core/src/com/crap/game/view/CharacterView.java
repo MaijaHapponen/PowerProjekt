@@ -17,7 +17,6 @@ public class CharacterView extends ApplicationAdapter implements Screen {
     private Sprite sprite;
     private Texture texture;
 
-
     public CharacterView(Character character){
         this.character = character;
         this.texture = new Texture("characters/"+character.getName()+".png"); //TODO Ska sklart inte var jttar senare.

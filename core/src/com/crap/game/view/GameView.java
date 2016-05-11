@@ -103,6 +103,14 @@ public class GameView extends ApplicationAdapter implements Screen{
         }
     }
 
+    public ArrayList<CharacterView> getHumansList(){
+        return this.humansList;
+    }
+
+    public ArrayList<CharacterView> getMascotsList(){
+        return this.mascotsList;
+    }
+
     public void setCamera(OrthographicCamera camera) {
         playerView.setCamera(camera);
     }

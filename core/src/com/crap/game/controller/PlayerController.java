@@ -15,12 +15,14 @@ public class PlayerController {
     PlayerView playerView;
     Player player;
     CollisionController collisionController;
+    InteractionController interactionController;
 
     public PlayerController(PlayerView playerView, GameView gameView){
         this.playerView = playerView;
         this.player = playerView.getPlayer();
         this.gameView = gameView;
 
+        this.interactionController = new InteractionController(gameView);
         this.collisionController = new CollisionController(gameView.getWorld());
         collisionController.setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
     }
@@ -55,7 +57,8 @@ public class PlayerController {
         return player.getPosition().getY();
     }
     public boolean checkIfCollision(float x, float y){
-        return collisionController.isCollison(x,y);
+        return (collisionController.isCollison(x,y) || interactionController.isInteractionWithHuman(x,y)
+                || interactionController.isInteractionWithMascot(x,y));
     }
 
 

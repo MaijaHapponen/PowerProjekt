@@ -14,8 +14,14 @@ public class Game {
     //public TiledMap world;
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
+<<<<<<< HEAD
     private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
     private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
+=======
+    private String[] mascotNames = {"donald"};//{"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
+    private String[] humansNames = {};//]{"EHuman","DHuman","ITHuman","ZHuman"};
+    private String[] worldNames = {"horsalmaskin", "hubbeneditsand", "parkingtemplate"};
+>>>>>>> Refactoring almost done, currently working on newworld
 
     public Game(){
         this.progress = new Progress();
@@ -36,7 +42,7 @@ public class Game {
     //Populates an arrayList with mascots.
     public void createMascots(){
         for(int i=0; i<mascotNames.length; i++){
-            Position position = new Position(i, i*40); //TODO sen borde man nog ha en lista med karaktärernas positioner.
+            Position position = new Position(300, 300); //TODO sen borde man nog ha en lista med karaktärernas positioner.
             mascots.add(new Mascot(mascotNames[i], position));
         }
     }

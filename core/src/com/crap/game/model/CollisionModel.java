@@ -5,14 +5,16 @@ package com.crap.game.model;
  */
 public class CollisionModel {
 
-    public enum tileType {WALKABLE_TILE, SOLID_TILE, SLOWER_TILE}; //The different types of tiles
+    public enum tileType {WALKABLE_TILE, SOLID_TILE, SLOWER_TILE, NEW_WORLD}; //The different types of tiles
 
     private boolean blocked;
     private boolean slow;
+    private boolean newWorld;
 
     public CollisionModel(){
         blocked=false;
         slow=false;
+        newWorld=false;
     }
 
     public boolean isBlocked(){
@@ -23,16 +25,26 @@ public class CollisionModel {
         return slow;
     }
 
+    public boolean isNewWorld() {return newWorld; }
+
     public void setTypeOfTile(tileType tile){
         if(tile==tileType.SOLID_TILE){
             blocked=true;
             slow=false;
+            newWorld=false;
         }else if(tile==tileType.SLOWER_TILE){
             blocked=false;
             slow=true;
-        }else{
+            newWorld=false;
+        }else if(tile==tileType.NEW_WORLD){
+            blocked=true;
+            slow=false;
+            newWorld=false;
+        }
+        else{
             blocked = false;
             slow=false;
+            newWorld=false;
         }
     }
 

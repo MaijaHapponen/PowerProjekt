@@ -55,23 +55,31 @@ public class CollisionController {
         this.playerWidth = width;
         this.playerHeight = height;
     }
+
     public boolean isSlowerTerrain(float x, float y){
         updateTileValues(x, y);
         return collisionModel.isSlow();
     }
+
     public boolean isCollison(float x, float y){
         updateCollisionValues(x,y);
         return collisionModel.isBlocked();
     }
 
+    public boolean isNewWorld(float x, float y){
+        updateTileValues(x,y);
+        return collisionModel.isNewWorld();
+    }
+
     public void updateTileValues(float x, float y){
         if(isMapObjectHit(slowObjects.iterator(), x, y)) {
             collisionModel.setTypeOfTile(CollisionModel.tileType.SLOWER_TILE);
-        }else{
-            collisionModel.setTypeOfTile(CollisionModel.tileType.WALKABLE_TILE);
         }
-        if(isMapObjectHit(newWorldObjects.iterator(), x, y)){
-            System.out.println("NEW WORLD!");
+        else if(isMapObjectHit(newWorldObjects.iterator(), x, y)){
+            collisionModel.setTypeOfTile(CollisionModel.tileType.NEW_WORLD);
+        }
+        else{
+            collisionModel.setTypeOfTile(CollisionModel.tileType.WALKABLE_TILE);
         }
     }
 
@@ -100,7 +108,10 @@ public class CollisionController {
     }
 
     public void updateCollisionValues(float x, float y){
-       if(isMapObjectHit(collisionObjects.iterator(), x, y)){
+        if(isMapObjectHit(newWorldObjects.iterator(), x, y)){
+            collisionModel.setTypeOfTile(CollisionModel.tileType.NEW_WORLD);
+        }
+       else if(isMapObjectHit(collisionObjects.iterator(), x, y)){
            collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
        }
     }

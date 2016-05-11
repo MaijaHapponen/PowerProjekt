@@ -2,8 +2,11 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.model.Game;
 import com.crap.game.view.GameView;
+
+import static com.crap.game.model.Game.Worlds.EDIT;
 
 /**
  * Created by Lisa on 18/04/16.
@@ -18,7 +21,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private Game model;
     private OrthographicCamera camera;
     private PlayerController playerController;
-    private WorldController worldController;
+    //private WorldController worldController;
     private int keyCode;
 
     private boolean keyPressed = false;
@@ -42,8 +45,11 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);
 
-        this.playerController = new PlayerController(this.view.getPlayerView());
         this.worldController = new WorldController(this.view.getWorldView(), model);
+        this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
+        setWorld(Game.Worlds.HORSAL);
+        //this.worldController = new WorldController(view, model);
+        //setWorld(Game.Worlds.HORSAL);
 
         Gdx.input.setInputProcessor(this);
     }
@@ -78,6 +84,37 @@ public class GameController extends InputAdapter implements ApplicationListener 
         playerController.movePlayer(keyCode);
     }
 
+
+    public void setWorld(Game.Worlds worlds){
+        switch (worlds) {
+            case HORSAL:
+                view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
+                model.player.setPosition(1,1); //TODO: Change value to correct location
+                break;
+
+            case EDIT:
+                view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
+                model.player.setPosition(2,2); //TODO: Change value to correct location
+                break;
+
+            case PARKING:
+                view.setWorld(new TmxMapLoader().load("maps/parkingtemplate.tmx"));
+                model.player.setPosition(1,1); //TODO: Change value to correct location
+                break;
+            default:
+                System.out.println("Ohoh! Something went wrong");
+                break;
+        }
+    }
+
+    public boolean enterNewWorld(){
+        if(playerController.collisionController.isNewWorld(playerController.getPlayerPositionX(), playerController.getPlayerPositionY()) ) {
+            setWorld(EDIT);
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public void render(){
         if(Gdx.input.isKeyPressed(keyCode)) {
@@ -90,7 +127,15 @@ public class GameController extends InputAdapter implements ApplicationListener 
     public void create() {}
 
     @Override
+<<<<<<< HEAD
     public void resize(int width, int height) {}
+=======
+    public void render() {
+        if(Gdx.input.isKeyPressed(keyCode)) {
+            movePlayer(keyCode);
+        }
+    }
+>>>>>>> Refactoring almost done, currently working on newworld
 
     @Override
     public void pause() {}

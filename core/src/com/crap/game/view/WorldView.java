@@ -23,6 +23,8 @@ public class WorldView extends ApplicationAdapter implements Screen {
         this.level = Game.Worlds.HORSAL;
 
         world = new TmxMapLoader().load("maps/"+level+".tmx");
+        this.level = "horsalmaskin";
+        this.world = new TmxMapLoader().load("maps/"+level+".tmx");
     }
 
     public void setWorld(TiledMap world){

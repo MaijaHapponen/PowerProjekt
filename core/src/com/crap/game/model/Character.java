@@ -7,7 +7,6 @@ import java.util.Random;
  * Created by Lisa on 25/04/16.
  */
 public abstract class Character{
-    //TODO: have some kind or String to determine which character we have? Can also decide texture
     private String name;
     private Position position;
     private ArrayList<String> statementList;

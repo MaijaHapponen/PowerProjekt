@@ -36,7 +36,7 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     public GameView(){
         this.batch = new SpriteBatch();
-        this.level = "horsalmaskin";
+        this.level = "hubbeneditsand";
 
         this.playerView = new PlayerView();
 

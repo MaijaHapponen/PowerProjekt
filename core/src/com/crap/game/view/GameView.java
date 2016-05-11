@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -23,6 +24,7 @@ public class GameView extends ApplicationAdapter implements Screen{
     private SpriteBatch batch;
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
+    private float elapsedTime;
 
     public static TiledMap world;
     private PlayerView playerView;
@@ -51,6 +53,8 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     @Override
     public void render(float delta) {
+        elapsedTime += Gdx.graphics.getDeltaTime();
+
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
@@ -70,7 +74,11 @@ public class GameView extends ApplicationAdapter implements Screen{
         for(int i = 0; i<mascotsList.size(); i++){
             mascotsList.get(i).getSprite().draw(batch);
         }
+
+        batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime,true),50,50); //TODO change position.
+
         playerView.getSprite().draw(batch);
+
         batch.end();
     }
 

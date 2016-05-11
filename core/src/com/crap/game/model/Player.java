@@ -63,6 +63,9 @@ public class Player{
 
     public Position getPosition(){return this.position;  }
 
+    public void setPosition(int x, int y){
+        this.position.setPosition(x,y);
+    }
 
     public void setCurrentSpeed(int speed){
         this.currentSpeed = speed;

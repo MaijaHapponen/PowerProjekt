@@ -20,11 +20,10 @@ import java.util.ArrayList;
  */
 public class GameView extends ApplicationAdapter implements Screen{
 
+    private WorldView worldView;
     private SpriteBatch batch;
-    public static TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
     private String level;
-    private TiledMap world;
     private OrthographicCamera camera;
     private Sprite sprite;
 
@@ -37,11 +36,11 @@ public class GameView extends ApplicationAdapter implements Screen{
     public GameView(){
         this.batch = new SpriteBatch();
         this.level = "hubbeneditsand";
-
+        this.worldView = new WorldView();
         this.playerView = new PlayerView();
+        this.batch = WorldView.batch;
 
-        map = new TmxMapLoader().load("maps/"+level+".tmx");
-        renderer = new OrthogonalTiledMapRenderer(map);
+        renderer = new OrthogonalTiledMapRenderer(worldView.getWorld());
     }
 
     @Override
@@ -62,7 +61,7 @@ public class GameView extends ApplicationAdapter implements Screen{
         renderer.render();
 
         batch.begin();
-        
+
         for(int i = 0; i<humansList.size(); i++){
             humansList.get(i).getSprite().draw(batch);
         }
@@ -91,9 +90,7 @@ public class GameView extends ApplicationAdapter implements Screen{
     }
 
     @Override
-    public void dispose() {
-        map.dispose();
-        renderer.dispose();
+    public void dispose() { renderer.dispose();
     }
 
     public void setPlayer(Player player){
@@ -112,13 +109,15 @@ public class GameView extends ApplicationAdapter implements Screen{
         }
     }
 
-    public void setWorld(TiledMap world) { this.world = world; }
-
     public void setCamera(OrthographicCamera camera) {
         playerView.setCamera(camera);
     }
 
     public PlayerView getPlayerView(){
         return this.playerView;
+    }
+
+    public WorldView getWorldView() {
+        return this.worldView;
     }
 }

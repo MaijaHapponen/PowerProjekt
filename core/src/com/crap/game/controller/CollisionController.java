@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.crap.game.model.CollisionModel;
 import com.crap.game.view.GameView;
 import com.crap.game.view.PlayerView;
+import com.crap.game.view.WorldView;
 
 import java.util.Iterator;
 
@@ -15,6 +16,8 @@ import java.util.Iterator;
  * Created by rebeccafinne on 2016-04-22.
  */
 public class CollisionController {
+
+    private WorldView view;
     CollisionModel collisionModel;
 
     private TiledMap map;  //The whole map
@@ -35,8 +38,7 @@ public class CollisionController {
 
     public CollisionController() {
         collisionModel = new CollisionModel();
-
-        this.map = GameView.map;
+        this.map = view.getWorld();
         allLayers = map.getLayers();
         collisionLayer = allLayers.get("Collision");
         collisionObjects = collisionLayer.getObjects();

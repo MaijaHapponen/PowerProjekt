@@ -10,10 +10,15 @@ import com.crap.game.view.GameView;
  */
 public class GameController extends InputAdapter implements ApplicationListener {
 
+
+    public enum GameState{STARTMENU, PLAY, INTERACT, GAMEOVER}
+
+    public  GameState state;
     private GameView view;
     private Game model;
     private OrthographicCamera camera;
     private PlayerController playerController;
+    private WorldController worldController;
     private int keyCode;
 
     private boolean keyPressed = false;
@@ -29,6 +34,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view = view;
         this.model = game;
 
+        this.state = GameState.STARTMENU;
+
         this.view.setPlayer(this.model.player);
         this.view.setCamera(this.camera);
 
@@ -36,6 +43,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view.setMascots(this.model.mascots);
 
         this.playerController = new PlayerController(this.view.getPlayerView());
+        this.worldController = new WorldController(this.view.getWorldView(), model);
 
         Gdx.input.setInputProcessor(this);
     }
@@ -47,6 +55,29 @@ public class GameController extends InputAdapter implements ApplicationListener 
         return true;
     }
 
+    public void update(){
+        switch (state) {
+            case STARTMENU:
+                //updateStart();
+                break;
+            case PLAY:
+                    //updatePlay();
+                break;
+            case INTERACT:
+                //updateInteract();
+                break;
+            case GAMEOVER:
+                //gameOver = true;
+                //updateGameOver();
+                break;
+        }
+    }
+
+    public void movePlayer(int keycode){
+        this.keyCode = keycode;
+        playerController.movePlayer(keyCode);
+    }
+
     @Override
     public void render(){
         if(Gdx.input.isKeyPressed(keyCode)) {
@@ -54,9 +85,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
         }
     }
 
-    public void movePlayer(int keycode){
-        playerController.movePlayer(keycode);
-    }
 
     @Override
     public void create() {}

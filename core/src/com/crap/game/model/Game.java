@@ -11,15 +11,12 @@ public class Game {
 
     private Progress progress;
     public Player player;
-    public World world;
+    //public TiledMap world;
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
     private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
     private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
-    //public static TiledMap map;
-    //private String level;
 
-    //Constructor
     public Game(){
         this.progress = new Progress();
         this.player = new Player();

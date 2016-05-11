@@ -7,6 +7,7 @@ import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.crap.game.model.CollisionModel;
 import com.crap.game.view.GameView;
+import com.crap.game.view.PlayerView;
 
 import java.util.Iterator;
 
@@ -27,6 +28,11 @@ public class CollisionController {
     private MapLayer newWorldLayer;
     private MapObjects newWorldObjects;
 
+    private MapObject mapObject;
+
+    private float playerWidth;
+    private float playerHeight;
+
     public CollisionController() {
         collisionModel = new CollisionModel();
         this.map = GameView.map;
@@ -39,6 +45,12 @@ public class CollisionController {
 
         newWorldLayer = allLayers.get("NewWorld");
         newWorldObjects = newWorldLayer.getObjects();
+
+    }
+
+    public void setPlayerWidthAndHeight(float width, float height){
+        this.playerWidth = width;
+        this.playerHeight = height;
     }
     public boolean isSlowerTerrain(float x, float y){
         updateTileValues(x, y);
@@ -60,24 +72,28 @@ public class CollisionController {
         }
     }
 
-    public void seeIfNewWorld(float x, float y){
-        /*if(isMapObjectHit(newWorldObjects.iterator(), x, y)){
-            collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
-        }*/
-    }
-
     public boolean isMapObjectHit(Iterator iter, float x, float y){
         while(iter.hasNext()) {
-            MapObject tempObj = (MapObject) iter.next();
-            Float positionX = (Float) tempObj.getProperties().get("x");
-            Float positionY = (Float) tempObj.getProperties().get("y");
-            Float width = (Float) tempObj.getProperties().get("width");
-            Float height = (Float) tempObj.getProperties().get("height");
-            if((x>positionX && x<(positionX+width))
-                    &&(y>positionY && y< (positionY +height)) ){
+            mapObject = (MapObject) iter.next();
+
+            if( checkIfCollide(x,y)||checkIfCollide(x+playerWidth,y)||
+                    checkIfCollide(x+playerWidth,y+playerHeight)||checkIfCollide(x,y+playerHeight)
+                    ||checkIfCollide(x,y+playerHeight/2)||checkIfCollide(x+playerWidth,y+playerHeight/2)){
                 return true;
             }
         }return false;
+
+    }
+
+
+    public boolean checkIfCollide(float playerPositionX, float playerPositionY) {
+
+        Float x = (Float) mapObject.getProperties().get("x");
+        Float y = (Float) mapObject.getProperties().get("y");
+        Float width = (Float) mapObject.getProperties().get("width");
+        Float height = (Float) mapObject.getProperties().get("height");
+
+        return (playerPositionX > x && playerPositionX < x+width) && (playerPositionY>y && playerPositionY<y+height) ;
     }
 
     public void updateCollisionValues(float x, float y){

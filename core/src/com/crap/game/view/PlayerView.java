@@ -61,10 +61,10 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
     public Texture getTexture() { return this.texture; }
 
-    public int getPlayerSpriteWidth(){
+    public float getPlayerSpriteWidth(){
         return this.texture.getWidth();
     }
-    public int getPlayerSpriteHeight(){
+    public float getPlayerSpriteHeight(){
         return this.texture.getHeight();
     }
 

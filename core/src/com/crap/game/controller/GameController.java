@@ -6,7 +6,9 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.model.Game;
 import com.crap.game.view.GameView;
 
+import static com.crap.game.model.Game.*;
 import static com.crap.game.model.Game.Worlds.EDIT;
+import static com.crap.game.model.Game.Worlds.HORSAL;
 
 /**
  * Created by Lisa on 18/04/16.
@@ -44,7 +46,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view.setMascots(this.model.mascots);
 
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
-        setWorld(Game.Worlds.HORSAL);
+        setWorld(HORSAL);
 
         Gdx.input.setInputProcessor(this);
     }
@@ -81,7 +83,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
         playerController.movePlayer(keyCode);
     }
 
-    public void setWorld(Game.Worlds worlds){
+    public void setWorld(Worlds worlds){
         switch (worlds) {
             case HORSAL:
                 view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));

@@ -16,7 +16,9 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private PlayerController playerController;
     private int keyCode;
 
-    public GameController(GameView view, Game world){
+    private boolean keyPressed = false;
+
+    public GameController(GameView view, Game game){
 
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
@@ -25,7 +27,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
         camera.setToOrtho(false, width, height);
 
         this.view = view;
-        this.model = world;
+        this.model = game;
 
         this.view.setPlayer(this.model.player);
         this.view.setCamera(this.camera);
@@ -44,8 +46,9 @@ public class GameController extends InputAdapter implements ApplicationListener 
         view.render();
         return true;
     }
+
     @Override
-    public void render() {
+    public void render(){
         if(Gdx.input.isKeyPressed(keyCode)) {
             movePlayer(keyCode);
         }
@@ -56,28 +59,18 @@ public class GameController extends InputAdapter implements ApplicationListener 
     }
 
     @Override
-    public void create() {
-
-    }
+    public void create() {}
 
     @Override
-    public void resize(int width, int height) {
-
-    }
+    public void resize(int width, int height) {}
 
     @Override
-    public void pause() {
-
-    }
+    public void pause() {}
 
     @Override
-    public void resume() {
-
-    }
+    public void resume() {}
 
     @Override
-    public void dispose() {
-
-    }
+    public void dispose() {}
 }
 

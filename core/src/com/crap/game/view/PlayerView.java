@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.crap.game.model.Player;
 import com.crap.game.model.Position;
+import com.crap.game.model.World;
 
 /**
  * Created by Maija on 2016-05-02.
@@ -76,6 +77,18 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         //TODO: fix so red is not visible
         if ((getPlayerPosition().getX() > 500 / 2) || (getPlayerPosition().getY() > 500 / 2)) {
             camera.position.set(x, y, 0);
+            camera.update();
+        }
+        else if(getPlayerPosition().getX() > 500/2){
+            camera.position.set(x, 250, 0);
+            camera.update();
+        }
+        else if(getPlayerPosition().getY() > 500/2){
+            camera.position.set(250, y, 0);
+            camera.update();
+        }
+        else {
+            camera.position.set(250,250,0);
             camera.update();
         }
     }

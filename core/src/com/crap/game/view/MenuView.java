@@ -10,9 +10,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-
 import com.crap.game.Main;
-import com.crap.game.controller.MenuController;
+
 
 /**
  * Created by Maija on 2016-05-11.
@@ -51,7 +50,6 @@ public class MenuView implements Screen{
         generator.dispose();
 
         menuItems = new String[]{"Play the game", "How to play", "Exit"};
-        font = new BitmapFont();
     }
 
     @Override
@@ -82,8 +80,7 @@ public class MenuView implements Screen{
     }
 
     @Override
-    public void pause() {
-
+   public void pause() {
     }
 
     @Override

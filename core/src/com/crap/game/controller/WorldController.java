@@ -4,7 +4,6 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.model.Game;
 import com.crap.game.view.GameView;
 
-
 /**
  * Created by andrea on 2016-04-28.
  */

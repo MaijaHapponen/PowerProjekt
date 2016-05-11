@@ -21,7 +21,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private Game model;
     private OrthographicCamera camera;
     private PlayerController playerController;
-    //private WorldController worldController;
     private int keyCode;
     private boolean keyPressed = false;
 

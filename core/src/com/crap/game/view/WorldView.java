@@ -5,8 +5,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.crap.game.model.Game;
-import com.crap.game.model.Position;
 
 /**
  * Created by andrea on 2016-05-09.
@@ -20,6 +18,8 @@ public class WorldView extends ApplicationAdapter implements Screen {
     public WorldView(){
         this.level = "horsalmaskin";
         this.world = new TmxMapLoader().load("maps/"+level+".tmx");
+
+        world = new TmxMapLoader().load("maps/"+level+".tmx");
     }
 
     public void setWorld(TiledMap world){

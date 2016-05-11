@@ -11,7 +11,6 @@ public class Game {
 
     private Progress progress;
     public Player player;
-    public World world;
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
     private String[] mascotNames = {"donald"};//{"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};

@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.crap.game.model.Player;
 import com.crap.game.model.Position;
-import com.crap.game.model.World;
 
 /**
  * Created by Maija on 2016-05-02.

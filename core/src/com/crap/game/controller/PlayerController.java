@@ -3,6 +3,7 @@ package com.crap.game.controller;
 import com.badlogic.gdx.Input;
 import com.crap.game.controller.CollisionController;
 import com.crap.game.model.Player;
+import com.crap.game.view.GameView;
 import com.crap.game.view.PlayerView;
 
 import com.crap.game.model.Player;
@@ -10,6 +11,7 @@ import com.crap.game.model.Player;
  * Created by rebeccafinne on 2016-04-30.
  */
 public class PlayerController {
+    GameView gameView;
     PlayerView playerView;
     Player player;
     CollisionController collisionController;
@@ -19,7 +21,7 @@ public class PlayerController {
         this.player = playerView.getPlayer();
         this.gameView = gameView;
 
-        this.collisionController = new CollisionController();
+        this.collisionController = new CollisionController(gameView.getWorld());
         collisionController.setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
     }
 

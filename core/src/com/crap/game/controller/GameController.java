@@ -23,7 +23,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private PlayerController playerController;
     //private WorldController worldController;
     private int keyCode;
-
     private boolean keyPressed = false;
 
     public GameController(GameView view, Game game){
@@ -37,7 +36,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view = view;
         this.model = game;
 
-        this.state = GameState.STARTMENU;
+        //this.state = GameState.STARTMENU;
 
         this.view.setPlayer(this.model.player);
         this.view.setCamera(this.camera);
@@ -45,7 +44,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);
 
-        this.worldController = new WorldController(this.view.getWorldView(), model);
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
         setWorld(Game.Worlds.HORSAL);
         //this.worldController = new WorldController(view, model);
@@ -61,6 +59,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
         return true;
     }
 
+    /*
     public void update(){
         switch (state) {
             case STARTMENU:
@@ -78,6 +77,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
                 break;
         }
     }
+    */
 
     public void movePlayer(int keycode){
         this.keyCode = keycode;
@@ -89,7 +89,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
         switch (worlds) {
             case HORSAL:
                 view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
-                model.player.setPosition(1,1); //TODO: Change value to correct location
+                //model.player.setPosition(1,1); //TODO: Change value to correct location
                 break;
 
             case EDIT:
@@ -122,20 +122,11 @@ public class GameController extends InputAdapter implements ApplicationListener 
         }
     }
 
-
     @Override
     public void create() {}
 
     @Override
-<<<<<<< HEAD
     public void resize(int width, int height) {}
-=======
-    public void render() {
-        if(Gdx.input.isKeyPressed(keyCode)) {
-            movePlayer(keyCode);
-        }
-    }
->>>>>>> Refactoring almost done, currently working on newworld
 
     @Override
     public void pause() {}

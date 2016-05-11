@@ -17,7 +17,6 @@ import java.util.Iterator;
  */
 public class CollisionController {
 
-    private WorldView view;
     CollisionModel collisionModel;
 
     private TiledMap map;  //The whole map
@@ -36,9 +35,11 @@ public class CollisionController {
     private float playerWidth;
     private float playerHeight;
 
-    public CollisionController() {
+    public CollisionController(TiledMap view) {
         collisionModel = new CollisionModel();
-        this.map = view.getWorld();
+
+        this.map = view;
+
         allLayers = map.getLayers();
         collisionLayer = allLayers.get("Collision");
         collisionObjects = collisionLayer.getObjects();
@@ -48,7 +49,6 @@ public class CollisionController {
 
         newWorldLayer = allLayers.get("NewWorld");
         newWorldObjects = newWorldLayer.getObjects();
-
     }
 
     public void setPlayerWidthAndHeight(float width, float height){
@@ -92,8 +92,8 @@ public class CollisionController {
                     ||checkIfCollide(x,y+playerHeight/2)||checkIfCollide(x+playerWidth,y+playerHeight/2)){
                 return true;
             }
-        }return false;
-
+        }
+        return false;
     }
 
 

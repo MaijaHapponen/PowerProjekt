@@ -20,13 +20,11 @@ import java.util.ArrayList;
  */
 public class GameView extends ApplicationAdapter implements Screen{
 
-    private WorldView worldView;
-    private SpriteBatch batch;
     private OrthogonalTiledMapRenderer renderer;
-    private String level;
+    private SpriteBatch batch;
     private OrthographicCamera camera;
-    private Sprite sprite;
 
+    private TiledMap world;
     private PlayerView playerView;
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
@@ -34,15 +32,11 @@ public class GameView extends ApplicationAdapter implements Screen{
 
 
     public GameView(){
-        //this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
+        this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
         this.playerView = new PlayerView();
         this.batch = new SpriteBatch();
-        this.level = "hubbeneditsand";
-        this.worldView = new WorldView();
-        this.playerView = new PlayerView();
-        this.batch = WorldView.batch;
 
-        renderer = new OrthogonalTiledMapRenderer(worldView.getWorld());
+        renderer = new OrthogonalTiledMapRenderer(world);
     }
 
     @Override
@@ -119,7 +113,11 @@ public class GameView extends ApplicationAdapter implements Screen{
         return this.playerView;
     }
 
-    public WorldView getWorldView() {
-        return this.worldView;
+    public void setWorld(TiledMap world){
+        this.world = world;
+    }
+
+    public TiledMap getWorld(){
+        return this.world;
     }
 }

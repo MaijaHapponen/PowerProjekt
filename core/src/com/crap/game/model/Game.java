@@ -11,22 +11,15 @@ public class Game {
 
     private Progress progress;
     public Player player;
-    //public TiledMap world;
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
-<<<<<<< HEAD
-    private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
-    private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
-=======
     private String[] mascotNames = {"donald"};//{"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
     private String[] humansNames = {};//]{"EHuman","DHuman","ITHuman","ZHuman"};
     private String[] worldNames = {"horsalmaskin", "hubbeneditsand", "parkingtemplate"};
->>>>>>> Refactoring almost done, currently working on newworld
 
     public Game(){
         this.progress = new Progress();
         this.player = new Player();
-        //this.world = new World();
         createHumans();
         createMascots();
     }
@@ -58,4 +51,6 @@ public class Game {
     public Player getPlayer(){
         return player;
     }
+
+    public String[] getWorldNames(){ return this.worldNames;}
 }

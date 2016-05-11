@@ -15,14 +15,9 @@ public class WorldView extends ApplicationAdapter implements Screen {
 
     private TiledMap world;
     public static SpriteBatch batch;
-    private Game.Worlds level;
+    private String level;
 
     public WorldView(){
-
-        this.batch = new SpriteBatch();
-        this.level = Game.Worlds.HORSAL;
-
-        world = new TmxMapLoader().load("maps/"+level+".tmx");
         this.level = "horsalmaskin";
         this.world = new TmxMapLoader().load("maps/"+level+".tmx");
     }

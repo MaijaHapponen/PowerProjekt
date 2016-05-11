@@ -39,7 +39,6 @@ public class CollisionController {
         collisionModel = new CollisionModel();
 
         this.map = view;
-
         allLayers = map.getLayers();
         collisionLayer = allLayers.get("Collision");
         collisionObjects = collisionLayer.getObjects();

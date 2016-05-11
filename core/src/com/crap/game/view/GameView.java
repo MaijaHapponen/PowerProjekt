@@ -20,8 +20,8 @@ import java.util.ArrayList;
  */
 public class GameView extends ApplicationAdapter implements Screen{
 
-    private OrthogonalTiledMapRenderer renderer;
     private SpriteBatch batch;
+    private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
 
     private TiledMap world;
@@ -117,7 +117,7 @@ public class GameView extends ApplicationAdapter implements Screen{
         this.world = world;
     }
 
-    public TiledMap getWorld(){
+    public TiledMap getWorld() {
         return this.world;
     }
 }

@@ -1,10 +1,8 @@
 package com.crap.game.controller;
 
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.model.Game;
 import com.crap.game.view.WorldView;
-import com.crap.game.view.GameView;
 
 
 /**

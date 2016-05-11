@@ -16,8 +16,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private PlayerController playerController;
     private int keyCode;
 
-    private boolean keyPressed = false;
-
     public GameController(GameView view, Game world){
 
         float width = Gdx.graphics.getWidth();
@@ -42,29 +40,19 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
     @Override
     public boolean keyDown(int keycode) {
-        keyPressed = true;
         this.keyCode=keycode;
-        if(Gdx.input.isKeyPressed(keyCode)){
-            movePlayer(keyCode);
-        }
         view.render();
-
         return true;
     }
-
-    public void update(){
-
-
+    @Override
+    public void render() {
+        if(Gdx.input.isKeyPressed(keyCode)) {
+            movePlayer(keyCode);
+        }
     }
 
     public void movePlayer(int keycode){
-        this.keyCode = keycode;
-        playerController.movePlayer(keyCode);
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        return false;
+        playerController.movePlayer(keycode);
     }
 
     @Override
@@ -75,14 +63,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
     @Override
     public void resize(int width, int height) {
 
-    }
-
-    @Override
-    public void render() {
-
-        if(Gdx.input.isKeyPressed(keyCode)) {
-            keyDown(keyCode);
-        }
     }
 
     @Override

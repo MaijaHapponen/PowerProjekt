@@ -35,6 +35,7 @@ public class CollisionController {
 
     public CollisionController() {
         collisionModel = new CollisionModel();
+
         this.map = GameView.map;
         allLayers = map.getLayers();
         collisionLayer = allLayers.get("Collision");

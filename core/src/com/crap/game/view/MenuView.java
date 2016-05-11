@@ -10,8 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+
 import com.crap.game.Main;
 import com.crap.game.controller.MenuController;
 
@@ -29,6 +28,7 @@ public class MenuView implements Screen{
 
     private String currentItem;
     private String[] menuItems;
+
 
     private Main main;
 
@@ -51,6 +51,7 @@ public class MenuView implements Screen{
         generator.dispose();
 
         menuItems = new String[]{"Play the game", "How to play", "Exit"};
+        font = new BitmapFont();
     }
 
     @Override
@@ -99,6 +100,7 @@ public class MenuView implements Screen{
     public void dispose() {
         batch.dispose();
         titleFont.dispose();
+
         font.dispose();
     }
 }

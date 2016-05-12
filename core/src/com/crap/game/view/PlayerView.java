@@ -14,19 +14,24 @@ import com.crap.game.model.Position;
  * Created by Maija on 2016-05-02.
  */
 public class PlayerView extends ApplicationAdapter implements Screen{
+
+    public enum AnimationState{WALKING_FRONT, WALKING_BACK, WALKING_RIGHT, WALKING_LEFT, STANDING_FRONT,
+        STANDING_BACK, STANDING_RIGHT, STANDING_LEFT}
+
     private Player player;
     private Sprite playerSprite;
     private Texture texture;
     private OrthographicCamera camera;
     private GameAnimation gameAnimation = new GameAnimation();
     private Animation animation;
+    private AnimationState animationState = AnimationState.WALKING_LEFT;
 
     public PlayerView(){
         this.texture = new Texture(Gdx.files.internal("characters/kalleAnka.png"));
         this.playerSprite = new Sprite(texture);
         playerSprite.setPosition(250, 250);
 
-        this.animation = this.gameAnimation.getAnimationFront(this.texture, 129, 190, 4, 4); //TODO animation
+        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, 129, 190, 4, 4); //TODO animation
     }
     public PlayerView(int x, int y){
         this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
@@ -106,19 +111,8 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         return this.animation;
     }
 
-    public void turnAround(int i){
-        if(i==0){
-            this.animation = this.gameAnimation.getAnimationFront(this.texture, 129, 190, 4, 4); //TODO animation
-        }
-        else if(i==1){
-            this.animation = this.gameAnimation.getAnimationLeft(this.texture, 129, 190, 4, 4); //TODO animation
-        }
-        else if(i==2){
-            this.animation = this.gameAnimation.getAnimationRight(this.texture, 129, 190, 4, 4); //TODO animation
-        }
-        else if(i==03){
-            this.animation = this.gameAnimation.getAnimationBack(this.texture, 129, 190, 4, 4); //TODO animation
-        }
+    public void setAnimationState(AnimationState animationState){
+        this.animationState = animationState;
+        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, 129, 190, 4, 4);
     }
-
 }

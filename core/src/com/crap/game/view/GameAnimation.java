@@ -11,6 +11,7 @@ public class GameAnimation {
     private TextureRegion[][] tmpFrames;
     private TextureRegion[] animationFrames;
 
+
     public Animation createAnimation(Texture texture, int width, int height, int rows, int columns, int startRow,
                                      int endRow) {
         tmpFrames = TextureRegion.split(texture, width/columns, height/rows);
@@ -24,6 +25,36 @@ public class GameAnimation {
             }
         }
         return new Animation(1f / 4f, animationFrames);
+    }
+
+    public Animation getAnimation(PlayerView.AnimationState animationState, Texture texture, int width, int height,
+                                  int rows, int columns){
+        switch (animationState){
+            case WALKING_FRONT:
+                return getAnimationFront(texture, width, height, rows, columns);
+
+            case WALKING_BACK:
+                return getAnimationBack(texture, width, height, rows, columns);
+
+            case WALKING_LEFT:
+                return getAnimationLeft(texture, width, height, rows, columns);
+
+            case WALKING_RIGHT:
+                return getAnimationRight(texture, width, height, rows, columns);
+
+            case STANDING_FRONT:
+                return getAnimationFront(texture, width, height, rows, columns); //TODO fix new method
+
+            case STANDING_BACK:
+                return getAnimationFront(texture, width, height, rows, columns); //TODO fix new method
+
+            case STANDING_LEFT:
+                return getAnimationFront(texture, width, height, rows, columns); //TODO fix new method
+
+            case STANDING_RIGHT:
+                return getAnimationFront(texture, width, height, rows, columns); //TODO fix new method
+        }
+        return getAnimationFront(texture, width, height, rows, columns); //TODO fix later
     }
 
     public Animation getAnimationFront(Texture texture, int width, int height, int rows, int columns){

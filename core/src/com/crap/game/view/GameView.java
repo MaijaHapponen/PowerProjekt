@@ -58,13 +58,13 @@ public class GameView extends ApplicationAdapter implements Screen{
         renderer.render();
 
         batch.begin();
-/*
+
         for(int i = 0; i<humansList.size(); i++){
             humansList.get(i).getSprite().draw(batch);
         }
         for(int i = 0; i<mascotsList.size(); i++){
             mascotsList.get(i).getSprite().draw(batch);
-        }*/
+        }
 
         batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime,true), playerView.getPlayerPosition().getX(),
                 playerView.getPlayerPosition().getY());

@@ -32,15 +32,19 @@ public class PlayerController {
         updateSpeed();
         if (keycode == Input.Keys.UP &&
                 !(checkIfCollision(getPlayerPositionX(), (getPlayerPositionY() + player.getCurrentSpeed())))) {
+            playerView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
             player.moveUp();
         } else if (keycode == Input.Keys.DOWN &&
                 !(checkIfCollision(getPlayerPositionX(), getPlayerPositionY()- player.getCurrentSpeed()))){
+            playerView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
             player.moveDown();
         } else if (keycode == Input.Keys.LEFT &&
                 !(checkIfCollision((getPlayerPositionX()) - player.getCurrentSpeed(), getPlayerPositionY()))){
+            playerView.setAnimationState(PlayerView.AnimationState.WALKING_LEFT);
             player.moveLeft();
         } else if (keycode == Input.Keys.RIGHT &&
                 !(checkIfCollision(getPlayerPositionX()+ player.getCurrentSpeed(), getPlayerPositionY())) )  {
+            playerView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
             player.moveRight();
         }
         updateSprite();
@@ -68,6 +72,10 @@ public class PlayerController {
         }else{
             player.setCurrentSpeed(player.getNormalSpeed());
         }
+    }
+
+    public void updateDirection(){
+
     }
 
     public Player getPlayer(){

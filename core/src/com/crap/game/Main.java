@@ -1,8 +1,10 @@
 package com.crap.game;
 
 import com.crap.game.controller.GameController;
+import com.crap.game.controller.MenuController;
 import com.crap.game.model.Game;
 import com.crap.game.view.GameView;
+import com.crap.game.view.MenuView;
 
 public class Main extends com.badlogic.gdx.Game {
 
@@ -14,7 +16,12 @@ public class Main extends com.badlogic.gdx.Game {
         worldView = new GameView();
         world = new Game();
         controller = new GameController(worldView, world);
-        setScreen(worldView);
+        MenuController menuController = new MenuController();
+        setScreen(new MenuView(this));
+    }
+
+    public GameView getWorldView(){
+        return this.worldView;
     }
 
     public GameView getWorldView(){

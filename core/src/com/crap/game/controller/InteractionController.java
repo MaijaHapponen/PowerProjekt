@@ -1,10 +1,6 @@
 package com.crap.game.controller;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.crap.game.model.*;
-import com.crap.game.model.Character;
 import com.crap.game.view.GameView;
 
 import java.util.Iterator;

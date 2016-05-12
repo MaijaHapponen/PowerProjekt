@@ -13,13 +13,10 @@ public class Main extends com.badlogic.gdx.Game {
     public Game world;
     public boolean gameMode = false;
 
-    public static int WIDTH;
-    public static int HEIGHT;
-
     public void create() {
 
         MenuView menuView = new MenuView(this);
-        MenuController menuController = new MenuController(menuView);
+        new MenuController(menuView);
         setScreen(menuView);
     }
 
@@ -27,6 +24,7 @@ public class Main extends com.badlogic.gdx.Game {
         worldView = new GameView();
         world = new Game();
         controller = new GameController(worldView, world);
+        setScreen(worldView);
         gameMode = true;
     }
 

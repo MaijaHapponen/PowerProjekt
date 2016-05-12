@@ -1,0 +1,43 @@
+﻿Meeting Agenda
+
+  Date: 3/5
+ Facilitator: Lisa
+  Secretary: Maija
+ Participants: Maija, Lisa, Rebecca (Andrea is absent)
+
+1. Objectives (5 min).
+* Nullpointers for Rebecca
+* Collision is still not fixed
+* We have issues with MVC, most parts of the project has been refactored however we are not sure if we have done it correctly
+
+
+2. Reports (15 min) 
+Maija & Rebecca: not done with collision or movement, have instead focused on MVC which might solve at least the movement problem’
+
+
+Andrea & Lisa: Have looked into sprites (animation) but have not been able to fix character movement because collision does not work. Have also tried to refactor the code inte MVC standards.
+
+3. Discussion items (35 min) 
+* MVC structure in project may solve many problems
+   * Movement issue - keyIsPressed can be used in PlayerController
+   * Collison needs to be fixed
+   * Maps might be fixed with new structure
+* CharacterController for movement or to be in CharacterModel ?
+* Dictionary for character name and sprite? 
+
+
+4. Outcomes and assignments (5 min) 
+Lisa: Fix character with texture name (string) as a variable. Player’s animation when movement is fixed.
+
+
+Rebecca: Fix movement with the new structure. Also look into character movement when collision is fixed (if there is time).
+
+
+Maija: Fix collision to MVC and develop it further to work
+
+
+Andrea: Fix the camera so it works with world width and height (look at the new structure).
+
+5. Wrap up
+Unresolved: have we done MVC correctly?
+Next meeting: 2016-05-05 at lunch

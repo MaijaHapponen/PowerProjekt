@@ -1,0 +1,36 @@
+﻿Meeting Agenda
+
+  Date: 12/5
+ Facilitator: Maija
+  Secretary: Maija
+ Participants: Maija, Rebecca, Andrea, Lisa
+
+1. Objectives (5 min).
+
+* Progress view - making  it work with mascots
+* Interaction popup 
+* Enter new world
+* MVC issues
+2. Reports (15 min)  
+
+
+Everyone: started with the SDD and made a first draft of class diagram, however not finished.
+Lisa: Have started with animation, though have been sick and have therefore not been able to work very much.
+Andrea: Fixed the camera-issue and and started with interaction between characters and player. Also fixed the different worlds and started with fixing teleporting between different worlds. Together with Maija fixed collision with characters.
+Maija: Created a main menu, fixed collision to be more effective, collision with characters, Also fixed the tiled maps to be more correct.
+Rebecca: Worked with the tests and fixed a progress view which works however not with showing the mascots. 
+3. Discussion items (35 min) 
+
+* Progress view and interaction view is supposed to work kind of the same, cooperate them together
+* Mascots into progress bar - how? Different pictures placed on top of each other.
+
+
+4. Outcomes and assignments (5 min) 
+Everyone: Class diagram and SDD needs to worked on! Time is running out. If finished with set assignment, look at requirements document and implement top priorities.
+Lisa: Continue fixing animation.
+Maija: Look inte states, changing between the views. Also some MVC changes interaction controller and collision controller
+Andrea: New world and interaction view. Cooperate with Rebecca.
+Rebecca: Progressview, continue to develop. Also write more tests.
+
+5. Wrap up
+Next meeting: 16th of may at lunch

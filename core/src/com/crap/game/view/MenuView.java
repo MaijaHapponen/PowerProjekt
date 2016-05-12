@@ -74,10 +74,6 @@ public class MenuView implements Screen{
         }
         batch.end();
 
-        if(Gdx.input.isKeyPressed(Input.Keys.ENTER)){
-            main.setScreen(main.getWorldView());
-            dispose();
-        }
     }
 
     public void setCurrentItem(String direction){
@@ -95,7 +91,6 @@ public class MenuView implements Screen{
     public void setScreen(){
         if(currentItem.equals("Play the game")){
             main.gameModeOn();
-            main.setScreen(main.getWorldView());
             dispose();
         }else if(currentItem.equals("How to play")){
 
@@ -128,7 +123,6 @@ public class MenuView implements Screen{
     public void dispose() {
         batch.dispose();
         titleFont.dispose();
-
         font.dispose();
     }
 }

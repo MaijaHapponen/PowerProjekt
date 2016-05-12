@@ -11,16 +11,16 @@ public class Progress {
 
     private ArrayList<Mascot> mascotsInGame = new ArrayList<Mascot>(); //TODO borde denna listan vara här eller i någon annan klass istället? Måste fylla på den när man startar spelet.
     private ArrayList<Mascot> mascotsCaught;
-    private ArrayList<Mascot> charactersOnBar;
+   // private ArrayList<Mascot> charactersOnBar;
     ArrayList<String> nameOnBar;
-    private boolean newMascotCaught = false;
+    //private boolean newMascotCaught = false;
     private Mascot newMascotToBar;
 
     //Constructor
     public Progress() {
 
         mascotsCaught = new ArrayList<Mascot>();
-        charactersOnBar = new ArrayList<Mascot>();
+        //charactersOnBar = new ArrayList<Mascot>();
         nameOnBar = new ArrayList<String>();
     }
 
@@ -37,7 +37,7 @@ public class Progress {
         for (int i = 0; i < mascotsInGame.size(); i++) {
             if (mascotsInGame.get(i).equals(mascot)) {
                 mascotsInGame.remove(i);
-                newMascotCaught = true;
+                //newMascotCaught = true;
             }
         }
         mascotsCaught.add(mascot);
@@ -52,7 +52,7 @@ public class Progress {
         return mascotsInGame;
     }
 
-    public void charactersOnBar() {
+   /* public void charactersOnBar() {
         for (int i = 0; i < mascotsCaught.size(); i++) {
             for(int j = 0; j < charactersOnBar.size(); j++){
                 if(mascotsCaught.get(i).getName().equals(charactersOnBar.get(j).getName())){
@@ -60,30 +60,24 @@ public class Progress {
                     newMascotCaught = false;
 
                 }
-
-
-
-
             }
-
         }
+    }*/
 
-    }
-
-    public ArrayList<Mascot> getCaractersOnBar(){
+   /* public ArrayList<Mascot> getCaractersOnBar(){
         return this.charactersOnBar;
     }
-
+*/
     public ArrayList<String> getNameCharactersOnBar(){
-        for(int i = 0; i < charactersOnBar.size(); i++){
-             nameOnBar.add(charactersOnBar.get(i).getName());
+        for(int i = 0; i < mascotsCaught.size(); i++){
+             nameOnBar.add(mascotsCaught.get(i).getName());
         }
         return nameOnBar;
     }
 
-    public boolean isNewMascotCaught(){
+   /* public boolean isNewMascotCaught(){
         return this.newMascotCaught;
-    }
+    }*/
 
 
     public Mascot getNewMascotToBar(){

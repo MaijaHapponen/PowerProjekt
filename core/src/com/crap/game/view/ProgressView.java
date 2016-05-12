@@ -30,13 +30,8 @@ import java.util.ArrayList;
  */
 public class ProgressView extends ApplicationAdapter implements Screen {
 
-    private Character character;
-    private Texture textureBack;
-    private Texture textureMascots;
-    private Sprite spriteBack;
-    private Sprite spriteMascots;
-    private Progress progress;
     Player player;
+    private Progress progress;
     private OrthographicCamera camera;
     private SpriteBatch batch;
 
@@ -46,10 +41,6 @@ public class ProgressView extends ApplicationAdapter implements Screen {
     private Label mascotsCaughtLabel = new Label(String.format("Mascots you have caught"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
     private Viewport viewPort;
     private Stage stage;
-
-
-
-    private TextureRegion textureRegion; //To make the progressbar a region and put caught mascots on there easier
 
 
 
@@ -65,8 +56,10 @@ public class ProgressView extends ApplicationAdapter implements Screen {
         table.setFillParent(true);
 
         table.add(mascotsCaughtLabel);
-        table.row();
-        table.add(progress.getNameCharactersOnBar());
+       /* if(progress.getMascotsCaught() != null) {
+            table.row();
+            table.add(progress.getNewMascotToBar().getName());
+        }*/
 
         stage.addActor(table);
 
@@ -81,7 +74,7 @@ public class ProgressView extends ApplicationAdapter implements Screen {
         return this.stage;
     }
 
-    public Texture getTextureBack(){
+   /* public Texture getTextureBack(){
         return this.textureBack;
     }
 
@@ -103,7 +96,7 @@ public class ProgressView extends ApplicationAdapter implements Screen {
 
     public TextureRegion getTextureRegion(){
         return this.textureRegion;
-    }
+    }*/
 
 
     public void moveCamera() {
@@ -137,13 +130,13 @@ public class ProgressView extends ApplicationAdapter implements Screen {
 
     }
 
-    public void update(){
+    /*public void update(){
         if(progress.isNewMascotCaught()){
             this.textureMascots = new Texture(progress.getNewMascotToBar().getName());
             this.spriteMascots = new Sprite(textureMascots);
             progress.getCaractersOnBar().add(progress.getNewMascotToBar());
         }
-    }
+    }*/
 
     public OrthographicCamera getCamera(){
         return this.camera;

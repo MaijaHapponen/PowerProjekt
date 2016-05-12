@@ -122,10 +122,10 @@ public class GameView extends ApplicationAdapter implements Screen{
         }
 
 
-        for(int i = 0; i < mascotsOnBar.size(); i++ ){
+       /* for(int i = 0; i < mascotsOnBar.size(); i++ ){
             mascotsOnBar.get(i).getSpriteMascots().draw(batch);
 
-        }
+        }*/
         batch.end();
 
         batch.setProjectionMatrix(progressView.getStage().getCamera().combined);

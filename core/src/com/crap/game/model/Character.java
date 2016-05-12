@@ -9,6 +9,8 @@ import java.util.Random;
 public abstract class Character{
     private String name;
     private Position position;
+    private float width;
+    private float height;
     private ArrayList<String> statementList;
     private int nbrOfStatements = 3;
 
@@ -23,6 +25,17 @@ public abstract class Character{
         this.name = name;
         this.position = position;
         this.statementList = new ArrayList<String>(nbrOfStatements); //TODO fylla listorna med frågor/ledtrådar. Vart?
+    }
+
+    public void setWidthAndHeight(float width, float height){
+        this.width=width;
+        this.height=height;
+    }
+    public float getWidth(){
+        return this.width;
+    }
+    public float getHeight(){
+        return this.height;
     }
 
     public Position getPosition(){

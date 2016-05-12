@@ -29,7 +29,9 @@ public class CollisionModel {
 
     public boolean isNewWorld() {return newWorld; }
 
-    public boolean isInteraction() {return interaction; }
+    public boolean checkIfCollide(float x, float y, float width, float height, float playerPositionX, float playerPositionY) {
+        return (playerPositionX > x && playerPositionX < x+width) && (playerPositionY>y && playerPositionY<y+height) ;
+    }
 
     public void setTypeOfTile(tileType tile){
         if(tile==tileType.SOLID_TILE){

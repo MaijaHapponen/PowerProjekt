@@ -1,5 +1,9 @@
 package com.crap.game;
 
+
+
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.crap.game.model.*;
 import com.crap.game.view.GameView;
 
 import com.crap.game.controller.GameController;
@@ -8,6 +12,7 @@ import com.crap.game.model.Game;
 import com.crap.game.view.GameView;
 import com.crap.game.view.MenuView;
 
+import com.crap.game.view.ProgressView;
 
 
 public class Main extends com.badlogic.gdx.Game {
@@ -17,6 +22,14 @@ public class Main extends com.badlogic.gdx.Game {
     public GameController controller;
     public Game world;
     public boolean gameMode = false;
+
+
+    public static int WIDTH;
+    public static int HEIGHT;
+
+    BitmapFont progressbar;
+    String catchedMascots;
+
 
     public void create() {
         MenuView menuView = new MenuView(this);
@@ -36,12 +49,14 @@ public class Main extends com.badlogic.gdx.Game {
         return this.worldView;
 
 
+
     }
 
     @Override
     public void render () {
 
         controller.render();
+
 
 
     }

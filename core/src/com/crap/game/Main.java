@@ -17,14 +17,14 @@ public class Main extends com.badlogic.gdx.Game {
     public static int HEIGHT;
 
     public void create() {
-
         MenuView menuView = new MenuView(this);
         MenuController menuController = new MenuController(menuView);
         setScreen(menuView);
     }
 
     public void gameModeOn(){
-        worldView = new GameView();
+        //worldView = new GameView();
+        worldView = new GameView(this);
         world = new Game();
         controller = new GameController(worldView, world);
         gameMode = true;

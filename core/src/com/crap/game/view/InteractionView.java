@@ -1,9 +1,6 @@
 package com.crap.game.view;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,7 +12,7 @@ import com.crap.game.controller.InteractionController;
 /**
  * Created by Maija on 2016-05-11.
  */
-public class InteractionView implements Screen{
+public class InteractionView extends GameView{
 
     private SpriteBatch batch;
     private BitmapFont font;
@@ -23,6 +20,7 @@ public class InteractionView implements Screen{
     private Main main;
 
     public InteractionView(Main g){
+        super(g);
         this.main = g;
         batch = new SpriteBatch();
         font = new BitmapFont();

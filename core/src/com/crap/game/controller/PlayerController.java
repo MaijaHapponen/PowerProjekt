@@ -74,10 +74,6 @@ public class PlayerController {
         }
     }
 
-    public void updateDirection(){
-
-    }
-
     public Player getPlayer(){
         return this.player;
     }

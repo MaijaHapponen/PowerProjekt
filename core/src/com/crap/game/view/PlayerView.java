@@ -31,7 +31,7 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         this.playerSprite = new Sprite(texture);
         playerSprite.setPosition(250, 250);
 
-        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, 129, 190, 4, 4); //TODO animation
+        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, 129, 190, 4, 4);
     }
     public PlayerView(int x, int y){
         this.texture = new Texture(Gdx.files.internal("characters/imp.png"));

@@ -1,10 +1,11 @@
 package com.crap.game;
 
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.crap.game.model.*;
 import com.crap.game.view.GameView;
 import com.crap.game.controller.GameController;
-import com.crap.game.model.Game;
-
+import com.crap.game.view.ProgressView;
 
 
 public class Main extends com.badlogic.gdx.Game {
@@ -14,13 +15,16 @@ public class Main extends com.badlogic.gdx.Game {
     public GameController controller;
     public Game world;
 
+    BitmapFont progressbar;
+    String catchedMascots;
+
+
     public void create() {
         worldView = new GameView();
         world = new Game();
         controller = new GameController(worldView, world);
-
-
         setScreen(worldView);
+
 
     }
 
@@ -28,6 +32,7 @@ public class Main extends com.badlogic.gdx.Game {
     public void render () {
         super.render();
         controller.render();
+
 
 
     }

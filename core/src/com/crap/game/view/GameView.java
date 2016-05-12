@@ -6,15 +6,22 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crap.game.model.*;
 import com.badlogic.gdx.math.Intersector;
+import com.crap.game.model.Character;
+import com.sun.prism.image.ViewPort;
 
-import java.lang.Character;
 import java.util.ArrayList;
 
 /**
@@ -35,6 +42,14 @@ public class GameView extends ApplicationAdapter implements Screen{
     private Progress progress;
     private Character character;
 
+   // private Viewport fillViewport1;
+
+   // private Viewport fillViewport2;
+
+
+
+
+
 
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
@@ -48,10 +63,22 @@ public class GameView extends ApplicationAdapter implements Screen{
         this.level = "horsalmaskin";
 
         this.playerView = new PlayerView();
-        this.progressView = new ProgressView(character);
+        this.progressView = new ProgressView();
 
         map = new TmxMapLoader().load("maps/"+level+".tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
+
+
+
+
+
+
+
+
+        //fillViewport1 = new FillViewport(500, 500);
+       // fillViewport2 = new FillViewport(100, 100);
+
+
     }
 
     @Override
@@ -64,15 +91,29 @@ public class GameView extends ApplicationAdapter implements Screen{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
+        //Gdx.gl.glViewport(0, 100, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+        //fillViewport1.apply();
+
+
+
         this.camera = playerView.getCamera();
+        renderer.setView(camera);
+
+
+
 
         batch.setProjectionMatrix(camera.combined);
 
-        renderer.setView(camera);
+
+
         renderer.render();
 
         batch.begin();
-        
+
+
+        playerView.getSprite().draw(batch);
+
         for(int i = 0; i<humansList.size(); i++){
             humansList.get(i).getSprite().draw(batch);
         }
@@ -85,16 +126,20 @@ public class GameView extends ApplicationAdapter implements Screen{
             mascotsOnBar.get(i).getSpriteMascots().draw(batch);
 
         }
-
-        progressView.getSpriteBack().draw(batch);
-        playerView.getSprite().draw(batch);
         batch.end();
+
+        batch.setProjectionMatrix(progressView.getStage().getCamera().combined);
+        progressView.getStage().draw();
 
 
     }
 
     @Override
     public void resize(int width, int height) {
+
+        //fillViewport1.update(width, height);
+
+        //fillViewport2.update(width, height);
     }
 
     @Override
@@ -134,7 +179,7 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     public void setMascotsOnBar(ArrayList<Mascot> mascotsOnBarl){
         for(int i = 0; i < mascotsOnBarl.size(); i++){
-            this.mascotsOnBar.add(new ProgressView(character));
+            this.mascotsOnBar.add(new ProgressView());
         }
     }
 

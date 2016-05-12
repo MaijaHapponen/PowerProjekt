@@ -31,13 +31,8 @@ import java.util.ArrayList;
  */
 public class ProgressView extends ApplicationAdapter implements Screen {
 
-    private Character character;
-    private Texture textureBack;
-    private Texture textureMascots;
-    private Sprite spriteBack;
-    private Sprite spriteMascots;
-    private Progress progress;
     Player player;
+    private Progress progress;
     private OrthographicCamera camera;
     private SpriteBatch batch;
 
@@ -49,7 +44,6 @@ public class ProgressView extends ApplicationAdapter implements Screen {
     private Stage stage;
 
 
-    private TextureRegion textureRegion; //To make the progressbar a region and put caught mascots on there easier
 
 
 
@@ -66,8 +60,10 @@ public class ProgressView extends ApplicationAdapter implements Screen {
         table.setFillParent(true);
 
         table.add(mascotsCaughtLabel);
-        table.row();
-        table.add(progress.getNameCharactersOnBar());
+       /* if(progress.getMascotsCaught() != null) {
+            table.row();
+            table.add(progress.getNewMascotToBar().getName());
+        }*/
 
         stage.addActor(table);
 
@@ -85,40 +81,7 @@ public class ProgressView extends ApplicationAdapter implements Screen {
 
 
 
-    public Texture getTextureBack(){
-        return this.textureBack;
-    }
 
-    public int getProgressbarWidth(){
-        return this.progressbarWidth;
-    }
-
-    public int getProgressbarHeight(){
-        return this.progressbarHeight;
-    }
-
-    public Sprite getSpriteBack(){
-        return this.spriteBack;
-    }
-
-    public Sprite getSpriteMascots(){
-        return this.spriteMascots;
-    }
-
-    public TextureRegion getTextureRegion(){
-        return this.textureRegion;
-    }
-
-
-    public void moveCamera() {
-        //TODO: fix so red is not visible
-        if ((player.getPosition().getX() > 500 / 2) || (player.getPosition().getY() > 500 / 2)) {
-            camera.position.set(player.getPosition().getX(), player.getPosition().getY(), 0);
-            camera.update();
-        }
-       /* camera.position.set(player.getPosition().getX() - 250, player.getPosition().getY() -250, 0);
-        camera.update();    */
-    }
 
 
 
@@ -147,13 +110,13 @@ public class ProgressView extends ApplicationAdapter implements Screen {
 
 
 
-    public void update(){
+    /*public void update(){
         if(progress.isNewMascotCaught()){
             this.textureMascots = new Texture(progress.getNewMascotToBar().getName());
             this.spriteMascots = new Sprite(textureMascots);
             progress.getCaractersOnBar().add(progress.getNewMascotToBar());
         }
-    }
+    }*/
 
     public OrthographicCamera getCamera(){
         return this.camera;

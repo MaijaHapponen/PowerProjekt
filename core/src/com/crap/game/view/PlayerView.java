@@ -26,7 +26,7 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     private int halfOfScreen = 250;
     private GameAnimation gameAnimation = new GameAnimation();
     private Animation animation;
-    private AnimationState animationState = AnimationState.WALKING_LEFT;
+    private AnimationState animationState = AnimationState.STANDING_FRONT;
 
     public PlayerView(){
         this.texture = new Texture(Gdx.files.internal("characters/kalleAnka.png"));

@@ -24,52 +24,76 @@ public class GameAnimation {
                 animationFrames[index++] = tmpFrames[i][j];
             }
         }
-        return new Animation(1f / 4f, animationFrames);
+        return new Animation(1f/6f, animationFrames);
+    }
+
+    public Animation createImage(Texture texture, int width, int height, int rows, int columns, int imageRow,
+                                 int imageColumn){
+        tmpFrames = TextureRegion.split(texture, width/columns, height/rows);
+        animationFrames = new TextureRegion[1];
+        animationFrames[0] = tmpFrames[imageRow][imageColumn];
+        return new Animation(1f/4f, animationFrames);
     }
 
     public Animation getAnimation(PlayerView.AnimationState animationState, Texture texture, int width, int height,
                                   int rows, int columns){
         switch (animationState){
             case WALKING_FRONT:
-                return getAnimationFront(texture, width, height, rows, columns);
+                return getAnimationWalkingFront(texture, width, height, rows, columns);
 
             case WALKING_BACK:
-                return getAnimationBack(texture, width, height, rows, columns);
+                return getAnimationWalkingBack(texture, width, height, rows, columns);
 
             case WALKING_LEFT:
-                return getAnimationLeft(texture, width, height, rows, columns);
+                return getAnimationWalkingLeft(texture, width, height, rows, columns);
 
             case WALKING_RIGHT:
-                return getAnimationRight(texture, width, height, rows, columns);
+                return getAnimationWalkingRight(texture, width, height, rows, columns);
 
             case STANDING_FRONT:
-                return getAnimationFront(texture, width, height, rows, columns); //TODO fix new method
+                return getAnimationStandingFront(texture, width, height, rows, columns);
 
             case STANDING_BACK:
-                return getAnimationFront(texture, width, height, rows, columns); //TODO fix new method
+                return getAnimationStandingBack(texture, width, height, rows, columns);
 
             case STANDING_LEFT:
-                return getAnimationFront(texture, width, height, rows, columns); //TODO fix new method
+                return getAnimationStandingLeft(texture, width, height, rows, columns);
 
             case STANDING_RIGHT:
-                return getAnimationFront(texture, width, height, rows, columns); //TODO fix new method
+                return getAnimationStandingRight(texture, width, height, rows, columns);
         }
-        return getAnimationFront(texture, width, height, rows, columns); //TODO fix later
+        return getAnimationStandingFront(texture, width, height, rows, columns);
     }
 
-    public Animation getAnimationFront(Texture texture, int width, int height, int rows, int columns){
+    public Animation getAnimationWalkingFront(Texture texture, int width, int height, int rows, int columns){
         return createAnimation(texture, width, height, rows, columns, 1, 1);
     }
 
-    public Animation getAnimationBack(Texture texture, int width, int height, int rows, int columns){
+    public Animation getAnimationWalkingBack(Texture texture, int width, int height, int rows, int columns){
         return createAnimation(texture, width, height, rows, columns, 4, 4);
     }
 
-    public Animation getAnimationLeft(Texture texture, int width, int height, int rows, int columns){
+    public Animation getAnimationWalkingLeft(Texture texture, int width, int height, int rows, int columns){
         return createAnimation(texture, width, height, rows, columns, 2, 2);
     }
 
-    public Animation getAnimationRight(Texture texture, int width, int height, int rows, int columns){
+    public Animation getAnimationWalkingRight(Texture texture, int width, int height, int rows, int columns){
         return createAnimation(texture, width, height, rows, columns, 3, 3);
+    }
+
+    public Animation getAnimationStandingFront(Texture texture, int width, int height, int rows, int columns){
+        return createImage(texture, width, height, rows, columns, 0, 0);
+    }
+
+    public Animation getAnimationStandingBack(Texture texture, int width, int height, int rows, int columns){
+        return createImage(texture, width, height, rows, columns, 3, 0);
+    }
+
+    public Animation getAnimationStandingLeft(Texture texture, int width, int height, int rows, int columns){
+        return createImage(texture, width, height, rows, columns, 1, 0);
+    }
+
+    public Animation getAnimationStandingRight(Texture texture, int width, int height, int rows, int columns){
+        return createImage(texture, width, height, rows, columns, 2, 0);
     }
 }

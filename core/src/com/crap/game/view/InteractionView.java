@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.crap.game.Main;
+import com.crap.game.model.*;
+import com.crap.game.model.Game;
 
 /**
  * Created by Maija on 2016-05-11.
@@ -17,7 +19,7 @@ public class InteractionView extends GameView{
     private Main main;
 
     public InteractionView(Main g){
-        super(g);
+        super(g.getWorld());
         this.main = g;
         batch = new SpriteBatch();
         font = new BitmapFont();

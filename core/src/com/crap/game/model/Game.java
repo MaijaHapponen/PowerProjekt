@@ -53,4 +53,8 @@ public class Game {
     }
 
     public String[] getWorldNames(){ return this.worldNames;}
+
+    public Progress getProgress() {
+        return progress;
+    }
 }

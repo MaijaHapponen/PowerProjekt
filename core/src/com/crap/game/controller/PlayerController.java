@@ -29,6 +29,7 @@ public class PlayerController {
 
     public void movePlayer(int keycode) {
 
+        System.out.println(collisionController.isNewWorld(getPlayerPositionX(),getPlayerPositionY()));
         updateSpeed();
         if (keycode == Input.Keys.UP &&
                 !(checkIfCollision(getPlayerPositionX(), (getPlayerPositionY() + player.getCurrentSpeed())))) {

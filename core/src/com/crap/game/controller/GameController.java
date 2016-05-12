@@ -17,7 +17,6 @@ import static com.crap.game.model.Game.Worlds.HORSAL;
  */
 public class GameController extends InputAdapter implements ApplicationListener {
 
-
     public enum GameState{STARTMENU, PLAY, INTERACT, GAMEOVER}
 
     public  GameState state;
@@ -96,12 +95,12 @@ public class GameController extends InputAdapter implements ApplicationListener 
         switch (worlds) {
             case HORSAL:
                 view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
-                //model.player.setPosition(1,1); //TODO: Change value to correct location
+                model.player.setPosition(250,250); //TODO: Change value to correct location
                 break;
 
             case EDIT:
                 view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
-                model.player.setPosition(2,2); //TODO: Change value to correct location
+                model.player.setPosition(30,30); //TODO: Change value to correct location
                 break;
 
             case PARKING:

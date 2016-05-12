@@ -36,6 +36,7 @@ public class GameView extends ApplicationAdapter implements Screen{
     public GameView(Main main){
         this.main = main;
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
+        //setWorld(world);
         this.playerView = new PlayerView();
         this.batch = new SpriteBatch();
 

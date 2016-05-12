@@ -131,7 +131,7 @@
   <object id="11" name="Collision" x="261" y="419" width="62" height="16"/>
   <object id="12" name="Collision" x="323" y="334" width="188" height="77"/>
   <object id="14" name="Collision" x="322" y="336" width="28" height="99"/>
-  <object id="15" name="Collision" x="385" y="335" width="127" height="101"/>
+  <object id="15" name="Collision" x="386" y="335" width="126" height="101"/>
   <object id="16" name="Collision" x="548" y="326" width="60" height="18"/>
   <object id="17" name="Collision" x="550" y="422" width="59" height="15"/>
   <object id="18" name="Collision" x="610" y="332" width="192" height="103"/>

@@ -5,10 +5,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.crap.game.Main;
 import com.crap.game.model.*;
 
 import java.util.ArrayList;
@@ -22,17 +24,22 @@ public class GameView extends ApplicationAdapter implements Screen{
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
 
-    private TiledMap world;
+    public static TiledMap world;
     private PlayerView playerView;
+    private BitmapFont font;
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
 
+    public Main main;
 
-    public GameView(){
+    public GameView(Main main){
+        this.main = main;
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
         this.playerView = new PlayerView();
         this.batch = new SpriteBatch();
+
+        font = new BitmapFont();
 
         renderer = new OrthogonalTiledMapRenderer(world);
     }

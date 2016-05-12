@@ -37,17 +37,6 @@ public class GameView extends ApplicationAdapter implements Screen{
     private PlayerView playerView;
     private BitmapFont font;
     private ProgressView progressView;
-    private Progress progress;
-    private Character character;
-
-   // private Viewport fillViewport1;
-
-   // private Viewport fillViewport2;
-
-
-
-
-
 
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
@@ -64,14 +53,8 @@ public class GameView extends ApplicationAdapter implements Screen{
         this.progressView = new ProgressView();
 
         font = new BitmapFont();
-
-
-        this.playerView = new PlayerView();
-        this.progressView = new ProgressView();
-
-        map = new TmxMapLoader().load("maps/"+level+".tmx");
-        renderer = new OrthogonalTiledMapRenderer(map);
-
+        
+        renderer = new OrthogonalTiledMapRenderer(world);
 
 
 

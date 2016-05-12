@@ -54,8 +54,10 @@ public class Main extends com.badlogic.gdx.Game {
 
     @Override
     public void render () {
-
-        controller.render();
+        super.render();
+        if(gameMode == true) {
+            controller.render();
+        }
 
 
 

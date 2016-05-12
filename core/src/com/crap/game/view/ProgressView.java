@@ -102,6 +102,7 @@ public class ProgressView extends ApplicationAdapter implements Screen {
     @Override
     public void hide() {
 
+    }
 
 
 
@@ -110,13 +111,7 @@ public class ProgressView extends ApplicationAdapter implements Screen {
 
 
 
-    /*public void update(){
-        if(progress.isNewMascotCaught()){
-            this.textureMascots = new Texture(progress.getNewMascotToBar().getName());
-            this.spriteMascots = new Sprite(textureMascots);
-            progress.getCaractersOnBar().add(progress.getNewMascotToBar());
-        }
-    }*/
+
 
     public OrthographicCamera getCamera(){
         return this.camera;

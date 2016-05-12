@@ -2,6 +2,8 @@ package com.crap.game.view;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -16,9 +18,10 @@ import java.util.ArrayList;
 /**
  * Created by andrea on 2016-05-09.
  */
-public class WorldView extends ApplicationAdapter implements Screen {
+public class WorldView{ //} extends ApplicationAdapter implements Screen {
 
-    private TiledMap world;
+  /*  private TiledMap world;
+    private String level;
 
     private OrthographicCamera camera;
     private Sprite sprite;
@@ -105,5 +108,5 @@ public class WorldView extends ApplicationAdapter implements Screen {
     @Override
     public void hide() {
 
-    }
+    }*/
 }

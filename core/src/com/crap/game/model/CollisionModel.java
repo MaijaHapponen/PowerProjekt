@@ -43,7 +43,7 @@ public class CollisionModel {
         }else if(tile==tileType.NEW_WORLD){
             blocked=true;
             slow=false;
-            newWorld=false;
+            newWorld=true;
         }
         else{
             blocked = false;

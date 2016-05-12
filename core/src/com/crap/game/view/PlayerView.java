@@ -17,6 +17,8 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     private Sprite playerSprite;
     private Texture texture;
     private OrthographicCamera camera;
+    private int pixelPerTile = 30;
+    private int halfOfScreen = 250;
 
     public PlayerView(){
         this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
@@ -72,71 +74,66 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     }
 
     public void moveCamera(float x,float y) {
-        if ((getPlayerPosition().getX() > 500 / 2) | (getPlayerPosition().getY() > 500 / 2)) {
-            camera.position.set(x, y, 0);
-            camera.update();
-            int worldLeft = 0;
-            int worldBottom = 0;
-            int worldRight = GameView.world.getProperties().get("width", Integer.class) * 25;
-            int worldTop = GameView.world.getProperties().get("height", Integer.class) * 25;
 
-            System.out.println(worldRight + "+" + worldTop);
+        int worldLeft = 0;
+        int worldBottom = 0;
+        int worldRight = GameView.world.getProperties().get("width", Integer.class) * 25;
+        int worldTop = GameView.world.getProperties().get("height", Integer.class) * 25;
 
-            float px = getPlayerPosition().getX();
-            float py = getPlayerPosition().getY();
-            float boarderLeft = worldLeft + 250;
-            float boarderRight = worldRight;//-250;
-            float boarderTop = worldTop;//-250;
-            float boarderBottom = worldBottom + 250;
+        float px = getPlayerPosition().getX();
+        float py = getPlayerPosition().getY();
+        float boarderLeft = worldLeft + 250;
+        float boarderRight = worldRight;//-250;
+        float boarderTop = worldTop;//-250;
+        float boarderBottom = worldBottom + 250;
 
-            if ((px > boarderLeft) && (px < boarderRight)) {
-                if ((py > boarderBottom) && (py < boarderTop)) {
-                    camera.position.set(x, y, 0);
-                    camera.update();
-                } else if (py > boarderBottom) {
-                    camera.position.set(x, boarderTop, 0);
-                    camera.update();
-                } else {
-                    camera.position.set(x, boarderBottom, 0);
-                    camera.update();
-                }
-            } else if (px > boarderLeft) {
-                if ((py > boarderBottom) && (py < boarderTop)) {
-                    camera.position.set(boarderRight, y, 0);
-                    camera.update();
-                } else if (py > boarderBottom) {
-                    camera.position.set(boarderRight, boarderTop, 0);
-                    camera.update();
-                } else {
-                    camera.position.set(boarderRight, boarderBottom, 0);
-                    camera.update();
-                }
-            } else if ((px < boarderRight)) {
-                if ((py > boarderBottom) && (py < boarderTop)) {
-                    camera.position.set(boarderLeft, y, 0);
-                    camera.update();
-                } else if (py > boarderBottom) {
-                    camera.position.set(boarderLeft, boarderTop, 0);
-                    camera.update();
-                } else {
-                    camera.position.set(boarderLeft, boarderBottom, 0);
-                    camera.update();
-                }
-            } else if ((py > boarderBottom) && (py < boarderTop)) {
-                if (px > boarderLeft) {
-                    camera.position.set(boarderRight, y, 0);
-                    camera.update();
-                } else {
-                    camera.position.set(boarderLeft, y, 0);
-                    camera.update();
-                }
+        if ((px > boarderLeft) && (px < boarderRight)) {
+            if ((py > boarderBottom) && (py < boarderTop)) {
+                camera.position.set(x, y, 0);
+                camera.update();
             } else if (py > boarderBottom) {
                 camera.position.set(x, boarderTop, 0);
                 camera.update();
-            } else if (py < boarderTop) {
+            } else {
                 camera.position.set(x, boarderBottom, 0);
                 camera.update();
             }
+        } else if (px > boarderLeft) {
+            if ((py > boarderBottom) && (py < boarderTop)) {
+                camera.position.set(boarderRight, y, 0);
+                camera.update();
+            } else if (py > boarderBottom) {
+                camera.position.set(boarderRight, boarderTop, 0);
+                camera.update();
+            } else {
+                camera.position.set(boarderRight, boarderBottom, 0);
+                camera.update();
+            }
+        } else if ((px < boarderRight)) {
+            if ((py > boarderBottom) && (py < boarderTop)) {
+                camera.position.set(boarderLeft, y, 0);
+                camera.update();
+            } else if (py > boarderBottom) {
+                camera.position.set(boarderLeft, boarderTop, 0);
+                camera.update();
+            } else {
+                camera.position.set(boarderLeft, boarderBottom, 0);
+                camera.update();
+            }
+        } else if ((py > boarderBottom) && (py < boarderTop)) {
+            if (px > boarderLeft) {
+                camera.position.set(boarderRight, y, 0);
+                camera.update();
+            } else {
+                camera.position.set(boarderLeft, y, 0);
+                camera.update();
+            }
+        } else if (py > boarderBottom) {
+            camera.position.set(x, boarderTop, 0);
+            camera.update();
+        } else if (py < boarderTop) {
+            camera.position.set(x, boarderBottom, 0);
+            camera.update();
         }
     }
 

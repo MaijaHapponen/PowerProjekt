@@ -57,7 +57,7 @@ public class PlayerController {
         return player.getPosition().getY();
     }
     public boolean checkIfCollision(float x, float y){
-        return (collisionController.isCollison(x,y) || interactionController.isInteractionWithHuman(x,y)
+        return (collisionController.isCollison(x,y) || collisionController.isNewWorld(x,y)|| interactionController.isInteractionWithHuman(x,y)
                 || interactionController.isInteractionWithMascot(x,y));
     }
 

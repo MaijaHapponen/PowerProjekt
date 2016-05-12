@@ -36,17 +36,12 @@ public class ProgressView extends ApplicationAdapter implements Screen {
     private OrthographicCamera camera;
     private SpriteBatch batch;
 
-    private int progressbarWidth = 400;
-    private int progressbarHeight = 100;
+    private int progressbarWidth = 500;
+    private int progressbarHeight = 500;
 
     private Label mascotsCaughtLabel = new Label(String.format("Mascots you have caught"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
     private Viewport viewPort;
     private Stage stage;
-
-
-
-
-
 
 
     public ProgressView(){

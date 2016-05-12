@@ -35,7 +35,7 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     public static TiledMap world;
     private PlayerView playerView;
-    private BitmapFont font;
+   // private BitmapFont font;
     private ProgressView progressView;
 
 
@@ -52,8 +52,8 @@ public class GameView extends ApplicationAdapter implements Screen{
         this.batch = new SpriteBatch();
         this.progressView = new ProgressView();
 
-        font = new BitmapFont();
-        
+        //font = new BitmapFont();
+
         renderer = new OrthogonalTiledMapRenderer(world);
 
 

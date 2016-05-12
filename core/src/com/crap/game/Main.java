@@ -27,17 +27,16 @@ public class Main extends com.badlogic.gdx.Game {
     public static int WIDTH;
     public static int HEIGHT;
 
-    BitmapFont progressbar;
-    String catchedMascots;
-
 
     public void create() {
         MenuView menuView = new MenuView(this);
         new MenuController(menuView);
         setScreen(menuView);
+
     }
 
     public void gameModeOn(){
+
         worldView = new GameView(this);
         world = new Game();
         controller = new GameController(worldView, world);

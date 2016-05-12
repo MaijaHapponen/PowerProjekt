@@ -56,7 +56,11 @@ public class GameController extends InputAdapter implements ApplicationListener 
     @Override
     public boolean keyDown(int keycode) {
         this.keyCode=keycode;
-        if(playerController.interactionController.isInteractionWithMascot(model.getPlayer().getPosition().getX(),
+        if(playerController.collisionController.isNewWorld(playerController.getPlayerPositionX()+
+                playerController.player.getCurrentSpeed(), playerController.getPlayerPositionY())){
+            enterNewWorld();
+        }
+        else if(playerController.interactionController.isInteractionWithMascot(model.getPlayer().getPosition().getX(),
                             model.getPlayer().getPosition().getY()) || playerController.interactionController.
                     isInteractionWithMascot(model.getPlayer().getPosition().getX(),model.getPlayer().getPosition().getY())){
             this.state = INTERACT;
@@ -110,13 +114,11 @@ public class GameController extends InputAdapter implements ApplicationListener 
         }
     }
 
-    public boolean enterNewWorld(){
-        if(playerController.collisionController.
+    public void enterNewWorld(){
+        /*if(playerController.collisionController.
                 isNewWorld(playerController.getPlayerPositionX(), playerController.getPlayerPositionY()) ) {
-            setWorld(EDIT);
-            return true;
-        }
-        return false;
+            */
+        setWorld(EDIT);
     }
 
     @Override

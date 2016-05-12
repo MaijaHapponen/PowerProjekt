@@ -17,6 +17,8 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     private Sprite playerSprite;
     private Texture texture;
     private OrthographicCamera camera;
+    private int pixelPerTile = 30;
+    private int halfOfScreen = 250;
 
     public PlayerView(){
         this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
@@ -75,17 +77,17 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
         int worldLeft = 0;
         int worldBottom = 0;
-        int worldRight = GameView.world.getProperties().get("width", Integer.class)*25;
-        int worldTop = GameView.world.getProperties().get("height", Integer.class)*25;
-
-        System.out.println(worldRight + "+" + worldTop);
+        int worldRight = GameView.world.getProperties().get("width", Integer.class)*pixelPerTile;
+        int worldTop = GameView.world.getProperties().get("height", Integer.class)*pixelPerTile;
 
         float px = getPlayerPosition().getX();
         float py = getPlayerPosition().getY();
-        float boarderLeft = worldLeft+250;
-        float boarderRight = worldRight;//-250;
-        float boarderTop = worldTop;//-250;
-        float boarderBottom = worldBottom+250;
+        float boarderLeft = worldLeft+halfOfScreen;
+        float boarderRight = worldRight-halfOfScreen;
+        float boarderTop = worldTop-halfOfScreen;
+        float boarderBottom = worldBottom+halfOfScreen;
+
+        System.out.println(px + "+" + py);
 
         if ((px > boarderLeft) && (px < boarderRight)) {
             if((py > boarderBottom) && (py < boarderTop)){

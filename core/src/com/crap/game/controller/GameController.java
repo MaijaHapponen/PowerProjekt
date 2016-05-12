@@ -61,7 +61,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
             enterNewWorld();
         }
         else if(playerController.interactionController.isInteractionWithMascot(model.getPlayer().getPosition().getX(),
-
                             model.getPlayer().getPosition().getY()) || playerController.interactionController.
                     isInteractionWithMascot(model.getPlayer().getPosition().getX(),model.getPlayer().getPosition().getY())){
             this.state = INTERACT;

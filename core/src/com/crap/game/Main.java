@@ -34,10 +34,6 @@ public class Main extends com.badlogic.gdx.Game {
         return this.worldView;
     }
 
-    public GameView getWorldView(){
-        return this.worldView;
-    }
-
     @Override
     public void render () {
         super.render();

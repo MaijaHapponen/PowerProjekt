@@ -22,6 +22,7 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     private int halfOfScreen = 250;
 
 
+
     public PlayerView(){
         this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
         this.playerSprite = new Sprite(texture);

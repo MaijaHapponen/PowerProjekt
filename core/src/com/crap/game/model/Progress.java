@@ -44,7 +44,6 @@ public class Progress {
         newMascotToBar =  mascot;
     }
 
-
     public ArrayList<Mascot> getMascotsCaught() {
         return this.mascotsCaught;
     }

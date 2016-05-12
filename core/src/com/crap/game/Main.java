@@ -1,6 +1,8 @@
 package com.crap.game;
 
 
+import com.crap.game.controller.GameController;
+
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.crap.game.model.*;
@@ -12,6 +14,10 @@ import com.crap.game.model.Game;
 import com.crap.game.view.GameView;
 import com.crap.game.view.MenuView;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.crap.game.model.*;
+import com.crap.game.view.GameView;
+import com.crap.game.controller.GameController;
 import com.crap.game.view.ProgressView;
 
 
@@ -22,10 +28,6 @@ public class Main extends com.badlogic.gdx.Game {
     public GameController controller;
     public Game world;
     public boolean gameMode = false;
-
-
-    public static int WIDTH;
-    public static int HEIGHT;
 
 
     public void create() {
@@ -41,6 +43,7 @@ public class Main extends com.badlogic.gdx.Game {
         world = new Game();
         controller = new GameController(worldView, world);
         setScreen(worldView);
+
         gameMode = true;
     }
 
@@ -57,6 +60,7 @@ public class Main extends com.badlogic.gdx.Game {
         if(gameMode == true) {
             controller.render();
         }
+
 
 
 

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -35,8 +36,12 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     public static TiledMap world;
     private PlayerView playerView;
-   // private BitmapFont font;
+
     private ProgressView progressView;
+    private Progress progress;
+    private Character character;
+
+
 
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
@@ -44,11 +49,10 @@ public class GameView extends ApplicationAdapter implements Screen{
     public Main main;
     private ArrayList<ProgressView> mascotsOnBar = new ArrayList<ProgressView>();
 
+
     public GameView(Main main){
-        this.main = main;
-        this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
-        //setWorld(world);
-        this.playerView = new PlayerView();
+
+
         this.batch = new SpriteBatch();
         this.progressView = new ProgressView();
 
@@ -57,14 +61,8 @@ public class GameView extends ApplicationAdapter implements Screen{
         renderer = new OrthogonalTiledMapRenderer(world);
 
 
-
-
-
-
-
-        //fillViewport1 = new FillViewport(500, 500);
-       // fillViewport2 = new FillViewport(100, 100);
-
+        this.playerView = new PlayerView();
+        this.progressView = new ProgressView();
 
     }
 
@@ -97,7 +95,6 @@ public class GameView extends ApplicationAdapter implements Screen{
         renderer.render();
 
         batch.begin();
-
 
 
         playerView.getSprite().draw(batch);
@@ -163,6 +160,7 @@ public class GameView extends ApplicationAdapter implements Screen{
         }
     }
 
+
     public ArrayList<CharacterView> getHumansList(){
         return this.humansList;
     }
@@ -170,12 +168,15 @@ public class GameView extends ApplicationAdapter implements Screen{
     public ArrayList<CharacterView> getMascotsList(){
         return this.mascotsList;
     }
+
     public void setMascotsOnBar(ArrayList<Mascot> mascotsOnBarl){
         for(int i = 0; i < mascotsOnBarl.size(); i++){
             this.mascotsOnBar.add(new ProgressView());
         }
     }
 
+
+    public void setWorld(TiledMap world) { this.world = world; }
 
     public void setCamera(OrthographicCamera camera) {
         playerView.setCamera(camera);
@@ -185,9 +186,6 @@ public class GameView extends ApplicationAdapter implements Screen{
         return this.playerView;
     }
 
-    public void setWorld(TiledMap world){
-        this.world = world;
-    }
 
     public TiledMap getWorld() {
         return this.world;

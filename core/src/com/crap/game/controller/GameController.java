@@ -60,9 +60,9 @@ public class GameController extends InputAdapter implements ApplicationListener 
                 playerController.player.getCurrentSpeed(), playerController.getPlayerPositionY())){
             enterNewWorld();
         }
-        else if(playerController.interactionController.isInteractionWithMascot(model.getPlayer().getPosition().getX(),
+        else if((playerController.interactionController.isInteractionWithMascot(model.getPlayer().getPosition().getX(),
                             model.getPlayer().getPosition().getY()) || playerController.interactionController.
-                    isInteractionWithMascot(model.getPlayer().getPosition().getX(),model.getPlayer().getPosition().getY())){
+                    isInteractionWithMascot(model.getPlayer().getPosition().getX(),model.getPlayer().getPosition().getY()))){
             this.state = INTERACT;
         }
         view.render();
@@ -114,7 +114,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
         }
     }
 
-    public void enterNewWorld(){
+    public void enterNewWorld() {
         /*if(playerController.collisionController.
                 isNewWorld(playerController.getPlayerPositionX(), playerController.getPlayerPositionY()) ) {
             */

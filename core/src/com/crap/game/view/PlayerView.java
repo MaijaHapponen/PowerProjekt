@@ -77,50 +77,59 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
         int worldLeft = 0;
         int worldBottom = 0;
-        int worldRight = GameView.world.getProperties().get("width", Integer.class) * 25;
-        int worldTop = GameView.world.getProperties().get("height", Integer.class) * 25;
+        int worldRight = GameView.world.getProperties().get("width", Integer.class)*pixelPerTile;
+        int worldTop = GameView.world.getProperties().get("height", Integer.class)*pixelPerTile;
 
         float px = getPlayerPosition().getX();
         float py = getPlayerPosition().getY();
-        float boarderLeft = worldLeft + 250;
-        float boarderRight = worldRight;//-250;
-        float boarderTop = worldTop;//-250;
-        float boarderBottom = worldBottom + 250;
+        float boarderLeft = worldLeft+halfOfScreen;
+        float boarderRight = worldRight-halfOfScreen;
+        float boarderTop = worldTop-halfOfScreen;
+        float boarderBottom = worldBottom+halfOfScreen;
 
         if ((px > boarderLeft) && (px < boarderRight)) {
-            if ((py > boarderBottom) && (py < boarderTop)) {
-                camera.position.set(x, y, 0);
+            if((py > boarderBottom) && (py < boarderTop)){
+                camera.position.set(x,y,0);
                 camera.update();
-            } else if (py > boarderBottom) {
+            }
+            else if (py > boarderBottom) {
                 camera.position.set(x, boarderTop, 0);
                 camera.update();
-            } else {
+            }
+            else{
                 camera.position.set(x, boarderBottom, 0);
                 camera.update();
             }
-        } else if (px > boarderLeft) {
-            if ((py > boarderBottom) && (py < boarderTop)) {
-                camera.position.set(boarderRight, y, 0);
+        }
+        else if (px > boarderLeft) {
+            if((py > boarderBottom) && (py < boarderTop)){
+                camera.position.set(boarderRight,y,0);
                 camera.update();
-            } else if (py > boarderBottom) {
+            }
+            else if (py > boarderBottom) {
                 camera.position.set(boarderRight, boarderTop, 0);
                 camera.update();
-            } else {
+            }
+            else{
                 camera.position.set(boarderRight, boarderBottom, 0);
                 camera.update();
             }
-        } else if ((px < boarderRight)) {
-            if ((py > boarderBottom) && (py < boarderTop)) {
-                camera.position.set(boarderLeft, y, 0);
+        }
+        else if ((px < boarderRight)) {
+            if((py > boarderBottom) && (py < boarderTop)){
+                camera.position.set(boarderLeft,y,0);
                 camera.update();
-            } else if (py > boarderBottom) {
+            }
+            else if (py > boarderBottom) {
                 camera.position.set(boarderLeft, boarderTop, 0);
                 camera.update();
-            } else {
+            }
+            else{
                 camera.position.set(boarderLeft, boarderBottom, 0);
                 camera.update();
             }
-        } else if ((py > boarderBottom) && (py < boarderTop)) {
+        }
+        else if((py > boarderBottom) && (py < boarderTop)) {
             if (px > boarderLeft) {
                 camera.position.set(boarderRight, y, 0);
                 camera.update();
@@ -128,10 +137,12 @@ public class PlayerView extends ApplicationAdapter implements Screen{
                 camera.position.set(boarderLeft, y, 0);
                 camera.update();
             }
-        } else if (py > boarderBottom) {
+        }
+        else if (py > boarderBottom) {
             camera.position.set(x, boarderTop, 0);
             camera.update();
-        } else if (py < boarderTop) {
+        }
+        else if (py < boarderTop) {
             camera.position.set(x, boarderBottom, 0);
             camera.update();
         }

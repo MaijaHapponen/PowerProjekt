@@ -9,7 +9,7 @@ import java.util.Random;
 public abstract class Character{
     private String name;
     private Position position;
-    private ArrayList<String> statementList;
+    private ArrayList<String> statementList; //TODO ta bort och göra för varje subclass istället?
     private int nbrOfStatements = 3;
 
     public Character(String name){

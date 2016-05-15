@@ -11,7 +11,7 @@ public abstract class Character{
     private Position position;
     private float width;
     private float height;
-    private ArrayList<String> statementList;
+    private ArrayList<String> statementList; //TODO ta bort och göra för varje subclass istället?
     private int nbrOfStatements = 3;
 
     public Character(String name){

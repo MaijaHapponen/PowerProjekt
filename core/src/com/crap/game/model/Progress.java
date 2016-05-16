@@ -10,18 +10,18 @@ import com.crap.game.model.Mascot;
 public class Progress {
 
     private ArrayList<Mascot> mascotsInGame = new ArrayList<Mascot>(); //TODO borde denna listan vara här eller i någon annan klass istället? Måste fylla på den när man startar spelet.
-    private ArrayList<Mascot> mascotsCaught;
-   // private ArrayList<Mascot> charactersOnBar;
+    private ArrayList<Mascot> mascotsCaught = new ArrayList<Mascot>();
     ArrayList<String> nameOnBar;
-    //private boolean newMascotCaught = false;
     private Mascot newMascotToBar;
 
     //Constructor
     public Progress() {
 
-        mascotsCaught = new ArrayList<Mascot>();
-        //charactersOnBar = new ArrayList<Mascot>();
         nameOnBar = new ArrayList<String>();
+
+        //bara för att få progress att fungera
+       // Mascot mascot = new Mascot("characters/imp.png");
+       // mascotsCaught.add(mascot);
     }
 
     //Method checking if all mascots has been caught by the player.
@@ -37,7 +37,6 @@ public class Progress {
         for (int i = 0; i < mascotsInGame.size(); i++) {
             if (mascotsInGame.get(i).equals(mascot)) {
                 mascotsInGame.remove(i);
-                //newMascotCaught = true;
             }
         }
         mascotsCaught.add(mascot);
@@ -52,32 +51,13 @@ public class Progress {
         return mascotsInGame;
     }
 
-   /* public void charactersOnBar() {
-        for (int i = 0; i < mascotsCaught.size(); i++) {
-            for(int j = 0; j < charactersOnBar.size(); j++){
-                if(mascotsCaught.get(i).getName().equals(charactersOnBar.get(j).getName())){
-                    charactersOnBar.add(mascotsCaught.get(i));
-                    newMascotCaught = false;
 
-                }
-            }
-        }
-    }*/
-
-   /* public ArrayList<Mascot> getCaractersOnBar(){
-        return this.charactersOnBar;
-    }
-*/
     public ArrayList<String> getNameCharactersOnBar(){
         for(int i = 0; i < mascotsCaught.size(); i++){
              nameOnBar.add(mascotsCaught.get(i).getName());
         }
         return nameOnBar;
     }
-
-   /* public boolean isNewMascotCaught(){
-        return this.newMascotCaught;
-    }*/
 
 
     public Mascot getNewMascotToBar(){

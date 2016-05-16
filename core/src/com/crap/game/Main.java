@@ -27,8 +27,8 @@ public class Main extends com.badlogic.gdx.Game {
 
     public void gameModeOn(){
 
-        worldView = new GameView(this);
         world = new Game();
+        worldView = new GameView(world);
         controller = new GameController(worldView, world);
         setScreen(worldView);
         gameMode = true;
@@ -39,6 +39,10 @@ public class Main extends com.badlogic.gdx.Game {
 
 
 
+    }
+
+    public Game getWorld() {
+        return world;
     }
 
     @Override

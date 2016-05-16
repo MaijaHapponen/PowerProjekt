@@ -43,11 +43,11 @@ public class GameView extends ApplicationAdapter implements Screen{
     private ArrayList<ProgressView> mascotsOnBar = new ArrayList<ProgressView>();
 
 
-    public GameView(Main main){
+    public GameView(Game game){
 
 
         this.batch = new SpriteBatch();
-        this.progressView = new ProgressView();
+        this.progressView = new ProgressView(game.getProgress());
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
 
 
@@ -57,7 +57,6 @@ public class GameView extends ApplicationAdapter implements Screen{
 
 
         this.playerView = new PlayerView();
-        this.progressView = new ProgressView();
 
     }
 
@@ -173,7 +172,7 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     public void setMascotsOnBar(ArrayList<Mascot> mascotsOnBarl){
         for(int i = 0; i < mascotsOnBarl.size(); i++){
-            this.mascotsOnBar.add(new ProgressView());
+        //    this.mascotsOnBar.add(new ProgressView());
         }
     }
 

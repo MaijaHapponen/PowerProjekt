@@ -33,6 +33,7 @@ public class GameView extends ApplicationAdapter implements Screen{
     private ProgressView progressView;
     private Progress progress;
     private Character character;
+    private InteractionView interactionView;
 
 
 
@@ -57,6 +58,7 @@ public class GameView extends ApplicationAdapter implements Screen{
 
 
         this.playerView = new PlayerView();
+        this.interactionView = new InteractionView();
 
     }
 
@@ -106,7 +108,7 @@ public class GameView extends ApplicationAdapter implements Screen{
             mascotsOnBar.get(i).getSpriteMascots().draw(batch);
 
         }*/
-        batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime,true), playerView.getPlayerPosition().getX(),
+        batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime, true), playerView.getPlayerPosition().getX(),
                 playerView.getPlayerPosition().getY());
 
 //        playerView.getSprite().draw(batch);
@@ -115,6 +117,9 @@ public class GameView extends ApplicationAdapter implements Screen{
 
         batch.setProjectionMatrix(progressView.getStage().getCamera().combined);
         progressView.getStage().draw();
+        batch.setProjectionMatrix(interactionView.getStage().getCamera().combined);
+
+        interactionView.getStage().draw();
 
 
     }

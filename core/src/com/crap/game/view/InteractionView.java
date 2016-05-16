@@ -24,8 +24,8 @@ public class InteractionView implements Screen{
     private Table table;
     private Stage stage;
     private Viewport viewport;
-    private int talkBubbleWidth;
-    private int talkBubbleHeight;
+    private int talkBubbleWidth = 500;
+    private int talkBubbleHeight = 500;
     private OrthographicCamera camera;
     private SpriteBatch batch;
 
@@ -36,7 +36,8 @@ public class InteractionView implements Screen{
 
 
     public InteractionView(){
-        viewport = new FitViewport(talkBubbleWidth, talkBubbleHeight);
+        batch = new SpriteBatch();
+        viewport = new FitViewport(talkBubbleWidth, talkBubbleHeight, new OrthographicCamera());
         stage = new Stage(viewport, batch);
         table = new Table();
         table.top();
@@ -89,6 +90,14 @@ public class InteractionView implements Screen{
     @Override
     public void dispose() {
 
+    }
+
+    public Stage getStage(){
+        return this.stage;
+    }
+
+    public OrthographicCamera getCamera(){
+        return this.camera;
     }
 
 }

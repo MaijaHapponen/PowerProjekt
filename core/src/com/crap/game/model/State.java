@@ -1,4 +1,3 @@
-
 package com.crap.game.model;
 
 import com.crap.game.controller.MenuController;
@@ -11,6 +10,7 @@ import com.crap.game.view.MenuView;
  */
 public class State {
     public enum GameStates {STARTMENU, PLAY, INTERACT, GAMEOVER}
+
     public static Game game;
     public State(Game g, State.GameStates state){
         this.game = g;
@@ -37,4 +37,5 @@ public class State {
                 break;
         }
     }
+
 }

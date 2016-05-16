@@ -20,6 +20,7 @@ public class InteractionController {
         this.interactionModel = new Interaction(gameView.getPlayerView().getPlayerSpriteWidth(),
                 gameView.getPlayerView().getPlayerSpriteHeight());
 
+
     }
 
 

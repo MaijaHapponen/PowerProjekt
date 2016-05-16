@@ -65,7 +65,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
         return true;
     }
 
-
     public void movePlayer(int keycode){
         this.keyCode = keycode;
         playerController.movePlayer(keyCode);

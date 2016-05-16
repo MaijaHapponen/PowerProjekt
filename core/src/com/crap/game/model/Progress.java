@@ -20,8 +20,8 @@ public class Progress {
         nameOnBar = new ArrayList<String>();
 
         //bara för att få progress att fungera
-        Mascot mascot = new Mascot("characters/imp.png");
-        mascotsCaught.add(mascot);
+       // Mascot mascot = new Mascot("characters/imp.png");
+       // mascotsCaught.add(mascot);
     }
 
     //Method checking if all mascots has been caught by the player.
@@ -37,7 +37,6 @@ public class Progress {
         for (int i = 0; i < mascotsInGame.size(); i++) {
             if (mascotsInGame.get(i).equals(mascot)) {
                 mascotsInGame.remove(i);
-                //newMascotCaught = true;
             }
         }
         mascotsCaught.add(mascot);

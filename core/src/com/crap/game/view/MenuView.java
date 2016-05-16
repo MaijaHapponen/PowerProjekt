@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.crap.game.Main;
+import com.crap.game.model.State;
 
 
 /**
@@ -28,12 +29,15 @@ public class MenuView implements Screen{
     private String[] menuItems;
 
 
-    private Main main;
+    public MenuView(){
 
-    public MenuView(Main g){
-        this.main = g;
-        batch = new SpriteBatch();
-        create();
+        titleFont = new BitmapFont();
+        font = new BitmapFont();
+
+        menuItems = new String[]{"Play the game", "How to play", "Exit"};
+        currentItemNr =0;
+        currentItem = menuItems[currentItemNr];
+        //create();
 
     }
     public void create(){
@@ -63,6 +67,8 @@ public class MenuView implements Screen{
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        batch = new SpriteBatch();
+
         batch.begin();
         titleFont.draw(batch, gameName, 60, 400);
 
@@ -90,7 +96,7 @@ public class MenuView implements Screen{
 
     public void setScreen(){
         if(currentItem.equals("Play the game")){
-            main.gameModeOn();
+            //updateState(State.GameStates.PLAY);
             dispose();
         }else if(currentItem.equals("How to play")){
 

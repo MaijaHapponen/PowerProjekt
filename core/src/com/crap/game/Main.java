@@ -3,6 +3,7 @@ package com.crap.game;
 import com.crap.game.controller.GameController;
 import com.crap.game.controller.MenuController;
 import com.crap.game.model.Game;
+import com.crap.game.model.State;
 import com.crap.game.view.GameView;
 import com.crap.game.view.MenuView;
 
@@ -13,18 +14,13 @@ public class Main extends com.badlogic.gdx.Game {
     public Game world;
     public boolean gameMode = false;
 
-    public void create() {
-        MenuView menuView = new MenuView(this);
-        new MenuController(menuView);
-        setScreen(menuView);
+    public Main(){
+        world = new Game(this);
     }
 
-    public void gameModeOn(){
-        worldView = new GameView(this);
-        world = new Game();
+    public void create() {
+        worldView = new GameView();
         controller = new GameController(worldView, world);
-        setScreen(worldView);
-        gameMode = true;
     }
 
     public GameView getWorldView(){
@@ -34,7 +30,7 @@ public class Main extends com.badlogic.gdx.Game {
     @Override
     public void render () {
         super.render();
-        if(gameMode) controller.render();
+        controller.render();
     }
 
     @Override

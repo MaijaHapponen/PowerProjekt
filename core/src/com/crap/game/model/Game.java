@@ -1,5 +1,9 @@
 package com.crap.game.model;
 
+import com.badlogic.gdx.Screen;
+import com.crap.game.Main;
+import com.crap.game.controller.MenuController;
+
 import java.util.ArrayList;
 
 /**
@@ -9,6 +13,8 @@ public class Game {
 
     public enum Worlds{HORSAL, EDIT, PARKING}
 
+    public Main main;
+    public State state;
     private Progress progress;
     public Player player;
     public static ArrayList<Human> humans = new ArrayList<Human>();
@@ -17,11 +23,13 @@ public class Game {
     private String[] humansNames = {};//]{"EHuman","DHuman","ITHuman","ZHuman"};
     private String[] worldNames = {"horsalmaskin", "hubbeneditsand", "parkingtemplate"};
 
-    public Game(){
+    public Game(Main main){
+        this.main = main;
         this.progress = new Progress();
         this.player = new Player();
         createHumans();
         createMascots();
+        this.state = new State(this, State.GameStates.STARTMENU);
     }
 
     //Populates an arrayList with humans.
@@ -53,4 +61,9 @@ public class Game {
     }
 
     public String[] getWorldNames(){ return this.worldNames;}
+
+    public void setScreen(Screen screen){
+        main.setScreen(screen);
+    }
+
 }

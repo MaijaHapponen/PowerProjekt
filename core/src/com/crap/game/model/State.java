@@ -1,44 +1,40 @@
+
 package com.crap.game.model;
 
+import com.crap.game.controller.MenuController;
+import com.crap.game.view.GameView;
 import com.crap.game.view.InteractionView;
+import com.crap.game.view.MenuView;
 
 /**
  * Created by Maija on 2016-05-16.
  */
 public class State {
     public enum GameStates {STARTMENU, PLAY, INTERACT, GAMEOVER}
-    public  Game game;
+    public static Game game;
+    public State(Game g, State.GameStates state){
+        this.game = g;
+        updateState(state);
+    }
 
-    public void update(GameStates state){
+    public void updateState(GameStates state) {
         switch (state) {
             case STARTMENU:
-                //updateStart();
+                MenuView menu = new MenuView();
+                new MenuController(menu);
+                game.setScreen(menu);
                 break;
             case PLAY:
-                //updatePlay();
+                game.main.create();
+                game.main.setScreen(game.main.getWorldView());
                 break;
             case INTERACT:
-                //updateInteract();
+                game.main.setScreen(new InteractionView());
                 break;
             case GAMEOVER:
+                //this.view.main.setScreen(new GameOverView());
                 //gameOver = true;
-                //updateGameOver();
                 break;
         }
     }
-    /*switch (state) {
-        case STARTMENU:
-            //this.view.main.setScreen(new MainInteraction());
-            break;
-        case PLAY:
-            this.view.main.setScreen(this.view);
-            break;
-        case INTERACT:
-            this.view.main.setScreen(new InteractionView(this.view.main));
-            break;
-        case GAMEOVER:
-            //this.view.main.setScreen(new GameOverView());
-            //gameOver = true;
-            break;
-    }*/
 }

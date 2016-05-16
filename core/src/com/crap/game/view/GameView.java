@@ -32,10 +32,8 @@ public class GameView extends ApplicationAdapter implements Screen{
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
 
-    public Main main;
 
-    public GameView(Main main){
-        this.main = main;
+    public GameView(){
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
         //setWorld(world);
         this.playerView = new PlayerView();

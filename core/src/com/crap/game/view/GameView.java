@@ -177,7 +177,10 @@ public class GameView extends ApplicationAdapter implements Screen{
     }
 
 
-    public void setWorld(TiledMap world) { this.world = world; }
+    public void setWorld(TiledMap world) {
+        this.world = world;
+        this.renderer = new OrthogonalTiledMapRenderer(this.world);
+    }
 
     public void setCamera(OrthographicCamera camera) {
         playerView.setCamera(camera);

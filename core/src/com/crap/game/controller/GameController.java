@@ -95,16 +95,19 @@ public class GameController extends InputAdapter implements ApplicationListener 
         switch (worlds) {
             case HORSAL:
                 view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
+                playerController.collisionController = new CollisionController(view.getWorld());
                 model.player.setPosition(250,250); //TODO: Change value to correct location
                 break;
 
             case EDIT:
                 view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
-                model.player.setPosition(30,30); //TODO: Change value to correct location
+                playerController.collisionController = new CollisionController(view.getWorld());
+                model.player.setPosition(250,250); //TODO: Change value to correct location
                 break;
 
             case PARKING:
                 view.setWorld(new TmxMapLoader().load("maps/parkingtemplate.tmx"));
+                playerController.collisionController = new CollisionController(view.getWorld());
                 model.player.setPosition(1,1); //TODO: Change value to correct location
                 break;
             default:
@@ -114,9 +117,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
     }
 
     public void enterNewWorld() {
-        /*if(playerController.collisionController.
-                isNewWorld(playerController.getPlayerPositionX(), playerController.getPlayerPositionY()) ) {
-            */
         setWorld(EDIT);
     }
 

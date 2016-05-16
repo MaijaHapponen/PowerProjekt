@@ -77,7 +77,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
                 this.view.main.setScreen(this.view);
                 break;
             case INTERACT:
-                this.view.main.setScreen(new InteractionView(this.view.main));
+                this.view.main.setScreen(new InteractionView());
                 break;
             case GAMEOVER:
                 //this.view.main.setScreen(new GameOverView());

@@ -20,7 +20,7 @@ public class Game {
     public Player player;
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
-    private String[] mascotNames = {"donald"};//{"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
+    private String[] mascotNames =/* {"donald"};*/{"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
     private String[] humansNames = {};//]{"EHuman","DHuman","ITHuman","ZHuman"};
     private String[] worldNames = {"horsalmaskin", "hubbeneditsand", "parkingtemplate"};
 
@@ -45,7 +45,7 @@ public class Game {
     //Populates an arrayList with mascots.
     public void createMascots(){
         for(int i=0; i<mascotNames.length; i++){
-            Position position = new Position(300, 300); //TODO sen borde man nog ha en lista med karaktärernas positioner.
+            Position position = new Position(i*50, i); //TODO sen borde man nog ha en lista med karaktärernas positioner.
             mascots.add(new Mascot(mascotNames[i], position));
         }
     }

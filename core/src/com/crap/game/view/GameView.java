@@ -100,7 +100,8 @@ public class GameView extends ApplicationAdapter implements Screen{
             humansList.get(i).getSprite().draw(batch);
         }
         for(int i = 0; i<mascotsList.size(); i++){
-            mascotsList.get(i).getSprite().draw(batch);
+//            mascotsList.get(i).getSprite().draw(batch);
+            batch.draw(mascotsList.get(i).getAnimation().getKeyFrame(elapsedTime,true), i*50, i*50); //TODO fixa position.
         }
 
 
@@ -110,8 +111,6 @@ public class GameView extends ApplicationAdapter implements Screen{
         }*/
         batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime,true), playerView.getPlayerPosition().getX(),
                 playerView.getPlayerPosition().getY());
-
-//        playerView.getSprite().draw(batch);
 
         batch.end();
 

@@ -73,6 +73,7 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
     public Texture getTexture() { return this.texture; }
 
+    //TODO: WHAT IS THIS???
     public int getPlayerSpriteWidth(){
         return this.texture.getWidth()/4; //TODO snyggare lösning än hårdkodat /4
     }

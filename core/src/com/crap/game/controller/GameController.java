@@ -4,10 +4,10 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.model.Game;
+import com.crap.game.model.State;
 import com.crap.game.view.GameView;
 import com.crap.game.view.InteractionView;
 
-import static com.crap.game.controller.GameController.GameState.*;
 import static com.crap.game.model.Game.*;
 import static com.crap.game.model.Game.Worlds.EDIT;
 import static com.crap.game.model.Game.Worlds.HORSAL;
@@ -17,15 +17,11 @@ import static com.crap.game.model.Game.Worlds.HORSAL;
  */
 public class GameController extends InputAdapter implements ApplicationListener {
 
-    public enum GameState{STARTMENU, PLAY, INTERACT, GAMEOVER}
-
-    public  GameState state;
     private GameView view;
     private Game model;
     private OrthographicCamera camera;
     private PlayerController playerController;
     private int keyCode;
-    private boolean keyPressed = false;
 
     public GameController(GameView view, Game game){
 
@@ -38,8 +34,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view = view;
         this.model = game;
 
-        this.state = GameState.STARTMENU;
-
         this.view.setPlayer(this.model.player);
         this.view.setCamera(this.camera);
 
@@ -48,6 +42,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
         setWorld(HORSAL);
+
+        //State.updateState(State.GameStates.STARTMENU);
 
         Gdx.input.setInputProcessor(this);
     }
@@ -62,28 +58,10 @@ public class GameController extends InputAdapter implements ApplicationListener 
         else if(playerController.interactionController.isInteractionWithMascot(model.getPlayer().getPosition().getX(),
                             model.getPlayer().getPosition().getY()) || playerController.interactionController.
                     isInteractionWithMascot(model.getPlayer().getPosition().getX(),model.getPlayer().getPosition().getY())){
-            this.state = INTERACT;
+            //this.state = INTERACT;
         }
         view.render();
         return true;
-    }
-
-    public void update(){
-        switch (state) {
-            case STARTMENU:
-                //this.view.main.setScreen(new MainInteraction());
-                break;
-            case PLAY:
-                this.view.main.setScreen(this.view);
-                break;
-            case INTERACT:
-                this.view.main.setScreen(new InteractionView(this.view.main));
-                break;
-            case GAMEOVER:
-                //this.view.main.setScreen(new GameOverView());
-                //gameOver = true;
-                break;
-        }
     }
 
     public void movePlayer(int keycode){

@@ -30,8 +30,6 @@ public class CollisionController {
     private MapLayer newWorldLayer;
     private MapObjects newWorldObjects;
 
-    private MapObject mapObject;
-
     private float playerWidth;
     private float playerHeight;
 
@@ -85,11 +83,18 @@ public class CollisionController {
 
     public boolean isMapObjectHit(Iterator iter, float x, float y){
         while(iter.hasNext()) {
-            mapObject = (MapObject) iter.next();
+            MapObject mapObject = (MapObject) iter.next();
+            Float posX = (Float) mapObject.getProperties().get("x");
+            Float posY = (Float) mapObject.getProperties().get("y");
+            Float width = (Float) mapObject.getProperties().get("width");
+            Float height = (Float) mapObject.getProperties().get("height");
 
-            if( checkIfCollide(x,y)||checkIfCollide(x+playerWidth,y)||
-                    checkIfCollide(x+playerWidth,y+playerHeight)||checkIfCollide(x,y+playerHeight)
-                    ||checkIfCollide(x,y+playerHeight/2)||checkIfCollide(x+playerWidth,y+playerHeight/2)){
+            if( checkIfCollide(posX,posY,width,height,x,y)||
+                    checkIfCollide(posX,posY,width,height,x+playerWidth,y)||
+                    checkIfCollide(posX,posY,width,height,x+playerWidth,y+playerHeight)||
+                    checkIfCollide(posX,posY,width,height,x,y+playerHeight) ||
+                    checkIfCollide(posX,posY,width,height,x,y+playerHeight/2)||
+                    checkIfCollide(posX,posY,width,height,x+playerWidth,y+playerHeight/2)){
                 return true;
             }
         }
@@ -97,14 +102,8 @@ public class CollisionController {
     }
 
 
-    public boolean checkIfCollide(float playerPositionX, float playerPositionY) {
-
-        Float x = (Float) mapObject.getProperties().get("x");
-        Float y = (Float) mapObject.getProperties().get("y");
-        Float width = (Float) mapObject.getProperties().get("width");
-        Float height = (Float) mapObject.getProperties().get("height");
-
-        return (playerPositionX > x && playerPositionX < x+width) && (playerPositionY>y && playerPositionY<y+height) ;
+    public boolean checkIfCollide(float x, float y, float width, float height, float playerPositionX, float playerPositionY) {
+        return collisionModel.checkIfCollide(x,y,width,height,playerPositionX,playerPositionY);
     }
 
 

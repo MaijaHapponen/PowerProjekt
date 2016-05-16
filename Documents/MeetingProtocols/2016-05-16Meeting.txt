@@ -1,0 +1,42 @@
+﻿Meeting Agenda [][]
+
+  Date: 16/5
+ Facilitator: Rebecca
+  Secretary: Rebecca 
+ Participants: Maija, Rebecca, Andrea, Lisa
+
+1. Objectives 
+No major problems. 
+
+2. Reports  
+Everyone: Today everyone MUST continue working on the SDD.
+
+
+Lisa: Fixed animation of player. Started looking at animation of the characters.
+
+
+Maija: Done with the MVC-refactoring. Started  looking into with changing views and states. 
+
+
+Andrea: Continued working on enterNewWorld, some small problems. Not done interactionView, waited for Maija.
+
+
+Rebecca: Done with progressView for now. 
+
+
+3. Discussion items 
+Discussion about the code. 
+Almost done with use cases just need to continue with the UI for it.
+
+4. Outcomes and assignments 
+
+
+Everyone: SDD!!!!!!
+Lisa: Working with animation of the characters. Fix the walkAway method for characters.
+Andrea: EnterNewWorld to work. Interact with character when states are finished. 
+Maija: States, when done start with interaction with characters together with Andrea
+Rebecca: Create new worlds. 
+
+5. Wrap up
+
+Thursday 19/5 at 10.

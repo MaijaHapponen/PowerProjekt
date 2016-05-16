@@ -25,18 +25,18 @@ public class InteractionController {
 
     public boolean isInteractionWithHuman(float x, float y) {
         for (int i = 0; i < gameView.getHumansList().size(); i++) {
-             interactionModel.setCharacter(gameView.getHumansList().get(i).getCharacter());
+             Character character = gameView.getHumansList().get(i).getCharacter();
 
-            if(interactionModel.isInteraction(x,y)) return true;
+            if(interactionModel.isInteraction(character,x, y)) return true;
         }
         return false;
     }
 
     public boolean isInteractionWithMascot(float x, float y){
         for(int i=0; i< gameView.getMascotsList().size(); i++){
-            interactionModel.setCharacter(gameView.getMascotsList().get(i).getCharacter());
+            Character character = gameView.getMascotsList().get(i).getCharacter();
 
-            if(interactionModel.isInteraction(x,y)) return true;
+            if(interactionModel.isInteraction(character,x, y)) return true;
 
         }
 

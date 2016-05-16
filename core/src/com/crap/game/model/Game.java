@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Game {
 
-    public enum Worlds{HORSAL, EDIT, PARKING}
+    public enum Worlds{HORSAL, EDIT, PARKING, HUBBEN}
 
     public Main main;
     public State state;
@@ -37,7 +37,7 @@ public class Game {
     //Populates an arrayList with humans.
     public void createHumans(){
         for(int i=0; i<humansNames.length; i++){
-            Position position = new Position(i*50, i); //TODO sen borde man nog ha en lista med karaktärernas positioner.
+            Position position = new Position(i*50, i); //TODO setn borde man nog ha en lista med karaktärernas positioner.
             humans.add(new Human(humansNames[i], position));
         }
     }

@@ -1,5 +1,10 @@
 package com.crap.game.model;
 
+import com.badlogic.gdx.Screen;
+import com.crap.game.Main;
+import com.crap.game.controller.MenuController;
+import com.crap.game.view.MenuView;
+
 import java.util.ArrayList;
 
 /**
@@ -7,8 +12,10 @@ import java.util.ArrayList;
  */
 public class Game {
 
-    public enum Worlds{HORSAL, EDIT, PARKING}
+    public enum Worlds{HORSAL, EDIT, PARKING, HUBBEN}
 
+    public Main main;
+    public State state;
     private Progress progress;
     public Player player;
     public static ArrayList<Human> humans = new ArrayList<Human>();
@@ -17,17 +24,20 @@ public class Game {
     private String[] humansNames = {};//]{"EHuman","DHuman","ITHuman","ZHuman"};
     private String[] worldNames = {"horsalmaskin", "hubbeneditsand", "parkingtemplate"};
 
-    public Game(){
+    public Game(Main main){
+        this.main = main;
         this.progress = new Progress();
-        this.player = new Player();
+        this.player = new Player(200,200);
         createHumans();
         createMascots();
+
+        this.state = new State(this, State.GameStates.STARTMENU);
     }
 
     //Populates an arrayList with humans.
     public void createHumans(){
         for(int i=0; i<humansNames.length; i++){
-            Position position = new Position(i*50, i); //TODO sen borde man nog ha en lista med karaktärernas positioner.
+            Position position = new Position(i*50, i); //TODO setn borde man nog ha en lista med karaktärernas positioner.
             humans.add(new Human(humansNames[i], position));
         }
     }
@@ -56,5 +66,12 @@ public class Game {
 
     public Progress getProgress() {
         return progress;
+    }
+    public void setScreen(Screen screen){
+        main.setScreen(screen);
+    }
+
+    public void initPlay(){
+        main.initPlay();
     }
 }

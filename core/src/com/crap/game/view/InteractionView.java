@@ -11,16 +11,12 @@ import com.crap.game.model.Game;
 /**
  * Created by Maija on 2016-05-11.
  */
-public class InteractionView extends GameView{
+public class InteractionView implements Screen{
 
     private SpriteBatch batch;
     private BitmapFont font;
 
-    private Main main;
-
-    public InteractionView(Main g){
-        super(g.getWorld());
-        this.main = g;
+    public InteractionView(){
         batch = new SpriteBatch();
         font = new BitmapFont();
     }
@@ -41,7 +37,7 @@ public class InteractionView extends GameView{
         batch.end();
 
         if(Gdx.input.isKeyPressed(Input.Keys.ENTER)){
-            main.setScreen(main.getWorldView());
+            System.exit(0);
             dispose();
         }
     }

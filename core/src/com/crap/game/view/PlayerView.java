@@ -33,15 +33,15 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     public PlayerView(){
         this.texture = new Texture(Gdx.files.internal("characters/kalleAnka.png"));
         this.playerSprite = new Sprite(texture);
-        playerSprite.setPosition(250, 250);
-
+        playerSprite.setPosition(0, 0);
+        //TODO not hardcode
 
         this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, 129, 190, 4, 4);
     }
     public PlayerView(int x, int y){
         this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
         this.playerSprite = new Sprite(texture);
-        playerSprite.setPosition(player.getPosition().getX(), player.getPosition().getY());
+        playerSprite.setPosition(x, y);
         //TODO: fix the setPosition so it's not so complicated
     }
 
@@ -73,6 +73,7 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
     public Texture getTexture() { return this.texture; }
 
+    //TODO: WHAT IS THIS???
     public int getPlayerSpriteWidth(){
         return this.texture.getWidth()/4; //TODO snyggare lösning än hårdkodat /4
     }

@@ -3,6 +3,7 @@ package com.crap.game.model;
 import com.badlogic.gdx.Screen;
 import com.crap.game.Main;
 import com.crap.game.controller.MenuController;
+import com.crap.game.view.MenuView;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,8 @@ public class Game {
         createHumans();
         createMascots();
         this.state = new State(this, State.GameStates.STARTMENU);
+
+
     }
 
     //Populates an arrayList with humans.

@@ -107,6 +107,10 @@ public class GameController extends InputAdapter implements ApplicationListener 
                 view.setWorld(new TmxMapLoader().load("maps/parkingtemplate.tmx"));
                 model.player.setPosition(1,1); //TODO: Change value to correct location
                 break;
+            case HUBBEN:
+                view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
+                model.player.setPosition(20, 20);
+                break;
             default:
                 System.out.println("Ohoh! Something went wrong");
                 break;

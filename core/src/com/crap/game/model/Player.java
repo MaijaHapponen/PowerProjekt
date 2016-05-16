@@ -11,7 +11,7 @@ public class Player{
     private int slowerSpeed = 1;
 
     public Player(){
-        this.position = new Position(250, 250);
+        this.position = new Position(0, 0);
         this.currentSpeed=normalSpeed;
     }
 

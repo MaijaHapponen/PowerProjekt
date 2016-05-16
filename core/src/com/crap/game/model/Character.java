@@ -10,8 +10,6 @@ public abstract class Character{
     private Position position;
     private float width;
     private float height;
-    private ArrayList<String> statementList; //TODO remove and make one for every subclass instead?
-    private int nbrOfStatements = 3;
 
     public Character(String name){
         this.name = name;

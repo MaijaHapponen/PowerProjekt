@@ -7,11 +7,6 @@ public class Interaction {
     private CollisionModel collisionModel;
     private float playerWidth;
     private float playerHeight;
-    private Character character;
-
-    public void setCharacter(Character character){
-        this.character=character;
-    }
 
     public Interaction(float playerWidth, float playerHeight){
         this.collisionModel = new CollisionModel();
@@ -19,19 +14,19 @@ public class Interaction {
         this.playerHeight=playerHeight;
     }
 
-    public boolean isInteraction(float x, float y) {
-        return checkEveryPositionForInteraction(x,y);
+    public boolean isInteraction(Character character, float x, float y) {
+        return checkEveryPositionForInteraction(character,x,y);
     }
 
-    public boolean checkEveryPositionForInteraction(float x, float y) {
+    public boolean checkEveryPositionForInteraction(Character character, float x, float y) {
 
-        return checkIfInteraction(x,y)||checkIfInteraction(x+playerWidth,y)||
-                checkIfInteraction(x+playerWidth,y+playerHeight)||checkIfInteraction(x,y+playerHeight)
-                ||checkIfInteraction(x,y+playerHeight/2)||checkIfInteraction(x+playerWidth,y+ playerHeight/2);
+        return checkIfInteraction(character,x,y)||checkIfInteraction(character,x+playerWidth,y)||
+                checkIfInteraction(character,x+playerWidth,y+playerHeight)||checkIfInteraction(character,x,y+playerHeight)
+                ||checkIfInteraction(character,x,y+playerHeight/2)||checkIfInteraction(character,x+playerWidth,y+ playerHeight/2);
 
     }
 
-    public boolean checkIfInteraction( float playerPositionX, float playerPositionY){
+    public boolean checkIfInteraction(Character character, float playerPositionX, float playerPositionY){
 
         Float x = character.getPosition().getX();
         Float y = character.getPosition().getY();

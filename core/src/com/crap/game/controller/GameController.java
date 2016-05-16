@@ -64,6 +64,25 @@ public class GameController extends InputAdapter implements ApplicationListener 
         return true;
     }
 
+
+    public void update(){
+        switch (state) {
+            case STARTMENU:
+                //this.view.main.setScreen(new MainInteraction());
+                break;
+            case PLAY:
+                this.view.main.setScreen(this.view);
+                break;
+            case INTERACT:
+                this.view.main.setScreen(new InteractionView());
+                break;
+            case GAMEOVER:
+                //this.view.main.setScreen(new GameOverView());
+                //gameOver = true;
+                break;
+        }
+    }
+
     public void movePlayer(int keycode){
         this.keyCode = keycode;
         playerController.movePlayer(keyCode);

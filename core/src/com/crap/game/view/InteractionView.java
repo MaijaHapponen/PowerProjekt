@@ -1,9 +1,17 @@
 package com.crap.game.view;
 
 import com.badlogic.gdx.*;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crap.game.Main;
 import com.crap.game.model.*;
 import com.crap.game.model.Game;
@@ -13,12 +21,35 @@ import com.crap.game.model.Game;
  */
 public class InteractionView implements Screen{
 
+    private Table table;
+    private Stage stage;
+    private Viewport viewport;
+    private int talkBubbleWidth;
+    private int talkBubbleHeight;
+    private OrthographicCamera camera;
     private SpriteBatch batch;
-    private BitmapFont font;
+
+
+    private Label talkLable = new Label(String.format("Hello I'm a mascot!"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    private Label answerOne= new Label(String.format("Answer one"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+
+    private Label answerTwo = new Label(String.format("Answer two"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+
 
     public InteractionView(){
-        batch = new SpriteBatch();
-        font = new BitmapFont();
+        viewport = new FitViewport(talkBubbleWidth, talkBubbleHeight);
+        stage = new Stage(viewport, batch);
+        table = new Table();
+        table.top();
+        table.setFillParent(true);
+        table.add(talkLable);
+        table.row();
+        table.add(answerOne);
+        table.add(answerTwo);
+        stage.addActor(table);
+
+
+
     }
 
     @Override
@@ -28,18 +59,13 @@ public class InteractionView implements Screen{
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0.2f, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        batch.begin();
-        font.draw(batch, "Welcome to C.R.A.P. the game!", 100, 150);
-        font.draw(batch, "Click enter to begin.", 100, 100);
-        batch.end();
 
-        if(Gdx.input.isKeyPressed(Input.Keys.ENTER)){
-            System.exit(0);
-            dispose();
-        }
+        stage.draw();
+
+
+
+
     }
 
     @Override
@@ -64,7 +90,7 @@ public class InteractionView implements Screen{
 
     @Override
     public void dispose() {
-        batch.dispose();
-        font.dispose();
+
     }
+
 }

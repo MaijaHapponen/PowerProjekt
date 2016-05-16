@@ -29,7 +29,7 @@ import com.crap.game.model.*;
  */
 public class ProgressView extends ApplicationAdapter implements Screen {
 
-    Player player;
+
     private Progress progress;
     private OrthographicCamera camera;
     private SpriteBatch batch;

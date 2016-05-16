@@ -27,12 +27,11 @@ public class Game {
     public Game(Main main){
         this.main = main;
         this.progress = new Progress();
-        this.player = new Player();
+        this.player = new Player(200,200);
         createHumans();
         createMascots();
+
         this.state = new State(this, State.GameStates.STARTMENU);
-
-
     }
 
     //Populates an arrayList with humans.
@@ -69,4 +68,7 @@ public class Game {
         main.setScreen(screen);
     }
 
+    public void initPlay(){
+        main.initPlay();
+    }
 }

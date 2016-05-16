@@ -30,7 +30,6 @@ public class MenuView implements Screen{
 
 
     public MenuView(){
-
         batch = new SpriteBatch();
         create();
     }
@@ -38,13 +37,11 @@ public class MenuView implements Screen{
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size=50;
-        //titleFont = generator.generateFont(parameter);
-        titleFont = new BitmapFont();
+        titleFont = generator.generateFont(parameter);
         titleFont.setColor(Color.BLACK);
 
         parameter.size=20;
-        //font= generator.generateFont(parameter);
-        font = new BitmapFont();
+        font= generator.generateFont(parameter);
         generator.dispose();
 
         menuItems = new String[]{"Play the game", "How to play", "Exit"};
@@ -91,7 +88,7 @@ public class MenuView implements Screen{
 
     public void setScreen(){
         if(currentItem.equals("Play the game")){
-            //updateState(State.GameStates.PLAY);
+            State.updateState(State.GameStates.PLAY);
             dispose();
         }else if(currentItem.equals("How to play")){
 

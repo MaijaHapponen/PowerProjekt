@@ -22,7 +22,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private OrthographicCamera camera;
     private PlayerController playerController;
     private int keyCode;
-    private boolean keyPressed = false;
 
     public GameController(GameView view, Game game){
 

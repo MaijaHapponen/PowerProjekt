@@ -11,23 +11,25 @@ import com.crap.game.view.MenuView;
 public class State {
     public enum GameStates {STARTMENU, PLAY, INTERACT, GAMEOVER}
 
-    public Game game;
+    public static Game game;
     public State(Game g, State.GameStates state){
         this.game = g;
         updateState(state);
     }
 
-    public void updateState(GameStates state) {
+    public static void updateState(GameStates state) {
         switch (state) {
             case STARTMENU:
-
+                MenuView menu = new MenuView();
+                new MenuController(menu);
+                game.setScreen(menu);
                 break;
             case PLAY:
-                game.main.create();
-                game.main.setScreen(game.main.getWorldView());
+                game.initPlay();
+                game.setScreen(game.main.getWorldView());
                 break;
             case INTERACT:
-                game.main.setScreen(new InteractionView());
+                game.setScreen(new InteractionView());
                 break;
             case GAMEOVER:
                 //this.view.main.setScreen(new GameOverView());

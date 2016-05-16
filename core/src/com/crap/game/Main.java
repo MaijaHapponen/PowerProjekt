@@ -14,20 +14,14 @@ public class Main extends com.badlogic.gdx.Game {
     public Game world;
     public boolean gameMode = false;
 
-    public Main(){
-        world = new Game(this);
-
-        MenuView menu = new MenuView();
-        new MenuController(menu);
-        setScreen(menu);
-    }
-
     public void create() {
-
+        world = new Game(this);
     }
+
     public void initPlay(){
         worldView = new GameView();
         controller = new GameController(worldView, world);
+        gameMode = true;
     }
 
     public GameView getWorldView(){
@@ -37,7 +31,7 @@ public class Main extends com.badlogic.gdx.Game {
     @Override
     public void render () {
         super.render();
-        controller.render();
+        if(gameMode) controller.render();
     }
 
     @Override

@@ -7,6 +7,8 @@ import com.crap.game.view.GameView;
 import com.crap.game.view.PlayerView;
 
 import com.crap.game.model.Player;
+import javafx.scene.input.KeyCode;
+
 /**
  * Created by rebeccafinne on 2016-04-30.
  */
@@ -33,15 +35,19 @@ public class PlayerController {
         updateSpeed();
         if (keycode == Input.Keys.UP &&
                 !(checkIfCollision(getPlayerPositionX(), (getPlayerPositionY() + player.getCurrentSpeed())))) {
+            playerView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
             player.moveUp();
         } else if (keycode == Input.Keys.DOWN &&
                 !(checkIfCollision(getPlayerPositionX(), getPlayerPositionY()- player.getCurrentSpeed()))){
+            playerView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
             player.moveDown();
         } else if (keycode == Input.Keys.LEFT &&
                 !(checkIfCollision((getPlayerPositionX()) - player.getCurrentSpeed(), getPlayerPositionY()))){
+            playerView.setAnimationState(PlayerView.AnimationState.WALKING_LEFT);
             player.moveLeft();
         } else if (keycode == Input.Keys.RIGHT &&
                 !(checkIfCollision(getPlayerPositionX()+ player.getCurrentSpeed(), getPlayerPositionY())) )  {
+            playerView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
             player.moveRight();
         }
         updateSprite();
@@ -77,5 +83,23 @@ public class PlayerController {
 
     public PlayerView getPlayerView(){
         return this.playerView;
+    }
+
+    public void stopWalkingAnimation(int keyCode){
+        switch (keyCode){
+            case Input.Keys.UP:
+                playerView.setAnimationState(PlayerView.AnimationState.STANDING_BACK);
+                break;
+            case Input.Keys.DOWN:
+                playerView.setAnimationState(PlayerView.AnimationState.STANDING_FRONT);
+                break;
+            case Input.Keys.LEFT:
+                playerView.setAnimationState(PlayerView.AnimationState.STANDING_LEFT);
+                break;
+            case Input.Keys.RIGHT:
+                playerView.setAnimationState(PlayerView.AnimationState.STANDING_RIGHT);
+                break;
+
+        }
     }
 }

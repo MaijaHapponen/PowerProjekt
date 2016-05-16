@@ -25,6 +25,7 @@ public class GameView extends ApplicationAdapter implements Screen{
     private SpriteBatch batch;
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
+    private float elapsedTime;
 
     public static TiledMap world;
     private PlayerView playerView;
@@ -66,6 +67,8 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     @Override
     public void render(float delta) {
+        elapsedTime += Gdx.graphics.getDeltaTime();
+
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
@@ -105,6 +108,11 @@ public class GameView extends ApplicationAdapter implements Screen{
             mascotsOnBar.get(i).getSpriteMascots().draw(batch);
 
         }*/
+        batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime,true), playerView.getPlayerPosition().getX(),
+                playerView.getPlayerPosition().getY());
+
+//        playerView.getSprite().draw(batch);
+
         batch.end();
 
         batch.setProjectionMatrix(progressView.getStage().getCamera().combined);

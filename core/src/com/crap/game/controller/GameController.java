@@ -125,6 +125,9 @@ public class GameController extends InputAdapter implements ApplicationListener 
         if(Gdx.input.isKeyPressed(keyCode)) {
             movePlayer(keyCode);
         }
+        else {
+            playerController.stopWalkingAnimation(keyCode);
+        }
     }
 
     @Override

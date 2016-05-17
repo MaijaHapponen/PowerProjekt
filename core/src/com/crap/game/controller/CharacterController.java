@@ -1,46 +1,68 @@
 package com.crap.game.controller;
 
-import com.badlogic.gdx.InputAdapter;
+import com.crap.game.model.Character;
+import com.crap.game.model.Game;
+import com.crap.game.view.CharacterView;
 
-public class CharacterController extends InputAdapter{
-/*
-    private CharacterView view;
-    private Game game;
-    private OrthographicCamera camera;
-    private PlayerController playerController;
+import java.util.Random;
 
-    public CharacterController(CharacterView view, Game game){
+public class CharacterController{
 
-        float width = Gdx.graphics.getWidth();
-        float height = Gdx.graphics.getHeight();
+    private Character character;
+    private CollisionController collisionController;
 
-        this.view = view;
-        this.game = game;
-        this.camera = new OrthographicCamera();
-
-        this.camera = new OrthographicCamera();
-        camera.setToOrtho(false, width, height);
-
-        this.view.setPlayer(game.player);
-        this.view.setTexture(playerController.getTexture());
-        this.view.setSprite(playerController.getSprite());
-        this.view.setPosition(game.player.getPosition());
-        this.view.setCamera(camera);
+    public CharacterController(Character character, CollisionController collisionController){
+        this.character = character;
+        this.collisionController = collisionController;
     }
 
-    @Override
-    public boolean keyDown(int keycode) {
-        return false;
+    //Makes the character walk away a few steps.
+    public void walkAway(){
+        Random rand = new Random();
+        int j = 0;
+
+        while(j<5){
+            int i = rand.nextInt(3);
+
+            if(i==0 && collisionController.isCollison(character.getPosition().getX(),
+                    character.getPosition().getY()+1) && this.character.getPosition().getY()<1000){ //TODO should be height of world not 1000
+                this.moveUp();
+            }
+            else if(i==1 && collisionController.isCollison(character.getPosition().getX(),
+                    character.getPosition().getY()-1) && this.character.getPosition().getY()>0){
+                this.moveDown();
+            }
+            else if(i==2 && collisionController.isCollison(character.getPosition().getX()-1,
+                    character.getPosition().getY()) && this.character.getPosition().getX()>0){
+                this.moveLeft();
+            }
+            else if(i==3 && collisionController.isCollison(character.getPosition().getX()+1,
+                    character.getPosition().getY()+1) && this.character.getPosition().getX()<1000){ //TODO should be width of world not 1000
+                this.moveRight();
+            }
+            j++;
+        }
     }
 
-    @Override
-    public boolean keyUp(int keycode) {
-        playerController.movePlayer(keycode);
-        playerController.update();
-        view.render();
-        return true;
+    public void moveUp() {
+        this.character.getPosition().setPosition(this.character.getPosition().getX(),
+                this.character.getPosition().getY() + 1);
+    }
+    public void moveDown(){
+        this.character.getPosition().setPosition(this.character.getPosition().getX(),
+                this.character.getPosition().getY() - 1);
     }
 
-*/
+    public void moveLeft(){
+        this.character.getPosition().setPosition(this.character.getPosition().getX() - 1,
+                this.character.getPosition().getY());
+    }
+
+    public void moveRight(){
+        this.character.getPosition().setPosition(this.character.getPosition().getX() + 1,
+                this.character.getPosition().getY());
+    }
+
+
 }
 

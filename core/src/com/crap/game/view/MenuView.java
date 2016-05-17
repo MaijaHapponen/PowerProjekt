@@ -90,7 +90,7 @@ public class MenuView implements Screen{
             State.updateState(State.GameStates.PLAY);
             dispose();
         }else if(currentItem.equals("How to play")){
-
+            State.updateState(State.GameStates.HOWTOPLAY);
         }else if(currentItem.equals("Exit")){
             System.exit(0);
         }

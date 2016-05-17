@@ -26,6 +26,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private OrthographicCamera camera;
     private PlayerController playerController;
     private int keyCode;
+    private CollisionController collisionController;
 //TODO    public static ArrayList<Human> humans = new ArrayList<Human>();
 //    public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
 //    public static ArrayList<CharacterController> humanControllers = new ArrayList<CharacterController>();
@@ -48,7 +49,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);
 
-        this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
+        this.collisionController = new CollisionController(view.getWorld());
+        this.playerController = new PlayerController(this.view.getPlayerView(), this.view, collisionController);
 //TODO ********
 //        this.humans = game.getHumans();
 //        this.mascots = game.getMascots();

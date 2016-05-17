@@ -19,13 +19,13 @@ public class PlayerController {
     CollisionController collisionController;
     InteractionController interactionController;
 
-    public PlayerController(PlayerView playerView, GameView gameView){
+    public PlayerController(PlayerView playerView, GameView gameView, CollisionController collisionController){
         this.playerView = playerView;
         this.player = playerView.getPlayer();
         this.gameView = gameView;
+        this.collisionController = collisionController;
 
         this.interactionController = new InteractionController(gameView);
-        this.collisionController = new CollisionController(gameView.getWorld());
         collisionController.setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
     }
 

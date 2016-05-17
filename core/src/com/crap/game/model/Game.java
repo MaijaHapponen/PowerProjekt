@@ -21,7 +21,7 @@ public class Game {
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
     private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
-    private String[] humansNames = {};//]{"EHuman","DHuman","ITHuman","ZHuman"};
+    private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
     private String[] worldNames = {"horsalmaskin", "hubbeneditsand", "parkingtemplate"};
 
     public Game(Main main){
@@ -37,7 +37,7 @@ public class Game {
     //Populates an arrayList with humans.
     public void createHumans(){
         for(int i=0; i<humansNames.length; i++){
-            Position position = new Position(i*50, i*50); //TODO setn borde man nog ha en lista med karaktärernas positioner.
+            Position position = new Position(i*100, i*50); //TODO setn borde man nog ha en lista med karaktärernas positioner.
             humans.add(new Human(humansNames[i], position));
         }
     }

@@ -9,7 +9,7 @@ import com.crap.game.view.MenuView;
  * Created by Maija on 2016-05-16.
  */
 public class State {
-    public enum GameStates {STARTMENU, PLAY, INTERACT, GAMEOVER}
+    public enum GameStates {STARTMENU, PLAY, INTERACT, GAMEOVER, HOWTOPLAY}
 
     public static Game game;
     public State(Game g){
@@ -34,6 +34,8 @@ public class State {
                 //this.view.main.setScreen(new GameOverView());
                 //gameOver = true;
                 break;
+            case HOWTOPLAY:
+
         }
     }
 

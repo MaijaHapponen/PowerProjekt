@@ -17,6 +17,8 @@ public class ProgressTest {
         Mascot mascot = new Mascot("hej");
         progress.getMascotsInGame().add(mascot);
         assertTrue(progress.areAllMascotsCaught() == false);
+        progress.mascotCaught(mascot);
+        assertTrue(progress.areAllMascotsCaught() == true);
     }
 
     @Test

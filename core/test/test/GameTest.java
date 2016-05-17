@@ -1,5 +1,6 @@
 package test;
 
+import com.crap.game.Main;
 import com.crap.game.model.Game;
 import static org.junit.Assert.*;
 
@@ -14,7 +15,8 @@ public class GameTest {
 
     @Test
     public void testIsGameOver(){
-        Game game = new Game();
+        Main main = new Main();
+        Game game = new Game(main);
         Progress progress = new Progress();
         Mascot mascot = new Mascot("Hej");
         progress.getMascotsInGame().add(mascot);

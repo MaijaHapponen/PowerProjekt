@@ -26,9 +26,8 @@ public class InteractionController {
 
     public boolean isInteractionWithHuman(float x, float y) {
         for (int i = 0; i < gameView.getHumansList().size(); i++) {
-             Character character = gameView.getHumansList().get(i).getCharacter();
-
-            if(interactionModel.isInteraction(character,x, y)) return true;
+            Character character = gameView.getHumansList().get(i).getCharacter();
+            if (interactionModel.isInteraction(character, x, y)) return true;
         }
         return false;
     }

@@ -49,12 +49,10 @@ public class GameView extends ApplicationAdapter implements Screen{
 
 
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
-        //setWorld(world);
         this.playerView = new PlayerView();
         batch = new SpriteBatch();
         this.progressView = new ProgressView(game.getProgress());
 
-        //font = new BitmapFont();
 
         renderer = new OrthogonalTiledMapRenderer(world);
 
@@ -76,9 +74,7 @@ public class GameView extends ApplicationAdapter implements Screen{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
-        //Gdx.gl.glViewport(0, 100, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        //fillViewport1.apply();
 
 
 
@@ -129,9 +125,7 @@ public class GameView extends ApplicationAdapter implements Screen{
     @Override
     public void resize(int width, int height) {
 
-        //fillViewport1.update(width, height);
 
-        //fillViewport2.update(width, height);
     }
 
     @Override

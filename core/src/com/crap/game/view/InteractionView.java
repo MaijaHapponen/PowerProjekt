@@ -62,6 +62,8 @@ public class InteractionView implements Screen{
     public void render(float delta) {
 
 
+        batch.setProjectionMatrix(stage.getCamera().combined);
+
         stage.draw();
 
 

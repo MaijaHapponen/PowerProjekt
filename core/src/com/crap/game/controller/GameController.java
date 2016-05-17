@@ -56,9 +56,9 @@ public class GameController extends InputAdapter implements ApplicationListener 
             enterNewWorld();
         }
         else if(playerController.interactionController.isInteractionWithMascot(model.getPlayer().getPosition().getX(),
-                            model.getPlayer().getPosition().getY()) || playerController.interactionController.
-                    isInteractionWithMascot(model.getPlayer().getPosition().getX(),model.getPlayer().getPosition().getY())){
+                            model.getPlayer().getPosition().getY())){
             //this.state = INTERACT;
+
         }
         view.render();
         return true;
@@ -105,6 +105,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
     public void enterNewWorld() {
         setWorld(EDIT);
     }
+
+
 
     @Override
     public void render() {

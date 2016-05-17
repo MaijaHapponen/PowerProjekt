@@ -16,6 +16,7 @@ public class Main extends com.badlogic.gdx.Game {
 
     public void create() {
         world = new Game(this);
+        world.startMainMenu();
     }
 
     public void initPlay(){

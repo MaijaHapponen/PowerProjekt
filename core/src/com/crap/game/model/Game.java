@@ -15,9 +15,10 @@ public class Game {
     public enum Worlds{HORSAL, EDIT, PARKING, HUBBEN}
 
     public Main main;
-    public State state;
+
     private Progress progress;
     public Player player;
+    private State state;
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
     private String[] mascotNames = {"donald"};//{"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
@@ -27,11 +28,11 @@ public class Game {
     public Game(Main main){
         this.main = main;
         this.progress = new Progress();
-        this.player = new Player(200,200);
+        this.player = new Player(250,250);
         createHumans();
         createMascots();
 
-        this.state = new State(this, State.GameStates.STARTMENU);
+        this.state = new State(this);
     }
 
     //Populates an arrayList with humans.
@@ -69,6 +70,10 @@ public class Game {
     }
     public void setScreen(Screen screen){
         main.setScreen(screen);
+    }
+
+    public void startMainMenu(){
+        State.updateState(State.GameStates.STARTMENU);
     }
 
     public void initPlay(){

@@ -12,9 +12,8 @@ public class State {
     public enum GameStates {STARTMENU, PLAY, INTERACT, GAMEOVER}
 
     public static Game game;
-    public State(Game g, State.GameStates state){
+    public State(Game g){
         this.game = g;
-        updateState(state);
     }
 
     public static void updateState(GameStates state) {

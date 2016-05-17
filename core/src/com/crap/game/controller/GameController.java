@@ -43,8 +43,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
         setWorld(HORSAL);
 
-        //State.updateState(State.GameStates.STARTMENU);
-
         Gdx.input.setInputProcessor(this);
     }
 
@@ -77,13 +75,13 @@ public class GameController extends InputAdapter implements ApplicationListener 
         switch (worlds) {
             case HORSAL:
                 view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
-                playerController.collisionController = new CollisionController(view.getWorld());
+                playerController.updateCollisionController();
                 model.player.setPosition(250,250); //TODO: Change value to correct location
                 break;
 
             case EDIT:
                 view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
-                playerController.collisionController = new CollisionController(view.getWorld());
+                playerController.updateCollisionController();
                 model.player.setPosition(250,250); //TODO: Change value to correct location
                 break;
 
@@ -94,6 +92,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
                 break;
             case HUBBEN:
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
+                playerController.collisionController = new CollisionController(view.getWorld());
                 model.player.setPosition(20, 20);
                 break;
             default:

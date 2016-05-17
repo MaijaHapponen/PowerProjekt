@@ -25,6 +25,9 @@ public class PlayerController {
         this.gameView = gameView;
 
         this.interactionController = new InteractionController(gameView);
+    }
+
+    public void updateCollisionController(){
         this.collisionController = new CollisionController(gameView.getWorld());
         collisionController.setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
     }
@@ -75,14 +78,6 @@ public class PlayerController {
         }else{
             player.setCurrentSpeed(player.getNormalSpeed());
         }
-    }
-
-    public Player getPlayer(){
-        return this.player;
-    }
-
-    public PlayerView getPlayerView(){
-        return this.playerView;
     }
 
     public void stopWalkingAnimation(int keyCode){

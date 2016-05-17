@@ -1,5 +1,6 @@
 package com.crap.game.model;
 
+import com.crap.game.controller.HowToPlayController;
 import com.crap.game.controller.MenuController;
 import com.crap.game.view.GameView;
 import com.crap.game.view.HowToPlayView;
@@ -36,8 +37,8 @@ public class State {
                 //gameOver = true;
                 break;
             case HOWTOPLAY:
-                HowToPlayView howToPlayView = new HowToPlayView();
-                game.setScreen(howToPlayView);
+                new HowToPlayController();
+                game.setScreen(new HowToPlayView());
                 break;
 
         }

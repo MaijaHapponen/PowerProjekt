@@ -68,6 +68,7 @@ public class Game {
     public Progress getProgress() {
         return progress;
     }
+
     public void setScreen(Screen screen){
         main.setScreen(screen);
     }

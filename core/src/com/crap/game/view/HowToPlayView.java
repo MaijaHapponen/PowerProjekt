@@ -7,19 +7,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.crap.game.model.State;
 
 /**
  * Created by rebeccafinne on 2016-05-17.
  */
 public class HowToPlayView implements Screen{
-
-    private String title = "This is how you play";
-    private String instructions = "-Catch all the mascots to win";
-    private String instructions2 = "-Answer the questions " ;
-    private String instructions25 = "right to catch the mascot";
-    private String instructions4 = "-Move with the key arrows";
-    private String instructions3 = "-Interact by pressing xxxxxxx";
-    private String pressEnter = "Press enter to begin the game";
 
     private String[] instructionItems;
 
@@ -27,7 +20,6 @@ public class HowToPlayView implements Screen{
     private BitmapFont instructionFont;
     private BitmapFont pressEnterFont;
     private SpriteBatch batch;
-    private float rowDistance = 60;
 
     public HowToPlayView(){
         batch = new SpriteBatch();
@@ -48,6 +40,11 @@ public class HowToPlayView implements Screen{
         pressEnterFont = generator.generateFont(parameter);
 
         generator.dispose();
+        String instructions = "-Catch all the mascots to win";
+        String instructions2 = "-Answer the questions " ;
+        String instructions25 = "right to catch the mascot";
+        String instructions4 = "-Move with the key arrows";
+        String instructions3 = "-Interact by pressing space";
 
         instructionItems = new String[]{instructions, instructions2, instructions25, instructions3, instructions4};
 
@@ -61,6 +58,8 @@ public class HowToPlayView implements Screen{
 
     @Override
     public void render(float delta) {
+        String title = "This is how you play";
+        String pressEnter = "Press enter to begin the game";
 
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -72,6 +71,7 @@ public class HowToPlayView implements Screen{
         titleFont.draw(batch, title, 30, 500);
 
         for(int i = 0; i < instructionItems.length; i++){
+            float rowDistance = 60;
             instructionFont.setColor(Color.BLACK);
             instructionFont.draw(batch, instructionItems[i], 30, 400 - rowDistance * i);
         }
@@ -83,6 +83,11 @@ public class HowToPlayView implements Screen{
         batch.end();
 
 
+    }
+
+    public void setScreen(){
+        State.updateState(State.GameStates.PLAY);
+        dispose();
     }
 
     @Override

@@ -4,33 +4,26 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
-import com.crap.game.view.MenuView;
+import com.crap.game.view.HowToPlayView;
 
 /**
- * Created by Maija on 2016-05-11.
+ * Created by rebeccafinne on 2016-05-17.
  */
-public class MenuController extends InputAdapter implements ApplicationListener{
+public class HowToPlayController extends InputAdapter implements ApplicationListener{
 
-    MenuView menuView;
-    HowToPlayController howToPlayController;
-    public MenuController(MenuView menuView){
-        this.menuView=menuView;
-        this.howToPlayController = new HowToPlayController();
+    private HowToPlayView howToPlayView;
 
+    public HowToPlayController(){
+        this.howToPlayView = new HowToPlayView();
         Gdx.input.setInputProcessor(this);
     }
 
     public boolean keyDown(int keycode){
         if(keycode == Input.Keys.ENTER){
-            menuView.setScreen();
-        }if(keycode == Input.Keys.DOWN){
-            menuView.setCurrentItem("down");
-        }if(keycode == Input.Keys.UP){
-            menuView.setCurrentItem("up");
-        }
-        return true;
-    }
+            howToPlayView.setScreen();
 
+        }return true;
+    }
 
     @Override
     public void create() {
@@ -59,5 +52,6 @@ public class MenuController extends InputAdapter implements ApplicationListener{
 
     @Override
     public void dispose() {
+
     }
 }

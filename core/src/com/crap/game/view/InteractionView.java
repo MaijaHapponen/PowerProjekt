@@ -91,7 +91,6 @@ public class InteractionView implements Screen{
 
     @Override
     public void dispose() {
-
     }
 
     public Stage getStage(){

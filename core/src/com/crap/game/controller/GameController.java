@@ -4,9 +4,13 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.model.Game;
+import com.crap.game.model.Human;
+import com.crap.game.model.Mascot;
 import com.crap.game.model.State;
 import com.crap.game.view.GameView;
 import com.crap.game.view.InteractionView;
+
+import java.util.ArrayList;
 
 import static com.crap.game.model.Game.*;
 import static com.crap.game.model.Game.Worlds.EDIT;
@@ -22,6 +26,10 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private OrthographicCamera camera;
     private PlayerController playerController;
     private int keyCode;
+//TODO    public static ArrayList<Human> humans = new ArrayList<Human>();
+//    public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
+//    public static ArrayList<CharacterController> humanControllers = new ArrayList<CharacterController>();
+//    public static ArrayList<CharacterController> mascotControllers = new ArrayList<CharacterController>();
 
     public GameController(GameView view, Game game){
 
@@ -41,6 +49,18 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view.setMascots(this.model.mascots);
 
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
+//TODO ********
+//        this.humans = game.getHumans();
+//        this.mascots = game.getMascots();
+//
+//        for(int i=0; i<mascots.size(); i++){
+//            mascotControllers.add(new CharacterController(mascots.get(i)));
+//        }
+//
+//        for(int i=0; i<humans.size(); i++){
+//            humanControllers.add(new CharacterController(humans.get(i)));
+//        }
+
         setWorld(HORSAL);
 
         //State.updateState(State.GameStates.STARTMENU);

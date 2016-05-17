@@ -50,6 +50,14 @@ public class Game {
         }
     }
 
+    public ArrayList<Human> getHumans(){
+        return this.humans;
+    }
+
+    public ArrayList<Mascot> getMascots(){
+        return this.mascots;
+    }
+
     //Checks if the game is over.
     public boolean isGameOver(){
         if(progress.areAllMascotsCaught()){

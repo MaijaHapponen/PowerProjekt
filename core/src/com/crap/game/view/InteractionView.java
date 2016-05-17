@@ -30,10 +30,9 @@ public class InteractionView implements Screen{
     private SpriteBatch batch;
 
 
-    private Label talkLable = new Label(String.format("Hello I'm a mascot!"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-    private Label answerOne= new Label(String.format("Answer one"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-
-    private Label answerTwo = new Label(String.format("Answer two"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    private Label talkLable = new Label(String.format("Press SPACE to talk"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    //private Label answerOne= new Label(String.format("Answer one"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    //private Label answerTwo = new Label(String.format("Answer two"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
 
     public InteractionView(){
@@ -45,8 +44,8 @@ public class InteractionView implements Screen{
         table.setFillParent(true);
         table.add(talkLable);
         table.row();
-        table.add(answerOne);
-        table.add(answerTwo);
+        //table.add(answerOne);
+        //table.add(answerTwo);
         stage.addActor(table);
 
 

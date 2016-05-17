@@ -70,23 +70,13 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
     @Override
     public boolean keyDown(int keycode) {
+        if(view.isInteraction() && keycode == Input.Keys.SPACE){
+            State.updateState(State.GameStates.INTERACT);
+        }
         this.keyCode=keycode;
-        if(playerController.collisionController.isNewWorld(playerController.getPlayerPositionX()+
-                playerController.player.getCurrentSpeed(), playerController.getPlayerPositionY())){
-            enterNewWorld();
-        }
-        else if(playerController.interactionController.isInteractionWithMascot(model.getPlayer().getPosition().getX(),
-                            model.getPlayer().getPosition().getY())){
-            //this.state = INTERACT;
-
-        }
         view.render();
         return true;
     }
-
-
-
-
 
     public void movePlayer(int keycode){
         this.keyCode = keycode;
@@ -109,12 +99,12 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
             case PARKING:
                 view.setWorld(new TmxMapLoader().load("maps/parkingtemplate.tmx"));
-                playerController.collisionController = new CollisionController(view.getWorld());
+                playerController.updateCollisionController();
                 model.player.setPosition(1,1); //TODO: Change value to correct location
                 break;
             case HUBBEN:
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
-                playerController.collisionController = new CollisionController(view.getWorld());
+                playerController.updateCollisionController();
                 model.player.setPosition(20, 20);
                 break;
             default:
@@ -124,13 +114,29 @@ public class GameController extends InputAdapter implements ApplicationListener 
     }
 
     public void enterNewWorld() {
+        //TODO: make correct for all maps
         setWorld(EDIT);
     }
 
+    public void updateIfNewWorld() {
+        if (playerController.isNewWorld()) {
+            enterNewWorld();
+        }
+    }
 
+    public void updateIfInteraction(){
+        if(playerController.isInteractionWithMascot()){
+            view.setInteraction(true);
+        }else{
+            view.setInteraction(false);
+        }
+    }
 
     @Override
     public void render() {
+        updateIfNewWorld();
+        updateIfInteraction();
+
         if(Gdx.input.isKeyPressed(keyCode)) {
             movePlayer(keyCode);
         }

@@ -2,10 +2,7 @@ package com.crap.game.model;
 
 import com.crap.game.controller.HowToPlayController;
 import com.crap.game.controller.MenuController;
-import com.crap.game.view.GameView;
-import com.crap.game.view.HowToPlayView;
-import com.crap.game.view.InteractionView;
-import com.crap.game.view.MenuView;
+import com.crap.game.view.*;
 
 /**
  * Created by Maija on 2016-05-16.
@@ -20,6 +17,7 @@ public class State {
 
     public static void updateState(GameStates state) {
         switch (state) {
+            //TODO: Move to controller-class? States can still be in this class though
             case STARTMENU:
                 MenuView menu = new MenuView();
                 new MenuController(menu);
@@ -30,7 +28,7 @@ public class State {
                 game.setScreen(game.main.getWorldView());
                 break;
             case INTERACT:
-                game.setScreen(new InteractionView());
+                game.setScreen(new InteractView());
                 break;
             case GAMEOVER:
                 //this.view.main.setScreen(new GameOverView());

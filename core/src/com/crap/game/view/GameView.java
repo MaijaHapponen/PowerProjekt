@@ -35,7 +35,7 @@ public class GameView extends ApplicationAdapter implements Screen{
     private Character character;
     private InteractionView interactionView;
 
-
+    private boolean interaction;
 
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
@@ -74,25 +74,14 @@ public class GameView extends ApplicationAdapter implements Screen{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
-
-
-
-
         this.camera = playerView.getCamera();
         renderer.setView(camera);
 
-
-
-
         batch.setProjectionMatrix(camera.combined);
-
-
 
         renderer.render();
 
         batch.begin();
-
-
 
         for(int i = 0; i<humansList.size(); i++){
             batch.draw(humansList.get(i).getAnimation().getKeyFrame(elapsedTime,true),
@@ -118,11 +107,10 @@ public class GameView extends ApplicationAdapter implements Screen{
 
         batch.setProjectionMatrix(progressView.getStage().getCamera().combined);
         progressView.getStage().draw();
-        batch.setProjectionMatrix(interactionView.getStage().getCamera().combined);
-
-        interactionView.getStage().draw();
-
-
+        if(interaction){
+            batch.setProjectionMatrix(interactionView.getStage().getCamera().combined);
+            interactionView.getStage().draw();
+        }
     }
 
     @Override
@@ -164,6 +152,12 @@ public class GameView extends ApplicationAdapter implements Screen{
         }
     }
 
+    public void setInteraction(boolean b){
+        interaction = b;
+    }
+    public boolean isInteraction(){
+        return interaction;
+    }
 
     public ArrayList<CharacterView> getHumansList(){
         return this.humansList;

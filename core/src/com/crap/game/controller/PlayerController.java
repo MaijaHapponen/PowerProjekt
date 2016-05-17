@@ -14,12 +14,12 @@ import javafx.scene.input.KeyCode;
  * Created by rebeccafinne on 2016-04-30.
  */
 public class PlayerController {
-    GameView gameView;
-    PlayerView playerView;
-    Player player;
-    Position nextPlayerPos;
-    CollisionController collisionController;
-    InteractionController interactionController;
+    private GameView gameView;
+    private PlayerView playerView;
+    private Player player;
+    private Position nextPlayerPos;
+    private CollisionController collisionController;
+    private InteractionController interactionController;
 
     public PlayerController(PlayerView playerView, GameView gameView, CollisionController collisionController){
         this.playerView = playerView;
@@ -79,7 +79,7 @@ public class PlayerController {
         return nextPlayerPos;
     }
     public Position down(){
-        nextPlayerPos.setPosition(getPlayerPositionX(), getPlayerPositionY()- player.getCurrentSpeed());
+        nextPlayerPos.setPosition(getPlayerPositionX(), getPlayerPositionY() - player.getCurrentSpeed());
         return nextPlayerPos;
     }
     public Position left(){
@@ -89,6 +89,23 @@ public class PlayerController {
     public Position right(){
         nextPlayerPos.setPosition(getPlayerPositionX()+ player.getCurrentSpeed(), getPlayerPositionY());
         return nextPlayerPos;
+    }
+
+    public boolean isInteractionWithMascot(){
+        return checkIfInteractionWithMascot(up()) || checkIfInteractionWithMascot(down()) ||
+                checkIfInteractionWithMascot(left()) || checkIfInteractionWithMascot(right());
+    }
+
+    public boolean checkIfInteractionWithMascot(Position pos){
+        return interactionController.isInteractionWithMascot(pos.getX(),pos.getY());
+    }
+
+    public boolean isNewWorld(){
+        return checkIfNewWorld(up()) || checkIfNewWorld(down()) || checkIfNewWorld(left()) || checkIfNewWorld(right());
+    }
+
+    public boolean checkIfNewWorld(Position pos){
+        return collisionController.isNewWorld(pos.getX(),pos.getY());
     }
 
 

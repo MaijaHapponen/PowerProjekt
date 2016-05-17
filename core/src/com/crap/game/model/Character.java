@@ -34,16 +34,6 @@ public abstract class Character{
         return this.position;
     }
 
-    //Makes the character walk away a few steps.
-    public void walkAway(){
-
-        //Random nummber mellan 0-3. om 0: upp om 1: ner om 2: vänster om 3: höger. Kolla om det går att flytta annars
-        // testa annan rikting. varje gång lyckad flyttning ---> lägg till 1 till en int variabel och när den är tex. 3
-        // är walkAway klart.
-        //TODO fixa sen när Beccis pushad upp senaste CollisionModel.
-
-    }
-
     public String getName(){
         return this.name;
     }

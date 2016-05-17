@@ -68,12 +68,4 @@ public class CharacterView extends ApplicationAdapter implements Screen {
     public Animation getAnimation(){
         return this.animation;
     }
-
-    public int getCharacterSpriteWidth(){
-        return this.texture.getWidth()/4; //TODO snyggare lösning än hårdkodat /4
-    }
-
-    public int getCharacterSpriteHeight(){
-        return this.texture.getHeight()/4; //TODO snyggare lösning än hårdkodat /4
-    }
 }

@@ -21,7 +21,7 @@ public class Game {
     private State state;
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
-    private String[] mascotNames =/* {"donald"};*/{"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
+    private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
     private String[] humansNames = {};//]{"EHuman","DHuman","ITHuman","ZHuman"};
     private String[] worldNames = {"horsalmaskin", "hubbeneditsand", "parkingtemplate"};
 
@@ -38,7 +38,7 @@ public class Game {
     //Populates an arrayList with humans.
     public void createHumans(){
         for(int i=0; i<humansNames.length; i++){
-            Position position = new Position(i*50, i); //TODO setn borde man nog ha en lista med karaktärernas positioner.
+            Position position = new Position(i*50, i*50); //TODO setn borde man nog ha en lista med karaktärernas positioner.
             humans.add(new Human(humansNames[i], position));
         }
     }
@@ -46,7 +46,7 @@ public class Game {
     //Populates an arrayList with mascots.
     public void createMascots(){
         for(int i=0; i<mascotNames.length; i++){
-            Position position = new Position(i*50, i); //TODO sen borde man nog ha en lista med karaktärernas positioner.
+            Position position = new Position(i*50, i*100); //TODO sen borde man nog ha en lista med karaktärernas positioner.
             mascots.add(new Mascot(mascotNames[i], position));
         }
     }

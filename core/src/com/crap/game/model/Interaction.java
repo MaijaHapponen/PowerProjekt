@@ -52,8 +52,8 @@ public class Interaction {
 
         Float x = character.getPosition().getX();
         Float y = character.getPosition().getY();
-        Float width = character.getWidth();
-        Float height = character.getHeight();
+        Float width = character.getWidth()/4; //TODO magical constant fix
+        Float height = character.getHeight()/4; //TODO magical constant fix
 
         return collisionModel.checkIfCollide(x,y,width,height,playerPositionX,playerPositionY) ;
 

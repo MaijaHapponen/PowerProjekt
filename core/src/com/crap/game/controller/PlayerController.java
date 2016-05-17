@@ -3,6 +3,7 @@ package com.crap.game.controller;
 import com.badlogic.gdx.Input;
 import com.crap.game.controller.CollisionController;
 import com.crap.game.model.Player;
+import com.crap.game.model.Position;
 import com.crap.game.view.GameView;
 import com.crap.game.view.PlayerView;
 
@@ -16,6 +17,7 @@ public class PlayerController {
     GameView gameView;
     PlayerView playerView;
     Player player;
+    Position nextPlayerPos;
     CollisionController collisionController;
     InteractionController interactionController;
 
@@ -23,6 +25,7 @@ public class PlayerController {
         this.playerView = playerView;
         this.player = playerView.getPlayer();
         this.gameView = gameView;
+        this.nextPlayerPos = new Position();
 
         this.interactionController = new InteractionController(gameView);
     }
@@ -36,19 +39,19 @@ public class PlayerController {
 
         updateSpeed();
         if (keycode == Input.Keys.UP &&
-                !(checkIfCollision(getPlayerPositionX(), (getPlayerPositionY() + player.getCurrentSpeed())))) {
+                !(checkIfCollision(up()))) {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
             player.moveUp();
         } else if (keycode == Input.Keys.DOWN &&
-                !(checkIfCollision(getPlayerPositionX(), getPlayerPositionY()- player.getCurrentSpeed()))){
+                !(checkIfCollision(down()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
             player.moveDown();
         } else if (keycode == Input.Keys.LEFT &&
-                !(checkIfCollision((getPlayerPositionX()) - player.getCurrentSpeed(), getPlayerPositionY()))){
+                !(checkIfCollision(left()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_LEFT);
             player.moveLeft();
         } else if (keycode == Input.Keys.RIGHT &&
-                !(checkIfCollision(getPlayerPositionX()+ player.getCurrentSpeed(), getPlayerPositionY())) )  {
+                !(checkIfCollision(right())) )  {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
             player.moveRight();
         }
@@ -65,10 +68,27 @@ public class PlayerController {
     public float getPlayerPositionY(){
         return player.getPosition().getY();
     }
-    public boolean checkIfCollision(float x, float y){
-        return (collisionController.isCollison(x,y) || collisionController.isNewWorld(x,y)||
-                interactionController.isInteractionWithHuman(x,y)
-                || interactionController.isInteractionWithMascot(x,y));
+    public boolean checkIfCollision(Position p){
+        return (collisionController.isCollison(p.getX(),p.getY()) || collisionController.isNewWorld(p.getX(),p.getY())||
+                interactionController.isInteractionWithHuman(p.getX(),p.getY())
+                || interactionController.isInteractionWithMascot(p.getX(),p.getY()));
+    }
+
+    public Position up(){
+        nextPlayerPos.setPosition(getPlayerPositionX(), (getPlayerPositionY() + player.getCurrentSpeed()));
+        return nextPlayerPos;
+    }
+    public Position down(){
+        nextPlayerPos.setPosition(getPlayerPositionX(), getPlayerPositionY()- player.getCurrentSpeed());
+        return nextPlayerPos;
+    }
+    public Position left(){
+        nextPlayerPos.setPosition(getPlayerPositionX() - player.getCurrentSpeed(), getPlayerPositionY());
+        return nextPlayerPos;
+    }
+    public Position right(){
+        nextPlayerPos.setPosition(getPlayerPositionX()+ player.getCurrentSpeed(), getPlayerPositionY());
+        return nextPlayerPos;
     }
 
 

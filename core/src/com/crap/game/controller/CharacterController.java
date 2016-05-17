@@ -8,13 +8,10 @@ import java.util.Random;
 
 public class CharacterController{
 
-    private CharacterView view;
-    private Game game;
     private Character character;
     private CollisionController collisionController;
 
-    public CharacterController(/*Game game, CharacterView view, */Character character,
-                               CollisionController collisionController){
+    public CharacterController(Character character, CollisionController collisionController){
         this.character = character;
         this.collisionController = collisionController;
     }
@@ -24,7 +21,7 @@ public class CharacterController{
         Random rand = new Random();
         int j = 0;
 
-        while(j<3){
+        while(j<5){
             int i = rand.nextInt(3);
 
             if(i==0 && collisionController.isCollison(character.getPosition().getX(),

@@ -20,9 +20,12 @@ public class HowToPlayController extends InputAdapter implements ApplicationList
 
     public boolean keyDown(int keycode){
         if(keycode == Input.Keys.ENTER){
-            howToPlayView.setScreen();
+            howToPlayView.setGame();
 
-        }return true;
+        }if(keycode == Input.Keys.BACKSPACE){
+            howToPlayView.setMenu();
+        }
+        return true;
     }
 
     @Override

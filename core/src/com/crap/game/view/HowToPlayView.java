@@ -19,6 +19,7 @@ public class HowToPlayView implements Screen{
     private BitmapFont titleFont;
     private BitmapFont instructionFont;
     private BitmapFont pressEnterFont;
+    private BitmapFont pressBackFont;
     private SpriteBatch batch;
 
     public HowToPlayView(){
@@ -38,6 +39,9 @@ public class HowToPlayView implements Screen{
 
         parameter.size = 18;
         pressEnterFont = generator.generateFont(parameter);
+
+        parameter.size = 18;
+        pressBackFont = generator.generateFont(parameter);
 
         generator.dispose();
         String instructions = "-Catch all the mascots to win";
@@ -60,6 +64,7 @@ public class HowToPlayView implements Screen{
     public void render(float delta) {
         String title = "This is how you play";
         String pressEnter = "Press enter to begin the game";
+        String pressBack = "Press backspace to go back";
 
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -79,14 +84,22 @@ public class HowToPlayView implements Screen{
         pressEnterFont.setColor(Color.PINK);
         pressEnterFont.draw(batch, pressEnter, 30, 100);
 
+        pressBackFont.setColor(Color.PINK);
+        pressBackFont.draw(batch, pressBack, 30, 50);
+
 
         batch.end();
 
 
     }
 
-    public void setScreen(){
+    public void setGame(){
         State.updateState(State.GameStates.PLAY);
+        dispose();
+    }
+
+    public void setMenu(){
+        State.updateState(State.GameStates.STARTMENU);
         dispose();
     }
 
@@ -115,5 +128,7 @@ public class HowToPlayView implements Screen{
         batch.dispose();
         titleFont.dispose();
         instructionFont.dispose();
+        pressBackFont.dispose();
+        pressEnterFont.dispose();
     }
 }

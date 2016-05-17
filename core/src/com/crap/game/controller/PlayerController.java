@@ -25,9 +25,13 @@ public class PlayerController {
         this.gameView = gameView;
 
         this.interactionController = new InteractionController(gameView);
+    }
+
+    public void updateCollisionController(){
         this.collisionController = new CollisionController(gameView.getWorld());
         collisionController.setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
     }
+
     public void movePlayer(int keycode) {
 
         updateSpeed();

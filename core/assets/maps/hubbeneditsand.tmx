@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="25">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="28">
  <tileset firstgid="1" name="open_tileset" tilewidth="32" tileheight="32" tilecount="1710" columns="45">
   <image source="open_tileset.png" trans="878787" width="1440" height="1216"/>
  </tileset>
@@ -116,7 +116,7 @@
  </objectgroup>
  <objectgroup name="NewWorld">
   <object id="12" name="NewWorld" x="411" y="190.333" width="41.6667" height="16.6667"/>
-  <object id="23" x="777" y="223" width="22" height="114"/>
-  <object id="24" x="770" y="431" width="31" height="368"/>
+  <object id="23" name="horsalmaskin" x="777" y="223" width="22" height="114"/>
+  <object id="24" name="horsalmaskin" x="770" y="431" width="31" height="368"/>
  </objectgroup>
 </map>

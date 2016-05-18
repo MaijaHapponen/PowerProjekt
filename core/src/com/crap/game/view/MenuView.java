@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.crap.game.Main;
+import com.crap.game.model.Menu;
 import com.crap.game.model.State;
 
 
@@ -21,12 +21,7 @@ public class MenuView implements Screen{
     private BitmapFont titleFont;
     private BitmapFont font;
 
-    private String gameName = "C.R.A.P.";
-
-    private int currentItemNr;
-    private String currentItem;
-    private String[] menuItems;
-
+    private Menu menuModel;
 
     public MenuView(){
         batch = new SpriteBatch();
@@ -43,14 +38,17 @@ public class MenuView implements Screen{
         font= generator.generateFont(parameter);
         generator.dispose();
 
-        menuItems = new String[]{"Play the game", "How to play", "Exit"};
-        currentItemNr =0;
-        currentItem = menuItems[currentItemNr];
+        String[] menuItems = new String[]{"Play the game", "How to play", "Exit"};
+        menuModel = new Menu("C.R.A.P.", menuItems);
     }
 
     @Override
     public void show() {
 
+    }
+
+    public Menu getMenuModel(){
+        return this.menuModel;
     }
 
     @Override
@@ -61,37 +59,24 @@ public class MenuView implements Screen{
 
 
         batch.begin();
-        titleFont.draw(batch, gameName, 60, 400);
+        titleFont.draw(batch, menuModel.getGameName(), 60, 400);
 
-        for(int i = 0; i<menuItems.length;i++){
-            if(currentItemNr ==i){font.setColor(Color.PINK);}
+        for(int i = 0; i< menuModel.amountOfItems();i++){
+            if(menuModel.currentItemNumber() ==i){font.setColor(Color.PINK);}
             else{font.setColor(Color.BLACK);}
 
-            font.draw(batch, menuItems[i], 120, 250 - 70*i);
+            font.draw(batch, menuModel.getMenuItem(i), 120, 250 - 70*i);
         }
         batch.end();
 
     }
-
-    public void setCurrentItem(String direction){
-        if(direction.equals("up")){
-            if(currentItemNr == 0) currentItemNr =2;
-            else currentItemNr = currentItemNr -1;
-
-        }else if(direction.equals("down")){
-            if(currentItemNr == 2) currentItemNr = 0;
-            else currentItemNr = currentItemNr + 1;
-        }
-        currentItem = menuItems[currentItemNr];
-    }
-
     public void setScreen(){
-        if(currentItem.equals("Play the game")){
+        if(menuModel.getCurrentItem().equals("Play the game")){
             State.updateState(State.GameStates.PLAY);
             dispose();
-        }else if(currentItem.equals("How to play")){
+        }else if(menuModel.getCurrentItem().equals("How to play")){
             State.updateState(State.GameStates.HOWTOPLAY);
-        }else if(currentItem.equals("Exit")){
+        }else if(menuModel.getCurrentItem().equals("Exit")){
             System.exit(0);
         }
 

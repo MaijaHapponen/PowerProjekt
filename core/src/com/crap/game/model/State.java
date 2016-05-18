@@ -1,7 +1,6 @@
 package com.crap.game.model;
 
-import com.crap.game.controller.HowToPlayController;
-import com.crap.game.controller.MenuController;
+import com.crap.game.controller.*;
 import com.crap.game.view.*;
 
 /**
@@ -10,6 +9,7 @@ import com.crap.game.view.*;
 public class State {
     public enum GameStates {STARTMENU, PLAY, INTERACT, GAMEOVER, HOWTOPLAY}
 
+    public static boolean paused;
     public static Game game;
     public State(Game g){
         this.game = g;
@@ -24,11 +24,14 @@ public class State {
                 game.setScreen(menu);
                 break;
             case PLAY:
-                game.initPlay();
+                if(!paused) game.initPlay();
                 game.setScreen(game.main.getWorldView());
                 break;
             case INTERACT:
-                game.setScreen(new InteractView());
+                paused = true;
+                InteractView interactView = new InteractView();
+                new InteractController(interactView);
+                game.setScreen(interactView);
                 break;
             case GAMEOVER:
                 //this.view.main.setScreen(new GameOverView());

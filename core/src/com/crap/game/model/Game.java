@@ -19,6 +19,7 @@ public class Game {
     private Progress progress;
     public Player player;
     private State state;
+    private boolean playMode;
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
     private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
@@ -86,6 +87,16 @@ public class Game {
     }
 
     public void initPlay(){
-        main.initPlay();
+        if(!playMode){
+            main.initPlay();
+            playMode = true;
+        }
+    }
+
+    public void pausePlayMode(){
+
+    }
+    public void playMode(){
+
     }
 }

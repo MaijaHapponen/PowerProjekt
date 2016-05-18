@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.crap.game.model.Menu;
 import com.crap.game.view.MenuView;
 
 /**
@@ -12,9 +13,11 @@ import com.crap.game.view.MenuView;
 public class MenuController extends InputAdapter implements ApplicationListener{
 
     MenuView menuView;
+    Menu menuModel;
     HowToPlayController howToPlayController;
     public MenuController(MenuView menuView){
         this.menuView=menuView;
+        this.menuModel = menuView.getMenuModel();
         this.howToPlayController = new HowToPlayController();
 
         Gdx.input.setInputProcessor(this);
@@ -24,9 +27,9 @@ public class MenuController extends InputAdapter implements ApplicationListener{
         if(keycode == Input.Keys.ENTER){
             menuView.setScreen();
         }if(keycode == Input.Keys.DOWN){
-            menuView.setCurrentItem("down");
+            menuModel.setCurrentItem("down");
         }if(keycode == Input.Keys.UP){
-            menuView.setCurrentItem("up");
+            menuModel.setCurrentItem("up");
         }
         return true;
     }

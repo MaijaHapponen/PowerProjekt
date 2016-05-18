@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Game {
 
-    public enum Worlds{HORSAL, EDIT, PARKING, HUBBEN}
+    public enum Worlds{HORSAL, EDIT, PARKING, HUBBEN, ZALOONEN}
 
     public Main main;
 

@@ -116,7 +116,7 @@
  </objectgroup>
  <objectgroup name="SlowLayer"/>
  <objectgroup name="NewWorld">
-  <object id="55" x="4" y="691" width="25" height="90"/>
+  <object id="55" name="hubbeneditsand" x="4" y="691" width="25" height="90"/>
   <object id="56" x="148" y="566" height="14"/>
  </objectgroup>
 </map>

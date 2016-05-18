@@ -29,9 +29,13 @@ public class CollisionController {
 
     private MapLayer newWorldLayer;
     private MapObjects newWorldObjects;
+    private MapObject newWorldObject;
+    private String newWorldName;
 
     private float playerWidth;
     private float playerHeight;
+
+
 
     public CollisionController(TiledMap view) {
         collisionModel = new CollisionModel();
@@ -46,6 +50,8 @@ public class CollisionController {
 
         newWorldLayer = allLayers.get("NewWorld");
         newWorldObjects = newWorldLayer.getObjects();
+
+        newWorldName ="horsalmaskin";
     }
 
     public void setPlayerWidthAndHeight(float width, float height){
@@ -72,14 +78,18 @@ public class CollisionController {
         }
         else if(isMapObjectHit(newWorldObjects.iterator(), x, y)){
             collisionModel.setTypeOfTile(CollisionModel.tileType.NEW_WORLD);
+            newWorldName = newWorldObject.getName();
+
+
+        }
+        else if(isMapObjectHit(collisionObjects.iterator(), x, y)){
+            collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
         }
         else{
             collisionModel.setTypeOfTile(CollisionModel.tileType.WALKABLE_TILE);
         }
-        if(isMapObjectHit(collisionObjects.iterator(), x, y)){
-            collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
-        }
     }
+
 
     public boolean isMapObjectHit(Iterator iter, float x, float y){
         while(iter.hasNext()) {
@@ -95,6 +105,7 @@ public class CollisionController {
                     checkIfCollide(posX,posY,width,height,x,y+playerHeight) ||
                     checkIfCollide(posX,posY,width,height,x,y+playerHeight/2)||
                     checkIfCollide(posX,posY,width,height,x+playerWidth,y+playerHeight/2)){
+                newWorldObject = mapObject;
                 return true;
             }
         }
@@ -104,6 +115,17 @@ public class CollisionController {
 
     public boolean checkIfCollide(float x, float y, float width, float height, float playerPositionX, float playerPositionY) {
         return collisionModel.checkIfCollide(x,y,width,height,playerPositionX,playerPositionY);
+    }
+
+    public void setNewWorldName(String name){
+        this.newWorldName = name;
+    }
+
+    public String getNewWorldName(){
+        System.out.println(newWorldName);
+
+        return this.newWorldName;
+
     }
 
 

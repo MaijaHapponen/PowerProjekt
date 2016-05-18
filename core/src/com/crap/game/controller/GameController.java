@@ -13,8 +13,7 @@ import com.crap.game.view.InteractionView;
 import java.util.ArrayList;
 
 import static com.crap.game.model.Game.*;
-import static com.crap.game.model.Game.Worlds.EDIT;
-import static com.crap.game.model.Game.Worlds.HORSAL;
+import static com.crap.game.model.Game.Worlds.*;
 
 /**
  * Created by Lisa on 18/04/16.
@@ -107,6 +106,10 @@ public class GameController extends InputAdapter implements ApplicationListener 
                 playerController.updateCollisionController();
                 model.player.setPosition(20, 20);
                 break;
+            case ZALOONEN:
+                view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
+                playerController.updateCollisionController();
+
             default:
                 System.out.println("Ohoh! Something went wrong");
                 break;
@@ -115,13 +118,26 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
     public void enterNewWorld() {
         //TODO: make correct for all maps
-        setWorld(EDIT);
+        if(collisionController.getNewWorldName().equals("hubbeneditsand")) {
+            setWorld(EDIT);
+        }else if(collisionController.getNewWorldName().equals("horsalmaskin")){
+            setWorld(HORSAL);
+        }else if(collisionController.getNewWorldName().equals("hubben")){
+            setWorld(HUBBEN);
+        }else if(collisionController.getNewWorldName().equals("zaloonen")){
+            setWorld(ZALOONEN);
+        }else if(collisionController.getNewWorldName().equals("hubbeneditsand2")) {
+            setWorld(EDIT);
+        }
+
+
     }
 
     public void updateIfNewWorld() {
-        if (playerController.isNewWorld()) {
+        if(playerController.isNewWorld()) {
             enterNewWorld();
         }
+
     }
 
     public void updateIfInteraction(){

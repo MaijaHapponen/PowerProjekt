@@ -108,6 +108,6 @@
  </objectgroup>
  <objectgroup name="SlowLayer"/>
  <objectgroup name="NewWorld">
-  <object id="15" x="161" y="752" width="63" height="51"/>
+  <object id="15" name="horsalmaskin" x="161" y="752" width="63" height="51"/>
  </objectgroup>
 </map>

@@ -115,7 +115,9 @@
   <object id="20" name="Slow" x="450" y="221" width="61" height="28.255"/>
  </objectgroup>
  <objectgroup name="NewWorld">
+
   <object id="12" name="hubben" x="411" y="190.333" width="41.6667" height="16.6667"/>
+
   <object id="23" name="horsalmaskin" x="777" y="223" width="22" height="114"/>
   <object id="24" name="horsalmaskin" x="770" y="431" width="31" height="368"/>
  </objectgroup>

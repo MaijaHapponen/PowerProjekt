@@ -32,6 +32,7 @@ public class CollisionController {
     private MapObject newWorldObject;
     private String newWorldName;
 
+
     private float playerWidth;
     private float playerHeight;
 
@@ -39,7 +40,6 @@ public class CollisionController {
 
     public CollisionController(TiledMap view) {
         collisionModel = new CollisionModel();
-
         this.map = view;
         allLayers = map.getLayers();
         collisionLayer = allLayers.get("Collision");
@@ -51,7 +51,6 @@ public class CollisionController {
         newWorldLayer = allLayers.get("NewWorld");
         newWorldObjects = newWorldLayer.getObjects();
 
-        newWorldName ="horsalmaskin";
     }
 
     public void setPlayerWidthAndHeight(float width, float height){
@@ -123,7 +122,6 @@ public class CollisionController {
 
     public String getNewWorldName(){
         System.out.println(newWorldName);
-
         return this.newWorldName;
 
     }

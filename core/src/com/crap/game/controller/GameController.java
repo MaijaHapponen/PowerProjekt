@@ -48,8 +48,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);
 
-        this.collisionController = new CollisionController(view.getWorld());
-        this.playerController = new PlayerController(this.view.getPlayerView(), this.view, collisionController);
+       // this.collisionController = new CollisionController(view.getWorld());
+        this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
 //TODO ********
 //        this.humans = game.getHumans();
 //        this.mascots = game.getMascots();
@@ -104,11 +104,12 @@ public class GameController extends InputAdapter implements ApplicationListener 
             case HUBBEN:
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
-                model.player.setPosition(20, 20);
+                model.player.setPosition(1,1);
                 break;
             case ZALOONEN:
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();
+                model.player.setPosition(1,1);
 
             default:
                 System.out.println("Ohoh! Something went wrong");
@@ -116,17 +117,19 @@ public class GameController extends InputAdapter implements ApplicationListener 
         }
     }
 
+
+
     public void enterNewWorld() {
         //TODO: make correct for all maps
-        if(collisionController.getNewWorldName().equals("hubbeneditsand")) {
+        if(playerController.getNewWorldName().equals("hubbeneditsand")) {
             setWorld(EDIT);
-        }else if(collisionController.getNewWorldName().equals("horsalmaskin")){
+        }else if(playerController.getNewWorldName().equals("horsalmaskin")){
             setWorld(HORSAL);
-        }else if(collisionController.getNewWorldName().equals("hubben")){
+        }else if(playerController.getNewWorldName().equals("hubben")){
             setWorld(HUBBEN);
-        }else if(collisionController.getNewWorldName().equals("zaloonen")){
+        }else if(playerController.getNewWorldName().equals("zaloonen")){
             setWorld(ZALOONEN);
-        }else if(collisionController.getNewWorldName().equals("hubbeneditsand2")) {
+        }else if(playerController.getNewWorldName().equals("hubbeneditsand2")) {
             setWorld(EDIT);
         }
 

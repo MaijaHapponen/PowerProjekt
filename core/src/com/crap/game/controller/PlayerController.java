@@ -21,11 +21,11 @@ public class PlayerController {
     private CollisionController collisionController;
     private InteractionController interactionController;
 
-    public PlayerController(PlayerView playerView, GameView gameView, CollisionController collisionController){
+    public PlayerController(PlayerView playerView, GameView gameView){
         this.playerView = playerView;
         this.player = playerView.getPlayer();
         this.gameView = gameView;
-        this.collisionController = collisionController;
+        this.collisionController = new CollisionController(gameView.getWorld());
         this.nextPlayerPos = new Position();
         this.interactionController = new InteractionController(gameView);
     }
@@ -87,7 +87,7 @@ public class PlayerController {
         return nextPlayerPos;
     }
     public Position right(){
-        nextPlayerPos.setPosition(getPlayerPositionX()+ player.getCurrentSpeed(), getPlayerPositionY());
+        nextPlayerPos.setPosition(getPlayerPositionX() + player.getCurrentSpeed(), getPlayerPositionY());
         return nextPlayerPos;
     }
 
@@ -134,4 +134,6 @@ public class PlayerController {
 
         }
     }
+
+    public String getNewWorldName(){return collisionController.getNewWorldName();}
 }

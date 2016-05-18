@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="57">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="58">
  <tileset firstgid="1" name="open_tileset_2x" tilewidth="32" tileheight="32" tilecount="6840" columns="90">
   <image source="open_tileset_2x.png" width="2880" height="2432"/>
  </tileset>
@@ -114,7 +114,9 @@
   <object id="53" x="64" y="5" width="66" height="87"/>
   <object id="54" x="230" y="3" width="568" height="15"/>
  </objectgroup>
- <objectgroup name="SlowLayer"/>
+ <objectgroup name="SlowLayer">
+  <object id="57" x="20" y="370" width="8" height="12"/>
+ </objectgroup>
  <objectgroup name="NewWorld">
   <object id="55" name="hubbeneditsand" x="4" y="691" width="25" height="90"/>
   <object id="56" x="148" y="566" height="14"/>

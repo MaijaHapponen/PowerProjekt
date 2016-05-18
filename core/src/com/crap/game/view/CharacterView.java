@@ -31,6 +31,7 @@ public class CharacterView extends ApplicationAdapter implements Screen {
         this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
                 this.texture.getHeight(), 4, 4);
     }
+
     public CharacterView(Character character,Texture texture){
         this.character = character;
         this.texture = texture;
@@ -69,11 +70,29 @@ public class CharacterView extends ApplicationAdapter implements Screen {
         return this.animation;
     }
 
+    public void updateAnimation(){
+        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
+                this.texture.getHeight(), 4, 4);
+    }
+
+    public PlayerView.AnimationState getAnimationState(){
+        return this.animationState;
+    }
+
+
+    public void setAnimationState(PlayerView.AnimationState animationState){
+        this.animationState = animationState;
+    }
+
+    public Texture getTexture(){
+        return this.texture;
+    }
+
     public int getCharacterSpriteWidth(){
-        return this.texture.getWidth()/4; //TODO snyggare lösning än hårdkodat /4
+        return this.texture.getWidth()/4; //TODO magical constant?
     }
 
     public int getCharacterSpriteHeight(){
-        return this.texture.getHeight()/4; //TODO snyggare lösning än hårdkodat /4
+        return this.texture.getHeight()/4; //TODO magical constant?
     }
 }

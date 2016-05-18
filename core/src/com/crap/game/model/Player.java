@@ -20,50 +20,33 @@ public class Player{
         this.currentSpeed = normalSpeed;
     }
 
-    public void moveUp(){
-
-        if(!isOutOfBounds()) {
+    public void moveUp(float height){
+        if(!(this.getPosition().getY() > height)) {
             this.position.setPosition(position.getX(), position.getY() + currentSpeed);
         }
-
-
     }
 
     public void moveDown(){
-
-        if(!isOutOfBounds()){
+        if(!(this.getPosition().getY() <0)){
             this.position.setPosition(position.getX(), position.getY() - currentSpeed);
         }
-
-
     }
 
-    public void moveRight(){
-
-        if(!isOutOfBounds()) {
+    public void moveRight(float width){
+        if(!(this.getPosition().getX() > width)) {
             this.position.setPosition(position.getX() + currentSpeed, position.getY());
         }
-
     }
 
     public void moveLeft(){
-        if(!isOutOfBounds()){
+        if(!(this.position.getX() <0)){
             this.position.setPosition(position.getX() - currentSpeed, position.getY());
         }
-
     }
-
-    public boolean isOutOfBounds(){
-        //TODO should be changed to the max width of the world later.
-        return this.position.getX() < 0 || this.position.getX() > 1000 ||
-                this.position.getY() < 0  || this.position.getY() > 1000;
-    }
-
-
 
     public Position getPosition(){return this.position;  }
 
-    public void setPosition(int x, int y){
+    public void setPosition(float x, float y){
         this.position.setPosition(x,y);
     }
 
@@ -82,7 +65,4 @@ public class Player{
     public int getSlowerSpeed(){
         return this.slowerSpeed;
     }
-
-
-
 }

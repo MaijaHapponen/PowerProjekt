@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="16">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="17">
  <tileset firstgid="1" name="open_tileset_2x" tilewidth="32" tileheight="32" tilecount="6840" columns="90">
   <image source="open_tileset_2x.png" width="2880" height="2432"/>
  </tileset>
@@ -90,7 +90,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,2623,2626,0,0,0,0,0,2623,2626,0,0,0,0
 </data>
  </layer>
- <objectgroup name="CollisionLayer">
+ <objectgroup name="Collision">
   <object id="1" x="93" y="3" width="18" height="575"/>
   <object id="2" x="96" y="674" width="14" height="74"/>
   <object id="3" x="96" y="737" width="140" height="14"/>
@@ -106,8 +106,10 @@
   <object id="13" x="543" y="666" width="164" height="135"/>
   <object id="14" x="309" y="668" width="194" height="135"/>
  </objectgroup>
- <objectgroup name="SlowLayer"/>
+ <objectgroup name="SlowLayer">
+  <object id="16" x="13" y="8" width="5" height="3"/>
+ </objectgroup>
  <objectgroup name="NewWorld">
-  <object id="15" x="161" y="752" width="63" height="51"/>
+  <object id="15" name="horsalmaskin" x="161" y="752" width="63" height="51"/>
  </objectgroup>
 </map>

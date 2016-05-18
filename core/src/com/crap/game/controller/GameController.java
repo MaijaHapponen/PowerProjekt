@@ -8,13 +8,11 @@ import com.crap.game.model.Human;
 import com.crap.game.model.Mascot;
 import com.crap.game.model.State;
 import com.crap.game.view.GameView;
-import com.crap.game.view.InteractionView;
 
 import java.util.ArrayList;
 
 import static com.crap.game.model.Game.*;
-import static com.crap.game.model.Game.Worlds.EDIT;
-import static com.crap.game.model.Game.Worlds.HORSAL;
+import static com.crap.game.model.Game.Worlds.*;
 
 /**
  * Created by Lisa on 18/04/16.
@@ -49,8 +47,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);
 
-        this.collisionController = new CollisionController(view.getWorld());
-        this.playerController = new PlayerController(this.view.getPlayerView(), this.view, collisionController);
+        // this.collisionController = new CollisionController(view.getWorld());
+        this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
 //TODO ********
 //        this.humans = game.getHumans();
 //        this.mascots = game.getMascots();
@@ -64,6 +62,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
 //        }
 
         setWorld(HORSAL);
+        model.player.setPosition(250,250);
 
         Gdx.input.setInputProcessor(this);
     }
@@ -84,17 +83,32 @@ public class GameController extends InputAdapter implements ApplicationListener 
     }
 
     public void setWorld(Worlds worlds){
+        int tempCollisionlayerwidth = 50;
         switch (worlds) {
             case HORSAL:
-                view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
-                playerController.updateCollisionController();
-                model.player.setPosition(250,250); //TODO: Change value to correct location
+                if(playerController.getPlayerPositionX() > view.getWorldWidth() -tempCollisionlayerwidth) {
+                    view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
+                    playerController.updateCollisionController();
+                    model.player.setPosition(tempCollisionlayerwidth, playerController.getPlayerPositionY());
+                }
+                else{
+                    view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
+                    playerController.updateCollisionController();
+                    model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, playerController.getPlayerPositionY());
+                }
                 break;
 
             case EDIT:
-                view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
-                playerController.updateCollisionController();
-                model.player.setPosition(250,250); //TODO: Change value to correct location
+                if(playerController.getPlayerPositionX() < tempCollisionlayerwidth) {
+                    view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
+                    playerController.updateCollisionController();
+                    model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, playerController.getPlayerPositionY());
+                }
+                else{
+                    view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
+                    playerController.updateCollisionController();
+                    model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, playerController.getPlayerPositionY());
+                }
                 break;
 
             case PARKING:
@@ -102,11 +116,18 @@ public class GameController extends InputAdapter implements ApplicationListener 
                 playerController.updateCollisionController();
                 model.player.setPosition(1,1); //TODO: Change value to correct location
                 break;
+
             case HUBBEN:
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
-                model.player.setPosition(20, 20);
+                model.player.setPosition(1,1);
                 break;
+
+            case ZALOONEN:
+                view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
+                playerController.updateCollisionController();
+                model.player.setPosition(1,1);
+
             default:
                 System.out.println("Ohoh! Something went wrong");
                 break;
@@ -115,13 +136,23 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
     public void enterNewWorld() {
         //TODO: make correct for all maps
-        setWorld(EDIT);
+        if(playerController.getNewWorldName().equals("hubbeneditsand")) {
+            setWorld(EDIT);
+        }else if(playerController.getNewWorldName().equals("horsalmaskin")){
+            setWorld(HORSAL);
+        }else if(playerController.getNewWorldName().equals("hubben")){
+            setWorld(HUBBEN);
+        }else if(playerController.getNewWorldName().equals("zaloonen")){
+            setWorld(ZALOONEN);
+        }
+
     }
 
     public void updateIfNewWorld() {
-        if (playerController.isNewWorld()) {
+        if(playerController.isNewWorld()) {
             enterNewWorld();
         }
+
     }
 
     public void updateIfInteraction(){

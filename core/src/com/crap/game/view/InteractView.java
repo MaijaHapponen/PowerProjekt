@@ -73,6 +73,11 @@ public class InteractView implements Screen{
 
     }
 
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
     public void setCurrentItem(String direction){
         if(direction.equals("up")){
             if(currentItemNr == 0) currentItemNr =2;
@@ -87,23 +92,10 @@ public class InteractView implements Screen{
 
 
     @Override
-    public void resize(int width, int height) {
-
-    }
+    public void pause() {}
 
     @Override
-    public void pause() {
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
+    public void resume() {}
 
     @Override
     public void dispose() {
@@ -111,4 +103,6 @@ public class InteractView implements Screen{
         titleFont.dispose();
         font.dispose();
     }
+    public void hide() {}
+
 }

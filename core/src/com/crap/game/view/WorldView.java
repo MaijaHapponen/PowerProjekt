@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
-
 /**
  * Created by andrea on 2016-05-09.
  */
@@ -31,19 +30,12 @@ public class WorldView extends ApplicationAdapter implements Screen {
         return this.world;
     }
 
+    @Override
+    public void show() {}
 
     @Override
-    public void show() {
-
-    }
+    public void render(float delta) {}
 
     @Override
-    public void render(float delta) {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
+    public void hide() {}
 }

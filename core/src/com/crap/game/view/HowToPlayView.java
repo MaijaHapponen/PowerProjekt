@@ -54,11 +54,8 @@ public class HowToPlayView implements Screen{
 
     }
 
-
     @Override
-    public void show() {
-
-    }
+    public void show() { }
 
     @Override
     public void render(float delta) {
@@ -87,10 +84,7 @@ public class HowToPlayView implements Screen{
         pressBackFont.setColor(Color.PINK);
         pressBackFont.draw(batch, pressBack, 30, 50);
 
-
         batch.end();
-
-
     }
 
     public void setGame(){

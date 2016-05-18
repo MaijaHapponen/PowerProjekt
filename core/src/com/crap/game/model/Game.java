@@ -2,8 +2,6 @@ package com.crap.game.model;
 
 import com.badlogic.gdx.Screen;
 import com.crap.game.Main;
-import com.crap.game.controller.MenuController;
-import com.crap.game.view.MenuView;
 
 import java.util.ArrayList;
 
@@ -12,14 +10,16 @@ import java.util.ArrayList;
  */
 public class Game {
 
-    public enum Worlds{HORSAL, EDIT, PARKING, HUBBEN}
+    public enum Worlds{HORSAL, EDIT, PARKING, HUBBEN, EDIT2, ZALOONEN}
 
     public Main main;
 
+    private int startPositionX = 250;
+    private int startPositionY = 250;
     private Progress progress;
     public Player player;
     private State state;
-    private boolean playMode;
+    
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
     private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
@@ -29,7 +29,7 @@ public class Game {
     public Game(Main main){
         this.main = main;
         this.progress = new Progress();
-        this.player = new Player(250,250);
+        this.player = new Player(startPositionX,startPositionY);
         createHumans();
         createMascots();
 
@@ -87,16 +87,7 @@ public class Game {
     }
 
     public void initPlay(){
-        if(!playMode){
-            main.initPlay();
-            playMode = true;
-        }
+        main.initPlay();
     }
 
-    public void pausePlayMode(){
-
-    }
-    public void playMode(){
-
-    }
 }

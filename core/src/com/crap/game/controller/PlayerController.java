@@ -1,14 +1,10 @@
 package com.crap.game.controller;
 
 import com.badlogic.gdx.Input;
-import com.crap.game.controller.CollisionController;
 import com.crap.game.model.Player;
 import com.crap.game.model.Position;
 import com.crap.game.view.GameView;
 import com.crap.game.view.PlayerView;
-
-import com.crap.game.model.Player;
-import javafx.scene.input.KeyCode;
 
 /**
  * Created by rebeccafinne on 2016-04-30.
@@ -21,11 +17,11 @@ public class PlayerController {
     private CollisionController collisionController;
     private InteractionController interactionController;
 
-    public PlayerController(PlayerView playerView, GameView gameView, CollisionController collisionController){
+    public PlayerController(PlayerView playerView, GameView gameView){
         this.playerView = playerView;
         this.player = playerView.getPlayer();
         this.gameView = gameView;
-        this.collisionController = collisionController;
+        this.collisionController = new CollisionController(gameView.getWorld());
         this.nextPlayerPos = new Position();
         this.interactionController = new InteractionController(gameView);
     }
@@ -41,7 +37,7 @@ public class PlayerController {
         if (keycode == Input.Keys.UP &&
                 !(checkIfCollision(up()))) {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
-            player.moveUp();
+            player.moveUp(gameView.getWorldHeight());
         } else if (keycode == Input.Keys.DOWN &&
                 !(checkIfCollision(down()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
@@ -53,10 +49,11 @@ public class PlayerController {
         } else if (keycode == Input.Keys.RIGHT &&
                 !(checkIfCollision(right())) )  {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
-            player.moveRight();
+            player.moveRight(gameView.getWorldWidth());
         }
         updateSprite();
-        playerView.moveCamera((int) getPlayerPositionX(), (int) getPlayerPositionY());
+        playerView.moveCamera((int) getPlayerPositionX(), (int) getPlayerPositionY(),
+                gameView.getWorldHeight(), gameView.getWorldWidth());
     }
 
     public void updateSprite() {
@@ -78,16 +75,19 @@ public class PlayerController {
         nextPlayerPos.setPosition(getPlayerPositionX(), (getPlayerPositionY() + player.getCurrentSpeed()));
         return nextPlayerPos;
     }
+
     public Position down(){
         nextPlayerPos.setPosition(getPlayerPositionX(), getPlayerPositionY() - player.getCurrentSpeed());
         return nextPlayerPos;
     }
+
     public Position left(){
         nextPlayerPos.setPosition(getPlayerPositionX() - player.getCurrentSpeed(), getPlayerPositionY());
         return nextPlayerPos;
     }
+
     public Position right(){
-        nextPlayerPos.setPosition(getPlayerPositionX()+ player.getCurrentSpeed(), getPlayerPositionY());
+        nextPlayerPos.setPosition(getPlayerPositionX() + player.getCurrentSpeed(), getPlayerPositionY());
         return nextPlayerPos;
     }
 
@@ -112,7 +112,8 @@ public class PlayerController {
     public void updateSpeed(){
         if(collisionController.isSlowerTerrain(getPlayerPositionX(), getPlayerPositionY()) ){
             player.setCurrentSpeed(player.getSlowerSpeed());
-        }else{
+        }
+        else{
             player.setCurrentSpeed(player.getNormalSpeed());
         }
     }
@@ -131,7 +132,8 @@ public class PlayerController {
             case Input.Keys.RIGHT:
                 playerView.setAnimationState(PlayerView.AnimationState.STANDING_RIGHT);
                 break;
-
         }
     }
+
+    public String getNewWorldName(){return collisionController.getNewWorldName();}
 }

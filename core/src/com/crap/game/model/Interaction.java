@@ -14,11 +14,7 @@ public class Interaction {
         this.collisionModel = new CollisionModel();
         this.playerWidth=playerWidth;
         this.playerHeight=playerHeight;
-
     }
-
-
-
 
     public boolean isInteraction(Character character, float x, float y) {
       /*  if(character.getPosition().getX() == x && character.getPosition().getY() == y){
@@ -45,7 +41,6 @@ public class Interaction {
                 checkIfInteraction(character,x,y+playerHeight) ||
                 checkIfInteraction(character,x,y+playerHeight/2)||
                 checkIfInteraction(character,x+playerWidth,y+ playerHeight/2);
-
     }
 
     public boolean checkIfInteraction(Character character, float playerPositionX, float playerPositionY){
@@ -56,8 +51,5 @@ public class Interaction {
         Float height = character.getHeight()/4; //TODO magical constant fix
 
         return collisionModel.checkIfCollide(x,y,width,height,playerPositionX,playerPositionY) ;
-
     }
-
-
 }

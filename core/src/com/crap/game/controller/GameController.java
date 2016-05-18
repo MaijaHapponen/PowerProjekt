@@ -47,7 +47,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);
 
-       // this.collisionController = new CollisionController(view.getWorld());
+        // this.collisionController = new CollisionController(view.getWorld());
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
 //TODO ********
 //        this.humans = game.getHumans();
@@ -62,6 +62,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
 //        }
 
         setWorld(HORSAL);
+        model.player.setPosition(250,250);
 
         Gdx.input.setInputProcessor(this);
     }
@@ -82,17 +83,32 @@ public class GameController extends InputAdapter implements ApplicationListener 
     }
 
     public void setWorld(Worlds worlds){
+        int tempCollisionlayerwidth = 50;
         switch (worlds) {
             case HORSAL:
-                view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
-                playerController.updateCollisionController();
-                model.player.setPosition(250,250); //TODO: Change value to correct location
+                if(playerController.getPlayerPositionX() > view.getWorldWidth() -tempCollisionlayerwidth) {
+                    view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
+                    playerController.updateCollisionController();
+                    model.player.setPosition(tempCollisionlayerwidth, playerController.getPlayerPositionY());
+                }
+                else{
+                    view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
+                    playerController.updateCollisionController();
+                    model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, playerController.getPlayerPositionY());
+                }
                 break;
 
             case EDIT:
-                view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
-                playerController.updateCollisionController();
-                model.player.setPosition(250,250); //TODO: Change value to correct location
+                if(playerController.getPlayerPositionX() < tempCollisionlayerwidth) {
+                    view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
+                    playerController.updateCollisionController();
+                    model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, playerController.getPlayerPositionY());
+                }
+                else{
+                    view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
+                    playerController.updateCollisionController();
+                    model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, playerController.getPlayerPositionY());
+                }
                 break;
 
             case PARKING:
@@ -100,11 +116,13 @@ public class GameController extends InputAdapter implements ApplicationListener 
                 playerController.updateCollisionController();
                 model.player.setPosition(1,1); //TODO: Change value to correct location
                 break;
+
             case HUBBEN:
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
                 model.player.setPosition(1,1);
                 break;
+
             case ZALOONEN:
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();
@@ -116,8 +134,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
         }
     }
 
-
-
     public void enterNewWorld() {
         //TODO: make correct for all maps
         if(playerController.getNewWorldName().equals("hubbeneditsand")) {
@@ -128,10 +144,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
             setWorld(HUBBEN);
         }else if(playerController.getNewWorldName().equals("zaloonen")){
             setWorld(ZALOONEN);
-        }else if(playerController.getNewWorldName().equals("hubbeneditsand2")) {
-            setWorld(EDIT);
         }
-
 
     }
 

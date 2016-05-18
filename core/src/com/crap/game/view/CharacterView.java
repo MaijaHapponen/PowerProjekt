@@ -21,6 +21,9 @@ public class CharacterView extends ApplicationAdapter implements Screen {
     private Animation animation;
     private PlayerView.AnimationState animationState = PlayerView.AnimationState.STANDING_FRONT;
 
+    public final int NBR_OF_TEXTURE_IMAGES_HORIZONTALLY = 4;
+    public final int NBR_OF_TEXTURE_IMAGES_VERTICALLY = 4;
+
     public CharacterView(Character character){
         this.character = character;
         this.texture = new Texture("characters/"+character.getName()+".png");
@@ -29,7 +32,7 @@ public class CharacterView extends ApplicationAdapter implements Screen {
         character.setWidthAndHeight(sprite.getWidth(),sprite.getHeight());
 
         this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
-                this.texture.getHeight(), 4, 4);
+                this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
     }
 
     public CharacterView(Character character,Texture texture){
@@ -39,7 +42,7 @@ public class CharacterView extends ApplicationAdapter implements Screen {
         sprite.setPosition(character.getPosition().getX(), character.getPosition().getY());
 
         this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
-                this.texture.getHeight(), 4, 4);
+                this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
     }
 
     public Character getCharacter(){
@@ -72,7 +75,7 @@ public class CharacterView extends ApplicationAdapter implements Screen {
 
     public void updateAnimation(){
         this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
-                this.texture.getHeight(), 4, 4);
+                this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
     }
 
     public PlayerView.AnimationState getAnimationState(){
@@ -89,10 +92,10 @@ public class CharacterView extends ApplicationAdapter implements Screen {
     }
 
     public int getCharacterSpriteWidth(){
-        return this.texture.getWidth()/4; //TODO magical constant?
+        return this.texture.getWidth()/NBR_OF_TEXTURE_IMAGES_HORIZONTALLY;
     }
 
     public int getCharacterSpriteHeight(){
-        return this.texture.getHeight()/4; //TODO magical constant?
+        return this.texture.getHeight()/NBR_OF_TEXTURE_IMAGES_VERTICALLY;
     }
 }

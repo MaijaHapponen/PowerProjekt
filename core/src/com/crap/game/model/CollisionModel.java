@@ -27,7 +27,9 @@ public class CollisionModel {
         return slow;
     }
 
-    public boolean isNewWorld() {return newWorld; }
+    public boolean isNewWorld() {
+        return newWorld;
+    }
 
     public boolean checkIfCollide(float x, float y, float width, float height, float playerPositionX, float playerPositionY) {
         return (playerPositionX > x && playerPositionX < x+width) && (playerPositionY>y && playerPositionY<y+height) ;
@@ -38,11 +40,13 @@ public class CollisionModel {
             blocked=true;
             slow=false;
             newWorld=false;
-        }else if(tile==tileType.SLOWER_TILE){
+        }
+        else if(tile==tileType.SLOWER_TILE){
             blocked=false;
             slow=true;
             newWorld=false;
-        }else if(tile==tileType.NEW_WORLD){
+        }
+        else if(tile==tileType.NEW_WORLD){
             blocked=true;
             slow=false;
             newWorld=true;
@@ -53,6 +57,4 @@ public class CollisionModel {
             newWorld=false;
         }
     }
-
-
 }

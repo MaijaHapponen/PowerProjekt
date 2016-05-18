@@ -6,9 +6,6 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.crap.game.model.CollisionModel;
-import com.crap.game.view.GameView;
-import com.crap.game.view.PlayerView;
-import com.crap.game.view.WorldView;
 
 import java.util.Iterator;
 
@@ -19,7 +16,7 @@ public class CollisionController {
 
     CollisionModel collisionModel;
 
-    private TiledMap map;  //The whole map
+    private TiledMap map;
     private MapLayers allLayers;
     private MapLayer collisionLayer;
     private MapObjects collisionObjects;
@@ -101,10 +98,7 @@ public class CollisionController {
         return false;
     }
 
-
     public boolean checkIfCollide(float x, float y, float width, float height, float playerPositionX, float playerPositionY) {
         return collisionModel.checkIfCollide(x,y,width,height,playerPositionX,playerPositionY);
     }
-
-
 }

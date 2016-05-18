@@ -1,7 +1,6 @@
 package com.crap.game.view;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -50,10 +49,7 @@ public class CharacterView extends ApplicationAdapter implements Screen {
     }
 
     @Override
-    public void render(float delta) {
-
-
-    }
+    public void render(float delta) {}
 
     @Override
     public void hide() {}

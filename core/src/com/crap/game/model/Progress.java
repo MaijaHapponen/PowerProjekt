@@ -2,8 +2,6 @@ package com.crap.game.model;
 
 import java.util.ArrayList;
 
-import com.crap.game.model.Mascot;
-
 /**
  * Created by Lisa on 24/04/16.
  */
@@ -59,13 +57,8 @@ public class Progress {
         return nameOnBar;
     }
 
-
     public Mascot getNewMascotToBar(){
         return this.newMascotToBar;
     }
-
-
-
-
 
 }

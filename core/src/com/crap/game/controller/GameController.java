@@ -8,7 +8,6 @@ import com.crap.game.model.Human;
 import com.crap.game.model.Mascot;
 import com.crap.game.model.State;
 import com.crap.game.view.GameView;
-import com.crap.game.view.InteractionView;
 
 import java.util.ArrayList;
 

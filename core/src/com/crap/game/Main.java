@@ -1,14 +1,8 @@
 package com.crap.game;
 
-
 import com.crap.game.controller.GameController;
 import com.crap.game.view.GameView;
-
-import com.crap.game.controller.MenuController;
 import com.crap.game.model.Game;
-
-import com.crap.game.view.MenuView;
-
 
 public class Main extends com.badlogic.gdx.Game {
 
@@ -32,9 +26,6 @@ public class Main extends com.badlogic.gdx.Game {
 
     public GameView getWorldView() {
         return this.worldView;
-
-
-
     }
 
     public Game getWorld() {
@@ -45,7 +36,6 @@ public class Main extends com.badlogic.gdx.Game {
     public void render () {
         super.render();
         if(gameMode) controller.render();
-
     }
 
     @Override

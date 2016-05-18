@@ -31,8 +31,6 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     public final int NBR_OF_TEXTURE_IMAGES_HORIZONTALLY = 4;
     public final int NBR_OF_TEXTURE_IMAGES_VERTICALLY = 4;
 
-
-
     public PlayerView(){
         this.texture = new Texture(Gdx.files.internal("characters/kalleAnka.png"));
         this.playerSprite = new Sprite(texture);
@@ -52,20 +50,15 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     public void setPlayer(Player player){
         this.player=player;
     }
-    @Override
-    public void show() {
-
-    }
 
     @Override
-    public void render(float delta) {
-
-    }
+    public void show() {}
 
     @Override
-    public void hide() {
+    public void render(float delta) {}
 
-    }
+    @Override
+    public void hide() {}
 
     public Sprite getSprite(){
         return playerSprite;

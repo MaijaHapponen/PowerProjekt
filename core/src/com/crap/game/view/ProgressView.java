@@ -6,11 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-
-
-
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -20,15 +16,10 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crap.game.model.*;
 
-
-
-
-
 /**
  * Created by rebeccafinne on 2016-05-05.
  */
 public class ProgressView extends ApplicationAdapter implements Screen {
-
 
     private Progress progress;
     private OrthographicCamera camera;
@@ -38,7 +29,6 @@ public class ProgressView extends ApplicationAdapter implements Screen {
 
     private int progressbarWidth = 500;
     private int progressbarHeight = 500;
-
 
     private Label mascotsCaughtLabel = new Label(String.format("Mascots you have caught"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
     private Viewport viewPort;
@@ -56,9 +46,7 @@ public class ProgressView extends ApplicationAdapter implements Screen {
 
         this.setProgressBarTable(table);
 
-
         stage.addActor(table);
-
 
     }
 
@@ -80,33 +68,18 @@ public class ProgressView extends ApplicationAdapter implements Screen {
                 table.add(image);
 
             }
-        }return this.table;
-
-    }
-
-
-
-
-
-    @Override
-    public void show() {
-
+        }
+        return this.table;
     }
 
     @Override
-    public void render(float delta) {
-
-
-    }
-
-
-
+    public void show() {}
 
     @Override
-    public void hide() {
+    public void render(float delta) {}
 
-    }
-
+    @Override
+    public void hide() {}
 
     public OrthographicCamera getCamera(){
         return this.camera;
@@ -115,8 +88,6 @@ public class ProgressView extends ApplicationAdapter implements Screen {
     public void setCamera(OrthographicCamera camera){
         this.camera = camera;
     }
-
-
 
 }
 

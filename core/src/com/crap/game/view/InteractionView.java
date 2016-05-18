@@ -2,19 +2,14 @@ package com.crap.game.view;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.crap.game.Main;
-import com.crap.game.model.*;
-import com.crap.game.model.Game;
 
 /**
  * Created by Maija on 2016-05-11.
@@ -47,52 +42,31 @@ public class InteractionView implements Screen{
         //table.add(answerOne);
         //table.add(answerTwo);
         stage.addActor(table);
-
-
-
     }
 
     @Override
-    public void show() {
-
-    }
+    public void show() { }
 
     @Override
     public void render(float delta) {
-
-
         batch.setProjectionMatrix(stage.getCamera().combined);
-
         stage.draw();
-
-
-
-
     }
 
     @Override
-    public void resize(int width, int height) {
-
-    }
+    public void resize(int width, int height) {}
 
     @Override
-    public void pause() {
-
-    }
+    public void pause() {}
 
     @Override
-    public void resume() {
-
-    }
+    public void resume() {}
 
     @Override
-    public void hide() {
-
-    }
+    public void hide() {}
 
     @Override
-    public void dispose() {
-    }
+    public void dispose() {}
 
     public Stage getStage(){
         return this.stage;

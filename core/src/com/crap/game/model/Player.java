@@ -65,7 +65,4 @@ public class Player{
     public int getSlowerSpeed(){
         return this.slowerSpeed;
     }
-
-
-
 }

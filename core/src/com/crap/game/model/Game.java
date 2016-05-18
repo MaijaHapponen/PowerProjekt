@@ -38,7 +38,7 @@ public class Game {
     //Populates an arrayList with humans.
     public void createHumans(){
         for(int i=0; i<humansNames.length; i++){
-            Position position = new Position(i*100, i*50); //TODO setn borde man nog ha en lista med karaktärernas positioner.
+            Position position = new Position(i*100+50, i*50+50); //TODO setn borde man nog ha en lista med karaktärernas positioner.
             humans.add(new Human(humansNames[i], position));
         }
     }
@@ -46,7 +46,7 @@ public class Game {
     //Populates an arrayList with mascots.
     public void createMascots(){
         for(int i=0; i<mascotNames.length; i++){
-            Position position = new Position(i*50, i*100); //TODO sen borde man nog ha en lista med karaktärernas positioner.
+            Position position = new Position(i*50+50, i*100+50); //TODO sen borde man nog ha en lista med karaktärernas positioner.
             mascots.add(new Mascot(mascotNames[i], position));
         }
     }

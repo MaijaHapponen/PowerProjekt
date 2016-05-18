@@ -37,7 +37,7 @@ public class PlayerController {
         if (keycode == Input.Keys.UP &&
                 !(checkIfCollision(up()))) {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
-            player.moveUp();
+            player.moveUp(gameView.getWorldHeight());
         } else if (keycode == Input.Keys.DOWN &&
                 !(checkIfCollision(down()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
@@ -49,10 +49,11 @@ public class PlayerController {
         } else if (keycode == Input.Keys.RIGHT &&
                 !(checkIfCollision(right())) )  {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
-            player.moveRight();
+            player.moveRight(gameView.getWorldWidth());
         }
         updateSprite();
-        playerView.moveCamera((int) getPlayerPositionX(), (int) getPlayerPositionY());
+        playerView.moveCamera((int) getPlayerPositionX(), (int) getPlayerPositionY(),
+                gameView.getWorldHeight(), gameView.getWorldWidth());
     }
 
     public void updateSprite() {

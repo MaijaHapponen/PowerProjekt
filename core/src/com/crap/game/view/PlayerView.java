@@ -22,7 +22,6 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     private Sprite playerSprite;
     private Texture texture;
     private OrthographicCamera camera;
-    private int pixelPerTile = 30;
     private int halfOfScreen = 250;
     private GameAnimation gameAnimation = new GameAnimation();
     private Animation animation;
@@ -81,18 +80,16 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         this.camera = camera;
     }
 
-    public void moveCamera(float x,float y) {
+    public void moveCamera(float x,float y, float worldWidth, float worldHeight) {
 
         int worldLeft = 0;
         int worldBottom = 0;
-        int worldRight = GameView.world.getProperties().get("width", Integer.class)*pixelPerTile;
-        int worldTop = GameView.world.getProperties().get("height", Integer.class)*pixelPerTile;
 
         float px = getPlayerPosition().getX();
         float py = getPlayerPosition().getY();
         float boarderLeft = worldLeft+halfOfScreen;
-        float boarderRight = worldRight-halfOfScreen;
-        float boarderTop = worldTop-halfOfScreen;
+        float boarderRight = worldWidth-halfOfScreen;
+        float boarderTop = worldHeight-halfOfScreen;
         float boarderBottom = worldBottom+halfOfScreen;
 
         if ((px > boarderLeft) && (px < boarderRight)) {

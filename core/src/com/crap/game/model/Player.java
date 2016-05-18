@@ -20,8 +20,8 @@ public class Player{
         this.currentSpeed = normalSpeed;
     }
 
-    public void moveUp(){
-        if(!(this.getPosition().getY() > 1000)) {
+    public void moveUp(float height){
+        if(!(this.getPosition().getY() > height)) {
             this.position.setPosition(position.getX(), position.getY() + currentSpeed);
         }
     }
@@ -32,8 +32,8 @@ public class Player{
         }
     }
 
-    public void moveRight(){
-        if(!(this.getPosition().getX() > 1000)) {
+    public void moveRight(float width){
+        if(!(this.getPosition().getX() > width)) {
             this.position.setPosition(position.getX() + currentSpeed, position.getY());
         }
     }

@@ -14,6 +14,8 @@ public class Game {
 
     public Main main;
 
+    private int startPositionX = 250;
+    private int startPositionY = 250;
     private Progress progress;
     public Player player;
     private State state;
@@ -26,7 +28,7 @@ public class Game {
     public Game(Main main){
         this.main = main;
         this.progress = new Progress();
-        this.player = new Player(250,250);
+        this.player = new Player(startPositionX,startPositionY);
         createHumans();
         createMascots();
 

@@ -28,6 +28,9 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     private Animation animation;
     private AnimationState animationState = AnimationState.STANDING_FRONT;
 
+    public final int NBR_OF_TEXTURE_IMAGES_HORIZONTALLY = 4;
+    public final int NBR_OF_TEXTURE_IMAGES_VERTICALLY = 4;
+
 
 
     public PlayerView(){
@@ -37,7 +40,7 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         //TODO not hardcode
 
         this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
-                this.texture.getHeight(), 4, 4);
+                this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
     }
     public PlayerView(int x, int y){
         this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
@@ -74,12 +77,11 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
     public Texture getTexture() { return this.texture; }
 
-    //TODO: WHAT IS THIS???
     public int getPlayerSpriteWidth(){
-        return this.texture.getWidth()/4; //TODO snyggare lösning än hårdkodat /4
+        return this.texture.getWidth()/NBR_OF_TEXTURE_IMAGES_HORIZONTALLY;
     }
     public int getPlayerSpriteHeight(){
-        return this.texture.getHeight()/4; //TODO snyggare lösning än hårdkodat /4
+        return this.texture.getHeight()/NBR_OF_TEXTURE_IMAGES_VERTICALLY;
     }
 
     public void setCamera(OrthographicCamera camera){
@@ -175,6 +177,7 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
     public void setAnimationState(AnimationState animationState){
         this.animationState = animationState;
-        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, 129, 190, 4, 4);
+        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, 129, 190,
+                NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
     }
 }

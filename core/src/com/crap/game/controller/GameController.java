@@ -12,8 +12,7 @@ import com.crap.game.view.GameView;
 import java.util.ArrayList;
 
 import static com.crap.game.model.Game.*;
-import static com.crap.game.model.Game.Worlds.EDIT;
-import static com.crap.game.model.Game.Worlds.HORSAL;
+import static com.crap.game.model.Game.Worlds.*;
 
 /**
  * Created by Lisa on 18/04/16.
@@ -48,8 +47,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);
 
-        this.collisionController = new CollisionController(view.getWorld());
-        this.playerController = new PlayerController(this.view.getPlayerView(), this.view, collisionController);
+       // this.collisionController = new CollisionController(view.getWorld());
+        this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
 //TODO ********
 //        this.humans = game.getHumans();
 //        this.mascots = game.getMascots();
@@ -104,23 +103,43 @@ public class GameController extends InputAdapter implements ApplicationListener 
             case HUBBEN:
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
-                model.player.setPosition(20, 20);
+                model.player.setPosition(1,1);
                 break;
+            case ZALOONEN:
+                view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
+                playerController.updateCollisionController();
+                model.player.setPosition(1,1);
+
             default:
                 System.out.println("Ohoh! Something went wrong");
                 break;
         }
     }
 
+
+
     public void enterNewWorld() {
         //TODO: make correct for all maps
-        setWorld(EDIT);
+        if(playerController.getNewWorldName().equals("hubbeneditsand")) {
+            setWorld(EDIT);
+        }else if(playerController.getNewWorldName().equals("horsalmaskin")){
+            setWorld(HORSAL);
+        }else if(playerController.getNewWorldName().equals("hubben")){
+            setWorld(HUBBEN);
+        }else if(playerController.getNewWorldName().equals("zaloonen")){
+            setWorld(ZALOONEN);
+        }else if(playerController.getNewWorldName().equals("hubbeneditsand2")) {
+            setWorld(EDIT);
+        }
+
+
     }
 
     public void updateIfNewWorld() {
-        if (playerController.isNewWorld()) {
+        if(playerController.isNewWorld()) {
             enterNewWorld();
         }
+
     }
 
     public void updateIfInteraction(){

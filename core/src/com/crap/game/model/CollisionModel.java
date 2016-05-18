@@ -50,6 +50,7 @@ public class CollisionModel {
             blocked=true;
             slow=false;
             newWorld=true;
+
         }
         else{
             blocked = false;

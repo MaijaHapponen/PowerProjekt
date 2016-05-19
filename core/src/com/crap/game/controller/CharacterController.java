@@ -46,6 +46,7 @@ public class CharacterController{
     //Makes the character walk away a few steps.
     public void walkAway(Direction direction){
         //TODO find the character with a loop in the humans and mascots lists. When found: Set characer = to that. (Set characterView aswell??)
+        //TODO maybe make a lastDirection var so that the character wont go eg. up-down-up since it wouldn't make sense.
 
         switch (direction){
             case UP: this.moveUp();
@@ -103,7 +104,7 @@ public class CharacterController{
         Random rand = new Random();
         if(walkAwayState == walkAwayLength/3 || walkAwayState == (walkAwayLength/3)*2){
             walkAwayDirection = null;
-        }
+        } //TODO add checkCollision/checkIfCollision?? here?
 
         if (walkAwayDirection == null){
             int i = rand.nextInt(4);
@@ -134,4 +135,8 @@ public class CharacterController{
     }
 
 }
-
+//TODO 1. Check so that character won't go off screen.
+//TODO 2. Fix lastDirection to avoid up-down-up shit.
+//TODO 3. Add animations.
+//TODO 4. Fix for all characters.
+//TODO 5. Add collisions.

@@ -40,31 +40,34 @@ public class WorldController {
 
     public void setWorld(Game.Worlds worlds){
 
+        float x = playerController.getPlayerPositionX();
+        float y = playerController.getPlayerPositionY();
+
         switch (worlds) {
 
             case HORSAL:
                 setExit();
                 view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
                 playerController.updateCollisionController();
-                enterHorsal();
+                enterHorsal(x,y);
                 break;
 
             case EDIT:
                 setExit();
                 view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
                 playerController.updateCollisionController();
-                enterEdit();
+                enterEdit(x,y);
                 break;
 
             case HUBBEN:
-                setEntrance();
+                setEntrance(x,y);
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
                 enterHubben();
                 break;
 
             case ZALOONEN:
-                setEntrance();
+                setEntrance(x,y);
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();
                 enterZaloonen();
@@ -78,35 +81,34 @@ public class WorldController {
     }
 
     //TODO: Doesn't work for all scenarios
-    public void enterHorsal(){
-        System.out.println(playerController.getPlayerPositionX()+" "+" "+playerController.getPlayerPositionY());
-        System.out.println(view.getWorldWidth());
-        if(playerController.getPlayerPositionY() < zaloonExitX && playerController.getPlayerPositionY() < zaloonExitY){
+    public void enterHorsal(float x, float y){
+
+        if(y < zaloonExitX && x < zaloonExitY){
             model.player.setPosition(entrancePosition.getX(), entrancePosition.getY());
         }
-        else{
-            model.player.setPosition(tempCollisionlayerwidth, playerController.getPlayerPositionY());
-        }
-        /*
-        if(playerController.getPlayerPositionX() > view.getWorldWidth() - tempCollisionlayerwidth) {
-            model.player.setPosition(tempCollisionlayerwidth, playerController.getPlayerPositionY());
+
+        if(x > view.getWorldWidth() - tempCollisionlayerwidth) {
+            model.player.setPosition(tempCollisionlayerwidth, y);
             System.out.println("hej");
         }
+
         else{
-            model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, playerController.getPlayerPositionY());
+            model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, y);
             System.out.println("goddag");
         }
-        */
 
     }
 
-    public void enterEdit(){
-        if(playerController.getPlayerPositionX() < tempCollisionlayerwidth) {
-            model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, playerController.getPlayerPositionY());
+    public void enterEdit(float x, float y){
+
+        if(x < tempCollisionlayerwidth) {
+            model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, y);
         }
+
         else{
-            model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, playerController.getPlayerPositionY());
+            model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, y);
         }
+
     }
 
     public void enterHubben(){
@@ -117,9 +119,9 @@ public class WorldController {
         model.player.setPosition(1,50);
     }
 
-    public void setEntrance(){
+    public void setEntrance(float x, float y){
         isEntrance = true;
-        entrancePosition.setPosition(playerController.getPlayerPositionX(), playerController.getPlayerPositionY());
+        entrancePosition.setPosition(x,y);
     }
 
     public void setExit(){

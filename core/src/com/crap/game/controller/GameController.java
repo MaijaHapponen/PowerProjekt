@@ -84,7 +84,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
     }
 
     public void enterNewWorld() {
-        //TODO: make correct for all maps
         if(playerController.getNewWorldName().equals("hubbeneditsand")) {
             worldController.setWorld(EDIT);
         }else if(playerController.getNewWorldName().equals("horsalmaskin")){

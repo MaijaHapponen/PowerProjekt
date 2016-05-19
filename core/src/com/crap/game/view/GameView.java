@@ -130,11 +130,11 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     @Override
     public void hide() {
-        dispose();
     }
 
     @Override
-    public void dispose() { renderer.dispose();
+    public void dispose() {
+        renderer.dispose();
     }
 
     public void setPlayer(Player player){

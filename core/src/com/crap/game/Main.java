@@ -1,5 +1,6 @@
 package com.crap.game;
 
+import com.badlogic.gdx.Gdx;
 import com.crap.game.controller.GameController;
 import com.crap.game.view.GameView;
 import com.crap.game.model.Game;
@@ -22,6 +23,13 @@ public class Main extends com.badlogic.gdx.Game {
         worldView = new GameView(world);
         controller = new GameController(worldView, world);
         gameMode = true;
+    }
+    public void playMode(){
+        Gdx.input.setInputProcessor(controller);
+        gameMode = true;
+    }
+    public void setGameMode(boolean b){
+        gameMode = b;
     }
 
     public GameView getWorldView() {

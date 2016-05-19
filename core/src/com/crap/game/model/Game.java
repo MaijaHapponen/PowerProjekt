@@ -19,7 +19,7 @@ public class Game {
     private Progress progress;
     public Player player;
     private State state;
-    
+
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
     private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
@@ -88,6 +88,9 @@ public class Game {
 
     public void initPlay(){
         main.initPlay();
+    }
+    public void unPauseGame(){
+        main.playMode();
     }
 
 }

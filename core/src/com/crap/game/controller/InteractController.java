@@ -1,5 +1,6 @@
 package com.crap.game.controller;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.crap.game.model.State;
@@ -13,13 +14,14 @@ public class InteractController extends InputAdapter {
     private InteractView interactView;
     public InteractController(InteractView interactView){
         this.interactView = interactView;
+        Gdx.input.setInputProcessor(this);
     }
 
     @Override
     public boolean keyDown(int keycode){
         if(keycode == Input.Keys.ENTER){
             State.updateState(State.GameStates.PLAY);
-            interactView.dispose();
+            //interactView.dispose();
         }
         return true;
     }

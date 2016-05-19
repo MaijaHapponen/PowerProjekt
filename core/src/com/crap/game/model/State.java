@@ -25,10 +25,12 @@ public class State {
                 break;
             case PLAY:
                 if(!paused) game.initPlay();
+                else game.unPauseGame();
                 game.setScreen(game.main.getWorldView());
                 break;
             case INTERACT:
                 paused = true;
+                game.main.setGameMode(false);
                 InteractView interactView = new InteractView();
                 new InteractController(interactView);
                 game.setScreen(interactView);

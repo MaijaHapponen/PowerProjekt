@@ -16,9 +16,9 @@ public class ProgressTest {
         Progress progress = new Progress();
         Mascot mascot = new Mascot("hej");
         progress.getMascotsInGame().add(mascot);
-        assertTrue(progress.areAllMascotsCaught() == false);
+        assertTrue(progress.areAllMascotsCaught());
         progress.mascotCaught(mascot);
-        assertTrue(progress.areAllMascotsCaught() == true);
+        assertTrue(progress.areAllMascotsCaught());
     }
 
     @Test
@@ -27,7 +27,7 @@ public class ProgressTest {
         Mascot mascot = new Mascot("TJO");
         progress.getMascotsInGame().add(mascot);
         progress.mascotCaught(mascot);
-        assertTrue(progress.getMascotsCaught().contains(mascot) == true);
+        assertTrue(progress.getMascotsCaught().contains(mascot));
 
     }
 }

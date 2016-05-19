@@ -15,11 +15,11 @@ public class CollisionModelTest {
     public void testIsBlocked(){
        CollisionModel collisionModel = new CollisionModel();
        collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
-       assertTrue(collisionModel.isBlocked() == true);
+       assertTrue(collisionModel.isBlocked());
        collisionModel.setTypeOfTile(CollisionModel.tileType.WALKABLE_TILE);
-       assertTrue(collisionModel.isBlocked() == false);
+       assertTrue(collisionModel.isBlocked());
        collisionModel.setTypeOfTile(CollisionModel.tileType.SLOWER_TILE);
-       assertTrue(collisionModel.isBlocked() == false);
+       assertTrue(collisionModel.isBlocked());
 
     }
 
@@ -27,11 +27,11 @@ public class CollisionModelTest {
     public void testIsSlow(){
         CollisionModel collisionModel = new CollisionModel();
         collisionModel.setTypeOfTile(CollisionModel.tileType.SLOWER_TILE);
-        assertTrue(collisionModel.isSlow() == true);
+        assertTrue(collisionModel.isSlow());
         collisionModel.setTypeOfTile(CollisionModel.tileType.WALKABLE_TILE);
-        assertTrue(collisionModel.isSlow() == false);
+        assertTrue(collisionModel.isSlow());
         collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
-        assertTrue(collisionModel.isSlow() == false);
+        assertTrue(collisionModel.isSlow());
     }
 
 

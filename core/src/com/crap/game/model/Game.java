@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Game {
 
-    public enum Worlds{HORSAL, EDIT, PARKING, HUBBEN, EDIT2, ZALOONEN}
+    public enum Worlds{HORSAL, EDIT, HUBBEN, ZALOONEN}
 
     private int startPositionX = 250;
     private int startPositionY = 250;

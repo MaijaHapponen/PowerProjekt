@@ -36,40 +36,27 @@ public class WorldController {
 
         switch (worlds) {
             case HORSAL:
+                view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
+                playerController.updateCollisionController();
                 enterHorsal(zaloonExitX, zaloonExitY, horsalEntranceX, horsalEntranceY, tempCollisionlayerwidth);
                 break;
 
             case EDIT:
-                if(playerController.getPlayerPositionX() < tempCollisionlayerwidth) {
-                    view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
-                    playerController.updateCollisionController();
-                    model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, playerController.getPlayerPositionY());
-                }
-                else{
-                    view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
-                    playerController.updateCollisionController();
-                    model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, playerController.getPlayerPositionY());
-                }
-                break;
-
-            case PARKING:
-                view.setWorld(new TmxMapLoader().load("maps/parkingtemplate.tmx"));
+                view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
                 playerController.updateCollisionController();
-                model.player.setPosition(1,1); //TODO: Change value to correct location
+                enterEdit(tempCollisionlayerwidth);
                 break;
 
             case HUBBEN:
                 //entrancePosition.setPosition(playerController.getPlayerPositionX(), playerController.getPlayerPositionY());
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
-                model.player.setPosition(1,1);
                 break;
 
             case ZALOONEN:
                 //entrancePosition.setPosition(playerController.getPlayerPositionX(), playerController.getPlayerPositionY());
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();
-                model.player.setPosition(1,50);
 
             default:
                 System.out.println("Ohoh! Something went wrong");
@@ -77,29 +64,35 @@ public class WorldController {
         }
     }
 
-
+    //TODO: Doesn't work for all scenarios
     public void enterHorsal(float zaloonExitX, float zaloonExitY, float horsalEntranceX, float horsalEntranceY, float tempCollisionlayerwidth){
         if(playerController.getPlayerPositionY() < zaloonExitX && playerController.getPlayerPositionY() < zaloonExitY){
-            view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
-            playerController.updateCollisionController();
             model.player.setPosition(horsalEntranceX, horsalEntranceY);
-            System.out.println(playerController.getPlayerPositionY());
         }
         else if(playerController.getPlayerPositionX() > view.getWorldWidth() -tempCollisionlayerwidth) {
             if(playerController.getPlayerPositionY() > 0) {
-                view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
-                playerController.updateCollisionController();
                 model.player.setPosition(tempCollisionlayerwidth, playerController.getPlayerPositionY());
-
-                System.out.println(playerController.getPlayerPositionY());
             }
         }
         else{
-            view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
-            playerController.updateCollisionController();
             model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, playerController.getPlayerPositionY());
-            System.out.println(playerController.getPlayerPositionY());
+         }
+    }
 
+    public void enterEdit(float tempCollisionlayerwidth){
+        if(playerController.getPlayerPositionX() < tempCollisionlayerwidth) {
+            model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, playerController.getPlayerPositionY());
         }
+        else{
+            model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, playerController.getPlayerPositionY());
+        }
+    }
+
+    public void enterHubben(){
+        model.player.setPosition(1,1);
+    }
+
+    public void enterZaloonen(){
+        model.player.setPosition(1,50);
     }
 }

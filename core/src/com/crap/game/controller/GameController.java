@@ -62,7 +62,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
 //        }
 
         setWorld(HORSAL);
-        model.player.setPosition(250,250);
+        model.player.setPosition(250, 250);
 
         Gdx.input.setInputProcessor(this);
     }
@@ -70,7 +70,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
     @Override
     public boolean keyDown(int keycode) {
         if(view.isInteraction() && keycode == Input.Keys.SPACE){
-            State.updateState(State.GameStates.INTERACT);
+            StateController.updateState(State.GameStates.INTERACT);
         }
         this.keyCode=keycode;
         view.render();

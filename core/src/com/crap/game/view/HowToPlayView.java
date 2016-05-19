@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.crap.game.controller.StateController;
 import com.crap.game.model.State;
 
 /**
@@ -88,12 +89,12 @@ public class HowToPlayView implements Screen{
     }
 
     public void setGame(){
-        State.updateState(State.GameStates.PLAY);
+        StateController.updateState(State.GameStates.PLAY);
         dispose();
     }
 
     public void setMenu(){
-        State.updateState(State.GameStates.STARTMENU);
+        StateController.updateState(State.GameStates.STARTMENU);
         dispose();
     }
 

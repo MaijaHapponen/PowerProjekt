@@ -78,18 +78,6 @@ public class InteractView implements Screen{
 
     }
 
-    public void setCurrentItem(String direction){
-        if(direction.equals("up")){
-            if(currentItemNr == 0) currentItemNr =2;
-            else currentItemNr = currentItemNr -1;
-
-        }else if(direction.equals("down")){
-            if(currentItemNr == 2) currentItemNr = 0;
-            else currentItemNr = currentItemNr + 1;
-        }
-        currentItem = menuItems[currentItemNr];
-    }
-
 
     @Override
     public void pause() {}

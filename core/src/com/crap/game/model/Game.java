@@ -12,13 +12,10 @@ public class Game {
 
     public enum Worlds{HORSAL, EDIT, PARKING, HUBBEN, EDIT2, ZALOONEN}
 
-    public Main main;
-
     private int startPositionX = 250;
     private int startPositionY = 250;
     private Progress progress;
     public Player player;
-    private State state;
 
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
@@ -26,14 +23,11 @@ public class Game {
     private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
     private String[] worldNames = {"horsalmaskin", "hubbeneditsand", "parkingtemplate"};
 
-    public Game(Main main){
-        this.main = main;
+    public Game(){
         this.progress = new Progress();
         this.player = new Player(startPositionX,startPositionY);
         createHumans();
         createMascots();
-
-        this.state = new State(this);
     }
 
     //Populates an arrayList with humans.
@@ -76,21 +70,6 @@ public class Game {
 
     public Progress getProgress() {
         return progress;
-    }
-
-    public void setScreen(Screen screen){
-        main.setScreen(screen);
-    }
-
-    public void startMainMenu(){
-        State.updateState(State.GameStates.STARTMENU);
-    }
-
-    public void initPlay(){
-        main.initPlay();
-    }
-    public void unPauseGame(){
-        main.playMode();
     }
 
 }

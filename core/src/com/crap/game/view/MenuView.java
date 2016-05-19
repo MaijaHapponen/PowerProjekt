@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.crap.game.controller.StateController;
 import com.crap.game.model.Menu;
 import com.crap.game.model.State;
 
@@ -72,10 +73,10 @@ public class MenuView implements Screen{
     }
     public void setScreen(){
         if(menuModel.getCurrentItem().equals("Play the game")){
-            State.updateState(State.GameStates.PLAY);
+            StateController.updateState(State.GameStates.PLAY);
             dispose();
         }else if(menuModel.getCurrentItem().equals("How to play")){
-            State.updateState(State.GameStates.HOWTOPLAY);
+            StateController.updateState(State.GameStates.HOWTOPLAY);
         }else if(menuModel.getCurrentItem().equals("Exit")){
             System.exit(0);
         }

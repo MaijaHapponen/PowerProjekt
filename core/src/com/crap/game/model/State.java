@@ -11,6 +11,8 @@ public class State {
     public enum GameStates {STARTMENU, PLAY, INTERACT, GAMEOVER, HOWTOPLAY}
 
     public static Game game;
+
+
     public State(Game g){
         this.game = g;
     }

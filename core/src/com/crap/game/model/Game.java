@@ -81,6 +81,10 @@ public class Game {
         main.setScreen(screen);
     }
 
+    public Screen getScreen(){
+        return main.getScreen();
+    }
+
     public void startMainMenu(){
         State.updateState(State.GameStates.STARTMENU);
     }

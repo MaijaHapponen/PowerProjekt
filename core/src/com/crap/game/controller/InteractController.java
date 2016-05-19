@@ -21,7 +21,7 @@ public class InteractController extends InputAdapter {
     public boolean keyDown(int keycode){
         if(keycode == Input.Keys.ENTER){
             State.updateState(State.GameStates.PLAY);
-            //interactView.dispose();
+            interactView.dispose();
         }
         return true;
     }

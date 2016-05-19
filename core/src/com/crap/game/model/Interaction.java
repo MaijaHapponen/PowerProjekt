@@ -17,19 +17,6 @@ public class Interaction {
     }
 
     public boolean isInteraction(Character character, float x, float y) {
-      /*  if(character.getPosition().getX() == x && character.getPosition().getY() == y){
-            return true;
-        }else if(character.getPosition().getX() == x+playerWidth && character.getPosition().getY() == y){
-            return true;
-
-        }else if(character.getPosition().getX() == x && character.getPosition().getY() == y+playerHeight){
-            return true;
-        }else if(character.getPosition().getX() == x+playerWidth && character.getPosition().getY() == y+playerHeight){
-            return true;
-        }
-        else {
-            return false;
-        }*/
         return checkEveryPositionForInteraction(character, x, y);
     }
 
@@ -40,7 +27,9 @@ public class Interaction {
                 checkIfInteraction(character,x+playerWidth,y+playerHeight)||
                 checkIfInteraction(character,x,y+playerHeight) ||
                 checkIfInteraction(character,x,y+playerHeight/2)||
-                checkIfInteraction(character,x+playerWidth,y+ playerHeight/2);
+                checkIfInteraction(character,x+playerWidth,y+ playerHeight/2) ||
+                checkIfInteraction(character,x+playerWidth/2,y) ||
+                checkIfInteraction(character,x+playerWidth/2,y+ playerHeight);
     }
 
     public boolean checkIfInteraction(Character character, float playerPositionX, float playerPositionY){

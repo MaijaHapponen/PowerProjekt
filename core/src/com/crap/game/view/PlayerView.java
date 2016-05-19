@@ -80,11 +80,15 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         this.camera = camera;
     }
 
+    //TODO: Divide it into submethods.
     public void moveCamera(float x,float y, float worldWidth, float worldHeight) {
 
         int worldLeft = 0;
         int worldBottom = 0;
-
+    }
+        public boolean canMoveCameraUp(float x,float y, float boarderRight, float boarderTop){
+            if()
+        }
         float px = getPlayerPosition().getX();
         float py = getPlayerPosition().getY();
         float boarderLeft = worldLeft+halfOfScreen;

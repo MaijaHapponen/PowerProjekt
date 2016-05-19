@@ -19,9 +19,8 @@ public class Game {
 
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
-    private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
-    private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
-    private String[] worldNames = {"horsalmaskin", "hubbeneditsand", "parkingtemplate"};
+    private String[] mascotNames = {"kalleAnka"};//,"hackeHackspett","iTSmurfen","luckyLuke"};
+    private String[] humansNames = {"EHuman"};//,"DHuman","ITHuman","ZHuman"};
 
     public Game(){
         this.progress = new Progress();
@@ -61,12 +60,6 @@ public class Game {
         }
         return false;
     }
-
-    public Player getPlayer(){
-        return player;
-    }
-
-    public String[] getWorldNames(){ return this.worldNames;}
 
     public Progress getProgress() {
         return progress;

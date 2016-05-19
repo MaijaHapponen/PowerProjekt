@@ -47,8 +47,6 @@ public class WorldController {
                 view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
                 playerController.updateCollisionController();
                 enterHorsal();
-                System.out.println(this.isEntrance);
-                System.out.println(this.entrancePosition.getX()+" "+" "+this.entrancePosition.getY());
                 break;
 
             case EDIT:
@@ -56,8 +54,6 @@ public class WorldController {
                 view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
                 playerController.updateCollisionController();
                 enterEdit();
-                System.out.println(this.isEntrance);
-                System.out.println(this.entrancePosition.getX()+" "+" "+this.entrancePosition.getY());
                 break;
 
             case HUBBEN:
@@ -65,8 +61,6 @@ public class WorldController {
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
                 enterHubben();
-                System.out.println(this.isEntrance);
-                System.out.println(this.entrancePosition.getX()+" "+" "+this.entrancePosition.getY());
                 break;
 
             case ZALOONEN:
@@ -74,11 +68,10 @@ public class WorldController {
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();
                 enterZaloonen();
-                System.out.println(this.isEntrance);
-                System.out.println(this.entrancePosition.getX()+" "+" "+this.entrancePosition.getY());
                 break;
 
             default:
+
                 System.out.println("Ohoh! Something went wrong");
                 break;
         }
@@ -86,17 +79,25 @@ public class WorldController {
 
     //TODO: Doesn't work for all scenarios
     public void enterHorsal(){
+        System.out.println(playerController.getPlayerPositionX()+" "+" "+playerController.getPlayerPositionY());
+        System.out.println(view.getWorldWidth());
         if(playerController.getPlayerPositionY() < zaloonExitX && playerController.getPlayerPositionY() < zaloonExitY){
             model.player.setPosition(entrancePosition.getX(), entrancePosition.getY());
         }
-        else if(playerController.getPlayerPositionX() > view.getWorldWidth() -tempCollisionlayerwidth) {
-            if(playerController.getPlayerPositionY() > 0) {
-                model.player.setPosition(tempCollisionlayerwidth, playerController.getPlayerPositionY());
-            }
+        else{
+            model.player.setPosition(tempCollisionlayerwidth, playerController.getPlayerPositionY());
+        }
+        /*
+        if(playerController.getPlayerPositionX() > view.getWorldWidth() - tempCollisionlayerwidth) {
+            model.player.setPosition(tempCollisionlayerwidth, playerController.getPlayerPositionY());
+            System.out.println("hej");
         }
         else{
-            model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, playerController.getPlayerPositionY());
-         }
+            model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, playerController.getPlayerPositionY());
+            System.out.println("goddag");
+        }
+        */
+
     }
 
     public void enterEdit(){

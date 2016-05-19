@@ -118,7 +118,6 @@ public class CollisionController {
     }
 
     public String getNewWorldName(){
-        System.out.println(newWorldName);
         return this.newWorldName;
 
     }

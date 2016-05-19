@@ -45,7 +45,7 @@ public class StateController {
                 paused = true;
                 setGameMode(false);
                 InteractView interactView = new InteractView();
-                new InteractController(interactView);
+                new InteractController(interactView, controller);
                 game.setScreen(interactView);
                 break;
             case GAMEOVER:

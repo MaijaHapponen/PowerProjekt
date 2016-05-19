@@ -27,11 +27,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private CollisionController collisionController;
     private CharacterController characterController;
 
-//TODO    public static ArrayList<Human> humans = new ArrayList<Human>();
-//    public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
-//    public static ArrayList<CharacterController> humanControllers = new ArrayList<CharacterController>();
-//    public static ArrayList<CharacterController> mascotControllers = new ArrayList<CharacterController>();
-
     public GameController(GameView view, Game game){
 
         float width = Gdx.graphics.getWidth();
@@ -51,7 +46,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
         // this.collisionController = new CollisionController(view.getWorld());
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
-        this.characterController = new CharacterController(model.getHumans(), model.getMascots(), view.getHumansList(),
+        this.characterController = new CharacterController(view, model.getHumans(), model.getMascots(), view.getHumansList(),
                 view.getMascotsList());
 //TODO ********
 //        this.humans = game.getHumans();
@@ -199,6 +194,14 @@ public class GameController extends InputAdapter implements ApplicationListener 
         }
         else {
             playerController.stopWalkingAnimation(keyCode);
+        }
+
+        characterWalkAway();
+    }
+
+    public void characterWalkAway(){
+        if(characterController.getWalkAwayState()<characterController.getWalkAwayLength()){
+            characterController.walkAwayOneStep();
         }
     }
 

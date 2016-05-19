@@ -12,7 +12,11 @@ import com.crap.game.view.InteractView;
 public class InteractController extends InputAdapter {
 
     private InteractView interactView;
-    public InteractController(InteractView interactView){
+    private GameController gameController;
+//TODO    private CharacterController characterController;
+
+    public InteractController(InteractView interactView, GameController gameController){
+        this.gameController = gameController;
         this.interactView = interactView;
         Gdx.input.setInputProcessor(this);
     }
@@ -22,6 +26,8 @@ public class InteractController extends InputAdapter {
         if(keycode == Input.Keys.ENTER){
             StateController.updateState(State.GameStates.PLAY);
             interactView.dispose();
+            gameController.getCharacterController().walkAway();
+            //TODO            characterController.walkAway();
         }
         return true;
     }

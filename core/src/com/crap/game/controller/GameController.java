@@ -25,6 +25,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private PlayerController playerController;
     private int keyCode;
     private CollisionController collisionController;
+    private CharacterController characterController;
+
 //TODO    public static ArrayList<Human> humans = new ArrayList<Human>();
 //    public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
 //    public static ArrayList<CharacterController> humanControllers = new ArrayList<CharacterController>();
@@ -49,6 +51,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
         // this.collisionController = new CollisionController(view.getWorld());
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
+        this.characterController = new CharacterController(model.getHumans(), model.getMascots(), view.getHumansList(),
+                view.getMascotsList());
 //TODO ********
 //        this.humans = game.getHumans();
 //        this.mascots = game.getMascots();
@@ -164,6 +168,10 @@ public class GameController extends InputAdapter implements ApplicationListener 
             setWorld(ZALOONEN);
         }
 
+    }
+
+    public CharacterController getCharacterController(){
+        return this.characterController;
     }
 
     public void updateIfNewWorld() {

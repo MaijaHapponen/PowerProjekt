@@ -55,7 +55,7 @@ public class PlayerController {
             player.moveRight(gameView.getWorldWidth());
         }
         updateSprite();
-        playerView.moveCamera((int) getPlayerPositionX(), (int) getPlayerPositionY(),
+        playerView.moveCamera(getPlayerPositionX(), getPlayerPositionY(),
                 gameView.getWorldHeight(), gameView.getWorldWidth());
     }
 

@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.crap.game.Main;
 
 import com.crap.game.model.*;
 import com.crap.game.model.Character;
@@ -38,11 +37,9 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     private boolean interaction;
 
-
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
 
-    public Main main;
     private ArrayList<ProgressView> mascotsOnBar = new ArrayList<ProgressView>();
 
 

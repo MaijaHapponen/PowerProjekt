@@ -80,6 +80,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
     public void movePlayer(int keycode){
         this.keyCode = keycode;
+        System.out.println(view.getWorldWidth());
+        System.out.println(playerController.getPlayerPositionX() + "+" + playerController.getPlayerPositionY());
         playerController.movePlayer(keyCode);
     }
 

@@ -2,7 +2,6 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.crap.game.Main;
 import com.crap.game.model.State;
 import com.crap.game.view.GameView;
 import com.crap.game.view.HowToPlayView;

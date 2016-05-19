@@ -82,6 +82,11 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
     public void moveCamera(float x,float y, float worldWidth, float worldHeight) {
 
+        //TODO: Remove systemoutprints
+        System.out.println(player.getPosition().getX() + " + " + player.getPosition().getY());
+
+        System.out.println(playerSprite.getX() + " + " + playerSprite.getY());
+
         float boarderLeft = halfOfScreen;
         float boarderRight = worldWidth - halfOfScreen;
         float boarderTop = worldHeight - halfOfScreen;

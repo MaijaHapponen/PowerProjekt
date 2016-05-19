@@ -38,6 +38,7 @@ public class WorldController {
         this.entrancePosition = new Position(0,0);
     }
 
+    //TODO: Fix so that if previous is X then exit here
     public void setWorld(Game.Worlds worlds){
 
         float x = playerController.getPlayerPositionX();
@@ -47,30 +48,30 @@ public class WorldController {
 
             case HORSAL:
                 setExit();
+                enterHorsal(x,y);
                 view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
                 playerController.updateCollisionController();
-                enterHorsal(x,y);
                 break;
 
             case EDIT:
                 setExit();
+                enterEdit(x,y);
                 view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
                 playerController.updateCollisionController();
-                enterEdit(x,y);
                 break;
 
             case HUBBEN:
                 setEntrance(x,y);
+                enterHubben();
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
-                enterHubben();
                 break;
 
             case ZALOONEN:
                 setEntrance(x,y);
+                enterZaloonen();
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();
-                enterZaloonen();
                 break;
 
             default:
@@ -80,7 +81,6 @@ public class WorldController {
         }
     }
 
-    //TODO: Doesn't work for all scenarios
     public void enterHorsal(float x, float y){
 
         if(y < zaloonExitX && x < zaloonExitY){

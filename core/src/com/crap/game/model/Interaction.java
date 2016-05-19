@@ -27,7 +27,9 @@ public class Interaction {
                 checkIfInteraction(character,x+playerWidth,y+playerHeight)||
                 checkIfInteraction(character,x,y+playerHeight) ||
                 checkIfInteraction(character,x,y+playerHeight/2)||
-                checkIfInteraction(character,x+playerWidth,y+ playerHeight/2);
+                checkIfInteraction(character,x+playerWidth,y+ playerHeight/2) ||
+                checkIfInteraction(character,x+playerWidth/2,y) ||
+                checkIfInteraction(character,x+playerWidth/2,y+ playerHeight);
     }
 
     public boolean checkIfInteraction(Character character, float playerPositionX, float playerPositionY){

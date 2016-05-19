@@ -71,5 +71,4 @@ public class Game {
     public Progress getProgress() {
         return progress;
     }
-
 }

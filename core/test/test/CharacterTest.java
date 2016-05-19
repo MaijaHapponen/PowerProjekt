@@ -11,12 +11,12 @@ import org.junit.Test;
 public class CharacterTest {
 
 
-    @Test
+  /*  @Test
     public void testSaySomething(){
-        //Character character = new Character("Tjo");
+        Character character = new Character("Tjo");
 
 
-    }
+    }*/
 
 
 }

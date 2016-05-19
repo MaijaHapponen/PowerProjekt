@@ -21,7 +21,7 @@ public class GameTest {
         Mascot mascot = new Mascot("Hej");
         progress.getMascotsInGame().add(mascot);
         progress.mascotCaught(mascot);
-        assertTrue(game.isGameOver() == true);
+        assertTrue(game.isGameOver());
     }
 
     //TODO write tests for create mascots and human methods??

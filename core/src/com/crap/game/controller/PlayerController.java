@@ -10,7 +10,7 @@ import com.crap.game.view.PlayerView;
 /**
  * Created by rebeccafinne on 2016-04-30.
  */
-public class    PlayerController {
+public class PlayerController {
     private GameView gameView;
     private PlayerView playerView;
     private Player player;
@@ -104,6 +104,7 @@ public class    PlayerController {
     }
 
     public boolean isNewWorld(){
+
         return checkIfNewWorld(up()) || checkIfNewWorld(down()) || checkIfNewWorld(left()) || checkIfNewWorld(right());
     }
 

@@ -83,13 +83,31 @@ public class GameController extends InputAdapter implements ApplicationListener 
     }
 
     public void setWorld(Worlds worlds){
+        /*
+        Float x = (Float) playerController.newWorldObject.getProperties().get("x");
+        Float y = (Float) playerController.newWorldObject.getProperties().get("y");
+        Float width = (Float) playerController.newWorldObject.getProperties().get("width");
+        Float height = (Float) playerController.newWorldObject.getProperties().get("height");
+
+      */
         int tempCollisionlayerwidth = 50;
+        int zaloonExitX = 224;
+        int zaloonExitY = 803;
+        int horsalEntranceX = 350;
+        int horsalEntranceY = 310;
         switch (worlds) {
             case HORSAL:
-                if(playerController.getPlayerPositionX() > view.getWorldWidth() -tempCollisionlayerwidth) {
+                if(playerController.getPlayerPositionY() < zaloonExitX && playerController.getPlayerPositionY() < zaloonExitY){
                     view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
                     playerController.updateCollisionController();
-                    model.player.setPosition(tempCollisionlayerwidth, playerController.getPlayerPositionY());
+                    model.player.setPosition(horsalEntranceX, horsalEntranceY);
+                }
+                else if(playerController.getPlayerPositionX() > view.getWorldWidth() -tempCollisionlayerwidth) {
+                    if(playerController.getPlayerPositionY() > tempCollisionlayerwidth) {
+                        view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
+                        playerController.updateCollisionController();
+                        model.player.setPosition(tempCollisionlayerwidth, playerController.getPlayerPositionY());
+                    }
                 }
                 else{
                     view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
@@ -126,7 +144,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
             case ZALOONEN:
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();
-                model.player.setPosition(1,1);
+                model.player.setPosition(1,50);
 
             default:
                 System.out.println("Ohoh! Something went wrong");

@@ -123,5 +123,12 @@ public class CollisionController {
 
     }
 
+    public MapObjects getNewWorldObjects() {
+        return this.newWorldObjects;
+    }
+
+    public MapObject getNewWorldObject(){
+        return this.newWorldObject;
+    }
 
 }

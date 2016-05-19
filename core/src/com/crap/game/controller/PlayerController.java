@@ -1,6 +1,7 @@
 package com.crap.game.controller;
 
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.maps.MapObject;
 import com.crap.game.model.Player;
 import com.crap.game.model.Position;
 import com.crap.game.view.GameView;
@@ -9,13 +10,14 @@ import com.crap.game.view.PlayerView;
 /**
  * Created by rebeccafinne on 2016-04-30.
  */
-public class PlayerController {
+public class    PlayerController {
     private GameView gameView;
     private PlayerView playerView;
     private Player player;
     private Position nextPlayerPos;
     private CollisionController collisionController;
     private InteractionController interactionController;
+    public MapObject newWorldObject;
 
     public PlayerController(PlayerView playerView, GameView gameView){
         this.playerView = playerView;
@@ -24,6 +26,7 @@ public class PlayerController {
         this.collisionController = new CollisionController(gameView.getWorld());
         this.nextPlayerPos = new Position();
         this.interactionController = new InteractionController(gameView);
+        this.newWorldObject = collisionController.getNewWorldObject();
     }
 
     public void updateCollisionController(){

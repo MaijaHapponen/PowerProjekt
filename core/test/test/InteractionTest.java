@@ -10,11 +10,11 @@ import org.junit.Test;
  */
 public class InteractionTest {
 
-    @Test
+  /*  @Test
     public void testcheckIfInteraction(){
         Interaction interaction = new Interaction(10, 20);
 
-    }
+    }*/
 
 
 

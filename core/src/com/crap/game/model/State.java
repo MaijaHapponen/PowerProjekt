@@ -11,6 +11,8 @@ public class State {
 
     public static boolean paused;
     public static Game game;
+
+
     public State(Game g){
         this.game = g;
     }

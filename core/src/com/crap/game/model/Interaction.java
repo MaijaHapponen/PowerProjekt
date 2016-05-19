@@ -17,19 +17,6 @@ public class Interaction {
     }
 
     public boolean isInteraction(Character character, float x, float y) {
-      /*  if(character.getPosition().getX() == x && character.getPosition().getY() == y){
-            return true;
-        }else if(character.getPosition().getX() == x+playerWidth && character.getPosition().getY() == y){
-            return true;
-
-        }else if(character.getPosition().getX() == x && character.getPosition().getY() == y+playerHeight){
-            return true;
-        }else if(character.getPosition().getX() == x+playerWidth && character.getPosition().getY() == y+playerHeight){
-            return true;
-        }
-        else {
-            return false;
-        }*/
         return checkEveryPositionForInteraction(character, x, y);
     }
 

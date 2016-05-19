@@ -80,82 +80,63 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         this.camera = camera;
     }
 
-    //TODO: Divide it into submethods.
     public void moveCamera(float x,float y, float worldWidth, float worldHeight) {
 
-        int worldLeft = 0;
-        int worldBottom = 0;
-    /*
-        public boolean canMoveCameraUp(float x,float y, float boarderRight, float boarderTop){
-            if()
-        }
-        */
-        float px = getPlayerPosition().getX();
-        float py = getPlayerPosition().getY();
-        float boarderLeft = worldLeft+halfOfScreen;
-        float boarderRight = worldWidth-halfOfScreen;
-        float boarderTop = worldHeight-halfOfScreen;
-        float boarderBottom = worldBottom+halfOfScreen;
+        float boarderLeft = halfOfScreen;
+        float boarderRight = worldWidth - halfOfScreen;
+        float boarderTop = worldHeight - halfOfScreen;
+        float boarderBottom = halfOfScreen;
 
-        if ((px > boarderLeft) && (px < boarderRight)) {
-            if((py > boarderBottom) && (py < boarderTop)){
-                camera.position.set(x,y,0);
-                camera.update();
+        if(canMoveCameraUp(y, boarderTop) && canMoveCameraDown(y, boarderBottom)) {
+            if (canMoveCameraLeft(x, boarderLeft) && canMoveCameraRight(x, boarderRight)) {
+                camera.position.set(x, y, 0);
             }
-            else if (py > boarderBottom) {
-                camera.position.set(x, boarderTop, 0);
-                camera.update();
-            }
-            else{
-                camera.position.set(x, boarderBottom, 0);
-                camera.update();
-            }
-        }
-        else if (px > boarderLeft) {
-            if((py > boarderBottom) && (py < boarderTop)){
-                camera.position.set(boarderRight,y,0);
-                camera.update();
-            }
-            else if (py > boarderBottom) {
-                camera.position.set(boarderRight, boarderTop, 0);
-                camera.update();
-            }
-            else{
-                camera.position.set(boarderRight, boarderBottom, 0);
-                camera.update();
-            }
-        }
-        else if ((px < boarderRight)) {
-            if((py > boarderBottom) && (py < boarderTop)){
-                camera.position.set(boarderLeft,y,0);
-                camera.update();
-            }
-            else if (py > boarderBottom) {
-                camera.position.set(boarderLeft, boarderTop, 0);
-                camera.update();
-            }
-            else{
-                camera.position.set(boarderLeft, boarderBottom, 0);
-                camera.update();
-            }
-        }
-        else if((py > boarderBottom) && (py < boarderTop)) {
-            if (px > boarderLeft) {
-                camera.position.set(boarderRight, y, 0);
-                camera.update();
-            } else {
+            else if (canMoveCameraRight(x, boarderRight)) {
                 camera.position.set(boarderLeft, y, 0);
-                camera.update();
+            }
+            else {
+                camera.position.set(boarderRight, y, 0);
             }
         }
-        else if (py > boarderBottom) {
-            camera.position.set(x, boarderTop, 0);
-            camera.update();
+        else if(canMoveCameraUp(y, boarderTop)){
+            if (canMoveCameraLeft(x, boarderLeft) && canMoveCameraRight(x, boarderRight)) {
+                camera.position.set(x, boarderBottom, 0);
+            }
+            else if (canMoveCameraRight(x, boarderRight)) {
+                camera.position.set(boarderLeft, boarderBottom, 0);
+            }
+            else {
+                camera.position.set(boarderRight, boarderBottom, 0);
+            }
         }
-        else if (py < boarderTop) {
-            camera.position.set(x, boarderBottom, 0);
-            camera.update();
+        else{
+            if (canMoveCameraLeft(x, boarderLeft) && canMoveCameraRight(x, boarderRight)) {
+                camera.position.set(x, boarderTop, 0);
+            }
+            else if (canMoveCameraRight(x, boarderRight)) {
+                camera.position.set(boarderLeft, boarderTop, 0);
+            }
+            else {
+                camera.position.set(boarderRight, boarderTop, 0);
+            }
         }
+        camera.update();
+    }
+
+    public boolean canMoveCameraUp(float y, float boarderTop) {
+        return (y < boarderTop);
+    }
+
+    public boolean canMoveCameraDown(float y, float boarderBottom){
+        return (y > boarderBottom);
+    }
+
+    public boolean canMoveCameraLeft(float x, float boarderLeft){
+        return (x > boarderLeft);
+    }
+
+    public boolean canMoveCameraRight(float x, float boarderRight){
+        return (x < boarderRight);
     }
 
     public Position getPlayerPosition(){

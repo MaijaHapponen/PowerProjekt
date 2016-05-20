@@ -16,12 +16,7 @@ public class CharacterController{
 
     private Character character;
     private CharacterView characterView;
-    private GameView gameView; //TODO will I need this??
     private CollisionController collisionController;
-    private ArrayList<Human> humansList = new ArrayList<Human>(); //TODO will I need this??
-    private ArrayList<Mascot> mascotsList = new ArrayList<Mascot>(); //TODO will I need this??
-    private ArrayList<CharacterView> humanViews = new ArrayList<CharacterView>(); //TODO will I need this??
-    private ArrayList<CharacterView> mascotViews = new ArrayList<CharacterView>(); //TODO will I need this??
     private int walkAwayLength = 60;
     private int walkAwayState = walkAwayLength;
     private Direction walkAwayDirection;
@@ -29,18 +24,8 @@ public class CharacterController{
 
 
 
-    public CharacterController(GameView gameView, ArrayList<Human> humansList, ArrayList<Mascot> mascotsList,
-                               ArrayList<CharacterView> humanViews, ArrayList<CharacterView> mascotViews){
-        this.gameView = gameView;
-        this.humansList = humansList;
-        this.mascotsList = mascotsList;
-        this.humanViews = humanViews;
-        this.mascotViews = mascotViews;
+    public CharacterController(){
 //TODO        this.collisionController = collisionController; Create your own instead.
-
-        //TODO temp.
-        this.characterView = mascotViews.get(1);
-        //TODO temp.
     }
 
     public void interactsWith(Character character, CharacterView characterView){
@@ -236,5 +221,4 @@ public class CharacterController{
 
 }
 
-//TODO 4. Fix for all characters.
 //TODO 5. Add collisions.

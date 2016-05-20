@@ -42,7 +42,6 @@ public class WorldController {
         this.entrancePosition = new Position(0,0);
     }
 
-    //TODO: Fix so that if previous is X then exit here
     public void setWorld(Game.Worlds worlds){
 
         float x = playerController.getPlayerPositionX();

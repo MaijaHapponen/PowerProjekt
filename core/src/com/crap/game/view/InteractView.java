@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-
+import com.crap.game.model.Interact;
 
 
 /**
@@ -25,6 +25,7 @@ public class InteractView implements Screen{
     private int worldWidth = 500;
     private int worldHeight = 500;
     private TextureRegionDrawable background;
+    private Interact interact;
 
 
 
@@ -33,12 +34,16 @@ public class InteractView implements Screen{
     private BitmapFont titleFont;
     private BitmapFont font;
 
+    FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
+    FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
 
-
-
-
-
+    Label[] answers;
+    private Label questionLabel;
+    private Label answerLabel1;
+    private Label answerLabel2;
+    private Label answerLabel3;
+    private Label answerLabel4;
 
 
     public InteractView(){
@@ -52,8 +57,6 @@ public class InteractView implements Screen{
 
     public void create(){
 
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size=20;
         titleFont = generator.generateFont(parameter);
         titleFont.setColor(Color.PINK);
@@ -62,19 +65,17 @@ public class InteractView implements Screen{
         font= generator.generateFont(parameter);
         generator.dispose();
 
-        Label questionLabel = new Label(String.format("This is a question"), new Label.LabelStyle(titleFont, Color.PINK));
-        Label answerLabel1= new Label(String.format("Alternative answer 1"), new Label.LabelStyle(font, Color.BLACK));
-        Label answerLabel2= new Label(String.format("Alternative answer 2"), new Label.LabelStyle(font, Color.BLACK));
-        Label answerLabel3= new Label(String.format("Alternative answer 3"), new Label.LabelStyle(font, Color.BLACK));
-        Label answerLabel4= new Label(String.format("Alternative answer 4"), new Label.LabelStyle(font, Color.BLACK));
+        questionLabel = new Label(String.format("This is a question"), new Label.LabelStyle(titleFont, Color.PINK));
+        answerLabel1= new Label(String.format("Alternative answer 1"), new Label.LabelStyle(font, Color.BLACK));
+        answerLabel2= new Label(String.format("Alternative answer 2"), new Label.LabelStyle(font, Color.BLACK));
+        answerLabel3= new Label(String.format("Alternative answer 3"), new Label.LabelStyle(font, Color.BLACK));
+        answerLabel4= new Label(String.format("Alternative answer 4"), new Label.LabelStyle(font, Color.BLACK));
         //TODO get the strings from mascot through a get method
-
 
 
         Table table = new Table(skin);
         Viewport viewport = new FitViewport(worldHeight, worldWidth);
         this.stage = new Stage(viewport, batch);
-
 
         table.setBackground(background);
         table.center();
@@ -92,9 +93,25 @@ public class InteractView implements Screen{
 
         stage.addActor(table);
 
+        answers = new Label[]{answerLabel1, answerLabel2, answerLabel3, answerLabel4};
+        interact = new Interact(answers, answerLabel1);
     }
 
 
+    public void answerChoosen(Label label){
+        if(label == answerLabel1) {
+
+
+        }else if(label == answerLabel2){
+
+        }else if(label == answerLabel3){
+
+        }else{
+
+        }
+
+
+    }
 
     @Override
     public void show() {
@@ -109,9 +126,12 @@ public class InteractView implements Screen{
 
 
 
-        batch.setProjectionMatrix(stage.getCamera().combined);
-        stage.draw();
+        for(int i = 0; i < answers.length; i++) {
+            interact.getCurrentLabel().setColor(Color.PINK);
 
+            batch.setProjectionMatrix(stage.getCamera().combined);
+            stage.draw();
+        }
 
 
     }

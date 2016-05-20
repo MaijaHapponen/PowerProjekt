@@ -25,8 +25,11 @@ public class WorldController {
   */
     private int tempCollisionlayerwidth = 50;
 
-    private int zaloonExitX = 224;
-    private int zaloonExitY = 803;
+    private float zaloonEntryX = 125;
+    private float zaloonEntryY = 15;
+
+    private float hubbenEntryX = 100;
+    private float hubbenEntryY = 50;
 
     private boolean isEntrance;
     private Position entrancePosition;
@@ -96,19 +99,21 @@ public class WorldController {
 
         if(x > view.getWorldWidth() - tempCollisionlayerwidth) {
             model.player.setPosition(tempCollisionlayerwidth, y);
-            System.out.println("hej");
         }
 
         else if(x < tempCollisionlayerwidth){
             model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, y);
-            System.out.println("goddag");
         }
 
     }
 
     public void enterEdit(float x, float y){
 
-        if(x < tempCollisionlayerwidth) {
+        if(previousRoom == HUBBEN){
+            model.player.setPosition(entrancePosition.getX(), entrancePosition.getY());
+        }
+
+        else if(x < tempCollisionlayerwidth) {
             model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, y);
         }
 
@@ -119,16 +124,16 @@ public class WorldController {
     }
 
     public void enterHubben(){
-        model.player.setPosition(1,1);
+        model.player.setPosition(hubbenEntryX,hubbenEntryY);
     }
 
     public void enterZaloonen(){
-        model.player.setPosition(1,50);
+        model.player.setPosition(zaloonEntryX,zaloonEntryY);
     }
 
     public void setEntrance(float x, float y){
-        isEntrance = true;
         entrancePosition.setPosition(x,y);
+        isEntrance = true;
     }
 
     public void setExit(){

@@ -39,8 +39,8 @@ public class CharacterController{
 //TODO        this.collisionController = collisionController; Create your own instead.
 
         //TODO temp.
-        this.character = mascotsList.get(1);
-        this.characterView = mascotViews.get(1);
+//        this.character = mascotsList.get(1);
+//        this.characterView = mascotViews.get(1);
         //TODO temp.
     }
 

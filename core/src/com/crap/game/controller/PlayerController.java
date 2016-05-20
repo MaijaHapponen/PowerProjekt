@@ -35,43 +35,48 @@ public class PlayerController {
     }
 
     public void movePlayer(int keycode) {
+
         String direction = null;
         updateSpeed();
+
         if (keycode == Input.Keys.UP &&
                 !(checkIfCollision(up()))) {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
             player.moveUp(gameView.getWorldHeight());
-            direction = "up";
-        } else if (keycode == Input.Keys.DOWN &&
+        }
+        else if (keycode == Input.Keys.DOWN &&
                 !(checkIfCollision(down()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
             player.moveDown();
-            direction = "down";
-        } else if (keycode == Input.Keys.LEFT &&
+        }
+        else if (keycode == Input.Keys.LEFT &&
                 !(checkIfCollision(left()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_LEFT);
             player.moveLeft();
-            direction = "left";
-        } else if (keycode == Input.Keys.RIGHT &&
+        }
+        else if (keycode == Input.Keys.RIGHT &&
                 !(checkIfCollision(right())) )  {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
             player.moveRight(gameView.getWorldWidth());
-            direction = "right";
         }
+
         updateSprite();
         playerView.moveCamera(getPlayerPositionX(), getPlayerPositionY(),
-                gameView.getWorldHeight(), gameView.getWorldWidth(), direction);
+                gameView.getWorldHeight(), gameView.getWorldWidth());
     }
 
     public void updateSprite() {
         playerView.getSprite().setPosition(getPlayerPositionX(), getPlayerPositionY());
     }
+
     public float getPlayerPositionX(){
         return player.getPosition().getX();
     }
+
     public float getPlayerPositionY(){
         return player.getPosition().getY();
     }
+
     public boolean checkIfCollision(Position p){
         return (collisionController.isCollison(p.getX(),p.getY()) || collisionController.isNewWorld(p.getX(),p.getY())||
                 interactionController.isInteractionWithHuman(p.getX(),p.getY())

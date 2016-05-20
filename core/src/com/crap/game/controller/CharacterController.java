@@ -193,22 +193,18 @@ public class CharacterController{
     public void stopWalkingAnimation(){
         switch (walkAwayDirection){
             case UP:
-                System.out.println("up");
                 this.characterView.setAnimationState(PlayerView.AnimationState.STANDING_BACK);
                 this.characterView.updateAnimation();
                 break;
             case DOWN:
-                System.out.println("down");
                 this.characterView.setAnimationState(PlayerView.AnimationState.STANDING_FRONT);
                 this.characterView.updateAnimation();
                 break;
             case LEFT:
-                System.out.println("left");
                 this.characterView.setAnimationState(PlayerView.AnimationState.STANDING_LEFT);
                 this.characterView.updateAnimation();
                 break;
             case RIGHT:
-                System.out.println("right");
                 this.characterView.setAnimationState(PlayerView.AnimationState.STANDING_RIGHT);
                 this.characterView.updateAnimation();
                 break;

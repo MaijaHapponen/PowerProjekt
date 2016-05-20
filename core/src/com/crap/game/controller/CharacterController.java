@@ -44,18 +44,42 @@ public class CharacterController{
     }
 
     //Makes the character walk away a few steps.
-    public void walkAway(Direction direction){
+    public void move(Direction direction){
         //TODO find the character with a loop in the humans and mascots lists. When found: Set characer = to that. (Set characterView aswell??)
         //TODO maybe make a lastDirection var so that the character wont go eg. up-down-up since it wouldn't make sense.
 
         switch (direction){
-            case UP: this.moveUp();
+            case UP:
+                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()+2)) {
+                    this.moveUp();
+                }
+                else{
+                    walkAwayDirection = null;
+                }
                 break;
-            case DOWN: this.moveDown();
+            case DOWN:
+                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()-2)) {
+                    this.moveDown();
+                }
+                else{
+                    walkAwayDirection = null;
+                }
                 break;
-            case LEFT: this.moveLeft();
+            case LEFT:
+                if(isPositionEmpty(character.getPosition().getX()-2, character.getPosition().getY())) {
+                    this.moveLeft();
+                }
+                else{
+                    walkAwayDirection = null;
+                }
                 break;
-            case RIGHT: this.moveRight();
+            case RIGHT:
+                if(isPositionEmpty(character.getPosition().getX()+2, character.getPosition().getY())) {
+                    this.moveRight();
+                }
+                else{
+                    walkAwayDirection = null;
+                }
                 break;
         }
     }
@@ -100,11 +124,24 @@ public class CharacterController{
         this.walkAwayState = 0;
     }
 
+    public void walkAway(){
+        if(walkAwayState<walkAwayLength){
+            walkAwayOneStep();
+        }
+    }
+
+    public boolean isPositionEmpty(float x, float y){
+        if(x<0 || x>1000 || y<0 || y>1000){ //TODO fix 1000.
+            return false;
+        }
+        return true;
+    }
+
     public void walkAwayOneStep(){
         Random rand = new Random();
-        if(walkAwayState == walkAwayLength/3 || walkAwayState == (walkAwayLength/3)*2){
+        if(walkAwayState == walkAwayLength/3 || walkAwayState == (walkAwayLength/3)*2) {
             walkAwayDirection = null;
-        } //TODO add checkCollision/checkIfCollision?? here?
+        }
 
         if (walkAwayDirection == null){
             int i = rand.nextInt(4);
@@ -119,23 +156,14 @@ public class CharacterController{
                     break;
             }
         }
-
-        if(walkAwayState < walkAwayLength/3){
-            this.walkAway(walkAwayDirection);
-        }
-        else if(walkAwayState < (walkAwayLength/3)*2){
-            this.walkAway(walkAwayDirection);
-        }
-        else if(walkAwayState < walkAwayLength){
-            this.walkAway(walkAwayDirection);
-        }
+        this.move(walkAwayDirection);
 
         updateSprite();
         walkAwayState++;
     }
 
 }
-//TODO 1. Check so that character won't go off screen.
+
 //TODO 2. Fix lastDirection to avoid up-down-up shit.
 //TODO 3. Add animations.
 //TODO 4. Fix for all characters.

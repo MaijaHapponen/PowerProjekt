@@ -27,9 +27,6 @@ public class WorldController {
 
     private int zaloonExitX = 224;
     private int zaloonExitY = 803;
-    //TODO: Make these correct
-    private int hubbenExitX = 0;
-    private int hubbenExitY = 0;
 
     private boolean isEntrance;
     private Position entrancePosition;
@@ -112,11 +109,7 @@ public class WorldController {
 
     public void enterEdit(float x, float y){
 
-        if(y < hubbenExitX && x < hubbenExitY){
-            model.player.setPosition(entrancePosition.getX(), entrancePosition.getY());
-        }
-
-        else if(x < tempCollisionlayerwidth) {
+        if(x < tempCollisionlayerwidth) {
             model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, y);
         }
 
@@ -127,11 +120,11 @@ public class WorldController {
     }
 
     public void enterHubben(){
-        model.player.setPosition(hubbenExitX,hubbenExitY);
+        model.player.setPosition(1,1);
     }
 
     public void enterZaloonen(){
-        model.player.setPosition(zaloonExitX,zaloonExitY);
+        model.player.setPosition(1,50);
     }
 
     public void setEntrance(float x, float y){

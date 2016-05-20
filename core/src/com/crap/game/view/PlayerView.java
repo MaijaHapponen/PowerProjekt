@@ -23,6 +23,8 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     private Texture texture;
     private OrthographicCamera camera;
     private int halfOfScreen = 250;
+    private float boarderLeft = halfOfScreen;
+    private float boarderBottom = halfOfScreen;
     private GameAnimation gameAnimation = new GameAnimation();
     private Animation animation;
     private AnimationState animationState = AnimationState.STANDING_FRONT;
@@ -82,66 +84,130 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
     public void moveCamera(float x,float y, float worldWidth, float worldHeight, String direction) {
 
+        float boarderRight = worldWidth - halfOfScreen;
+        float boarderTop = worldHeight - halfOfScreen;
+
         //TODO: Remove systemoutprints
         System.out.println(player.getPosition().getX() + " + " + player.getPosition().getY());
 
         System.out.println(playerSprite.getX() + " + " + playerSprite.getY());
 
-        float boarderLeft = halfOfScreen;
-        float boarderRight = worldWidth - halfOfScreen;
-        float boarderTop = worldHeight - halfOfScreen;
-        float boarderBottom = halfOfScreen;
-
-        if(direction.equals("left")){
-            moveCameraLeft(x, boarderLeft);
+        if(direction == "left"){
+            moveCameraLeft(x, y, boarderRight, boarderTop);
         }
 
-        else if(direction.equals("right")){
-            moveCameraRight(x, boarderRight);
+        else if(direction == "right"){
+            moveCameraRight(x, y, boarderRight, boarderTop);
         }
 
-        else if(direction.equals("up")){
-            moveCameraUp(y, boarderTop);
+        else if(direction == "up"){
+            moveCameraUp(x, y, boarderRight, boarderTop);
         }
 
-        else if(direction.equals("down")){
-            moveCameraDown(y, boarderBottom);
+        else if(direction == "down"){
+            moveCameraDown(x, y, boarderRight, boarderTop);
         }
 
         camera.update();
     }
 
-    public void moveCameraUp(float y, float boarderTop) {
+    public void moveCameraUp(float x, float y, float boarderRight, float boarderTop) {
         if(y < boarderTop){
-            camera.position.set(camera.position.x, y, 0);
+            if(x > boarderLeft && x < boarderRight) {
+                camera.position.set(x, y, 0);
+            }
+            else if(x > boarderLeft){
+                camera.position.set(boarderRight, y, 0);
+            }
+            else{
+                camera.position.set(boarderLeft, y, 0);
+            }
         }
-        else{
-            camera.position.set(camera.position.x, boarderTop, 0);
+        else {
+            if (x > boarderLeft && x < boarderRight) {
+                camera.position.set(x, boarderTop, 0);
+            }
+            else if (x > boarderLeft) {
+                camera.position.set(boarderRight, boarderTop, 0);
+            }
+            else {
+                camera.position.set(boarderLeft, boarderTop, 0);
+            }
         }
     }
 
-    public void moveCameraDown(float y, float boarderBottom) {
+    public void moveCameraDown(float x, float y, float boarderRight, float boarderTop) {
         if (y > boarderBottom) {
-            camera.position.set(camera.position.x, y, 0);
-        } else{
-            camera.position.set(camera.position.x, boarderBottom, 0);
+            if(x > boarderLeft && x < boarderRight) {
+                camera.position.set(x, y, 0);
+            }
+            else if(x > boarderLeft){
+                camera.position.set(boarderRight, y, 0);
+            }
+            else{
+                camera.position.set(boarderLeft, y, 0);
+            }
+        }
+        else {
+            if (x > boarderLeft && x < boarderRight) {
+                camera.position.set(x, boarderBottom, 0);
+            }
+            else if (x > boarderLeft) {
+                camera.position.set(boarderRight, boarderBottom, 0);
+            }
+            else {
+                camera.position.set(boarderLeft, boarderBottom, 0);
+            }
         }
     }
 
-    public void moveCameraLeft(float x, float boarderLeft){
+    public void moveCameraLeft(float x, float y, float boarderRight, float boarderTop){
         if(x > boarderLeft){
-            camera.position.set(x, camera.position.y, 0);
+            if(y < boarderTop && y > boarderBottom) {
+                camera.position.set(x, y, 0);
+            }
+            else if(y < boarderTop){
+                camera.position.set(x, boarderBottom, 0);
+            }
+            else{
+                camera.position.set(x, boarderTop, 0);
+            }
         }
-        else{
-            camera.position.set(boarderLeft, camera.position.y, 0);
+        else {
+            if (y > boarderBottom && y < boarderTop) {
+                camera.position.set(boarderLeft, y, 0);
+            }
+            else if (y < boarderTop) {
+                camera.position.set(boarderLeft, boarderBottom, 0);
+            }
+            else {
+                camera.position.set(boarderLeft, boarderTop, 0);
+            }
         }
     }
-    public void moveCameraRight(float x, float boarderRight){
+
+    public void moveCameraRight(float x, float y, float boarderRight, float boarderTop){
         if(x < boarderRight){
-            camera.position.set(x, camera.position.y, 0);
+            if(y < boarderTop && y > boarderBottom) {
+                camera.position.set(x, y, 0);
+            }
+            else if(x < boarderTop){
+                camera.position.set(x, boarderBottom, 0);
+            }
+            else{
+                camera.position.set(x, boarderTop, 0);
+            }
         }
-        else{
-            camera.position.set(boarderRight, camera.position.y, 0);
+        else {
+            if (y > boarderBottom && y < boarderTop) {
+                camera.position.set(boarderLeft, y, 0);
+            }
+            else if (y < boarderTop) {
+                camera.position.set(boarderLeft, boarderBottom, 0);
+            }
+            else {
+                camera.position.set(boarderLeft, boarderTop, 0);
+            }
         }
     }
 

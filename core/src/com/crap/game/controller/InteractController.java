@@ -26,6 +26,7 @@ public class InteractController extends InputAdapter {
         if(keycode == Input.Keys.ENTER){
             StateController.updateState(State.GameStates.PLAY);
             interactView.dispose();
+//            gameController.getCharacterController().resetWalkAwayState();
         }
         return true;
     }

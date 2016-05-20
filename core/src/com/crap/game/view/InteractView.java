@@ -28,13 +28,12 @@ public class InteractView implements Screen{
     private int worldHeight = 500;
     private TextureRegionDrawable background;
 
+
     private Skin skin;
     private BitmapFont titleFont;
     private BitmapFont font;
 
-    private Label questionLabel = new Label(String.format("This is a question"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
-    //TODO get the strings from mascot through a get method
-    private Label answerLabel= new Label(String.format("Alternative answer"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+
 
 
 

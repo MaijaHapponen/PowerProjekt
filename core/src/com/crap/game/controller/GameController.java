@@ -24,11 +24,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private PlayerController playerController;
     private int keyCode;
     private Position entrancePosition;
-
-//TODO    public static ArrayList<Human> humans = new ArrayList<Human>();
-//    public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
-//    public static ArrayList<CharacterController> humanControllers = new ArrayList<CharacterController>();
-//    public static ArrayList<CharacterController> mascotControllers = new ArrayList<CharacterController>();
+    private CollisionController collisionController;
+    private CharacterController characterController;
 
     public GameController(GameView view, Game game){
 
@@ -50,6 +47,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
         // this.collisionController = new CollisionController(view.getWorld();
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
         this.worldController = new WorldController(this.model, this.playerController, this.view);
+        this.characterController = new CharacterController(view, model.getHumans(), model.getMascots(), view.getHumansList(),
+                view.getMascotsList());
 //TODO ********
 //        this.humans = game.getHumans();
 //        this.mascots = game.getMascots();
@@ -98,6 +97,10 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
     }
 
+    public CharacterController getCharacterController(){
+        return this.characterController;
+    }
+
     public void updateIfNewWorld() {
         if(playerController.isNewWorld()) {
             enterNewWorld();
@@ -124,6 +127,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
         else {
             playerController.stopWalkingAnimation(keyCode);
         }
+
+        characterController.walkAway();
     }
 
     @Override

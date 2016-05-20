@@ -19,8 +19,8 @@ public class Game {
 
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
-    private String[] mascotNames = {"kalleAnka"};//,"hackeHackspett","iTSmurfen","luckyLuke"};
-    private String[] humansNames = {"EHuman"};//,"DHuman","ITHuman","ZHuman"};
+    private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
+    private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
 
     public Game(){
         this.progress = new Progress();

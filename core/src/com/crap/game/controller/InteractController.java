@@ -12,7 +12,11 @@ import com.crap.game.view.InteractView;
 public class InteractController extends InputAdapter {
 
     private InteractView interactView;
-    public InteractController(InteractView interactView){
+    private GameController gameController;
+//TODO    private CharacterController characterController;
+
+    public InteractController(InteractView interactView, GameController gameController){
+        this.gameController = gameController;
         this.interactView = interactView;
         Gdx.input.setInputProcessor(this);
     }

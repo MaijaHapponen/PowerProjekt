@@ -137,7 +137,7 @@ public class CharacterController{
         this.walkAwayState = 0;
     }
 
-    public void walkAway(Character character){
+    public void walkAway(Character character, CharacterView characterView){
         if(walkAwayState<walkAwayLength){
             interactsWith(character, characterView);
             walkAwayOneStep();

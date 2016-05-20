@@ -122,7 +122,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
             playerController.stopWalkingAnimation(keyCode);
         }
 
-        characterController.walkAway(playerController.getInteractionController().getInteractingCharacter());
+        characterController.walkAway(playerController.getInteractionController().getInteractingCharacter(),
+                playerController.getInteractionController().getInteractingCharacterView());
     }
 
     @Override

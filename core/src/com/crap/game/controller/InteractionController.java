@@ -2,6 +2,7 @@ package com.crap.game.controller;
 
 import com.crap.game.model.*;
 import com.crap.game.model.Character;
+import com.crap.game.view.CharacterView;
 import com.crap.game.view.GameView;
 
 /**
@@ -11,6 +12,7 @@ public class InteractionController {
     private Interaction interactionModel;
     private GameView gameView;
     private Character interactingCharacter;
+    private CharacterView interactingCharacterView;
 
     public InteractionController(GameView view){
         this.gameView = view;
@@ -20,10 +22,10 @@ public class InteractionController {
 
     public boolean isInteractionWithHuman(float x, float y) {
         for (int i = 0; i < gameView.getHumansList().size(); i++) {
-            Character character = gameView.getHumansList().get(i).getCharacter();
+            CharacterView characterView = gameView.getMascotsList().get(i);
 
-            if (interactionModel.isInteraction(character, x, y)) {
-                setInteractingCharacter(character);
+            if (interactionModel.isInteraction(characterView.getCharacter(), x, y)) {
+                setInteractingCharacter(characterView.getCharacter(), characterView);
                 return true;
             }
         }
@@ -32,22 +34,27 @@ public class InteractionController {
 
     public boolean isInteractionWithMascot(float x, float y){
         for(int i=0; i< gameView.getMascotsList().size(); i++){
-            Character character = gameView.getMascotsList().get(i).getCharacter();
+            CharacterView characterView = gameView.getMascotsList().get(i);
 
-            if(interactionModel.isInteraction(character,x, y)){
-                setInteractingCharacter(character);
+            if(interactionModel.isInteraction(characterView.getCharacter(),x, y)){
+                setInteractingCharacter(characterView.getCharacter(), characterView);
                 return true;
             }
         }
         return false;
     }
 
-    public void setInteractingCharacter(Character character){
+    public void setInteractingCharacter(Character character, CharacterView characterView){
         this.interactingCharacter = character;
+        this.interactingCharacterView = characterView;
     }
 
     public Character getInteractingCharacter(){
         return this.interactingCharacter;
+    }
+
+    public CharacterView getInteractingCharacterView(){
+        return this.interactingCharacterView;
     }
 
 }

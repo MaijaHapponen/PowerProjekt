@@ -92,24 +92,33 @@ public class CharacterController{
     public void moveUp() {
         this.character.getPosition().setPosition(this.character.getPosition().getX(),
                 this.character.getPosition().getY() + 2);
+        this.characterView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
+        this.characterView.updateAnimation();
     }
     public void moveDown(){
         this.character.getPosition().setPosition(this.character.getPosition().getX(),
                 this.character.getPosition().getY() - 2);
+        this.characterView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
+        this.characterView.updateAnimation();
     }
 
     public void moveLeft(){
         this.character.getPosition().setPosition(this.character.getPosition().getX() - 2,
                 this.character.getPosition().getY());
+        this.characterView.setAnimationState(PlayerView.AnimationState.WALKING_LEFT);
+        this.characterView.updateAnimation();
     }
 
     public void moveRight(){
         this.character.getPosition().setPosition(this.character.getPosition().getX() + 2,
                 this.character.getPosition().getY());
+        this.characterView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
+        this.characterView.updateAnimation();
     }
 
     public void updateSprite() {
-        characterView.getSprite().setPosition(this.character.getPosition().getX(), this.character.getPosition().getY());
+        characterView.getSprite().setPosition(this.character.getPosition().getX(),
+                this.character.getPosition().getY());
     }
 
     public void updateAnimation(PlayerView.AnimationState animationState){
@@ -181,8 +190,33 @@ public class CharacterController{
         }
     }
 
+    public void stopWalkingAnimation(){
+        switch (walkAwayDirection){
+            case UP:
+                System.out.println("up");
+                this.characterView.setAnimationState(PlayerView.AnimationState.STANDING_BACK);
+                this.characterView.updateAnimation();
+                break;
+            case DOWN:
+                System.out.println("down");
+                this.characterView.setAnimationState(PlayerView.AnimationState.STANDING_FRONT);
+                this.characterView.updateAnimation();
+                break;
+            case LEFT:
+                System.out.println("left");
+                this.characterView.setAnimationState(PlayerView.AnimationState.STANDING_LEFT);
+                this.characterView.updateAnimation();
+                break;
+            case RIGHT:
+                System.out.println("right");
+                this.characterView.setAnimationState(PlayerView.AnimationState.STANDING_RIGHT);
+                this.characterView.updateAnimation();
+                break;
+        }
+    }
+
     public void walkAwayOneStep(){
-        if(walkAwayState == walkAwayLength/3 || walkAwayState == (walkAwayLength/3)*2) {
+        if(walkAwayState == walkAwayLength/3 || walkAwayState == (walkAwayLength/3)*2){
             lastDirection = walkAwayDirection;
             walkAwayDirection = null;
         }
@@ -192,12 +226,15 @@ public class CharacterController{
         }
         this.move(walkAwayDirection);
 
+        if(walkAwayState == walkAwayLength-1){
+            stopWalkingAnimation();
+        }
+
         updateSprite();
         walkAwayState++;
     }
 
 }
 
-//TODO 3. Add animations.
 //TODO 4. Fix for all characters.
 //TODO 5. Add collisions.

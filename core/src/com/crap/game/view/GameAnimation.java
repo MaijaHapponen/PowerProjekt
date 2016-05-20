@@ -24,7 +24,7 @@ public class GameAnimation {
                 animationFrames[index++] = tmpFrames[i][j];
             }
         }
-        return new Animation(1f/6f, animationFrames);
+        return new Animation(1f/5f, animationFrames);
     }
 
     public Animation createImage(Texture texture, int rows, int columns, int imageRow,

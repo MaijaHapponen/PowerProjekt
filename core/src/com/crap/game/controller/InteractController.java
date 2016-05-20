@@ -37,6 +37,8 @@ public class InteractController extends InputAdapter {
             interact.setCurrentLabel("down");
         }else if(keycode == Input.Keys.UP){
             interact.setCurrentLabel("up");
+            //TODO this.gameController.getCharacterController().interactsWith( **character, characterView** );
+            this.gameController.getCharacterController().resetWalkAwayState();
         }
         return true;
     }

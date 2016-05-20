@@ -16,12 +16,12 @@ public class CharacterController{
 
     private Character character;
     private CharacterView characterView;
-    private GameView gameView;
+    private GameView gameView; //TODO will I need this??
     private CollisionController collisionController;
-    private ArrayList<Human> humansList = new ArrayList<Human>();
-    private ArrayList<Mascot> mascotsList = new ArrayList<Mascot>();
-    private ArrayList<CharacterView> humanViews = new ArrayList<CharacterView>();
-    private ArrayList<CharacterView> mascotViews = new ArrayList<CharacterView>();
+    private ArrayList<Human> humansList = new ArrayList<Human>(); //TODO will I need this??
+    private ArrayList<Mascot> mascotsList = new ArrayList<Mascot>(); //TODO will I need this??
+    private ArrayList<CharacterView> humanViews = new ArrayList<CharacterView>(); //TODO will I need this??
+    private ArrayList<CharacterView> mascotViews = new ArrayList<CharacterView>(); //TODO will I need this??
     private int walkAwayLength = 60;
     private int walkAwayState = walkAwayLength;
     private Direction walkAwayDirection;
@@ -37,17 +37,16 @@ public class CharacterController{
         this.humanViews = humanViews;
         this.mascotViews = mascotViews;
 //TODO        this.collisionController = collisionController; Create your own instead.
+    }
 
-        //TODO temp.
-//        this.character = mascotsList.get(1);
-//        this.characterView = mascotViews.get(1);
-        //TODO temp.
+    public void interactsWith(Character character, CharacterView characterView){
+        this.character = character;
+        this.characterView = characterView;
     }
 
     //Makes the character walk away a few steps.
     public void move(Direction direction){
         //TODO find the character with a loop in the humans and mascots lists. When found: Set characer = to that. (Set characterView aswell??)
-        //TODO maybe make a lastDirection var so that the character wont go eg. up-down-up since it wouldn't make sense.
 
         switch (direction){
             case UP:
@@ -138,8 +137,9 @@ public class CharacterController{
         this.walkAwayState = 0;
     }
 
-    public void walkAway(){
+    public void walkAway(Character character){
         if(walkAwayState<walkAwayLength){
+            interactsWith(character, characterView);
             walkAwayOneStep();
         }
     }

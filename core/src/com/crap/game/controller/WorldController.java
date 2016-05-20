@@ -4,6 +4,9 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.model.Game;
 import com.crap.game.model.Position;
 import com.crap.game.view.GameView;
+
+import static com.crap.game.model.Game.Worlds.*;
+
 /**
  * Created by andrea on 2016-04-28.
  */
@@ -27,6 +30,7 @@ public class WorldController {
 
     private boolean isEntrance;
     private Position entrancePosition;
+    private Game.Worlds previousRoom;
 
 
     public WorldController(Game game, PlayerController controller, GameView view) {
@@ -47,17 +51,19 @@ public class WorldController {
         switch (worlds) {
 
             case HORSAL:
-                setExit();
                 enterHorsal(x,y);
+                setExit();
                 view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
                 playerController.updateCollisionController();
+                setPreviousRoom(HORSAL);
                 break;
 
             case EDIT:
-                setExit();
                 enterEdit(x,y);
+                setExit();
                 view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
                 playerController.updateCollisionController();
+                setPreviousRoom(EDIT);
                 break;
 
             case HUBBEN:
@@ -65,6 +71,7 @@ public class WorldController {
                 enterHubben();
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
+                setPreviousRoom(HUBBEN);
                 break;
 
             case ZALOONEN:
@@ -72,6 +79,7 @@ public class WorldController {
                 enterZaloonen();
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();
+                setPreviousRoom(ZALOONEN);
                 break;
 
             default:
@@ -83,7 +91,7 @@ public class WorldController {
 
     public void enterHorsal(float x, float y){
 
-        if(y < zaloonExitX && x < zaloonExitY){
+        if(previousRoom == ZALOONEN){
             model.player.setPosition(entrancePosition.getX(), entrancePosition.getY());
         }
 
@@ -92,7 +100,7 @@ public class WorldController {
             System.out.println("hej");
         }
 
-        else{
+        else if(x < tempCollisionlayerwidth){
             model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, y);
             System.out.println("goddag");
         }
@@ -105,7 +113,7 @@ public class WorldController {
             model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, y);
         }
 
-        else{
+        else if (x > view.getWorldWidth() - tempCollisionlayerwidth){
             model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, y);
         }
 
@@ -126,5 +134,9 @@ public class WorldController {
 
     public void setExit(){
         isEntrance = false;
+    }
+
+    public void setPreviousRoom(Game.Worlds lastRoom){
+        this.previousRoom = lastRoom;
     }
 }

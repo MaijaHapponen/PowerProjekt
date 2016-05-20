@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
+
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -21,23 +22,19 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 public class InteractView implements Screen{
 
     private SpriteBatch batch;
+
     private Stage stage;
     private int worldWidth = 500;
     private int worldHeight = 500;
     private TextureRegionDrawable background;
 
-
-
-
     private Skin skin;
     private BitmapFont titleFont;
     private BitmapFont font;
 
-
-
-
-
-
+    private Label questionLabel = new Label(String.format("This is a question"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+    //TODO get the strings from mascot through a get method
+    private Label answerLabel= new Label(String.format("Alternative answer"), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
 
 
@@ -45,6 +42,7 @@ public class InteractView implements Screen{
         batch = new SpriteBatch();
         skin = new Skin();
         background = new TextureRegionDrawable(new TextureRegion(new Texture("background/rectangle.png")));
+
         create();
 
 

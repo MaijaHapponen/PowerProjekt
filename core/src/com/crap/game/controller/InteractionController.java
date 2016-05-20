@@ -10,6 +10,7 @@ import com.crap.game.view.GameView;
 public class InteractionController {
     private Interaction interactionModel;
     private GameView gameView;
+    private Character interactingCharacter;
 
     public InteractionController(GameView view){
         this.gameView = view;
@@ -20,7 +21,11 @@ public class InteractionController {
     public boolean isInteractionWithHuman(float x, float y) {
         for (int i = 0; i < gameView.getHumansList().size(); i++) {
             Character character = gameView.getHumansList().get(i).getCharacter();
-            if (interactionModel.isInteraction(character, x, y)) return true;
+
+            if (interactionModel.isInteraction(character, x, y)) {
+                setInteractingCharacter(character);
+                return true;
+            }
         }
         return false;
     }
@@ -30,10 +35,19 @@ public class InteractionController {
             Character character = gameView.getMascotsList().get(i).getCharacter();
 
             if(interactionModel.isInteraction(character,x, y)){
+                setInteractingCharacter(character);
                 return true;
             }
         }
         return false;
+    }
+
+    public void setInteractingCharacter(Character character){
+        this.interactingCharacter = character;
+    }
+
+    public Character getInteractingCharacter(){
+        return this.interactingCharacter;
     }
 
 }

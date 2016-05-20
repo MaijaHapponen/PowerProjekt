@@ -4,6 +4,7 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.model.*;
+import com.crap.game.model.Character;
 import com.crap.game.model.Game;
 import com.crap.game.view.GameView;
 
@@ -128,7 +129,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
             playerController.stopWalkingAnimation(keyCode);
         }
 
-        characterController.walkAway();
+        characterController.walkAway(playerController.getInteractionController().getInteractingCharacter());
     }
 
     @Override

@@ -13,7 +13,6 @@ public class InteractController extends InputAdapter {
 
     private InteractView interactView;
     private GameController gameController;
-//TODO    private CharacterController characterController;
 
     public InteractController(InteractView interactView, GameController gameController){
         this.gameController = gameController;
@@ -26,6 +25,8 @@ public class InteractController extends InputAdapter {
         if(keycode == Input.Keys.ENTER){
             StateController.updateState(State.GameStates.PLAY);
             interactView.dispose();
+            //TODO this.gameController.getCharacterController().interactsWith( **character, characterView** );
+            this.gameController.getCharacterController().resetWalkAwayState();
         }
         return true;
     }

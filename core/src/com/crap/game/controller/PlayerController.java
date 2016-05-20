@@ -139,5 +139,11 @@ public class PlayerController {
         }
     }
 
-    public String getNewWorldName(){return collisionController.getNewWorldName();}
+    public String getNewWorldName(){
+        return collisionController.getNewWorldName();
+    }
+
+    public InteractionController getInteractionController(){
+        return this.interactionController;
+    }
 }

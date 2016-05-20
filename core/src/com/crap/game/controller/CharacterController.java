@@ -25,6 +25,7 @@ public class CharacterController{
     private int walkAwayLength = 60;
     private int walkAwayState = walkAwayLength;
     private Direction walkAwayDirection;
+    private Direction lastDirection;
 
 
 
@@ -54,6 +55,7 @@ public class CharacterController{
                     this.moveUp();
                 }
                 else{
+                    lastDirection = walkAwayDirection;
                     walkAwayDirection = null;
                 }
                 break;
@@ -62,6 +64,7 @@ public class CharacterController{
                     this.moveDown();
                 }
                 else{
+                    lastDirection = walkAwayDirection;
                     walkAwayDirection = null;
                 }
                 break;
@@ -70,6 +73,7 @@ public class CharacterController{
                     this.moveLeft();
                 }
                 else{
+                    lastDirection = walkAwayDirection;
                     walkAwayDirection = null;
                 }
                 break;
@@ -78,6 +82,7 @@ public class CharacterController{
                     this.moveRight();
                 }
                 else{
+                    lastDirection = walkAwayDirection;
                     walkAwayDirection = null;
                 }
                 break;
@@ -137,24 +142,53 @@ public class CharacterController{
         return true;
     }
 
-    public void walkAwayOneStep(){
+    public void decideNewDirection(){
         Random rand = new Random();
+        int i = rand.nextInt(4);
+        switch (i){
+            case 0:
+                if(lastDirection != Direction.DOWN) {
+                    walkAwayDirection = Direction.UP;
+                }
+                else{
+                    decideNewDirection();
+                }
+                break;
+            case 1:
+                if(lastDirection != Direction.UP) {
+                    walkAwayDirection = Direction.DOWN;
+                }
+                else{
+                    decideNewDirection();
+                }
+                break;
+            case 2:
+                if(lastDirection != Direction.RIGHT) {
+                    walkAwayDirection = Direction.LEFT;
+                }
+                else{
+                    decideNewDirection();
+                }
+                break;
+            case 3:
+                if(lastDirection != Direction.LEFT) {
+                    walkAwayDirection = Direction.RIGHT;
+                }
+                else{
+                    decideNewDirection();
+                }
+                break;
+        }
+    }
+
+    public void walkAwayOneStep(){
         if(walkAwayState == walkAwayLength/3 || walkAwayState == (walkAwayLength/3)*2) {
+            lastDirection = walkAwayDirection;
             walkAwayDirection = null;
         }
 
         if (walkAwayDirection == null){
-            int i = rand.nextInt(4);
-            switch (i){
-                case 0: walkAwayDirection = Direction.UP;
-                    break;
-                case 1: walkAwayDirection = Direction.DOWN;
-                        break;
-                case 2: walkAwayDirection = Direction.LEFT;
-                    break;
-                case 3: walkAwayDirection = Direction.RIGHT;
-                    break;
-            }
+            decideNewDirection();
         }
         this.move(walkAwayDirection);
 
@@ -164,7 +198,6 @@ public class CharacterController{
 
 }
 
-//TODO 2. Fix lastDirection to avoid up-down-up shit.
 //TODO 3. Add animations.
 //TODO 4. Fix for all characters.
 //TODO 5. Add collisions.

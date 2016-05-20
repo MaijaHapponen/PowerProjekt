@@ -105,10 +105,12 @@ public class GameView extends ApplicationAdapter implements Screen{
 
         batch.setProjectionMatrix(progressView.getStage().getCamera().combined);
         progressView.getStage().draw();
+
         if(interaction){
             batch.setProjectionMatrix(interactionView.getStage().getCamera().combined);
             interactionView.getStage().draw();
         }
+
     }
 
     @Override

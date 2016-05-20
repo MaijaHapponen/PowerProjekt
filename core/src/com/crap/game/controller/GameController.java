@@ -43,19 +43,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
         // this.collisionController = new CollisionController(view.getWorld();
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
         this.worldController = new WorldController(this.model, this.playerController, this.view);
-        this.characterController = new CharacterController(view, model.getHumans(), model.getMascots(), view.getHumansList(),
-                view.getMascotsList());
-//TODO ********
-//        this.humans = game.getHumans();
-//        this.mascots = game.getMascots();
-//
-//        for(int i=0; i<mascots.size(); i++){
-//            mascotControllers.add(new CharacterController(mascots.get(i)));
-//        }
-//
-//        for(int i=0; i<humans.size(); i++){
-//            humanControllers.add(new CharacterController(humans.get(i)));
-//        }
+        this.characterController = new CharacterController();
+
 
         worldController.setWorld(HORSAL);
         model.player.setPosition(250, 250);

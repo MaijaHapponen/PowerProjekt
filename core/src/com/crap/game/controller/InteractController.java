@@ -19,7 +19,7 @@ public class InteractController extends InputAdapter {
 
     public InteractController(InteractView interactView, GameController gameController){
       //  this.gameController = gameController;
-        this.interact = new Interact(interact.getLabelsInScreen(), interact.getQuestionLabel());
+        this.interact = interactView.getInteractModel();
         this.interactView = interactView;
         Gdx.input.setInputProcessor(this);
     }
@@ -30,14 +30,14 @@ public class InteractController extends InputAdapter {
             StateController.updateState(State.GameStates.PLAY);
             interactView.dispose();
         }else if(keycode == Input.Keys.ENTER){
-            interactView.answerChoosen(interact.getCurrentLabel());
-           // interactView.dispose();
+            //checkIfRightAnswer(interactView.answerChoosen(interact.getCurrentLabel()));
+            interactView.dispose();
         }else if(keycode == Input.Keys.DOWN){
             interact.setCurrentLabel("down");
-            //interactView.answerChoosen(interact.getCurrentLabel());
+            interactView.answerChoosen(interact.getCurrentLabel());
         }else if(keycode == Input.Keys.UP){
             interact.setCurrentLabel("up");
-            //interactView.answerChoosen(interact.getCurrentLabel());
+            interactView.answerChoosen(interact.getCurrentLabel());
         }
         return true;
     }

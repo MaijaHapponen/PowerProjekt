@@ -25,17 +25,18 @@ public class Interact {
 
 
     public void setCurrentLabel(String direction){
+        int amountOfLabels = getAmountOfLabels() - 1;
         if(direction.equals("down")){
-            if(currentLabelNbr == 3){
-                currentLabelNbr = 0;
+            if(currentLabelNbr == amountOfLabels){
+                currentLabelNbr = 3;
             }else{
-                currentLabelNbr =- 1;
+                currentLabelNbr++ ;
             }
         }if(direction.equals("up")){
             if(currentLabelNbr == 0){
-                currentLabelNbr = 3;
+                currentLabelNbr = 0;
             }else {
-                currentLabelNbr =+ 1;
+                currentLabelNbr--;
             }
         }
         currentLabel = labelsInScreen[currentLabelNbr];
@@ -54,6 +55,10 @@ public class Interact {
     }
     public Label[] getLabelsInScreen(){
         return this.labelsInScreen;
+    }
+
+    public int getAmountOfLabels(){
+        return labelsInScreen.length;
     }
 
 

@@ -11,6 +11,7 @@ public class WorldController {
 
     private Game model;
     private PlayerController playerController;
+    private CharacterController characterController;
     private GameView view;
 
     /*
@@ -29,8 +30,9 @@ public class WorldController {
     private Position entrancePosition;
 
 
-    public WorldController(Game game, PlayerController controller, GameView view) {
+    public WorldController(Game game, PlayerController controller, CharacterController characterController, GameView view) {
         this.playerController = controller;
+        this.characterController = characterController;
         this.model = game;
         this.view = view;
 
@@ -51,13 +53,15 @@ public class WorldController {
                 enterHorsal(x,y);
                 view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
                 playerController.updateCollisionController();
+                characterController.updateCollisionController();
                 break;
 
             case EDIT:
                 setExit();
-                enterEdit(x,y);
+                enterEdit(x, y);
                 view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
                 playerController.updateCollisionController();
+                characterController.updateCollisionController();
                 break;
 
             case HUBBEN:
@@ -65,6 +69,7 @@ public class WorldController {
                 enterHubben();
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
+                characterController.updateCollisionController();
                 break;
 
             case ZALOONEN:
@@ -72,6 +77,7 @@ public class WorldController {
                 enterZaloonen();
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();
+                characterController.updateCollisionController();
                 break;
 
             default:

@@ -30,14 +30,14 @@ public class CollisionController {
     private String newWorldName;
 
 
-    private float playerWidth;
-    private float playerHeight;
+    private float spriteWidth;
+    private float spriteHeight;
 
 
 
-    public CollisionController(TiledMap view) {
+    public CollisionController(TiledMap map) {
         collisionModel = new CollisionModel();
-        this.map = view;
+        this.map = map;
         allLayers = map.getLayers();
         collisionLayer = allLayers.get("Collision");
         collisionObjects = collisionLayer.getObjects();
@@ -51,8 +51,8 @@ public class CollisionController {
     }
 
     public void setPlayerWidthAndHeight(float width, float height){
-        this.playerWidth = width;
-        this.playerHeight = height;
+        this.spriteWidth = width;
+        this.spriteHeight = height;
     }
 
     public boolean isSlowerTerrain(float x, float y){
@@ -96,11 +96,11 @@ public class CollisionController {
             Float height = (Float) mapObject.getProperties().get("height");
 
             if( checkIfCollide(posX,posY,width,height,x,y)||
-                    checkIfCollide(posX,posY,width,height,x+playerWidth,y)||
-                    checkIfCollide(posX,posY,width,height,x+playerWidth,y+playerHeight)||
-                    checkIfCollide(posX,posY,width,height,x,y+playerHeight) ||
-                    checkIfCollide(posX,posY,width,height,x,y+playerHeight/2)||
-                    checkIfCollide(posX,posY,width,height,x+playerWidth,y+playerHeight/2) ){
+                    checkIfCollide(posX,posY,width,height,x+ spriteWidth,y)||
+                    checkIfCollide(posX,posY,width,height,x+ spriteWidth,y+ spriteHeight)||
+                    checkIfCollide(posX,posY,width,height,x,y+ spriteHeight) ||
+                    checkIfCollide(posX,posY,width,height,x,y+ spriteHeight /2)||
+                    checkIfCollide(posX,posY,width,height,x+ spriteWidth,y+ spriteHeight /2) ){
                 newWorldObject = mapObject;
                 return true;
             }

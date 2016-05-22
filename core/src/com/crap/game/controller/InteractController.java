@@ -26,6 +26,7 @@ public class InteractController extends InputAdapter {
 
     @Override
     public boolean keyDown(int keycode){
+//TODO        this.gameController.getCharacterController().resetWalkAwayState();
         if(keycode == Input.Keys.BACKSPACE){
             StateController.updateState(State.GameStates.PLAY);
             interactView.dispose();
@@ -37,8 +38,6 @@ public class InteractController extends InputAdapter {
             interact.setCurrentLabel("down");
         }else if(keycode == Input.Keys.UP){
             interact.setCurrentLabel("up");
-            //TODO this.gameController.getCharacterController().interactsWith( **character, characterView** );
-            this.gameController.getCharacterController().resetWalkAwayState();
         }
         return true;
     }

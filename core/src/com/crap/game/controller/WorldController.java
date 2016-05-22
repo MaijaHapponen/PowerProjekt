@@ -14,6 +14,7 @@ public class WorldController {
 
     private Game model;
     private PlayerController playerController;
+    private CharacterController characterController;
     private GameView view;
 
     /*
@@ -36,8 +37,9 @@ public class WorldController {
     private Game.Worlds previousRoom;
 
 
-    public WorldController(Game game, PlayerController controller, GameView view) {
+    public WorldController(Game game, PlayerController controller, CharacterController characterController, GameView view) {
         this.playerController = controller;
+        this.characterController = characterController;
         this.model = game;
         this.view = view;
 
@@ -66,6 +68,7 @@ public class WorldController {
                 view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
                 playerController.updateCollisionController();
                 setPreviousRoom(EDIT);
+                characterController.updateCollisionController();
                 break;
 
             case HUBBEN:
@@ -74,6 +77,7 @@ public class WorldController {
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
                 setPreviousRoom(HUBBEN);
+                characterController.updateCollisionController();
                 break;
 
             case ZALOONEN:
@@ -82,6 +86,7 @@ public class WorldController {
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();
                 setPreviousRoom(ZALOONEN);
+                characterController.updateCollisionController();
                 break;
 
             default:

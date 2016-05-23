@@ -65,10 +65,9 @@ public class StateController {
                 new HowToPlayController();
                 game.setScreen(new HowToPlayView());
                 break;
-            /*case CHECKQUESTION:
-                new CheckQuestionController();
+            case CHECKQUESTION:
                 game.setScreen(new CheckQuestionView());
-                break;*/
+                break;
         }
     }
 

@@ -16,6 +16,8 @@ public class Game {
     private int startPositionY = 250;
     private Progress progress;
     public Player player;
+    private Questions questions;
+    private Information information;
 
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
@@ -27,6 +29,8 @@ public class Game {
         this.player = new Player(startPositionX,startPositionY);
         createHumans();
         createMascots();
+        this.questions = new Questions(mascots);
+        this.information = new Information(humans);
     }
 
     //Populates an arrayList with humans.

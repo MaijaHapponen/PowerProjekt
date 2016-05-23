@@ -18,11 +18,13 @@ public class Mascot extends Character{
         super(name, position);
     }
 
-    public Question askQuestion(){
-        return this.question;
-    }
 
     public void setQuestion(Question question){
         this.question = question;
     }
+
+    public Question getQuestion(){
+        return this.question;
+    }
+
 }

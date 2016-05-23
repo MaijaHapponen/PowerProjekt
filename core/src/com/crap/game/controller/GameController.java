@@ -87,11 +87,14 @@ public class GameController extends InputAdapter implements ApplicationListener 
         }else if(playerController.getNewWorldName().equals("zaloonen")){
             worldController.setWorld(ZALOONEN);
         }
-
     }
 
     public CharacterController getCharacterController(){
         return this.characterController;
+    }
+
+    public PlayerController getPlayerController(){
+        return this.playerController;
     }
 
     public void updateIfNewWorld() {

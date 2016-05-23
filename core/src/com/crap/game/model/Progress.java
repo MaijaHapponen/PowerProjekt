@@ -40,8 +40,4 @@ public class Progress {
     public ArrayList<Mascot> getMascotsInGame() {
         return mascotsInGame;
     }
-
-    public void setMascotsInGame(ArrayList<Mascot> mascotsInGame) {
-        this.mascotsInGame = mascotsInGame;
-    }
 }

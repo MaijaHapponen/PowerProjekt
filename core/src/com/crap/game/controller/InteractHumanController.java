@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.crap.game.model.Game;
+import com.crap.game.model.InteractHuman;
 import com.crap.game.model.State;
 import com.crap.game.view.InteractHumanView;
 
@@ -12,12 +13,14 @@ import com.crap.game.view.InteractHumanView;
  */
 public class InteractHumanController extends InputAdapter {
 
-    private InteractHumanController interactHumanController;
+    private InteractHumanView interactHumanView;
     private GameController gameController;
+    private InteractHuman interactHuman;
 
     public InteractHumanController(InteractHumanView interactHumanView, GameController g){
-        this.interactHumanController = interactHumanController;
+        this.interactHumanView = interactHumanView;
         this.gameController = g;
+        interactHuman = interactHumanView.getInteractHuman();
         Gdx.input.setInputProcessor(this);
     }
 
@@ -25,6 +28,11 @@ public class InteractHumanController extends InputAdapter {
     public boolean keyDown(int keyCode){
         if(keyCode == Input.Keys.BACKSPACE){
             StateController.updateState(State.GameStates.PLAY);
+        }
+        if(keyCode == Input.Keys.DOWN){
+            interactHuman.setCurrentString("down");
+        }if(keyCode == Input.Keys.UP){
+            interactHuman.setCurrentString("up");
         }return true;
     }
 

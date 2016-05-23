@@ -72,6 +72,7 @@ public class StateController {
                 new HowToPlayController();
                 game.setScreen(new HowToPlayView());
                 break;
+
         }
     }
 

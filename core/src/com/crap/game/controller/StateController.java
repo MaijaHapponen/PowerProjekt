@@ -2,6 +2,7 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.crap.game.model.InteractMascot;
 import com.crap.game.model.State;
 import com.crap.game.view.*;
 
@@ -31,48 +32,48 @@ public class StateController {
     }
 
     public static void updateState(State.GameStates state) {
+
         switch (state) {
+
             case STARTMENU:
                 MenuView menu = new MenuView();
                 new MenuController(menu);
                 game.setScreen(menu);
                 break;
+
             case PLAY:
                 if (!paused) initPlay();
                 else unPauseGame();
                 game.setScreen(worldView);
                 break;
+
             case INTERACT:
                 paused = true;
                 setGameMode(false);
-
                 if(controller.getPlayerController().isInteractionWithMascot()) {
-                    InteractMascotView interactMascotView = new InteractMascotView();
+                    InteractMascotView interactMascotView = new InteractMascotView(
+                            controller.getPlayerController().getInteractionController().getInteractingCharacter());
                     new InteractMascotController(interactMascotView, controller);
                     game.setScreen(interactMascotView);
                 }
-                 if(controller.getPlayerController().isInteractionWithHuman()) {
+                else if(controller.getPlayerController().isInteractionWithHuman()) {
                      InteractHumanView interactHumanView = new InteractHumanView();
                      new InteractHumanController(interactHumanView, controller);
                      game.setScreen(interactHumanView);
-
                  }
                 break;
+
             case GAMEOVER:
                 //this.view.main.setScreen(new GameOverView());
                 //gameOver = true;
                 break;
+
             case HOWTOPLAY:
                 new HowToPlayController();
                 game.setScreen(new HowToPlayView());
                 break;
-            /*case CHECKQUESTION:
-                game.setScreen(new CheckQuestionView());
-                break;*/
         }
     }
-
-
 
 
     public static void playMode(){

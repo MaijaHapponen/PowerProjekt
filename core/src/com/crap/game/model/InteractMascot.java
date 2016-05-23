@@ -7,11 +7,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
  */
 public class InteractMascot {
 
-
     private Label currentLabel;
     private int currentLabelNbr;
     private Label[] labelsInScreen;
     private Label questionLabel;
+
+    private boolean caughtMascot;
 
 
     public InteractMascot(Label[] labelsInScreen, Label questionLabel){
@@ -63,5 +64,22 @@ public class InteractMascot {
 
     public int getCurrentLabelNbr(){
         return this.currentLabelNbr;
+    }
+
+    public boolean isRightAnswer(Character character, int chosenLabel){
+        if(character instanceof Mascot){
+            if(chosenLabel == ((Mascot) character).getQuestion().getCorrectAnswer()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isMascotCaught(){
+        return this.caughtMascot;
+    }
+
+    public void updateMascotCaught(){
+        this.caughtMascot = false;
     }
 }

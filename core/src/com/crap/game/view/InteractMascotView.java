@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
-import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -49,14 +48,11 @@ public class InteractMascotView implements Screen{
     private Label answerLabel3;
     private Label answerLabel4;
 
-
-
-
-
-    public InteractMascotView(){
-        batch = new SpriteBatch();
-        skin = new Skin();
-        background = new TextureRegionDrawable(new TextureRegion(new Texture("background/rectangle.png")));
+    public InteractMascotView(Character interactionCharacter){
+        this.interactionCharacter = interactionCharacter;
+        this.batch = new SpriteBatch();
+        this.skin = new Skin();
+        this.background = new TextureRegionDrawable(new TextureRegion(new Texture("background/rectangle.png")));
 
         create();
     }
@@ -76,8 +72,8 @@ public class InteractMascotView implements Screen{
         questionLabel = new Label(String.format(question), new Label.LabelStyle(titleFont, Color.BLACK));
         answerLabel1= new Label(String.format(alternatives.get(0)), new Label.LabelStyle(font, Color.PINK));
         answerLabel2= new Label(String.format(alternatives.get(1)), new Label.LabelStyle(font, Color.PINK));
-        answerLabel3= new Label(String.format(alternatives.get(0)), new Label.LabelStyle(font, Color.PINK));
-        answerLabel4= new Label(String.format(alternatives.get(0)), new Label.LabelStyle(font, Color.PINK));
+        answerLabel3= new Label(String.format(alternatives.get(2)), new Label.LabelStyle(font, Color.PINK));
+        answerLabel4= new Label(String.format(alternatives.get(3)), new Label.LabelStyle(font, Color.PINK));
 
         Table table = new Table(skin);
         Viewport viewport = new FitViewport(worldHeight, worldWidth);
@@ -116,8 +112,6 @@ public class InteractMascotView implements Screen{
         return null;
     }
 
-
-
     public InteractMascot getInteractModel(){
         return this.interactMascot;
     }
@@ -134,6 +128,10 @@ public class InteractMascotView implements Screen{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 
+        if(interactMascot.isMascotCaught()){
+            //TODO: update the view;
+            interactMascot.updateMascotCaught();
+        }
 
         for(int i = 0; i < answers.length; i++) {
             if(interactMascot.getCurrentLabelNbr() == i) {

@@ -29,15 +29,13 @@ public class CharacterController{
 
     public void interactsWith(Character character, CharacterView characterView){
         collisionController.setPlayerWidthAndHeight(characterView.getCharacterSpriteWidth(),
-                characterView.getCharacterSpriteWidth());
+                characterView.getCharacterSpriteHeight());
         this.character = character;
         this.characterView = characterView;
     }
 
     public void updateCollisionController(){
         this.collisionController = new CollisionController(gameView.getWorld());
-//        collisionController.setPlayerWidthAndHeight(characterView.getCharacterSpriteWidth(),
-//                characterView.getCharacterSpriteHeight());
     }
 
     public void move(Direction direction){
@@ -97,11 +95,14 @@ public class CharacterController{
         if (interactionController.isInteractionWithHuman(x, y)){
             return true;
         }
-//        if (interactionController.isInteractionWithPlayer(worldController.getPlayerController().getPlayer(), x, y)){
-////        if (interactionController.isInteractionWithMascot(x, y)){ //TODO Collieds with itself... fuck
-////            System.out.println("Collision with Mascot!");
-//            return true;
-//        }
+        if (interactionController.isInteractionWithPlayer(x, y)){
+            System.out.println("CRASH");
+            return true;
+        }
+        /*if (interactionController.isInteractionWithMascot(x, y)){ //TODO Collieds with itself... fuck
+            System.out.println("Collision with Mascot!");
+            return true;
+        }*/
         return false;
     }
 
@@ -245,7 +246,7 @@ public class CharacterController{
         this.move(walkAwayDirection);
 
         if(walkAwayState == walkAwayLength-1){
-            stopWalkingAnimation();
+            //stopWalkingAnimation();
         }
 
         updateSprite();

@@ -2,6 +2,7 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.model.Game;
+import com.crap.game.model.Player;
 import com.crap.game.model.Position;
 import com.crap.game.view.GameView;
 
@@ -145,7 +146,11 @@ public class WorldController {
         isEntrance = false;
     }
 
-    public void setPreviousRoom(Game.Worlds lastRoom){
+    public void setPreviousRoom(Game.Worlds lastRoom) {
         this.previousRoom = lastRoom;
+    }
+
+    public PlayerController getPlayerController(){
+        return this.playerController;
     }
 }

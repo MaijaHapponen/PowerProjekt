@@ -44,6 +44,13 @@ public class InteractionController {
         return false;
     }
 
+    public boolean isInteractionWithPlayer(Player player, float x, float y) {
+        if (interactionModel.isInteraction(player, x, y)) {
+            return false; //TODO finish method!
+        }
+        return true;
+    }
+
     public void setInteractingCharacter(Character character, CharacterView characterView){
         this.interactingCharacter = character;
         this.interactingCharacterView = characterView;

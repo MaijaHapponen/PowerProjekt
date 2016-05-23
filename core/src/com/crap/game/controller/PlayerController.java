@@ -34,6 +34,10 @@ public class PlayerController {
         collisionController.setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
     }
 
+    public Player getPlayer(){
+        return this.player;
+    }
+
     public void movePlayer(int keycode) {
 
         String direction = null;

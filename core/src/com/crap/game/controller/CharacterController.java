@@ -1,20 +1,17 @@
 package com.crap.game.controller;
 
 import com.crap.game.model.Character;
-import com.crap.game.model.Human;
-import com.crap.game.model.Mascot;
-import com.crap.game.model.Position;
 import com.crap.game.view.CharacterView;
 import com.crap.game.view.GameView;
 import com.crap.game.view.PlayerView;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class CharacterController{
 
     public enum Direction{UP, DOWN, LEFT, RIGHT}
 
+    private GameView gameView;
     private Character character;
     private CharacterView characterView;
     private CollisionController collisionController;
@@ -22,18 +19,20 @@ public class CharacterController{
     private int walkAwayState = walkAwayLength;
     private Direction walkAwayDirection;
     private Direction lastDirection;
-
-    private GameView gameView;
     private InteractionController interactionController;
-
+    private WorldController worldController;
 
     public CharacterController(GameView view){
         this.gameView = view;
         this.collisionController = new CollisionController(view.getWorld());
         interactionController = new InteractionController(view);
     }
-    public void updateCollisionController(){
-        collisionController = new CollisionController(gameView.getWorld());
+
+    public CharacterController(GameView gameView, WorldController worldController){
+        this.worldController = worldController;
+        this.gameView = gameView;
+        this.collisionController = new CollisionController(gameView.getWorld());
+        this.interactionController = new InteractionController(gameView);
     }
 
     public void interactsWith(Character character, CharacterView characterView){
@@ -43,15 +42,20 @@ public class CharacterController{
         this.characterView = characterView;
     }
 
-    //Makes the character walk away a few steps.
+    public void updateCollisionController(){
+        this.collisionController = new CollisionController(gameView.getWorld());
+//        collisionController.setPlayerWidthAndHeight(characterView.getCharacterSpriteWidth(),
+//                characterView.getCharacterSpriteHeight());
+    }
+
     public void move(Direction direction){
-        //TODO find the character with a loop in the humans and mascots lists. When found: Set characer = to that. (Set characterView aswell??)
 
         //TODO: remove magic number
         switch (direction){
             case UP:
-                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()+2) &&
-                        !checkIfCollision(character.getPosition().getX(), character.getPosition().getY()+2)) {
+//                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()+2) &&
+//                        !checkIfCollision(character.getPosition().getX(), character.getPosition().getY()+2)) {
+                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()+2)){
                     this.moveUp();
                 }
                 else{
@@ -60,8 +64,9 @@ public class CharacterController{
                 }
                 break;
             case DOWN:
-                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()-2)&&
-                        !checkIfCollision(character.getPosition().getX(), character.getPosition().getY()-2)) {
+//                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()-2)&&
+//                        !checkIfCollision(character.getPosition().getX(), character.getPosition().getY()-2)) {
+                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()-2)){
                     this.moveDown();
                 }
                 else{
@@ -70,8 +75,9 @@ public class CharacterController{
                 }
                 break;
             case LEFT:
-                if(isPositionEmpty(character.getPosition().getX()-2, character.getPosition().getY())&&
-                        !checkIfCollision(character.getPosition().getX()-2, character.getPosition().getY())) {
+//                if(isPositionEmpty(character.getPosition().getX()-2, character.getPosition().getY())&&
+//                        !checkIfCollision(character.getPosition().getX()-2, character.getPosition().getY())) {
+                if(isPositionEmpty(character.getPosition().getX()-2, character.getPosition().getY())){
                     this.moveLeft();
                 }
                 else{
@@ -80,8 +86,9 @@ public class CharacterController{
                 }
                 break;
             case RIGHT:
-                if(isPositionEmpty(character.getPosition().getX()+2, character.getPosition().getY())&&
-                        !checkIfCollision(character.getPosition().getX()+2, character.getPosition().getY())) {
+//                if(isPositionEmpty(character.getPosition().getX()+2, character.getPosition().getY())&&
+//                        !checkIfCollision(character.getPosition().getX()+2, character.getPosition().getY())) {
+                if(isPositionEmpty(character.getPosition().getX()+2, character.getPosition().getY())){
                     this.moveRight();
                 }
                 else{
@@ -92,16 +99,32 @@ public class CharacterController{
         }
     }
 
-    public boolean checkIfCollision(float x, float y){
-        return (collisionController.isCollison(x,y) || collisionController.isNewWorld(x,y)||
-                interactionController.isInteractionWithHuman(x,y)
-                || interactionController.isInteractionWithMascot(x,y));
+//<<<<<<< Updated upstream
+//    public boolean checkIfCollision(float x, float y){
+//        return (collisionController.isCollison(x,y) || collisionController.isNewWorld(x,y)||
+//                interactionController.isInteractionWithHuman(x,y)
+//                || interactionController.isInteractionWithMascot(x,y));
+//=======
+    //Returns true if there is a collision.
+    public boolean checkIfCollision(float x, float y) {
+        if (collisionController.isCollison(x, y)) {
+            return true;
+        }
+        if (interactionController.isInteractionWithHuman(x, y)){
+            return true;
+        }
+//        if (interactionController.isInteractionWithPlayer(worldController.getPlayerController().getPlayer(), x, y)){
+////        if (interactionController.isInteractionWithMascot(x, y)){ //TODO Collieds with itself... fuck
+////            System.out.println("Collision with Mascot!");
+//            return true;
+//        }
+        return false;
     }
 
     public void moveUp() {
         //TODO: fix a setposistion class in chracter instead or a moveUp, moveDown as the player has
         this.character.getPosition().setPosition(this.character.getPosition().getX(),
-                this.character.getPosition().getY() + 2);
+                this.character.getPosition().getY()+2);
         this.characterView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
         this.characterView.updateAnimation();
     }
@@ -157,6 +180,9 @@ public class CharacterController{
 
     public boolean isPositionEmpty(float x, float y){
         if(x<0 || x>1000 || y<0 || y>1000){ //TODO fix 1000.
+            return false;
+        }
+        if(checkIfCollision(x, y)){
             return false;
         }
         return true;
@@ -244,5 +270,7 @@ public class CharacterController{
     }
 
 }
-
-//TODO 5. Add collisions.
+//TODO fix interactionWithPlayer in Interaction controller and in some other places. It is fuuucked up and uggly as F.
+//TODO seems like collision only checks bottom left corner of Characters.
+//TODO new method in InteracitionController?? isInteractionWithPlayer();
+//TODO new method in InteractionController?? isInteractionWithCharacter(Character character) to fix problem with self collison for Characters.

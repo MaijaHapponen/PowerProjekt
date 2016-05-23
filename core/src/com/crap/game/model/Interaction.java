@@ -42,7 +42,7 @@ public class Interaction {
         Float y = character.getPosition().getY();
         Float width = character.getWidth();
         Float height = character.getHeight();
-
+        
         return collisionModel.checkIfCollide(x, y, width, height, playerPositionX, playerPositionY);
     }
 

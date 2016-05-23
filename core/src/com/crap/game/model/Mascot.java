@@ -8,14 +8,18 @@ import java.util.Random;
  */
 public class Mascot extends Character{
 
+    private boolean isCaught;
+
     private Question question;
 
     public Mascot(String name){
         super(name);
+        this.isCaught = false;
     }
 
     public Mascot(String name, Position position){
         super(name, position);
+        this.isCaught = false;
     }
 
 
@@ -25,6 +29,10 @@ public class Mascot extends Character{
 
     public Question getQuestion(){
         return this.question;
+    }
+
+    public void catchMascot(){
+        this.isCaught = true;
     }
 
 }

@@ -13,31 +13,36 @@ public class Questions {
 
     public void setQuestions(ArrayList<Mascot> mascots) {
 
-        //TODO:FIX THE QUESTIONS - 4 alternatives always
         for (int i = 0; i < mascots.size(); i++) {
             if (mascots.get(i).getName() == "kalleAnka") {
-               // mascots.get(i).setQuestion(new Question(
-                // "What is kalle ankas love interest called?",
-                //  ["Kajsa", "Dorothy", "Jane"],
-                //  0));
+                String kalleAnkaQuestion = "What is kalle ankas love interest called?";
+                String[] kalleAnkaAlternatives = new String [] {"Kajsa", "Dorothy", "Mimmi", "Monica"};
+                int kalleAnkaRightAnswer = 0;
+                mascots.get(i).setQuestion(
+                        new Question(kalleAnkaQuestion, kalleAnkaAlternatives, kalleAnkaRightAnswer));
             }
             else if(mascots.get(i).getName() == "hackeHackspett") {
-               // mascots.get(i).setQuestion(new Question(
-                // "What is kalle ankas love interest called?",
-                //  ["Kajsa", "Dorothy", "Jane"],
-                // 0));
+                String hackeHackspettQuestion = "What is Hacke Hackspetts favorite color?";
+                String[] hackeHackspettAlternatives = new String [] {"Red", "White", "Orange", "Green"};
+                int hackeHackspettRightAnswer = 2;
+                mascots.get(i).setQuestion(
+                        new Question(hackeHackspettQuestion, hackeHackspettAlternatives, hackeHackspettRightAnswer));
             }
             else if(mascots.get(i).getName() == "iTSmurfen") {
-              //  mascots.get(i).setQuestion(new Question(
-                // "What is kalle ankas love interest called?",
-                // ["Kajsa", "Dorothy", "Jane"],
-                // 0));
+                String iTSmurfenQuestion = "What does the shortening 'IT' stand for?";
+                String[] iTSmurfenAlternatives =
+                        new String [] {"InternetTechnology", "Informationsteknik", "IterationTest", "IThink"};
+                int iTSmurfenRightAnswer = 1;
+                mascots.get(i).setQuestion(
+                        new Question(iTSmurfenQuestion, iTSmurfenAlternatives, iTSmurfenRightAnswer));
             }
             else if(mascots.get(i).getName() == "luckyluke") {
-               // mascots.get(i).setQuestion(new Question(
-                // "What is kalle ankas love interest called?",
-                // ["Kajsa", "Dorothy", "Jane"],
-                // 0));
+                String luckyLukeQuestion = "What is Lucky Lukes horse called?";
+                String[] luckyLukeAlternatives =
+                        new String [] {"Holly Hunter", "Betty Bowler", "Randy Runner", "Jolly Jumper"};
+                int luckyLukeRightAnswer = 3;
+                mascots.get(i).setQuestion(
+                        new Question(luckyLukeQuestion, luckyLukeAlternatives, luckyLukeRightAnswer));
             }
         }
     }

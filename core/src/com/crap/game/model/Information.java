@@ -13,20 +13,18 @@ public class Information {
 
     public void setInformation(ArrayList<Human> humans) {
 
-        //TODO:FIX THE INFORMATION
-        //getInteractingCharacter ok - finns
         for (int i = 0; i < humans.size(); i++) {
             if (humans.get(i).getName() == "kalleAnka") {
-                humans.get(i).setInformation("What is kalle ankas love interest called?");
+                humans.get(i).setInformation("Kalle Ankas love interest is called Kajsa");
             }
             else if(humans.get(i).getName() == "hackeHackspett") {
-                humans.get(i).setInformation("What is kalle ankas love interest called?");
+                humans.get(i).setInformation("Hacke Hackspetts favorite color is Orange");
             }
             else if(humans.get(i).getName() == "iTSmurfen") {
-                humans.get(i).setInformation("What is kalle ankas love interest called?");
+                humans.get(i).setInformation("IT stands for Informationsteknik");
             }
             else if(humans.get(i).getName() == "luckyluke") {
-                humans.get(i).setInformation("What is kalle ankas love interest called?");
+                humans.get(i).setInformation("Lucky Lukes horse is called Jolly Jumper");
             }
         }
     }

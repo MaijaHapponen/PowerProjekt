@@ -43,7 +43,6 @@ public class Interaction {
         Float width = character.getWidth();
         Float height = character.getHeight();
 
-
         return collisionModel.checkIfCollide(x, y, width, height, playerPositionX, playerPositionY);
     }
 

@@ -13,12 +13,12 @@ import com.crap.game.view.InteractView;
 public class InteractController extends InputAdapter {
 
     private InteractView interactView;
-   // private GameController gameController;
+    private GameController gameController;
     private Interact interact;
 //TODO    private CharacterController characterController;
 
     public InteractController(InteractView interactView, GameController gameController){
-      //  this.gameController = gameController;
+        this.gameController = gameController;
         this.interact = interactView.getInteractModel();
         this.interactView = interactView;
         Gdx.input.setInputProcessor(this);
@@ -31,13 +31,12 @@ public class InteractController extends InputAdapter {
             interactView.dispose();
         }else if(keycode == Input.Keys.ENTER){
             //checkIfRightAnswer(interactView.answerChoosen(interact.getCurrentLabel()));
+            StateController.updateState(State.GameStates.CHECKQUESTION);
             interactView.dispose();
         }else if(keycode == Input.Keys.DOWN){
             interact.setCurrentLabel("down");
-            interactView.answerChoosen(interact.getCurrentLabel());
         }else if(keycode == Input.Keys.UP){
             interact.setCurrentLabel("up");
-            interactView.answerChoosen(interact.getCurrentLabel());
         }
         return true;
     }

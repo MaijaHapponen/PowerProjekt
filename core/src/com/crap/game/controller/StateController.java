@@ -41,7 +41,8 @@ public class StateController {
             case INTERACT:
                 paused = true;
                 setGameMode(false);
-                InteractView interactView = new InteractView();
+                InteractView interactView = new InteractView(
+                        controller.getPlayerController().getInteractionController().getInteractingCharacter());
                 new InteractController(interactView, controller);
                 game.setScreen(interactView);
                 break;

@@ -20,6 +20,8 @@ public class InteractController extends InputAdapter {
         this.gameController = gameController;
         this.interact = interactView.getInteractModel();
         this.interactView = interactView;
+        //this.interactView.setInteractiveCharacter
+        //        = gameController.getPlayerController().getInteractionController().getInteractingCharacter();
         Gdx.input.setInputProcessor(this);
     }
 

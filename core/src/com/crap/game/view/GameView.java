@@ -51,7 +51,6 @@ public class GameView extends ApplicationAdapter implements Screen{
         batch = new SpriteBatch();
         this.progressView = new ProgressView(game.getProgress());
 
-
         renderer = new OrthogonalTiledMapRenderer(world);
 
 

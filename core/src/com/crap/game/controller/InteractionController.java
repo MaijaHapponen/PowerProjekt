@@ -13,6 +13,7 @@ public class InteractionController {
     private GameView gameView;
     private Character interactingCharacter;
     private CharacterView interactingCharacterView;
+    private static boolean isInteracting = false;
 
     public InteractionController(GameView view){
         this.gameView = view;
@@ -25,7 +26,9 @@ public class InteractionController {
             CharacterView characterView = gameView.getHumansList().get(i);
 
             if (interactionModel.isInteraction(characterView.getCharacter(), x, y)) {
-                setInteractingCharacter(characterView.getCharacter(), characterView);
+                if(!isInteracting) {
+                    setInteractingCharacter(characterView.getCharacter(), characterView);
+                }
                 return true;
             }
         }
@@ -37,7 +40,9 @@ public class InteractionController {
             CharacterView characterView = gameView.getMascotsList().get(i);
 
             if(interactionModel.isInteraction(characterView.getCharacter(),x, y)){
-                setInteractingCharacter(characterView.getCharacter(), characterView);
+                if(!isInteracting) {
+                    setInteractingCharacter(characterView.getCharacter(), characterView);
+                }
                 return true;
             }
         }
@@ -84,4 +89,11 @@ public class InteractionController {
         return this.interactingCharacterView;
     }
 
+    public boolean getIsInteracting(){
+        return isInteracting;
+    }
+
+    public void setIsInteracting(boolean state){
+        isInteracting = state;
+    }
 }

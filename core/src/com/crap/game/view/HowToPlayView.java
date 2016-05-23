@@ -49,7 +49,7 @@ public class HowToPlayView implements Screen{
         String instructions2 = "-Answer the questions " ;
         String instructions25 = "right to catch the mascot";
         String instructions4 = "-Move with the key arrows";
-        String instructions3 = "-Interact by pressing space";
+        String instructions3 = "-InteractMascot by pressing space";
 
         instructionItems = new String[]{instructions, instructions2, instructions25, instructions3, instructions4};
 

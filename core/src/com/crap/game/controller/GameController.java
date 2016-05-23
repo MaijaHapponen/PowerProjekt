@@ -94,11 +94,15 @@ public class GameController extends InputAdapter implements ApplicationListener 
     }
 
     public void updateIfInteraction(){
-        if(playerController.isInteractionWithMascot()){
+        if(playerController.isInteractionWithMascot() || playerController.isInteractionWithHuman()){
             view.setInteraction(true);
         }else{
             view.setInteraction(false);
         }
+    }
+
+    public PlayerController getPlayerController(){
+        return this.playerController;
     }
 
     @Override

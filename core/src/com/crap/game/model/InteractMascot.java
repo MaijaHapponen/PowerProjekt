@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 /**
  * Created by rebeccafinne on 16-05-20.
  */
-public class Interact {
+public class InteractMascot {
 
 
     private Label currentLabel;
@@ -14,7 +14,7 @@ public class Interact {
     private Label questionLabel;
 
 
-    public Interact(Label[] labelsInScreen, Label questionLabel){
+    public InteractMascot(Label[] labelsInScreen, Label questionLabel){
         this.labelsInScreen = labelsInScreen;
         this.questionLabel = questionLabel;
         this.currentLabelNbr = 0;

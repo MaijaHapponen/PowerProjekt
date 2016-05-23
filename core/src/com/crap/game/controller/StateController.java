@@ -16,11 +16,15 @@ public class StateController {
     public static com.crap.game.model.Game world;
     public static boolean gameMode = false;
 
+    // public static PlayerView playerView = new PlayerView();
+    // public static Interaction interaction = new Interaction(playerView.getPlayerSpriteWidth(), playerView.getPlayerSpriteHeight());
+
+
     //Game-class from libGDX, not our model
     public static Game game;
     public static boolean paused;
 
-    public StateController(Game g){
+    public StateController(Game g) {
         this.game = g;
         world = new com.crap.game.model.Game();
         updateState(State.GameStates.STARTMENU);
@@ -34,16 +38,24 @@ public class StateController {
                 game.setScreen(menu);
                 break;
             case PLAY:
-                if(!paused) initPlay();
+                if (!paused) initPlay();
                 else unPauseGame();
                 game.setScreen(worldView);
                 break;
             case INTERACT:
                 paused = true;
                 setGameMode(false);
-                InteractView interactView = new InteractView();
-                new InteractController(interactView, controller);
-                game.setScreen(interactView);
+                if(controller.getPlayerController().isInteractionWithMascot()) {
+                    InteractMascotView interactMascotView = new InteractMascotView();
+                    new InteractMascotController(interactMascotView, controller);
+                    game.setScreen(interactMascotView);
+                }
+                 if(controller.getPlayerController().isInteractionWithHuman()) {
+                     InteractHumanView interactHumanView = new InteractHumanView();
+                     new InteractHumanController(interactHumanView, controller);
+                     game.setScreen(interactHumanView);
+
+                 }
                 break;
             case GAMEOVER:
                 //this.view.main.setScreen(new GameOverView());
@@ -58,8 +70,10 @@ public class StateController {
                 game.setScreen(new CheckQuestionView());
                 break;
         }
-
     }
+
+
+
 
     public static void playMode(){
         Gdx.input.setInputProcessor(controller);

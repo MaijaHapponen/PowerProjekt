@@ -13,13 +13,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.crap.game.model.Interact;
+import com.crap.game.model.InteractMascot;
 
 
 /**
  * Created by Maija on 2016-05-11.
  */
-public class InteractView implements Screen{
+public class InteractMascotView implements Screen{
 
     private SpriteBatch batch;
 
@@ -28,12 +28,9 @@ public class InteractView implements Screen{
     private int worldWidth = 500;
     private int worldHeight = 500;
     private TextureRegionDrawable background;
-    private Interact interact;
+    private InteractMascot interactMascot;
 
     private Skin skin;
-
-
-
 
     BitmapFont titleFont;
     BitmapFont font;
@@ -49,19 +46,15 @@ public class InteractView implements Screen{
     private Label answerLabel4;
 
 
-    public InteractView(){
+    public InteractMascotView(){
         batch = new SpriteBatch();
         skin = new Skin();
         background = new TextureRegionDrawable(new TextureRegion(new Texture("background/rectangle.png")));
 
         create();
-
-
     }
 
     public void create(){
-
-
 
         parameter.size=20;
         titleFont = generator.generateFont(parameter);
@@ -98,12 +91,12 @@ public class InteractView implements Screen{
         stage.addActor(table);
 
         answers = new Label[]{answerLabel1, answerLabel2, answerLabel3, answerLabel4};
-        interact = new Interact(answers, answerLabel1);
+        interactMascot = new InteractMascot(answers, answerLabel1);
     }
 
 
-    public Interact getInteractModel(){
-        return this.interact;
+    public InteractMascot getInteractModel(){
+        return this.interactMascot;
     }
 
     @Override
@@ -120,8 +113,8 @@ public class InteractView implements Screen{
 
 
         for(int i = 0; i < answers.length; i++) {
-            if(interact.getCurrentLabelNbr() == i) {
-                interact.getCurrentLabel().setColor(Color.PINK);
+            if(interactMascot.getCurrentLabelNbr() == i) {
+                interactMascot.getCurrentLabel().setColor(Color.PINK);
             }
             else{
                 answers[i].setColor(Color.BLACK);

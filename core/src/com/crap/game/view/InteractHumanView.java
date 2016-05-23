@@ -1,6 +1,7 @@
 package com.crap.game.view;
 
 import com.badlogic.gdx.Gdx;
+
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -25,6 +26,7 @@ public class InteractHumanView extends ScreenAdapter {
     private String whereIsMascot = "Ask where mascot could be";
     private String exit = "Exit";
     private String back = "Press BACK SPACE to return to game";
+
 
     private String inforamtionProgramme;
     private String inforamtionMascot;
@@ -56,6 +58,11 @@ public class InteractHumanView extends ScreenAdapter {
 
         generator.dispose();
 
+        options = new String[]{talkAboutProgramme, whereIsMascot, exit};
+        interactHuman = new InteractHuman(options, talkAboutProgramme);
+
+        inforamtionMascot = "Some information where mascot could be";
+        inforamtionProgramme = "Some informaiton about programme";
 
         options = new String[]{talkAboutProgramme, whereIsMascot, exit};
         interactHuman = new InteractHuman(options, talkAboutProgramme);
@@ -81,7 +88,6 @@ public class InteractHumanView extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-
 
 
         if(!isProgramme && !isMascot) {
@@ -111,6 +117,21 @@ public class InteractHumanView extends ScreenAdapter {
         batch.end();
     }
 
+
+
+
+    public String getTalkAboutProgramme(){
+        return this.talkAboutProgramme;
+    }
+
+    public String getWhereIsMascot(){
+        return this.whereIsMascot;
+    }
+
+    public String getExit(){
+        return this.exit;
+    }
+
     public InteractHuman getInteractHuman(){
         return this.interactHuman;
     }
@@ -132,15 +153,7 @@ public class InteractHumanView extends ScreenAdapter {
         return this.isProgramme;
     }
 
-    public String getTalkAboutProgramme(){
-        return this.talkAboutProgramme;
-    }
 
-    public String getWhereIsMascot(){
-        return this.whereIsMascot;
-    }
 
-    public String getExit(){
-        return this.exit;
-    }
+
 }

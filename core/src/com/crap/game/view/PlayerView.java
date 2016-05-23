@@ -83,7 +83,6 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         this.camera = camera;
     }
 
-
     public void moveCamera(float x,float y, float worldWidth, float worldHeight) {
 
         float boarderLeft = halfOfScreen;

@@ -15,7 +15,6 @@ public class InteractController extends InputAdapter {
     private InteractView interactView;
     private GameController gameController;
     private Interact interact;
-//TODO    private CharacterController characterController;
 
     public InteractController(InteractView interactView, GameController gameController){
         this.gameController = gameController;
@@ -28,8 +27,8 @@ public class InteractController extends InputAdapter {
     public boolean keyDown(int keycode){
         if(keycode == Input.Keys.BACKSPACE){
             StateController.updateState(State.GameStates.PLAY);
-            this.gameController.getCharacterController().resetWalkAwayState();
             interactView.dispose();
+            this.gameController.getCharacterController().resetWalkAwayState();
         }else if(keycode == Input.Keys.ENTER){
             //checkIfRightAnswer(interactView.answerChoosen(interact.getCurrentLabel()));
             StateController.updateState(State.GameStates.CHECKQUESTION);

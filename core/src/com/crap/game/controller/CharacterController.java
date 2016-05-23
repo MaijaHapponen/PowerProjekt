@@ -92,6 +92,10 @@ public class CharacterController{
                 interactionController.isInteractionWithPlayer(x, y)) {
             return true;
         }
+
+        if (interactionController.isInteractionWithPlayer(x, y)){
+            return true;
+        }
         return false;
     }
 

@@ -1,7 +1,7 @@
 package com.crap.game.view;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -13,7 +13,7 @@ import com.crap.game.model.State;
 /**
  * Created by rebeccafinne on 2016-05-17.
  */
-public class HowToPlayView implements Screen{
+public class HowToPlayView extends ScreenAdapter{
 
     private String[] instructionItems;
 
@@ -56,9 +56,6 @@ public class HowToPlayView implements Screen{
     }
 
     @Override
-    public void show() { }
-
-    @Override
     public void render(float delta) {
         String title = "This is how you play";
         String pressEnter = "Press enter to begin the game";
@@ -96,26 +93,6 @@ public class HowToPlayView implements Screen{
     public void setMenu(){
         StateController.updateState(State.GameStates.STARTMENU);
         dispose();
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
     }
 
     @Override

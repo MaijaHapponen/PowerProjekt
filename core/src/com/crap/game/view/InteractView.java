@@ -28,6 +28,9 @@ public class InteractView implements Screen{
     private Interact interact;
     private Skin skin;
 
+    BitmapFont titleFont;
+    BitmapFont font;
+
     FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
     FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
@@ -50,12 +53,10 @@ public class InteractView implements Screen{
 
     public void create(){
 
-        BitmapFont titleFont;
-        BitmapFont font;
+
 
         parameter.size=20;
         titleFont = generator.generateFont(parameter);
-        titleFont.setColor(Color.PINK);
 
         parameter.size=10;
         font= generator.generateFont(parameter);
@@ -63,11 +64,10 @@ public class InteractView implements Screen{
 
         questionLabel = new Label(String.format("This is a question"), new Label.LabelStyle(titleFont, Color.BLACK));
         answerLabel1= new Label(String.format("Alternative answer 1"), new Label.LabelStyle(font, Color.PINK));
-        answerLabel2= new Label(String.format("Alternative answer 2"), new Label.LabelStyle(font, Color.BLACK));
-        answerLabel3= new Label(String.format("Alternative answer 3"), new Label.LabelStyle(font, Color.BLACK));
-        answerLabel4= new Label(String.format("Alternative answer 4"), new Label.LabelStyle(font, Color.BLACK));
+        answerLabel2= new Label(String.format("Alternative answer 2"), new Label.LabelStyle(font, Color.PINK));
+        answerLabel3= new Label(String.format("Alternative answer 3"), new Label.LabelStyle(font, Color.PINK));
+        answerLabel4= new Label(String.format("Alternative answer 4"), new Label.LabelStyle(font, Color.PINK));
         //TODO get the strings from mascot through a get method
-
 
         Table table = new Table(skin);
         Viewport viewport = new FitViewport(worldHeight, worldWidth);
@@ -94,24 +94,6 @@ public class InteractView implements Screen{
     }
 
 
-    public void answerChoosen(Label label){
-        if(interact.getCurrentLabel() == answerLabel1) {
-            answerLabel1.setColor(Color.PINK);
-
-        }else if(label == answerLabel2){
-            answerLabel2.setColor(Color.PINK);
-
-        }else if(label == answerLabel3){
-
-            answerLabel3.setColor(Color.PINK);
-        }else{
-
-            answerLabel4.setColor(Color.PINK);
-        }
-
-
-    }
-
     public Interact getInteractModel(){
         return this.interact;
     }
@@ -130,12 +112,17 @@ public class InteractView implements Screen{
 
 
         for(int i = 0; i < answers.length; i++) {
-            interact.getCurrentLabel().setColor(Color.PINK);
+            if(interact.getCurrentLabelNbr() == i) {
+                interact.getCurrentLabel().setColor(Color.PINK);
+            }
+            else{
+                answers[i].setColor(Color.BLACK);
+            }
 
             batch.setProjectionMatrix(stage.getCamera().combined);
             stage.draw();
-        }
 
+        }
 
     }
 

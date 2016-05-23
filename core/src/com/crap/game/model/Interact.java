@@ -28,13 +28,13 @@ public class Interact {
         int amountOfLabels = getAmountOfLabels() - 1;
         if(direction.equals("down")){
             if(currentLabelNbr == amountOfLabels){
-                currentLabelNbr = 3;
+                currentLabelNbr = 0;
             }else{
                 currentLabelNbr++ ;
             }
         }if(direction.equals("up")){
             if(currentLabelNbr == 0){
-                currentLabelNbr = 0;
+                currentLabelNbr = 3;
             }else {
                 currentLabelNbr--;
             }
@@ -61,6 +61,7 @@ public class Interact {
         return labelsInScreen.length;
     }
 
-
-
+    public int getCurrentLabelNbr(){
+        return this.currentLabelNbr;
+    }
 }

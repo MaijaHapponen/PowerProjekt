@@ -3,10 +3,7 @@ package com.crap.game.controller;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.crap.game.model.State;
-import com.crap.game.view.GameView;
-import com.crap.game.view.HowToPlayView;
-import com.crap.game.view.InteractView;
-import com.crap.game.view.MenuView;
+import com.crap.game.view.*;
 
 /**
  * Created by Maija on 2016-05-19.
@@ -56,6 +53,9 @@ public class StateController {
                 new HowToPlayController();
                 game.setScreen(new HowToPlayView());
                 break;
+            case CHECKQUESTION:
+                new CheckQuestionController();
+                game.setScreen(new CheckQuestionView());
         }
 
     }

@@ -23,8 +23,6 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     private Texture texture;
     private OrthographicCamera camera;
     private int halfOfScreen = 250;
-    private float boarderLeft = halfOfScreen;
-    private float boarderBottom = halfOfScreen;
     private GameAnimation gameAnimation = new GameAnimation();
     private Animation animation;
     private AnimationState animationState = AnimationState.STANDING_FRONT;
@@ -33,7 +31,7 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     public final int NBR_OF_TEXTURE_IMAGES_VERTICALLY = 4;
 
     public PlayerView(){
-        this.texture = new Texture(Gdx.files.internal("characters/kalleAnka.png"));
+        this.texture = new Texture(Gdx.files.internal("characters/kalleanka.png"));
         this.playerSprite = new Sprite(texture);
         playerSprite.setPosition(0, 0);
         //TODO not hardcode

@@ -36,6 +36,7 @@ public class CharacterController{
 
     public void updateCollisionController(){
         this.collisionController = new CollisionController(gameView.getWorld());
+
         if(characterView != null) {
             collisionController.setPlayerWidthAndHeight(characterView.getCharacterSpriteWidth(),
                     characterView.getCharacterSpriteHeight());
@@ -93,11 +94,14 @@ public class CharacterController{
         if (interactionController.isInteractionWithAnotherCharacter(this.character, x, y)){
             return true;
         }
-//        if (interactionController.isInteractionWithPlayer(worldController.getPlayerController().getPlayer(), x, y)){
-////        if (interactionController.isInteractionWithMascot(x, y)){ //TODO Collieds with itself... fuck
-////            System.out.println("Collision with Mascot!");
-//            return true;
-//        }
+        if (interactionController.isInteractionWithPlayer(x, y)){
+            System.out.println("CRASH");
+            return true;
+        }
+        /*if (interactionController.isInteractionWithMascot(x, y)){ //TODO Collieds with itself... fuck
+            System.out.println("Collision with Mascot!");
+            return true;
+        }*/
         return false;
     }
 

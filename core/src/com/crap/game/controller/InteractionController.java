@@ -64,11 +64,11 @@ public class InteractionController {
         return false;
     }
 
-    public boolean isInteractionWithPlayer(Player player, float x, float y) {
-        if (interactionModel.isInteraction(player, x, y)) {
-            return false; //TODO finish method!
+    public boolean isInteractionWithPlayer(float x, float y) {
+        if (interactionModel.isInteraction(gameView.getPlayerView().getPlayer(), x, y)) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     public void setInteractingCharacter(Character character, CharacterView characterView){

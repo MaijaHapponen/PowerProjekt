@@ -5,9 +5,13 @@ package com.crap.game.model;
  */
 public abstract class Character{
     private String name;
-    private Position position;
+    protected Position position;
     private float width;
     private float height;
+
+    public Character(){
+        this.position = new Position();
+    }
 
     public Character(String name){
         this.name = name;

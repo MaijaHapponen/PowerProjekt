@@ -6,7 +6,6 @@ import com.crap.game.model.Mascot;
 import com.crap.game.view.CharacterView;
 import com.crap.game.view.GameView;
 import com.crap.game.view.PlayerView;
-import com.crap.game.controller.QuestionController;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,7 +26,6 @@ public class CharacterController{
     private int walkAwayState = walkAwayLength;
     private Direction walkAwayDirection;
     private Direction lastDirection;
-    private QuestionController questionsController;
 
 
 
@@ -38,7 +36,6 @@ public class CharacterController{
         this.mascotsList = mascotsList;
         this.humanViews = humanViews;
         this.mascotViews = mascotViews;
-        this.questionsController = new QuestionController();
 //TODO        this.collisionController = collisionController; Create your own instead.
 
         //TODO temp.

@@ -29,15 +29,17 @@ public class CharacterController{
 
     public void interactsWith(Character character, CharacterView characterView){
         collisionController.setPlayerWidthAndHeight(characterView.getCharacterSpriteWidth(),
-                characterView.getCharacterSpriteWidth());
+                characterView.getCharacterSpriteHeight());
         this.character = character;
         this.characterView = characterView;
     }
 
     public void updateCollisionController(){
         this.collisionController = new CollisionController(gameView.getWorld());
-//        collisionController.setPlayerWidthAndHeight(characterView.getCharacterSpriteWidth(),
-//                characterView.getCharacterSpriteHeight());
+        if(characterView != null) {
+            collisionController.setPlayerWidthAndHeight(characterView.getCharacterSpriteWidth(),
+                    characterView.getCharacterSpriteHeight());
+        }
     }
 
     public void move(Direction direction){
@@ -83,18 +85,12 @@ public class CharacterController{
         }
     }
 
-//<<<<<<< Updated upstream
-//    public boolean checkIfCollision(float x, float y){
-//        return (collisionController.isCollison(x,y) || collisionController.isNewWorld(x,y)||
-//                interactionController.isInteractionWithHuman(x,y)
-//                || interactionController.isInteractionWithMascot(x,y));
-//=======
     //Returns true if there is a collision.
     public boolean checkIfCollision(float x, float y) {
-        if (collisionController.isCollison(x, y)) {
+        if (collisionController.isCollison(x, y) || collisionController.isNewWorld(x,y)) {
             return true;
         }
-        if (interactionController.isInteractionWithHuman(x, y)){
+        if (interactionController.isInteractionWithAnotherCharacter(this.character, x, y)){
             return true;
         }
 //        if (interactionController.isInteractionWithPlayer(worldController.getPlayerController().getPlayer(), x, y)){
@@ -229,7 +225,6 @@ public class CharacterController{
                 this.characterView.setAnimationState(PlayerView.AnimationState.STANDING_RIGHT);
                 this.characterView.updateAnimation();
                 break;
-
         }
     }
 

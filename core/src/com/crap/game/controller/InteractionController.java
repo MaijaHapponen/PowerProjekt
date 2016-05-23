@@ -25,7 +25,7 @@ public class InteractionController {
             CharacterView characterView = gameView.getHumansList().get(i);
 
             if (interactionModel.isInteraction(characterView.getCharacter(), x, y)) {
-                setInteractingCharacter(characterView.getCharacter(), characterView);
+                setInteractingCharacter(characterView.getCharacter(), characterView); //TODO nullpointer if you interact with Human while Mascot is walkingAway.
                 return true;
             }
         }
@@ -38,6 +38,26 @@ public class InteractionController {
 
             if(interactionModel.isInteraction(characterView.getCharacter(),x, y)){
                 setInteractingCharacter(characterView.getCharacter(), characterView);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isInteractionWithAnotherCharacter(Character characterMoving, float x, float y){
+        for (int i = 0; i < gameView.getHumansList().size(); i++) {
+            CharacterView characterView = gameView.getHumansList().get(i);
+
+            if (interactionModel.isInteraction(characterView.getCharacter(), x, y) &&
+                    !characterView.getCharacter().equals(characterMoving)) {
+                return true;
+            }
+        }
+        for (int i = 0; i < gameView.getMascotsList().size(); i++) {
+            CharacterView characterView = gameView.getMascotsList().get(i);
+
+            if (interactionModel.isInteraction(characterView.getCharacter(), x, y) &&
+                    !characterView.getCharacter().equals(characterMoving)) {
                 return true;
             }
         }

@@ -2,14 +2,10 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.model.*;
 import com.crap.game.model.Game;
 import com.crap.game.view.GameView;
 
-import java.util.ArrayList;
-
-import static com.crap.game.model.Game.*;
 import static com.crap.game.model.Game.Worlds.*;
 
 /**
@@ -24,7 +20,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private PlayerController playerController;
     private int keyCode;
     private Position entrancePosition;
-    private CollisionController collisionController;
     private CharacterController characterController;
 
     public GameController(GameView view, Game game){

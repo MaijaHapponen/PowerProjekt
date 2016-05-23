@@ -12,7 +12,7 @@ public class Progress {
 
     public Progress(ArrayList<Mascot> mascotsInGame) {
         this.mascotsInGame = mascotsInGame;
-        mascotsCaught =mascotsInGame;
+        mascotsCaught = mascotsInGame;
     }
 
     //Method checking if all mascots has been caught by the player.
@@ -41,9 +41,9 @@ public class Progress {
         return mascotsInGame;
     }
 
-    public void setMascotsInGame(ArrayList<Mascot> mascotsInGame){
+    public void setMascotsInGame(ArrayList<Mascot> mascotsInGame) {
         this.mascotsInGame = mascotsInGame;
     }
-
-
 }
+
+

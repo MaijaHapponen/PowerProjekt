@@ -56,6 +56,7 @@ public class StateController {
             case CHECKQUESTION:
                 new CheckQuestionController();
                 game.setScreen(new CheckQuestionView());
+                break;
         }
 
     }

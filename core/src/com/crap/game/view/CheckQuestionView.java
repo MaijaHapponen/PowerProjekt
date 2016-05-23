@@ -17,6 +17,7 @@ public class CheckQuestionView implements Screen{
     private SpriteBatch batch;
     private BitmapFont information;
     private String givePlayerInformation = "Sorry you answered wrong, try again!";
+    private String pressBackSpace = "Press backspace to return to game";
 
 
 
@@ -58,6 +59,7 @@ public class CheckQuestionView implements Screen{
         batch.begin();
 
         information.draw(batch, givePlayerInformation, 60, 300);
+        information.draw(batch, pressBackSpace, 60, 250);
 
 
         batch.end();

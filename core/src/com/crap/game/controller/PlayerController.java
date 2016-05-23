@@ -34,6 +34,10 @@ public class PlayerController {
         collisionController.setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
     }
 
+    public Player getPlayer(){
+        return this.player;
+    }
+
     public void movePlayer(int keycode) {
 
         updateSpeed();
@@ -62,12 +66,15 @@ public class PlayerController {
     public void updateSprite() {
         playerView.getSprite().setPosition(getPlayerPositionX(), getPlayerPositionY());
     }
+
     public float getPlayerPositionX(){
         return player.getPosition().getX();
     }
+
     public float getPlayerPositionY(){
         return player.getPosition().getY();
     }
+
     public boolean checkIfCollision(Position p){
         return (collisionController.isCollison(p.getX(),p.getY()) || collisionController.isNewWorld(p.getX(),p.getY())||
                 interactionController.isInteractionWithHuman(p.getX(),p.getY())

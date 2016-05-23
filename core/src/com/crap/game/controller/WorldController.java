@@ -2,6 +2,7 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.model.Game;
+import com.crap.game.model.Player;
 import com.crap.game.model.Position;
 import com.crap.game.view.GameView;
 /**
@@ -95,12 +96,10 @@ public class WorldController {
 
         if(x > view.getWorldWidth() - tempCollisionlayerwidth) {
             model.player.setPosition(tempCollisionlayerwidth, y);
-            System.out.println("hej");
         }
 
         else{
             model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, y);
-            System.out.println("goddag");
         }
 
     }
@@ -132,5 +131,9 @@ public class WorldController {
 
     public void setExit(){
         isEntrance = false;
+    }
+
+    public PlayerController getPlayerController(){
+        return this.playerController;
     }
 }

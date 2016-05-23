@@ -45,9 +45,11 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);
 
-        // this.collisionController = new CollisionController(view.getWorld();
+        this.collisionController = new CollisionController(view.getWorld());
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
         this.characterController = new CharacterController(view);
+        this.worldController = new WorldController(this.model, this.playerController, this.characterController, this.view);
+//        this.characterController = new CharacterController(this.view, this.worldController);
 
         this.worldController = new WorldController(this.model, this.playerController, this.characterController, this.view);
 
@@ -69,8 +71,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
     public void movePlayer(int keycode){
         this.keyCode = keycode;
-        System.out.println(view.getWorldWidth());
-        System.out.println(playerController.getPlayerPositionX() + "+" + playerController.getPlayerPositionY());
+//        System.out.println(view.getWorldWidth());
+//        System.out.println(playerController.getPlayerPositionX() + "+" + playerController.getPlayerPositionY());
         playerController.movePlayer(keyCode);
     }
 

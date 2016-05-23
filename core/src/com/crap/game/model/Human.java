@@ -8,7 +8,8 @@ import java.util.Random;
  * Created by Lisa on 25/04/16.
  */
 public class Human extends Character {
-    private ArrayList<Information> informationList;
+
+    private String information;
 
     public Human(String name){
         super(name);
@@ -18,11 +19,11 @@ public class Human extends Character {
         super(name, position);
     }
 
-    //Returns a random of the character's statements/clues.
-    public Information saySomething(){
-        Random rand = new Random();
-        int i = rand.nextInt(informationList.size());
+    public String saySomething(){
+        return this.information;
+    }
 
-        return this.informationList.get(i);
+    public void setInformation(String information){
+        this.information = information;
     }
 }

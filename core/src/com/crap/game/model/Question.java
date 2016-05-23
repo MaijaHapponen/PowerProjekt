@@ -8,10 +8,9 @@ public class Question {
     private String[] alternatives;
     private String correctAnswer;
 
-    //The correct answer will be the first item in the alternatives list.
-    public Question(String question, String[] alternatives){
+    public Question(String question, String[] alternatives, int correctAnswerNumber){
         this.question = question;
         this.alternatives = alternatives;
-        this.correctAnswer = alternatives[0];
+        this.correctAnswer = alternatives[correctAnswerNumber];
     }
 }

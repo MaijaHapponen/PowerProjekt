@@ -16,11 +16,13 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crap.game.model.*;
 import com.crap.game.model.Character;
+import com.crap.game.model.InteractMascot;
+
 
 /**
  * Created by Maija on 2016-05-11.
  */
-public class InteractView implements Screen{
+public class InteractMascotView implements Screen{
 
     private SpriteBatch batch;
 
@@ -30,7 +32,7 @@ public class InteractView implements Screen{
     private int worldWidth = 500;
     private int worldHeight = 500;
     private TextureRegionDrawable background;
-    private Interact interact;
+    private InteractMascot interactMascot;
 
     private Skin skin;
 
@@ -48,27 +50,15 @@ public class InteractView implements Screen{
     private Label answerLabel4;
 
 
-    public InteractView(Character interactionCharacter){
-        this.interactionCharacter = interactionCharacter;
-        this.batch = new SpriteBatch();
-        this.skin = new Skin();
-        this.background = new TextureRegionDrawable(new TextureRegion(new Texture("background/rectangle.png")));
+
+
+
+    public InteractMascotView(){
+        batch = new SpriteBatch();
+        skin = new Skin();
+        background = new TextureRegionDrawable(new TextureRegion(new Texture("background/rectangle.png")));
 
         create();
-    }
-
-    public String getQuestion(Character interactionCharacter){
-        if(interactionCharacter instanceof Mascot){
-            return ((Mascot) interactionCharacter).getQuestion().getQuestion();
-        }
-        return null;
-    }
-
-    public java.util.List<String> getAnswers(Character interactionCharacter){
-        if(interactionCharacter instanceof Mascot){
-            return ((Mascot) interactionCharacter).getQuestion().getAlternatives();
-        }
-        return null;
     }
 
     public void create(){
@@ -76,6 +66,7 @@ public class InteractView implements Screen{
         String question = getQuestion(interactionCharacter);
         java.util.List<String> alternatives = getAnswers(interactionCharacter);
 
+        parameter.size=20;
         titleFont = generator.generateFont(parameter);
 
         parameter.size=10;
@@ -109,11 +100,26 @@ public class InteractView implements Screen{
         stage.addActor(table);
 
         answers = new Label[]{answerLabel1, answerLabel2, answerLabel3, answerLabel4};
-        interact = new Interact(answers, answerLabel1);
+        interactMascot = new InteractMascot(answers, answerLabel1);
+    }
+    public String getQuestion(Character interactionCharacter){
+        if(interactionCharacter instanceof Mascot){
+            return ((Mascot) interactionCharacter).getQuestion().getQuestion();
+        }
+        return null;
     }
 
-    public Interact getInteractModel(){
-        return this.interact;
+    public java.util.List<String> getAnswers(Character interactionCharacter) {
+        if (interactionCharacter instanceof Mascot) {
+            return ((Mascot) interactionCharacter).getQuestion().getAlternatives();
+        }
+        return null;
+    }
+
+
+
+    public InteractMascot getInteractModel(){
+        return this.interactMascot;
     }
 
     @Override
@@ -130,8 +136,8 @@ public class InteractView implements Screen{
 
 
         for(int i = 0; i < answers.length; i++) {
-            if(interact.getCurrentLabelNbr() == i) {
-                interact.getCurrentLabel().setColor(Color.PINK);
+            if(interactMascot.getCurrentLabelNbr() == i) {
+                interactMascot.getCurrentLabel().setColor(Color.PINK);
             }
             else{
                 answers[i].setColor(Color.BLACK);

@@ -26,13 +26,16 @@ public class InteractionController {
             CharacterView characterView = gameView.getHumansList().get(i);
 
             if (interactionModel.isInteraction(characterView.getCharacter(), x, y)) {
-                if(!isInteracting) {
+                if (!isInteracting) {
                     setInteractingCharacter(characterView.getCharacter(), characterView);
                 }
+
                 return true;
+
             }
         }
         return false;
+
     }
 
     public boolean isInteractionWithMascot(float x, float y){

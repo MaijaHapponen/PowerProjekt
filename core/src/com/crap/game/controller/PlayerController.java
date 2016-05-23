@@ -116,6 +116,15 @@ public class PlayerController {
         return interactionController.isInteractionWithMascot(pos.getX(),pos.getY());
     }
 
+    public boolean isInteractionWithHuman(){
+        return checkIfInteractionWithHuman(up()) || checkIfInteractionWithHuman(down()) ||
+                checkIfInteractionWithHuman(left()) || checkIfInteractionWithHuman(right());
+    }
+
+    public boolean checkIfInteractionWithHuman(Position pos){
+        return interactionController.isInteractionWithHuman(pos.getX(), pos.getY());
+    }
+
     public boolean isNewWorld(){
 
         return checkIfNewWorld(up()) || checkIfNewWorld(down()) || checkIfNewWorld(left()) || checkIfNewWorld(right());

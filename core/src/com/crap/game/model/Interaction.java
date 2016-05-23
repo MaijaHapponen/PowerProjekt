@@ -8,10 +8,6 @@ public class Interaction {
     private float playerWidth;
     private float playerHeight;
 
-    private boolean interactionHuman;
-    private boolean interactionMascot;
-
-
     public Interaction(float playerWidth, float playerHeight) {
 
         this.collisionModel = new CollisionModel();
@@ -42,7 +38,7 @@ public class Interaction {
         Float y = character.getPosition().getY();
         Float width = character.getWidth();
         Float height = character.getHeight();
-
+        
         return collisionModel.checkIfCollide(x, y, width, height, playerPositionX, playerPositionY);
     }
 

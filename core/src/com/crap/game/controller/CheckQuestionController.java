@@ -30,6 +30,10 @@ public class CheckQuestionController extends InputAdapter{
 
     }
 
+    public boolean isCorrect(){
+        //TODO Placeholder
+        return true;
+    }
     //TODO make a method that checks if the answer is right or wrong, maybe in a modelclass? 
 
 

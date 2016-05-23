@@ -148,7 +148,7 @@ public class InteractView implements Screen{
 
     @Override
     public void dispose() {
-        batch.dispose();
+//        batch.dispose();
         stage.dispose();
 
     }

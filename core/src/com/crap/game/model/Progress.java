@@ -49,6 +49,10 @@ public class Progress {
         return mascotsInGame;
     }
 
+    public void setMascotsInGame(ArrayList<Mascot> mascotsInGame){
+        this.mascotsInGame = mascotsInGame;
+    }
+
 
     public ArrayList<String> getNameCharactersOnBar(){
         for(int i = 0; i < mascotsCaught.size(); i++){
@@ -57,7 +61,7 @@ public class Progress {
         return nameOnBar;
     }
 
-    public Mascot getNewMascotToBar(){
+    public Mascot addNewMascotToBar(){
         return this.newMascotToBar;
     }
 

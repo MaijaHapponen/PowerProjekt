@@ -13,6 +13,7 @@ public class Information {
 
     public void setInformation(ArrayList<Human> humans) {
 
+        //TODO:FIX THE INFORMATION
         for (int i = 0; i < humans.size(); i++) {
             if (humans.get(i).getName() == "kalleAnka") {
                 humans.get(i).setInformation("What is kalle ankas love interest called?");

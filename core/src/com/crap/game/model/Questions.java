@@ -13,6 +13,7 @@ public class Questions {
 
     public void setQuestions(ArrayList<Mascot> mascots) {
 
+        //TODO:FIX THE QUESTIONS
         for (int i = 0; i < mascots.size(); i++) {
             if (mascots.get(i).getName() == "kalleAnka") {
                // mascots.get(i).setQuestion(new Question("What is kalle ankas love interest called?",

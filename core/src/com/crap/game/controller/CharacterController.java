@@ -36,6 +36,7 @@ public class CharacterController{
 
     public void updateCollisionController(){
         this.collisionController = new CollisionController(gameView.getWorld());
+
         if(characterView != null) {
             collisionController.setPlayerWidthAndHeight(characterView.getCharacterSpriteWidth(),
                     characterView.getCharacterSpriteHeight());
@@ -43,11 +44,11 @@ public class CharacterController{
     }
 
     public void move(Direction direction){
-
+        int movement = 4;
         //TODO: remove magic number
         switch (direction){
             case UP:
-                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()+2)){
+                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()+movement)){
                     this.moveUp();
                 }
                 else{
@@ -56,7 +57,7 @@ public class CharacterController{
                 }
                 break;
             case DOWN:
-                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()-2)){
+                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()-movement)){
                     this.moveDown();
                 }
                 else{
@@ -65,7 +66,7 @@ public class CharacterController{
                 }
                 break;
             case LEFT:
-                if(isPositionEmpty(character.getPosition().getX()-2, character.getPosition().getY())){
+                if(isPositionEmpty(character.getPosition().getX()-movement, character.getPosition().getY())){
                     this.moveLeft();
                 }
                 else{
@@ -74,7 +75,7 @@ public class CharacterController{
                 }
                 break;
             case RIGHT:
-                if(isPositionEmpty(character.getPosition().getX()+2, character.getPosition().getY())){
+                if(isPositionEmpty(character.getPosition().getX()+movement, character.getPosition().getY())){
                     this.moveRight();
                 }
                 else{
@@ -91,6 +92,19 @@ public class CharacterController{
                 interactionController.isInteractionWithAnotherCharacter(this.character, x, y)) {
             return true;
         }
+//<<<<<<< HEAD
+//=======
+//        if (interactionController.isInteractionWithAnotherCharacter(this.character, x, y)){
+//            return true;
+//        }
+        if (interactionController.isInteractionWithPlayer(x, y)){
+            return true;
+        }
+        /*if (interactionController.isInteractionWithMascot(x, y)){ //TODO Collieds with itself... fuck
+            System.out.println("Collision with Mascot!");
+            return true;
+        }*/
+//>>>>>>> 19a93b226a686d8bcca4b015c05856e6e9d4f193
         return false;
     }
 
@@ -234,7 +248,7 @@ public class CharacterController{
         }
         this.move(walkAwayDirection);
 
-        if(walkAwayState == walkAwayLength-1){
+        if(walkAwayState == walkAwayLength-1 && !(walkAwayDirection==null)){
             stopWalkingAnimation();
         }
 

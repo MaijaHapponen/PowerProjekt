@@ -48,16 +48,14 @@ public class ProgressView extends ScreenAdapter {
         table.setFillParent(true);
 
         this.group = new WidgetGroup();
+    }
 
-        this.progressBarImage = new Image(new Texture("progressbar/progressbar.png"));
-
+    public Stage getStage(){
+        return this.stage;
     }
 
     public void drawStage(){
-        this.setProgressBarTable();
-    }
-    public Stage getStage(){
-        return this.stage;
+        setProgressBarTable();
     }
 
     public void setProgressBarTable(){

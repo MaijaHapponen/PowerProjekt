@@ -1,7 +1,7 @@
 package com.crap.game.view;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -21,7 +21,7 @@ import com.crap.game.model.InteractMascot;
 /**
  * Created by Maija on 2016-05-11.
  */
-public class InteractMascotView implements Screen{
+public class InteractMascotView extends ScreenAdapter {
 
     private SpriteBatch batch;
 
@@ -117,11 +117,6 @@ public class InteractMascotView implements Screen{
     }
 
     @Override
-    public void show() {
-
-    }
-
-    @Override
     public void render(float delta) {
 
         Gdx.gl.glClearColor(1, 1, 1, 1);
@@ -155,19 +150,4 @@ public class InteractMascotView implements Screen{
         this.worldWidth = width;
 
     }
-
-
-    @Override
-    public void pause() {}
-
-    @Override
-    public void resume() {}
-
-    @Override
-    public void dispose() {
-        stage.dispose();
-
-    }
-    public void hide() {}
-
 }

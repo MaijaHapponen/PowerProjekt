@@ -2,6 +2,7 @@ package com.crap.game.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -10,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 /**
  * Created by rebeccafinne on 16-05-23.
  */
-public class InteractHumanView implements Screen {
+public class InteractHumanView extends ScreenAdapter {
 
     SpriteBatch batch;
     BitmapFont title;
@@ -19,7 +20,6 @@ public class InteractHumanView implements Screen {
     private String chooseOption = "Hello! What do you want to know more about?";
 
     public InteractHumanView(){
-
 
         batch = new SpriteBatch();
         create();
@@ -31,17 +31,6 @@ public class InteractHumanView implements Screen {
         title = generator.generateFont(parameter);
 
         generator.dispose();
-
-
-
-
-    }
-
-
-
-    @Override
-    public void show() {
-
     }
 
     @Override
@@ -54,36 +43,6 @@ public class InteractHumanView implements Screen {
 
         title.draw(batch, chooseOption, 30, 400);
 
-
         batch.end();
-
-
-
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
-        batch.dispose();
     }
 }

@@ -23,6 +23,7 @@ public class InteractView implements Screen{
 
     private SpriteBatch batch;
 
+
     private Stage stage;
     private int worldWidth = 500;
     private int worldHeight = 500;
@@ -31,12 +32,14 @@ public class InteractView implements Screen{
 
     private Skin skin;
 
+
+
+
     BitmapFont titleFont;
     BitmapFont font;
 
     FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
     FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-
 
     Label[] answers;
     private Label questionLabel;

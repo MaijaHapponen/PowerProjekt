@@ -20,19 +20,11 @@ public class CharacterController{
     private Direction walkAwayDirection;
     private Direction lastDirection;
     private InteractionController interactionController;
-    private WorldController worldController;
 
     public CharacterController(GameView view){
         this.gameView = view;
         this.collisionController = new CollisionController(view.getWorld());
         interactionController = new InteractionController(view);
-    }
-
-    public CharacterController(GameView gameView, WorldController worldController){
-        this.worldController = worldController;
-        this.gameView = gameView;
-        this.collisionController = new CollisionController(gameView.getWorld());
-        this.interactionController = new InteractionController(gameView);
     }
 
     public void interactsWith(Character character, CharacterView characterView){
@@ -53,8 +45,6 @@ public class CharacterController{
         //TODO: remove magic number
         switch (direction){
             case UP:
-//                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()+2) &&
-//                        !checkIfCollision(character.getPosition().getX(), character.getPosition().getY()+2)) {
                 if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()+2)){
                     this.moveUp();
                 }
@@ -64,8 +54,6 @@ public class CharacterController{
                 }
                 break;
             case DOWN:
-//                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()-2)&&
-//                        !checkIfCollision(character.getPosition().getX(), character.getPosition().getY()-2)) {
                 if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()-2)){
                     this.moveDown();
                 }
@@ -75,8 +63,6 @@ public class CharacterController{
                 }
                 break;
             case LEFT:
-//                if(isPositionEmpty(character.getPosition().getX()-2, character.getPosition().getY())&&
-//                        !checkIfCollision(character.getPosition().getX()-2, character.getPosition().getY())) {
                 if(isPositionEmpty(character.getPosition().getX()-2, character.getPosition().getY())){
                     this.moveLeft();
                 }
@@ -86,8 +72,6 @@ public class CharacterController{
                 }
                 break;
             case RIGHT:
-//                if(isPositionEmpty(character.getPosition().getX()+2, character.getPosition().getY())&&
-//                        !checkIfCollision(character.getPosition().getX()+2, character.getPosition().getY())) {
                 if(isPositionEmpty(character.getPosition().getX()+2, character.getPosition().getY())){
                     this.moveRight();
                 }

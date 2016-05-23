@@ -1,8 +1,5 @@
 package com.crap.game.model;
 
-import com.badlogic.gdx.Screen;
-import com.crap.game.Main;
-
 import java.util.ArrayList;
 
 /**

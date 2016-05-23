@@ -49,9 +49,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
         this.characterController = new CharacterController(view);
         this.worldController = new WorldController(this.model, this.playerController, this.characterController, this.view);
-//        this.characterController = new CharacterController(this.view, this.worldController);
-
-        this.worldController = new WorldController(this.model, this.playerController, this.characterController, this.view);
 
         worldController.setWorld(HORSAL);
         model.player.setPosition(250, 250);

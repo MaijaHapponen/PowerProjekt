@@ -70,13 +70,25 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
     public void enterNewWorld() {
         if(playerController.getNewWorldName().equals("hubbeneditsand")) {
+            view.setWorldName("Hörsalsvägen ");
+
             worldController.setWorld(EDIT);
+
         }else if(playerController.getNewWorldName().equals("horsalmaskin")){
+            view.setWorldName("Hörsalsvägen");
+
             worldController.setWorld(HORSAL);
+
         }else if(playerController.getNewWorldName().equals("hubben")){
+            view.setWorldName("Hubben 2.1");
+
             worldController.setWorld(HUBBEN);
+
         }else if(playerController.getNewWorldName().equals("zaloonen")){
+            view.setWorldName("Zaloonen");
+
             worldController.setWorld(ZALOONEN);
+
         }
     }
 
@@ -91,6 +103,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
     public void updateIfNewWorld() {
         if(playerController.isNewWorld()) {
             enterNewWorld();
+            view.setNewWorld(true);
         }
 
     }

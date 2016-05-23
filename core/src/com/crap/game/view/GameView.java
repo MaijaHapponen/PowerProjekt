@@ -3,16 +3,21 @@ package com.crap.game.view;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.crap.game.model.*;
 import com.crap.game.model.Character;
+
+import com.badlogic.gdx.utils.TimeUtils;
 
 import java.util.ArrayList;
 
@@ -36,6 +41,12 @@ public class GameView extends ApplicationAdapter implements Screen{
     private InteractionView interactionView;
 
     private boolean interaction;
+    private boolean newWorld;
+    private TimeUtils time = new TimeUtils();
+    private long timeDifferense = 500000000;
+
+    private String worldName;
+    private Label labelFromInteractionView = new Label(String.format("Welcome to " + worldName), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
@@ -105,6 +116,18 @@ public class GameView extends ApplicationAdapter implements Screen{
             batch.setProjectionMatrix(interactionView.getStage().getCamera().combined);
             interactionView.getStage().draw();
         }
+
+        if(newWorld){
+            long tmpTime = time.nanoTime();
+            long currentTime = time.nanosToMillis(tmpTime);
+            while(currentTime < currentTime + timeDifferense) {
+                //interactionView.setWelcomeLabel(labelFromInteractionView);
+                interactionView.setWorldName(worldName);
+                batch.setProjectionMatrix(interactionView.getWelcomeStage().getCamera().combined);
+                interactionView.getWelcomeStage().draw();
+            }
+        }
+
 
     }
 
@@ -191,5 +214,12 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     public TiledMap getWorld() {
         return this.world;
+    }
+
+    public void setNewWorld(boolean b){
+        this.newWorld = b;
+    }
+    public void setWorldName(String name){
+        this.worldName = name;
     }
 }

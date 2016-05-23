@@ -44,11 +44,11 @@ public class CharacterController{
     }
 
     public void move(Direction direction){
-
+        int movement = 4;
         //TODO: remove magic number
         switch (direction){
             case UP:
-                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()+2)){
+                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()+movement)){
                     this.moveUp();
                 }
                 else{
@@ -57,7 +57,7 @@ public class CharacterController{
                 }
                 break;
             case DOWN:
-                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()-2)){
+                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()-movement)){
                     this.moveDown();
                 }
                 else{
@@ -66,7 +66,7 @@ public class CharacterController{
                 }
                 break;
             case LEFT:
-                if(isPositionEmpty(character.getPosition().getX()-2, character.getPosition().getY())){
+                if(isPositionEmpty(character.getPosition().getX()-movement, character.getPosition().getY())){
                     this.moveLeft();
                 }
                 else{
@@ -75,7 +75,7 @@ public class CharacterController{
                 }
                 break;
             case RIGHT:
-                if(isPositionEmpty(character.getPosition().getX()+2, character.getPosition().getY())){
+                if(isPositionEmpty(character.getPosition().getX()+movement, character.getPosition().getY())){
                     this.moveRight();
                 }
                 else{
@@ -95,7 +95,6 @@ public class CharacterController{
             return true;
         }
         if (interactionController.isInteractionWithPlayer(x, y)){
-            System.out.println("CRASH");
             return true;
         }
         /*if (interactionController.isInteractionWithMascot(x, y)){ //TODO Collieds with itself... fuck
@@ -243,7 +242,7 @@ public class CharacterController{
         }
         this.move(walkAwayDirection);
 
-        if(walkAwayState == walkAwayLength-1){
+        if(walkAwayState == walkAwayLength-1 && !(walkAwayDirection==null)){
             stopWalkingAnimation();
         }
 

@@ -93,11 +93,14 @@ public class CharacterController{
         if (interactionController.isInteractionWithAnotherCharacter(this.character, x, y)){
             return true;
         }
-//        if (interactionController.isInteractionWithPlayer(worldController.getPlayerController().getPlayer(), x, y)){
-////        if (interactionController.isInteractionWithMascot(x, y)){ //TODO Collieds with itself... fuck
-////            System.out.println("Collision with Mascot!");
-//            return true;
-//        }
+        if (interactionController.isInteractionWithPlayer(x, y)){
+            System.out.println("CRASH");
+            return true;
+        }
+        /*if (interactionController.isInteractionWithMascot(x, y)){ //TODO Collieds with itself... fuck
+            System.out.println("Collision with Mascot!");
+            return true;
+        }*/
         return false;
     }
 
@@ -240,7 +243,7 @@ public class CharacterController{
         this.move(walkAwayDirection);
 
         if(walkAwayState == walkAwayLength-1){
-            stopWalkingAnimation();
+            //stopWalkingAnimation();
         }
 
         updateSprite();
@@ -249,7 +252,3 @@ public class CharacterController{
     }
 
 }
-//TODO fix interactionWithPlayer in Interaction controller and in some other places. It is fuuucked up and uggly as F.
-//TODO seems like collision only checks bottom left corner of Characters.
-//TODO new method in InteracitionController?? isInteractionWithPlayer();
-//TODO new method in InteractionController?? isInteractionWithCharacter(Character character) to fix problem with self collison for Characters.

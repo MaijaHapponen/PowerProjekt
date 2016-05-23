@@ -28,7 +28,9 @@ public class CharacterView extends ApplicationAdapter implements Screen {
         this.texture = new Texture("characters/"+character.getName()+".png");
         this.sprite = new Sprite(texture);
         sprite.setPosition(character.getPosition().getX(), character.getPosition().getY());
-        character.setWidthAndHeight(sprite.getWidth(),sprite.getHeight());
+
+        //TODO: remove magic constansts
+        character.setWidthAndHeight(sprite.getWidth()/4,sprite.getHeight()/4);
 
         this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
                 this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);

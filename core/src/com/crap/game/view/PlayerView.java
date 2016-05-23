@@ -50,6 +50,7 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
     public void setPlayer(Player player){
         this.player=player;
+        player.setWidthAndHeight(getPlayerSpriteWidth(), getPlayerSpriteHeight());
     }
 
     @Override

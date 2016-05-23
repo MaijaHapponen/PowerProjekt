@@ -11,6 +11,7 @@ public class Interaction {
     private boolean interactionHuman;
     private boolean interactionMascot;
 
+
     public Interaction(float playerWidth, float playerHeight) {
 
         this.collisionModel = new CollisionModel();
@@ -35,14 +36,16 @@ public class Interaction {
     }
 
 
-    public boolean checkIfInteraction(Character character, float playerPositionX, float playerPositionY){
+    public boolean checkIfInteraction(Character character, float playerPositionX, float playerPositionY) {
 
         Float x = character.getPosition().getX();
         Float y = character.getPosition().getY();
-        Float width = character.getWidth(); 
-        Float height = character.getHeight();
+        Float width = character.getWidth() / 4; //TODO magical constant fix
+        Float height = character.getHeight() / 4; //TODO magical constant fix
+
         return collisionModel.checkIfCollide(x, y, width, height, playerPositionX, playerPositionY);
     }
+
 
 
 }

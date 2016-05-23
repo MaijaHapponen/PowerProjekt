@@ -14,7 +14,6 @@ public class InteractMascotController extends InputAdapter {
 
     private InteractMascotView interactMascotView;
     private GameController gameController;
-
     private InteractMascot interactMascot;
 //TODO    private CharacterController characterController;
 
@@ -29,8 +28,6 @@ public class InteractMascotController extends InputAdapter {
     public boolean keyDown(int keycode){
         if(keycode == Input.Keys.BACKSPACE){
             StateController.updateState(State.GameStates.PLAY);
-
-            this.gameController.getCharacterController().resetWalkAwayState();
             interactMascotView.dispose();
         }else if(keycode == Input.Keys.ENTER){
             //checkIfRightAnswer(interactMascotView.answerChoosen(interactMascot.getCurrentLabel()));

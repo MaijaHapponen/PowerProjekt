@@ -29,6 +29,7 @@ public class InteractionController {
                 if (!isInteracting) {
                     setInteractingCharacter(characterView.getCharacter(), characterView);
                 }
+
                 return true;
 
             }

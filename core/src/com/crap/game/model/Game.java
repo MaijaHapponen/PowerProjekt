@@ -20,6 +20,7 @@ public class Game {
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
     private String[] mascotNames = {"kalleAnka","hackeHackspett","ZHuman","luckyLuke"};
 
+
     private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
 
     public Game(){

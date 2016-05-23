@@ -54,6 +54,7 @@ public class InteractHumanView implements Screen {
 
         title.draw(batch, chooseOption, 30, 400);
 
+
         batch.end();
 
 

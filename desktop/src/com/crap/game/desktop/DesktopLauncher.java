@@ -10,6 +10,7 @@ public class DesktopLauncher {
 		config.title = "C.R.A.P.";
         config.width=500;
         config.height=500;
+		config.resizable = false;
 		new LwjglApplication(new Main(), config);
 	}
 }

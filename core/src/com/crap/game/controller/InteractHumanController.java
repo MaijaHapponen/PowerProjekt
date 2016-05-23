@@ -36,9 +36,9 @@ public class InteractHumanController extends InputAdapter {
         }if(keyCode == Input.Keys.ENTER){
             if(interactHuman.getCurrentString().equals(interactHumanView.getTalkAboutProgramme())){
                 interactHumanView.setIsProgramme(true);
-            }if(interactHuman.getCurrentString().equals(interactHumanView.getIsMascot())){
+            }else if(interactHuman.getCurrentString().equals(interactHumanView.getWhereIsMascot())){
                 interactHumanView.setIsMascot(true);
-            }else{
+            }else if(interactHuman.getCurrentString().equals(interactHumanView.getExit())){
                 StateController.updateState(State.GameStates.PLAY);
             }
         }

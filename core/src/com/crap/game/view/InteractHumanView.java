@@ -24,6 +24,7 @@ public class InteractHumanView extends ScreenAdapter {
     private String talkAboutProgramme = "Ask about programme";
     private String whereIsMascot = "Ask where mascot could be";
     private String exit = "Exit";
+    private String back = "Press BACK SPACE to return to game";
 
     private String inforamtionProgramme;
     private String inforamtionMascot;
@@ -97,9 +98,11 @@ public class InteractHumanView extends ScreenAdapter {
         }else if(isProgramme) {
             font.setColor(Color.BLACK);
             font.draw(batch, inforamtionProgramme, 60, 300);
+            font.draw(batch, back, 60, 250);
         }else if(isMascot){
             font.setColor(Color.BLACK);
             font.draw(batch, inforamtionMascot, 60, 300);
+            font.draw(batch, back, 60, 250);
 
         }
 

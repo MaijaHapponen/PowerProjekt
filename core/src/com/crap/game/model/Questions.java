@@ -16,20 +16,28 @@ public class Questions {
         //TODO:FIX THE QUESTIONS - 4 alternatives always
         for (int i = 0; i < mascots.size(); i++) {
             if (mascots.get(i).getName() == "kalleAnka") {
-               // mascots.get(i).setQuestion(new Question("What is kalle ankas love interest called?",
-                //        "Kajsa", "Dorothy", "Jane"] , 0));
+               // mascots.get(i).setQuestion(new Question(
+                // "What is kalle ankas love interest called?",
+                //  ["Kajsa", "Dorothy", "Jane"],
+                //  0));
             }
             else if(mascots.get(i).getName() == "hackeHackspett") {
-               // mascots.get(i).setQuestion(new Question("What is kalle ankas love interest called?",
-               //         ["Kajsa", "Dorothy", "Jane"],0));
+               // mascots.get(i).setQuestion(new Question(
+                // "What is kalle ankas love interest called?",
+                //  ["Kajsa", "Dorothy", "Jane"],
+                // 0));
             }
             else if(mascots.get(i).getName() == "iTSmurfen") {
-              //  mascots.get(i).setQuestion(new Question("What is kalle ankas love interest called?",
-              //          ["Kajsa", "Dorothy", "Jane"],0));
+              //  mascots.get(i).setQuestion(new Question(
+                // "What is kalle ankas love interest called?",
+                // ["Kajsa", "Dorothy", "Jane"],
+                // 0));
             }
             else if(mascots.get(i).getName() == "luckyluke") {
-               // mascots.get(i).setQuestion(new Question("What is kalle ankas love interest called?",
-               //         ["Kajsa", "Dorothy", "Jane"],0));
+               // mascots.get(i).setQuestion(new Question(
+                // "What is kalle ankas love interest called?",
+                // ["Kajsa", "Dorothy", "Jane"],
+                // 0));
             }
         }
     }

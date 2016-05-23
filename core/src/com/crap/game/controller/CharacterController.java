@@ -87,17 +87,10 @@ public class CharacterController{
 
     //Returns true if there is a collision.
     public boolean checkIfCollision(float x, float y) {
-        if (collisionController.isCollison(x, y) || collisionController.isNewWorld(x,y)) {
+        if (collisionController.isCollison(x, y) || collisionController.isNewWorld(x,y) ||
+                interactionController.isInteractionWithAnotherCharacter(this.character, x, y)) {
             return true;
         }
-        if (interactionController.isInteractionWithAnotherCharacter(this.character, x, y)){
-            return true;
-        }
-//        if (interactionController.isInteractionWithPlayer(worldController.getPlayerController().getPlayer(), x, y)){
-////        if (interactionController.isInteractionWithMascot(x, y)){ //TODO Collieds with itself... fuck
-////            System.out.println("Collision with Mascot!");
-//            return true;
-//        }
         return false;
     }
 
@@ -153,6 +146,7 @@ public class CharacterController{
 
     public void walkAway(Character character, CharacterView characterView){
         if(walkAwayState<walkAwayLength){
+            interactionController.setIsInteracting(true);
             interactsWith(character, characterView);
             walkAwayOneStep();
         }
@@ -226,6 +220,7 @@ public class CharacterController{
                 this.characterView.updateAnimation();
                 break;
         }
+        interactionController.setIsInteracting(false);
     }
 
     public void walkAwayOneStep(){
@@ -244,12 +239,6 @@ public class CharacterController{
         }
 
         updateSprite();
-
         walkAwayState++;
     }
-
 }
-//TODO fix interactionWithPlayer in Interaction controller and in some other places. It is fuuucked up and uggly as F.
-//TODO seems like collision only checks bottom left corner of Characters.
-//TODO new method in InteracitionController?? isInteractionWithPlayer();
-//TODO new method in InteractionController?? isInteractionWithCharacter(Character character) to fix problem with self collison for Characters.

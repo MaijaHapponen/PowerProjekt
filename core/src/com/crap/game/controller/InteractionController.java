@@ -32,8 +32,9 @@ public class InteractionController {
                 return true;
 
             }
-            return false;
         }
+        return false;
+
     }
 
     public boolean isInteractionWithMascot(float x, float y){

@@ -17,6 +17,7 @@ public class CheckQuestionView implements Screen{
     private SpriteBatch batch;
     private BitmapFont information;
     private String givePlayerInformation = "Sorry you answered wrong, try again!";
+    //TODO check if the answer is right or wrong and choose string from that
     private String pressBackSpace = "Press backspace to return to game";
 
 

@@ -10,7 +10,7 @@ import com.crap.game.view.CheckQuestionView;
  */
 public class CheckQuestionController extends InputAdapter{
 
-
+    //TODO when in checkQuestionView interactController is used
     private CheckQuestionView checkQuestionView;
     
     public CheckQuestionController(){
@@ -29,6 +29,8 @@ public class CheckQuestionController extends InputAdapter{
         return false;
 
     }
+
+    //TODO make a method that checks if the answer is right or wrong, maybe in a modelclass? 
 
 
 

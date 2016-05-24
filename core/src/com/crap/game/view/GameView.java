@@ -26,6 +26,7 @@ public class GameView extends ApplicationAdapter implements Screen{
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
     private float elapsedTime;
+    private int pixelPerTile = 30;
 
     public static TiledMap world;
     private PlayerView playerView;
@@ -230,11 +231,11 @@ public class GameView extends ApplicationAdapter implements Screen{
     }
 
     public float getWorldWidth(){
-        return this.world.getProperties().get("width", Integer.class)*getTileWidth();
+        return this.world.getProperties().get("width", Integer.class)*pixelPerTile;
     }
 
     public float getWorldHeight(){
-        return this.world.getProperties().get("height", Integer.class)*getTileHeight();
+        return this.world.getProperties().get("height", Integer.class)*pixelPerTile;
     }
 
     public float getTileHeight(){

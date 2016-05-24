@@ -1,11 +1,11 @@
 package com.crap.game.model;
+
 /**
  * Created by andrea on 2016-04-11.
  */
 
 public class Player extends Character{
 
-    //private Position position; TODO: remove this one ?
     private int currentSpeed;
     private int normalSpeed = 2;
     private int slowerSpeed = 1;

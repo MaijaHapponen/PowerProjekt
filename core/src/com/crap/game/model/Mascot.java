@@ -19,7 +19,6 @@ public class Mascot extends Character{
         this.isCaught = false;
     }
 
-
     public void setQuestion(Question question){
         this.question = question;
     }

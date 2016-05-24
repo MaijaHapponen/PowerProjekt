@@ -44,11 +44,11 @@ public class InteractMascot {
     public String getCurrentString(){
         return this.currentString;
     }
-    public void setQuestioString(String s){
+    public void setQuestionString(String s){
         this.questioString = s;
     }
 
-    public String getQuestioString(){
+    public String getQuestionString(){
         return this.questioString;
     }
     public String[] getStringsInScreen(){

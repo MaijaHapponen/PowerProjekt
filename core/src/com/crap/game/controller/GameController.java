@@ -31,6 +31,7 @@ public class GameController extends InputAdapter {
 
         this.view = view;
         this.model = game;
+        game.setStartPositionPlayer(width/2, height/2);
 
         this.view.setPlayer(this.model.player);
         this.view.setCamera(this.camera);
@@ -43,7 +44,7 @@ public class GameController extends InputAdapter {
         this.worldController = new WorldController(this.model, this.playerController, this.characterController, this.view);
 
         worldController.setWorld(HORSAL);
-        model.player.setPosition(250, 250);
+        model.player.setPosition(width/2, height/2);
 
         Gdx.input.setInputProcessor(this);
     }

@@ -17,7 +17,6 @@ public class Menu {
         currentItem = menuItems[currentItemNr];
     }
 
-
     public void setCurrentItem(String direction){
         int lastItemNr = amountOfItems() -1;
         if(direction.equals("up")){
@@ -30,7 +29,6 @@ public class Menu {
         }
         currentItem = menuItems[currentItemNr];
     }
-
 
     public String getGameName(){
         return gameName;

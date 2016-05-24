@@ -9,8 +9,8 @@ public class Game {
 
     public enum Worlds{HORSAL, EDIT, HUBBEN, ZALOONEN}
 
-    private int startPositionX = 250;
-    private int startPositionY = 250;
+    private float startPositionX;
+    private float startPositionY;
     private Progress progress;
     public Player player;
     private Questions questions;
@@ -71,5 +71,10 @@ public class Game {
 
     public Progress getProgress() {
         return progress;
+    }
+
+    public void setStartPositionPlayer(float x, float y){
+        this.startPositionX = x;
+        this.startPositionY = y;
     }
 }

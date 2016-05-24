@@ -31,7 +31,7 @@ public class StateController {
         switch (state) {
 
             case STARTMENU:
-                MenuView menu = new MenuView();
+                MenuView menu = new MenuView(false);
                 new MenuController(menu);
                 game.setScreen(menu);
                 break;
@@ -62,8 +62,9 @@ public class StateController {
                 break;
 
             case GAMEOVER:
-                //this.view.main.setScreen(new GameOverView());
-                //gameOver = true;
+                MenuView gameOver = new MenuView(true);
+                new MenuController(gameOver);
+                game.setScreen(gameOver);
                 break;
 
             case HOWTOPLAY:

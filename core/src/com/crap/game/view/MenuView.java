@@ -22,9 +22,12 @@ public class MenuView extends ScreenAdapter{
     private BitmapFont titleFont;
     private BitmapFont font;
 
+    private boolean gameOver;
+
     private Menu menuModel;
 
-    public MenuView(){
+    public MenuView(boolean gameOver){
+        this.gameOver = gameOver;
         batch = new SpriteBatch();
         create();
     }
@@ -53,18 +56,30 @@ public class MenuView extends ScreenAdapter{
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-
         batch.begin();
-        titleFont.draw(batch, menuModel.getGameName(), 60, 400);
 
-        for(int i = 0; i< menuModel.amountOfItems();i++){
-            if(menuModel.currentItemNumber() ==i){font.setColor(Color.PINK);}
-            else{font.setColor(Color.BLACK);}
+        if(!gameOver) {
+            titleFont.draw(batch, menuModel.getGameName(), 60, 400);
 
-            font.draw(batch, menuModel.getMenuItem(i), 120, 250 - 70*i);
+            for (int i = 0; i < menuModel.amountOfItems(); i++) {
+                if (menuModel.currentItemNumber() == i) {
+                    font.setColor(Color.PINK);
+                } else {
+                    font.setColor(Color.BLACK);
+                }
+
+                font.draw(batch, menuModel.getMenuItem(i), 120, 250 - 70 * i);
+            }
+
+        }
+        else{
+            titleFont.draw(batch,"You win!", 60,400);
+            titleFont.setColor(Color.PINK);
+
+            font.draw(batch,"Press enter to return \n to main menu",60,220);
+            font.setColor(Color.BLACK);
         }
         batch.end();
-
     }
     public void setScreen(){
         if(menuModel.getCurrentItem().equals("Play the game")){
@@ -75,7 +90,14 @@ public class MenuView extends ScreenAdapter{
         }else if(menuModel.getCurrentItem().equals("Exit")){
             System.exit(0);
         }
+    }
 
+    public boolean getGameOver(){
+        return this.gameOver;
+    }
+
+    public void setGameOver(boolean state){
+        this.gameOver = state;
     }
 
     @Override

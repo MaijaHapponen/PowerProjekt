@@ -109,7 +109,6 @@ public class WorldController {
         else if(x < tempCollisionlayerwidth){
             model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, y);
         }
-
     }
 
     public void enterEdit(float x, float y){

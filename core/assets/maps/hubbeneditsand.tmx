@@ -91,26 +91,25 @@
 </data>
  </layer>
  <objectgroup name="Collision">
-  <object id="1" name="Collision" x="-0.75" y="4.1958" width="509.841" height="190.21"/>
+  <object id="1" name="Collision" x="-0.75" y="4.1958" width="509.841" height="184.804"/>
   <object id="2" name="Collision" x="-0.75" y="193.804" width="413.75" height="14.446"/>
-  <object id="3" name="Collision" x="450" y="193.851" width="60" height="13.399"/>
   <object id="4" name="Collision" x="608.333" y="64.6667" width="31.4246" height="158.944"/>
-  <object id="5" name="Collision" x="403.25" y="209" width="9.53361" height="48.3894"/>
-  <object id="6" name="Collision" x="64.1329" y="334.259" width="350.867" height="100.741"/>
+  <object id="5" name="Collision" x="403.25" y="209" width="9.75" height="48.3894"/>
+  <object id="6" name="Collision" x="64.1329" y="334.259" width="342.867" height="100.741"/>
   <object id="7" name="Collision" x="455" y="418" width="55.2865" height="16.9512"/>
   <object id="8" name="Collision" x="453" y="324" width="58.8877" height="14.4474"/>
-  <object id="9" name="Collision" x="671.394" y="-9.53613" width="128.671" height="26.5734"/>
+  <object id="9" name="Collision" x="671.394" y="-9.53613" width="128.671" height="23.5361"/>
   <object id="10" name="Collision" x="512.888" y="336.462" width="288.112" height="96.538"/>
   <object id="11" name="Collision" x="616" y="590.203" width="45" height="64.797"/>
-  <object id="17" name="Collision" x="450.629" y="245.5" width="58.7413" height="12.5"/>
+  <object id="17" name="Collision" x="450.629" y="253" width="58.7413" height="5"/>
   <object id="19" name="Collision" x="0.5" y="336.315" width="21" height="99.3705"/>
  </objectgroup>
  <objectgroup name="SlowLayer">
   <object id="12" name="Slow" x="640.559" y="65.7343" width="156.643" height="153.846"/>
-  <object id="13" name="Slow" x="25" y="348.448" width="37.937" height="86.552"/>
-  <object id="14" name="Slow" x="416.783" y="355.245" width="36.217" height="80.755"/>
+  <object id="13" name="Slow" x="21" y="348.448" width="41.937" height="86.552"/>
+  <object id="14" name="Slow" x="408" y="355.245" width="45" height="80.755"/>
   <object id="16" name="Slow" x="461.538" y="341.259" width="34.965" height="29.3706"/>
-  <object id="17" name="Slow" x="448.951" y="384" width="34.049" height="34.182"/>
+  <object id="17" name="Slow" x="454" y="384" width="29" height="34.182"/>
   <object id="19" name="Slow" x="415" y="255.5" width="32.9042" height="29.51"/>
   <object id="20" name="Slow" x="450" y="221" width="61" height="28.255"/>
  </objectgroup>

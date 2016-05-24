@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="57">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="63">
  <tileset firstgid="1" name="open_tileset" tilewidth="32" tileheight="32" tilecount="1710" columns="45">
   <image source="open_tileset.png" trans="878787" width="1440" height="1216"/>
  </tileset>
@@ -164,6 +164,16 @@
   <object id="56" x="593.507" y="687.528" width="10.2835" height="10.2835">
    <properties>
     <property name="WoodyWoodpeckerStartPosition" value=""/>
+   </properties>
+  </object>
+  <object id="60" x="436.128" y="297.318" width="8.44119" height="9.3791">
+   <properties>
+    <property name="ITHumanStartPosition" value=""/>
+   </properties>
+  </object>
+  <object id="62" x="122.866" y="702.495" width="9.3791" height="8.44119">
+   <properties>
+    <property name="ZHumanStartPosition" value=""/>
    </properties>
   </object>
  </objectgroup>

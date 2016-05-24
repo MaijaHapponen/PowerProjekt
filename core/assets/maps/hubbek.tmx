@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="67">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="71">
  <tileset firstgid="1" name="open_tileset_2x" tilewidth="32" tileheight="32" tilecount="6840" columns="90">
   <image source="open_tileset_2x.png" width="2880" height="2432"/>
  </tileset>
@@ -123,6 +123,11 @@
   <object id="62" x="446.797" y="318.944" width="13.7476" height="9.62332">
    <properties>
     <property name="ITSmurfStartPosition" value=""/>
+   </properties>
+  </object>
+  <object id="70" x="582.898" y="749.244" width="8.24856" height="8.24856">
+   <properties>
+    <property name="DHumanStartPosition" value=""/>
    </properties>
   </object>
  </objectgroup>

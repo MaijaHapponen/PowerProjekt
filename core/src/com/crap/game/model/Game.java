@@ -23,9 +23,9 @@ public class Game {
     private float[][] mascotCoordinates = {{447, 461},{548, 688},{594, 92},{724, 592}};
     private Worlds[] mascotsWorlds = {Worlds.HUBBEN, Worlds.EDIT, Worlds.HORSAL, Worlds.ZALOONEN};
 
-    private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
-    private float[][] humanCoordinates = {{0,0},{0,0},{0,0},{0,0}};
-    private Worlds[] humansWorlds = {Worlds.ZALOONEN, Worlds.ZALOONEN, Worlds.ZALOONEN, Worlds.ZALOONEN};
+    private String[] humansNames = {"ITHuman","EHuman","DHuman","ZHuman"};
+    private float[][] humanCoordinates = {{436, 503},{194, 87},{583, 51},{123, 98}};
+    private Worlds[] humansWorlds = {Worlds.HORSAL, Worlds.EDIT, Worlds.HUBBEN, Worlds.HORSAL};
 
     public Game(){
         this.progress = new Progress();

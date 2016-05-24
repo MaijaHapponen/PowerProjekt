@@ -50,19 +50,21 @@ public class ProgressView extends ScreenAdapter {
         this.group = new WidgetGroup();
 
         this.progressBarImage = new Image(new Texture("progressbar/progressbar.png"));
+        updateProgressBar();
 
     }
 
     public void drawStage(){
-        this.setProgressBarTable();
+        stage.draw();
     }
+
     public Stage getStage(){
         return this.stage;
     }
 
-    public void setProgressBarTable(){
+    public void updateProgressBar(){
         group.addActor(progressBarImage);
-        if(progress.getMascotsCaught() != null) {
+        if (progress.getMascotsCaught() != null) {
             for(int i = 0; i < progress.getMascotsCaught().size(); i++) {
                 Mascot tempMascot = progress.getMascotsCaught().get(i);
                 Image image;
@@ -73,7 +75,6 @@ public class ProgressView extends ScreenAdapter {
         table.left();
         table.add(group);
         stage.addActor(table);
-        stage.draw();
     }
 
 }

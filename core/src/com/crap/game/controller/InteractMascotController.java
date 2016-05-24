@@ -41,7 +41,7 @@ public class InteractMascotController extends InputAdapter {
 
                 if(interactingCharacter instanceof Mascot){
                     Mascot caughtMascot = ((Mascot) interactingCharacter);
-                    caughtMascot.isCaught();
+                    caughtMascot.setCaught(true);
                     gameController.mascotCaught(caughtMascot);
                 }
             }

@@ -10,13 +10,13 @@ public class Player extends Character{
     private int normalSpeed = 2;
     private int slowerSpeed = 1;
 
-    public Player(){
-        this.position = new Position(0, 0);
+    public Player(String name){
+        super(name);
         this.currentSpeed=normalSpeed;
     }
 
-    public Player(float x, float y){
-        this.position = new Position(x, y);
+    public Player(String name, float x, float y){
+        super(name,new Position(x, y));
         this.currentSpeed = normalSpeed;
     }
 

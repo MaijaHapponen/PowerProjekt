@@ -98,7 +98,16 @@ public class GameController extends InputAdapter {
             view.setInteraction(false);
         }
     }
+
+    public void updateIfGameOver(){
+        if(model.isGameOver()){
+            StateController.updateState(State.GameStates.GAMEOVER);
+        }
+    }
+
     public void render() {
+        updateIfGameOver();
+
         updateIfNewWorld();
         updateIfInteraction();
 

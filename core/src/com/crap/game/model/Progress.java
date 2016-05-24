@@ -10,6 +10,7 @@ public class Progress {
 
     private ArrayList<Mascot> mascotsInGame;
     private ArrayList<Mascot> mascotsCaught = new ArrayList<Mascot>();
+    private boolean newUpdate;
 
     public Progress(ArrayList<Mascot> mascotsInGame) {
         this.mascotsInGame = mascotsInGame;
@@ -31,6 +32,7 @@ public class Progress {
             }
         }
         mascotsCaught.add(mascot);
+        setNewUpdate(true);
     }
 
     public ArrayList<Mascot> getMascotsCaught() {
@@ -43,6 +45,13 @@ public class Progress {
 
     public void setMascotsInGame(ArrayList<Mascot> mascotsInGame){
         this.mascotsInGame = mascotsInGame;
+    }
+
+    public boolean newUpdate(){
+        return this.newUpdate;
+    }
+    public void setNewUpdate(boolean b){
+        newUpdate = b;
     }
 
 

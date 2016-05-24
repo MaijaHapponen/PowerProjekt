@@ -40,19 +40,16 @@ public class GameView extends ApplicationAdapter implements Screen{
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
 
-    private ArrayList<ProgressView> mascotsOnBar = new ArrayList<ProgressView>();
-
-
     public GameView(Game game){
 
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
         this.playerView = new PlayerView();
         batch = new SpriteBatch();
-        this.progressView = new ProgressView(game.getProgress());
+        this.progress = game.getProgress();
+        this.progressView = new ProgressView(progress);
 
         renderer = new OrthogonalTiledMapRenderer(world);
 
-        this.playerView = new PlayerView();
         this.interactionView = new InteractionView();
 
     }
@@ -94,6 +91,11 @@ public class GameView extends ApplicationAdapter implements Screen{
                 playerView.getPlayerPosition().getY());
 
         batch.end();
+
+        if(progress.newUpdate()){
+            progressView.updateProgressBar();
+            progress.setNewUpdate(false);
+        }
 
         progressView.drawStage();
         batch.setProjectionMatrix(progressView.getStage().getCamera().combined);

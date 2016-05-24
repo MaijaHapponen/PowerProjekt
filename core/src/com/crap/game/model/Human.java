@@ -1,29 +1,40 @@
 package com.crap.game.model;
 
-
-import java.util.ArrayList;
-import java.util.Random;
-
 /**
  * Created by Lisa on 25/04/16.
  */
 public class Human extends Character {
 
-    private String information;
+    private String informationAboutProgramme;
+    private String informationAboutLocation;
 
     public Human(String name){
+
         super(name);
     }
 
     public Human(String name, Position position){
+
         super(name, position);
     }
 
-    public String saySomething(){
-        return this.information;
+    public String saySomethingAboutProgramme(){
+
+        return this.informationAboutProgramme;
     }
 
-    public void setInformation(String information){
-        this.information = information;
+    public String saySomethingAboutLocation(){
+
+        return this.informationAboutLocation;
+    }
+
+    public void setProgrammeInformation(String information){
+
+        this.informationAboutProgramme = information;
+    }
+
+    public void setLocationInformation(String information){
+
+        this.informationAboutLocation = information;
     }
 }

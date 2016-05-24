@@ -14,17 +14,25 @@ public class Information {
     public void setInformation(ArrayList<Human> humans) {
 
         for (int i = 0; i < humans.size(); i++) {
-            if (humans.get(i).getName() == "kalleAnka") {
-                humans.get(i).setInformation("Kalle Ankas love interest is called Kajsa");
+            if (humans.get(i).getName() == "EHuman") {
+
+                humans.get(i).setProgrammeInformation("Kalle Ankas love interest is called Kajsa");
+                humans.get(i).setLocationInformation("Kalle Anka likes to hang out in the sandbox");
             }
-            else if(humans.get(i).getName() == "hackeHackspett") {
-                humans.get(i).setInformation("Hacke Hackspetts favorite color is Orange");
+            else if(humans.get(i).getName() == "DHuman") {
+
+                humans.get(i).setProgrammeInformation("Hacke Hackspetts favorite color is Orange");
+                humans.get(i).setLocationInformation("Hacke Hackspett is fascinated by cars");
             }
-            else if(humans.get(i).getName() == "iTSmurfen") {
-                humans.get(i).setInformation("IT stands for Informationsteknik");
+            else if(humans.get(i).getName() == "ITHuman") {
+
+                humans.get(i).setProgrammeInformation("IT stands for Informationsteknik");
+                humans.get(i).setLocationInformation("ITSmurfen is with his friends in Hubben");
             }
-            else if(humans.get(i).getName() == "luckyluke") {
-                humans.get(i).setInformation("Lucky Lukes horse is called Jolly Jumper");
+            else if(humans.get(i).getName() == "ZHuman") {
+
+                humans.get(i).setProgrammeInformation("Lucky Lukes horse is called Jolly Jumper");
+                humans.get(i).setLocationInformation("Lucky Luke is ready to draw his pistols in the Zaloon");
             }
         }
     }

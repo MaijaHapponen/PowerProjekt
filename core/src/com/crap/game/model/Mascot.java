@@ -1,8 +1,5 @@
 package com.crap.game.model;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 /**
  * Created by Lisa on 24/04/16.
  */

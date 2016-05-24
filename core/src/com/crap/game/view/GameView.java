@@ -173,7 +173,6 @@ public class GameView extends ApplicationAdapter implements Screen{
     @Override
     public void dispose() {
         renderer.dispose();
-
     }
 
     public Game getGame(){

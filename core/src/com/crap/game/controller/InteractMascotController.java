@@ -18,6 +18,8 @@ public class InteractMascotController extends InputAdapter {
     private GameController gameController;
     private InteractMascot interactMascot;
 
+    private boolean answeredCorrect;
+
     public InteractMascotController(InteractMascotView interactMascotView, GameController gameController){
         this.gameController = gameController;
         this.interactMascot = interactMascotView.getInteractModel();
@@ -31,6 +33,9 @@ public class InteractMascotController extends InputAdapter {
         if(keycode == Input.Keys.BACKSPACE){
             StateController.updateState(State.GameStates.PLAY);
             interactMascotView.dispose();
+            if(!answeredCorrect) {
+                gameController.getCharacterController().resetWalkAwayState();
+            }
         }
 
         else if(keycode == Input.Keys.ENTER) {
@@ -44,7 +49,11 @@ public class InteractMascotController extends InputAdapter {
                     caughtMascot.setCaught(true);
                     gameController.mascotCaught(caughtMascot);
                 }
+                answeredCorrect = true;
                 //TODO: Also remove view for mascot
+            }
+            else{
+                answeredCorrect = false;
             }
 
             interactMascotView.setHasAnswered();

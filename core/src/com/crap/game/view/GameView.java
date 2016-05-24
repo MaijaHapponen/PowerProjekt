@@ -39,8 +39,9 @@ public class GameView extends ApplicationAdapter implements Screen{
     private boolean newWorld;
     private boolean isStart;
     private Viewport viewport;
-    private int WorldWidth = 500;
-    private int worldHeight = 500;
+
+    private int worldWidth = Gdx.graphics.getWidth();
+    private int worldHeight = Gdx.graphics.getHeight();
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
@@ -48,7 +49,6 @@ public class GameView extends ApplicationAdapter implements Screen{
     private ArrayList<ProgressView> mascotsOnBar = new ArrayList<ProgressView>();
 
     public GameView(Game game){
-
         this.isStart = true;
 
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
@@ -60,7 +60,8 @@ public class GameView extends ApplicationAdapter implements Screen{
         renderer = new OrthogonalTiledMapRenderer(world);
 
         this.interactionView = new InteractionView();
-        viewport = new FitViewport(WorldWidth, worldHeight, new OrthographicCamera());
+        
+        viewport = new FitViewport(worldWidth, worldHeight, new OrthographicCamera());
 
         create();
     }
@@ -232,7 +233,7 @@ public class GameView extends ApplicationAdapter implements Screen{
         return this.world.getProperties().get("tilewidth", Integer.class);
     }
 
-    public float getTileWidth(){
+    public float getTileWidth() {
         return this.world.getProperties().get("tileheight", Integer.class);
     }
 

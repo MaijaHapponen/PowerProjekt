@@ -23,9 +23,9 @@ public class InteractMascotTest {
         InteractMascot interactMascot;
         interactMascot = new InteractMascot(l, question);
         interactMascot.setCurrentString("down");
-        assertTrue(interactMascot.getCurrentLabel().equals(second));
+        assertTrue(interactMascot.getCurrentString().equals(second));
         interactMascot.setCurrentString("down");
-        assertTrue(interactMascot.getCurrentLabel().equals(first));
+        assertTrue(interactMascot.getCurrentString().equals(first));
 
     }
 }

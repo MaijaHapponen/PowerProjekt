@@ -41,7 +41,7 @@ public class InteractMascot {
         currentString = stringsInScreen[currentStringNbr];
     }
 
-    public String getCurrentStirng(){
+    public String getCurrentString(){
         return this.currentString;
     }
     public void setQuestioString(String s){

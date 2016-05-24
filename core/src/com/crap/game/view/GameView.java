@@ -30,6 +30,7 @@ public class GameView extends ApplicationAdapter implements Screen{
     public static TiledMap world;
     private PlayerView playerView;
 
+    private Game game;
     private ProgressView progressView;
     private Progress progress;
     private InteractionView interactionView;
@@ -50,6 +51,7 @@ public class GameView extends ApplicationAdapter implements Screen{
     public GameView(Game game){
         this.isStart = true;
 
+        this.game = game;
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
         this.playerView = new PlayerView();
         batch = new SpriteBatch();
@@ -90,16 +92,19 @@ public class GameView extends ApplicationAdapter implements Screen{
 
         batch.begin();
 
-        for(int i = 0; i<humansList.size(); i++){
-            batch.draw(humansList.get(i).getAnimation().getKeyFrame(elapsedTime,true),
-                    humansList.get(i).getCharacter().getPosition().getX(),
-                    humansList.get(i).getCharacter().getPosition().getY());
-        }
+//        for(int i = 0; i<humansList.size(); i++){
+//            batch.draw(humansList.get(i).getAnimation().getKeyFrame(elapsedTime,true),
+//                    humansList.get(i).getCharacter().getPosition().getX(),
+//                    humansList.get(i).getCharacter().getPosition().getY());
+//        }
 
         for(int i = 0; i<mascotsList.size(); i++){
-            batch.draw(mascotsList.get(i).getAnimation().getKeyFrame(elapsedTime,true),
-                    mascotsList.get(i).getCharacter().getPosition().getX(),
-                    mascotsList.get(i).getCharacter().getPosition().getY());
+
+            if(mascotsList.get(i).getCharacter().getWorld() == game.getCurrectWorld() /* && !checkIfCaught*/){
+                batch.draw(mascotsList.get(i).getAnimation().getKeyFrame(elapsedTime,true),
+                        mascotsList.get(i).getCharacter().getPosition().getX(),
+                        mascotsList.get(i).getCharacter().getPosition().getY());
+            }
         }
 
         batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime, true), playerView.getPlayerPosition().getX(),
@@ -168,6 +173,10 @@ public class GameView extends ApplicationAdapter implements Screen{
     public void dispose() {
         renderer.dispose();
 
+    }
+
+    public Game getGame(){
+        return this.game;
     }
 
     public void setPlayer(Player player){

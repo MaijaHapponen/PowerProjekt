@@ -15,6 +15,7 @@ public class Game {
     public Player player;
     private Questions questions;
     private Information information;
+    private Worlds currectWorld;
 
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
@@ -78,8 +79,16 @@ public class Game {
         return progress;
     }
 
-    public void setStartPositionPlayer(float x, float y){
+    public void setStartPositionPlayer(float x, float y) {
         this.startPositionX = x;
         this.startPositionY = y;
+    }
+
+    public void setCurrectWorld(Worlds currectWorld){
+        this.currectWorld = currectWorld;
+    }
+
+    public Worlds getCurrectWorld(){
+        return this.currectWorld;
     }
 }

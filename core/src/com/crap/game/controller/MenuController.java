@@ -24,12 +24,21 @@ public class MenuController extends InputAdapter implements ApplicationListener{
     }
 
     public boolean keyDown(int keycode){
-        if(keycode == Input.Keys.ENTER){
-            menuView.setScreen();
-        }if(keycode == Input.Keys.DOWN){
-            menuModel.setCurrentItem("down");
-        }if(keycode == Input.Keys.UP){
-            menuModel.setCurrentItem("up");
+        if(menuView.getGameOver()){
+            if(keycode == Input.Keys.ENTER){
+                menuView.setGameOver(false);
+            }
+        }
+        else {
+            if (keycode == Input.Keys.ENTER) {
+                menuView.setScreen();
+            }
+            if (keycode == Input.Keys.DOWN) {
+                menuModel.setCurrentItem("down");
+            }
+            if (keycode == Input.Keys.UP) {
+                menuModel.setCurrentItem("up");
+            }
         }
         return true;
     }

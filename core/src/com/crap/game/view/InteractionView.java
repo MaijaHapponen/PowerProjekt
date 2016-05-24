@@ -25,7 +25,8 @@ public class InteractionView extends ScreenAdapter{
     private SpriteBatch batch;
 
 
-    private Label talkLable = new Label(String.format("Press SPACE to talk"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    private Label talkLable = new Label(String.format("Press SPACE to talk"), new Label.LabelStyle(new BitmapFont(),
+            Color.WHITE));
 
 
     public InteractionView(){

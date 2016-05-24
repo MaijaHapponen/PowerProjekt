@@ -22,7 +22,7 @@ public class StateController {
 
     public StateController(Game g) {
         this.game = g;
-        world = new com.crap.game.model.Game();
+        this.world = new com.crap.game.model.Game();
         updateState(State.GameStates.STARTMENU);
     }
 

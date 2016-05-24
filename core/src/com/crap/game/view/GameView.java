@@ -11,15 +11,9 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crap.game.model.*;
-import com.crap.game.model.Character;
-
-import com.badlogic.gdx.utils.TimeUtils;
 
 import java.util.ArrayList;
 
@@ -39,15 +33,11 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     private ProgressView progressView;
     private Progress progress;
-    private Character character;
     private InteractionView interactionView;
 
     private boolean interaction;
     private boolean newWorld;
     private boolean isStart;
-    private Label label;
-    private Stage stage;
-    private Table table;
     private Viewport viewport;
     private int WorldWidth = 500;
     private int worldHeight = 500;
@@ -57,9 +47,7 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     private ArrayList<ProgressView> mascotsOnBar = new ArrayList<ProgressView>();
 
-
     public GameView(Game game){
-
 
         this.isStart = true;
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
@@ -232,11 +220,19 @@ public class GameView extends ApplicationAdapter implements Screen{
     }
 
     public float getWorldWidth(){
-        return this.world.getProperties().get("width", Integer.class)*pixelPerTile;
+        return this.world.getProperties().get("width", Integer.class)*getTileWidth();
     }
 
     public float getWorldHeight(){
-        return this.world.getProperties().get("height", Integer.class)*pixelPerTile;
+        return this.world.getProperties().get("height", Integer.class)*getTileHeight();
+    }
+
+    public float getTileHeight(){
+        return this.world.getProperties().get("tilewidth", Integer.class);
+    }
+
+    public float getTileWidth(){
+        return this.world.getProperties().get("tileheight", Integer.class);
     }
 
     public TiledMap getWorld() {

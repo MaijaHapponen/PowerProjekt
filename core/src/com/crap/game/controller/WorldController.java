@@ -17,13 +17,6 @@ public class WorldController {
     private CharacterController characterController;
     private GameView view;
 
-    /*
-    Float x = (Float) playerController.newWorldObject.getProperties().get("x");
-    Float y = (Float) playerController.newWorldObject.getProperties().get("y");
-    Float width = (Float) playerController.newWorldObject.getProperties().get("width");
-    Float height = (Float) playerController.newWorldObject.getProperties().get("height");
-
-  */
     private int tempCollisionlayerwidth = 50;
 
     private float zaloonEntryX = 125;

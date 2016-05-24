@@ -21,20 +21,19 @@ public class InteractionView extends ScreenAdapter{
     private Stage stage;
     private Stage welcomeStage;
     private Viewport viewport;
-    private int WorldWidth = 500;
-    private int worldHeight = 500;
+
+    private int worldWidth = Gdx.graphics.getWidth();
+    private int worldHeight = Gdx.graphics.getHeight();
+
     private OrthographicCamera camera;
     private SpriteBatch batch;
-
-
-
 
     private Label talkLable = new Label(String.format("Press SPACE to talk"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
     private Label welcomeLabel;
 
     public InteractionView(){
         batch = new SpriteBatch();
-        viewport = new FitViewport(WorldWidth, worldHeight, new OrthographicCamera());
+        viewport = new FitViewport(worldWidth, worldHeight, new OrthographicCamera());
         createInteraction();
         createWelcome();
     }
@@ -70,11 +69,10 @@ public class InteractionView extends ScreenAdapter{
     public Stage getWelcomeStage(){
         return this.welcomeStage;
     }
+
     public OrthographicCamera getCamera(){
         return this.camera;
     }
-
-
 
 
     public void setWelcomeLabel(String world){
@@ -90,7 +88,5 @@ public class InteractionView extends ScreenAdapter{
     public Label getWelcomeLabel(){
         return this.welcomeLabel;
     }
-
-
-
+    
 }

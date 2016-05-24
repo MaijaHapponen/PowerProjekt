@@ -1,10 +1,6 @@
 package com.crap.game;
 
-import com.badlogic.gdx.Gdx;
-import com.crap.game.controller.GameController;
 import com.crap.game.controller.StateController;
-import com.crap.game.view.GameView;
-import com.crap.game.model.Game;
 
 public class Main extends com.badlogic.gdx.Game {
 

@@ -19,7 +19,8 @@ public class PlayerController {
     private InteractionController interactionController;
     public MapObject newWorldObject;
 
-    private float pixelPerTile = 30;
+    private float pixelPerTile = 30;//this.gameView.getWorld().getTileSets().getTile().getProperties().get()
+
 
     public PlayerController(PlayerView playerView, GameView gameView){
         this.playerView = playerView;
@@ -42,7 +43,6 @@ public class PlayerController {
 
     public void movePlayer(int keycode) {
 
-        String direction = null;
         updateSpeed();
 
         if (keycode == Input.Keys.UP &&
@@ -69,6 +69,7 @@ public class PlayerController {
         updateSprite();
         playerView.moveCamera(getPlayerPositionX(), getPlayerPositionY(),
                 gameView.getWorldHeight()+pixelPerTile, gameView.getWorldWidth()+pixelPerTile);
+
     }
 
     public void updateSprite() {

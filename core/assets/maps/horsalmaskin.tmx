@@ -166,5 +166,15 @@
     <property name="WoodyWoodpeckerStartPosition" value=""/>
    </properties>
   </object>
+  <object id="60" x="436.128" y="297.318" width="8.44119" height="9.3791">
+   <properties>
+    <property name="ITHumanStartPosition" value=""/>
+   </properties>
+  </object>
+  <object id="62" x="122.866" y="702.495" width="9.3791" height="8.44119">
+   <properties>
+    <property name="ZHumanStartPosition" value=""/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

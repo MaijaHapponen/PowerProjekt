@@ -79,7 +79,7 @@ public class StateController {
 
     public static void playMode(){
         Gdx.input.setInputProcessor(controller);
-        gameMode = true;
+        setGameMode(true);
     }
 
     public static void initPlay(){

@@ -37,24 +37,28 @@ public class InteractMascotController extends InputAdapter {
             Character interactingCharacter =
                     gameController.getPlayerController().getInteractionController().getInteractingCharacter();
 
-            if (interactMascot.isRightAnswer(interactingCharacter, interactMascot.getCurrentLabelNbr())) {
+            if (interactMascot.isRightAnswer(interactingCharacter, interactMascot.getCurrentStringNbr())) {
 
                 if(interactingCharacter instanceof Mascot){
-                    ((Mascot) interactingCharacter).catchMascot();
+                    Mascot caughtMascot = ((Mascot) interactingCharacter);
+                    caughtMascot.setCaught(true);
+                    gameController.mascotCaught(caughtMascot);
                 }
+                //TODO: Also remove view for mascot
             }
 
             interactMascotView.setHasAnswered();
         }
 
         else if(keycode == Input.Keys.DOWN){
-            interactMascot.setCurrentLabel("down");
+            interactMascot.setCurrentString("down");
         }
 
         else if(keycode == Input.Keys.UP){
-            interactMascot.setCurrentLabel("up");
+            interactMascot.setCurrentString("up");
         }
 
         return true;
     }
+
 }

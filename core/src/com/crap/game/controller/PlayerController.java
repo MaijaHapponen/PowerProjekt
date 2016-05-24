@@ -19,9 +19,6 @@ public class PlayerController {
     private InteractionController interactionController;
     public MapObject newWorldObject;
 
-    private float pixelPerTile = 30;//this.gameView.getWorld().getTileSets().getTile().getProperties().get()
-
-
     public PlayerController(PlayerView playerView, GameView gameView){
         this.playerView = playerView;
         this.player = playerView.getPlayer();
@@ -50,16 +47,19 @@ public class PlayerController {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
             player.moveUp(gameView.getWorldHeight());
         }
+
         else if (keycode == Input.Keys.DOWN &&
                 !(checkIfCollision(down()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
             player.moveDown();
         }
+
         else if (keycode == Input.Keys.LEFT &&
                 !(checkIfCollision(left()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_LEFT);
             player.moveLeft();
         }
+
         else if (keycode == Input.Keys.RIGHT &&
                 !(checkIfCollision(right())) )  {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
@@ -68,7 +68,7 @@ public class PlayerController {
 
         updateSprite();
         playerView.moveCamera(getPlayerPositionX(), getPlayerPositionY(),
-                gameView.getWorldHeight()+pixelPerTile, gameView.getWorldWidth()+pixelPerTile);
+                gameView.getWorldHeight()+ gameView.getTileHeight(), gameView.getWorldWidth()+gameView.getTileWidth());
 
     }
 

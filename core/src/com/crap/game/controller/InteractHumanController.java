@@ -25,22 +25,31 @@ public class InteractHumanController extends InputAdapter {
 
     @Override
     public boolean keyDown(int keyCode){
+
         if(keyCode == Input.Keys.BACKSPACE){
             StateController.updateState(State.GameStates.PLAY);
         }
+
         if(keyCode == Input.Keys.DOWN){
             interactHuman.setCurrentString("down");
-        }if(keyCode == Input.Keys.UP){
+        }
+
+        if(keyCode == Input.Keys.UP){
             interactHuman.setCurrentString("up");
-        }if(keyCode == Input.Keys.ENTER){
+        }
+
+        if(keyCode == Input.Keys.ENTER){
             if(interactHuman.getCurrentString().equals(interactHumanView.getTalkAboutProgramme())){
                 interactHumanView.setIsProgramme(true);
-            }else if(interactHuman.getCurrentString().equals(interactHumanView.getWhereIsMascot())){
+            }
+            else if(interactHuman.getCurrentString().equals(interactHumanView.getWhereIsMascot())){
                 interactHumanView.setIsMascot(true);
-            }else if(interactHuman.getCurrentString().equals(interactHumanView.getExit())){
+            }
+            else if(interactHuman.getCurrentString().equals(interactHumanView.getExit())){
                 StateController.updateState(State.GameStates.PLAY);
             }
         }
+
         return true;
     }
 

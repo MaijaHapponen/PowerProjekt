@@ -63,6 +63,8 @@ public class StateController {
                 break;
 
             case GAMEOVER:
+                paused = false;
+                setGameMode(false);
                 MenuView gameOver = new MenuView(true);
                 new MenuController(gameOver);
                 game.setScreen(gameOver);

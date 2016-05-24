@@ -24,7 +24,7 @@ public class Game {
 
     public Game(){
 
-        this.player = new Player(startPositionX,startPositionY);
+        this.player = new Player("player",startPositionX,startPositionY);
         createHumans();
         createMascots();
         this.questions = new Questions(mascots);

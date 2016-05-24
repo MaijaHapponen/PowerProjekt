@@ -74,10 +74,10 @@ public class MenuView extends ScreenAdapter{
         }
         else{
             titleFont.draw(batch,"You win!", 60,400);
-            titleFont.setColor(Color.PINK);
+            titleFont.setColor(Color.BLACK);
 
             font.draw(batch,"Press enter to return \n to main menu",60,220);
-            font.setColor(Color.BLACK);
+            font.setColor(Color.PINK);
         }
         batch.end();
     }

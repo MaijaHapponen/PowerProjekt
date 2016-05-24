@@ -42,9 +42,6 @@ public class InteractMascotView extends ScreenAdapter {
     BitmapFont titleFont;
     BitmapFont font;
 
-    FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
-    FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-
     Label[] answers;
     private Label questionLabel;
     private Label answerLabel1;
@@ -65,6 +62,10 @@ public class InteractMascotView extends ScreenAdapter {
 
         String question = getQuestion(interactionCharacter);
         java.util.List<String> alternatives = getAnswers(interactionCharacter);
+
+
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
         parameter.size=20;
         titleFont = generator.generateFont(parameter);
@@ -163,9 +164,7 @@ public class InteractMascotView extends ScreenAdapter {
             font.draw(batch, "You were wrong :(", 60, 300);
             font.draw(batch, back, 60, 250);
             batch.end();
-
         }
-
     }
 
     public void setHasAnswered(){
@@ -178,5 +177,13 @@ public class InteractMascotView extends ScreenAdapter {
         this.worldHeight = height;
         this.worldWidth = width;
 
+    }
+    @Override
+    public void dispose(){
+        batch.dispose();
+        stage.dispose();
+        skin.dispose();
+        titleFont.dispose();
+        font.dispose();
     }
 }

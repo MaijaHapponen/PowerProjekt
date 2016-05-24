@@ -14,6 +14,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crap.game.model.*;
+import com.crap.game.model.Character;
 
 import java.util.ArrayList;
 
@@ -46,8 +47,6 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
-
-    private ArrayList<ProgressView> mascotsOnBar = new ArrayList<ProgressView>();
 
     public GameView(Game game){
         this.isStart = true;
@@ -102,10 +101,11 @@ public class GameView extends ApplicationAdapter implements Screen{
         }
 
         for(int i = 0; i<mascotsList.size(); i++){
-            if(mascotsList.get(i).getCharacter().getWorld() == game.getCurrectWorld() /* && !checkIfCaught*/){
+            Mascot tempMascot = (Mascot) mascotsList.get(i).getCharacter();
+            if(tempMascot.getWorld() == game.getCurrectWorld() && !tempMascot.isCaught()){
                 batch.draw(mascotsList.get(i).getAnimation().getKeyFrame(elapsedTime,true),
-                        mascotsList.get(i).getCharacter().getPosition().getX(),
-                        mascotsList.get(i).getCharacter().getPosition().getY());
+                        tempMascot.getPosition().getX(),
+                        tempMascot.getPosition().getY());
             }
         }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="28">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="29">
  <tileset firstgid="1" name="open_tileset" tilewidth="32" tileheight="32" tilecount="1710" columns="45">
   <image source="open_tileset.png" trans="878787" width="1440" height="1216"/>
  </tileset>
@@ -115,10 +115,15 @@
   <object id="20" name="Slow" x="450" y="221" width="61" height="28.255"/>
  </objectgroup>
  <objectgroup name="NewWorld">
-
   <object id="12" name="hubben" x="411" y="190.333" width="41.6667" height="16.6667"/>
-
   <object id="23" name="horsalmaskin" x="777" y="223" width="22" height="114"/>
   <object id="24" name="horsalmaskin" x="770" y="431" width="31" height="368"/>
+ </objectgroup>
+ <objectgroup name="CharacterPositions">
+  <object id="28" x="547.751" y="61.8636" width="11.5994" height="11.5994">
+   <properties>
+    <property name="DonaldDuckStartPosition" value=""/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

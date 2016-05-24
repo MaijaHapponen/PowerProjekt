@@ -13,9 +13,9 @@ public class Human extends Character {
         super(name);
     }
 
-    public Human(String name, Position position){
+    public Human(String name, Position position, Game.Worlds world){
 
-        super(name, position);
+        super(name, position, world);
     }
 
     public String saySomethingAboutProgramme(){

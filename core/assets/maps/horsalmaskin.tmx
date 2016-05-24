@@ -160,7 +160,11 @@
   <object id="52" name="hubbeneditsand" x="2" y="2" width="33" height="334"/>
   <object id="54" name="hubbeneditsand" x="2" y="439" width="31" height="361"/>
  </objectgroup>
- <objectgroup name="StartPositions">
-  <object id="56" x="778" y="250" width="8" height="11"/>
+ <objectgroup name="CharacterPositions">
+  <object id="56" x="593.507" y="687.528" width="10.2835" height="10.2835">
+   <properties>
+    <property name="WoodyWoodpeckerStartPosition" value=""/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

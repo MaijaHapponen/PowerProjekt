@@ -1,5 +1,7 @@
 package com.crap.game.model;
 
+import com.crap.game.controller.WorldController;
+
 /**
  * Created by Lisa on 25/04/16.
  */
@@ -8,6 +10,7 @@ public abstract class Character{
     protected Position position;
     private float width;
     private float height;
+    private Game.Worlds world;
 
     public Character(){
         this.position = new Position();
@@ -18,9 +21,10 @@ public abstract class Character{
         this.position = new Position(0,0);
     }
 
-    public Character(String name, Position position){
+    public Character(String name, Position position, Game.Worlds world){
         this.name = name;
         this.position = position;
+        this.world = world;
     }
 
     public void setWidthAndHeight(float width, float height){
@@ -42,5 +46,9 @@ public abstract class Character{
 
     public String getName(){
         return this.name;
+    }
+
+    public Game.Worlds getWorld(){
+        return this.world;
     }
  }

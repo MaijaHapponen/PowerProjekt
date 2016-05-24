@@ -16,7 +16,8 @@ public class Player extends Character{
     }
 
     public Player(String name, float x, float y){
-        super(name,new Position(x, y));
+        super(name);
+        this.position = new Position(x, y);
         this.currentSpeed = normalSpeed;
     }
 

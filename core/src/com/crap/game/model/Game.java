@@ -15,12 +15,18 @@ public class Game {
     public Player player;
     private Questions questions;
     private Information information;
+    private Worlds currectWorld;
 
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
 
-    private String[] mascotNames = {"kalleAnka","hackeHackspett","iTSmurfen","luckyLuke"};
-    private String[] humansNames = {"EHuman","DHuman","ITHuman","ZHuman"};
+    private String[] mascotNames = {"iTSmurfen","kalleAnka","hackeHackspett","luckyLuke"};
+    private float[][] mascotCoordinates = {{447, 461},{548, 688},{594, 92},{724, 592}};
+    private Worlds[] mascotsWorlds = {Worlds.HUBBEN, Worlds.EDIT, Worlds.HORSAL, Worlds.ZALOONEN};
+
+    private String[] humansNames = {"ITHuman","EHuman","DHuman","ZHuman"};
+    private float[][] humanCoordinates = {{436, 503},{194, 87},{583, 51},{123, 98}};
+    private Worlds[] humansWorlds = {Worlds.HORSAL, Worlds.EDIT, Worlds.HUBBEN, Worlds.HORSAL};
 
     public Game(){
 
@@ -36,16 +42,16 @@ public class Game {
     //Populates an arrayList with humans.
     public void createHumans(){
         for(int i=0; i<humansNames.length; i++){
-            Position position = new Position(i*100+200, i*50+200); //TODO setn borde man nog ha en lista med karaktärernas positioner.
-            humans.add(new Human(humansNames[i], position));
+            Position position = new Position(humanCoordinates[i][0],humanCoordinates[i][1]);
+            humans.add(new Human(humansNames[i], position, humansWorlds[i]));
         }
     }
 
     //Populates an arrayList with mascots.
     public void createMascots(){
         for(int i=0; i<mascotNames.length; i++){
-            Position position = new Position(i*50+200, i*100+200); //TODO sen borde man nog ha en lista med karaktärernas positioner.
-            mascots.add(new Mascot(mascotNames[i], position));
+            Position position = new Position(mascotCoordinates[i][0],mascotCoordinates[i][1]);
+            mascots.add(new Mascot(mascotNames[i], position, mascotsWorlds[i]));
         }
     }
 
@@ -73,8 +79,16 @@ public class Game {
         return progress;
     }
 
-    public void setStartPositionPlayer(float x, float y){
+    public void setStartPositionPlayer(float x, float y) {
         this.startPositionX = x;
         this.startPositionY = y;
+    }
+
+    public void setCurrectWorld(Worlds currectWorld){
+        this.currectWorld = currectWorld;
+    }
+
+    public Worlds getCurrectWorld(){
+        return this.currectWorld;
     }
 }

@@ -27,5 +27,6 @@ public class InteractMascotTest {
         interactMascot.setCurrentString("down");
         assertTrue(interactMascot.getCurrentString().equals(first));
 
+
     }
 }

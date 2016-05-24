@@ -13,7 +13,11 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crap.game.model.*;
 import com.crap.game.model.Character;
 
@@ -42,11 +46,13 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     private boolean interaction;
     private boolean newWorld;
-    private TimeUtils time = new TimeUtils();
-    private long timeDifferense = 500000000;
-
-    private String worldName;
-    private Label labelFromInteractionView = new Label(String.format("Welcome to " + worldName), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    private boolean isStart;
+    private Label label;
+    private Stage stage;
+    private Table table;
+    private Viewport viewport;
+    private int WorldWidth = 500;
+    private int worldHeight = 500;
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
@@ -57,6 +63,7 @@ public class GameView extends ApplicationAdapter implements Screen{
     public GameView(Game game){
 
 
+        this.isStart = true;
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
         this.playerView = new PlayerView();
         batch = new SpriteBatch();
@@ -68,11 +75,19 @@ public class GameView extends ApplicationAdapter implements Screen{
 
         this.playerView = new PlayerView();
         this.interactionView = new InteractionView();
+        viewport = new FitViewport(WorldWidth, worldHeight, new OrthographicCamera());
 
+
+        setLabel("hörsalsvägen");
+        create();
     }
 
     @Override
     public void show() {
+    }
+
+    public void create(){
+        interactionView.createWelcome();
     }
 
     @Override
@@ -112,20 +127,33 @@ public class GameView extends ApplicationAdapter implements Screen{
         batch.setProjectionMatrix(progressView.getStage().getCamera().combined);
         progressView.getStage().draw();
 
+        if(isStart){
+            setLabel("hörsalsvägen");
+            batch.setProjectionMatrix(interactionView.getWelcomeStage().getCamera().combined);
+            interactionView.getWelcomeStage().draw();
+            if(interaction){
+                newWorld = false;
+                interactionView.getWelcomeStage().dispose();
+
+            }
+        }
+
         if(interaction){
             batch.setProjectionMatrix(interactionView.getStage().getCamera().combined);
             interactionView.getStage().draw();
         }
 
         if(newWorld){
-            long tmpTime = time.nanoTime();
-            long currentTime = time.nanosToMillis(tmpTime);
-            while(currentTime < currentTime + timeDifferense) {
-                //interactionView.setWelcomeLabel(labelFromInteractionView);
-                interactionView.setWorldName(worldName);
-                batch.setProjectionMatrix(interactionView.getWelcomeStage().getCamera().combined);
-                interactionView.getWelcomeStage().draw();
+
+            interactionView.getWelcomeLabel();
+            batch.setProjectionMatrix(interactionView.getWelcomeStage().getCamera().combined);
+            interactionView.getWelcomeStage().draw();
+            if(interaction){
+                newWorld = false;
+                interactionView.getWelcomeStage().dispose();
+
             }
+
         }
 
 
@@ -152,6 +180,7 @@ public class GameView extends ApplicationAdapter implements Screen{
     @Override
     public void dispose() {
         renderer.dispose();
+
     }
 
     public void setPlayer(Player player){
@@ -219,7 +248,16 @@ public class GameView extends ApplicationAdapter implements Screen{
     public void setNewWorld(boolean b){
         this.newWorld = b;
     }
-    public void setWorldName(String name){
-        this.worldName = name;
+
+    public void setLabel(String world){
+        if(world.equals("hubben")){
+            interactionView.setWelcomeLabel("hubben");
+        }if(world.equals("zaloonen")){
+            interactionView.setWelcomeLabel("zaloonen");
+        }else{
+            interactionView.setWelcomeLabel("hörsalsvägen");
+        }
     }
+
+
 }

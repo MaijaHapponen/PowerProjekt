@@ -25,28 +25,29 @@ public class InteractionController {
         for (int i = 0; i < gameView.getHumansList().size(); i++) {
             CharacterView characterView = gameView.getHumansList().get(i);
 
-            if (interactionModel.isInteraction(characterView.getCharacter(), x, y)) {
-                if (!isInteracting) {
-                    setInteractingCharacter(characterView.getCharacter(), characterView);
+            if(characterView.getCharacter().getWorld() == gameView.getGame().getCurrectWorld()) {
+                if (interactionModel.isInteraction(characterView.getCharacter(), x, y)) {
+                    if (!isInteracting) {
+                        setInteractingCharacter(characterView.getCharacter(), characterView);
+                    }
+                    return true;
                 }
-
-                return true;
-
             }
         }
         return false;
-
     }
 
     public boolean isInteractionWithMascot(float x, float y){
         for(int i=0; i< gameView.getMascotsList().size(); i++){
             CharacterView characterView = gameView.getMascotsList().get(i);
 
-            if(interactionModel.isInteraction(characterView.getCharacter(),x, y)){
-                if(!isInteracting) {
-                    setInteractingCharacter(characterView.getCharacter(), characterView);
+            if(characterView.getCharacter().getWorld() == gameView.getGame().getCurrectWorld()) {
+                if (interactionModel.isInteraction(characterView.getCharacter(), x, y)) {
+                    if (!isInteracting) {
+                        setInteractingCharacter(characterView.getCharacter(), characterView);
+                    }
+                    return true;
                 }
-                return true;
             }
         }
         return false;
@@ -56,9 +57,11 @@ public class InteractionController {
         for (int i = 0; i < gameView.getHumansList().size(); i++) {
             CharacterView characterView = gameView.getHumansList().get(i);
 
-            if (interactionModel.isInteraction(characterView.getCharacter(), x, y) &&
-                    !characterView.getCharacter().equals(characterMoving)) {
-                return true;
+            if(characterView.getCharacter().getWorld() == gameView.getGame().getCurrectWorld()) {
+                if (interactionModel.isInteraction(characterView.getCharacter(), x, y) &&
+                        !characterView.getCharacter().equals(characterMoving)) {
+                    return true;
+                }
             }
         }
         for (int i = 0; i < gameView.getMascotsList().size(); i++) {

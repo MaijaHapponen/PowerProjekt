@@ -35,6 +35,7 @@ public class WorldController {
     private boolean isEntrance;
     private Position entrancePosition;
     private Game.Worlds previousRoom;
+    private Game.Worlds currentWorld;
 
 
     public WorldController(Game game, PlayerController controller, CharacterController characterController, GameView view) {
@@ -51,6 +52,7 @@ public class WorldController {
 
         float x = playerController.getPlayerPositionX();
         float y = playerController.getPlayerPositionY();
+        model.setCurrectWorld(worlds);
 
         switch (worlds) {
 

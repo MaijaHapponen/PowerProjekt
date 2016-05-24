@@ -51,9 +51,11 @@ public class ProgressView extends ScreenAdapter {
 
         this.progressBarImage = new Image(new Texture("progressbar/progressbar.png"));
 
-        this.setProgressBarTable();
     }
 
+    public void drawStage(){
+        this.setProgressBarTable();
+    }
     public Stage getStage(){
         return this.stage;
     }
@@ -71,6 +73,7 @@ public class ProgressView extends ScreenAdapter {
         table.left();
         table.add(group);
         stage.addActor(table);
+        stage.draw();
     }
 
 }

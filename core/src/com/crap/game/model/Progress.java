@@ -1,5 +1,6 @@
 package com.crap.game.model;
 
+import javax.annotation.processing.SupportedSourceVersion;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,6 @@ public class Progress {
 
     public Progress(ArrayList<Mascot> mascotsInGame) {
         this.mascotsInGame = mascotsInGame;
-        mascotsCaught =mascotsInGame;
     }
 
     //Method checking if all mascots has been caught by the player.

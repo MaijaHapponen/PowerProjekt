@@ -24,12 +24,8 @@ public class Mascot extends Character{
         this.question = question;
     }
 
-    public Question getQuestion(){
+    public Question getQuestion() {
         return this.question;
-    }
-
-    public void catchMascot(){
-        this.isCaught = true;
     }
 
     public boolean isCaught(){

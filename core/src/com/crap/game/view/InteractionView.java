@@ -32,7 +32,6 @@ public class InteractionView extends ScreenAdapter{
     private Label talkLable = new Label(String.format("Press SPACE to talk"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
     private Label welcomeLabel;
 
-
     public InteractionView(){
         batch = new SpriteBatch();
         viewport = new FitViewport(WorldWidth, worldHeight, new OrthographicCamera());

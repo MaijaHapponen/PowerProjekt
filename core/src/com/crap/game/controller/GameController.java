@@ -19,7 +19,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private OrthographicCamera camera;
     private PlayerController playerController;
     private int keyCode;
-    private Position entrancePosition;
     private CharacterController characterController;
     private CollisionController collisionController;
 

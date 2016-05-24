@@ -27,28 +27,34 @@ public class InteractMascotController extends InputAdapter {
 
     @Override
     public boolean keyDown(int keycode){
+
         if(keycode == Input.Keys.BACKSPACE){
             StateController.updateState(State.GameStates.PLAY);
             interactMascotView.dispose();
         }
+
         else if(keycode == Input.Keys.ENTER) {
             Character interactingCharacter =
                     gameController.getPlayerController().getInteractionController().getInteractingCharacter();
+
             if (interactMascot.isRightAnswer(interactingCharacter, interactMascot.getCurrentLabelNbr())) {
+
                 if(interactingCharacter instanceof Mascot){
                     ((Mascot) interactingCharacter).catchMascot();
                 }
-                StateController.updateState(State.GameStates.CHECKQUESTION);
-                interactMascotView.dispose();
-                //TODO: Also remove view for mascot
             }
+
+            interactMascotView.setHasAnswered();
         }
+
         else if(keycode == Input.Keys.DOWN){
             interactMascot.setCurrentLabel("down");
         }
+
         else if(keycode == Input.Keys.UP){
             interactMascot.setCurrentLabel("up");
         }
+
         return true;
     }
 }

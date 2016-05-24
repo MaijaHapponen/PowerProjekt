@@ -27,6 +27,10 @@ public class InteractMascotView extends ScreenAdapter {
 
     private Character interactionCharacter;
 
+    private boolean hasAnswered;
+
+    private String back = "Press BACK SPACE to return to game";
+
     private Stage stage;
     private int worldWidth = 500;
     private int worldHeight = 500;
@@ -98,17 +102,22 @@ public class InteractMascotView extends ScreenAdapter {
         answers = new Label[]{answerLabel1, answerLabel2, answerLabel3, answerLabel4};
         interactMascot = new InteractMascot(answers, answerLabel1);
     }
+
     public String getQuestion(Character interactionCharacter){
+
         if(interactionCharacter instanceof Mascot){
             return ((Mascot) interactionCharacter).getQuestion().getQuestion();
         }
+
         return null;
     }
 
     public java.util.List<String> getAnswers(Character interactionCharacter) {
+
         if (interactionCharacter instanceof Mascot) {
             return ((Mascot) interactionCharacter).getQuestion().getAlternatives();
         }
+
         return null;
     }
 
@@ -122,25 +131,45 @@ public class InteractMascotView extends ScreenAdapter {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        if(!hasAnswered) {
 
-        if(interactMascot.isMascotCaught()){
-            //TODO: update the view;
+            for(int i = 0; i < answers.length; i++) {
+                
+                if(interactMascot.getCurrentLabelNbr() == i) {
+                    interactMascot.getCurrentLabel().setColor(Color.PINK);
+                }
+
+                else{
+                    answers[i].setColor(Color.BLACK);
+                }
+
+                batch.setProjectionMatrix(stage.getCamera().combined);
+                stage.draw();
+            }
+        }
+
+        else if(((Mascot)interactionCharacter).isCaught()) {
+            batch.begin();
+            font.setColor(Color.BLACK);
+            font.draw(batch, "You are right!", 60, 300);
+            font.draw(batch, back, 60, 250);
             interactMascot.updateMascotCaught();
+            batch.end();
         }
 
-        for(int i = 0; i < answers.length; i++) {
-            if(interactMascot.getCurrentLabelNbr() == i) {
-                interactMascot.getCurrentLabel().setColor(Color.PINK);
-            }
-            else{
-                answers[i].setColor(Color.BLACK);
-            }
-
-            batch.setProjectionMatrix(stage.getCamera().combined);
-            stage.draw();
+        else{
+            batch.begin();
+            font.setColor(Color.BLACK);
+            font.draw(batch, "You were wrong :(", 60, 300);
+            font.draw(batch, back, 60, 250);
+            batch.end();
 
         }
 
+    }
+
+    public void setHasAnswered(){
+        this.hasAnswered = true;
     }
 
     @Override

@@ -14,34 +14,33 @@ public class InteractMascot {
 
     private boolean caughtMascot;
 
-
     public InteractMascot(Label[] labelsInScreen, Label questionLabel){
         this.labelsInScreen = labelsInScreen;
         this.questionLabel = questionLabel;
         this.currentLabelNbr = 0;
         this.currentLabel = labelsInScreen[currentLabelNbr];
-
-
     }
-
 
     public void setCurrentLabel(String direction){
         int amountOfLabels = getAmountOfLabels() - 1;
+
         if(direction.equals("down")){
             if(currentLabelNbr == amountOfLabels){
                 currentLabelNbr = 0;
-            }else{
+            }
+            else{
                 currentLabelNbr++ ;
             }
-        }if(direction.equals("up")){
+        }
+        if(direction.equals("up")){
             if(currentLabelNbr == 0){
                 currentLabelNbr = 3;
-            }else {
+            }
+            else {
                 currentLabelNbr--;
             }
         }
         currentLabel = labelsInScreen[currentLabelNbr];
-
     }
 
     public Label getCurrentLabel(){

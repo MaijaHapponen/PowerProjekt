@@ -27,7 +27,6 @@ public class InteractHumanView extends ScreenAdapter {
     private String exit = "Exit";
     private String back = "Press BACK SPACE to return to game";
 
-
     private String inforamtionProgramme;
     private String inforamtionMascot;
 
@@ -69,16 +68,6 @@ public class InteractHumanView extends ScreenAdapter {
 
         inforamtionMascot = "Some information where mascot could be";
         inforamtionProgramme = "Some informaiton about programme";
-
-
-
-    }
-
-
-
-    @Override
-    public void show() {
-
     }
 
     @Override
@@ -88,7 +77,6 @@ public class InteractHumanView extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-
 
         if(!isProgramme && !isMascot) {
             title.draw(batch, chooseOption, 30, 400);
@@ -101,24 +89,22 @@ public class InteractHumanView extends ScreenAdapter {
                 }
                 font.draw(batch, options[i], 60, 250 - 70 * i);
             }
-        }else if(isProgramme) {
+        }
+
+        else if(isProgramme) {
             font.setColor(Color.BLACK);
             font.draw(batch, inforamtionProgramme, 60, 300);
             font.draw(batch, back, 60, 250);
-        }else if(isMascot){
+        }
+
+        else if(isMascot){
             font.setColor(Color.BLACK);
             font.draw(batch, inforamtionMascot, 60, 300);
             font.draw(batch, back, 60, 250);
-
         }
-
-
 
         batch.end();
     }
-
-
-
 
     public String getTalkAboutProgramme(){
         return this.talkAboutProgramme;
@@ -136,7 +122,6 @@ public class InteractHumanView extends ScreenAdapter {
         return this.interactHuman;
     }
 
-
     public void setIsMascot(boolean b){
         this.isMascot = b;
     }
@@ -152,8 +137,5 @@ public class InteractHumanView extends ScreenAdapter {
     public boolean getIsProgramme(){
         return this.isProgramme;
     }
-
-
-
 
 }

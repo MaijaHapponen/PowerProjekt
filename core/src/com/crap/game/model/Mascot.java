@@ -32,4 +32,7 @@ public class Mascot extends Character{
         this.isCaught = true;
     }
 
+    public boolean isCaught(){
+        return this.isCaught;
+    }
 }

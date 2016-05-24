@@ -17,10 +17,6 @@ public class StateController {
     public static com.crap.game.model.Game world;
     public static boolean gameMode = false;
 
-    // public static PlayerView playerView = new PlayerView();
-    // public static Interaction interaction = new Interaction(playerView.getPlayerSpriteWidth(), playerView.getPlayerSpriteHeight());
-
-
     //Game-class from libGDX, not our model
     public static Game game;
     public static boolean paused;
@@ -82,7 +78,7 @@ public class StateController {
 
     public static void playMode(){
         Gdx.input.setInputProcessor(controller);
-        gameMode = true;
+        setGameMode(true);
     }
 
     public static void initPlay(){

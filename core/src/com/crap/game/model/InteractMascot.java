@@ -21,7 +21,6 @@ public class InteractMascot {
         this.currentLabelNbr = 0;
         this.currentLabel = labelsInScreen[currentLabelNbr];
 
-
     }
 
 

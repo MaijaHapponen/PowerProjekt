@@ -31,7 +31,7 @@ public class Mascot extends Character{
         return this.question;
     }
 
-    public void catchMascot(){
+    public void isCaught(){
         this.isCaught = true;
     }
 

@@ -45,14 +45,12 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     public GameView(Game game){
 
-
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
         this.playerView = new PlayerView();
         batch = new SpriteBatch();
         this.progressView = new ProgressView(game.getProgress());
 
         renderer = new OrthogonalTiledMapRenderer(world);
-
 
         this.playerView = new PlayerView();
         this.interactionView = new InteractionView();
@@ -97,8 +95,8 @@ public class GameView extends ApplicationAdapter implements Screen{
 
         batch.end();
 
+        progressView.drawStage();
         batch.setProjectionMatrix(progressView.getStage().getCamera().combined);
-        progressView.getStage().draw();
 
         if(interaction){
             batch.setProjectionMatrix(interactionView.getStage().getCamera().combined);

@@ -12,7 +12,7 @@ import static com.crap.game.model.Game.Worlds.*;
 /**
  * Created by Lisa on 18/04/16.
  */
-public class GameController extends InputAdapter implements ApplicationListener {
+public class GameController extends InputAdapter {
 
     private WorldController worldController;
     private GameView view;
@@ -20,9 +20,7 @@ public class GameController extends InputAdapter implements ApplicationListener 
     private OrthographicCamera camera;
     private PlayerController playerController;
     private int keyCode;
-    private Position entrancePosition;
     private CharacterController characterController;
-    private CollisionController collisionController;
 
     public GameController(GameView view, Game game){
 
@@ -41,7 +39,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);
 
-        this.collisionController = new CollisionController(view.getWorld());
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
         this.characterController = new CharacterController(view);
         this.worldController = new WorldController(this.model, this.playerController, this.characterController, this.view);
@@ -93,7 +90,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
         if(playerController.isNewWorld()) {
             enterNewWorld();
         }
-
     }
 
     public void updateIfInteraction(){
@@ -104,8 +100,6 @@ public class GameController extends InputAdapter implements ApplicationListener 
         }
     }
 
-
-    @Override
     public void render() {
         updateIfNewWorld();
         updateIfInteraction();
@@ -120,20 +114,8 @@ public class GameController extends InputAdapter implements ApplicationListener 
         characterController.walkAway(playerController.getInteractionController().getInteractingCharacter(),
                 playerController.getInteractionController().getInteractingCharacterView());
     }
-
-    @Override
-    public void create() {}
-
-    @Override
-    public void resize(int width, int height) {}
-
-    @Override
-    public void pause() {}
-
-    @Override
-    public void resume() {}
-
-    @Override
-    public void dispose() {}
+    public void mascotCaught(Mascot caughtMascot){
+        model.mascotCaught(caughtMascot);
+    }
 }
 

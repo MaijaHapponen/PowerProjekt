@@ -3,7 +3,6 @@ package com.crap.game.controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
-import com.crap.game.model.Game;
 import com.crap.game.model.InteractHuman;
 import com.crap.game.model.State;
 import com.crap.game.view.InteractHumanView;

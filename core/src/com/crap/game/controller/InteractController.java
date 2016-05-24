@@ -4,9 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.crap.game.model.InteractMascot;
-import com.crap.game.model.InteractMascot;
 import com.crap.game.model.State;
-import com.crap.game.view.InteractMascotView;
 import com.crap.game.view.InteractMascotView;
 
 /**
@@ -22,8 +20,6 @@ public class InteractController extends InputAdapter {
         this.gameController = gameController;
         this.interactMascot = interactView.getInteractModel();
         this.interactMascotView = interactView;
-        //this.interactView.setInteractiveCharacter
-        //        = gameController.getPlayerController().getInteractionController().getInteractingCharacter();
         Gdx.input.setInputProcessor(this);
     }
 

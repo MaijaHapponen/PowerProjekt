@@ -3,7 +3,6 @@ package com.crap.game.controller;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.crap.game.model.*;
-import com.crap.game.model.Character;
 import com.crap.game.model.Game;
 import com.crap.game.view.GameView;
 
@@ -106,6 +105,16 @@ public class GameController extends InputAdapter implements ApplicationListener 
 
 
     @Override
+    public void create() {
+
+    }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
     public void render() {
         updateIfNewWorld();
         updateIfInteraction();
@@ -122,18 +131,18 @@ public class GameController extends InputAdapter implements ApplicationListener 
     }
 
     @Override
-    public void create() {}
+    public void pause() {
+
+    }
 
     @Override
-    public void resize(int width, int height) {}
+    public void resume() {
+
+    }
 
     @Override
-    public void pause() {}
+    public void dispose() {
 
-    @Override
-    public void resume() {}
-
-    @Override
-    public void dispose() {}
+    }
 }
 

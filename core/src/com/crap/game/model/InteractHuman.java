@@ -5,11 +5,9 @@ package com.crap.game.model;
  */
 public class InteractHuman {
 
-
     String [] options;
     String currentString;
     int currentStringNbr;
-
 
     public InteractHuman(String[] options, String s){
         this.options = options;
@@ -36,14 +34,11 @@ public class InteractHuman {
         currentString = options[currentStringNbr];
     }
 
-
     public String getCurrentString(){
         return this.currentString;
     }
     public int getCurrentStringNbr(){
         return this.currentStringNbr;
     }
-
-
 
 }

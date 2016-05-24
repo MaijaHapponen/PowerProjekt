@@ -2,7 +2,6 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.crap.game.model.InteractMascot;
 import com.crap.game.model.State;
 import com.crap.game.view.*;
 
@@ -16,10 +15,6 @@ public class StateController {
     public static GameController controller;
     public static com.crap.game.model.Game world;
     public static boolean gameMode = false;
-
-    // public static PlayerView playerView = new PlayerView();
-    // public static Interaction interaction = new Interaction(playerView.getPlayerSpriteWidth(), playerView.getPlayerSpriteHeight());
-
 
     //Game-class from libGDX, not our model
     public static Game game;
@@ -50,17 +45,20 @@ public class StateController {
             case INTERACT:
                 paused = true;
                 setGameMode(false);
+
                 if(controller.getPlayerController().isInteractionWithMascot()) {
                     InteractMascotView interactMascotView = new InteractMascotView(
                             controller.getPlayerController().getInteractionController().getInteractingCharacter());
                     new InteractMascotController(interactMascotView, controller);
                     game.setScreen(interactMascotView);
                 }
+
                 else if(controller.getPlayerController().isInteractionWithHuman()) {
                      InteractHumanView interactHumanView = new InteractHumanView();
                      new InteractHumanController(interactHumanView, controller);
                      game.setScreen(interactHumanView);
                  }
+
                 break;
 
             case GAMEOVER:
@@ -105,6 +103,5 @@ public class StateController {
     public GameController getController(){
         return controller;
     }
-
 
 }

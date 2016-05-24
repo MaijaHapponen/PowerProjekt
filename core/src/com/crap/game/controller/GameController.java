@@ -112,7 +112,7 @@ public class GameController extends InputAdapter {
             view.setInteraction(false);
         }
     }
-
+    
     public void render() {
         updateIfNewWorld();
         updateIfInteraction();
@@ -127,7 +127,6 @@ public class GameController extends InputAdapter {
         characterController.walkAway(playerController.getInteractionController().getInteractingCharacter(),
                 playerController.getInteractionController().getInteractingCharacterView());
     }
-
     public void mascotCaught(Mascot caughtMascot){
         model.mascotCaught(caughtMascot);
     }

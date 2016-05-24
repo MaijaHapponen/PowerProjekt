@@ -60,7 +60,6 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     public GameView(Game game){
 
-
         this.isStart = true;
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
         this.playerView = new PlayerView();
@@ -69,13 +68,10 @@ public class GameView extends ApplicationAdapter implements Screen{
 
         renderer = new OrthogonalTiledMapRenderer(world);
 
-
         this.playerView = new PlayerView();
         this.interactionView = new InteractionView();
         viewport = new FitViewport(WorldWidth, worldHeight, new OrthographicCamera());
 
-
-        setLabel("hörsalsvägen");
         create();
     }
 
@@ -121,8 +117,8 @@ public class GameView extends ApplicationAdapter implements Screen{
 
         batch.end();
 
+        progressView.drawStage();
         batch.setProjectionMatrix(progressView.getStage().getCamera().combined);
-        progressView.getStage().draw();
 
         if(isStart){
             setLabel("hörsalsvägen");

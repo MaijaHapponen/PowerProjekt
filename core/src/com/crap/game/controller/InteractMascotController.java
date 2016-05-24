@@ -40,8 +40,11 @@ public class InteractMascotController extends InputAdapter {
             if (interactMascot.isRightAnswer(interactingCharacter, interactMascot.getCurrentLabelNbr())) {
 
                 if(interactingCharacter instanceof Mascot){
-                    ((Mascot) interactingCharacter).catchMascot();
+                    Mascot caughtMascot = ((Mascot) interactingCharacter);
+                    caughtMascot.setCaught(true);
+                    gameController.mascotCaught(caughtMascot);
                 }
+                //TODO: Also remove view for mascot
             }
 
             interactMascotView.setHasAnswered();
@@ -57,4 +60,5 @@ public class InteractMascotController extends InputAdapter {
 
         return true;
     }
+
 }

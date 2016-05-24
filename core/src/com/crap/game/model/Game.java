@@ -65,6 +65,10 @@ public class Game {
         return false;
     }
 
+    public void mascotCaught(Mascot caughtMascot){
+        progress.mascotCaught(caughtMascot);
+    }
+
     public Progress getProgress() {
         return progress;
     }

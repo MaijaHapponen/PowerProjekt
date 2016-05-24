@@ -29,10 +29,9 @@ public class Mascot extends Character{
     }
 
     public void setCaught(boolean b){
-        isCaught = b;
+        this.isCaught = b;
     }
-
     public boolean isCaught(){
-        return this.isCaught;
+        return isCaught;
     }
 }

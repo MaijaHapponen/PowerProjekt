@@ -139,7 +139,6 @@ public class GameView extends ApplicationAdapter implements Screen{
         }
 
         if(newWorld){
-
             interactionView.getWelcomeLabel();
             batch.setProjectionMatrix(interactionView.getWelcomeStage().getCamera().combined);
             interactionView.getWelcomeStage().draw();

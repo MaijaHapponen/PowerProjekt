@@ -15,8 +15,7 @@ public class GameTest {
 
     @Test
     public void testIsGameOver(){
-        Main main = new Main();
-        Game game = new Game(main);
+        Game game = new Game();
         Progress progress = new Progress();
         Mascot mascot = new Mascot("Hej");
         progress.getMascotsInGame().add(mascot);

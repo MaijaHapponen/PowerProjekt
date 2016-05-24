@@ -26,12 +26,11 @@ public class InteractionView extends ScreenAdapter{
     private OrthographicCamera camera;
     private SpriteBatch batch;
 
-    private String worldName;
 
 
-    private Label talkLable = new Label(String.format("Press SPACE to talk"), new Label.LabelStyle(new BitmapFont(),
-            Color.WHITE));
 
+    private Label talkLable = new Label(String.format("Press SPACE to talk"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    private Label welcomeLabel;
 
 
     public InteractionView(){
@@ -42,6 +41,7 @@ public class InteractionView extends ScreenAdapter{
     }
 
     public void createInteraction(){
+        getWelcomeLabel();
         stage = new Stage(viewport, batch);
         table = new Table();
         table.top();
@@ -76,12 +76,20 @@ public class InteractionView extends ScreenAdapter{
     }
 
 
-    public void setWorldName(String name){
-        this.worldName = name;
+
+
+    public void setWelcomeLabel(String world){
+        if(world.equals("hubben")){
+            welcomeLabel = new Label(String.format("Welcome to Hubben 2.1"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        }if(world.equals("zaloonen")){
+            welcomeLabel = new Label(String.format("Welcome to Zaloonen"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        }else{
+            welcomeLabel = new Label(String.format("Welcome to Hörsalsvägen"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        }
     }
 
-    public void setWelcomeLabel(Label label){
-        this.welcomeLabel = label;
+    public Label getWelcomeLabel(){
+        return this.welcomeLabel;
     }
 
 

@@ -17,7 +17,7 @@ public class Questions {
 
         for (int i = 0; i < mascots.size(); i++) {
 
-            if (mascots.get(i).getName() == "kalleAnka") {
+            if (mascots.get(i).getName().equals("kalleAnka")) {
 
                 String kalleAnkaQuestion = "What is kalle ankas love interest called?";
                 List<String> kalleAnkaAlternatives = Arrays.asList("Kajsa", "Dorothy", "Mimmi", "Monica");
@@ -27,7 +27,7 @@ public class Questions {
                         new Question(kalleAnkaQuestion, kalleAnkaAlternatives, kalleAnkaRightAnswer));
             }
 
-            else if(mascots.get(i).getName() == "hackeHackspett") {
+            else if(mascots.get(i).getName().equals("hackeHackspett")) {
 
                 String hackeHackspettQuestion = "What is Hacke Hackspetts favorite color?";
                 List<String> hackeHackspettAlternatives = Arrays.asList("Red", "White", "Orange", "Green");
@@ -37,7 +37,7 @@ public class Questions {
                         new Question(hackeHackspettQuestion, hackeHackspettAlternatives, hackeHackspettRightAnswer));
             }
 
-            else if(mascots.get(i).getName() == "iTSmurfen") {
+            else if(mascots.get(i).getName().equals("iTSmurfen")) {
 
                 String iTSmurfenQuestion = "What does the shortening 'IT' stand for?";
                 List<String> iTSmurfenAlternatives =
@@ -48,7 +48,7 @@ public class Questions {
                         new Question(iTSmurfenQuestion, iTSmurfenAlternatives, iTSmurfenRightAnswer));
             }
 
-            else if(mascots.get(i).getName() == "luckyLuke") {
+            else if(mascots.get(i).getName().equals("luckyLuke")) {
 
                 String luckyLukeQuestion = "What is Lucky Lukes horse called?";
                 List<String> luckyLukeAlternatives =

@@ -41,7 +41,8 @@ public class InteractionController {
         for(int i=0; i< gameView.getMascotsList().size(); i++){
             CharacterView characterView = gameView.getMascotsList().get(i);
 
-            if(characterView.getCharacter().getWorld() == gameView.getGame().getCurrectWorld()) {
+            if(characterView.getCharacter().getWorld() == gameView.getGame().getCurrectWorld() &&
+                    !((Mascot) characterView.getCharacter()).isCaught()) {
                 if (interactionModel.isInteraction(characterView.getCharacter(), x, y)) {
                     if (!isInteracting) {
                         setInteractingCharacter(characterView.getCharacter(), characterView);

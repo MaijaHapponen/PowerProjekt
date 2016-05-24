@@ -15,7 +15,7 @@ public abstract class Character{
 
     public Character(String name){
         this.name = name;
-        this.position = new Position();
+        this.position = new Position(0,0);
     }
 
     public Character(String name, Position position){

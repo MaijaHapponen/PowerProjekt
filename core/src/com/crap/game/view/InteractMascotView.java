@@ -55,6 +55,10 @@ public class InteractMascotView extends ScreenAdapter {
         String question = getQuestion(interactionCharacter);
         java.util.List<String> alternatives = getAnswers(interactionCharacter);
 
+
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+
         parameter.size=20;
         titleFont = generator.generateFont(parameter);
 
@@ -150,5 +154,11 @@ public class InteractMascotView extends ScreenAdapter {
     public void resize(int width, int height) {
 
 
+    }
+    @Override
+    public void dispose(){
+        batch.dispose();
+        titleFont.dispose();
+        font.dispose();
     }
 }

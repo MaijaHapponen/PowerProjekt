@@ -1,5 +1,6 @@
 package com.crap.game.model;
 
+import javax.annotation.processing.SupportedSourceVersion;
 import java.util.ArrayList;
 
 /**
@@ -7,19 +8,12 @@ import java.util.ArrayList;
  */
 public class Progress {
 
-    private ArrayList<Mascot> mascotsInGame = new ArrayList<Mascot>(); //TODO borde denna listan vara här eller i någon annan klass istället? Måste fylla på den när man startar spelet.
+    private ArrayList<Mascot> mascotsInGame;
     private ArrayList<Mascot> mascotsCaught = new ArrayList<Mascot>();
-    ArrayList<String> nameOnBar;
-    private Mascot newMascotToBar;
+    private boolean newUpdate;
 
-    //Constructor
-    public Progress() {
-
-        nameOnBar = new ArrayList<String>();
-
-        //bara för att få progress att fungera
-       //Mascot mascot = new Mascot("characters/imp.png");
-        //mascotsCaught.add(mascot);
+    public Progress(ArrayList<Mascot> mascotsInGame) {
+        this.mascotsInGame = mascotsInGame;
     }
 
     //Method checking if all mascots has been caught by the player.
@@ -38,7 +32,7 @@ public class Progress {
             }
         }
         mascotsCaught.add(mascot);
-        newMascotToBar =  mascot;
+        setNewUpdate(true);
     }
 
     public ArrayList<Mascot> getMascotsCaught() {
@@ -49,16 +43,14 @@ public class Progress {
         return mascotsInGame;
     }
 
-
-    public ArrayList<String> getNameCharactersOnBar(){
-        for(int i = 0; i < mascotsCaught.size(); i++){
-             nameOnBar.add(mascotsCaught.get(i).getName());
-        }
-        return nameOnBar;
+    public void setMascotsInGame(ArrayList<Mascot> mascotsInGame){
+        this.mascotsInGame = mascotsInGame;
     }
 
-    public Mascot getNewMascotToBar(){
-        return this.newMascotToBar;
+    public boolean newUpdate(){
+        return this.newUpdate;
     }
-
+    public void setNewUpdate(boolean b){
+        newUpdate = b;
+    }
 }

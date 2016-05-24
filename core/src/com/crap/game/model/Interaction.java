@@ -8,12 +8,7 @@ public class Interaction {
     private float playerWidth;
     private float playerHeight;
 
-    private boolean interactionHuman;
-    private boolean interactionMascot;
-
-
     public Interaction(float playerWidth, float playerHeight) {
-
         this.collisionModel = new CollisionModel();
         this.playerWidth = playerWidth;
         this.playerHeight = playerHeight;

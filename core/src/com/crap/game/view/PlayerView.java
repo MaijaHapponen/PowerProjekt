@@ -32,25 +32,18 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     public final int NBR_OF_TEXTURE_IMAGES_HORIZONTALLY = 4;
     public final int NBR_OF_TEXTURE_IMAGES_VERTICALLY = 4;
 
-    public PlayerView(){
-        this.texture = new Texture(Gdx.files.internal("characters/kalleAnka.png"));
+    public void initPlayerView(){
+        this.texture = new Texture(Gdx.files.internal("characters/"+player.getName()+".png"));
         this.playerSprite = new Sprite(texture);
-        playerSprite.setPosition(0, 0);
-        //TODO not hardcode
-
         this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
                 this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
-    }
-    public PlayerView(int x, int y){
-        this.texture = new Texture(Gdx.files.internal("characters/imp.png"));
-        this.playerSprite = new Sprite(texture);
-        playerSprite.setPosition(x, y);
-        //TODO: fix the setPosition so it's not so complicated
     }
 
     public void setPlayer(Player player){
         this.player=player;
+        initPlayerView();
         player.setWidthAndHeight(getPlayerSpriteWidth(), getPlayerSpriteHeight());
+
     }
 
     @Override

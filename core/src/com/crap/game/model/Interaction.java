@@ -9,7 +9,6 @@ public class Interaction {
     private float playerHeight;
 
     public Interaction(float playerWidth, float playerHeight) {
-
         this.collisionModel = new CollisionModel();
         this.playerWidth = playerWidth;
         this.playerHeight = playerHeight;

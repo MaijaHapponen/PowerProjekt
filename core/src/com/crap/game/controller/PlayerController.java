@@ -19,6 +19,8 @@ public class PlayerController {
     private InteractionController interactionController;
     public MapObject newWorldObject;
 
+    private float pixelPerTile = 30;
+
     public PlayerController(PlayerView playerView, GameView gameView){
         this.playerView = playerView;
         this.player = playerView.getPlayer();
@@ -66,7 +68,7 @@ public class PlayerController {
 
         updateSprite();
         playerView.moveCamera(getPlayerPositionX(), getPlayerPositionY(),
-                gameView.getWorldHeight(), gameView.getWorldWidth());
+                gameView.getWorldHeight()+pixelPerTile, gameView.getWorldWidth()+pixelPerTile);
     }
 
     public void updateSprite() {

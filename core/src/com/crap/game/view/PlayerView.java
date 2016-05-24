@@ -22,7 +22,7 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     private Sprite playerSprite;
     private Texture texture;
     private OrthographicCamera camera;
-    private int halfOfScreen = 250;
+    private float halfOfScreen = 250;
     private float boarderLeft = halfOfScreen;
     private float boarderBottom = halfOfScreen;
     private GameAnimation gameAnimation = new GameAnimation();

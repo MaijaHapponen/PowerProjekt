@@ -8,27 +8,31 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.crap.game.model.Character;
+import com.crap.game.model.Human;
 import com.crap.game.model.InteractHuman;
+import com.crap.game.model.Mascot;
 
 /**
  * Created by rebeccafinne on 16-05-23.
  */
 public class InteractHumanView extends ScreenAdapter {
 
-    SpriteBatch batch;
-    BitmapFont title;
-    BitmapFont font;
-    BitmapFont information;
-    FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Candy Shop.ttf"));
-    FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+    private SpriteBatch batch;
+
+    private BitmapFont title;
+    private BitmapFont font;
+    private BitmapFont information;
+    private FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Candy Shop.ttf"));
+    private FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+
     private String chooseOption = "Hello! What do you want to know more about?";
     private String talkAboutProgramme = "Ask about programme";
     private String whereIsMascot = "Ask where mascot could be";
     private String exit = "Exit";
     private String back = "Press BACK SPACE to return to game";
 
-    private String inforamtionProgramme;
-    private String inforamtionMascot;
+    private Character interactionCharacter;
 
     private String [] options;
     private InteractHuman interactHuman;
@@ -37,8 +41,8 @@ public class InteractHumanView extends ScreenAdapter {
     private boolean isMascot;
 
 
-    public InteractHumanView(){
-
+    public InteractHumanView(Character interactionCharacter){
+        this.interactionCharacter = interactionCharacter;
         batch = new SpriteBatch();
         create();
     }
@@ -59,19 +63,13 @@ public class InteractHumanView extends ScreenAdapter {
 
         options = new String[]{talkAboutProgramme, whereIsMascot, exit};
         interactHuman = new InteractHuman(options, talkAboutProgramme);
-
-        inforamtionMascot = "Some information where mascot could be";
-        inforamtionProgramme = "Some informaiton about programme";
-
-        options = new String[]{talkAboutProgramme, whereIsMascot, exit};
-        interactHuman = new InteractHuman(options, talkAboutProgramme);
-
-        inforamtionMascot = "Some information where mascot could be";
-        inforamtionProgramme = "Some informaiton about programme";
     }
 
     @Override
     public void render(float delta) {
+
+        String informationProgramme = ((Human)interactionCharacter).saySomethingAboutProgramme();
+        String informationLocation = ((Human)interactionCharacter).saySomethingAboutLocation();
 
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -79,7 +77,9 @@ public class InteractHumanView extends ScreenAdapter {
         batch.begin();
 
         if(!isProgramme && !isMascot) {
+
             title.draw(batch, chooseOption, 30, 400);
+
             for (int i = 0; i < options.length; i++) {
                 if (interactHuman.getCurrentStringNbr() == i) {
                     font.setColor(Color.PINK);
@@ -91,16 +91,17 @@ public class InteractHumanView extends ScreenAdapter {
             }
         }
 
+
         else if(isProgramme) {
             font.setColor(Color.BLACK);
-            font.draw(batch, inforamtionProgramme, 60, 300);
-            font.draw(batch, back, 60, 250);
+            font.draw(batch, informationProgramme, 60, 300);
+            font.draw(batch, back, 60, 150);
         }
 
         else if(isMascot){
             font.setColor(Color.BLACK);
-            font.draw(batch, inforamtionMascot, 60, 300);
-            font.draw(batch, back, 60, 250);
+            font.draw(batch, informationLocation, 60, 300);
+            font.draw(batch, back, 60, 150);
         }
 
         batch.end();

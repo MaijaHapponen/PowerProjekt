@@ -54,7 +54,8 @@ public class StateController {
                 }
 
                 else if(controller.getPlayerController().isInteractionWithHuman()) {
-                     InteractHumanView interactHumanView = new InteractHumanView();
+                     InteractHumanView interactHumanView = new InteractHumanView(
+                             controller.getPlayerController().getInteractionController().getInteractingCharacter());
                      new InteractHumanController(interactHumanView, controller);
                      game.setScreen(interactHumanView);
                  }

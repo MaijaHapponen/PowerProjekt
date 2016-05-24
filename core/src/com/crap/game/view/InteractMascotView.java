@@ -134,7 +134,7 @@ public class InteractMascotView extends ScreenAdapter {
         if(!hasAnswered) {
 
             for(int i = 0; i < answers.length; i++) {
-                
+
                 if(interactMascot.getCurrentLabelNbr() == i) {
                     interactMascot.getCurrentLabel().setColor(Color.PINK);
                 }

@@ -27,7 +27,7 @@ public class WorldController {
     private int tempCollisionlayerwidth = 50;
 
     private float zaloonEntryX = 125;
-    private float zaloonEntryY = 15;
+    private float zaloonEntryY = 2;
 
     private float hubbenEntryX = 100;
     private float hubbenEntryY = 50;

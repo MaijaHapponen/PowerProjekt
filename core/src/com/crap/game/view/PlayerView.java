@@ -22,9 +22,9 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     private Sprite playerSprite;
     private Texture texture;
     private OrthographicCamera camera;
-    private float halfOfScreen = 250;
-    private float boarderLeft = halfOfScreen;
-    private float boarderBottom = halfOfScreen;
+
+    private float halfOfScreen = Gdx.graphics.getWidth()/2;
+
     private GameAnimation gameAnimation = new GameAnimation();
     private Animation animation;
     private AnimationState animationState = AnimationState.STANDING_FRONT;

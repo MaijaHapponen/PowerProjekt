@@ -27,7 +27,6 @@ public class GameView extends ApplicationAdapter implements Screen{
     private OrthographicCamera camera;
     private float elapsedTime;
 
-    private int pixelPerTile = 30;
     public static TiledMap world;
     private PlayerView playerView;
 

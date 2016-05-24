@@ -70,7 +70,7 @@ public class InteractMascotView extends ScreenAdapter {
         answerLabel1 = (alternatives.get(0));
         answerLabel2 = (alternatives.get(1));
         answerLabel3 = (alternatives.get(2));
-        answerLabel4 = (alternatives.get(2));
+        answerLabel4 = (alternatives.get(3));
 
 
         answers = new String[]{answerLabel1, answerLabel2, answerLabel3, answerLabel4};

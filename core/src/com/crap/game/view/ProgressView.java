@@ -1,18 +1,14 @@
 package com.crap.game.view;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -29,8 +25,9 @@ public class ProgressView extends ScreenAdapter {
     private Image progressBarImage;
     private Table table;
 
-    private int progressbarWidth = 500;
-    private int progressbarHeight = 500;
+
+    private int progressbarWidth = Gdx.graphics.getWidth();
+    private int progressbarHeight = Gdx.graphics.getHeight();
 
     private Viewport viewPort;
     private Stage stage;

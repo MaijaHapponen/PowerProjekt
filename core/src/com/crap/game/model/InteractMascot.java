@@ -1,73 +1,71 @@
 package com.crap.game.model;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-
 /**
  * Created by rebeccafinne on 16-05-20.
  */
 public class InteractMascot {
 
-    private Label currentLabel;
-    private int currentLabelNbr;
-    private Label[] labelsInScreen;
-    private Label questionLabel;
+    private String currentString;
+    private int currentStringNbr;
+    private String[] stringsInScreen;
+    private String questioString;
 
     private boolean caughtMascot;
 
-    public InteractMascot(Label[] labelsInScreen, Label questionLabel){
-        this.labelsInScreen = labelsInScreen;
-        this.questionLabel = questionLabel;
-        this.currentLabelNbr = 0;
-        this.currentLabel = labelsInScreen[currentLabelNbr];
+    public InteractMascot(String[] stringsInScreen, String questionString){
+        this.stringsInScreen = stringsInScreen;
+        this.questioString = questionString;
+        this.currentStringNbr = 0;
+        this.currentString = stringsInScreen[currentStringNbr];
     }
 
-    public void setCurrentLabel(String direction){
-        int amountOfLabels = getAmountOfLabels() - 1;
+    public void setCurrentString(String direction){
+        int amountOfStrings = getAmountOfStrings() - 1;
 
         if(direction.equals("down")){
-            if(currentLabelNbr == amountOfLabels){
-                currentLabelNbr = 0;
+            if(currentStringNbr == amountOfStrings){
+                currentStringNbr = 0;
             }
             else{
-                currentLabelNbr++ ;
+                currentStringNbr++ ;
             }
         }
         if(direction.equals("up")){
-            if(currentLabelNbr == 0){
-                currentLabelNbr = 3;
+            if(currentStringNbr == 0){
+                currentStringNbr = 3;
             }
             else {
-                currentLabelNbr--;
+                currentStringNbr--;
             }
         }
-        currentLabel = labelsInScreen[currentLabelNbr];
+        currentString = stringsInScreen[currentStringNbr];
     }
 
-    public Label getCurrentLabel(){
-        return this.currentLabel;
+    public String getCurrentStirng(){
+        return this.currentString;
     }
-    public void setQuestionLabel(Label label){
-        this.questionLabel = label;
-    }
-
-    public Label getQuestionLabel(){
-        return this.questionLabel;
-    }
-    public Label[] getLabelsInScreen(){
-        return this.labelsInScreen;
+    public void setQuestioString(String s){
+        this.questioString = s;
     }
 
-    public int getAmountOfLabels(){
-        return labelsInScreen.length;
+    public String getQuestioString(){
+        return this.questioString;
+    }
+    public String[] getStringsInScreen(){
+        return this.stringsInScreen;
     }
 
-    public int getCurrentLabelNbr(){
-        return this.currentLabelNbr;
+    public int getAmountOfStrings(){
+        return stringsInScreen.length;
     }
 
-    public boolean isRightAnswer(Character character, int chosenLabel){
+    public int getCurrentStringNbr(){
+        return this.currentStringNbr;
+    }
+
+    public boolean isRightAnswer(Character character, int chosenString){
         if(character instanceof Mascot){
-            if(chosenLabel == ((Mascot) character).getQuestion().getCorrectAnswer()){
+            if(chosenString == ((Mascot) character).getQuestion().getCorrectAnswer()){
                 return true;
             }
         }

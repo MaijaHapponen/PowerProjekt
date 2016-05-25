@@ -1,9 +1,12 @@
 package com.crap.game.controller;
 
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.crap.game.model.*;
 import com.crap.game.model.Game;
+import com.crap.game.model.GameStates;
+import com.crap.game.model.Mascot;
 import com.crap.game.view.GameView;
 
 import static com.crap.game.model.Game.Worlds.*;
@@ -139,6 +142,7 @@ public class GameController extends InputAdapter {
         characterController.walkAway(playerController.getInteractionController().getInteractingCharacter(),
                 playerController.getInteractionController().getInteractingCharacterView());
     }
+
     public void mascotCaught(Mascot caughtMascot){
         model.mascotCaught(caughtMascot);
     }

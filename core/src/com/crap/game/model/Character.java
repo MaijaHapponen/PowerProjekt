@@ -8,9 +8,6 @@ import java.util.Random;
  */
 public abstract class Character{
 
-    //TODO enum class
-    public enum Direction{UP, DOWN, LEFT, RIGHT, NO_DIRECTION}
-
     private String name;
     protected Position position;
 
@@ -18,8 +15,8 @@ public abstract class Character{
     private float height;
     private Game.Worlds world;
 
-    private Character.Direction walkAwayDirection;
-    private Character.Direction lastDirection;
+    private Direction walkAwayDirection;
+    private Direction lastDirection;
 
     private float speed;
 
@@ -45,32 +42,32 @@ public abstract class Character{
         int i = rand.nextInt(4);
         switch (i){
             case 0:
-                if(lastDirection != Character.Direction.DOWN) {
-                    walkAwayDirection = Character.Direction.UP;
+                if(lastDirection != Direction.DOWN) {
+                    walkAwayDirection = Direction.UP;
                 }
                 else{
                     decideNewDirection();
                 }
                 break;
             case 1:
-                if(lastDirection != Character.Direction.UP) {
-                    walkAwayDirection = Character.Direction.DOWN;
+                if(lastDirection != Direction.UP) {
+                    walkAwayDirection = Direction.DOWN;
                 }
                 else{
                     decideNewDirection();
                 }
                 break;
             case 2:
-                if(lastDirection != Character.Direction.RIGHT) {
-                    walkAwayDirection = Character.Direction.LEFT;
+                if(lastDirection != Direction.RIGHT) {
+                    walkAwayDirection = Direction.LEFT;
                 }
                 else{
                     decideNewDirection();
                 }
                 break;
             case 3:
-                if(lastDirection != Character.Direction.LEFT) {
-                    walkAwayDirection = Character.Direction.RIGHT;
+                if(lastDirection != Direction.LEFT) {
+                    walkAwayDirection = Direction.RIGHT;
                 }
                 else{
                     decideNewDirection();

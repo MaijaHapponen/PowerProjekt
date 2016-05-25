@@ -4,6 +4,7 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.crap.game.model.AnimationState;
 import com.crap.game.model.Character;
 
 import static com.crap.game.model.Constants.*;
@@ -19,7 +20,7 @@ public class CharacterView extends ScreenAdapter {
     private Texture texture;
     private GameAnimation gameAnimation = new GameAnimation();
     private Animation animation;
-    private PlayerView.AnimationState animationState = PlayerView.AnimationState.STANDING_FRONT;
+    private AnimationState animationState = AnimationState.STANDING_FRONT;
 
     public CharacterView(Character character){
         this.character = character;
@@ -67,7 +68,7 @@ public class CharacterView extends ScreenAdapter {
                 this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
     }
 
-    public void setAnimationState(PlayerView.AnimationState animationState){
+    public void setAnimationState(AnimationState animationState){
         this.animationState = animationState;
     }
 

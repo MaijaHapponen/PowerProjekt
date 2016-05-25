@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.crap.game.model.AnimationState;
 import com.crap.game.model.Player;
 import com.crap.game.model.Position;
 
@@ -16,10 +17,6 @@ import static com.crap.game.model.Constants.*;
  * Created by Maija on 2016-05-02.
  */
 public class PlayerView extends ApplicationAdapter implements Screen{
-
-    //TODO enum class
-    public enum AnimationState{WALKING_FRONT, WALKING_BACK, WALKING_RIGHT, WALKING_LEFT, STANDING_FRONT,
-        STANDING_BACK, STANDING_RIGHT, STANDING_LEFT}
 
     private Player player;
     private Sprite playerSprite;

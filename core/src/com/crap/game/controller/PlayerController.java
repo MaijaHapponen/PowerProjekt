@@ -2,11 +2,12 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.MapObject;
-import com.crap.game.model.CollisionModel;
 import com.crap.game.model.Player;
 import com.crap.game.model.Position;
 import com.crap.game.view.GameView;
 import com.crap.game.view.PlayerView;
+
+import static com.crap.game.model.Constants.pixelPerTile;
 
 /**
  * Created by rebeccafinne on 2016-04-30.
@@ -67,7 +68,7 @@ public class PlayerController {
 
         updateSprite();
         playerView.moveCamera(getPlayer().getPosition().getX(), getPlayer().getPosition().getY(),
-                gameView.getWorldHeight()+ gameView.getTileHeight(), gameView.getWorldWidth()+gameView.getTileWidth());
+                gameView.getWorldHeight()+ pixelPerTile, gameView.getWorldWidth()+pixelPerTile);
 
     }
 

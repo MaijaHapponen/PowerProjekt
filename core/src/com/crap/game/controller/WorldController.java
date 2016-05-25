@@ -61,7 +61,7 @@ public class WorldController {
                 break;
 
             case ZALOONEN:
-                model. setEntrance(x,y);
+                model.setEntrance(x,y);
                 model.enterZaloonen();
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();

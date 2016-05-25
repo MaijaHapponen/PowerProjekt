@@ -17,6 +17,8 @@ import com.crap.game.model.*;
 
 import java.util.ArrayList;
 
+import static com.crap.game.model.Constants.pixelPerTile;
+
 /**
  * Created by Maija on 2016-04-21.
  */
@@ -26,7 +28,6 @@ public class GameView extends ApplicationAdapter implements Screen{
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
     private float elapsedTime;
-    private int pixelPerTile = 30;
 
     public static TiledMap world;
     private PlayerView playerView;
@@ -158,8 +159,6 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     @Override
     public void resize(int width, int height) {
-
-
     }
 
     @Override
@@ -225,10 +224,6 @@ public class GameView extends ApplicationAdapter implements Screen{
         this.renderer = new OrthogonalTiledMapRenderer(this.world);
     }
 
-    public void setCamera(OrthographicCamera camera) {
-        playerView.setCamera(camera);
-    }
-
     public PlayerView getPlayerView(){
         return this.playerView;
     }
@@ -240,17 +235,6 @@ public class GameView extends ApplicationAdapter implements Screen{
     public float getWorldHeight(){
         return this.world.getProperties().get("height", Integer.class)*pixelPerTile;
     }
-
-    public float getTileHeight(){
-        return this.pixelPerTile;
-        //return this.world.getProperties().get("tilewidth", Integer.class);
-    }
-
-    public float getTileWidth() {
-        return this.pixelPerTile;
-        //return this.world.getProperties().get("tileheight", Integer.class);
-    }
-
 
     public TiledMap getWorld() {
         return this.world;
@@ -269,6 +253,4 @@ public class GameView extends ApplicationAdapter implements Screen{
             interactionView.setWelcomeLabel("hörsalsvägen");
         }
     }
-
-
 }

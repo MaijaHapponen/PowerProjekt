@@ -6,6 +6,7 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.crap.game.model.CollisionModel;
+import com.crap.game.model.TileType;
 
 import java.util.Iterator;
 
@@ -64,17 +65,17 @@ public class CollisionController {
 
     public void updateTileValues(float x, float y){
         if(isMapObjectHit(collisionObjects.iterator(), x, y)){
-            collisionModel.setTypeOfTile(CollisionModel.tileType.SOLID_TILE);
+            collisionModel.setTypeOfTile(TileType.SOLID_TILE);
         }
         else if(isMapObjectHit(slowObjects.iterator(), x, y)) {
-            collisionModel.setTypeOfTile(CollisionModel.tileType.SLOWER_TILE);
+            collisionModel.setTypeOfTile(TileType.SLOWER_TILE);
         }
         else{
-            collisionModel.setTypeOfTile(CollisionModel.tileType.WALKABLE_TILE);
+            collisionModel.setTypeOfTile(TileType.WALKABLE_TILE);
         }
 
         if(isMapObjectHit(newWorldObjects.iterator(), x, y)) {
-            collisionModel.setTypeOfTile(CollisionModel.tileType.NEW_WORLD);
+            collisionModel.setTypeOfTile(TileType.NEW_WORLD);
             newWorldName = newWorldObject.getName();
         }
     }

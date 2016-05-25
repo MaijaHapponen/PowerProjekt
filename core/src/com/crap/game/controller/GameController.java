@@ -37,7 +37,7 @@ public class GameController extends InputAdapter {
         game.setStartPositionPlayer(width/2, height/2);
 
         this.view.setPlayer(this.model.player);
-        this.view.setCamera(this.camera);
+        this.view.getPlayerView().setCamera(this.camera);
 
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);

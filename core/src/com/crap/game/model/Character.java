@@ -1,19 +1,20 @@
 package com.crap.game.model;
 
+import static com.crap.game.model.Constants.*;
+
 /**
  * Created by Lisa on 25/04/16.
  */
 public abstract class Character{
+
     private String name;
     protected Position position;
+
     private float width;
     private float height;
     private Game.Worlds world;
 
     private float speed;
-
-    private float normalSpeed = 2;
-    private float slowerSpeed = 1;
 
     public Character(){
         this.position = new Position();

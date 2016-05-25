@@ -25,19 +25,10 @@ public class InteractHumanView extends ScreenAdapter {
     private FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Candy Shop.ttf"));
     private FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
-    private String talkAboutProgramme = "Ask about programme";
-    private String whereIsMascot = "Ask where mascot could be";
-    private String exit = "Exit";
-    private String back = "Press BACK SPACE to return to game";
-
     private Character interactionCharacter;
 
     private String [] options;
     private InteractHuman interactHuman;
-
-    private boolean isProgramme;
-    private boolean isMascot;
-
 
     public InteractHumanView(Character interactionCharacter){
         this.interactionCharacter = interactionCharacter;
@@ -59,8 +50,9 @@ public class InteractHumanView extends ScreenAdapter {
 
         generator.dispose();
 
-        options = new String[]{talkAboutProgramme, whereIsMascot, exit};
-        interactHuman = new InteractHuman(options, talkAboutProgramme);
+        options = new String[]{interactHuman.getTalkAboutProgramme(),
+                interactHuman.getWhereIsMascot(), interactHuman.getExit()};
+        interactHuman = new InteractHuman(options, interactHuman.getTalkAboutProgramme());
     }
 
     @Override
@@ -75,7 +67,7 @@ public class InteractHumanView extends ScreenAdapter {
 
         batch.begin();
 
-        if(!isProgramme && !isMascot) {
+        if(!interactHuman.getIsProgramme() && !interactHuman.getIsMascot()) {
 
             title.draw(batch, informationGreeting, 30, 400);
 
@@ -91,51 +83,22 @@ public class InteractHumanView extends ScreenAdapter {
         }
 
 
-        else if(isProgramme) {
+        else if(interactHuman.getIsProgramme()) {
             font.setColor(Color.BLACK);
             font.draw(batch, informationProgramme, 60, 300);
-            font.draw(batch, back, 60, 150);
+            font.draw(batch, interactHuman.getBack(), 60, 150);
         }
 
-        else if(isMascot){
+        else if(interactHuman.getIsMascot()){
             font.setColor(Color.BLACK);
             font.draw(batch, informationLocation, 60, 300);
-            font.draw(batch, back, 60, 150);
+            font.draw(batch, interactHuman.getBack(), 60, 150);
         }
 
         batch.end();
     }
 
-    public String getTalkAboutProgramme(){
-        return this.talkAboutProgramme;
-    }
-
-    public String getWhereIsMascot(){
-        return this.whereIsMascot;
-    }
-
-    public String getExit(){
-        return this.exit;
-    }
-
     public InteractHuman getInteractHuman(){
         return this.interactHuman;
     }
-
-    public void setIsMascot(boolean b){
-        this.isMascot = b;
-    }
-
-    public boolean getIsMascot(){
-        return this.isMascot;
-    }
-
-    public void setIsProgramme(boolean b){
-        this.isProgramme = b;
-    }
-
-    public boolean getIsProgramme(){
-        return this.isProgramme;
-    }
-
 }

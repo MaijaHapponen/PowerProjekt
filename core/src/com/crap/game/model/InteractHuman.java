@@ -9,6 +9,16 @@ public class InteractHuman {
     String currentString;
     int currentStringNbr;
 
+    private boolean isProgramme;
+    private boolean isMascot;
+
+
+    private String talkAboutProgramme = "Ask about programme";
+    private String whereIsMascot = "Ask where mascot could be";
+
+    private String back = "Press BACK SPACE to return to game";
+    private String exit = "Exit";
+
     public InteractHuman(String[] options, String s){
         this.options = options;
         this.currentString = s;
@@ -39,6 +49,39 @@ public class InteractHuman {
     }
     public int getCurrentStringNbr(){
         return this.currentStringNbr;
+    }
+
+
+    public String getTalkAboutProgramme(){
+        return this.talkAboutProgramme;
+    }
+
+    public String getWhereIsMascot(){
+        return this.whereIsMascot;
+    }
+
+    public void setIsMascot(boolean b){
+        this.isMascot = b;
+    }
+
+    public boolean getIsMascot(){
+        return this.isMascot;
+    }
+
+    public void setIsProgramme(boolean b){
+        this.isProgramme = b;
+    }
+
+    public boolean getIsProgramme(){
+        return this.isProgramme;
+    }
+
+    public String getBack(){
+        return this.back;
+    }
+
+    public String getExit(){
+        return this.exit;
     }
 
 }

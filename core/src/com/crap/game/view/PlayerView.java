@@ -17,6 +17,7 @@ import static com.crap.game.model.Constants.*;
  */
 public class PlayerView extends ApplicationAdapter implements Screen{
 
+    //Move to a model enum
     public enum AnimationState{WALKING_FRONT, WALKING_BACK, WALKING_RIGHT, WALKING_LEFT, STANDING_FRONT,
         STANDING_BACK, STANDING_RIGHT, STANDING_LEFT}
 

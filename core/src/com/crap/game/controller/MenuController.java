@@ -44,6 +44,7 @@ public class MenuController extends InputAdapter{
         return true;
     }
 
+    //TODO: Remove
     public void changeScreen(){
         if(menuModel.getCurrentItem().equals("Play the game")){
             StateController.updateState(GameStates.PLAY);

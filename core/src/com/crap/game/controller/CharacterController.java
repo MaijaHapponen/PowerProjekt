@@ -5,11 +5,7 @@ import com.crap.game.view.CharacterView;
 import com.crap.game.view.GameView;
 import com.crap.game.view.PlayerView;
 
-import java.util.Random;
-
 public class CharacterController{
-
-    public enum Direction{UP, DOWN, LEFT, RIGHT}
 
     private GameView gameView;
     private Character character;
@@ -17,8 +13,6 @@ public class CharacterController{
     private CollisionController collisionController;
     private int walkAwayLength = 60;
     private int walkAwayState = walkAwayLength;
-    private Direction walkAwayDirection;
-    private Direction lastDirection;
     private InteractionController interactionController;
 
     public CharacterController(GameView view){
@@ -42,7 +36,7 @@ public class CharacterController{
         }
     }
 
-    public void move(Direction direction){
+    public void move(Character.Direction direction){
         float movement = character.getSpeed()*2;
 
         switch (direction){
@@ -51,8 +45,8 @@ public class CharacterController{
                     this.moveUp();
                 }
                 else{
-                    lastDirection = walkAwayDirection;
-                    walkAwayDirection = null;
+                    character.setLastDirection(character.getWalkAwayDirection());
+                    character.setWalkAwayDirection(null);
                 }
                 break;
             case DOWN:
@@ -60,8 +54,8 @@ public class CharacterController{
                     this.moveDown();
                 }
                 else{
-                    lastDirection = walkAwayDirection;
-                    walkAwayDirection = null;
+                    character.setLastDirection(character.getWalkAwayDirection());
+                    character.setWalkAwayDirection(null);
                 }
                 break;
             case LEFT:
@@ -69,8 +63,8 @@ public class CharacterController{
                     this.moveLeft();
                 }
                 else{
-                    lastDirection = walkAwayDirection;
-                    walkAwayDirection = null;
+                    character.setLastDirection(character.getWalkAwayDirection());
+                    character.setWalkAwayDirection(null);
                 }
                 break;
             case RIGHT:
@@ -78,8 +72,8 @@ public class CharacterController{
                     this.moveRight();
                 }
                 else{
-                    lastDirection = walkAwayDirection;
-                    walkAwayDirection = null;
+                    character.setLastDirection(character.getWalkAwayDirection());
+                    character.setWalkAwayDirection(null);
                 }
                 break;
         }
@@ -153,48 +147,8 @@ public class CharacterController{
         return true;
     }
 
-    //TODO flytta
-    public void decideNewDirection(){
-        Random rand = new Random();
-        int i = rand.nextInt(4);
-        switch (i){
-            case 0:
-                if(lastDirection != Direction.DOWN) {
-                    walkAwayDirection = Direction.UP;
-                }
-                else{
-                    decideNewDirection();
-                }
-                break;
-            case 1:
-                if(lastDirection != Direction.UP) {
-                    walkAwayDirection = Direction.DOWN;
-                }
-                else{
-                    decideNewDirection();
-                }
-                break;
-            case 2:
-                if(lastDirection != Direction.RIGHT) {
-                    walkAwayDirection = Direction.LEFT;
-                }
-                else{
-                    decideNewDirection();
-                }
-                break;
-            case 3:
-                if(lastDirection != Direction.LEFT) {
-                    walkAwayDirection = Direction.RIGHT;
-                }
-                else{
-                    decideNewDirection();
-                }
-                break;
-        }
-    }
-
     public void stopWalkingAnimation(){
-        switch (walkAwayDirection){
+        switch (character.getWalkAwayDirection()){
             case UP:
                 this.characterView.setAnimationState(PlayerView.AnimationState.STANDING_BACK);
                 this.characterView.updateAnimation();
@@ -218,16 +172,16 @@ public class CharacterController{
     //TODO flytta
     public void walkAwayOneStep(){
         if(walkAwayState == walkAwayLength/3 || walkAwayState == (walkAwayLength/3)*2){
-            lastDirection = walkAwayDirection;
-            walkAwayDirection = null;
+            character.setLastDirection(character.getWalkAwayDirection());
+            character.setWalkAwayDirection(null);
         }
 
-        if (walkAwayDirection == null){
-            decideNewDirection();
+        if (character.getWalkAwayDirection() == null){
+            character.decideNewDirection();
         }
-        this.move(walkAwayDirection);
+        this.move(character.getWalkAwayDirection());
 
-        if(walkAwayState == walkAwayLength-1 && !(walkAwayDirection==null)){
+        if(walkAwayState == walkAwayLength-1 && !(character.getWalkAwayDirection()==null)){
             stopWalkingAnimation();
         }
 

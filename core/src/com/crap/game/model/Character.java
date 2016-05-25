@@ -1,11 +1,14 @@
 package com.crap.game.model;
 
 import static com.crap.game.model.Constants.*;
+import java.util.Random;
 
 /**
  * Created by Lisa on 25/04/16.
  */
 public abstract class Character{
+
+    public enum Direction{UP, DOWN, LEFT, RIGHT, NO_DIRECTION}
 
     private String name;
     protected Position position;
@@ -13,6 +16,9 @@ public abstract class Character{
     private float width;
     private float height;
     private Game.Worlds world;
+
+    private Character.Direction walkAwayDirection;
+    private Character.Direction lastDirection;
 
     private float speed;
 
@@ -33,9 +39,100 @@ public abstract class Character{
         this.world = world;
     }
 
+    public void decideNewDirection(){
+        Random rand = new Random();
+        int i = rand.nextInt(4);
+        switch (i){
+            case 0:
+                if(lastDirection != Character.Direction.DOWN) {
+                    walkAwayDirection = Character.Direction.UP;
+                }
+                else{
+                    decideNewDirection();
+                }
+                break;
+            case 1:
+                if(lastDirection != Character.Direction.UP) {
+                    walkAwayDirection = Character.Direction.DOWN;
+                }
+                else{
+                    decideNewDirection();
+                }
+                break;
+            case 2:
+                if(lastDirection != Character.Direction.RIGHT) {
+                    walkAwayDirection = Character.Direction.LEFT;
+                }
+                else{
+                    decideNewDirection();
+                }
+                break;
+            case 3:
+                if(lastDirection != Character.Direction.LEFT) {
+                    walkAwayDirection = Character.Direction.RIGHT;
+                }
+                else{
+                    decideNewDirection();
+                }
+                break;
+        }
+    }
+
+    public float getX(){
+        return getPosition().getX();
+    }
+
+    public float getY(){
+        return getPosition().getY();
+    }
+
+    public void moveUp(){
+        getPosition().setPosition(getX(),getY()+2);
+    }
+
+    public void moveDown(){
+        getPosition().setPosition(getX(),getY()-2);
+    }
+
+    public void moveLeft(){
+        getPosition().setPosition(getX()-2,getY());
+    }
+
+    public void moveRight(){
+        getPosition().setPosition(getX()+2,getY());
+    }
+
+    public void updateDirections(){
+        lastDirection = walkAwayDirection;
+        walkAwayDirection = Direction.NO_DIRECTION;
+    }
+
+    public void changeDirection(int walkAwayLength, int walkAwayState){
+        if(walkAwayState == walkAwayLength/3 || walkAwayState ==
+                (walkAwayLength/3)*2){
+            this.lastDirection = this.walkAwayDirection;
+            this.walkAwayDirection = Direction.NO_DIRECTION;
+        }
+        if (this.walkAwayDirection == null || this.walkAwayDirection == Direction.NO_DIRECTION){
+            decideNewDirection();
+        }
+    }
+
     public void setWidthAndHeight(float width, float height){
         this.width=width;
         this.height=height;
+    }
+
+    public Direction getWalkAwayDirection(){
+        return  this.walkAwayDirection;
+    }
+
+    public void setWalkAwayDirection(Direction direction){
+        this.walkAwayDirection = direction;
+    }
+
+    public void setLastDirection(Direction direction){
+        this.lastDirection = direction;
     }
 
     public float getWidth(){

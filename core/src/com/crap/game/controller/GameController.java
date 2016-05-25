@@ -62,11 +62,6 @@ public class GameController extends InputAdapter {
         return true;
     }
 
-    public void movePlayer(int keycode){
-        this.keyCode = keycode;
-        playerController.movePlayer(keyCode);
-    }
-
     public void enterNewWorld() {
         if(playerController.getCollisionController().getNewWorldName().equals("hubbeneditsand")) {
             view.setLabel("hörsalsvägen");
@@ -133,7 +128,7 @@ public class GameController extends InputAdapter {
         updateIfInteraction();
 
         if(Gdx.input.isKeyPressed(keyCode)) {
-            movePlayer(keyCode);
+            playerController.movePlayer(keyCode);
         }
         else {
             playerController.stopWalkingAnimation(keyCode);

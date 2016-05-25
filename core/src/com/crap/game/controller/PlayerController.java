@@ -29,13 +29,13 @@ public class PlayerController {
         this.newWorldObject = collisionController.getNewWorldObject();
     }
 
+    public Player getPlayer(){
+        return this.player;
+    }
+
     public void updateCollisionController(){
         this.collisionController = new CollisionController(gameView.getWorld());
         collisionController.setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
-    }
-
-    public Player getPlayer(){
-        return this.player;
     }
 
     public void movePlayer(int keycode) {
@@ -67,13 +67,13 @@ public class PlayerController {
         }
 
         updateSprite();
-        playerView.moveCamera(getPlayer().getPosition().getX(), getPlayer().getPosition().getY(),
+        playerView.moveCamera(player.getPosition().getX(), player.getPosition().getY(),
                 gameView.getWorldHeight()+ pixelPerTile, gameView.getWorldWidth()+pixelPerTile);
 
     }
 
     public void updateSprite() {
-        playerView.getSprite().setPosition(getPlayer().getPosition().getX(), getPlayer().getPosition().getY());
+        playerView.getSprite().setPosition(player.getPosition().getX(), player.getPosition().getY());
     }
 
     public boolean checkIfCollision(Position p){
@@ -112,7 +112,7 @@ public class PlayerController {
 
 
     public void updateSpeed(){
-        if(collisionController.isSlowerTerrain(getPlayer().getPosition().getX(), getPlayer().getPosition().getY())){
+        if(collisionController.isSlowerTerrain(player.getPosition().getX(), player.getPosition().getY())){
             player.setSlowerSpeed();
         }
         else{

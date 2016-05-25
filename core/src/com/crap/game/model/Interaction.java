@@ -8,6 +8,8 @@ public class Interaction {
     private float otherCharacterWidth;
     private float otherCharacterHeight;
 
+    private static boolean isInteracting = false;
+
     public Interaction(float playerWidth, float playerHeight) {
         this.collisionModel = new CollisionModel();
         this.otherCharacterWidth = playerWidth;
@@ -49,6 +51,12 @@ public class Interaction {
         return collisionModel.checkIfCollide(x, y, width, halfHeight, thisX, thisY);
     }
 
+    public void setIsInteracting(boolean state){
+        isInteracting = state;
+    }
 
+    public boolean getIsInteracting(){
+        return this.isInteracting;
+    }
 
 }

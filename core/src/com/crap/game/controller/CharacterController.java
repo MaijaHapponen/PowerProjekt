@@ -150,7 +150,7 @@ public class CharacterController{
 
     public void walkAway(Character character, CharacterView characterView){
         if(walkAwayState<walkAwayLength){
-            interactionController.setIsInteracting(true);
+            interactionController.getInteractionModel().setIsInteracting(true);
             interactsWith(character, characterView);
             walkAwayOneStep();
         }
@@ -224,7 +224,7 @@ public class CharacterController{
                 this.characterView.updateAnimation();
                 break;
         }
-        interactionController.setIsInteracting(false);
+        interactionController.getInteractionModel().setIsInteracting(false);
     }
 
     public void walkAwayOneStep(){

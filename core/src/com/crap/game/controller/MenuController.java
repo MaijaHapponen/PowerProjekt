@@ -4,8 +4,8 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
-import com.crap.game.model.Menu;
 import com.crap.game.model.GameStates;
+import com.crap.game.model.Menu;
 import com.crap.game.view.MenuView;
 
 /**

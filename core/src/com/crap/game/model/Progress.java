@@ -7,12 +7,16 @@ import java.util.ArrayList;
  */
 public class Progress {
 
+    private ArrayList<Mascot> allMascots = new ArrayList<Mascot>();
     private ArrayList<Mascot> mascotsInGame;
     private ArrayList<Mascot> mascotsCaught = new ArrayList<Mascot>();
     private boolean newUpdate;
 
-    public Progress(ArrayList<Mascot> mascotsInGame) {
-        this.mascotsInGame = mascotsInGame;
+    public Progress(ArrayList<Mascot> mascots) {
+        for(int i=0; i<mascots.size(); i++){
+            allMascots.add(mascots.get(i));
+        }
+        this.mascotsInGame = mascots;
     }
 
     //Method checking if all mascots has been caught by the player.
@@ -51,5 +55,12 @@ public class Progress {
     }
     public void setNewUpdate(boolean b){
         newUpdate = b;
+    }
+
+    public void resetProgress(){
+        for(int i=0; i<allMascots.size(); i++){
+            mascotsInGame.add(allMascots.get(i));
+        }
+        mascotsCaught.clear();
     }
 }

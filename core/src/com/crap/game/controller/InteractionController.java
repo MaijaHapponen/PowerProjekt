@@ -1,7 +1,6 @@
 package com.crap.game.controller;
 
 import com.crap.game.model.Character;
-import com.crap.game.model.InteractMascot;
 import com.crap.game.model.Interaction;
 import com.crap.game.model.Mascot;
 import com.crap.game.view.CharacterView;

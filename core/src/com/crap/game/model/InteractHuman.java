@@ -12,13 +12,6 @@ public class InteractHuman {
     private boolean isProgramme;
     private boolean isMascot;
 
-
-    private String talkAboutProgramme = "Ask about programme";
-    private String whereIsMascot = "Ask where mascot could be";
-
-    private String back = "Press BACK SPACE to return to game";
-    private String exit = "Exit";
-
     public InteractHuman(String[] options, String s){
         this.options = options;
         this.currentString = s;
@@ -28,13 +21,13 @@ public class InteractHuman {
     public void setCurrentString(String direction){
         int amoutOfStrings = options.length - 1;
 
-        if(direction.equals("nextStepDown")){
+        if(direction.equals("down")){
             if(currentStringNbr == amoutOfStrings){
                 currentStringNbr = 0;
             }else{
                 currentStringNbr ++;
             }
-        }if(direction.equals("nextStepUp")){
+        }if(direction.equals("up")){
             if(currentStringNbr == 0){
                 currentStringNbr = 3;
             }else{
@@ -51,15 +44,6 @@ public class InteractHuman {
         return this.currentStringNbr;
     }
 
-
-    public String getTalkAboutProgramme(){
-        return this.talkAboutProgramme;
-    }
-
-    public String getWhereIsMascot(){
-        return this.whereIsMascot;
-    }
-
     public void setIsMascot(boolean b){
         this.isMascot = b;
     }
@@ -74,14 +58,6 @@ public class InteractHuman {
 
     public boolean getIsProgramme(){
         return this.isProgramme;
-    }
-
-    public String getBack(){
-        return this.back;
-    }
-
-    public String getExit(){
-        return this.exit;
     }
 
 }

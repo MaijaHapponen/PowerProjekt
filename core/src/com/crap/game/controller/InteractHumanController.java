@@ -1,11 +1,11 @@
 package com.crap.game.controller;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputAdapter;
-import com.crap.game.model.GameStates;
-import com.crap.game.model.InteractHuman;
-import com.crap.game.view.InteractHumanView;
+        import com.badlogic.gdx.Gdx;
+        import com.badlogic.gdx.Input;
+        import com.badlogic.gdx.InputAdapter;
+        import com.crap.game.model.GameStates;
+        import com.crap.game.model.InteractHuman;
+        import com.crap.game.view.InteractHumanView;
 
 /**
  * Created by rebeccafinne on 16-05-23.
@@ -29,21 +29,21 @@ public class InteractHumanController extends InputAdapter {
         }
 
         if(keyCode == Input.Keys.DOWN){
-            interactHuman.setCurrentString("nextStepDown");
+            interactHuman.setCurrentString("down");
         }
 
         if(keyCode == Input.Keys.UP){
-            interactHuman.setCurrentString("nextStepUp");
+            interactHuman.setCurrentString("up");
         }
 
         if(keyCode == Input.Keys.ENTER){
-            if(interactHuman.getCurrentString().equals(interactHuman.getTalkAboutProgramme())){
+            if(interactHuman.getCurrentString().equals(interactHumanView.getTalkAboutProgramme())){
                 interactHuman.setIsProgramme(true);
             }
-            else if(interactHuman.getCurrentString().equals(interactHuman.getWhereIsMascot())){
+            else if(interactHuman.getCurrentString().equals(interactHumanView.getWhereIsMascot())){
                 interactHuman.setIsMascot(true);
             }
-            else if(interactHuman.getCurrentString().equals(interactHuman.getExit())){
+            else if(interactHuman.getCurrentString().equals(interactHumanView.getExit())){
                 StateController.updateState(GameStates.PLAY);
             }
         }

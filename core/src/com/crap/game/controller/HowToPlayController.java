@@ -4,12 +4,13 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.crap.game.model.GameStates;
 import com.crap.game.view.HowToPlayView;
 
 /**
  * Created by rebeccafinne on 2016-05-17.
  */
-public class HowToPlayController extends InputAdapter implements ApplicationListener{
+public class HowToPlayController extends InputAdapter {
 
     private HowToPlayView howToPlayView;
 
@@ -19,42 +20,11 @@ public class HowToPlayController extends InputAdapter implements ApplicationList
     }
 
     public boolean keyDown(int keycode){
-        if(keycode == Input.Keys.ENTER){
-            howToPlayView.setGame();
-
-        }if(keycode == Input.Keys.BACKSPACE){
-            howToPlayView.setMenu();
+        if(keycode == Input.Keys.BACKSPACE){
+            StateController.updateState(GameStates.STARTMENU);
+            howToPlayView.dispose();
         }
         return true;
     }
 
-    @Override
-    public void create() {
-
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void render() {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void dispose() {
-
-    }
 }

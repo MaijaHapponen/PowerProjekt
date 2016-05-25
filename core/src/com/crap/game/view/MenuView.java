@@ -80,23 +80,8 @@ public class MenuView extends ScreenAdapter{
         }
         batch.end();
     }
-    public void setScreen(){
-        if(menuModel.getCurrentItem().equals("Play the game")){
-            StateController.updateState(GameStates.PLAY);
-            dispose();
-        }else if(menuModel.getCurrentItem().equals("How to play")){
-            StateController.updateState(GameStates.HOWTOPLAY);
-        }else if(menuModel.getCurrentItem().equals("Exit")){
-            System.exit(0);
-        }
-    }
-
     public boolean getGameOver(){
         return this.gameOver;
-    }
-
-    public void setGameOver(boolean state){
-        this.gameOver = state;
     }
 
     @Override

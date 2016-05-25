@@ -19,7 +19,6 @@ public class HowToPlayView extends ScreenAdapter{
 
     private BitmapFont titleFont;
     private BitmapFont instructionFont;
-    private BitmapFont pressEnterFont;
     private BitmapFont pressBackFont;
     private SpriteBatch batch;
 
@@ -39,9 +38,6 @@ public class HowToPlayView extends ScreenAdapter{
         instructionFont = generator.generateFont(parameter);
 
         parameter.size = 18;
-        pressEnterFont = generator.generateFont(parameter);
-
-        parameter.size = 18;
         pressBackFont = generator.generateFont(parameter);
 
         generator.dispose();
@@ -58,7 +54,6 @@ public class HowToPlayView extends ScreenAdapter{
     @Override
     public void render(float delta) {
         String title = "This is how you play";
-        String pressEnter = "Press enter to begin the game";
         String pressBack = "Press backspace to go back";
 
         Gdx.gl.glClearColor(1, 1, 1, 1);
@@ -76,18 +71,10 @@ public class HowToPlayView extends ScreenAdapter{
             instructionFont.draw(batch, instructionItems[i], 30, 400 - rowDistance * i);
         }
 
-        pressEnterFont.setColor(Color.PINK);
-        pressEnterFont.draw(batch, pressEnter, 30, 100);
-
         pressBackFont.setColor(Color.PINK);
         pressBackFont.draw(batch, pressBack, 30, 50);
 
         batch.end();
-    }
-
-    public void setGame(){
-        StateController.updateState(GameStates.PLAY);
-        dispose();
     }
 
     public void setMenu(){
@@ -101,6 +88,5 @@ public class HowToPlayView extends ScreenAdapter{
         titleFont.dispose();
         instructionFont.dispose();
         pressBackFont.dispose();
-        pressEnterFont.dispose();
     }
 }

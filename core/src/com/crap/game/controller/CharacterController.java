@@ -100,7 +100,6 @@ public class CharacterController{
     }
 
     public void moveUp() {
-        //TODO: fix a setposistion class in chracter instead or a moveUp, moveDown as the player has
         this.character.getPosition().setPosition(this.character.getPosition().getX(),
                 this.character.getPosition().getY()+2);
         this.characterView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
@@ -132,19 +131,6 @@ public class CharacterController{
                 this.character.getPosition().getY());
     }
 
-    public void updateAnimation(PlayerView.AnimationState animationState){
-        characterView.setAnimationState(animationState);
-        characterView.updateAnimation();
-    }
-
-    public int getWalkAwayLength(){
-        return this.walkAwayLength;
-    }
-
-    public int getWalkAwayState(){
-        return this.walkAwayState;
-    }
-
     public void resetWalkAwayState(){
         this.walkAwayState = 0;
     }
@@ -167,6 +153,7 @@ public class CharacterController{
         return true;
     }
 
+    //TODO flytta
     public void decideNewDirection(){
         Random rand = new Random();
         int i = rand.nextInt(4);
@@ -228,6 +215,7 @@ public class CharacterController{
         interactionController.setIsInteracting(false);
     }
 
+    //TODO flytta
     public void walkAwayOneStep(){
         if(walkAwayState == walkAwayLength/3 || walkAwayState == (walkAwayLength/3)*2){
             lastDirection = walkAwayDirection;

@@ -26,7 +26,6 @@ public class InteractHumanView extends ScreenAdapter {
     private FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Candy Shop.ttf"));
     private FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
-    private String chooseOption = "Hello! What do you want to know more about?";
     private String talkAboutProgramme = "Ask about programme";
     private String whereIsMascot = "Ask where mascot could be";
     private String exit = "Exit";
@@ -70,6 +69,7 @@ public class InteractHumanView extends ScreenAdapter {
 
         String informationProgramme = ((Human)interactionCharacter).saySomethingAboutProgramme();
         String informationLocation = ((Human)interactionCharacter).saySomethingAboutLocation();
+        String informationGreeting = ((Human)interactionCharacter).saySomethingAboutGreeting();
 
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -78,7 +78,7 @@ public class InteractHumanView extends ScreenAdapter {
 
         if(!isProgramme && !isMascot) {
 
-            title.draw(batch, chooseOption, 30, 400);
+            title.draw(batch, informationGreeting, 30, 400);
 
             for (int i = 0; i < options.length; i++) {
                 if (interactHuman.getCurrentStringNbr() == i) {

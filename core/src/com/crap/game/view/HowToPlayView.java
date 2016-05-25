@@ -34,7 +34,7 @@ public class HowToPlayView extends ScreenAdapter{
         parameter.size = 18;
         instructionFont = generator.generateFont(parameter);
 
-        parameter.size = 18;
+        parameter.size = 15;
         pressBackFont = generator.generateFont(parameter);
 
         generator.dispose();
@@ -49,8 +49,7 @@ public class HowToPlayView extends ScreenAdapter{
     @Override
     public void render(float delta) {
         String title = "This is how you play:";
-        String pressEnter = "Press enter to begin the game";
-        String pressBack = "Press backspace to go back";
+        String pressBack = "Press backspace to return to menu";
 
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

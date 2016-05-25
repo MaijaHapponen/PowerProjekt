@@ -7,11 +7,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.*;
 
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.crap.game.model.*;
 import com.crap.game.model.Character;
 import com.crap.game.model.InteractMascot;
-
 
 /**
  * Created by Maija on 2016-05-11.

@@ -59,10 +59,6 @@ public class CharacterView extends ApplicationAdapter implements Screen {
     @Override
     public void show() {}
 
-
-    public void update(){
-    }
-
     public Sprite getSprite(){
         return this.sprite;
     }
@@ -76,17 +72,8 @@ public class CharacterView extends ApplicationAdapter implements Screen {
                 this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
     }
 
-    public PlayerView.AnimationState getAnimationState(){
-        return this.animationState;
-    }
-
-
     public void setAnimationState(PlayerView.AnimationState animationState){
         this.animationState = animationState;
-    }
-
-    public Texture getTexture(){
-        return this.texture;
     }
 
     public int getCharacterSpriteWidth(){

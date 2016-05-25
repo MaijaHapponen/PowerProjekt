@@ -11,7 +11,6 @@ import com.crap.game.controller.StateController;
 import com.crap.game.model.GameStates;
 import com.crap.game.model.Menu;
 
-
 /**
  * Created by Maija on 2016-05-11.
  */

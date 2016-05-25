@@ -6,6 +6,9 @@ package com.crap.game.model;
 public final class Constants {
 
 
+    public static int NBR_OF_TEXTURE_IMAGES_HORIZONTALLY = 4;
+    public static int NBR_OF_TEXTURE_IMAGES_VERTICALLY = 4;
+
     public static int pixelPerTile = 30;
     public static int tempCollisionlayerwidth = 50;
 

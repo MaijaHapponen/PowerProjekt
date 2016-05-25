@@ -45,6 +45,7 @@ public class CollisionController {
         newWorldObjects = newWorldLayer.getObjects();
     }
 
+    //TODO: Move to model
     public void setPlayerWidthAndHeight(float width, float height){
         this.spriteWidth = width;
         this.spriteHeight = height;
@@ -105,6 +106,7 @@ public class CollisionController {
         return collisionModel.checkIfCollide(x,y,width,height,playerPositionX,playerPositionY);
     }
 
+    //TODO: Move to model
     public String getNewWorldName(){
         return this.newWorldName;
     }

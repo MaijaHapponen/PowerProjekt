@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.crap.game.model.Player;
 import com.crap.game.model.Position;
 
+import static com.crap.game.model.Constants.*;
+
 /**
  * Created by Maija on 2016-05-02.
  */
@@ -29,9 +31,6 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     private GameAnimation gameAnimation = new GameAnimation();
     private Animation animation;
     private AnimationState animationState = AnimationState.STANDING_FRONT;
-
-    public final int NBR_OF_TEXTURE_IMAGES_HORIZONTALLY = 4;
-    public final int NBR_OF_TEXTURE_IMAGES_VERTICALLY = 4;
 
     public void initPlayerView(){
         this.texture = new Texture(Gdx.files.internal("characters/"+player.getName()+".png"));
@@ -84,11 +83,11 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         float boarderTop = worldHeight - halfOfScreen;
         float boarderBottom = halfOfScreen;
 
-        if(canMoveCameraUp(y, boarderTop) && canMoveCameraDown(y, boarderBottom)) {
-            if (canMoveCameraLeft(x, boarderLeft) && canMoveCameraRight(x, boarderRight)) {
+        if(player.canMoveCameraUp(y, boarderTop) && player.canMoveCameraDown(y, boarderBottom)) {
+            if (player.canMoveCameraLeft(x, boarderLeft) && player.canMoveCameraRight(x, boarderRight)) {
                 camera.position.set(x, y, 0);
             }
-            else if (canMoveCameraRight(x, boarderRight)) {
+            else if (player.canMoveCameraRight(x, boarderRight)) {
                 camera.position.set(boarderLeft, y, 0);
             }
             else {
@@ -96,11 +95,11 @@ public class PlayerView extends ApplicationAdapter implements Screen{
             }
         }
 
-        else if(canMoveCameraUp(y, boarderTop)){
-            if (canMoveCameraLeft(x, boarderLeft) && canMoveCameraRight(x, boarderRight)) {
+        else if(player.canMoveCameraUp(y, boarderTop)){
+            if (player.canMoveCameraLeft(x, boarderLeft) && player.canMoveCameraRight(x, boarderRight)) {
                 camera.position.set(x, boarderBottom, 0);
             }
-            else if (canMoveCameraRight(x, boarderRight)) {
+            else if (player.canMoveCameraRight(x, boarderRight)) {
                 camera.position.set(boarderLeft, boarderBottom, 0);
             }
             else {
@@ -109,10 +108,10 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         }
 
         else{
-            if (canMoveCameraLeft(x, boarderLeft) && canMoveCameraRight(x, boarderRight)) {
+            if (player.canMoveCameraLeft(x, boarderLeft) && player.canMoveCameraRight(x, boarderRight)) {
                 camera.position.set(x, boarderTop, 0);
             }
-            else if (canMoveCameraRight(x, boarderRight)) {
+            else if (player.canMoveCameraRight(x, boarderRight)) {
                 camera.position.set(boarderLeft, boarderTop, 0);
             }
             else {
@@ -121,22 +120,6 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         }
 
         camera.update();
-    }
-
-    public boolean canMoveCameraUp(float y, float boarderTop) {
-        return (y < boarderTop);
-    }
-
-    public boolean canMoveCameraDown(float y, float boarderBottom){
-        return (y > boarderBottom);
-    }
-
-    public boolean canMoveCameraLeft(float x, float boarderLeft){
-        return (x > boarderLeft);
-    }
-
-    public boolean canMoveCameraRight(float x, float boarderRight){
-        return (x < boarderRight);
     }
 
     public Position getPlayerPosition(){

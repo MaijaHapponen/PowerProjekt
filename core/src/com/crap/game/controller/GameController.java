@@ -138,6 +138,7 @@ public class GameController extends InputAdapter {
                 playerController.getInteractionController().getInteractingCharacterView());
     }
 
+    //TODO: Move to model
     public void mascotCaught(Mascot caughtMascot){
         model.mascotCaught(caughtMascot);
     }

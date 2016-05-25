@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.crap.game.controller.StateController;
-import com.crap.game.model.State;
+import com.crap.game.model.GameStates;
 
 /**
  * Created by rebeccafinne on 2016-05-17.
@@ -86,12 +86,12 @@ public class HowToPlayView extends ScreenAdapter{
     }
 
     public void setGame(){
-        StateController.updateState(State.GameStates.PLAY);
+        StateController.updateState(GameStates.PLAY);
         dispose();
     }
 
     public void setMenu(){
-        StateController.updateState(State.GameStates.STARTMENU);
+        StateController.updateState(GameStates.STARTMENU);
         dispose();
     }
 

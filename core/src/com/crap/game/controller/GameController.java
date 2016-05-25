@@ -52,7 +52,7 @@ public class GameController extends InputAdapter {
     @Override
     public boolean keyDown(int keycode) {
         if(view.isInteraction() && keycode == Input.Keys.SPACE){
-            StateController.updateState(State.GameStates.INTERACT);
+            StateController.updateState(GameStates.INTERACT);
         }
         this.keyCode=keycode;
         view.render();
@@ -114,16 +114,8 @@ public class GameController extends InputAdapter {
 
     public void updateIfGameOver(){
         if(model.isGameOver()){
-            StateController.updateState(State.GameStates.GAMEOVER);
-
-            //Reset progress
-            //
-//            view.dispose();
-            System.out.println(model.getProgress().areAllMascotsCaught());
+            StateController.updateState(GameStates.GAMEOVER);
             model.getProgress().resetProgress();
-            System.out.println(model.getProgress().areAllMascotsCaught());
-
-            System.out.println("Game over! **^^**");
         }
     }
 

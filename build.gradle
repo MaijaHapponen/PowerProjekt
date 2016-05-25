@@ -42,6 +42,7 @@ project(":desktop") {
 
 project(":core") {
     apply plugin: "java"
+    apply plugin: "jacoco"
 
 
     dependencies {
@@ -49,8 +50,25 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         testCompile "junit:junit:4.12"
     }
+
+    jacocoTestReport{
+        additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
+        reports {
+            xml.enabled false
+            csv.enabled false
+            html.destination "${buildDir}/reports/jacoco/html"
+        }
+        executionData = files("build/jacoco/test.exec")
+    }
+
+    test {
+
+        finalizedBy jacocoTestReport
+    }
 }
+
 
 tasks.eclipse.doLast {
     delete ".project"
 }
+

@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class ProgressTest {
 
 
-    @Test
+   /* @Test
     public void testAreAllMascotsCaught(){
         Progress progress = new Progress();
         Mascot mascot = new Mascot("hej");
@@ -29,5 +29,5 @@ public class ProgressTest {
         progress.mascotCaught(mascot);
         assertTrue(progress.getMascotsCaught().contains(mascot));
 
-    }
+    }*/
 }

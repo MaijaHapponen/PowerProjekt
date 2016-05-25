@@ -13,7 +13,7 @@ import org.junit.Test;
 public class GameTest {
 
 
-    @Test
+   /* @Test
     public void testIsGameOver(){
         Game game = new Game();
         Progress progress = new Progress();
@@ -21,7 +21,7 @@ public class GameTest {
         progress.getMascotsInGame().add(mascot);
         progress.mascotCaught(mascot);
         assertTrue(game.isGameOver());
-    }
+    }*/
 
     //TODO write tests for create mascots and human methods??
 

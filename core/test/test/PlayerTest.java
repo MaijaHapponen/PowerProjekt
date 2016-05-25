@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class PlayerTest {
 
-    @Test
+  /*  @Test
     public void testMoveUp() throws Exception {
         Player player = new Player();
         float playerPosX = player.getPosition().getX();
@@ -50,6 +50,6 @@ public class PlayerTest {
         assertTrue(player.getPosition().getY() == playerPosX);
         assertTrue(player.getPosition().getX() == playerPosY+player.getNormalSpeed());
     }
-
+*/
 
 }

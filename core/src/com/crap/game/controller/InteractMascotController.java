@@ -3,9 +3,9 @@ package com.crap.game.controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.crap.game.model.GameStates;
 import com.crap.game.model.InteractMascot;
 import com.crap.game.model.Mascot;
-import com.crap.game.model.State;
 import com.crap.game.view.InteractMascotView;
 import com.crap.game.model.Character;
 
@@ -31,7 +31,7 @@ public class InteractMascotController extends InputAdapter {
     public boolean keyDown(int keycode){
 
         if(keycode == Input.Keys.BACKSPACE){
-            StateController.updateState(State.GameStates.PLAY);
+            StateController.updateState(GameStates.PLAY);
             interactMascotView.dispose();
             if(!answeredCorrect) {
                 gameController.getCharacterController().resetWalkAwayState();

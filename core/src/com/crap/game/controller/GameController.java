@@ -68,22 +68,22 @@ public class GameController extends InputAdapter {
     }
 
     public void enterNewWorld() {
-        if(playerController.getNewWorldName().equals("hubbeneditsand")) {
+        if(playerController.getCollisionController().getNewWorldName().equals("hubbeneditsand")) {
             view.setLabel("hörsalsvägen");
 
             worldController.setWorld(EDIT);
 
-        }else if(playerController.getNewWorldName().equals("horsalmaskin")){
+        }else if(playerController.getCollisionController().getNewWorldName().equals("horsalmaskin")){
             view.setLabel("hörsalsvägen");
 
             worldController.setWorld(HORSAL);
 
-        }else if(playerController.getNewWorldName().equals("hubben")){
+        }else if(playerController.getCollisionController().getNewWorldName().equals("hubben")){
             view.setLabel("hubben");
 
             worldController.setWorld(HUBBEN);
 
-        }else if(playerController.getNewWorldName().equals("zaloonen")){
+        }else if(playerController.getCollisionController().getNewWorldName().equals("zaloonen")){
             view.setLabel("zaloonen");
 
             worldController.setWorld(ZALOONEN);

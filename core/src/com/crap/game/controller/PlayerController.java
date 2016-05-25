@@ -2,6 +2,7 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.MapObject;
+import com.crap.game.model.CollisionModel;
 import com.crap.game.model.Player;
 import com.crap.game.model.Position;
 import com.crap.game.view.GameView;
@@ -65,21 +66,13 @@ public class PlayerController {
         }
 
         updateSprite();
-        playerView.moveCamera(getPlayerPositionX(), getPlayerPositionY(),
+        playerView.moveCamera(getPlayer().getPosition().getX(), getPlayer().getPosition().getY(),
                 gameView.getWorldHeight()+ gameView.getTileHeight(), gameView.getWorldWidth()+gameView.getTileWidth());
 
     }
 
     public void updateSprite() {
-        playerView.getSprite().setPosition(getPlayerPositionX(), getPlayerPositionY());
-    }
-
-    public float getPlayerPositionX(){
-        return player.getPosition().getX();
-    }
-
-    public float getPlayerPositionY(){
-        return player.getPosition().getY();
+        playerView.getSprite().setPosition(getPlayer().getPosition().getX(), getPlayer().getPosition().getY());
     }
 
     public boolean checkIfCollision(Position p){
@@ -118,7 +111,7 @@ public class PlayerController {
 
 
     public void updateSpeed(){
-        if(collisionController.isSlowerTerrain(getPlayerPositionX(), getPlayerPositionY()) ){
+        if(collisionController.isSlowerTerrain(getPlayer().getPosition().getX(), getPlayer().getPosition().getY())){
             player.setSlowerSpeed();
         }
         else{
@@ -143,8 +136,12 @@ public class PlayerController {
         }
     }
 
-    public String getNewWorldName(){
-        return collisionController.getNewWorldName();
+    //public String getNewWorldName(){
+   //     return collisionController.getNewWorldName();
+    //}
+
+    public CollisionController getCollisionController(){
+        return this.collisionController;
     }
 
     public InteractionController getInteractionController(){

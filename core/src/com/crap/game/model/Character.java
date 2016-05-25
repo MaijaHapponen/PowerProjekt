@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public abstract class Character{
 
-    public enum Direction{UP, DOWN, LEFT, RIGHT} //TODO add NO_DIRECTION***************
+    public enum Direction{UP, DOWN, LEFT, RIGHT, NO_DIRECTION}
 
     private String name;
     protected Position position;
@@ -76,6 +76,22 @@ public abstract class Character{
                     decideNewDirection();
                 }
                 break;
+        }
+    }
+
+    public void updateDirections(){
+        lastDirection = walkAwayDirection;
+        walkAwayDirection = Direction.NO_DIRECTION;
+    }
+
+    public void changeDirection(int walkAwayLength, int walkAwayState){
+        if(walkAwayState == walkAwayLength/3 || walkAwayState ==
+                (walkAwayLength/3)*2){
+            this.lastDirection = this.walkAwayDirection;
+            this.walkAwayDirection = Direction.NO_DIRECTION;
+        }
+        if (this.walkAwayDirection == null || this.walkAwayDirection == Direction.NO_DIRECTION){
+            decideNewDirection();
         }
     }
 

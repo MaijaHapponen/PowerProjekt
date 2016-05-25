@@ -11,9 +11,9 @@ public class CharacterController{
     private Character character;
     private CharacterView characterView;
     private CollisionController collisionController;
-    private int walkAwayLength = 60;
-    private int walkAwayState = walkAwayLength;
     private InteractionController interactionController;
+    private int walkAwayLength = 60; //TODO move to constant class.
+    private int walkAwayState = walkAwayLength;
 
     public CharacterController(GameView view){
         this.gameView = view;
@@ -45,8 +45,7 @@ public class CharacterController{
                     this.moveUp();
                 }
                 else{
-                    character.setLastDirection(character.getWalkAwayDirection());
-                    character.setWalkAwayDirection(null);
+                    character.updateDirections();
                 }
                 break;
             case DOWN:
@@ -54,8 +53,7 @@ public class CharacterController{
                     this.moveDown();
                 }
                 else{
-                    character.setLastDirection(character.getWalkAwayDirection());
-                    character.setWalkAwayDirection(null);
+                    character.updateDirections();
                 }
                 break;
             case LEFT:
@@ -63,8 +61,7 @@ public class CharacterController{
                     this.moveLeft();
                 }
                 else{
-                    character.setLastDirection(character.getWalkAwayDirection());
-                    character.setWalkAwayDirection(null);
+                    character.updateDirections();
                 }
                 break;
             case RIGHT:
@@ -72,8 +69,7 @@ public class CharacterController{
                     this.moveRight();
                 }
                 else{
-                    character.setLastDirection(character.getWalkAwayDirection());
-                    character.setWalkAwayDirection(null);
+                    character.updateDirections();
                 }
                 break;
         }
@@ -165,26 +161,19 @@ public class CharacterController{
                 this.characterView.setAnimationState(PlayerView.AnimationState.STANDING_RIGHT);
                 this.characterView.updateAnimation();
                 break;
+            case NO_DIRECTION:
+                break;
         }
         interactionController.setIsInteracting(false);
     }
 
-    //TODO flytta
     public void walkAwayOneStep(){
-        if(walkAwayState == walkAwayLength/3 || walkAwayState == (walkAwayLength/3)*2){
-            character.setLastDirection(character.getWalkAwayDirection());
-            character.setWalkAwayDirection(null);
-        }
-
-        if (character.getWalkAwayDirection() == null){
-            character.decideNewDirection();
-        }
+        character.changeDirection(this.walkAwayLength, this.walkAwayState);
         this.move(character.getWalkAwayDirection());
 
-        if(walkAwayState == walkAwayLength-1 && !(character.getWalkAwayDirection()==null)){
+        if(walkAwayState == walkAwayLength-1 && !(character.getWalkAwayDirection()== Character.Direction.NO_DIRECTION)){
             stopWalkingAnimation();
         }
-
         updateSprite();
         walkAwayState++;
     }

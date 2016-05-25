@@ -13,12 +13,10 @@ import com.crap.game.view.InteractHumanView;
 public class InteractHumanController extends InputAdapter {
 
     private InteractHumanView interactHumanView;
-    private GameController gameController;
     private InteractHuman interactHuman;
 
-    public InteractHumanController(InteractHumanView interactHumanView, GameController g){
+    public InteractHumanController(InteractHumanView interactHumanView){
         this.interactHumanView = interactHumanView;
-        this.gameController = g;
         interactHuman = interactHumanView.getInteractHuman();
         Gdx.input.setInputProcessor(this);
     }

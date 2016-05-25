@@ -1,7 +1,6 @@
 package com.crap.game.view;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -11,7 +10,7 @@ import com.crap.game.model.Character;
  * Created by andrea on 2016-04-28.
  */
 
-public class CharacterView extends ApplicationAdapter implements Screen {
+public class CharacterView extends ScreenAdapter {
 
     private Character character;
     private Sprite sprite;
@@ -51,13 +50,9 @@ public class CharacterView extends ApplicationAdapter implements Screen {
     }
 
     @Override
-    public void render(float delta) {}
-
-    @Override
-    public void hide() {}
-
-    @Override
-    public void show() {}
+    public void dispose() {
+        texture.dispose();
+    }
 
     public Sprite getSprite(){
         return this.sprite;
@@ -83,4 +78,6 @@ public class CharacterView extends ApplicationAdapter implements Screen {
     public int getCharacterSpriteHeight(){
         return this.texture.getHeight()/NBR_OF_TEXTURE_IMAGES_VERTICALLY;
     }
+
+
 }

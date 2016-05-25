@@ -5,13 +5,13 @@ package com.crap.game.model;
  */
 public class Interaction {
     private CollisionModel collisionModel;
-    private float playerWidth;
-    private float playerHeight;
+    private float otherCharacterWidth;
+    private float otherCharacterHeight;
 
     public Interaction(float playerWidth, float playerHeight) {
         this.collisionModel = new CollisionModel();
-        this.playerWidth = playerWidth;
-        this.playerHeight = playerHeight;
+        this.otherCharacterWidth = playerWidth;
+        this.otherCharacterHeight = playerHeight;
     }
 
     public boolean isInteraction(Character character, float x, float y) {
@@ -21,24 +21,32 @@ public class Interaction {
     public boolean checkEveryPositionForInteraction(Character character, float x, float y) {
 
         return checkIfInteraction(character, x, y) ||
-                checkIfInteraction(character, x + playerWidth, y) ||
-                checkIfInteraction(character, x + playerWidth, y + playerHeight) ||
-                checkIfInteraction(character, x, y + playerHeight) ||
-                checkIfInteraction(character, x, y + playerHeight / 2) ||
-                checkIfInteraction(character, x + playerWidth, y + playerHeight / 2) ||
-                checkIfInteraction(character, x + playerWidth / 2, y) ||
-                checkIfInteraction(character, x + playerWidth / 2, y + playerHeight);
+                checkIfInteraction(character, x + otherCharacterWidth, y) ||
+                checkIfInteraction(character, x + otherCharacterWidth, y + otherCharacterHeight) ||
+                checkIfInteraction(character, x, y + otherCharacterHeight) ||
+                //left side of character
+                checkIfInteraction(character, x, y + 3*(otherCharacterHeight / 4)) ||
+                checkIfInteraction(character, x, y + otherCharacterHeight / 2) ||
+                checkIfInteraction(character, x, y + otherCharacterHeight / 4) ||
+                //right side of character
+                checkIfInteraction(character, x + otherCharacterWidth, y + 3*(otherCharacterHeight / 4)) ||
+                checkIfInteraction(character, x + otherCharacterWidth, y + otherCharacterHeight / 2) ||
+                checkIfInteraction(character, x + otherCharacterWidth, y + otherCharacterHeight / 4) ||
+                //middle in top and bottom of character
+                checkIfInteraction(character, x + otherCharacterWidth / 2, y) ||
+                checkIfInteraction(character, x + otherCharacterWidth / 2, y + otherCharacterHeight);
     }
 
 
-    public boolean checkIfInteraction(Character character, float playerPositionX, float playerPositionY) {
+    public boolean checkIfInteraction(Character character, float thisX, float thisY) {
 
-        Float x = character.getPosition().getX();
-        Float y = character.getPosition().getY();
+        //TODO: magic numbers for collision to work remove?
         Float width = character.getWidth();
-        Float height = character.getHeight();
+        Float halfHeight = character.getHeight()/2;
+        Float x = character.getPosition().getX();
+        Float y = character.getPosition().getY()+halfHeight;
 
-        return collisionModel.checkIfCollide(x, y, width, height, playerPositionX, playerPositionY);
+        return collisionModel.checkIfCollide(x, y, width, halfHeight, thisX, thisY);
     }
 
 

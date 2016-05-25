@@ -115,7 +115,11 @@ public class GameController extends InputAdapter {
     public void updateIfGameOver(){
         if(model.isGameOver()){
             StateController.updateState(GameStates.GAMEOVER);
+
             model.getProgress().resetProgress();
+            for(int i=0; i<model.getMascots().size(); i++) {
+                model.getMascots().get(i).setCaught(false);
+            }
         }
     }
 

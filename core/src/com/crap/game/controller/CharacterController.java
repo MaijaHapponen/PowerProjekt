@@ -1,6 +1,7 @@
 package com.crap.game.controller;
 
 import com.crap.game.model.Character;
+import com.crap.game.model.Direction;
 import com.crap.game.view.CharacterView;
 import com.crap.game.view.GameView;
 import com.crap.game.view.PlayerView;
@@ -8,8 +9,6 @@ import com.crap.game.view.PlayerView;
 import java.util.Random;
 
 public class CharacterController{
-
-    public enum Direction{UP, DOWN, LEFT, RIGHT}
 
     private GameView gameView;
     private Character character;
@@ -151,7 +150,7 @@ public class CharacterController{
 
     public void walkAway(Character character, CharacterView characterView){
         if(walkAwayState<walkAwayLength){
-            interactionController.setIsInteracting(true);
+            interactionController.getInteractionModel().setIsInteracting(true);
             interactsWith(character, characterView);
             walkAwayOneStep();
         }
@@ -225,7 +224,7 @@ public class CharacterController{
                 this.characterView.updateAnimation();
                 break;
         }
-        interactionController.setIsInteracting(false);
+        interactionController.getInteractionModel().setIsInteracting(false);
     }
 
     public void walkAwayOneStep(){

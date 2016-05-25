@@ -16,7 +16,6 @@ public class CollisionController {
 
     CollisionModel collisionModel;
 
-    private TiledMap map;
     private MapLayers allLayers;
     private MapLayer collisionLayer;
     private MapObjects collisionObjects;
@@ -29,15 +28,11 @@ public class CollisionController {
     private MapObject newWorldObject;
     private String newWorldName;
 
-
     private float spriteWidth;
     private float spriteHeight;
 
-
-
     public CollisionController(TiledMap map) {
         collisionModel = new CollisionModel();
-        this.map = map;
         allLayers = map.getLayers();
         collisionLayer = allLayers.get("Collision");
         collisionObjects = collisionLayer.getObjects();
@@ -47,7 +42,6 @@ public class CollisionController {
 
         newWorldLayer = allLayers.get("NewWorld");
         newWorldObjects = newWorldLayer.getObjects();
-
     }
 
     public void setPlayerWidthAndHeight(float width, float height){
@@ -83,9 +77,7 @@ public class CollisionController {
             collisionModel.setTypeOfTile(CollisionModel.tileType.NEW_WORLD);
             newWorldName = newWorldObject.getName();
         }
-
     }
-
 
     public boolean isMapObjectHit(Iterator iter, float x, float y){
         while(iter.hasNext()) {
@@ -112,22 +104,11 @@ public class CollisionController {
         return collisionModel.checkIfCollide(x,y,width,height,playerPositionX,playerPositionY);
     }
 
-
-    public void setNewWorldName(String name){
-        this.newWorldName = name;
-    }
-
     public String getNewWorldName(){
         return this.newWorldName;
-
-    }
-
-    public MapObjects getNewWorldObjects() {
-        return this.newWorldObjects;
     }
 
     public MapObject getNewWorldObject(){
         return this.newWorldObject;
     }
-
 }

@@ -242,12 +242,15 @@ public class GameView extends ApplicationAdapter implements Screen{
     }
 
     public float getTileHeight(){
-        return this.world.getProperties().get("tilewidth", Integer.class);
+        return this.pixelPerTile;
+        //return this.world.getProperties().get("tilewidth", Integer.class);
     }
 
     public float getTileWidth() {
-        return this.world.getProperties().get("tileheight", Integer.class);
+        return this.pixelPerTile;
+        //return this.world.getProperties().get("tileheight", Integer.class);
     }
+
 
     public TiledMap getWorld() {
         return this.world;

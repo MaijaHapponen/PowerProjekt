@@ -5,6 +5,14 @@ package com.crap.game.model;
  */
 public final class Constants {
 
-    public static int hej = 0;
+
+    public static int tempCollisionlayerwidth = 50;
+
+    public static float zaloonEntryX = 125;
+    public static float zaloonEntryY = 2;
+
+    public static float hubbenEntryX = 100;
+    public static float hubbenEntryY = 50;
+
 
 }

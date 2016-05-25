@@ -2,9 +2,9 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.model.Game;
-import com.crap.game.model.Position;
 import com.crap.game.view.GameView;
 
+import static com.crap.game.model.Constants.*;
 import static com.crap.game.model.Game.Worlds.*;
 
 /**
@@ -17,28 +17,13 @@ public class WorldController {
     private CharacterController characterController;
     private GameView view;
 
-    private int tempCollisionlayerwidth = 50;
-
-    private float zaloonEntryX = 125;
-    private float zaloonEntryY = 2;
-
-    private float hubbenEntryX = 100;
-    private float hubbenEntryY = 50;
-
-    private boolean isEntrance;
-    private Position entrancePosition;
-    private Game.Worlds previousRoom;
-    private Game.Worlds currentWorld;
-
-
     public WorldController(Game game, PlayerController controller, CharacterController characterController, GameView view) {
+
         this.playerController = controller;
         this.characterController = characterController;
+
         this.model = game;
         this.view = view;
-
-        this.isEntrance = false;
-        this.entrancePosition = new Position(0,0);
     }
 
     public void setWorld(Game.Worlds worlds){
@@ -51,36 +36,36 @@ public class WorldController {
 
             case HORSAL:
                 enterHorsal(x,y);
-                setExit();
+                model.setExit();
                 view.setWorld(new TmxMapLoader().load("maps/horsalmaskin.tmx"));
                 playerController.updateCollisionController();
-                setPreviousRoom(HORSAL);
+                model.setPreviousRoom(HORSAL);
                 break;
 
             case EDIT:
                 enterEdit(x,y);
-                setExit();
+                model.setExit();
                 view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
                 playerController.updateCollisionController();
-                setPreviousRoom(EDIT);
+                model.setPreviousRoom(EDIT);
                 characterController.updateCollisionController();
                 break;
 
             case HUBBEN:
-                setEntrance(x,y);
-                enterHubben();
+                model.setEntrance(x,y);
+                model.enterHubben();
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
-                setPreviousRoom(HUBBEN);
+                model.setPreviousRoom(HUBBEN);
                 characterController.updateCollisionController();
                 break;
 
             case ZALOONEN:
-                setEntrance(x,y);
-                enterZaloonen();
+                model. setEntrance(x,y);
+                model.enterZaloonen();
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();
-                setPreviousRoom(ZALOONEN);
+                model.setPreviousRoom(ZALOONEN);
                 characterController.updateCollisionController();
                 break;
 
@@ -93,8 +78,8 @@ public class WorldController {
 
     public void enterHorsal(float x, float y){
 
-        if(previousRoom == ZALOONEN){
-            model.player.setPosition(entrancePosition.getX(), entrancePosition.getY());
+        if(model.getPreviousRoom() == ZALOONEN){
+            model.player.setPosition(model.getEntrancePosition().getX(), model.getEntrancePosition().getY());
         }
 
         if(x > view.getWorldWidth() - tempCollisionlayerwidth) {
@@ -108,8 +93,8 @@ public class WorldController {
 
     public void enterEdit(float x, float y){
 
-        if(previousRoom == HUBBEN){
-            model.player.setPosition(entrancePosition.getX(), entrancePosition.getY());
+        if(model.getPreviousRoom() == HUBBEN){
+            model.player.setPosition(model.getEntrancePosition().getX(), model.getEntrancePosition().getY());
         }
 
         else if(x < tempCollisionlayerwidth) {
@@ -120,30 +105,5 @@ public class WorldController {
             model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, y);
         }
 
-    }
-
-    public void enterHubben(){
-        model.player.setPosition(hubbenEntryX,hubbenEntryY);
-    }
-
-    public void enterZaloonen(){
-        model.player.setPosition(zaloonEntryX,zaloonEntryY);
-    }
-
-    public void setEntrance(float x, float y){
-        entrancePosition.setPosition(x,y);
-        isEntrance = true;
-    }
-
-    public void setExit(){
-        isEntrance = false;
-    }
-
-    public void setPreviousRoom(Game.Worlds lastRoom) {
-        this.previousRoom = lastRoom;
-    }
-
-    public PlayerController getPlayerController(){
-        return this.playerController;
     }
 }

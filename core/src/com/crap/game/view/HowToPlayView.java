@@ -77,11 +77,6 @@ public class HowToPlayView extends ScreenAdapter{
         batch.end();
     }
 
-    public void setMenu(){
-        StateController.updateState(GameStates.STARTMENU);
-        dispose();
-    }
-
     @Override
     public void dispose() {
         batch.dispose();

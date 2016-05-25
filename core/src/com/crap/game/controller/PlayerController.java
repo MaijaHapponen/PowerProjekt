@@ -2,6 +2,7 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.MapObject;
+import com.crap.game.model.AnimationState;
 import com.crap.game.model.Player;
 import com.crap.game.model.Position;
 import com.crap.game.view.GameView;
@@ -44,25 +45,25 @@ public class PlayerController {
 
         if (keycode == Input.Keys.UP &&
                 !(checkIfCollision(player.nextStepUp()))) {
-            playerView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
+            playerView.setAnimationState(AnimationState.WALKING_BACK);
             player.moveUp(gameView.getWorldHeight());
         }
 
         else if (keycode == Input.Keys.DOWN &&
                 !(checkIfCollision(player.nextStepDown()))){
-            playerView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
+            playerView.setAnimationState(AnimationState.WALKING_FRONT);
             player.moveDown();
         }
 
         else if (keycode == Input.Keys.LEFT &&
                 !(checkIfCollision(player.nextStepLeft()))){
-            playerView.setAnimationState(PlayerView.AnimationState.WALKING_LEFT);
+            playerView.setAnimationState(AnimationState.WALKING_LEFT);
             player.moveLeft();
         }
 
         else if (keycode == Input.Keys.RIGHT &&
                 !(checkIfCollision(player.nextStepRight())) )  {
-            playerView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
+            playerView.setAnimationState(AnimationState.WALKING_RIGHT);
             player.moveRight(gameView.getWorldWidth());
         }
 
@@ -123,16 +124,16 @@ public class PlayerController {
     public void stopWalkingAnimation(int keyCode){
         switch (keyCode){
             case Input.Keys.UP:
-                playerView.setAnimationState(PlayerView.AnimationState.STANDING_BACK);
+                playerView.setAnimationState(AnimationState.STANDING_BACK);
                 break;
             case Input.Keys.DOWN:
-                playerView.setAnimationState(PlayerView.AnimationState.STANDING_FRONT);
+                playerView.setAnimationState(AnimationState.STANDING_FRONT);
                 break;
             case Input.Keys.LEFT:
-                playerView.setAnimationState(PlayerView.AnimationState.STANDING_LEFT);
+                playerView.setAnimationState(AnimationState.STANDING_LEFT);
                 break;
             case Input.Keys.RIGHT:
-                playerView.setAnimationState(PlayerView.AnimationState.STANDING_RIGHT);
+                playerView.setAnimationState(AnimationState.STANDING_RIGHT);
                 break;
         }
     }

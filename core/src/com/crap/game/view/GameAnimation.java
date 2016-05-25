@@ -3,6 +3,7 @@ package com.crap.game.view;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.crap.game.model.AnimationState;
 
 /**
  * Created by Lisa on 09/05/16.
@@ -35,7 +36,7 @@ public class GameAnimation {
         return new Animation(1f/4f, animationFrames);
     }
 
-    public Animation getAnimation(PlayerView.AnimationState animationState, Texture texture, int width, int height,
+    public Animation getAnimation(AnimationState animationState, Texture texture, int width, int height,
                                   int rows, int columns){
         switch (animationState){
             case WALKING_FRONT:

@@ -17,9 +17,9 @@ public class InteractHumanTest {
         String tjo = "Tjo";
         String [] s = new String[]{hej, tjo};
         InteractHuman interactHuman = new InteractHuman(s, hej);
-        interactHuman.setCurrentString("nextStepDown");
-        assertTrue(interactHuman.getCurrentString().equals(tjo));
-        interactHuman.setCurrentString("nextStepDown");
-        assertTrue(interactHuman.getCurrentString().equals(hej));
+        //interactHuman.setCurrentString("nextStepDown");
+        //assertTrue(interactHuman.getCurrentString().equals(tjo));
+        //interactHuman.setCurrentString("nextStepDown");
+        //assertTrue(interactHuman.getCurrentString().equals(hej));
     }
 }

@@ -1,12 +1,13 @@
 package test;
 
-
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.crap.game.model.InteractMascot;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.*;
+
 /**
  * Created by rebeccafinne on 16-05-24.
  */
@@ -19,9 +20,10 @@ public class InteractMascotTest {
         String question = "HEJ";
         String first = "FSA";
         String second = "fdsjfs";
-        String[] l = new String [] {first, second};
+        List<String> l = Arrays.asList(first, second);
+
         InteractMascot interactMascot;
-        interactMascot = new InteractMascot(l, question);
+        interactMascot = new InteractMascot(l);
         interactMascot.setCurrentString("nextStepDown");
         assertTrue(interactMascot.getCurrentString().equals(second));
         interactMascot.setCurrentString("nextStepDown");

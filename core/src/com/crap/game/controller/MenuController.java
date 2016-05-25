@@ -28,6 +28,7 @@ public class MenuController extends InputAdapter implements ApplicationListener{
         if(menuView.getGameOver()){
             if(keycode == Input.Keys.ENTER){
                 StateController.updateState(State.GameStates.STARTMENU);
+                menuView.dispose();
             }
         }
         else {

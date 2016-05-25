@@ -45,19 +45,18 @@ public class HowToPlayView extends ScreenAdapter{
         pressBackFont = generator.generateFont(parameter);
 
         generator.dispose();
-        String instructions = "-Catch all the mascots to win";
-        String instructions2 = "-Answer the questions " ;
-        String instructions25 = "right to catch the mascot";
-        String instructions4 = "-Move with the key arrows";
-        String instructions3 = "-InteractMascot by pressing space";
+        String instructions = "-Catch all the mascots to win.";
+        String instructions2 = "-Answer the questions\nright to catch the mascot.";
+        String instructions3 = "\n-Interact with characters by\npressing space.";
+        String instructions4 = "\n\n-Move with the arrowkeys.";
 
-        instructionItems = new String[]{instructions, instructions2, instructions25, instructions3, instructions4};
+        instructionItems = new String[]{instructions, instructions2, instructions3, instructions4};
 
     }
 
     @Override
     public void render(float delta) {
-        String title = "This is how you play";
+        String title = "This is how you play:";
         String pressEnter = "Press enter to begin the game";
         String pressBack = "Press backspace to go back";
 

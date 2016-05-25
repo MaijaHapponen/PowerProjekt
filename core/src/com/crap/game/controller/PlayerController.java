@@ -32,10 +32,6 @@ public class PlayerController {
         collisionController.setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
     }
 
-    public Player getPlayer(){
-        return this.player;
-    }
-
     public void movePlayer(int keycode) {
 
         updateSpeed();
@@ -66,7 +62,7 @@ public class PlayerController {
 
         updateSprite();
         playerView.moveCamera(getPlayerPositionX(), getPlayerPositionY(),
-                gameView.getWorldHeight()+ gameView.getTileHeight(), gameView.getWorldWidth()+gameView.getTileWidth());
+                gameView.getWorldHeight() + gameView.getTileHeight(), gameView.getWorldWidth()+gameView.getTileWidth());
 
     }
 

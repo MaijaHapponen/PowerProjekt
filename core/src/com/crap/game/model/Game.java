@@ -19,6 +19,8 @@ public class Game {
     private Information information;
     private Worlds currectWorld;
 
+    private boolean newWorld;
+
     private boolean isEntrance;
     private Position entrancePosition;
     private Game.Worlds previousRoom;
@@ -133,5 +135,13 @@ public class Game {
 
     public void setPreviousRoom(Game.Worlds lastRoom) {
         this.previousRoom = lastRoom;
+    }
+
+    public void setNewWorld(boolean b){
+        this.newWorld = b;
+    }
+
+    public boolean getNewWorld(){
+        return this.newWorld;
     }
 }

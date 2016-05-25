@@ -38,7 +38,6 @@ public class GameView extends ApplicationAdapter implements Screen{
     private InteractionView interactionView;
 
     private boolean interaction;
-    private boolean newWorld;
     private boolean isStart;
     private Viewport viewport;
 
@@ -113,7 +112,7 @@ public class GameView extends ApplicationAdapter implements Screen{
             batch.setProjectionMatrix(interactionView.getWelcomeStage().getCamera().combined);
             interactionView.getWelcomeStage().draw();
             if(interaction){
-                newWorld = false;
+                game.setNewWorld(false);
                 interactionView.getWelcomeStage().dispose();
 
             }
@@ -124,12 +123,12 @@ public class GameView extends ApplicationAdapter implements Screen{
             interactionView.getStage().draw();
         }
 
-        if(newWorld){
+        if(game.getNewWorld()){
             interactionView.getWelcomeLabel();
             batch.setProjectionMatrix(interactionView.getWelcomeStage().getCamera().combined);
             interactionView.getWelcomeStage().draw();
             if(interaction){
-                newWorld = false;
+                game.setNewWorld(false);
                 interactionView.getWelcomeStage().dispose();
 
             }
@@ -238,10 +237,6 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     public TiledMap getWorld() {
         return this.world;
-    }
-
-    public void setNewWorld(boolean b){
-        this.newWorld = b;
     }
 
     public void setLabel(String world){

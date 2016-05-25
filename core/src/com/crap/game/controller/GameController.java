@@ -102,7 +102,7 @@ public class GameController extends InputAdapter {
     public void updateIfNewWorld() {
         if(playerController.isNewWorld()) {
             enterNewWorld();
-            view.setNewWorld(true);
+            model.setNewWorld(true);
             view.create();
         }
     }

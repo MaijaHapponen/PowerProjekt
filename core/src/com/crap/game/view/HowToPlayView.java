@@ -47,7 +47,6 @@ public class HowToPlayView extends ScreenAdapter{
         String instructions4 = "\n\n-Move with the arrowkeys.";
 
         instructionItems = new String[]{instructions, instructions2, instructions3, instructions4};
-
     }
 
     @Override

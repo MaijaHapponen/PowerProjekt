@@ -91,28 +91,24 @@ public class CharacterController{
     }
 
     public void moveUp() {
-        this.character.getPosition().setPosition(this.character.getPosition().getX(),
-                this.character.getPosition().getY()+2);
+        character.moveUp();
         this.characterView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
         this.characterView.updateAnimation();
     }
     public void moveDown(){
-        this.character.getPosition().setPosition(this.character.getPosition().getX(),
-                this.character.getPosition().getY() - 2);
+        character.moveDown();
         this.characterView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
         this.characterView.updateAnimation();
     }
 
     public void moveLeft(){
-        this.character.getPosition().setPosition(this.character.getPosition().getX() - 2,
-                this.character.getPosition().getY());
+        character.moveLeft();
         this.characterView.setAnimationState(PlayerView.AnimationState.WALKING_LEFT);
         this.characterView.updateAnimation();
     }
 
     public void moveRight(){
-        this.character.getPosition().setPosition(this.character.getPosition().getX() + 2,
-                this.character.getPosition().getY());
+        character.moveRight();
         this.characterView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
         this.characterView.updateAnimation();
     }

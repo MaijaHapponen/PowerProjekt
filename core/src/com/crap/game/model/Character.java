@@ -78,6 +78,30 @@ public abstract class Character{
         }
     }
 
+    public float getX(){
+        return getPosition().getX();
+    }
+
+    public float getY(){
+        return getPosition().getY();
+    }
+
+    public void moveUp(){
+        getPosition().setPosition(getX(),getY()+2);
+    }
+
+    public void moveDown(){
+        getPosition().setPosition(getX(),getY()-2);
+    }
+
+    public void moveLeft(){
+        getPosition().setPosition(getX()-2,getY());
+    }
+
+    public void moveRight(){
+        getPosition().setPosition(getX()+2,getY());
+    }
+
     public void updateDirections(){
         lastDirection = walkAwayDirection;
         walkAwayDirection = Direction.NO_DIRECTION;

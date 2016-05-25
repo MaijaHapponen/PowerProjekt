@@ -74,7 +74,7 @@ public class InteractMascotView extends ScreenAdapter {
 
 
         answers = new String[]{answerLabel1, answerLabel2, answerLabel3, answerLabel4};
-        interactMascot = new InteractMascot(answers, questionLabel);
+        interactMascot = new InteractMascot(answers);
     }
 
     public String getQuestion(Character interactionCharacter){

@@ -6,43 +6,61 @@ package com.crap.game.model;
 
 public class Player extends Character{
 
-    private int currentSpeed;
-    private int normalSpeed = 2;
-    private int slowerSpeed = 1;
+    private Position nextPlayerPos;
 
     public Player(String name){
         super(name);
-        this.currentSpeed=normalSpeed;
+        this.nextPlayerPos = new Position();
     }
 
     public Player(String name, float x, float y){
         super(name);
         this.position = new Position(x, y);
-        this.currentSpeed = normalSpeed;
+        this.nextPlayerPos = new Position();
     }
 
     public void moveUp(float height){
         if(!(this.getPosition().getY() > height)) {
-            this.position.setPosition(position.getX(), position.getY() + currentSpeed);
+            this.position.setPosition(position.getX(), position.getY() + this.getSpeed());
         }
     }
 
     public void moveDown(){
         if(!(this.getPosition().getY() <0)){
-            this.position.setPosition(position.getX(), position.getY() - currentSpeed);
+            this.position.setPosition(position.getX(), position.getY() - this.getSpeed());
         }
     }
 
     public void moveRight(float width){
         if(!(this.getPosition().getX() > width)) {
-            this.position.setPosition(position.getX() + currentSpeed, position.getY());
+            this.position.setPosition(position.getX() + this.getSpeed(), position.getY());
         }
     }
 
     public void moveLeft(){
         if(!(this.position.getX() <0)){
-            this.position.setPosition(position.getX() - currentSpeed, position.getY());
+            this.position.setPosition(position.getX() - this.getSpeed(), position.getY());
         }
+    }
+
+    public Position up(){
+        nextPlayerPos.setPosition(getPosition().getX(), (getPosition().getY() + getSpeed()));
+        return nextPlayerPos;
+    }
+
+    public Position down(){
+        nextPlayerPos.setPosition(getPosition().getX(), getPosition().getY() - getSpeed());
+        return nextPlayerPos;
+    }
+
+    public Position left(){
+        nextPlayerPos.setPosition(getPosition().getX() - getSpeed(), getPosition().getY());
+        return nextPlayerPos;
+    }
+
+    public Position right(){
+        nextPlayerPos.setPosition(getPosition().getX() + getSpeed(), getPosition().getY());
+        return nextPlayerPos;
     }
 
     public Position getPosition(){return this.position;  }
@@ -51,19 +69,4 @@ public class Player extends Character{
         this.position.setPosition(x,y);
     }
 
-    public void setCurrentSpeed(int speed){
-        this.currentSpeed = speed;
-    }
-
-    public int getCurrentSpeed(){
-        return currentSpeed;
-    }
-
-    public int getNormalSpeed(){
-        return this.normalSpeed;
-    }
-
-    public int getSlowerSpeed(){
-        return this.slowerSpeed;
-    }
 }

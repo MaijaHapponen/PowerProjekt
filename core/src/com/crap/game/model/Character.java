@@ -1,7 +1,5 @@
 package com.crap.game.model;
 
-import com.crap.game.controller.WorldController;
-
 /**
  * Created by Lisa on 25/04/16.
  */
@@ -12,16 +10,23 @@ public abstract class Character{
     private float height;
     private Game.Worlds world;
 
+    private float speed;
+
+    private float normalSpeed = 2;
+    private float slowerSpeed = 1;
+
     public Character(){
         this.position = new Position();
     }
 
     public Character(String name){
+        this.speed = normalSpeed;
         this.name = name;
         this.position = new Position(0,0);
     }
 
     public Character(String name, Position position, Game.Worlds world){
+        this.speed = normalSpeed;
         this.name = name;
         this.position = position;
         this.world = world;
@@ -50,5 +55,17 @@ public abstract class Character{
 
     public Game.Worlds getWorld(){
         return this.world;
+    }
+
+    public void setNormalSpeed(){
+        this.speed = normalSpeed;
+    }
+
+    public void setSlowerSpeed(){
+        this.speed = slowerSpeed;
+    }
+
+    public float getSpeed(){
+        return this.speed;
     }
  }

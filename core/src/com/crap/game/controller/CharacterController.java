@@ -43,9 +43,8 @@ public class CharacterController{
     }
 
     public void move(Direction direction){
-        int movement = 4;
+        float movement = character.getSpeed()*2;
 
-        //TODO: remove magic number now
         switch (direction){
             case UP:
                 if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()+movement)){

@@ -44,33 +44,21 @@ public class MenuController extends InputAdapter implements ApplicationListener{
         return true;
     }
 
+    @Override
+    public void create(){}
 
     @Override
-    public void create() {
-
-    }
+    public void resize(int width, int height) {}
 
     @Override
-    public void resize(int width, int height) {
-
-    }
+    public void render() {}
 
     @Override
-    public void render() {
-
-    }
+    public void pause() {}
 
     @Override
-    public void pause() {
-
-    }
+    public void resume() {}
 
     @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void dispose() {
-    }
+    public void dispose() {}
 }

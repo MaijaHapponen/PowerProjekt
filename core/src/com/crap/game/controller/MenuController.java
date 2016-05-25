@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.crap.game.model.Menu;
-import com.crap.game.model.State;
+import com.crap.game.model.GameStates;
 import com.crap.game.view.MenuView;
 
 /**
@@ -27,7 +27,7 @@ public class MenuController extends InputAdapter implements ApplicationListener{
     public boolean keyDown(int keycode){
         if(menuView.getGameOver()){
             if(keycode == Input.Keys.ENTER){
-                StateController.updateState(State.GameStates.STARTMENU);
+                StateController.updateState(GameStates.STARTMENU);
             }
         }
         else {

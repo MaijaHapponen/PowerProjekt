@@ -115,6 +115,15 @@ public class GameController extends InputAdapter {
     public void updateIfGameOver(){
         if(model.isGameOver()){
             StateController.updateState(State.GameStates.GAMEOVER);
+
+            //Reset progress
+            //
+//            view.dispose();
+            System.out.println(model.getProgress().areAllMascotsCaught());
+            model.getProgress().resetProgress();
+            System.out.println(model.getProgress().areAllMascotsCaught());
+
+            System.out.println("Game over! **^^**");
         }
     }
 

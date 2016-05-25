@@ -60,11 +60,11 @@ public class InteractMascotController extends InputAdapter {
         }
 
         else if(keycode == Input.Keys.DOWN){
-            interactMascot.setCurrentString("down");
+            interactMascot.setCurrentString("nextStepDown");
         }
 
         else if(keycode == Input.Keys.UP){
-            interactMascot.setCurrentString("up");
+            interactMascot.setCurrentString("nextStepUp");
         }
 
         return true;

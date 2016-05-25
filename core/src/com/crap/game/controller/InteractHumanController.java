@@ -29,11 +29,11 @@ public class InteractHumanController extends InputAdapter {
         }
 
         if(keyCode == Input.Keys.DOWN){
-            interactHuman.setCurrentString("down");
+            interactHuman.setCurrentString("nextStepDown");
         }
 
         if(keyCode == Input.Keys.UP){
-            interactHuman.setCurrentString("up");
+            interactHuman.setCurrentString("nextStepUp");
         }
 
         if(keyCode == Input.Keys.ENTER){

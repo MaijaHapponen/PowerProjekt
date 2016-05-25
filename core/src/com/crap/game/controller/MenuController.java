@@ -35,10 +35,10 @@ public class MenuController extends InputAdapter{
                 changeScreen();
             }
             if (keycode == Input.Keys.DOWN) {
-                menuModel.setCurrentItem("down");
+                menuModel.setCurrentItem("nextStepDown");
             }
             if (keycode == Input.Keys.UP) {
-                menuModel.setCurrentItem("up");
+                menuModel.setCurrentItem("nextStepUp");
             }
         }
         return true;

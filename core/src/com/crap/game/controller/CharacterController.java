@@ -91,10 +91,11 @@ public class CharacterController{
     }
 
     public void moveUp() {
-        character.moveUp();
+        character.moveUp(gameView.getWorldHeight());
         this.characterView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
         this.characterView.updateAnimation();
     }
+
     public void moveDown(){
         character.moveDown();
         this.characterView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
@@ -108,7 +109,7 @@ public class CharacterController{
     }
 
     public void moveRight(){
-        character.moveRight();
+        character.moveRight(gameView.getWorldWidth());
         this.characterView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
         this.characterView.updateAnimation();
     }
@@ -131,10 +132,10 @@ public class CharacterController{
     }
 
     public boolean isPositionEmpty(float x, float y){
-        if(x<0 || x>1000 || y<0 || y>1000){ //TODO fix 1000.
+        if(character.positionOutOfBounds(gameView.getWorldWidth(), gameView.getWorldHeight())){
             return false;
         }
-        if(checkIfCollision(x, y)){
+        if(checkIfCollision(x, y) ){
             return false;
         }
         return true;

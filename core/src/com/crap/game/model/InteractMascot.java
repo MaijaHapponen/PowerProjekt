@@ -16,7 +16,7 @@ public class InteractMascot {
     private boolean caughtMascot;
 
     private String back = "Press BACK SPACE to return to game";
-    private String right = "You are right!";
+    private String right = "You are nextStepRight!";
     private String wrong = "You were wrong :(";
 
     public InteractMascot(List<String> stringsInScreen){
@@ -28,7 +28,7 @@ public class InteractMascot {
     public void setCurrentString(String direction){
         int amountOfStrings = getAmountOfStrings() - 1;
 
-        if(direction.equals("down")){
+        if(direction.equals("nextStepDown")){
             if(currentStringNbr == amountOfStrings){
                 currentStringNbr = 0;
             }
@@ -36,7 +36,7 @@ public class InteractMascot {
                 currentStringNbr++ ;
             }
         }
-        if(direction.equals("up")){
+        if(direction.equals("nextStepUp")){
             if(currentStringNbr == 0){
                 currentStringNbr = 3;
             }

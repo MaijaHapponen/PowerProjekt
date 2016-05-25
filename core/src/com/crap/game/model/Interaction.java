@@ -26,11 +26,11 @@ public class Interaction {
                 checkIfInteraction(character, x + otherCharacterWidth, y) ||
                 checkIfInteraction(character, x + otherCharacterWidth, y + otherCharacterHeight) ||
                 checkIfInteraction(character, x, y + otherCharacterHeight) ||
-                //left side of character
+                //nextStepLeft side of character
                 checkIfInteraction(character, x, y + 3*(otherCharacterHeight / 4)) ||
                 checkIfInteraction(character, x, y + otherCharacterHeight / 2) ||
                 checkIfInteraction(character, x, y + otherCharacterHeight / 4) ||
-                //right side of character
+                //nextStepRight side of character
                 checkIfInteraction(character, x + otherCharacterWidth, y + 3*(otherCharacterHeight / 4)) ||
                 checkIfInteraction(character, x + otherCharacterWidth, y + otherCharacterHeight / 2) ||
                 checkIfInteraction(character, x + otherCharacterWidth, y + otherCharacterHeight / 4) ||

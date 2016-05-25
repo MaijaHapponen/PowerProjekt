@@ -43,25 +43,25 @@ public class PlayerController {
         updateSpeed();
 
         if (keycode == Input.Keys.UP &&
-                !(checkIfCollision(player.up()))) {
+                !(checkIfCollision(player.nextStepUp()))) {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
             player.moveUp(gameView.getWorldHeight());
         }
 
         else if (keycode == Input.Keys.DOWN &&
-                !(checkIfCollision(player.down()))){
+                !(checkIfCollision(player.nextStepDown()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
             player.moveDown();
         }
 
         else if (keycode == Input.Keys.LEFT &&
-                !(checkIfCollision(player.left()))){
+                !(checkIfCollision(player.nextStepLeft()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_LEFT);
             player.moveLeft();
         }
 
         else if (keycode == Input.Keys.RIGHT &&
-                !(checkIfCollision(player.right())) )  {
+                !(checkIfCollision(player.nextStepRight())) )  {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
             player.moveRight(gameView.getWorldWidth());
         }
@@ -83,8 +83,8 @@ public class PlayerController {
     }
 
     public boolean isInteractionWithMascot(){
-        return checkIfInteractionWithMascot(player.up()) || checkIfInteractionWithMascot(player.down()) ||
-                checkIfInteractionWithMascot(player.left()) || checkIfInteractionWithMascot(player.right());
+        return checkIfInteractionWithMascot(player.nextStepUp()) || checkIfInteractionWithMascot(player.nextStepDown()) ||
+                checkIfInteractionWithMascot(player.nextStepLeft()) || checkIfInteractionWithMascot(player.nextStepRight());
     }
 
     public boolean checkIfInteractionWithMascot(Position pos){
@@ -92,8 +92,8 @@ public class PlayerController {
     }
 
     public boolean isInteractionWithHuman(){
-        return checkIfInteractionWithHuman(player.up()) || checkIfInteractionWithHuman(player.down()) ||
-                checkIfInteractionWithHuman(player.left()) || checkIfInteractionWithHuman(player.right());
+        return checkIfInteractionWithHuman(player.nextStepUp()) || checkIfInteractionWithHuman(player.nextStepDown()) ||
+                checkIfInteractionWithHuman(player.nextStepLeft()) || checkIfInteractionWithHuman(player.nextStepRight());
     }
 
     public boolean checkIfInteractionWithHuman(Position pos){
@@ -102,8 +102,8 @@ public class PlayerController {
 
     public boolean isNewWorld(){
 
-        return checkIfNewWorld(player.up()) || checkIfNewWorld(player.down())
-                || checkIfNewWorld(player.left()) || checkIfNewWorld(player.right());
+        return checkIfNewWorld(player.nextStepUp()) || checkIfNewWorld(player.nextStepDown())
+                || checkIfNewWorld(player.nextStepLeft()) || checkIfNewWorld(player.nextStepRight());
     }
 
     public boolean checkIfNewWorld(Position pos){

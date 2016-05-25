@@ -42,7 +42,7 @@ public class HowToPlayView extends ScreenAdapter{
 
         generator.dispose();
         String instructions = "-Catch all the mascots to win.";
-        String instructions2 = "-Answer the questions\nright to catch the mascot.";
+        String instructions2 = "-Answer the questions\nnextStepRight to catch the mascot.";
         String instructions3 = "\n-Interact with characters by\npressing space.";
         String instructions4 = "\n\n-Move with the arrowkeys.";
 

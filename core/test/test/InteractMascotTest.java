@@ -22,9 +22,9 @@ public class InteractMascotTest {
         String[] l = new String [] {first, second};
         InteractMascot interactMascot;
         interactMascot = new InteractMascot(l, question);
-        interactMascot.setCurrentString("down");
+        interactMascot.setCurrentString("nextStepDown");
         assertTrue(interactMascot.getCurrentString().equals(second));
-        interactMascot.setCurrentString("down");
+        interactMascot.setCurrentString("nextStepDown");
         assertTrue(interactMascot.getCurrentString().equals(first));
 
 

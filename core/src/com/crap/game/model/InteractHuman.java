@@ -28,13 +28,13 @@ public class InteractHuman {
     public void setCurrentString(String direction){
         int amoutOfStrings = options.length - 1;
 
-        if(direction.equals("down")){
+        if(direction.equals("nextStepDown")){
             if(currentStringNbr == amoutOfStrings){
                 currentStringNbr = 0;
             }else{
                 currentStringNbr ++;
             }
-        }if(direction.equals("up")){
+        }if(direction.equals("nextStepUp")){
             if(currentStringNbr == 0){
                 currentStringNbr = 3;
             }else{

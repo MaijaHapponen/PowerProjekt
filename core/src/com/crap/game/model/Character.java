@@ -8,6 +8,7 @@ import java.util.Random;
  */
 public abstract class Character{
 
+    //TODO enum class
     public enum Direction{UP, DOWN, LEFT, RIGHT, NO_DIRECTION}
 
     private String name;
@@ -86,20 +87,35 @@ public abstract class Character{
         return getPosition().getY();
     }
 
-    public void moveUp(){
-        getPosition().setPosition(getX(),getY()+2);
+    public void moveUp(float mapHeight){
+        if(!(this.getPosition().getY() > mapHeight)) {
+            getPosition().setPosition(getX(), getY() + speed);
+        }
     }
 
     public void moveDown(){
-        getPosition().setPosition(getX(),getY()-2);
+        if(!(this.getPosition().getY() <0)) {
+            getPosition().setPosition(getX(), getY() - speed);
+        }
     }
 
     public void moveLeft(){
-        getPosition().setPosition(getX()-2,getY());
+        if(!(this.position.getX() <0)) {
+            getPosition().setPosition(getX() - speed, getY());
+        }
     }
 
-    public void moveRight(){
-        getPosition().setPosition(getX()+2,getY());
+    public void moveRight(float mapWidth){
+        if(!(this.getPosition().getX() > mapWidth)) {
+            getPosition().setPosition(getX() + speed, getY());
+        }
+    }
+
+    public boolean positionOutOfBounds(float mapWidth, float mapHeight){
+        if(getX() < mapWidth || getY() < mapHeight){
+            return false;
+        }
+        return true;
     }
 
     public void updateDirections(){
@@ -125,14 +141,6 @@ public abstract class Character{
 
     public Direction getWalkAwayDirection(){
         return  this.walkAwayDirection;
-    }
-
-    public void setWalkAwayDirection(Direction direction){
-        this.walkAwayDirection = direction;
-    }
-
-    public void setLastDirection(Direction direction){
-        this.lastDirection = direction;
     }
 
     public float getWidth(){

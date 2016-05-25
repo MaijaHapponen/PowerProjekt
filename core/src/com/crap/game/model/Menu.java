@@ -19,11 +19,11 @@ public class Menu {
 
     public void setCurrentItem(String direction){
         int lastItemNr = amountOfItems() -1;
-        if(direction.equals("up")){
+        if(direction.equals("nextStepUp")){
             if(currentItemNr == 0) currentItemNr =lastItemNr;
             else currentItemNr = currentItemNr -1;
 
-        }else if(direction.equals("down")){
+        }else if(direction.equals("nextStepDown")){
             if(currentItemNr == lastItemNr) currentItemNr = 0;
             else currentItemNr = currentItemNr + 1;
         }

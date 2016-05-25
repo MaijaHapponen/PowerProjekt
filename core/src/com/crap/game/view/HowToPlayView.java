@@ -49,7 +49,6 @@ public class HowToPlayView extends ScreenAdapter{
     @Override
     public void render(float delta) {
         String title = "This is how you play:";
-        String pressEnter = "Press enter to begin the game";
         String pressBack = "Press backspace to go back";
 
         Gdx.gl.glClearColor(1, 1, 1, 1);

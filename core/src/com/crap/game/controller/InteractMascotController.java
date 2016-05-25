@@ -56,7 +56,7 @@ public class InteractMascotController extends InputAdapter {
                 answeredCorrect = false;
             }
 
-            interactMascotView.setHasAnswered();
+            interactMascot.setHasAnswered();
         }
 
         else if(keycode == Input.Keys.DOWN){

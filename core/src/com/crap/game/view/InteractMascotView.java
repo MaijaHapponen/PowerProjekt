@@ -11,6 +11,8 @@ import com.crap.game.model.*;
 import com.crap.game.model.Character;
 import com.crap.game.model.InteractMascot;
 
+import java.util.List;
+
 /**
  * Created by Maija on 2016-05-11.
  */
@@ -19,18 +21,10 @@ public class InteractMascotView extends ScreenAdapter {
     private SpriteBatch batch;
 
     private Character interactionCharacter;
-
-    private boolean hasAnswered;
-
-    private String back = "Press BACK SPACE to return to game";
-    private String questionLabel;
-    private String answerLabel1;
-    private String answerLabel2;
-    private String answerLabel3;
-    private  String answerLabel4;
-
     private InteractMascot interactMascot;
 
+    private String question;
+    private List<String> alternatives;
 
     BitmapFont titleFont;
     BitmapFont font;
@@ -38,21 +32,17 @@ public class InteractMascotView extends ScreenAdapter {
     FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
     FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
-    String[] answers;
-
-
     public InteractMascotView(Character interactionCharacter){
         this.interactionCharacter = interactionCharacter;
         this.batch = new SpriteBatch();
+
+        this.question = ((Mascot)interactionCharacter).getQuestion().getQuestion();
+        this.alternatives = ((Mascot)interactionCharacter).getQuestion().getAlternatives();
 
         create();
     }
 
     public void create(){
-
-        String question = getQuestion(interactionCharacter);
-        java.util.List<String> alternatives = getAnswers(interactionCharacter);
-
 
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -64,33 +54,7 @@ public class InteractMascotView extends ScreenAdapter {
         font= generator.generateFont(parameter);
         generator.dispose();
 
-        questionLabel = (question);
-        answerLabel1 = (alternatives.get(0));
-        answerLabel2 = (alternatives.get(1));
-        answerLabel3 = (alternatives.get(2));
-        answerLabel4 = (alternatives.get(3));
-
-
-        answers = new String[]{answerLabel1, answerLabel2, answerLabel3, answerLabel4};
-        interactMascot = new InteractMascot(answers);
-    }
-
-    public String getQuestion(Character interactionCharacter){
-
-        if(interactionCharacter instanceof Mascot){
-            return ((Mascot) interactionCharacter).getQuestion().getQuestion();
-        }
-
-        return null;
-    }
-
-    public java.util.List<String> getAnswers(Character interactionCharacter) {
-
-        if (interactionCharacter instanceof Mascot) {
-            return ((Mascot) interactionCharacter).getQuestion().getAlternatives();
-        }
-
-        return null;
+        interactMascot = new InteractMascot(alternatives);
     }
 
     public InteractMascot getInteractModel(){
@@ -104,13 +68,12 @@ public class InteractMascotView extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        if(!hasAnswered) {
+        if(!interactMascot.getHasAnswered()) {
 
             titleFont.setColor(Color.BLACK);
-            titleFont.draw(batch, questionLabel, 15, 450);
-            for(int i = 0; i < answers.length; i++) {
+            titleFont.draw(batch, question, 15, 450);
+            for(int i = 0; i < alternatives.size(); i++) {
 
-                
                 if(interactMascot.getCurrentStringNbr() == i) {
                     font.setColor(Color.PINK);
                 }
@@ -118,41 +81,32 @@ public class InteractMascotView extends ScreenAdapter {
                 else{
                     font.setColor(Color.BLACK);
                 }
-                font.draw(batch, answers[i], 200, 250 - 30 * i);
 
-
-
+                font.draw(batch, alternatives.get(i), 200, 250 - 30 * i);
             }
         }
 
         else if(((Mascot)interactionCharacter).isCaught()) {
 
             font.setColor(Color.BLACK);
-            font.draw(batch, "You are right!", 60, 300);
-            font.draw(batch, back, 60, 250);
+            font.draw(batch, interactMascot.getRight(), 60, 300);
+            font.draw(batch, interactMascot.getBack(), 60, 250);
             interactMascot.updateMascotCaught();
-
         }
 
         else{
             font.setColor(Color.BLACK);
-            font.draw(batch, "You were wrong :(", 60, 300);
-            font.draw(batch, back, 60, 250);
-
+            font.draw(batch, interactMascot.getWrong(), 60, 300);
+            font.draw(batch, interactMascot.getBack(), 60, 250);
         }
+
         batch.end();
-
-    }
-
-    public void setHasAnswered(){
-        this.hasAnswered = true;
     }
 
     @Override
     public void resize(int width, int height) {
-
-
     }
+
     @Override
     public void dispose(){
         batch.dispose();

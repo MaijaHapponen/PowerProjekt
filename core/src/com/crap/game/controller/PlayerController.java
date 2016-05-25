@@ -91,22 +91,22 @@ public class PlayerController {
     }
 
     public Position up(){
-        nextPlayerPos.setPosition(getPlayerPositionX(), (getPlayerPositionY() + player.getCurrentSpeed()));
+        nextPlayerPos.setPosition(getPlayerPositionX(), (getPlayerPositionY() + player.getSpeed()));
         return nextPlayerPos;
     }
 
     public Position down(){
-        nextPlayerPos.setPosition(getPlayerPositionX(), getPlayerPositionY() - player.getCurrentSpeed());
+        nextPlayerPos.setPosition(getPlayerPositionX(), getPlayerPositionY() - player.getSpeed());
         return nextPlayerPos;
     }
 
     public Position left(){
-        nextPlayerPos.setPosition(getPlayerPositionX() - player.getCurrentSpeed(), getPlayerPositionY());
+        nextPlayerPos.setPosition(getPlayerPositionX() - player.getSpeed(), getPlayerPositionY());
         return nextPlayerPos;
     }
 
     public Position right(){
-        nextPlayerPos.setPosition(getPlayerPositionX() + player.getCurrentSpeed(), getPlayerPositionY());
+        nextPlayerPos.setPosition(getPlayerPositionX() + player.getSpeed(), getPlayerPositionY());
         return nextPlayerPos;
     }
 
@@ -140,10 +140,10 @@ public class PlayerController {
 
     public void updateSpeed(){
         if(collisionController.isSlowerTerrain(getPlayerPositionX(), getPlayerPositionY()) ){
-            player.setCurrentSpeed(player.getSlowerSpeed());
+            player.setSlowerSpeed();
         }
         else{
-            player.setCurrentSpeed(player.getNormalSpeed());
+            player.setNormalSpeed();
         }
     }
 

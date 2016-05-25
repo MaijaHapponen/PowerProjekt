@@ -24,7 +24,7 @@ public class MenuController extends InputAdapter{
     }
 
     public boolean keyDown(int keycode){
-        if(menuView.getGameOver()){
+        if(menuModel.getGameOver()){
             if(keycode == Input.Keys.ENTER){
                 StateController.updateState(GameStates.STARTMENU);
                 menuView.dispose();

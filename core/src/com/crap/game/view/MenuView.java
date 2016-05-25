@@ -78,6 +78,8 @@ public class MenuView extends ScreenAdapter{
         }
         batch.end();
     }
+
+    //TODO: Move to Menu
     public boolean getGameOver(){
         return this.gameOver;
     }

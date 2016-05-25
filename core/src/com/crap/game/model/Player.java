@@ -6,13 +6,17 @@ package com.crap.game.model;
 
 public class Player extends Character{
 
+    private Position nextPlayerPos;
+
     public Player(String name){
         super(name);
+        this.nextPlayerPos = new Position();
     }
 
     public Player(String name, float x, float y){
         super(name);
         this.position = new Position(x, y);
+        this.nextPlayerPos = new Position();
     }
 
     public void moveUp(float height){
@@ -37,6 +41,26 @@ public class Player extends Character{
         if(!(this.position.getX() <0)){
             this.position.setPosition(position.getX() - this.getSpeed(), position.getY());
         }
+    }
+
+    public Position up(){
+        nextPlayerPos.setPosition(getPosition().getX(), (getPosition().getY() + getSpeed()));
+        return nextPlayerPos;
+    }
+
+    public Position down(){
+        nextPlayerPos.setPosition(getPosition().getX(), getPosition().getY() - getSpeed());
+        return nextPlayerPos;
+    }
+
+    public Position left(){
+        nextPlayerPos.setPosition(getPosition().getX() - getSpeed(), getPosition().getY());
+        return nextPlayerPos;
+    }
+
+    public Position right(){
+        nextPlayerPos.setPosition(getPosition().getX() + getSpeed(), getPosition().getY());
+        return nextPlayerPos;
     }
 
     public Position getPosition(){return this.position;  }

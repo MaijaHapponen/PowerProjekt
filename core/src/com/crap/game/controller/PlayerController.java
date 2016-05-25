@@ -14,7 +14,6 @@ public class PlayerController {
     private GameView gameView;
     private PlayerView playerView;
     private Player player;
-    private Position nextPlayerPos;
     private CollisionController collisionController;
     private InteractionController interactionController;
     public MapObject newWorldObject;
@@ -24,7 +23,6 @@ public class PlayerController {
         this.player = playerView.getPlayer();
         this.gameView = gameView;
         this.collisionController = new CollisionController(gameView.getWorld());
-        this.nextPlayerPos = new Position();
         this.interactionController = new InteractionController(gameView);
         this.newWorldObject = collisionController.getNewWorldObject();
     }
@@ -43,25 +41,25 @@ public class PlayerController {
         updateSpeed();
 
         if (keycode == Input.Keys.UP &&
-                !(checkIfCollision(up()))) {
+                !(checkIfCollision(player.up()))) {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
             player.moveUp(gameView.getWorldHeight());
         }
 
         else if (keycode == Input.Keys.DOWN &&
-                !(checkIfCollision(down()))){
+                !(checkIfCollision(player.down()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
             player.moveDown();
         }
 
         else if (keycode == Input.Keys.LEFT &&
-                !(checkIfCollision(left()))){
+                !(checkIfCollision(player.left()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_LEFT);
             player.moveLeft();
         }
 
         else if (keycode == Input.Keys.RIGHT &&
-                !(checkIfCollision(right())) )  {
+                !(checkIfCollision(player.right())) )  {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
             player.moveRight(gameView.getWorldWidth());
         }
@@ -90,29 +88,9 @@ public class PlayerController {
                 || interactionController.isInteractionWithMascot(p.getX(),p.getY()));
     }
 
-    public Position up(){
-        nextPlayerPos.setPosition(getPlayerPositionX(), (getPlayerPositionY() + player.getSpeed()));
-        return nextPlayerPos;
-    }
-
-    public Position down(){
-        nextPlayerPos.setPosition(getPlayerPositionX(), getPlayerPositionY() - player.getSpeed());
-        return nextPlayerPos;
-    }
-
-    public Position left(){
-        nextPlayerPos.setPosition(getPlayerPositionX() - player.getSpeed(), getPlayerPositionY());
-        return nextPlayerPos;
-    }
-
-    public Position right(){
-        nextPlayerPos.setPosition(getPlayerPositionX() + player.getSpeed(), getPlayerPositionY());
-        return nextPlayerPos;
-    }
-
     public boolean isInteractionWithMascot(){
-        return checkIfInteractionWithMascot(up()) || checkIfInteractionWithMascot(down()) ||
-                checkIfInteractionWithMascot(left()) || checkIfInteractionWithMascot(right());
+        return checkIfInteractionWithMascot(player.up()) || checkIfInteractionWithMascot(player.down()) ||
+                checkIfInteractionWithMascot(player.left()) || checkIfInteractionWithMascot(player.right());
     }
 
     public boolean checkIfInteractionWithMascot(Position pos){
@@ -120,8 +98,8 @@ public class PlayerController {
     }
 
     public boolean isInteractionWithHuman(){
-        return checkIfInteractionWithHuman(up()) || checkIfInteractionWithHuman(down()) ||
-                checkIfInteractionWithHuman(left()) || checkIfInteractionWithHuman(right());
+        return checkIfInteractionWithHuman(player.up()) || checkIfInteractionWithHuman(player.down()) ||
+                checkIfInteractionWithHuman(player.left()) || checkIfInteractionWithHuman(player.right());
     }
 
     public boolean checkIfInteractionWithHuman(Position pos){
@@ -130,7 +108,8 @@ public class PlayerController {
 
     public boolean isNewWorld(){
 
-        return checkIfNewWorld(up()) || checkIfNewWorld(down()) || checkIfNewWorld(left()) || checkIfNewWorld(right());
+        return checkIfNewWorld(player.up()) || checkIfNewWorld(player.down())
+                || checkIfNewWorld(player.left()) || checkIfNewWorld(player.right());
     }
 
     public boolean checkIfNewWorld(Position pos){

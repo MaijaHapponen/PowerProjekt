@@ -11,7 +11,6 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.crap.game.model.Character;
 import com.crap.game.model.Human;
 import com.crap.game.model.InteractHuman;
-import com.crap.game.model.Mascot;
 
 /**
  * Created by rebeccafinne on 16-05-23.

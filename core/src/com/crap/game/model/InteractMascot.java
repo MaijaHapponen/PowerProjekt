@@ -8,13 +8,11 @@ public class InteractMascot {
     private String currentString;
     private int currentStringNbr;
     private String[] stringsInScreen;
-    private String questioString;
 
     private boolean caughtMascot;
 
-    public InteractMascot(String[] stringsInScreen, String questionString){
+    public InteractMascot(String[] stringsInScreen){
         this.stringsInScreen = stringsInScreen;
-        this.questioString = questionString;
         this.currentStringNbr = 0;
         this.currentString = stringsInScreen[currentStringNbr];
     }
@@ -43,16 +41,6 @@ public class InteractMascot {
 
     public String getCurrentString(){
         return this.currentString;
-    }
-    public void setQuestionString(String s){
-        this.questioString = s;
-    }
-
-    public String getQuestionString(){
-        return this.questioString;
-    }
-    public String[] getStringsInScreen(){
-        return this.stringsInScreen;
     }
 
     public int getAmountOfStrings(){

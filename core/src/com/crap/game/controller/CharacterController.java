@@ -1,6 +1,7 @@
 package com.crap.game.controller;
 
 import com.crap.game.model.Character;
+import com.crap.game.model.Direction;
 import com.crap.game.view.CharacterView;
 import com.crap.game.view.GameView;
 import com.crap.game.view.PlayerView;
@@ -8,8 +9,6 @@ import com.crap.game.view.PlayerView;
 import java.util.Random;
 
 public class CharacterController{
-
-    public enum Direction{UP, DOWN, LEFT, RIGHT}
 
     private GameView gameView;
     private Character character;

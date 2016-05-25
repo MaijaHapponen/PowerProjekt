@@ -136,10 +136,6 @@ public class PlayerController {
         }
     }
 
-    //public String getNewWorldName(){
-   //     return collisionController.getNewWorldName();
-    //}
-
     public CollisionController getCollisionController(){
         return this.collisionController;
     }

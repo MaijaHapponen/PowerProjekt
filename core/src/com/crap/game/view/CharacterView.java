@@ -52,7 +52,6 @@ public class CharacterView extends ScreenAdapter {
     @Override
     public void dispose() {
         texture.dispose();
-
     }
 
     public Sprite getSprite(){
@@ -68,17 +67,8 @@ public class CharacterView extends ScreenAdapter {
                 this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
     }
 
-    public PlayerView.AnimationState getAnimationState(){
-        return this.animationState;
-    }
-
-
     public void setAnimationState(PlayerView.AnimationState animationState){
         this.animationState = animationState;
-    }
-
-    public Texture getTexture(){
-        return this.texture;
     }
 
     public int getCharacterSpriteWidth(){

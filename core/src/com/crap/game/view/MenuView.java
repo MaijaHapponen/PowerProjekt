@@ -8,9 +8,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.crap.game.controller.StateController;
+import com.crap.game.model.GameStates;
 import com.crap.game.model.Menu;
-import com.crap.game.model.State;
-
 
 /**
  * Created by Maija on 2016-05-11.
@@ -83,10 +82,10 @@ public class MenuView extends ScreenAdapter{
     }
     public void setScreen(){
         if(menuModel.getCurrentItem().equals("Play the game")){
-            StateController.updateState(State.GameStates.PLAY);
+            StateController.updateState(GameStates.PLAY);
             dispose();
         }else if(menuModel.getCurrentItem().equals("How to play")){
-            StateController.updateState(State.GameStates.HOWTOPLAY);
+            StateController.updateState(GameStates.HOWTOPLAY);
         }else if(menuModel.getCurrentItem().equals("Exit")){
             System.exit(0);
         }

@@ -4,8 +4,8 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.crap.game.model.GameStates;
 import com.crap.game.model.Menu;
-import com.crap.game.model.State;
 import com.crap.game.view.MenuView;
 
 /**
@@ -27,7 +27,7 @@ public class MenuController extends InputAdapter implements ApplicationListener{
     public boolean keyDown(int keycode){
         if(menuView.getGameOver()){
             if(keycode == Input.Keys.ENTER){
-                StateController.updateState(State.GameStates.STARTMENU);
+                StateController.updateState(GameStates.STARTMENU);
                 menuView.dispose();
             }
         }
@@ -45,33 +45,21 @@ public class MenuController extends InputAdapter implements ApplicationListener{
         return true;
     }
 
+    @Override
+    public void create(){}
 
     @Override
-    public void create() {
-
-    }
+    public void resize(int width, int height) {}
 
     @Override
-    public void resize(int width, int height) {
-
-    }
+    public void render() {}
 
     @Override
-    public void render() {
-
-    }
+    public void pause() {}
 
     @Override
-    public void pause() {
-
-    }
+    public void resume() {}
 
     @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void dispose() {
-    }
+    public void dispose() {}
 }

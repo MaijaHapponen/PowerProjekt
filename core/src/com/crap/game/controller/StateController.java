@@ -2,14 +2,14 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.crap.game.model.State;
+import com.crap.game.model.GameStates;
 import com.crap.game.view.*;
 
 /**
  * Created by Maija on 2016-05-19.
  */
 public class StateController {
-    private State.GameStates currentState;
+    private GameStates currentState;
 
     public static GameView worldView;
     public static GameController controller;
@@ -23,10 +23,10 @@ public class StateController {
     public StateController(Game g) {
         this.game = g;
         this.world = new com.crap.game.model.Game();
-        updateState(State.GameStates.STARTMENU);
+        updateState(GameStates.STARTMENU);
     }
 
-    public static void updateState(State.GameStates state) {
+    public static void updateState(GameStates state) {
 
         switch (state) {
 
@@ -56,7 +56,7 @@ public class StateController {
                 else if(controller.getPlayerController().isInteractionWithHuman()) {
                      InteractHumanView interactHumanView = new InteractHumanView(
                              controller.getPlayerController().getInteractionController().getInteractingCharacter());
-                     new InteractHumanController(interactHumanView, controller);
+                     new InteractHumanController(interactHumanView);
                      game.setScreen(interactHumanView);
                  }
 

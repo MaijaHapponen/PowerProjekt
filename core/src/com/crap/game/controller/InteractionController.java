@@ -1,7 +1,8 @@
 package com.crap.game.controller;
 
-import com.crap.game.model.*;
 import com.crap.game.model.Character;
+import com.crap.game.model.Interaction;
+import com.crap.game.model.Mascot;
 import com.crap.game.view.CharacterView;
 import com.crap.game.view.GameView;
 
@@ -13,7 +14,6 @@ public class InteractionController {
     private GameView gameView;
     private Character interactingCharacter;
     private CharacterView interactingCharacterView;
-    private static boolean isInteracting = false;
 
     public InteractionController(GameView view){
         this.gameView = view;
@@ -27,7 +27,7 @@ public class InteractionController {
 
             if(characterView.getCharacter().getWorld() == gameView.getGame().getCurrectWorld()) {
                 if (interactionModel.isInteraction(characterView.getCharacter(), x, y)) {
-                    if (!isInteracting) {
+                    if (!interactionModel.getIsInteracting()) {
                         setInteractingCharacter(characterView.getCharacter(), characterView);
                     }
                     return true;
@@ -44,7 +44,7 @@ public class InteractionController {
             if(characterView.getCharacter().getWorld() == gameView.getGame().getCurrectWorld() &&
                     !((Mascot) characterView.getCharacter()).isCaught()) {
                 if (interactionModel.isInteraction(characterView.getCharacter(), x, y)) {
-                    if (!isInteracting) {
+                    if (!interactionModel.getIsInteracting()) {
                         setInteractingCharacter(characterView.getCharacter(), characterView);
                     }
                     return true;
@@ -96,11 +96,8 @@ public class InteractionController {
         return this.interactingCharacterView;
     }
 
-    public boolean getIsInteracting(){
-        return isInteracting;
+    public Interaction getInteractionModel(){
+        return this.interactionModel;
     }
 
-    public void setIsInteracting(boolean state){
-        isInteracting = state;
-    }
 }

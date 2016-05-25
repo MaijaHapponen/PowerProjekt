@@ -1,9 +1,12 @@
 package com.crap.game.controller;
 
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.crap.game.model.*;
 import com.crap.game.model.Game;
+import com.crap.game.model.GameStates;
+import com.crap.game.model.Mascot;
 import com.crap.game.view.GameView;
 
 import static com.crap.game.model.Game.Worlds.*;
@@ -65,22 +68,22 @@ public class GameController extends InputAdapter {
     }
 
     public void enterNewWorld() {
-        if(playerController.getNewWorldName().equals("hubbeneditsand")) {
+        if(playerController.getCollisionController().getNewWorldName().equals("hubbeneditsand")) {
             view.setLabel("hörsalsvägen");
 
             worldController.setWorld(EDIT);
 
-        }else if(playerController.getNewWorldName().equals("horsalmaskin")){
+        }else if(playerController.getCollisionController().getNewWorldName().equals("horsalmaskin")){
             view.setLabel("hörsalsvägen");
 
             worldController.setWorld(HORSAL);
 
-        }else if(playerController.getNewWorldName().equals("hubben")){
+        }else if(playerController.getCollisionController().getNewWorldName().equals("hubben")){
             view.setLabel("hubben");
 
             worldController.setWorld(HUBBEN);
 
-        }else if(playerController.getNewWorldName().equals("zaloonen")){
+        }else if(playerController.getCollisionController().getNewWorldName().equals("zaloonen")){
             view.setLabel("zaloonen");
 
             worldController.setWorld(ZALOONEN);
@@ -115,6 +118,11 @@ public class GameController extends InputAdapter {
     public void updateIfGameOver(){
         if(model.isGameOver()){
             StateController.updateState(GameStates.GAMEOVER);
+
+            model.getProgress().resetProgress();
+            for(int i=0; i<model.getMascots().size(); i++) {
+                model.getMascots().get(i).setCaught(false);
+            }
         }
     }
 
@@ -134,6 +142,7 @@ public class GameController extends InputAdapter {
         characterController.walkAway(playerController.getInteractionController().getInteractingCharacter(),
                 playerController.getInteractionController().getInteractingCharacterView());
     }
+
     public void mascotCaught(Mascot caughtMascot){
         model.mascotCaught(caughtMascot);
     }

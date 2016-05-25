@@ -2,6 +2,7 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.MapObject;
+import com.crap.game.model.CollisionModel;
 import com.crap.game.model.Player;
 import com.crap.game.model.Position;
 import com.crap.game.view.GameView;
@@ -14,7 +15,6 @@ public class PlayerController {
     private GameView gameView;
     private PlayerView playerView;
     private Player player;
-    private Position nextPlayerPos;
     private CollisionController collisionController;
     private InteractionController interactionController;
     public MapObject newWorldObject;
@@ -24,7 +24,6 @@ public class PlayerController {
         this.player = playerView.getPlayer();
         this.gameView = gameView;
         this.collisionController = new CollisionController(gameView.getWorld());
-        this.nextPlayerPos = new Position();
         this.interactionController = new InteractionController(gameView);
         this.newWorldObject = collisionController.getNewWorldObject();
     }
@@ -43,45 +42,37 @@ public class PlayerController {
         updateSpeed();
 
         if (keycode == Input.Keys.UP &&
-                !(checkIfCollision(up()))) {
+                !(checkIfCollision(player.up()))) {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_BACK);
             player.moveUp(gameView.getWorldHeight());
         }
 
         else if (keycode == Input.Keys.DOWN &&
-                !(checkIfCollision(down()))){
+                !(checkIfCollision(player.down()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_FRONT);
             player.moveDown();
         }
 
         else if (keycode == Input.Keys.LEFT &&
-                !(checkIfCollision(left()))){
+                !(checkIfCollision(player.left()))){
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_LEFT);
             player.moveLeft();
         }
 
         else if (keycode == Input.Keys.RIGHT &&
-                !(checkIfCollision(right())) )  {
+                !(checkIfCollision(player.right())) )  {
             playerView.setAnimationState(PlayerView.AnimationState.WALKING_RIGHT);
             player.moveRight(gameView.getWorldWidth());
         }
 
         updateSprite();
-        playerView.moveCamera(getPlayerPositionX(), getPlayerPositionY(),
+        playerView.moveCamera(getPlayer().getPosition().getX(), getPlayer().getPosition().getY(),
                 gameView.getWorldHeight()+ gameView.getTileHeight(), gameView.getWorldWidth()+gameView.getTileWidth());
 
     }
 
     public void updateSprite() {
-        playerView.getSprite().setPosition(getPlayerPositionX(), getPlayerPositionY());
-    }
-
-    public float getPlayerPositionX(){
-        return player.getPosition().getX();
-    }
-
-    public float getPlayerPositionY(){
-        return player.getPosition().getY();
+        playerView.getSprite().setPosition(getPlayer().getPosition().getX(), getPlayer().getPosition().getY());
     }
 
     public boolean checkIfCollision(Position p){
@@ -90,29 +81,9 @@ public class PlayerController {
                 || interactionController.isInteractionWithMascot(p.getX(),p.getY()));
     }
 
-    public Position up(){
-        nextPlayerPos.setPosition(getPlayerPositionX(), (getPlayerPositionY() + player.getCurrentSpeed()));
-        return nextPlayerPos;
-    }
-
-    public Position down(){
-        nextPlayerPos.setPosition(getPlayerPositionX(), getPlayerPositionY() - player.getCurrentSpeed());
-        return nextPlayerPos;
-    }
-
-    public Position left(){
-        nextPlayerPos.setPosition(getPlayerPositionX() - player.getCurrentSpeed(), getPlayerPositionY());
-        return nextPlayerPos;
-    }
-
-    public Position right(){
-        nextPlayerPos.setPosition(getPlayerPositionX() + player.getCurrentSpeed(), getPlayerPositionY());
-        return nextPlayerPos;
-    }
-
     public boolean isInteractionWithMascot(){
-        return checkIfInteractionWithMascot(up()) || checkIfInteractionWithMascot(down()) ||
-                checkIfInteractionWithMascot(left()) || checkIfInteractionWithMascot(right());
+        return checkIfInteractionWithMascot(player.up()) || checkIfInteractionWithMascot(player.down()) ||
+                checkIfInteractionWithMascot(player.left()) || checkIfInteractionWithMascot(player.right());
     }
 
     public boolean checkIfInteractionWithMascot(Position pos){
@@ -120,8 +91,8 @@ public class PlayerController {
     }
 
     public boolean isInteractionWithHuman(){
-        return checkIfInteractionWithHuman(up()) || checkIfInteractionWithHuman(down()) ||
-                checkIfInteractionWithHuman(left()) || checkIfInteractionWithHuman(right());
+        return checkIfInteractionWithHuman(player.up()) || checkIfInteractionWithHuman(player.down()) ||
+                checkIfInteractionWithHuman(player.left()) || checkIfInteractionWithHuman(player.right());
     }
 
     public boolean checkIfInteractionWithHuman(Position pos){
@@ -130,7 +101,8 @@ public class PlayerController {
 
     public boolean isNewWorld(){
 
-        return checkIfNewWorld(up()) || checkIfNewWorld(down()) || checkIfNewWorld(left()) || checkIfNewWorld(right());
+        return checkIfNewWorld(player.up()) || checkIfNewWorld(player.down())
+                || checkIfNewWorld(player.left()) || checkIfNewWorld(player.right());
     }
 
     public boolean checkIfNewWorld(Position pos){
@@ -139,11 +111,11 @@ public class PlayerController {
 
 
     public void updateSpeed(){
-        if(collisionController.isSlowerTerrain(getPlayerPositionX(), getPlayerPositionY()) ){
-            player.setCurrentSpeed(player.getSlowerSpeed());
+        if(collisionController.isSlowerTerrain(getPlayer().getPosition().getX(), getPlayer().getPosition().getY())){
+            player.setSlowerSpeed();
         }
         else{
-            player.setCurrentSpeed(player.getNormalSpeed());
+            player.setNormalSpeed();
         }
     }
 
@@ -164,8 +136,8 @@ public class PlayerController {
         }
     }
 
-    public String getNewWorldName(){
-        return collisionController.getNewWorldName();
+    public CollisionController getCollisionController(){
+        return this.collisionController;
     }
 
     public InteractionController getInteractionController(){

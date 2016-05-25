@@ -7,11 +7,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.*;
 
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.crap.game.model.*;
 import com.crap.game.model.Character;
 import com.crap.game.model.InteractMascot;
-
 
 /**
  * Created by Maija on 2016-05-11.
@@ -74,7 +72,7 @@ public class InteractMascotView extends ScreenAdapter {
 
 
         answers = new String[]{answerLabel1, answerLabel2, answerLabel3, answerLabel4};
-        interactMascot = new InteractMascot(answers, questionLabel);
+        interactMascot = new InteractMascot(answers);
     }
 
     public String getQuestion(Character interactionCharacter){

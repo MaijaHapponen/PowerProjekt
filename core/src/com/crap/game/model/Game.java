@@ -2,6 +2,8 @@ package com.crap.game.model;
 
 import java.util.ArrayList;
 
+import static com.crap.game.model.Constants.*;
+
 /**
  * Created by Lisa on 24/04/16.
  */
@@ -16,6 +18,11 @@ public class Game {
     private Questions questions;
     private Information information;
     private Worlds currectWorld;
+
+    private boolean isEntrance;
+    private Position entrancePosition;
+    private Game.Worlds previousRoom;
+    private Game.Worlds currentWorld;
 
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
@@ -37,6 +44,9 @@ public class Game {
         this.information = new Information(humans);
 
         this.progress = new Progress(mascots);
+
+        this.isEntrance = false;
+        this.entrancePosition = new Position(0,0);
     }
 
     //Populates an arrayList with humans.
@@ -90,5 +100,38 @@ public class Game {
 
     public Worlds getCurrectWorld(){
         return this.currectWorld;
+    }
+
+    public void enterHubben(){
+        player.setPosition(hubbenEntryX,hubbenEntryY);
+    }
+
+    public void enterZaloonen(){
+        player.setPosition(zaloonEntryX,zaloonEntryY);
+    }
+
+    public void setEntrance(float x, float y){
+        this.entrancePosition.setPosition(x,y);
+        this.isEntrance = true;
+    }
+
+    public void setEntrancePosition(float x, float y){
+        this.entrancePosition.setPosition(x,y);
+    }
+
+    public Position getEntrancePosition(){
+        return this.entrancePosition;
+    }
+
+    public Game.Worlds getPreviousRoom(){
+        return this.previousRoom;
+    }
+
+    public void setExit(){
+        isEntrance = false;
+    }
+
+    public void setPreviousRoom(Game.Worlds lastRoom) {
+        this.previousRoom = lastRoom;
     }
 }

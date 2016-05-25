@@ -56,7 +56,7 @@ public class StateController {
                 else if(controller.getPlayerController().isInteractionWithHuman()) {
                      InteractHumanView interactHumanView = new InteractHumanView(
                              controller.getPlayerController().getInteractionController().getInteractingCharacter());
-                     new InteractHumanController(interactHumanView, controller);
+                     new InteractHumanController(interactHumanView);
                      game.setScreen(interactHumanView);
                  }
 
@@ -93,6 +93,7 @@ public class StateController {
     public static void unPauseGame(){
         playMode();
     }
+
     public static void setGameMode(boolean b){
         gameMode = b;
     }
@@ -100,8 +101,8 @@ public class StateController {
     public boolean getGameMode(){
         return gameMode;
     }
+
     public GameController getController(){
         return controller;
     }
-
 }

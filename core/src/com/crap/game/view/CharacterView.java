@@ -1,7 +1,6 @@
 package com.crap.game.view;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -11,7 +10,7 @@ import com.crap.game.model.Character;
  * Created by andrea on 2016-04-28.
  */
 
-public class CharacterView extends ApplicationAdapter implements Screen {
+public class CharacterView extends ScreenAdapter {
 
     private Character character;
     private Sprite sprite;
@@ -51,16 +50,8 @@ public class CharacterView extends ApplicationAdapter implements Screen {
     }
 
     @Override
-    public void render(float delta) {}
-
-    @Override
-    public void hide() {}
-
-    @Override
-    public void show() {}
-
-
-    public void update(){
+    public void dispose() {
+        texture.dispose();
     }
 
     public Sprite getSprite(){
@@ -76,17 +67,8 @@ public class CharacterView extends ApplicationAdapter implements Screen {
                 this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
     }
 
-    public PlayerView.AnimationState getAnimationState(){
-        return this.animationState;
-    }
-
-
     public void setAnimationState(PlayerView.AnimationState animationState){
         this.animationState = animationState;
-    }
-
-    public Texture getTexture(){
-        return this.texture;
     }
 
     public int getCharacterSpriteWidth(){
@@ -96,4 +78,6 @@ public class CharacterView extends ApplicationAdapter implements Screen {
     public int getCharacterSpriteHeight(){
         return this.texture.getHeight()/NBR_OF_TEXTURE_IMAGES_VERTICALLY;
     }
+
+
 }

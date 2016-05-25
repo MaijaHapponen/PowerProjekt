@@ -50,7 +50,7 @@ public class InteractMascotController extends InputAdapter {
                     gameController.mascotCaught(caughtMascot);
                 }
                 answeredCorrect = true;
-                //TODO: Also remove view for mascot
+                gameController.getPlayerController().getInteractionController().getInteractingCharacterView().dispose();
             }
             else{
                 answeredCorrect = false;

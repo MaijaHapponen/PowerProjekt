@@ -92,22 +92,8 @@ public class GameView extends ApplicationAdapter implements Screen{
 
         batch.begin();
 
-        for(int i = 0; i<humansList.size(); i++){
-            if(humansList.get(i).getCharacter().getWorld() == game.getCurrectWorld()){
-                batch.draw(humansList.get(i).getAnimation().getKeyFrame(elapsedTime, true),
-                        humansList.get(i).getCharacter().getPosition().getX(),
-                        humansList.get(i).getCharacter().getPosition().getY());
-            }
-        }
-
-        for(int i = 0; i<mascotsList.size(); i++){
-            Mascot tempMascot = (Mascot) mascotsList.get(i).getCharacter();
-            if(tempMascot.getWorld() == game.getCurrectWorld() && !tempMascot.isCaught()){
-                batch.draw(mascotsList.get(i).getAnimation().getKeyFrame(elapsedTime,true),
-                        tempMascot.getPosition().getX(),
-                        tempMascot.getPosition().getY());
-            }
-        }
+        drawHumans();
+        drawMascots();
 
         batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime, true), playerView.getPlayerPosition().getX(),
                 playerView.getPlayerPosition().getY());
@@ -147,10 +133,28 @@ public class GameView extends ApplicationAdapter implements Screen{
                 interactionView.getWelcomeStage().dispose();
 
             }
-
         }
+    }
 
+    public void drawHumans(){
+        for(int i = 0; i<humansList.size(); i++){
+            if(humansList.get(i).getCharacter().getWorld() == game.getCurrectWorld()){
+                batch.draw(humansList.get(i).getAnimation().getKeyFrame(elapsedTime, true),
+                        humansList.get(i).getCharacter().getPosition().getX(),
+                        humansList.get(i).getCharacter().getPosition().getY());
+            }
+        }
+    }
 
+    public void drawMascots(){
+        for(int i = 0; i<mascotsList.size(); i++){
+            Mascot tempMascot = (Mascot) mascotsList.get(i).getCharacter();
+            if(tempMascot.getWorld() == game.getCurrectWorld() && !tempMascot.isCaught()){
+                batch.draw(mascotsList.get(i).getAnimation().getKeyFrame(elapsedTime,true),
+                        tempMascot.getPosition().getX(),
+                        tempMascot.getPosition().getY());
+            }
+        }
     }
 
     @Override

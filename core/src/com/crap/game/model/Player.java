@@ -63,6 +63,22 @@ public class Player extends Character{
         return nextPlayerPos;
     }
 
+    public boolean canMoveCameraUp(float y, float boarderTop) {
+        return (y < boarderTop);
+    }
+
+    public boolean canMoveCameraDown(float y, float boarderBottom){
+        return (y > boarderBottom);
+    }
+
+    public boolean canMoveCameraLeft(float x, float boarderLeft){
+        return (x > boarderLeft);
+    }
+
+    public boolean canMoveCameraRight(float x, float boarderRight){
+        return (x < boarderRight);
+    }
+
     public Position getPosition(){return this.position;  }
 
     public void setPosition(float x, float y){

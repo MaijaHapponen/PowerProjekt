@@ -31,6 +31,10 @@ public class InteractionView extends ScreenAdapter{
     private Label talkLable = new Label(String.format("Press SPACE to talk"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
     private Label welcomeLabel;
 
+    private Label hubbenLabel = new Label(String.format("Welcome to Hubben 2.1"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    private Label zaloonenLabel= new Label(String.format("Welcome to Zaloonen"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    private Label horsalLabel = new Label(String.format("Welcome to Hörsalsvägen"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+
     public InteractionView(){
         batch = new SpriteBatch();
         viewport = new FitViewport(worldWidth, worldHeight, new OrthographicCamera());
@@ -77,11 +81,11 @@ public class InteractionView extends ScreenAdapter{
 
     public void setWelcomeLabel(String world){
         if(world.equals("hubben")){
-            welcomeLabel = new Label(String.format("Welcome to Hubben 2.1"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+            welcomeLabel = hubbenLabel;
         }if(world.equals("zaloonen")){
-            welcomeLabel = new Label(String.format("Welcome to Zaloonen"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+            welcomeLabel = zaloonenLabel;
         }else{
-            welcomeLabel = new Label(String.format("Welcome to Hörsalsvägen"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+            welcomeLabel = horsalLabel;
         }
     }
 

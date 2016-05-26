@@ -32,11 +32,12 @@ public class MenuView extends ScreenAdapter{
     public void create(){
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size=50;
+
+        parameter.size=TextForInteraction.titleFontSize*2;
         titleFont = generator.generateFont(parameter);
         titleFont.setColor(Color.BLACK);
 
-        parameter.size=20;
+        parameter.size=TextForInteraction.instructionFontSize;
         font= generator.generateFont(parameter);
         generator.dispose();
 
@@ -69,7 +70,7 @@ public class MenuView extends ScreenAdapter{
                 }
 
                 font.draw(batch, menuModel.getMenuItem(i), TextForInteraction.alternativesPlacementX,
-                        TextForInteraction.alternativesPlacementY - 70 * i);
+                        TextForInteraction.alternativesPlacementY - TextForInteraction.spaceBetweenAlternatives * i);
             }
 
         }

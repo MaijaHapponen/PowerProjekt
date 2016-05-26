@@ -30,13 +30,13 @@ public class HowToPlayView extends ScreenAdapter{
 
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Candy Shop.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 27;
+        parameter.size = TextForInteraction.titleFontSize;
         titleFont = generator.generateFont(parameter);
 
-        parameter.size = 18;
+        parameter.size = TextForInteraction.instructionFontSize;
         instructionFont = generator.generateFont(parameter);
 
-        parameter.size = 15;
+        parameter.size = TextForInteraction.returnFontSize;
         pressBackFont = generator.generateFont(parameter);
 
         generator.dispose();
@@ -58,7 +58,7 @@ public class HowToPlayView extends ScreenAdapter{
                 TextForInteraction.titlePlacementY);
 
         for(int i = 0; i < instructionItems.length; i++){
-            float rowDistance = 60;
+            float rowDistance = TextForInteraction.spaceBetweenAlternatives;
             instructionFont.setColor(Color.BLACK);
             instructionFont.draw(batch, instructionItems[i], TextForInteraction.alternativesPlacementX,
                     TextForInteraction.alternativesPlacementY - rowDistance * i);

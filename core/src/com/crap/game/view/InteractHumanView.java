@@ -40,14 +40,14 @@ public class InteractHumanView extends ScreenAdapter {
 
     public void create(){
 
-        parameter.size = 12;
+        parameter.size = TextForInteraction.instructionFontSize;
         title = generator.generateFont(parameter);
         title.setColor(Color.BLACK);
 
-        parameter.size = 12;
+        parameter.size = TextForInteraction.informationFontSize;
         font = generator.generateFont(parameter);
 
-        parameter.size = 13;
+        parameter.size = TextForInteraction.informationFontSize;
         information = generator.generateFont(parameter);
 
         generator.dispose();
@@ -81,7 +81,7 @@ public class InteractHumanView extends ScreenAdapter {
                     font.setColor(Color.BLACK);
                 }
                 font.draw(batch, options[i], TextForInteraction.alternativesPlacementX,
-                        TextForInteraction.alternativesPlacementY - 70 * i);
+                        TextForInteraction.alternativesPlacementY - TextForInteraction.spaceBetweenAlternatives * i);
             }
         }
 

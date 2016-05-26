@@ -47,10 +47,10 @@ public class InteractMascotView extends ScreenAdapter {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
-        parameter.size=20;
+        parameter.size=TextForInteraction.instructionFontSize;
         titleFont = generator.generateFont(parameter);
 
-        parameter.size=10;
+        parameter.size=TextForInteraction.informationFontSize;
         font= generator.generateFont(parameter);
         generator.dispose();
 
@@ -83,7 +83,7 @@ public class InteractMascotView extends ScreenAdapter {
                 }
 
                 font.draw(batch, alternatives.get(i), TextForInteraction.alternativesPlacementX,
-                        TextForInteraction.alternativesPlacementY - 30 * i);
+                        TextForInteraction.alternativesPlacementY - TextForInteraction.spaceBetweenAlternatives/2 * i);
             }
         }
 

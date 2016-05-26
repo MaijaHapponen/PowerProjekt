@@ -5,6 +5,7 @@ package com.crap.game.model;
  */
 public final class Constants {
 
+    public static int walkAwayLength = 60;
 
     public static int NBR_OF_TEXTURE_IMAGES_HORIZONTALLY = 4;
     public static int NBR_OF_TEXTURE_IMAGES_VERTICALLY = 4;

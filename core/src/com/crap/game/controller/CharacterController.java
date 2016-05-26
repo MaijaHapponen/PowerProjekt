@@ -53,40 +53,37 @@ public class CharacterController{
     public void move(Direction direction){
         float movement = character.getSpeed()*Constants.normalSpeed;
 
-        switch (direction){
+        switch (direction) {
             case UP:
-                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()+movement)){
+                if (isPositionEmpty(character.getPosition().getX(), character.getPosition().getY() + movement)) {
                     this.moveUp();
-                }
-                else{
+                } else {
                     character.updateDirections();
                 }
                 break;
             case DOWN:
-                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()-movement)){
+                if (isPositionEmpty(character.getPosition().getX(), character.getPosition().getY() - movement)) {
                     this.moveDown();
-                }
-                else{
+                } else {
                     character.updateDirections();
                 }
                 break;
             case LEFT:
-                if(isPositionEmpty(character.getPosition().getX()-movement, character.getPosition().getY())){
+                if (isPositionEmpty(character.getPosition().getX() - movement, character.getPosition().getY())) {
                     this.moveLeft();
-                }
-                else{
+                } else {
                     character.updateDirections();
                 }
                 break;
             case RIGHT:
-                if(isPositionEmpty(character.getPosition().getX()+movement, character.getPosition().getY())){
+                if (isPositionEmpty(character.getPosition().getX() + movement, character.getPosition().getY())) {
                     this.moveRight();
-                }
-                else{
+                } else {
                     character.updateDirections();
                 }
                 break;
         }
+        this.characterView.updateAnimation();
     }
 
     //Returns true if there is a collision.
@@ -106,25 +103,21 @@ public class CharacterController{
     public void moveUp() {
         character.moveUp(gameView.getWorldHeight());
         this.characterView.setAnimationState(AnimationState.WALKING_BACK);
-        this.characterView.updateAnimation();
     }
 
     public void moveDown(){
         character.moveDown();
         this.characterView.setAnimationState(AnimationState.WALKING_FRONT);
-        this.characterView.updateAnimation();
     }
 
     public void moveLeft(){
         character.moveLeft();
         this.characterView.setAnimationState(AnimationState.WALKING_LEFT);
-        this.characterView.updateAnimation();
     }
 
     public void moveRight(){
         character.moveRight(gameView.getWorldWidth());
         this.characterView.setAnimationState(AnimationState.WALKING_RIGHT);
-        this.characterView.updateAnimation();
     }
 
     public void updateSprite() {

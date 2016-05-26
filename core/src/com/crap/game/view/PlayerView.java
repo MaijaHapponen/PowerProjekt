@@ -3,6 +3,7 @@ package com.crap.game.view;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -16,7 +17,7 @@ import static com.crap.game.model.Constants.*;
 /**
  * Created by Maija on 2016-05-02.
  */
-public class PlayerView extends ApplicationAdapter implements Screen{
+public class PlayerView extends ScreenAdapter{
 
     private Player player;
     private Sprite playerSprite;
@@ -43,15 +44,6 @@ public class PlayerView extends ApplicationAdapter implements Screen{
 
     }
 
-    @Override
-    public void show() {}
-
-    @Override
-    public void render(float delta) {}
-
-    @Override
-    public void hide() {}
-
     public Sprite getSprite(){
         return playerSprite;
     }
@@ -59,8 +51,6 @@ public class PlayerView extends ApplicationAdapter implements Screen{
     public Player getPlayer(){
         return player;
     }
-
-    public Texture getTexture() { return this.texture; }
 
     public int getPlayerSpriteWidth(){
         return this.texture.getWidth()/NBR_OF_TEXTURE_IMAGES_HORIZONTALLY;
@@ -135,5 +125,10 @@ public class PlayerView extends ApplicationAdapter implements Screen{
         this.animationState = animationState;
         this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, 129, 190,
                 NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
+    }
+
+    @Override
+    public void dispose(){
+        texture.dispose();
     }
 }

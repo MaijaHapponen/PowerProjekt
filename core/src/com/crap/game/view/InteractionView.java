@@ -97,5 +97,10 @@ public class InteractionView extends ScreenAdapter{
     public Label getWelcomeLabel(){
         return this.welcomeLabel;
     }
-    
+
+    public void dispose(){
+        stage.dispose();
+        welcomeStage.dispose();
+        batch.dispose();
+    }
 }

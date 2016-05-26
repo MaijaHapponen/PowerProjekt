@@ -58,7 +58,6 @@ public class GameController extends InputAdapter {
             StateController.updateState(GameStates.INTERACT);
         }
         this.keyCode=keycode;
-        view.render();
         return true;
     }
 
@@ -98,7 +97,7 @@ public class GameController extends InputAdapter {
         if(playerController.isNewWorld()) {
             enterNewWorld();
             model.setNewWorld(true);
-            view.create();
+            view.createWelcome();
         }
     }
 
@@ -113,11 +112,6 @@ public class GameController extends InputAdapter {
     public void updateIfGameOver(){
         if(model.isGameOver()){
             StateController.updateState(GameStates.GAMEOVER);
-
-            model.getProgress().resetProgress();
-            for(int i=0; i<model.getMascots().size(); i++) {
-                model.getMascots().get(i).setCaught(false);
-            }
         }
     }
 

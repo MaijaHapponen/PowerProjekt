@@ -22,7 +22,6 @@ public class StateController {
 
     public StateController(Game g) {
         this.game = g;
-        this.world = new com.crap.game.model.Game();
         updateState(GameStates.STARTMENU);
     }
 
@@ -68,6 +67,7 @@ public class StateController {
                 MenuView gameOver = new MenuView(true);
                 new MenuController(gameOver);
                 game.setScreen(gameOver);
+                worldView.dispose();
                 break;
 
             case HOWTOPLAY:
@@ -85,6 +85,7 @@ public class StateController {
     }
 
     public static void initPlay(){
+        world = new com.crap.game.model.Game();
         worldView = new GameView(world);
         controller = new GameController(worldView, world);
         gameMode = true;

@@ -73,6 +73,11 @@ public class ProgressView extends ScreenAdapter {
         table.add(group);
         stage.addActor(table);
     }
+    @Override
+    public void dispose(){
+        batch.dispose();
+        stage.dispose();
+    }
 
 }
 

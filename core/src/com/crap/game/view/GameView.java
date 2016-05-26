@@ -232,7 +232,7 @@ public class GameView extends ScreenAdapter{
             interactionView.setWelcomeLabel("hubben");
         }if(world.equals("zaloonen")){
             interactionView.setWelcomeLabel("zaloonen");
-        }else{
+        }if(world.equals("hörsal")){
             interactionView.setWelcomeLabel("hörsalsvägen");
         }
     }

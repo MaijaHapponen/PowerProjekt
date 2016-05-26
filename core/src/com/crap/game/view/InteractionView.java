@@ -89,7 +89,7 @@ public class InteractionView extends ScreenAdapter{
             welcomeLabel = hubbenLabel;
         }if(world.equals("zaloonen")){
             welcomeLabel = zaloonenLabel;
-        }else{
+        }if(world.equals("horsal")){
             welcomeLabel = horsalLabel;
         }
     }

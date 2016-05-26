@@ -145,8 +145,8 @@ public abstract class Character{
         return  this.walkAwayDirection;
     }
 
-    public void setWalkAwayDirection(Direction d){
-        this.walkAwayDirection = d;
+    public void setWalkAwayDirection(Direction walkAwayDirection){
+        this.walkAwayDirection = walkAwayDirection;
     }
 
     public float getWidth(){

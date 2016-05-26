@@ -22,38 +22,31 @@ public class PlayerController extends CharacterController{
         this.newWorldObject = getCollisionController().getNewWorldObject();
     }
 
-    public void updateCollisionController(){
+    public void updateCollisionController(){ //TODO Sprites in PlayerView needs to be moved to CharacterView
         setCollisionController(new CollisionController(getGameView().getWorld()));
-        getCollisionController().setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
+        getCollisionController().setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),
+                playerView.getPlayerSpriteHeight());
     }
 
     public void movePlayer(int keycode) {
         updateSpeed();
-
         if (keycode == Input.Keys.UP &&
                 !(checkIfCollision(getCharacter().nextStepUp()))) {
-            playerView.setAnimationState(AnimationState.WALKING_BACK);
-            getCharacter().moveUp(getGameView().getWorldHeight());
+            super.moveUp();
         }
-
         else if (keycode == Input.Keys.DOWN &&
                 !(checkIfCollision(getCharacter().nextStepDown()))){
-            playerView.setAnimationState(AnimationState.WALKING_FRONT);
-            getCharacter().moveDown();
+            super.moveDown();
         }
-
         else if (keycode == Input.Keys.LEFT &&
                 !(checkIfCollision(getCharacter().nextStepLeft()))){
-            playerView.setAnimationState(AnimationState.WALKING_LEFT);
-            getCharacter().moveLeft();
+            super.moveLeft();
         }
-
         else if (keycode == Input.Keys.RIGHT &&
                 !(checkIfCollision(getCharacter().nextStepRight())) )  {
-            playerView.setAnimationState(AnimationState.WALKING_RIGHT);
-            getCharacter().moveRight(getGameView().getWorldWidth());
+            super.moveRight();
         }
-
+        updateSprite();
         playerView.moveCamera(getCharacter().getPosition().getX(), getCharacter().getPosition().getY(),
                 getGameView().getWorldHeight()+ PIXEL_PER_TILE, getGameView().getWorldWidth()+PIXEL_PER_TILE);
     }

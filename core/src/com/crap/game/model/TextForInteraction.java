@@ -19,6 +19,7 @@ public final class TextForInteraction {
     public static int onlyInformationY = 340;
     public static int mainMenuAlternativesX = 80;
     public static int alternativesPlacementY = 250;
+    public static int howToPlayInstructionsPlacementY = 350;
     public static int menuAlternativesPlacementY = 280;
     public static int returnPlacementY = 50;
     public static int menuSpaceBetweenAlternatives =80;

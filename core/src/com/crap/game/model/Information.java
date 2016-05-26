@@ -22,7 +22,7 @@ public class Information {
                 humans.get(i).setProgrammeInformation("Kalle Ankas love interest is called Kajsa");
                 humans.get(i).setLocationInformation("Kalle Anka likes to \n hang out in the sandbox");
             }
-            else if(humans.get(i).getName() == "DHuman") {
+            else if(humans.get(i).getName() == "DHuman") {  
 
                 humans.get(i).setGreetingInformation("Hello! I study the programme \n of Datateknik. " +
                         "Can I help you\n with some information? " + "What would \n you like to know more about?");

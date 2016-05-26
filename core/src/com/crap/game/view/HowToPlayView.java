@@ -61,7 +61,7 @@ public class HowToPlayView extends ScreenAdapter{
             float rowDistance = TextForInteraction.spaceBetweenAlternatives;
             instructionFont.setColor(Color.BLACK);
             instructionFont.draw(batch, instructionItems[i], TextForInteraction.alternativesPlacementX,
-                    TextForInteraction.alternativesPlacementY - rowDistance * i);
+                    TextForInteraction.howToPlayInstructionsPlacementY - rowDistance * i);
         }
 
         pressBackFont.setColor(Color.PINK);

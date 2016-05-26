@@ -64,9 +64,9 @@ public class InteractHumanView extends ScreenAdapter {
     @Override
     public void render(float delta) {
 
-        String informationProgramme = ((Human)interactionCharacter).saySomethingAboutProgramme();
-        String informationLocation = ((Human)interactionCharacter).saySomethingAboutLocation();
-        String informationGreeting = ((Human)interactionCharacter).saySomethingAboutGreeting();
+        String informationProgramme = ((Human)interactionCharacter).getInformationAboutProgramme();
+        String informationLocation = ((Human)interactionCharacter).getInformationAboutLocation();
+        String informationGreeting = ((Human)interactionCharacter).getInformationAboutGreeting();
 
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

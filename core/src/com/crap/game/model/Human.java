@@ -19,17 +19,17 @@ public class Human extends Character {
         super(name, position, world);
     }
 
-    public String saySomethingAboutProgramme(){
+    public String getInformationAboutProgramme(){
 
         return this.informationAboutProgramme;
     }
 
-    public String saySomethingAboutLocation(){
+    public String getInformationAboutLocation(){
 
         return this.informationAboutLocation;
     }
 
-    public String saySomethingAboutGreeting(){
+    public String getInformationAboutGreeting(){
 
         return this.informationAboutGreeting;
     }

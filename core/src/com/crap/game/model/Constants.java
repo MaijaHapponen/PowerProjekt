@@ -22,5 +22,6 @@ public final class Constants {
     public static float normalSpeed = 2;
     public static float slowerSpeed = 1;
 
+    public static int characterWalkAwayLength = 60;
 
 }

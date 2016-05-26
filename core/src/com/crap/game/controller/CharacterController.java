@@ -2,10 +2,10 @@ package com.crap.game.controller;
 
 import com.crap.game.model.AnimationState;
 import com.crap.game.model.Character;
+import com.crap.game.model.Constants;
 import com.crap.game.model.Direction;
 import com.crap.game.view.CharacterView;
 import com.crap.game.view.GameView;
-import com.crap.game.view.PlayerView;
 
 public class CharacterController{
 
@@ -14,14 +14,26 @@ public class CharacterController{
     private CharacterView characterView;
     private CollisionController collisionController;
     private InteractionController interactionController;
-    private int walkAwayLength = 60; //TODO move to constant class.
-    private int walkAwayState = walkAwayLength;
+    private int walkAwayState = Constants.characterWalkAwayLength;
 
-    public CharacterController(GameView view){
-        this.gameView = view;
-        this.collisionController = new CollisionController(view.getWorld());
-        interactionController = new InteractionController(view);
+    public CharacterController(GameView gameView){
+        this.gameView = gameView;
+        this.collisionController = new CollisionController(gameView.getWorld());
+        interactionController = new InteractionController(gameView);
     }
+
+
+
+    public CharacterController(GameView gameView, Character character, CharacterView characterView){
+        this.character = character;
+        this.characterView = characterView;
+        this.gameView = gameView;
+        this.collisionController = new CollisionController(gameView.getWorld());
+        interactionController = new InteractionController(gameView);
+    }
+
+
+
 
     public void interactsWith(Character character, CharacterView characterView){
         collisionController.setPlayerWidthAndHeight(characterView.getCharacterSpriteWidth(),
@@ -39,7 +51,7 @@ public class CharacterController{
     }
 
     public void move(Direction direction){
-        float movement = character.getSpeed()*2;
+        float movement = character.getSpeed()*Constants.normalSpeed;
 
         switch (direction){
             case UP:
@@ -116,8 +128,7 @@ public class CharacterController{
     }
 
     public void updateSprite() {
-        characterView.getSprite().setPosition(this.character.getPosition().getX(),
-                this.character.getPosition().getY());
+        characterView.getSprite().setPosition(this.character.getPosition().getX(), this.character.getPosition().getY());
     }
 
     public void resetWalkAwayState(){
@@ -125,7 +136,7 @@ public class CharacterController{
     }
 
     public void walkAway(Character character, CharacterView characterView){
-        if(walkAwayState<walkAwayLength){
+        if(walkAwayState<Constants.characterWalkAwayLength){
             interactionController.getInteractionModel().setIsInteracting(true);
             interactsWith(character, characterView);
             walkAwayOneStep();
@@ -146,34 +157,55 @@ public class CharacterController{
         switch (character.getWalkAwayDirection()){
             case UP:
                 this.characterView.setAnimationState(AnimationState.STANDING_BACK);
-                this.characterView.updateAnimation();
                 break;
             case DOWN:
                 this.characterView.setAnimationState(AnimationState.STANDING_FRONT);
-                this.characterView.updateAnimation();
                 break;
             case LEFT:
                 this.characterView.setAnimationState(AnimationState.STANDING_LEFT);
-                this.characterView.updateAnimation();
                 break;
             case RIGHT:
                 this.characterView.setAnimationState(AnimationState.STANDING_RIGHT);
-                this.characterView.updateAnimation();
                 break;
             case NO_DIRECTION:
                 break;
         }
+        this.characterView.updateAnimation();
         interactionController.getInteractionModel().setIsInteracting(false);
     }
 
     public void walkAwayOneStep(){
-        character.changeDirection(this.walkAwayLength, this.walkAwayState);
+        character.changeDirection(Constants.characterWalkAwayLength, this.walkAwayState);
         this.move(character.getWalkAwayDirection());
 
-        if(walkAwayState == walkAwayLength-1 && !(character.getWalkAwayDirection()== Direction.NO_DIRECTION)){
+        if(walkAwayState == Constants.characterWalkAwayLength-1 && !(character.getWalkAwayDirection()== Direction.NO_DIRECTION)){
             stopWalkingAnimation();
         }
         updateSprite();
         walkAwayState++;
+    }
+
+    public GameView getGameView() {
+        return this.gameView;
+    }
+
+    public Character getCharacter(){
+        return this.character;
+    }
+
+    public void setCharacter(Character character){
+        this.character = character;
+    }
+
+    public InteractionController getInteractionController(){
+        return this.interactionController;
+    }
+
+    public CollisionController getCollisionController(){
+        return this.collisionController;
+    }
+
+    public void setCollisionController(CollisionController collisionController){
+        this.collisionController = collisionController;
     }
 }

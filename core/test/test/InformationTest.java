@@ -21,7 +21,7 @@ public class InformationTest {
         humans.add(h);
         Information information = new Information(humans);
         information.setInformation(humans);
-        assertTrue(h.saySomethingAboutProgramme().equals("Kalle Ankas love interest is called Kajsa"));
-        assertTrue(h.saySomethingAboutLocation().equals("Kalle Anka likes to hang out in the sandbox"));
+        assertTrue(h.getInformationAboutProgramme().equals("Kalle Ankas love interest is called Kajsa"));
+        assertTrue(h.getInformationAboutLocation().equals("Kalle Anka likes to hang out in the sandbox"));
     }
 }

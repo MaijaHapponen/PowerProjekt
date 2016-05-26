@@ -23,7 +23,6 @@ public class CharacterView extends ScreenAdapter {
     private AnimationState animationState = AnimationState.STANDING_FRONT;
 
     public CharacterView(){
-
     }
 
     public CharacterView(Character character){
@@ -35,6 +34,11 @@ public class CharacterView extends ScreenAdapter {
         character.setWidthAndHeight(sprite.getWidth()/NBR_OF_TEXTURE_IMAGES_HORIZONTALLY,
                 sprite.getHeight()/NBR_OF_TEXTURE_IMAGES_VERTICALLY);
 
+        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
+                this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
+    }
+
+    public void updateAnimation(){
         this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
                 this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
     }
@@ -68,11 +72,6 @@ public class CharacterView extends ScreenAdapter {
         this.animation = animation;
     }
 
-    public void updateAnimation(){
-        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
-                this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
-    }
-
     public AnimationState getAnimationState(){
         return this.animationState;
     }
@@ -97,4 +96,7 @@ public class CharacterView extends ScreenAdapter {
         this.texture = texture;
     }
 
+    public GameAnimation getGameAnimation(){
+        return this.gameAnimation;
+    }
 }

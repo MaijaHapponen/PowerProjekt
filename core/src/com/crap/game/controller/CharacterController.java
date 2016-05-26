@@ -22,8 +22,6 @@ public class CharacterController{
         interactionController = new InteractionController(gameView);
     }
 
-
-
     public CharacterController(GameView gameView, Character character, CharacterView characterView){
         this.character = character;
         this.characterView = characterView;
@@ -31,9 +29,6 @@ public class CharacterController{
         this.collisionController = new CollisionController(gameView.getWorld());
         interactionController = new InteractionController(gameView);
     }
-
-
-
 
     public void interactsWith(Character character, CharacterView characterView){
         collisionController.setPlayerWidthAndHeight(characterView.getCharacterSpriteWidth(),

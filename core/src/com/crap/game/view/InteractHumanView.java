@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.crap.game.model.Character;
 import com.crap.game.model.Human;
 import com.crap.game.model.InteractHuman;
+import com.crap.game.model.TextForInteraction;
 
 /**
  * Created by rebeccafinne on 16-05-23.
@@ -24,12 +25,6 @@ public class InteractHumanView extends ScreenAdapter {
     private BitmapFont information;
     private FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Candy Shop.ttf"));
     private FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-
-    private String talkAboutProgramme = "Ask about programme";
-    private String whereIsMascot = "Ask where mascot could be";
-    //TODO:put into constants
-    private String back = "Press BACKSPACE to return to game";
-    private String exit = "Exit";
 
     private Character interactionCharacter;
 
@@ -57,16 +52,17 @@ public class InteractHumanView extends ScreenAdapter {
 
         generator.dispose();
 
-        options = new String[]{talkAboutProgramme, whereIsMascot, exit};
-        interactHuman = new InteractHuman(options, talkAboutProgramme);
+        options = new String[]{TextForInteraction.talkAboutProgramme, TextForInteraction.whereIsMascot,
+                TextForInteraction.exit};
+        interactHuman = new InteractHuman(options, TextForInteraction.talkAboutProgramme);
     }
 
     @Override
     public void render(float delta) {
 
-        String informationProgramme = ((Human)interactionCharacter).saySomethingAboutProgramme();
-        String informationLocation = ((Human)interactionCharacter).saySomethingAboutLocation();
-        String informationGreeting = ((Human)interactionCharacter).saySomethingAboutGreeting();
+        String informationProgramme = ((Human)interactionCharacter).getInformationAboutProgramme();
+        String informationLocation = ((Human)interactionCharacter).getInformationAboutLocation();
+        String informationGreeting = ((Human)interactionCharacter).getInformationAboutGreeting();
 
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -92,28 +88,16 @@ public class InteractHumanView extends ScreenAdapter {
         else if(interactHuman.getIsProgramme()) {
             font.setColor(Color.BLACK);
             font.draw(batch, informationProgramme, 60, 300);
-            font.draw(batch, back, 60, 150);
+            font.draw(batch, TextForInteraction.returnToGame, 60, 150);
         }
 
         else if(interactHuman.getIsMascot()){
             font.setColor(Color.BLACK);
             font.draw(batch, informationLocation, 60, 300);
-            font.draw(batch, back, 60, 150);
+            font.draw(batch, TextForInteraction.returnToGame, 60, 150);
         }
 
         batch.end();
-    }
-
-    public String getTalkAboutProgramme(){
-        return this.talkAboutProgramme;
-    }
-
-    public String getWhereIsMascot(){
-        return this.whereIsMascot;
-    }
-
-    public String getExit(){
-        return this.exit;
     }
 
     public InteractHuman getInteractHuman(){

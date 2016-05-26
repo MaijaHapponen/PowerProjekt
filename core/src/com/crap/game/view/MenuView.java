@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.crap.game.model.Menu;
+import com.crap.game.model.TextForInteraction;
 
 /**
  * Created by Maija on 2016-05-11.
@@ -39,8 +40,9 @@ public class MenuView extends ScreenAdapter{
         font= generator.generateFont(parameter);
         generator.dispose();
 
-        String[] menuItems = new String[]{"Play the game", "How to play", "Exit"};
-        menuModel = new Menu("C.R.A.P.", menuItems);
+        String[] menuItems = new String[]{TextForInteraction.playTheGame, TextForInteraction.howToPlay,
+                TextForInteraction.exit};
+        menuModel = new Menu(TextForInteraction.gameName, menuItems);
     }
 
     public Menu getMenuModel(){
@@ -70,10 +72,10 @@ public class MenuView extends ScreenAdapter{
 
         }
         else{
-            titleFont.draw(batch,"You win!", 60,400);
+            titleFont.draw(batch,TextForInteraction.winTheGame, 60,400);
             titleFont.setColor(Color.BLACK);
 
-            font.draw(batch,"Press enter to return \n to main menu",60,220);
+            font.draw(batch,TextForInteraction.returnToMainMenu,60,220);
             font.setColor(Color.PINK);
         }
         batch.end();

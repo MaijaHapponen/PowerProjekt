@@ -21,7 +21,6 @@ public class QuestionsTest {
         Questions questions = new Questions(mascots);
         questions.setQuestions(mascots);
         assertTrue(mascot.getQuestion().getQuestion().equals("What is Lucky Lukes horse called?"));
-        assertTrue(mascot.getQuestion().getAlternatives().get(0).equals("Holly Hunter"));
         assertTrue(mascot.getQuestion().getAlternatives().get(1).equals("Betty Bowler"));
         assertTrue(mascot.getQuestion().getCorrectAnswer() == 3);
     }

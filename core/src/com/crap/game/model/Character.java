@@ -37,7 +37,7 @@ public abstract class Character{
         this.world = world;
     }
 
-    public void decideNewDirection(){
+    private void decideNewDirection(){
         Random rand = new Random();
         int i = rand.nextInt(4);
         switch (i){

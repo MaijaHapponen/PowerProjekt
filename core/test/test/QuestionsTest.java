@@ -4,6 +4,8 @@ import com.crap.game.model.Questions;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 /**
@@ -19,6 +21,7 @@ public class QuestionsTest {
         Questions questions = new Questions(mascots);
         questions.setQuestions(mascots);
         assertTrue(mascot.getQuestion().getQuestion().equals("What is Lucky Lukes horse called?"));
-        assertTrue(!mascot.getQuestion().getQuestion().equals("What is Hacke Hackspetts favorite color?"));
+        assertTrue(mascot.getQuestion().getAlternatives().get(1).equals("Betty Bowler"));
+        assertTrue(mascot.getQuestion().getCorrectAnswer() == 3);
     }
 }

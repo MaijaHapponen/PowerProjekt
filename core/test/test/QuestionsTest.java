@@ -5,11 +5,13 @@ import com.crap.game.model.Questions;
 import org.junit.Test;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.List;
+=======
+>>>>>>> 8d0f5a4e66b2e2486ad51be9502bd22ae891ca7d
 
 import static org.junit.Assert.*;
-
 /**
  * Created by rebeccafinne on 16-05-24.
  */
@@ -18,8 +20,6 @@ public class QuestionsTest {
     @Test
     public void testSetQuestions(){
         Mascot mascot = new Mascot("luckyluke");
-        ArrayList<Mascot> mascots = new ArrayList<Mascot>();
-        mascots.add(mascot);
         String theQuestion = "What is Lucky Lukes \n horse called?";
         List<String> answers = new ArrayList<String>();
         answers.add("Holly Hunter");
@@ -32,5 +32,7 @@ public class QuestionsTest {
         assertTrue(mascot.getQuestion().getQuestion().equals("What is Lucky Lukes \n horse called?"));
         assertTrue(mascot.getQuestion().getAlternatives().get(1).equals("Betty Bowler"));
         assertTrue(mascot.getQuestion().getCorrectAnswer() == 3);
+
     }
+
 }

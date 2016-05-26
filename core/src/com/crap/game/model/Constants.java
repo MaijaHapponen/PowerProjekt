@@ -19,7 +19,7 @@ public final class Constants {
     public static float hubbenEntryY = 50;
 
 
-    public static float normalSpeed = 10;
+    public static float normalSpeed = 2;
     public static float slowerSpeed = 1;
 
 

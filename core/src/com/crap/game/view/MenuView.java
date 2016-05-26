@@ -37,7 +37,7 @@ public class MenuView extends ScreenAdapter{
         titleFont = generator.generateFont(parameter);
         titleFont.setColor(Color.BLACK);
 
-        parameter.size=TextForInteraction.instructionFontSize;
+        parameter.size=TextForInteraction.titleFontSize;
         font= generator.generateFont(parameter);
         generator.dispose();
 
@@ -70,7 +70,7 @@ public class MenuView extends ScreenAdapter{
                 }
 
                 font.draw(batch, menuModel.getMenuItem(i), TextForInteraction.mainMenuAlternativesX,
-                        TextForInteraction.alternativesPlacementY - TextForInteraction.spaceBetweenAlternatives * i);
+                        TextForInteraction.menuAlternativesPlacementY - TextForInteraction.menuSpaceBetweenAlternatives * i);
             }
 
         }

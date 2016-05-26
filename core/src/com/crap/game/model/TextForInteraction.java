@@ -12,19 +12,21 @@ public final class TextForInteraction {
     public static int returnFontSize = 15;
 
     //Placement for the text
-    public static int titlePlacementX = 30;
+    public static int titlePlacementX = 40;
     public static int alternativesPlacementX = 60;
     public static int titlePlacementY = 420;
     public static int onlyInformationY = 340;
-    public static int mainMenuAlternativesX = 70;
+    public static int mainMenuAlternativesX = 80;
     public static int alternativesPlacementY = 250;
+    public static int menuAlternativesPlacementY = 280;
     public static int returnPlacementY = 50;
+    public static int menuSpaceBetweenAlternatives =80;
     public static int spaceBetweenAlternatives = 60;
 
     //In HowToPlayView
     public static String howToPlay1 = "-Catch all the mascots to win.";
-    public static String howToPlay2 = "-Answer the questions\nright to catch the mascot.";
-    public static String howToPlay3 = "\n-Interact with characters by\npressing space.";
+    public static String howToPlay2 = "-Answer the questions\n right to catch the mascot.";
+    public static String howToPlay3 = "\n-Interact with characters by\n pressing space.";
     public static String howToPlay4 = "\n\n-Move with the arrowkeys.";
     public static String howToPlayTitle = "This is how you play:";
 

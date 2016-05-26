@@ -2,10 +2,10 @@ package com.crap.game.controller;
 
 import com.crap.game.model.AnimationState;
 import com.crap.game.model.Character;
+import com.crap.game.model.Constants;
 import com.crap.game.model.Direction;
 import com.crap.game.view.CharacterView;
 import com.crap.game.view.GameView;
-import com.crap.game.view.PlayerView;
 
 public class CharacterController{
 
@@ -14,8 +14,7 @@ public class CharacterController{
     private CharacterView characterView;
     private CollisionController collisionController;
     private InteractionController interactionController;
-    private int walkAwayLength = 60; //TODO move to constant class.
-    private int walkAwayState = walkAwayLength;
+    private int walkAwayState = Constants.walkAwayLength;
 
     public CharacterController(GameView view){
         this.gameView = view;
@@ -122,7 +121,7 @@ public class CharacterController{
     }
 
     public void walkAway(Character character, CharacterView characterView){
-        if(walkAwayState<walkAwayLength){
+        if(walkAwayState<Constants.walkAwayLength){
             interactionController.getInteractionModel().setIsInteracting(true);
             interactsWith(character, characterView);
             walkAwayOneStep();
@@ -164,10 +163,10 @@ public class CharacterController{
     }
 
     public void walkAwayOneStep(){
-        character.changeDirection(this.walkAwayLength, this.walkAwayState);
+        character.changeDirection(Constants.walkAwayLength, this.walkAwayState);
         this.move(character.getWalkAwayDirection());
 
-        if(walkAwayState == walkAwayLength-1 && !(character.getWalkAwayDirection()== Direction.NO_DIRECTION)){
+        if(walkAwayState == Constants.walkAwayLength-1 && !(character.getWalkAwayDirection()== Direction.NO_DIRECTION)){
             stopWalkingAnimation();
         }
         updateSprite();

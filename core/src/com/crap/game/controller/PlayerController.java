@@ -51,15 +51,19 @@ public class PlayerController extends CharacterController{
                 getGameView().getWorldHeight()+ pixelPerTile, getGameView().getWorldWidth()+pixelPerTile);
     }
 
+    //Returns true if there is a collision.
     public boolean checkIfCollision(Position p){
-        return (getCollisionController().isCollison(p.getX(),p.getY()) || getCollisionController().isNewWorld(p.getX(),p.getY())||
-                getInteractionController().isInteractionWithHuman(p.getX(),p.getY())
-                || getInteractionController().isInteractionWithMascot(p.getX(),p.getY()));
+        return (getCollisionController().isCollison(p.getX(),p.getY()) ||
+                getCollisionController().isNewWorld(p.getX(),p.getY())||
+                getInteractionController().isInteractionWithHuman(p.getX(),p.getY()) ||
+                getInteractionController().isInteractionWithMascot(p.getX(),p.getY()));
     }
 
     public boolean isInteractionWithMascot(){
-        return checkIfInteractionWithMascot(getCharacter().nextStepUp()) || checkIfInteractionWithMascot(getCharacter().nextStepDown()) ||
-                checkIfInteractionWithMascot(getCharacter().nextStepLeft()) || checkIfInteractionWithMascot(getCharacter().nextStepRight());
+        return checkIfInteractionWithMascot(getCharacter().nextStepUp()) ||
+                checkIfInteractionWithMascot(getCharacter().nextStepDown()) ||
+                checkIfInteractionWithMascot(getCharacter().nextStepLeft()) ||
+                checkIfInteractionWithMascot(getCharacter().nextStepRight());
     }
 
     public boolean checkIfInteractionWithMascot(Position pos){
@@ -67,8 +71,10 @@ public class PlayerController extends CharacterController{
     }
 
     public boolean isInteractionWithHuman(){
-        return checkIfInteractionWithHuman(getCharacter().nextStepUp()) || checkIfInteractionWithHuman(getCharacter().nextStepDown()) ||
-                checkIfInteractionWithHuman(getCharacter().nextStepLeft()) || checkIfInteractionWithHuman(getCharacter().nextStepRight());
+        return checkIfInteractionWithHuman(getCharacter().nextStepUp()) ||
+                checkIfInteractionWithHuman(getCharacter().nextStepDown()) ||
+                checkIfInteractionWithHuman(getCharacter().nextStepLeft()) ||
+                checkIfInteractionWithHuman(getCharacter().nextStepRight());
     }
 
     public boolean checkIfInteractionWithHuman(Position pos){
@@ -84,9 +90,9 @@ public class PlayerController extends CharacterController{
         return getCollisionController().isNewWorld(pos.getX(),pos.getY());
     }
 
-
     public void updateSpeed(){
-        if(getCollisionController().isSlowerTerrain(getCharacter().getPosition().getX(), getCharacter().getPosition().getY())){
+        if(getCollisionController().isSlowerTerrain(getCharacter().getPosition().getX(),
+                getCharacter().getPosition().getY())){
             getCharacter().setSlowerSpeed();
         }
         else{

@@ -19,54 +19,37 @@ import static com.crap.game.model.Constants.*;
 public class PlayerView extends CharacterView implements Screen{
 
     private Player player;
-    private Sprite playerSprite;
-    private Texture texture;
     private OrthographicCamera camera;
+    private GameAnimation gameAnimation = new GameAnimation();
 
     private float halfOfScreen = Gdx.graphics.getWidth()/2;
 
-    private GameAnimation gameAnimation = new GameAnimation();
-    private Animation animation;
-    private AnimationState animationState = AnimationState.STANDING_FRONT;
+    public PlayerView(){
+        super();
+    }
 
     public void initPlayerView(){
-        this.texture = new Texture(Gdx.files.internal("characters/"+player.getName()+".png"));
-        this.playerSprite = new Sprite(texture);
-        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
-                this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
+        setTexture(new Texture(Gdx.files.internal("characters/"+player.getName()+".png")));
+        setSprite(new Sprite(getTexture()));
+        setAnimation(this.gameAnimation.getAnimation(getAnimationState(), getTexture(), getTexture().getWidth(),
+                getTexture().getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY));
     }
 
     public void setPlayer(Player player){
         this.player=player;
         initPlayerView();
         player.setWidthAndHeight(getPlayerSpriteWidth(), getPlayerSpriteHeight());
-
-    }
-
-    @Override
-    public void show() {}
-
-    @Override
-    public void render(float delta) {}
-
-    @Override
-    public void hide() {}
-
-    public Sprite getSprite(){
-        return playerSprite;
     }
 
     public Player getPlayer(){
         return player;
     }
 
-    public Texture getTexture() { return this.texture; }
-
     public int getPlayerSpriteWidth(){
-        return this.texture.getWidth()/NBR_OF_TEXTURE_IMAGES_HORIZONTALLY;
+        return getTexture().getWidth()/NBR_OF_TEXTURE_IMAGES_HORIZONTALLY;
     }
     public int getPlayerSpriteHeight(){
-        return this.texture.getHeight()/NBR_OF_TEXTURE_IMAGES_VERTICALLY;
+        return getTexture().getHeight()/NBR_OF_TEXTURE_IMAGES_VERTICALLY;
     }
 
     public void setCamera(OrthographicCamera camera){
@@ -74,7 +57,6 @@ public class PlayerView extends CharacterView implements Screen{
     }
 
     public void moveCamera(float x,float y, float worldWidth, float worldHeight) {
-
         float boarderLeft = halfOfScreen;
         float boarderRight = worldWidth - halfOfScreen;
         float boarderTop = worldHeight - halfOfScreen;
@@ -115,7 +97,6 @@ public class PlayerView extends CharacterView implements Screen{
                 camera.position.set(boarderRight, boarderTop, 0);
             }
         }
-
         camera.update();
     }
 
@@ -127,13 +108,9 @@ public class PlayerView extends CharacterView implements Screen{
         return this.camera;
     }
 
-    public Animation getAnimation(){
-        return this.animation;
-    }
-
     public void setAnimationState(AnimationState animationState){
-        this.animationState = animationState;
-        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, 129, 190,
-                NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
+        super.setAnimationState(animationState);
+        setAnimation(this.gameAnimation.getAnimation(getAnimationState(), getTexture(), 129, 190,
+                NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY));
     }
 }

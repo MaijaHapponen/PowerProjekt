@@ -39,26 +39,42 @@ public class CharacterView extends ScreenAdapter {
                 this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
     }
 
+    @Override
+    public void dispose() {
+        texture.dispose();
+    }
+
     public Character getCharacter(){
         return this.character;
     }
 
-    @Override
-    public void dispose() {
-        texture.dispose();
+    public void setCharacter(Character character){
+        this.character = character;
     }
 
     public Sprite getSprite(){
         return this.sprite;
     }
 
+    public void setSprite(Sprite sprite){
+        this.sprite = sprite;
+    }
+
     public Animation getAnimation(){
         return this.animation;
+    }
+
+    public void setAnimation(Animation animation){
+        this.animation = animation;
     }
 
     public void updateAnimation(){
         this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
                 this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
+    }
+
+    public AnimationState getAnimationState(){
+        return this.animationState;
     }
 
     public void setAnimationState(AnimationState animationState){
@@ -73,5 +89,12 @@ public class CharacterView extends ScreenAdapter {
         return this.texture.getHeight()/NBR_OF_TEXTURE_IMAGES_VERTICALLY;
     }
 
+    public Texture getTexture(){
+        return this.texture;
+    }
+
+    public void setTexture(Texture texture){
+        this.texture = texture;
+    }
 
 }

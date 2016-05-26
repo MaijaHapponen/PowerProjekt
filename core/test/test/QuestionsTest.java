@@ -19,6 +19,6 @@ public class QuestionsTest {
         Questions questions = new Questions(mascots);
         questions.setQuestions(mascots);
         assertTrue(mascot.getQuestion().getQuestion().equals("What is kalle ankas love interest called?"));
+        assertTrue(!mascot.getQuestion().getQuestion().equals("What is Hacke Hackspetts favorite color?"));
     }
-
 }

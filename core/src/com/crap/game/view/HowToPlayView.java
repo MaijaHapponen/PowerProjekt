@@ -1,5 +1,8 @@
 package com.crap.game.view;
 
+import com.crap.game.model.TextForInteraction;
+import com.crap.game.model.TextForInteraction.*;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
@@ -38,19 +41,13 @@ public class HowToPlayView extends ScreenAdapter{
         pressBackFont = generator.generateFont(parameter);
 
         generator.dispose();
-        String instructions = "-Catch all the mascots to win.";
-        String instructions2 = "-Answer the questions\nright to catch the mascot.";
-        String instructions3 = "\n-Interact with characters by\npressing space.";
-        String instructions4 = "\n\n-Move with the arrowkeys.";
-
-        instructionItems = new String[]{instructions, instructions2, instructions3, instructions4};
+        
+        instructionItems = new String[]{TextForInteraction.howToPlay1, TextForInteraction.howToPlay2,
+                TextForInteraction.howToPlay3, TextForInteraction.howToPlay4};
     }
 
     @Override
     public void render(float delta) {
-        String title = "This is how you play:";
-        String pressBack = "Press backspace to return to menu";
-
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -58,7 +55,7 @@ public class HowToPlayView extends ScreenAdapter{
 
         titleFont.setColor(Color.BLACK);
 
-        titleFont.draw(batch, title, 30, 500);
+        titleFont.draw(batch, TextForInteraction.howToPlayTitle, 30, 500);
 
         for(int i = 0; i < instructionItems.length; i++){
             float rowDistance = 60;
@@ -67,7 +64,7 @@ public class HowToPlayView extends ScreenAdapter{
         }
 
         pressBackFont.setColor(Color.PINK);
-        pressBackFont.draw(batch, pressBack, 30, 50);
+        pressBackFont.draw(batch, TextForInteraction.returnMenu, 30, 50);
 
         batch.end();
     }

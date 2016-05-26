@@ -52,7 +52,7 @@ public class Questions {
 
                 String luckyLukeQuestion = "What is Lucky Lukes \n horse called?";
                 List<String> luckyLukeAlternatives =
-                        Arrays.asList("Holly Hunter", "Betty Bowler", "Randy Runner", "Jolly Jumper}");
+                        Arrays.asList("Holly Hunter", "Betty Bowler", "Randy Runner", "Jolly Jumper");
                 int luckyLukeRightAnswer = 3;
 
                 mascots.get(i).setQuestion(

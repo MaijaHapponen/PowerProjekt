@@ -4,12 +4,10 @@ import com.crap.game.model.Question;
 import com.crap.game.model.Questions;
 import org.junit.Test;
 
+
 import java.util.ArrayList;
-<<<<<<< HEAD
-import java.util.Arrays;
 import java.util.List;
-=======
->>>>>>> 8d0f5a4e66b2e2486ad51be9502bd22ae891ca7d
+
 
 import static org.junit.Assert.*;
 /**

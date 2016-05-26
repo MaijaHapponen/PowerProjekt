@@ -31,7 +31,7 @@ public class PlayerTest {
         float playerPosY = player.getPosition().getY();
         player.moveDown();
         player.nextStepDown();
-        assertTrue(player.getPosition().getY() == playerPosX-Constants.normalSpeed);
+        assertTrue(player.getPosition().getY() == playerPosX - Constants.normalSpeed);
         assertTrue(player.getPosition().getX() == playerPosY);
     }
 
@@ -65,6 +65,30 @@ public class PlayerTest {
         assertTrue(player.positionOutOfBounds(500, 500));
         player.setPosition(502, 499);
         assertFalse(player.positionOutOfBounds(500, 500));
+    }
+
+    @Test
+    public void testCanMoveCameraUp(){
+        Player player = new Player("HEJ", 200, 499);
+        assertFalse(player.canMoveCameraUp(500, 500));
+    }
+
+    @Test
+    public void testCanMoveCameraDown(){
+        Player player = new Player("HEJ", 200, 499);
+        assertFalse(player.canMoveCameraDown(0, 0));
+    }
+
+    @Test
+    public void testCanMoveCameraLeft(){
+        Player player = new Player("HEJ", 200, 499);
+        assertFalse(player.canMoveCameraLeft(0, 0));
+    }
+
+    @Test
+    public void testCanMoveCameraRight(){
+        Player player = new Player("HEJ", 200, 499);
+        assertFalse(player.canMoveCameraRight(500, 500));
     }
 
 

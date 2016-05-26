@@ -58,7 +58,8 @@ public class MenuView extends ScreenAdapter{
         batch.begin();
 
         if(!gameOver) {
-            titleFont.draw(batch, menuModel.getGameName(), 60, 400);
+            titleFont.draw(batch, menuModel.getGameName(), TextForInteraction.titlePlacementX,
+                    TextForInteraction.titlePlacementY);
 
             for (int i = 0; i < menuModel.amountOfItems(); i++) {
                 if (menuModel.currentItemNumber() == i) {
@@ -67,15 +68,18 @@ public class MenuView extends ScreenAdapter{
                     font.setColor(Color.BLACK);
                 }
 
-                font.draw(batch, menuModel.getMenuItem(i), 120, 250 - 70 * i);
+                font.draw(batch, menuModel.getMenuItem(i), TextForInteraction.alternativesPlacementX,
+                        TextForInteraction.alternativesPlacementY - 70 * i);
             }
 
         }
         else{
-            titleFont.draw(batch,TextForInteraction.winTheGame, 60,400);
+            titleFont.draw(batch,TextForInteraction.winTheGame, TextForInteraction.titlePlacementX,
+                    TextForInteraction.titlePlacementY);
             titleFont.setColor(Color.BLACK);
 
-            font.draw(batch,TextForInteraction.returnToMainMenu,60,220);
+            font.draw(batch,TextForInteraction.returnToMainMenu,TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.alternativesPlacementY);
             font.setColor(Color.PINK);
         }
         batch.end();

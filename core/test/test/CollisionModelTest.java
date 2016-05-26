@@ -49,13 +49,15 @@ public class CollisionModelTest {
         collisionModel.setTypeOfTile(TileType.NEW_WORLD);
         assertTrue(collisionModel.isNewWorld());
     }
-/*
+
     @Test
-    public void testCheckIfCollide(){
+    public void testCheckIfCollide() {
         CollisionModel collisionModel = new CollisionModel();
-        Player player = new Player("player",250,250);
-        assertTrue(collisionModel.checkIfCollide(250, 250, 30, 30, player.getPosition().getX(), player.getPosition().getY()));
-        assertTrue(!collisionModel.checkIfCollide(300, 300, 30, 30, player.getPosition().getX(), player.getPosition().getY()));
+        Player player = new Player("player", 250, 250);
+        player.setWidthAndHeight(30, 30);
+        assertTrue(collisionModel.checkIfCollide(240, 240, player.getWidth(), player.getHeight(),
+                player.getPosition().getX(), player.getPosition().getY()));
+        assertTrue(!collisionModel.checkIfCollide(300, 300, player.getWidth(), player.getHeight(),
+                player.getPosition().getX(), player.getPosition().getY()));
     }
-    */
 }

@@ -57,5 +57,15 @@ public class PlayerTest {
         assertTrue(player.getPosition().getX() == playerPosY+Constants.normalSpeed);
     }
 
+    @Test
+    public void testPositionOutOfBounds(){
+        Player player = new Player("hej", 499, 499);
+        player.setPosition(499, 502);
+        player.moveRight(500);
+        assertTrue(player.positionOutOfBounds(500, 500));
+        player.setPosition(502, 499);
+        assertFalse(player.positionOutOfBounds(500, 500));
+    }
+
 
 }

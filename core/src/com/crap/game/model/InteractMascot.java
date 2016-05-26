@@ -16,7 +16,7 @@ public class InteractMascot {
     private boolean caughtMascot;
 
     private String back = "Press BACK SPACE to return to game";
-    private String right = "You are nextStepRight!";
+    private String right = "You are right!";
     private String wrong = "You were wrong :(";
 
     public InteractMascot(List<String> stringsInScreen){

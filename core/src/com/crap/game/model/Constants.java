@@ -5,7 +5,6 @@ package com.crap.game.model;
  */
 public final class Constants {
 
-
     public static int NBR_OF_TEXTURE_IMAGES_HORIZONTALLY = 4;
     public static int NBR_OF_TEXTURE_IMAGES_VERTICALLY = 4;
 
@@ -21,6 +20,5 @@ public final class Constants {
 
     public static float normalSpeed = 2;
     public static float slowerSpeed = 1;
-
 
 }

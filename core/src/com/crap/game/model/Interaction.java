@@ -42,13 +42,12 @@ public class Interaction {
 
     public boolean checkIfInteraction(Character character, float thisX, float thisY) {
 
-        //TODO: magic numbers for collision to work remove?
         Float width = character.getWidth();
-        Float halfHeight = character.getHeight()/2;
+        Float height = character.getHeight();
         Float x = character.getPosition().getX();
-        Float y = character.getPosition().getY()+halfHeight;
+        Float y = character.getPosition().getY();
 
-        return collisionModel.checkIfCollide(x, y, width, halfHeight, thisX, thisY);
+        return collisionModel.checkIfCollide(x, y, width, height, thisX, thisY);
     }
 
     public void setIsInteracting(boolean state){

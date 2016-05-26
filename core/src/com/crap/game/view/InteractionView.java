@@ -23,10 +23,9 @@ public class InteractionView extends ScreenAdapter{
     private Stage welcomeStage;
     private Viewport viewport;
 
-    private int worldWidth = Gdx.graphics.getWidth();
-    private int worldHeight = Gdx.graphics.getHeight();
+    private float worldWidth;
+    private float worldHeight;
 
-    private OrthographicCamera camera;
     private SpriteBatch batch;
 
     private Label talkLable = new Label(String.format(TextForInteraction.talkToCharacter),
@@ -40,7 +39,9 @@ public class InteractionView extends ScreenAdapter{
     private Label horsalLabel = new Label(String.format(TextForInteraction.welcomeToHorsalsvagen),
             new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
-    public InteractionView(){
+    public InteractionView(GameView view){
+        worldHeight = view.getWorldHeight();
+        worldWidth = view.getWorldWidth();
         batch = new SpriteBatch();
         viewport = new FitViewport(worldWidth, worldHeight, new OrthographicCamera());
         createInteraction();
@@ -66,10 +67,6 @@ public class InteractionView extends ScreenAdapter{
         welcomeStage.addActor(welcomeTable);
     }
 
-    @Override
-    public void render(float delta) {
-
-    }
 
     public Stage getStage(){
         return this.stage;
@@ -77,10 +74,6 @@ public class InteractionView extends ScreenAdapter{
 
     public Stage getWelcomeStage(){
         return this.welcomeStage;
-    }
-
-    public OrthographicCamera getCamera(){
-        return this.camera;
     }
 
 

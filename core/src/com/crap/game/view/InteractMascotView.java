@@ -4,9 +4,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.*;
 
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crap.game.model.*;
 import com.crap.game.model.Character;
 import com.crap.game.model.InteractMascot;
@@ -20,19 +26,26 @@ public class InteractMascotView extends ScreenAdapter {
 
     private SpriteBatch batch;
 
+    private float worldWidth;
+    private float worldHeight;
+
     private Character interactionCharacter;
     private InteractMascot interactMascot;
 
     private String question;
     private List<String> alternatives;
 
-    BitmapFont titleFont;
-    BitmapFont font;
+    private BitmapFont titleFont;
+    private BitmapFont font;
 
-    FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
-    FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+    private GameView gameView;
 
-    public InteractMascotView(Character interactionCharacter){
+    public InteractMascotView(GameView view, Character interactionCharacter){
+        gameView = view;
+
+        worldHeight = gameView.getWorldHeight();
+        worldWidth = gameView.getWorldWidth();
+
         this.interactionCharacter = interactionCharacter;
         this.batch = new SpriteBatch();
 

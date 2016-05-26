@@ -4,8 +4,8 @@ import com.crap.game.model.Questions;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
 import static org.junit.Assert.*;
+
 /**
  * Created by rebeccafinne on 16-05-24.
  */
@@ -13,12 +13,12 @@ public class QuestionsTest {
 
     @Test
     public void testSetQuestions(){
-        Mascot mascot = new Mascot("kalleAnka");
+        Mascot mascot = new Mascot("luckyluke");
         ArrayList<Mascot> mascots = new ArrayList<Mascot>();
         mascots.add(mascot);
         Questions questions = new Questions(mascots);
         questions.setQuestions(mascots);
-        assertTrue(mascot.getQuestion().getQuestion().equals("What is kalle ankas love interest called?"));
+        assertTrue(mascot.getQuestion().getQuestion().equals("What is Lucky Lukes horse called?"));
         assertTrue(!mascot.getQuestion().getQuestion().equals("What is Hacke Hackspetts favorite color?"));
     }
 }

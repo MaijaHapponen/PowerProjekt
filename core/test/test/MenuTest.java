@@ -17,9 +17,9 @@ public class MenuTest {
         String[] array = new String[]{t, f};
         String s = "fdjaaö";
         Menu menu = new Menu(s, array);
-        menu.setCurrentItem("down");
+        menu.setCurrentItem("nextStepDown");
         assertTrue(menu.getCurrentItem().equals(f));
-        menu.setCurrentItem("down");
+        menu.setCurrentItem("nextStepDown");
         assertTrue(menu.getCurrentItem().equals(t));
     }
 

@@ -51,7 +51,7 @@ public final class TextForInteraction {
     public static String playTheGame = "Play the game";
     public static String howToPlay = "How to play";
     public static String winTheGame = "You win! :)";
-    public static String returnToMainMenu = "Press enter to return \n to main menu";
+    public static String returnToMainMenu = "Press enter to \n return to \n main menu";
     public static String gameName = "C.R.A.P.";
 
 }

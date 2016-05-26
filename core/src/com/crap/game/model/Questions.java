@@ -19,7 +19,7 @@ public class Questions {
 
             if (mascots.get(i).getName().equals("kalleAnka")) {
 
-                String kalleAnkaQuestion = "What is kalle ankas love interest called?";
+                String kalleAnkaQuestion = "What is kalle ankas love \n interest called?";
                 List<String> kalleAnkaAlternatives = Arrays.asList("Kajsa", "Dorothy", "Mimmi", "Monica");
                 int kalleAnkaRightAnswer = 0;
 
@@ -29,7 +29,7 @@ public class Questions {
 
             else if(mascots.get(i).getName().equals("hackeHackspett")) {
 
-                String hackeHackspettQuestion = "What is Hacke Hackspetts favorite color?";
+                String hackeHackspettQuestion = "What is Hacke Hackspetts \n favorite color?";
                 List<String> hackeHackspettAlternatives = Arrays.asList("Red", "White", "Orange", "Green");
                 int hackeHackspettRightAnswer = 2;
 
@@ -39,7 +39,7 @@ public class Questions {
 
             else if(mascots.get(i).getName().equals("iTSmurfen")) {
 
-                String iTSmurfenQuestion = "What does the shortening 'IT' stand for?";
+                String iTSmurfenQuestion = "What does the shortening \n 'IT' stand for?";
                 List<String> iTSmurfenAlternatives =
                         Arrays.asList("InternetTechnology", "Informationsteknik", "IterationTest", "IThink");
                 int iTSmurfenRightAnswer = 1;
@@ -50,7 +50,7 @@ public class Questions {
 
             else if(mascots.get(i).getName().equals("luckyLuke")) {
 
-                String luckyLukeQuestion = "What is Lucky Lukes horse called?";
+                String luckyLukeQuestion = "What is Lucky Lukes \n horse called?";
                 List<String> luckyLukeAlternatives =
                         Arrays.asList("Holly Hunter", "Betty Bowler", "Randy Runner", "Jolly Jumper}");
                 int luckyLukeRightAnswer = 3;

@@ -16,9 +16,11 @@ public final class TextForInteraction {
     public static int titlePlacementX = 40;
     public static int alternativesPlacementX = 60;
     public static int titlePlacementY = 420;
+    public static int humanGreetingY = 470;
     public static int onlyInformationY = 340;
     public static int mainMenuAlternativesX = 80;
     public static int alternativesPlacementY = 250;
+    public static int howToPlayInstructionsPlacementY = 350;
     public static int menuAlternativesPlacementY = 280;
     public static int returnPlacementY = 50;
     public static int menuSpaceBetweenAlternatives =80;
@@ -50,7 +52,7 @@ public final class TextForInteraction {
     public static String playTheGame = "Play the game";
     public static String howToPlay = "How to play";
     public static String winTheGame = "You win! :)";
-    public static String returnToMainMenu = "Press enter to return \n to main menu";
+    public static String returnToMainMenu = "Press enter to \n return to \n main menu";
     public static String gameName = "C.R.A.P.";
 
 }

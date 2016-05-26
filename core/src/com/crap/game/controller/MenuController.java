@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.crap.game.model.GameStates;
 import com.crap.game.model.Menu;
+import com.crap.game.model.TextForInteraction;
 import com.crap.game.view.MenuView;
 
 /**
@@ -44,14 +45,13 @@ public class MenuController extends InputAdapter{
         return true;
     }
 
-    //TODO: Remove
     public void changeScreen(){
-        if(menuModel.getCurrentItem().equals("Play the game")){
+        if(menuModel.getCurrentItem().equals(TextForInteraction.playTheGame)){
             StateController.updateState(GameStates.PLAY);
             menuView.dispose();
-        }else if(menuModel.getCurrentItem().equals("How to play")){
+        }else if(menuModel.getCurrentItem().equals(TextForInteraction.howToPlay)){
             StateController.updateState(GameStates.HOWTOPLAY);
-        }else if(menuModel.getCurrentItem().equals("Exit")){
+        }else if(menuModel.getCurrentItem().equals(TextForInteraction.exit)){
             System.exit(0);
         }
     }

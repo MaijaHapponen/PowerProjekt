@@ -5,13 +5,12 @@ import com.crap.game.model.Progress;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
 import static org.junit.Assert.*;
+
 /**
  * Created by rebeccafinne on 2016-05-10.
  */
 public class ProgressTest {
-
 
     @Test
     public void testAreAllMascotsCaught(){
@@ -32,6 +31,6 @@ public class ProgressTest {
         Progress progress = new Progress(inGame);
         progress.mascotCaught(mascot);
         assertTrue(progress.getMascotsCaught().contains(mascot));
-
+        assertTrue(progress.newUpdate());
     }
 }

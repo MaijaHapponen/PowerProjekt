@@ -21,6 +21,8 @@ public class MenuTest {
         assertTrue(menu.getCurrentItem().equals(f));
         menu.setCurrentItem("nextStepDown");
         assertTrue(menu.getCurrentItem().equals(t));
+        menu.setCurrentItem("nextStepUp");
+        assertTrue(menu.getCurrentItem().equals(f));
     }
 
 

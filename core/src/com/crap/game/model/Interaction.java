@@ -8,7 +8,7 @@ public class Interaction {
     private float otherCharacterWidth;
     private float otherCharacterHeight;
 
-    private static boolean isInteracting = false;
+    private boolean isInteracting = false;
 
     public Interaction(float playerWidth, float playerHeight) {
         this.collisionModel = new CollisionModel();
@@ -20,7 +20,7 @@ public class Interaction {
         return checkEveryPositionForInteraction(character, x, y);
     }
 
-    public boolean checkEveryPositionForInteraction(Character character, float x, float y) {
+    private boolean checkEveryPositionForInteraction(Character character, float x, float y) {
 
         return checkIfInteraction(character, x, y) ||
                 checkIfInteraction(character, x + otherCharacterWidth, y) ||
@@ -40,7 +40,7 @@ public class Interaction {
     }
 
 
-    public boolean checkIfInteraction(Character character, float thisX, float thisY) {
+    private boolean checkIfInteraction(Character character, float thisX, float thisY) {
 
         Float width = character.getWidth();
         Float height = character.getHeight();

@@ -26,9 +26,6 @@ public class InteractMascotView extends ScreenAdapter {
 
     private SpriteBatch batch;
 
-    private float worldWidth;
-    private float worldHeight;
-
     private Character interactionCharacter;
     private InteractMascot interactMascot;
 
@@ -38,14 +35,7 @@ public class InteractMascotView extends ScreenAdapter {
     private BitmapFont titleFont;
     private BitmapFont font;
 
-    private GameView gameView;
-
-    public InteractMascotView(GameView view, Character interactionCharacter){
-        gameView = view;
-
-        worldHeight = gameView.getWorldHeight();
-        worldWidth = gameView.getWorldWidth();
-
+    public InteractMascotView(Character interactionCharacter){
         this.interactionCharacter = interactionCharacter;
 
         this.batch = new SpriteBatch();

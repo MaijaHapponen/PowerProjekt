@@ -46,7 +46,7 @@ public class StateController {
                 setGameMode(false);
 
                 if(controller.getPlayerController().isInteractionWithMascot()) {
-                    InteractMascotView interactMascotView = new InteractMascotView(worldView,
+                    InteractMascotView interactMascotView = new InteractMascotView(
                             controller.getPlayerController().getInteractionController().getInteractingCharacter());
                     new InteractMascotController(interactMascotView, controller);
                     game.setScreen(interactMascotView);

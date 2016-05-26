@@ -37,7 +37,7 @@ public abstract class Character{
         this.world = world;
     }
 
-    public void decideNewDirection(){
+    private void decideNewDirection(){
         Random rand = new Random();
         int i = rand.nextInt(4);
         switch (i){
@@ -138,6 +138,10 @@ public abstract class Character{
 
     public Direction getWalkAwayDirection(){
         return  this.walkAwayDirection;
+    }
+
+    public void setWalkAwayDirection(Direction d){
+        this.walkAwayDirection = d;
     }
 
     public float getWidth(){

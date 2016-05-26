@@ -71,7 +71,7 @@ public class InteractHumanView extends ScreenAdapter {
 
         if(!interactHuman.getIsProgramme() && !interactHuman.getIsMascot()) {
 
-            title.draw(batch, informationGreeting, TextForInteraction.titlePlacementX, TextForInteraction.titlePlacementY);
+            title.draw(batch, informationGreeting, TextForInteraction.titlePlacementX, TextForInteraction.humanGreetingY);
 
             for (int i = 0; i < options.length; i++) {
                 if (interactHuman.getCurrentStringNbr() == i) {

@@ -1,7 +1,6 @@
 package com.crap.game.view;
 
 import com.crap.game.model.TextForInteraction;
-import com.crap.game.model.TextForInteraction.*;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -31,13 +30,13 @@ public class HowToPlayView extends ScreenAdapter{
 
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Candy Shop.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 27;
+        parameter.size = TextForInteraction.titleFontSize;
         titleFont = generator.generateFont(parameter);
 
-        parameter.size = 18;
+        parameter.size = TextForInteraction.instructionFontSize;
         instructionFont = generator.generateFont(parameter);
 
-        parameter.size = 15;
+        parameter.size = TextForInteraction.returnFontSize;
         pressBackFont = generator.generateFont(parameter);
 
         generator.dispose();
@@ -55,16 +54,19 @@ public class HowToPlayView extends ScreenAdapter{
 
         titleFont.setColor(Color.BLACK);
 
-        titleFont.draw(batch, TextForInteraction.howToPlayTitle, 30, 500);
+        titleFont.draw(batch, TextForInteraction.howToPlayTitle, TextForInteraction.titlePlacementX,
+                TextForInteraction.titlePlacementY);
 
         for(int i = 0; i < instructionItems.length; i++){
-            float rowDistance = 60;
+            float rowDistance = TextForInteraction.spaceBetweenAlternatives;
             instructionFont.setColor(Color.BLACK);
-            instructionFont.draw(batch, instructionItems[i], 30, 400 - rowDistance * i);
+            instructionFont.draw(batch, instructionItems[i], TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.alternativesPlacementY - rowDistance * i);
         }
 
         pressBackFont.setColor(Color.PINK);
-        pressBackFont.draw(batch, TextForInteraction.returnMenu, 30, 50);
+        pressBackFont.draw(batch, TextForInteraction.returnMenu, TextForInteraction.alternativesPlacementX,
+                TextForInteraction.returnPlacementY);
 
         batch.end();
     }

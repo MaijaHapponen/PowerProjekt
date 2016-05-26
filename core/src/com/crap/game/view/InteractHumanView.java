@@ -40,14 +40,14 @@ public class InteractHumanView extends ScreenAdapter {
 
     public void create(){
 
-        parameter.size = 12;
+        parameter.size = TextForInteraction.instructionFontSize;
         title = generator.generateFont(parameter);
         title.setColor(Color.BLACK);
 
-        parameter.size = 12;
+        parameter.size = TextForInteraction.informationFontSize;
         font = generator.generateFont(parameter);
 
-        parameter.size = 13;
+        parameter.size = TextForInteraction.informationFontSize;
         information = generator.generateFont(parameter);
 
         generator.dispose();
@@ -71,7 +71,7 @@ public class InteractHumanView extends ScreenAdapter {
 
         if(!interactHuman.getIsProgramme() && !interactHuman.getIsMascot()) {
 
-            title.draw(batch, informationGreeting, 30, 400);
+            title.draw(batch, informationGreeting, TextForInteraction.titlePlacementX, TextForInteraction.titlePlacementY);
 
             for (int i = 0; i < options.length; i++) {
                 if (interactHuman.getCurrentStringNbr() == i) {
@@ -80,21 +80,26 @@ public class InteractHumanView extends ScreenAdapter {
                 } else {
                     font.setColor(Color.BLACK);
                 }
-                font.draw(batch, options[i], 60, 250 - 70 * i);
+                font.draw(batch, options[i], TextForInteraction.alternativesPlacementX,
+                        TextForInteraction.alternativesPlacementY - TextForInteraction.spaceBetweenAlternatives * i);
             }
         }
 
 
         else if(interactHuman.getIsProgramme()) {
             font.setColor(Color.BLACK);
-            font.draw(batch, informationProgramme, 60, 300);
-            font.draw(batch, TextForInteraction.returnToGame, 60, 150);
+            font.draw(batch, informationProgramme, TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.onlyInformationY);
+            font.draw(batch, TextForInteraction.returnToGame, TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.returnPlacementY);
         }
 
         else if(interactHuman.getIsMascot()){
             font.setColor(Color.BLACK);
-            font.draw(batch, informationLocation, 60, 300);
-            font.draw(batch, TextForInteraction.returnToGame, 60, 150);
+            font.draw(batch, informationLocation, TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.onlyInformationY);
+            font.draw(batch, TextForInteraction.returnToGame, TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.returnPlacementY);
         }
 
         batch.end();

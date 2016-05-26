@@ -5,6 +5,22 @@ package com.crap.game.model;
  */
 public final class TextForInteraction {
 
+    //Fontsize for the text
+    public static int titleFontSize = 27;
+    public static int instructionFontSize = 18;
+    public static int informationFontSize = 13;
+    public static int returnFontSize = 15;
+
+    //Placement for the text
+    public static int titlePlacementX = 30;
+    public static int alternativesPlacementX = 60;
+    public static int titlePlacementY = 420;
+    public static int onlyInformationY = 340;
+    public static int mainMenuAlternativesX = 70;
+    public static int alternativesPlacementY = 250;
+    public static int returnPlacementY = 50;
+    public static int spaceBetweenAlternatives = 60;
+
     //In HowToPlayView
     public static String howToPlay1 = "-Catch all the mascots to win.";
     public static String howToPlay2 = "-Answer the questions\nright to catch the mascot.";

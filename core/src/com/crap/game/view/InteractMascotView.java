@@ -47,10 +47,10 @@ public class InteractMascotView extends ScreenAdapter {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
-        parameter.size=20;
+        parameter.size=TextForInteraction.instructionFontSize;
         titleFont = generator.generateFont(parameter);
 
-        parameter.size=10;
+        parameter.size=TextForInteraction.informationFontSize;
         font= generator.generateFont(parameter);
         generator.dispose();
 
@@ -71,7 +71,7 @@ public class InteractMascotView extends ScreenAdapter {
         if(!interactMascot.getHasAnswered()) {
 
             titleFont.setColor(Color.BLACK);
-            titleFont.draw(batch, question, 15, 450);
+            titleFont.draw(batch, question, TextForInteraction.titlePlacementX, TextForInteraction.titlePlacementY);
             for(int i = 0; i < alternatives.size(); i++) {
 
                 if(interactMascot.getCurrentStringNbr() == i) {
@@ -82,22 +82,27 @@ public class InteractMascotView extends ScreenAdapter {
                     font.setColor(Color.BLACK);
                 }
 
-                font.draw(batch, alternatives.get(i), 200, 250 - 30 * i);
+                font.draw(batch, alternatives.get(i), TextForInteraction.alternativesPlacementX,
+                        TextForInteraction.alternativesPlacementY - TextForInteraction.spaceBetweenAlternatives/2 * i);
             }
         }
 
         else if(((Mascot)interactionCharacter).isCaught()) {
 
             font.setColor(Color.BLACK);
-            font.draw(batch, interactMascot.getRight(), 60, 300);
-            font.draw(batch, interactMascot.getBack(), 60, 250);
+            font.draw(batch, interactMascot.getRight(), TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.onlyInformationY);
+            font.draw(batch, interactMascot.getBack(), TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.returnPlacementY);
             interactMascot.updateMascotCaught();
         }
 
         else{
             font.setColor(Color.BLACK);
-            font.draw(batch, interactMascot.getWrong(), 60, 300);
-            font.draw(batch, interactMascot.getBack(), 60, 250);
+            font.draw(batch, interactMascot.getWrong(), TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.onlyInformationY);
+            font.draw(batch, interactMascot.getBack(), TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.returnPlacementY);
         }
 
         batch.end();

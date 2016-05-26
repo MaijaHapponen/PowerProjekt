@@ -16,11 +16,24 @@ public class CharacterController{
     private InteractionController interactionController;
     private int walkAwayState = Constants.WALK_AWAY_LENGTH;
 
-    public CharacterController(GameView view){
-        this.gameView = view;
-        this.collisionController = new CollisionController(view.getWorld());
-        interactionController = new InteractionController(view);
+    public CharacterController(GameView gameView){
+        this.gameView = gameView;
+        this.collisionController = new CollisionController(gameView.getWorld());
+        interactionController = new InteractionController(gameView);
     }
+
+
+
+    public CharacterController(GameView gameView, Character character, CharacterView characterView){
+        this.character = character;
+        this.characterView = characterView;
+        this.gameView = gameView;
+        this.collisionController = new CollisionController(gameView.getWorld());
+        interactionController = new InteractionController(gameView);
+    }
+
+
+
 
     public void interactsWith(Character character, CharacterView characterView){
         collisionController.setPlayerWidthAndHeight(characterView.getCharacterSpriteWidth(),
@@ -38,7 +51,7 @@ public class CharacterController{
     }
 
     public void move(Direction direction){
-        float movement = character.getSpeed()*2;
+        float movement = character.getSpeed()*Constants.NORMAL_SPEED;
 
         switch (direction){
             case UP:
@@ -112,8 +125,7 @@ public class CharacterController{
     }
 
     public void updateSprite() {
-        characterView.getSprite().setPosition(this.character.getPosition().getX(),
-                this.character.getPosition().getY());
+        characterView.getSprite().setPosition(this.character.getPosition().getX(), this.character.getPosition().getY());
     }
 
     public void resetWalkAwayState(){
@@ -142,23 +154,20 @@ public class CharacterController{
         switch (character.getWalkAwayDirection()){
             case UP:
                 this.characterView.setAnimationState(AnimationState.STANDING_BACK);
-                this.characterView.updateAnimation();
                 break;
             case DOWN:
                 this.characterView.setAnimationState(AnimationState.STANDING_FRONT);
-                this.characterView.updateAnimation();
                 break;
             case LEFT:
                 this.characterView.setAnimationState(AnimationState.STANDING_LEFT);
-                this.characterView.updateAnimation();
                 break;
             case RIGHT:
                 this.characterView.setAnimationState(AnimationState.STANDING_RIGHT);
-                this.characterView.updateAnimation();
                 break;
             case NO_DIRECTION:
                 break;
         }
+        this.characterView.updateAnimation();
         interactionController.getInteractionModel().setIsInteracting(false);
     }
 
@@ -166,10 +175,35 @@ public class CharacterController{
         character.changeDirection(Constants.WALK_AWAY_LENGTH, this.walkAwayState);
         this.move(character.getWalkAwayDirection());
 
-        if(walkAwayState == Constants.WALK_AWAY_LENGTH -1 && !(character.getWalkAwayDirection()== Direction.NO_DIRECTION)){
+        if(walkAwayState == Constants.WALK_AWAY_LENGTH -1 && !(character.getWalkAwayDirection() ==
+                Direction.NO_DIRECTION)){
             stopWalkingAnimation();
         }
         updateSprite();
         walkAwayState++;
+    }
+
+    public GameView getGameView() {
+        return this.gameView;
+    }
+
+    public Character getCharacter(){
+        return this.character;
+    }
+
+    public void setCharacter(Character character){
+        this.character = character;
+    }
+
+    public InteractionController getInteractionController(){
+        return this.interactionController;
+    }
+
+    public CollisionController getCollisionController(){
+        return this.collisionController;
+    }
+
+    public void setCollisionController(CollisionController collisionController){
+        this.collisionController = collisionController;
     }
 }

@@ -3,7 +3,6 @@ package com.crap.game.controller;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.MapObject;
 import com.crap.game.model.AnimationState;
-import com.crap.game.model.Player;
 import com.crap.game.model.Position;
 import com.crap.game.view.GameView;
 import com.crap.game.view.PlayerView;
@@ -13,111 +12,92 @@ import static com.crap.game.model.Constants.PIXEL_PER_TILE;
 /**
  * Created by rebeccafinne on 2016-04-30.
  */
-public class PlayerController {
-    private GameView gameView;
+public class PlayerController extends CharacterController{
     private PlayerView playerView;
-    private Player player;
-    private CollisionController collisionController;
-    private InteractionController interactionController;
     public MapObject newWorldObject;
 
     public PlayerController(PlayerView playerView, GameView gameView){
+        super(gameView, playerView.getPlayer(), playerView);
         this.playerView = playerView;
-        this.player = playerView.getPlayer();
-        this.gameView = gameView;
-        this.collisionController = new CollisionController(gameView.getWorld());
-        this.interactionController = new InteractionController(gameView);
-        this.newWorldObject = collisionController.getNewWorldObject();
-    }
-
-    public Player getPlayer(){
-        return this.player;
+        this.newWorldObject = getCollisionController().getNewWorldObject();
     }
 
     public void updateCollisionController(){
-        this.collisionController = new CollisionController(gameView.getWorld());
-        collisionController.setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
+        setCollisionController(new CollisionController(getGameView().getWorld()));
+        getCollisionController().setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
     }
 
     public void movePlayer(int keycode) {
-
         updateSpeed();
 
         if (keycode == Input.Keys.UP &&
-                !(checkIfCollision(player.nextStepUp()))) {
+                !(checkIfCollision(getCharacter().nextStepUp()))) {
             playerView.setAnimationState(AnimationState.WALKING_BACK);
-            player.moveUp(gameView.getWorldHeight());
+            getCharacter().moveUp(getGameView().getWorldHeight());
         }
 
         else if (keycode == Input.Keys.DOWN &&
-                !(checkIfCollision(player.nextStepDown()))){
+                !(checkIfCollision(getCharacter().nextStepDown()))){
             playerView.setAnimationState(AnimationState.WALKING_FRONT);
-            player.moveDown();
+            getCharacter().moveDown();
         }
 
         else if (keycode == Input.Keys.LEFT &&
-                !(checkIfCollision(player.nextStepLeft()))){
+                !(checkIfCollision(getCharacter().nextStepLeft()))){
             playerView.setAnimationState(AnimationState.WALKING_LEFT);
-            player.moveLeft();
+            getCharacter().moveLeft();
         }
 
         else if (keycode == Input.Keys.RIGHT &&
-                !(checkIfCollision(player.nextStepRight())) )  {
+                !(checkIfCollision(getCharacter().nextStepRight())) )  {
             playerView.setAnimationState(AnimationState.WALKING_RIGHT);
-            player.moveRight(gameView.getWorldWidth());
+            getCharacter().moveRight(getGameView().getWorldWidth());
         }
 
-        updateSprite();
-        playerView.moveCamera(player.getPosition().getX(), player.getPosition().getY(),
-                gameView.getWorldHeight()+ PIXEL_PER_TILE, gameView.getWorldWidth()+ PIXEL_PER_TILE);
-
-    }
-
-    public void updateSprite() {
-        playerView.getSprite().setPosition(player.getPosition().getX(), player.getPosition().getY());
+        playerView.moveCamera(getCharacter().getPosition().getX(), getCharacter().getPosition().getY(),
+                getGameView().getWorldHeight()+ PIXEL_PER_TILE, getGameView().getWorldWidth()+PIXEL_PER_TILE);
     }
 
     public boolean checkIfCollision(Position p){
-        return (collisionController.isCollison(p.getX(),p.getY()) || collisionController.isNewWorld(p.getX(),p.getY())||
-                interactionController.isInteractionWithHuman(p.getX(),p.getY())
-                || interactionController.isInteractionWithMascot(p.getX(),p.getY()));
+        return (getCollisionController().isCollison(p.getX(),p.getY()) || getCollisionController().isNewWorld(p.getX(),p.getY())||
+                getInteractionController().isInteractionWithHuman(p.getX(),p.getY())
+                || getInteractionController().isInteractionWithMascot(p.getX(),p.getY()));
     }
 
     public boolean isInteractionWithMascot(){
-        return checkIfInteractionWithMascot(player.nextStepUp()) || checkIfInteractionWithMascot(player.nextStepDown()) ||
-                checkIfInteractionWithMascot(player.nextStepLeft()) || checkIfInteractionWithMascot(player.nextStepRight());
+        return checkIfInteractionWithMascot(getCharacter().nextStepUp()) || checkIfInteractionWithMascot(getCharacter().nextStepDown()) ||
+                checkIfInteractionWithMascot(getCharacter().nextStepLeft()) || checkIfInteractionWithMascot(getCharacter().nextStepRight());
     }
 
     public boolean checkIfInteractionWithMascot(Position pos){
-        return interactionController.isInteractionWithMascot(pos.getX(),pos.getY());
+        return getInteractionController().isInteractionWithMascot(pos.getX(),pos.getY());
     }
 
     public boolean isInteractionWithHuman(){
-        return checkIfInteractionWithHuman(player.nextStepUp()) || checkIfInteractionWithHuman(player.nextStepDown()) ||
-                checkIfInteractionWithHuman(player.nextStepLeft()) || checkIfInteractionWithHuman(player.nextStepRight());
+        return checkIfInteractionWithHuman(getCharacter().nextStepUp()) || checkIfInteractionWithHuman(getCharacter().nextStepDown()) ||
+                checkIfInteractionWithHuman(getCharacter().nextStepLeft()) || checkIfInteractionWithHuman(getCharacter().nextStepRight());
     }
 
     public boolean checkIfInteractionWithHuman(Position pos){
-        return interactionController.isInteractionWithHuman(pos.getX(), pos.getY());
+        return getInteractionController().isInteractionWithHuman(pos.getX(), pos.getY());
     }
 
     public boolean isNewWorld(){
-
-        return checkIfNewWorld(player.nextStepUp()) || checkIfNewWorld(player.nextStepDown())
-                || checkIfNewWorld(player.nextStepLeft()) || checkIfNewWorld(player.nextStepRight());
+        return checkIfNewWorld(getCharacter().nextStepUp()) || checkIfNewWorld(getCharacter().nextStepDown())
+                || checkIfNewWorld(getCharacter().nextStepLeft()) || checkIfNewWorld(getCharacter().nextStepRight());
     }
 
     public boolean checkIfNewWorld(Position pos){
-        return collisionController.isNewWorld(pos.getX(),pos.getY());
+        return getCollisionController().isNewWorld(pos.getX(),pos.getY());
     }
 
 
     public void updateSpeed(){
-        if(collisionController.isSlowerTerrain(player.getPosition().getX(), player.getPosition().getY())){
-            player.setSlowerSpeed();
+        if(getCollisionController().isSlowerTerrain(getCharacter().getPosition().getX(), getCharacter().getPosition().getY())){
+            getCharacter().setSlowerSpeed();
         }
         else{
-            player.setNormalSpeed();
+            getCharacter().setNormalSpeed();
         }
     }
 
@@ -136,13 +116,5 @@ public class PlayerController {
                 playerView.setAnimationState(AnimationState.STANDING_RIGHT);
                 break;
         }
-    }
-
-    public CollisionController getCollisionController(){
-        return this.collisionController;
-    }
-
-    public InteractionController getInteractionController(){
-        return this.interactionController;
     }
 }

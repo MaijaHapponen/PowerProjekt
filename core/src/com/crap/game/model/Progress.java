@@ -45,6 +45,7 @@ public class Progress {
     public boolean newUpdate(){
         return this.newUpdate;
     }
+
     public void setNewUpdate(boolean b){
         newUpdate = b;
     }

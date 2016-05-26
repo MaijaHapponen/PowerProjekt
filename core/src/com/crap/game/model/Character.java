@@ -19,6 +19,11 @@ public abstract class Character{
     private Direction lastDirection;
 
     private float speed;
+    private Position nextPlayerPos;
+
+    public void setNextPlayerPos(Position pos){
+        nextPlayerPos = pos;
+    }
 
     public Character(){
         this.position = new Position();
@@ -175,4 +180,25 @@ public abstract class Character{
     public float getSpeed(){
         return this.speed;
     }
+
+    public Position nextStepUp(){
+        nextPlayerPos.setPosition(getPosition().getX(), (getPosition().getY() + getSpeed()));
+        return nextPlayerPos;
+    }
+
+    public Position nextStepDown(){
+        nextPlayerPos.setPosition(getPosition().getX(), getPosition().getY() - getSpeed());
+        return nextPlayerPos;
+    }
+
+    public Position nextStepLeft(){
+        nextPlayerPos.setPosition(getPosition().getX() - getSpeed(), getPosition().getY());
+        return nextPlayerPos;
+    }
+
+    public Position nextStepRight(){
+        nextPlayerPos.setPosition(getPosition().getX() + getSpeed(), getPosition().getY());
+        return nextPlayerPos;
+    }
+
  }

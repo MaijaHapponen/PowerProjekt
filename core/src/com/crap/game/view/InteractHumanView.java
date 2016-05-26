@@ -89,7 +89,7 @@ public class InteractHumanView extends ScreenAdapter {
         else if(interactHuman.getIsProgramme()) {
             font.setColor(Color.BLACK);
             font.draw(batch, informationProgramme, TextForInteraction.alternativesPlacementX,
-                    TextForInteraction.alternativesPlacementY);
+                    TextForInteraction.onlyInformationY);
             font.draw(batch, TextForInteraction.returnToGame, TextForInteraction.alternativesPlacementX,
                     TextForInteraction.returnPlacementY);
         }
@@ -97,7 +97,7 @@ public class InteractHumanView extends ScreenAdapter {
         else if(interactHuman.getIsMascot()){
             font.setColor(Color.BLACK);
             font.draw(batch, informationLocation, TextForInteraction.alternativesPlacementX,
-                    TextForInteraction.alternativesPlacementY);
+                    TextForInteraction.onlyInformationY);
             font.draw(batch, TextForInteraction.returnToGame, TextForInteraction.alternativesPlacementX,
                     TextForInteraction.returnPlacementY);
         }

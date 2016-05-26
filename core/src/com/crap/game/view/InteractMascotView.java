@@ -91,7 +91,7 @@ public class InteractMascotView extends ScreenAdapter {
 
             font.setColor(Color.BLACK);
             font.draw(batch, interactMascot.getRight(), TextForInteraction.alternativesPlacementX,
-                    TextForInteraction.alternativesPlacementY);
+                    TextForInteraction.onlyInformationY);
             font.draw(batch, interactMascot.getBack(), TextForInteraction.alternativesPlacementX,
                     TextForInteraction.returnPlacementY);
             interactMascot.updateMascotCaught();
@@ -100,7 +100,7 @@ public class InteractMascotView extends ScreenAdapter {
         else{
             font.setColor(Color.BLACK);
             font.draw(batch, interactMascot.getWrong(), TextForInteraction.alternativesPlacementX,
-                    TextForInteraction.alternativesPlacementY);
+                    TextForInteraction.onlyInformationY);
             font.draw(batch, interactMascot.getBack(), TextForInteraction.alternativesPlacementX,
                     TextForInteraction.returnPlacementY);
         }

@@ -69,7 +69,7 @@ public class MenuView extends ScreenAdapter{
                     font.setColor(Color.BLACK);
                 }
 
-                font.draw(batch, menuModel.getMenuItem(i), TextForInteraction.alternativesPlacementX,
+                font.draw(batch, menuModel.getMenuItem(i), TextForInteraction.mainMenuAlternativesX,
                         TextForInteraction.alternativesPlacementY - TextForInteraction.spaceBetweenAlternatives * i);
             }
 

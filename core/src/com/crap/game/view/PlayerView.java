@@ -19,40 +19,14 @@ public class PlayerView extends CharacterView implements Screen{
 
     private Player player;
     private OrthographicCamera camera;
-    private GameAnimation gameAnimation = new GameAnimation();
 
     private float halfOfScreen = Gdx.graphics.getWidth()/2;
-
-    public PlayerView(){
-        super();
-    }
 
     public void initPlayerView(){
         setTexture(new Texture(Gdx.files.internal("characters/"+player.getName()+".png")));
         setSprite(new Sprite(getTexture()));
-        setAnimation(this.gameAnimation.getAnimation(getAnimationState(), getTexture(), getTexture().getWidth(),
+        setAnimation(getGameAnimation().getAnimation(getAnimationState(), getTexture(), getTexture().getWidth(),
                 getTexture().getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY));
-    }
-
-    public void setPlayer(Player player){
-        this.player=player;
-        initPlayerView();
-        player.setWidthAndHeight(getPlayerSpriteWidth(), getPlayerSpriteHeight());
-    }
-
-    public Player getPlayer(){
-        return player;
-    }
-
-    public int getPlayerSpriteWidth(){
-        return getTexture().getWidth()/NBR_OF_TEXTURE_IMAGES_HORIZONTALLY;
-    }
-    public int getPlayerSpriteHeight(){
-        return getTexture().getHeight()/NBR_OF_TEXTURE_IMAGES_VERTICALLY;
-    }
-
-    public void setCamera(OrthographicCamera camera){
-        this.camera = camera;
     }
 
     public void moveCamera(float x,float y, float worldWidth, float worldHeight) {
@@ -99,6 +73,27 @@ public class PlayerView extends CharacterView implements Screen{
         camera.update();
     }
 
+    public void setPlayer(Player player){
+        this.player=player;
+        initPlayerView();
+        player.setWidthAndHeight(getPlayerSpriteWidth(), getPlayerSpriteHeight());
+    }
+
+    public Player getPlayer(){
+        return player;
+    }
+
+    public int getPlayerSpriteWidth(){
+        return getTexture().getWidth()/NBR_OF_TEXTURE_IMAGES_HORIZONTALLY;
+    }
+    public int getPlayerSpriteHeight(){
+        return getTexture().getHeight()/NBR_OF_TEXTURE_IMAGES_VERTICALLY;
+    }
+
+    public void setCamera(OrthographicCamera camera){
+        this.camera = camera;
+    }
+
     public Position getPlayerPosition(){
         return player.getPosition();
     }
@@ -109,7 +104,7 @@ public class PlayerView extends CharacterView implements Screen{
 
     public void setAnimationState(AnimationState animationState){
         super.setAnimationState(animationState);
-        setAnimation(this.gameAnimation.getAnimation(getAnimationState(), getTexture(), 129, 190,
+        setAnimation(getGameAnimation().getAnimation(getAnimationState(), getTexture(), 129, 190,
                 NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY));
     }
 }

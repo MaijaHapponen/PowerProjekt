@@ -22,12 +22,6 @@ public class PlayerController extends CharacterController{
         this.newWorldObject = getCollisionController().getNewWorldObject();
     }
 
-    public void updateCollisionController(){ //TODO Sprites in PlayerView needs to be moved to CharacterView
-        setCollisionController(new CollisionController(getGameView().getWorld()));
-        getCollisionController().setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),
-                playerView.getPlayerSpriteHeight());
-    }
-
     public void movePlayer(int keycode) {
         updateSpeed();
         if (keycode == Input.Keys.UP &&

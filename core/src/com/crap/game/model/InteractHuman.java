@@ -29,7 +29,7 @@ public class InteractHuman {
             }
         }if(direction.equals("up")){
             if(currentStringNbr == 0){
-                currentStringNbr = 3;
+                currentStringNbr = amoutOfStrings;
             }else{
                 currentStringNbr --;
             }

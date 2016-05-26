@@ -9,6 +9,7 @@ public final class TextForInteraction {
     public static int titleFontSize = 27;
     public static int instructionFontSize = 18;
     public static int informationFontSize = 13;
+    public static int interactionFontSize = 12;
     public static int returnFontSize = 15;
 
     //Placement for the text

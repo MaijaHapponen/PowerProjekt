@@ -60,7 +60,7 @@ public class GameView extends ScreenAdapter{
 
         renderer = new OrthogonalTiledMapRenderer(world);
 
-        this.interactionView = new InteractionView(this);
+        this.interactionView = new InteractionView();
         
         viewport = new FitViewport(worldWidth, worldHeight, new OrthographicCamera());
 

@@ -47,6 +47,7 @@ public class InteractMascotView extends ScreenAdapter {
         worldWidth = gameView.getWorldWidth();
 
         this.interactionCharacter = interactionCharacter;
+
         this.batch = new SpriteBatch();
 
         this.question = ((Mascot)interactionCharacter).getQuestion().getQuestion();

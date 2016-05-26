@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeType;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -23,29 +25,46 @@ public class InteractionView extends ScreenAdapter{
     private Stage welcomeStage;
     private Viewport viewport;
 
-    private float worldWidth;
-    private float worldHeight;
+    private int worldWidth = Gdx.graphics.getWidth();
+    private int worldHeight = Gdx.graphics.getHeight();
 
     private SpriteBatch batch;
 
-    private Label talkLable = new Label(String.format(TextForInteraction.talkToCharacter),
-            new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    private BitmapFont font;
+
+    private Label talkLable;
     private Label welcomeLabel;
 
-    private Label hubbenLabel = new Label(String.format(TextForInteraction.welcomeToHubben),
-            new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-    private Label zaloonenLabel= new Label(String.format(TextForInteraction.welcomeToZaloonen),
-            new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-    private Label horsalLabel = new Label(String.format(TextForInteraction.welcomeToHorsalsvagen),
-            new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
-    public InteractionView(GameView view){
-        worldHeight = view.getWorldHeight();
-        worldWidth = view.getWorldWidth();
+    private Label hubbenLabel;
+    private Label zaloonenLabel;
+    private Label horsalLabel;
+
+    public InteractionView(){
         batch = new SpriteBatch();
         viewport = new FitViewport(worldWidth, worldHeight, new OrthographicCamera());
+        createLabels();
         createInteraction();
         createWelcome();
+    }
+
+    public void createLabels(){
+
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+
+        parameter.size = TextForInteraction.interactionFontSize;
+        font = generator.generateFont(parameter);
+
+        hubbenLabel = new Label(String.format(TextForInteraction.welcomeToHubben),
+                new Label.LabelStyle(font, Color.WHITE));
+        zaloonenLabel = new Label(String.format(TextForInteraction.welcomeToZaloonen),
+                new Label.LabelStyle(font, Color.WHITE));
+        horsalLabel = new Label(String.format(TextForInteraction.welcomeToHorsalsvagen),
+                new Label.LabelStyle(font, Color.WHITE));
+        talkLable = new Label(String.format(TextForInteraction.talkToCharacter),
+                new Label.LabelStyle(font, Color.WHITE));
+
     }
 
     public void createInteraction(){

@@ -2,7 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 
-import com.crap.game.model.Player;
+import com.crap.game.model.*;
 
 import org.junit.Test;
 
@@ -11,45 +11,51 @@ import org.junit.Test;
  */
 public class PlayerTest {
 
-  /*  @Test
-    public void testMoveUp() throws Exception {
-        Player player = new Player();
-        float playerPosX = player.getPosition().getX();
-        float playerPosY = player.getPosition().getY();
+    @Test
+    public void testNextStepUp() throws Exception {
+
+        Player player = new Player("Hej", 20, 20);
+        float playerPosX = 20;
+        float playerPosY = 20;
+
         player.moveUp(500);
+        player.nextStepUp();
         assertTrue(player.getPosition().getX() == playerPosX);
-        assertTrue(player.getPosition().getY() == playerPosY+player.getNormalSpeed());
+        assertTrue(player.getPosition().getY() == playerPosY + player.getSpeed());
     }
 
-    @Test
-    public void testMoveDown(){
-        Player player = new Player();
+   @Test
+    public void testNextStepDown(){
+        Player player = new Player("Hej", 20, 20);
         float playerPosX = player.getPosition().getX();
         float playerPosY = player.getPosition().getY();
         player.moveDown();
-        assertTrue(player.getPosition().getY() == playerPosX-player.getNormalSpeed());
+        player.nextStepDown();
+        assertTrue(player.getPosition().getY() == playerPosX-Constants.normalSpeed);
         assertTrue(player.getPosition().getX() == playerPosY);
     }
 
     @Test
-    public void testMoveLeft(){
-        Player player = new Player();
+    public void testNextStepLeft(){
+        Player player = new Player("Hej", 20, 20);
         float playerPosX = player.getPosition().getX();
         float playerPosY = player.getPosition().getY();
         player.moveLeft();
-        assertTrue(player.getPosition().getX() == playerPosX-player.getNormalSpeed());
+        player.nextStepLeft();
+        assertTrue(player.getPosition().getX() == playerPosX-Constants.normalSpeed);
         assertTrue(player.getPosition().getY() == playerPosY);
     }
 
     @Test
-    public void testMoveRight(){
-        Player player = new Player();
+    public void testNextStepRight(){
+        Player player = new Player("Hej", 20, 20);
         float playerPosX = player.getPosition().getX();
         float playerPosY = player.getPosition().getY();
         player.moveRight(500);
+        player.nextStepRight();
         assertTrue(player.getPosition().getY() == playerPosX);
-        assertTrue(player.getPosition().getX() == playerPosY+player.getNormalSpeed());
+        assertTrue(player.getPosition().getX() == playerPosY+Constants.normalSpeed);
     }
-*/
+
 
 }

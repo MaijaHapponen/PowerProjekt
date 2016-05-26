@@ -48,7 +48,7 @@ public class Questions {
                         new Question(iTSmurfenQuestion, iTSmurfenAlternatives, iTSmurfenRightAnswer));
             }
 
-            else if(mascots.get(i).getName().equals("luckyLuke")) {
+            else{// if(mascots.get(i).getName().equals("luckyLuke")) {
 
                 String luckyLukeQuestion = "What is Lucky Lukes horse called?";
                 List<String> luckyLukeAlternatives =

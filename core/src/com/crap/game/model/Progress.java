@@ -42,25 +42,10 @@ public class Progress {
         return this.mascotsCaught;
     }
 
-    public ArrayList<Mascot> getMascotsInGame() {
-        return mascotsInGame;
-    }
-
-    public void setMascotsInGame(ArrayList<Mascot> mascotsInGame){
-        this.mascotsInGame = mascotsInGame;
-    }
-
     public boolean newUpdate(){
         return this.newUpdate;
     }
     public void setNewUpdate(boolean b){
         newUpdate = b;
-    }
-
-    public void resetProgress(){
-        for(int i=0; i<allMascots.size(); i++){
-            mascotsInGame.add(allMascots.get(i));
-        }
-        mascotsCaught.clear();
     }
 }

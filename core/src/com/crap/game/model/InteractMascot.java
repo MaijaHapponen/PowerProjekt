@@ -38,7 +38,7 @@ public class InteractMascot {
         }
         if(direction.equals("nextStepUp")){
             if(currentStringNbr == 0){
-                currentStringNbr = 3;
+                currentStringNbr = amountOfStrings;
             }
             else {
                 currentStringNbr--;

@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.crap.game.model.Menu;
+import com.crap.game.model.TextForInteraction;
 
 /**
  * Created by Maija on 2016-05-11.
@@ -31,16 +32,18 @@ public class MenuView extends ScreenAdapter{
     public void create(){
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size=50;
+
+        parameter.size=TextForInteraction.titleFontSize*2;
         titleFont = generator.generateFont(parameter);
         titleFont.setColor(Color.BLACK);
 
-        parameter.size=20;
+        parameter.size=TextForInteraction.titleFontSize;
         font= generator.generateFont(parameter);
         generator.dispose();
 
-        String[] menuItems = new String[]{"Play the game", "How to play", "Exit"};
-        menuModel = new Menu("C.R.A.P.", menuItems);
+        String[] menuItems = new String[]{TextForInteraction.playTheGame, TextForInteraction.howToPlay,
+                TextForInteraction.exit};
+        menuModel = new Menu(TextForInteraction.gameName, menuItems);
     }
 
     public Menu getMenuModel(){
@@ -56,7 +59,8 @@ public class MenuView extends ScreenAdapter{
         batch.begin();
 
         if(!gameOver) {
-            titleFont.draw(batch, menuModel.getGameName(), 60, 400);
+            titleFont.draw(batch, menuModel.getGameName(), TextForInteraction.titlePlacementX,
+                    TextForInteraction.titlePlacementY);
 
             for (int i = 0; i < menuModel.amountOfItems(); i++) {
                 if (menuModel.currentItemNumber() == i) {
@@ -65,15 +69,18 @@ public class MenuView extends ScreenAdapter{
                     font.setColor(Color.BLACK);
                 }
 
-                font.draw(batch, menuModel.getMenuItem(i), 120, 250 - 70 * i);
+                font.draw(batch, menuModel.getMenuItem(i), TextForInteraction.mainMenuAlternativesX,
+                        TextForInteraction.menuAlternativesPlacementY - TextForInteraction.menuSpaceBetweenAlternatives * i);
             }
 
         }
         else{
-            titleFont.draw(batch,"You win!", 60,400);
+            titleFont.draw(batch,TextForInteraction.winTheGame, TextForInteraction.titlePlacementX,
+                    TextForInteraction.titlePlacementY);
             titleFont.setColor(Color.BLACK);
 
-            font.draw(batch,"Press enter to return \n to main menu",60,220);
+            font.draw(batch,TextForInteraction.returnToMainMenu,TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.alternativesPlacementY);
             font.setColor(Color.PINK);
         }
         batch.end();

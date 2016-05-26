@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.crap.game.model.TextForInteraction;
 
 /**
  * Created by Maija on 2016-05-11.
@@ -28,12 +29,16 @@ public class InteractionView extends ScreenAdapter{
     private OrthographicCamera camera;
     private SpriteBatch batch;
 
-    private Label talkLable = new Label(String.format("Press SPACE to talk"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    private Label talkLable = new Label(String.format(TextForInteraction.talkToCharacter),
+            new Label.LabelStyle(new BitmapFont(), Color.WHITE));
     private Label welcomeLabel;
 
-    private Label hubbenLabel = new Label(String.format("Welcome to Hubben 2.1"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-    private Label zaloonenLabel= new Label(String.format("Welcome to Zaloonen"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-    private Label horsalLabel = new Label(String.format("Welcome to Hörsalsvägen"), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    private Label hubbenLabel = new Label(String.format(TextForInteraction.welcomeToHubben),
+            new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    private Label zaloonenLabel= new Label(String.format(TextForInteraction.welcomeToZaloonen),
+            new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+    private Label horsalLabel = new Label(String.format(TextForInteraction.welcomeToHorsalsvagen),
+            new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
     public InteractionView(){
         batch = new SpriteBatch();
@@ -92,5 +97,10 @@ public class InteractionView extends ScreenAdapter{
     public Label getWelcomeLabel(){
         return this.welcomeLabel;
     }
-    
+
+    public void dispose(){
+        stage.dispose();
+        welcomeStage.dispose();
+        batch.dispose();
+    }
 }

@@ -1,11 +1,12 @@
 package com.crap.game.controller;
 
-        import com.badlogic.gdx.Gdx;
-        import com.badlogic.gdx.Input;
-        import com.badlogic.gdx.InputAdapter;
-        import com.crap.game.model.GameStates;
-        import com.crap.game.model.InteractHuman;
-        import com.crap.game.view.InteractHumanView;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputAdapter;
+import com.crap.game.model.GameStates;
+import com.crap.game.model.InteractHuman;
+import com.crap.game.model.TextForInteraction;
+import com.crap.game.view.InteractHumanView;
 
 /**
  * Created by rebeccafinne on 16-05-23.
@@ -37,13 +38,13 @@ public class InteractHumanController extends InputAdapter {
         }
 
         if(keyCode == Input.Keys.ENTER){
-            if(interactHuman.getCurrentString().equals(interactHumanView.getTalkAboutProgramme())){
+            if(interactHuman.getCurrentString().equals(TextForInteraction.talkAboutProgramme)){
                 interactHuman.setIsProgramme(true);
             }
-            else if(interactHuman.getCurrentString().equals(interactHumanView.getWhereIsMascot())){
+            else if(interactHuman.getCurrentString().equals(TextForInteraction.whereIsMascot)){
                 interactHuman.setIsMascot(true);
             }
-            else if(interactHuman.getCurrentString().equals(interactHumanView.getExit())){
+            else if(interactHuman.getCurrentString().equals(TextForInteraction.exit)){
                 StateController.updateState(GameStates.PLAY);
             }
         }

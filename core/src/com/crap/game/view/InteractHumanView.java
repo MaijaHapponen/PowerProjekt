@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.crap.game.model.Character;
 import com.crap.game.model.Human;
 import com.crap.game.model.InteractHuman;
+import com.crap.game.model.TextForInteraction;
 
 /**
  * Created by rebeccafinne on 16-05-23.
@@ -24,12 +25,6 @@ public class InteractHumanView extends ScreenAdapter {
     private BitmapFont information;
     private FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Candy Shop.ttf"));
     private FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-
-    private String talkAboutProgramme = "Ask about programme";
-    private String whereIsMascot = "Ask where mascot could be";
-    //TODO:put into constants
-    private String back = "Press BACKSPACE to return to game";
-    private String exit = "Exit";
 
     private Character interactionCharacter;
 
@@ -45,20 +40,21 @@ public class InteractHumanView extends ScreenAdapter {
 
     public void create(){
 
-        parameter.size = 12;
+        parameter.size = TextForInteraction.instructionFontSize;
         title = generator.generateFont(parameter);
         title.setColor(Color.BLACK);
 
-        parameter.size = 12;
+        parameter.size = TextForInteraction.informationFontSize;
         font = generator.generateFont(parameter);
 
-        parameter.size = 13;
+        parameter.size = TextForInteraction.informationFontSize;
         information = generator.generateFont(parameter);
 
         generator.dispose();
 
-        options = new String[]{talkAboutProgramme, whereIsMascot, exit};
-        interactHuman = new InteractHuman(options, talkAboutProgramme);
+        options = new String[]{TextForInteraction.talkAboutProgramme, TextForInteraction.whereIsMascot,
+                TextForInteraction.exit};
+        interactHuman = new InteractHuman(options, TextForInteraction.talkAboutProgramme);
     }
 
     @Override
@@ -75,7 +71,7 @@ public class InteractHumanView extends ScreenAdapter {
 
         if(!interactHuman.getIsProgramme() && !interactHuman.getIsMascot()) {
 
-            title.draw(batch, informationGreeting, 30, 400);
+            title.draw(batch, informationGreeting, TextForInteraction.titlePlacementX, TextForInteraction.titlePlacementY);
 
             for (int i = 0; i < options.length; i++) {
                 if (interactHuman.getCurrentStringNbr() == i) {
@@ -84,36 +80,29 @@ public class InteractHumanView extends ScreenAdapter {
                 } else {
                     font.setColor(Color.BLACK);
                 }
-                font.draw(batch, options[i], 60, 250 - 70 * i);
+                font.draw(batch, options[i], TextForInteraction.alternativesPlacementX,
+                        TextForInteraction.alternativesPlacementY - TextForInteraction.spaceBetweenAlternatives * i);
             }
         }
 
 
         else if(interactHuman.getIsProgramme()) {
             font.setColor(Color.BLACK);
-            font.draw(batch, informationProgramme, 60, 300);
-            font.draw(batch, back, 60, 150);
+            font.draw(batch, informationProgramme, TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.onlyInformationY);
+            font.draw(batch, TextForInteraction.returnToGame, TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.returnPlacementY);
         }
 
         else if(interactHuman.getIsMascot()){
             font.setColor(Color.BLACK);
-            font.draw(batch, informationLocation, 60, 300);
-            font.draw(batch, back, 60, 150);
+            font.draw(batch, informationLocation, TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.onlyInformationY);
+            font.draw(batch, TextForInteraction.returnToGame, TextForInteraction.alternativesPlacementX,
+                    TextForInteraction.returnPlacementY);
         }
 
         batch.end();
-    }
-
-    public String getTalkAboutProgramme(){
-        return this.talkAboutProgramme;
-    }
-
-    public String getWhereIsMascot(){
-        return this.whereIsMascot;
-    }
-
-    public String getExit(){
-        return this.exit;
     }
 
     public InteractHuman getInteractHuman(){

@@ -3,6 +3,7 @@ package com.crap.game.view;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
@@ -22,14 +23,14 @@ import static com.crap.game.model.Constants.pixelPerTile;
 /**
  * Created by Maija on 2016-04-21.
  */
-public class GameView extends ApplicationAdapter implements Screen{
+public class GameView extends ScreenAdapter{
 
     private SpriteBatch batch;
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
     private float elapsedTime;
 
-    public static TiledMap world;
+    public TiledMap world;
     private PlayerView playerView;
 
     private Game game;
@@ -63,14 +64,11 @@ public class GameView extends ApplicationAdapter implements Screen{
         
         viewport = new FitViewport(worldWidth, worldHeight, new OrthographicCamera());
 
-        create();
+        createWelcome();
     }
 
-    @Override
-    public void show() {
-    }
 
-    public void create(){
+    public void createWelcome(){
         interactionView.createWelcome();
     }
 
@@ -157,24 +155,20 @@ public class GameView extends ApplicationAdapter implements Screen{
     }
 
     @Override
-    public void resize(int width, int height) {
-    }
-
-    @Override
-    public void pause() {
-    }
-
-    @Override
-    public void resume() {
-    }
-
-    @Override
-    public void hide() {
-    }
-
-    @Override
     public void dispose() {
+        batch.dispose();
         renderer.dispose();
+        playerView.dispose();
+
+        world.dispose();
+        progressView.dispose();
+        interactionView.dispose();
+        for (int i=0; i<humansList.size(); i++) {
+            humansList.get(i).dispose();
+        }
+        for (int i=0; i<mascotsList.size(); i++) {
+            mascotsList.get(i).dispose();
+        }
     }
 
     public Game getGame(){
@@ -210,12 +204,6 @@ public class GameView extends ApplicationAdapter implements Screen{
 
     public ArrayList<CharacterView> getMascotsList(){
         return this.mascotsList;
-    }
-
-    public void setMascotsOnBar(ArrayList<Mascot> mascotsOnBarl){
-        for(int i = 0; i < mascotsOnBarl.size(); i++){
-        //    this.mascotsOnBar.add(new ProgressView());
-        }
     }
 
     public void setWorld(TiledMap world) {

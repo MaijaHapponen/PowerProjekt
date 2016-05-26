@@ -81,11 +81,8 @@ public class CharacterController{
     public boolean checkIfCollision(float x, float y) {
         if (collisionController.isCollison(x, y) || collisionController.isNewWorld(x,y) ||
                 interactionController.isInteractionWithAnotherCharacter(this.character, x, y) ||
-                interactionController.isInteractionWithPlayer(x, y)) {
-            return true;
-        }
-
-        if (interactionController.isInteractionWithPlayer(x, y)){
+                //TODO: perhaps remove or explain
+                interactionController.isInteractionWithPlayer(x, y + (character.getHeight()/2))) {
             return true;
         }
         return false;

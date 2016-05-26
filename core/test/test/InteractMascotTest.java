@@ -1,8 +1,11 @@
 package test;
 
 import com.crap.game.model.InteractMascot;
+import com.crap.game.model.Mascot;
+import com.crap.game.model.Question;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,7 +31,34 @@ public class InteractMascotTest {
         assertTrue(interactMascot.getCurrentString().equals(second));
         interactMascot.setCurrentString("nextStepDown");
         assertTrue(interactMascot.getCurrentString().equals(first));
+        interactMascot.setCurrentString("nextStepUp");
+        assertTrue(interactMascot.getCurrentString().equals(second));
+        interactMascot.setCurrentString("nextStepUp");
+        assertTrue(interactMascot.getCurrentString().equals(first));
+    }
 
+    @Test
+    public void testIsRightAnswer(){
+        Mascot mascot = new Mascot("hej");
+        List<String> answers = Arrays.asList("eh", "hej");
+        InteractMascot interactMascot = new InteractMascot(answers);
+        String question = "tjotjo";
+        Question forMascot = new Question(question, answers, 1);
+        mascot.setQuestion(forMascot);
+        assertTrue(interactMascot.isRightAnswer(mascot, 1));
+        assertFalse(interactMascot.isRightAnswer(mascot, 0));
+    }
 
+    @Test
+    public void testGetAnswers(){
+        Mascot mascot = new Mascot("hej");
+        List<String> answers = new ArrayList<String>() ;
+        answers.add("hej");
+        answers.add("tjo");
+        InteractMascot interactMascot = new InteractMascot(answers);
+        String question = "tjotjo";
+        Question forMascot = new Question(question, answers, 1);
+        mascot.setQuestion(forMascot);
+        assertTrue(interactMascot.getAnswers(mascot).equals(answers));
     }
 }

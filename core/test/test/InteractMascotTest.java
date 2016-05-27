@@ -64,7 +64,6 @@ public class InteractMascotTest {
 
     @Test
     public void testSettersAndGetters() {
-        Mascot mascot = new Mascot("hej");
         List<String> answers = new ArrayList<String>() ;
         answers.add("hej");
         answers.add("tjo");

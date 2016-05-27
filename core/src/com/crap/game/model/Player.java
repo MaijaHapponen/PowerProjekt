@@ -31,8 +31,6 @@ public class Player extends Character{
         return (x < boarderRight);
     }
 
-    public Position getPosition(){return this.position;  }
-
     public void setPosition(float x, float y){
         this.position.setPosition(x,y);
     }

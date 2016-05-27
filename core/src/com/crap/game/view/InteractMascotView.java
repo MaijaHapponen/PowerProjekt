@@ -4,9 +4,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.*;
 
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crap.game.model.*;
 import com.crap.game.model.Character;
 import com.crap.game.model.InteractMascot;
@@ -26,14 +32,12 @@ public class InteractMascotView extends ScreenAdapter {
     private String question;
     private List<String> alternatives;
 
-    BitmapFont titleFont;
-    BitmapFont font;
-
-    FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
-    FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+    private BitmapFont titleFont;
+    private BitmapFont font;
 
     public InteractMascotView(Character interactionCharacter){
         this.interactionCharacter = interactionCharacter;
+
         this.batch = new SpriteBatch();
 
         this.question = ((Mascot)interactionCharacter).getQuestion().getQuestion();

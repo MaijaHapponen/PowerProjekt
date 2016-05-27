@@ -230,7 +230,7 @@ public class GameView extends ScreenAdapter{
             interactionView.setWelcomeLabel("hubben");
         }if(world.equals("zaloonen")){
             interactionView.setWelcomeLabel("zaloonen");
-        }if(world.equals("hörsal")){
+        }if(world.equals("hörsalsvägen")){
             interactionView.setWelcomeLabel("hörsalsvägen");
         }
     }

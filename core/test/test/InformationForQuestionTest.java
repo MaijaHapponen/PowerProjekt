@@ -1,7 +1,6 @@
 package test;
 import com.crap.game.model.Mascot;
 import com.crap.game.model.Question;
-import com.crap.game.model.Questions;
 import org.junit.Test;
 
 
@@ -13,7 +12,7 @@ import static org.junit.Assert.*;
 /**
  * Created by rebeccafinne on 16-05-24.
  */
-public class QuestionsTest {
+public class InformationForQuestionTest {
 
     @Test
     public void testSetQuestions(){

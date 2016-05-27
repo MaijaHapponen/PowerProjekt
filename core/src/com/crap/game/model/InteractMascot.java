@@ -15,10 +15,6 @@ public class InteractMascot {
 
     private boolean caughtMascot;
 
-    private String back = "Press BACK SPACE to return to game";
-    private String right = "You are right!";
-    private String wrong = "You were wrong :(";
-
     public InteractMascot(List<String> stringsInScreen){
         this.stringsInScreen = stringsInScreen;
         this.currentStringNbr = 0;
@@ -101,17 +97,5 @@ public class InteractMascot {
 
     public boolean getHasAnswered(){
         return this.hasAnswered;
-    }
-
-    public String getBack(){
-        return this.back;
-    }
-
-    public String getRight(){
-        return this.right;
-    }
-
-    public String getWrong(){
-        return this.wrong;
     }
 }

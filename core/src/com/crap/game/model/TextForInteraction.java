@@ -33,6 +33,10 @@ public final class TextForInteraction {
     public static final String howToPlay4 = "\n\n-Move with the arrowkeys.";
     public static final String howToPlayTitle = "This is how you play:";
 
+    //In InteractMascot
+    public static String rightAnswer = "You are right!";
+    public static String wrongAnswer = "You were wrong :(";
+
     //In InteractHumanView
     public static final String talkAboutProgramme = "Ask about programme";
     public static final String whereIsMascot = "Ask where mascot could be";

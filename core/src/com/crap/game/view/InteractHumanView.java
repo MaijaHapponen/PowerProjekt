@@ -22,7 +22,6 @@ public class InteractHumanView extends ScreenAdapter {
 
     private BitmapFont title;
     private BitmapFont font;
-    private BitmapFont information;
     private FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Candy Shop.ttf"));
     private FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
@@ -46,9 +45,6 @@ public class InteractHumanView extends ScreenAdapter {
 
         parameter.size = TextForInteraction.informationFontSize;
         font = generator.generateFont(parameter);
-
-        parameter.size = TextForInteraction.informationFontSize;
-        information = generator.generateFont(parameter);
 
         generator.dispose();
 

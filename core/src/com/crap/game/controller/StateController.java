@@ -2,6 +2,7 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.crap.game.model.Constants;
 import com.crap.game.model.GameStates;
 import com.crap.game.view.*;
 
@@ -22,6 +23,8 @@ public class StateController {
 
     public StateController(Game g) {
         this.game = g;
+        Constants.SCREEN_WIDTH= Gdx.graphics.getWidth();
+        Constants.SCREEN_HEIGHT = Gdx.graphics.getHeight();
         updateState(GameStates.STARTMENU);
     }
 

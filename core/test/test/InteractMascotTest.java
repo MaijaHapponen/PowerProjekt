@@ -61,4 +61,18 @@ public class InteractMascotTest {
         mascot.setQuestion(forMascot);
         assertTrue(interactMascot.getAnswers(mascot).equals(answers));
     }
+
+    @Test
+    public void testSettersAndGetters() {
+        Mascot mascot = new Mascot("hej");
+        List<String> answers = new ArrayList<String>() ;
+        answers.add("hej");
+        answers.add("tjo");
+        InteractMascot interactMascot = new InteractMascot(answers);
+        assertTrue(interactMascot.getCurrentStringNbr() == 0);
+        interactMascot.updateMascotCaught();
+        assertTrue(!interactMascot.isMascotCaught());
+        interactMascot.setHasAnswered();
+        assertTrue(interactMascot.getHasAnswered());
+    }
 }

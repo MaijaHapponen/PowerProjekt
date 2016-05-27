@@ -23,8 +23,8 @@ public class CharacterController{
     }
 
     public void interactsWith(Character character, CharacterView characterView){
-        collisionController.setPlayerWidthAndHeight(characterView.getCharacterSpriteWidth(),
-                characterView.getCharacterSpriteHeight());
+        collisionController.setCharacterWidthAndHeight(character.getWidth(),
+                character.getHeight());
         this.character = character;
         this.characterView = characterView;
     }
@@ -32,8 +32,8 @@ public class CharacterController{
     public void updateCollisionController(){
         this.collisionController = new CollisionController(gameView.getWorld());
         if(characterView != null) {
-            collisionController.setPlayerWidthAndHeight(characterView.getCharacterSpriteWidth(),
-                    characterView.getCharacterSpriteHeight());
+            collisionController.setCharacterWidthAndHeight(character.getWidth(),
+                    character.getHeight());
         }
     }
 

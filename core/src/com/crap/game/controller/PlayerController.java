@@ -26,6 +26,7 @@ public class PlayerController {
         this.player = playerView.getPlayer();
         this.gameView = gameView;
         this.collisionController = new CollisionController(gameView.getWorld());
+        collisionController.setCharacterWidthAndHeight(player.getWidth(),player.getHeight());
         this.interactionController = new InteractionController(gameView);
         this.newWorldObject = collisionController.getNewWorldObject();
     }
@@ -36,7 +37,7 @@ public class PlayerController {
 
     public void updateCollisionController(){
         this.collisionController = new CollisionController(gameView.getWorld());
-        collisionController.setPlayerWidthAndHeight(playerView.getPlayerSpriteWidth(),playerView.getPlayerSpriteHeight());
+        collisionController.setCharacterWidthAndHeight(player.getWidth(),player.getHeight());
     }
 
     public void movePlayer(int keycode) {

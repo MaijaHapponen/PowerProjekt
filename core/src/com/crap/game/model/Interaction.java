@@ -5,15 +5,15 @@ package com.crap.game.model;
  */
 public class Interaction {
     private CollisionModel collisionModel;
-    private float otherCharacterWidth;
-    private float otherCharacterHeight;
+    private float characterWidth;
+    private float halfCharacterHeight;
 
     private boolean isInteracting = false;
 
-    public Interaction(float otherCharacterWidth, float otherCharacterHeight) {
+    public Interaction(float characterWidth, float halfCharacterHeight) {
         this.collisionModel = new CollisionModel();
-        this.otherCharacterWidth = otherCharacterWidth;
-        this.otherCharacterHeight = otherCharacterHeight;
+        this.characterWidth = characterWidth;
+        this.halfCharacterHeight = halfCharacterHeight /2;
     }
 
     public boolean isInteraction(Character otherCharacter, float characterX, float characterY) {
@@ -23,20 +23,20 @@ public class Interaction {
     private boolean checkEveryPositionForInteraction(Character otherCharacter, float characterX, float characterY) {
 
         return checkIfInteraction(otherCharacter, characterX, characterY) ||
-                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth, characterY) ||
-                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth, characterY + otherCharacterHeight) ||
-                checkIfInteraction(otherCharacter, characterX, characterY + otherCharacterHeight) ||
-                //nextStepLeft side of character
-                checkIfInteraction(otherCharacter, characterX, characterY + 3*(otherCharacterHeight / 4)) ||
-                checkIfInteraction(otherCharacter, characterX, characterY + otherCharacterHeight / 2) ||
-                checkIfInteraction(otherCharacter, characterX, characterY + otherCharacterHeight / 4) ||
-                //nextStepRight side of character
-                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth, characterY + 3*(otherCharacterHeight / 4)) ||
-                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth, characterY + otherCharacterHeight / 2) ||
-                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth, characterY + otherCharacterHeight / 4) ||
+                checkIfInteraction(otherCharacter, characterX + characterWidth, characterY) ||
+                checkIfInteraction(otherCharacter, characterX + characterWidth, characterY + halfCharacterHeight) ||
+                checkIfInteraction(otherCharacter, characterX, characterY + halfCharacterHeight) ||
+                //left side of character
+                checkIfInteraction(otherCharacter, characterX, characterY + 3*(halfCharacterHeight / 4)) ||
+                checkIfInteraction(otherCharacter, characterX, characterY + halfCharacterHeight / 2) ||
+                checkIfInteraction(otherCharacter, characterX, characterY + halfCharacterHeight / 4) ||
+                //right side of character
+                checkIfInteraction(otherCharacter, characterX + characterWidth, characterY + 3*(halfCharacterHeight / 4)) ||
+                checkIfInteraction(otherCharacter, characterX + characterWidth, characterY + halfCharacterHeight / 2) ||
+                checkIfInteraction(otherCharacter, characterX + characterWidth, characterY + halfCharacterHeight / 4) ||
                 //middle in top and bottom of character
-                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth / 2, characterY) ||
-                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth / 2, characterY + otherCharacterHeight);
+                checkIfInteraction(otherCharacter, characterX + characterWidth / 2, characterY) ||
+                checkIfInteraction(otherCharacter, characterX + characterWidth / 2, characterY + halfCharacterHeight);
     }
 
 

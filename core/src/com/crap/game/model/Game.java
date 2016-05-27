@@ -91,11 +91,6 @@ public class Game {
         return progress;
     }
 
-    public void setStartPositionPlayer(float x, float y) {
-        this.startPositionX = x;
-        this.startPositionY = y;
-    }
-
     public void setCurrectWorld(Worlds currectWorld){
         this.currectWorld = currectWorld;
     }

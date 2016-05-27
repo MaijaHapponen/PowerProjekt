@@ -28,7 +28,7 @@ public class PlayerTest {
 
    @Test
     public void testNextStepDown(){
-        Player player = new Player("Hej", 20, 20);
+        Player player = new Player("Hej", 20, 80);
         float playerPosX = player.getPosition().getX();
         float playerPosY = player.getPosition().getY();
         player.moveDown();

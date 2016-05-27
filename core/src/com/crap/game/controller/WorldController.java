@@ -82,12 +82,12 @@ public class WorldController {
             model.player.setPosition(model.getEntrancePosition().getX(), model.getEntrancePosition().getY());
         }
 
-        if(x > view.getWorldWidth() - tempCollisionlayerwidth) {
-            model.player.setPosition(tempCollisionlayerwidth, y);
+        if(x > view.getWorldWidth() - TEMP_COLLISION_LAYER_WIDTH) {
+            model.player.setPosition(TEMP_COLLISION_LAYER_WIDTH, y);
         }
 
-        else if(x < tempCollisionlayerwidth){
-            model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, y);
+        else if(x < TEMP_COLLISION_LAYER_WIDTH){
+            model.player.setPosition(view.getWorldWidth()+ TEMP_COLLISION_LAYER_WIDTH, y);
         }
     }
 
@@ -97,12 +97,12 @@ public class WorldController {
             model.player.setPosition(model.getEntrancePosition().getX(), model.getEntrancePosition().getY());
         }
 
-        else if(x < tempCollisionlayerwidth) {
-            model.player.setPosition(view.getWorldWidth()-tempCollisionlayerwidth, y);
+        else if(x < TEMP_COLLISION_LAYER_WIDTH) {
+            model.player.setPosition(view.getWorldWidth()- TEMP_COLLISION_LAYER_WIDTH, y);
         }
 
-        else if (x > view.getWorldWidth() - tempCollisionlayerwidth){
-            model.player.setPosition(view.getWorldWidth()+tempCollisionlayerwidth, y);
+        else if (x > view.getWorldWidth() - TEMP_COLLISION_LAYER_WIDTH){
+            model.player.setPosition(view.getWorldWidth()+ TEMP_COLLISION_LAYER_WIDTH, y);
         }
 
     }

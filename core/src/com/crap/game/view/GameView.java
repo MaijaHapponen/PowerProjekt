@@ -1,8 +1,6 @@
 package com.crap.game.view;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -18,7 +16,7 @@ import com.crap.game.model.*;
 
 import java.util.ArrayList;
 
-import static com.crap.game.model.Constants.pixelPerTile;
+import static com.crap.game.model.Constants.PIXEL_PER_TILE;
 
 /**
  * Created by Maija on 2016-04-21.
@@ -216,11 +214,11 @@ public class GameView extends ScreenAdapter{
     }
 
     public float getWorldWidth(){
-        return this.world.getProperties().get("width", Integer.class)*pixelPerTile;
+        return this.world.getProperties().get("width", Integer.class)* PIXEL_PER_TILE;
     }
 
     public float getWorldHeight(){
-        return this.world.getProperties().get("height", Integer.class)*pixelPerTile;
+        return this.world.getProperties().get("height", Integer.class)* PIXEL_PER_TILE;
     }
 
     public TiledMap getWorld() {

@@ -14,7 +14,7 @@ public class CharacterController{
     private CharacterView characterView;
     private CollisionController collisionController;
     private InteractionController interactionController;
-    private int walkAwayState = Constants.walkAwayLength;
+    private int walkAwayState = Constants.WALK_AWAY_LENGTH;
 
     public CharacterController(GameView view){
         this.gameView = view;
@@ -121,7 +121,7 @@ public class CharacterController{
     }
 
     public void walkAway(Character character, CharacterView characterView){
-        if(walkAwayState<Constants.walkAwayLength){
+        if(walkAwayState<Constants.WALK_AWAY_LENGTH){
             interactionController.getInteractionModel().setIsInteracting(true);
             interactsWith(character, characterView);
             walkAwayOneStep();
@@ -163,10 +163,10 @@ public class CharacterController{
     }
 
     public void walkAwayOneStep(){
-        character.changeDirection(Constants.walkAwayLength, this.walkAwayState);
+        character.changeDirection(Constants.WALK_AWAY_LENGTH, this.walkAwayState);
         this.move(character.getWalkAwayDirection());
 
-        if(walkAwayState == Constants.walkAwayLength-1 && !(character.getWalkAwayDirection()== Direction.NO_DIRECTION)){
+        if(walkAwayState == Constants.WALK_AWAY_LENGTH -1 && !(character.getWalkAwayDirection()== Direction.NO_DIRECTION)){
             stopWalkingAnimation();
         }
         updateSprite();

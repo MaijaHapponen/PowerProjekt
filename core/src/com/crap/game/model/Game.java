@@ -105,11 +105,11 @@ public class Game {
     }
 
     public void enterHubben(){
-        player.setPosition(hubbenEntryX,hubbenEntryY);
+        player.setPosition(HUBBEN_ENTRY_X, HUBBEN_ENTRY_Y);
     }
 
     public void enterZaloonen(){
-        player.setPosition(zaloonEntryX,zaloonEntryY);
+        player.setPosition(ZALOON_ENTRY_X, ZALOON_ENTRY_Y);
     }
 
     public void setEntrance(float x, float y){

@@ -31,7 +31,7 @@ public class PlayerTest {
         float playerPosY = player.getPosition().getY();
         player.moveDown();
         player.nextStepDown();
-        assertTrue(player.getPosition().getY() == playerPosX - Constants.normalSpeed);
+        assertTrue(player.getPosition().getY() == playerPosX - Constants.NORMAL_SPEED);
         assertTrue(player.getPosition().getX() == playerPosY);
     }
 
@@ -42,7 +42,7 @@ public class PlayerTest {
         float playerPosY = player.getPosition().getY();
         player.moveLeft();
         player.nextStepLeft();
-        assertTrue(player.getPosition().getX() == playerPosX-Constants.normalSpeed);
+        assertTrue(player.getPosition().getX() == playerPosX-Constants.NORMAL_SPEED);
         assertTrue(player.getPosition().getY() == playerPosY);
     }
 
@@ -54,7 +54,7 @@ public class PlayerTest {
         player.moveRight(500);
         player.nextStepRight();
         assertTrue(player.getPosition().getY() == playerPosX);
-        assertTrue(player.getPosition().getX() == playerPosY+Constants.normalSpeed);
+        assertTrue(player.getPosition().getX() == playerPosY+Constants.NORMAL_SPEED);
     }
 
     @Test

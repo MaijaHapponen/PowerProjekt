@@ -39,11 +39,11 @@ public class GameTest {
     public void testEnterRooms() {
         Game game = new Game();
         game.enterZaloonen();
-        assertTrue(game.player.getPosition().getX() == Constants.zaloonEntryX);
-        assertTrue(game.player.getPosition().getY() == Constants.zaloonEntryY);
+        assertTrue(game.player.getPosition().getX() == Constants.ZALOON_ENTRY_X);
+        assertTrue(game.player.getPosition().getY() == Constants.ZALOON_ENTRY_Y);
         game.enterHubben();
-        assertTrue(game.player.getPosition().getX() == Constants.hubbenEntryX);
-        assertTrue(game.player.getPosition().getY() == Constants.hubbenEntryY);
+        assertTrue(game.player.getPosition().getX() == Constants.HUBBEN_ENTRY_X);
+        assertTrue(game.player.getPosition().getY() == Constants.HUBBEN_ENTRY_Y);
     }
 
     @Test

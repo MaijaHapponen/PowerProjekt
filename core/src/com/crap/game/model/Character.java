@@ -25,13 +25,13 @@ public abstract class Character{
     }
 
     public Character(String name){
-        this.speed = normalSpeed;
+        this.speed = NORMAL_SPEED;
         this.name = name;
         this.position = new Position(0,0);
     }
 
     public Character(String name, Position position, Game.Worlds world){
-        this.speed = normalSpeed;
+        this.speed = NORMAL_SPEED;
         this.name = name;
         this.position = position;
         this.world = world;
@@ -165,11 +165,11 @@ public abstract class Character{
     }
 
     public void setNormalSpeed(){
-        this.speed = normalSpeed;
+        this.speed = NORMAL_SPEED;
     }
 
     public void setSlowerSpeed(){
-        this.speed = slowerSpeed;
+        this.speed = SLOWER_SPEED;
     }
 
     public float getSpeed(){

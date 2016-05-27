@@ -8,7 +8,7 @@ import com.crap.game.model.Position;
 import com.crap.game.view.GameView;
 import com.crap.game.view.PlayerView;
 
-import static com.crap.game.model.Constants.pixelPerTile;
+import static com.crap.game.model.Constants.PIXEL_PER_TILE;
 
 /**
  * Created by rebeccafinne on 2016-04-30.
@@ -69,7 +69,7 @@ public class PlayerController {
 
         updateSprite();
         playerView.moveCamera(player.getPosition().getX(), player.getPosition().getY(),
-                gameView.getWorldHeight()+ pixelPerTile, gameView.getWorldWidth()+pixelPerTile);
+                gameView.getWorldHeight()+ PIXEL_PER_TILE, gameView.getWorldWidth()+ PIXEL_PER_TILE);
 
     }
 

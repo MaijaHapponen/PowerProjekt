@@ -25,13 +25,13 @@ public class MascotTest {
     public void testGettersAndSetters(){
         Mascot mascot = new Mascot("HEJ");
         mascot.setNormalSpeed();
-        assertTrue(mascot.getSpeed() == Constants.normalSpeed);
+        assertTrue(mascot.getSpeed() == Constants.NORMAL_SPEED);
         mascot.setCaught(true);
         assertTrue(mascot.isCaught());
         mascot.setWidthAndHeight(30, 40);
         assertTrue(mascot.getWidth() == 30);
         assertTrue(mascot.getHeight() == 40);
         mascot.setSlowerSpeed();
-        assertTrue(mascot.getSpeed() == Constants.slowerSpeed);
+        assertTrue(mascot.getSpeed() == Constants.SLOWER_SPEED);
     }
 }

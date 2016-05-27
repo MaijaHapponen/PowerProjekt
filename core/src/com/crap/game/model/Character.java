@@ -48,7 +48,7 @@ public abstract class Character{
         switch (i){
             case 0:
                 if(lastDirection != Direction.DOWN) {
-                    walkAwayDirection = Direction.UP;
+                    setWalkAwayDirection(Direction.UP);
                 }
                 else{
                     decideNewDirection();
@@ -56,7 +56,7 @@ public abstract class Character{
                 break;
             case 1:
                 if(lastDirection != Direction.UP) {
-                    walkAwayDirection = Direction.DOWN;
+                    setWalkAwayDirection(Direction.DOWN);
                 }
                 else{
                     decideNewDirection();
@@ -64,7 +64,7 @@ public abstract class Character{
                 break;
             case 2:
                 if(lastDirection != Direction.RIGHT) {
-                    walkAwayDirection = Direction.LEFT;
+                    setWalkAwayDirection(Direction.LEFT);
                 }
                 else{
                     decideNewDirection();
@@ -72,7 +72,7 @@ public abstract class Character{
                 break;
             case 3:
                 if(lastDirection != Direction.LEFT) {
-                    walkAwayDirection = Direction.RIGHT;
+                    setWalkAwayDirection(Direction.RIGHT);
                 }
                 else{
                     decideNewDirection();

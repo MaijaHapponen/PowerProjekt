@@ -33,8 +33,8 @@ public class PlayerTest {
         float playerPosY = player.getPosition().getY();
         player.moveDown();
         player.nextStepDown();
-        assertTrue(player.getPosition().getY() == playerPosX - Constants.NORMAL_SPEED);
-        assertTrue(player.getPosition().getX() == playerPosY);
+        assertTrue(player.getPosition().getY() == playerPosY - Constants.NORMAL_SPEED);
+        assertTrue(player.getPosition().getX() == playerPosX);
     }
 
     @Test
@@ -93,19 +93,15 @@ public class PlayerTest {
         assertFalse(player.canMoveCameraRight(500, 500));
     }
 
-    /*
-    //Can't be tested because of random?
     @Test
     public void testChangeDirection() {
         Player player = new Player("HEJ", 200, 200);
         player.setWalkAwayDirection(Direction.LEFT);
         int walkAwayState = 20;
         player.changeDirection(walkAwayState);
-        System.out.println(player.getLastDirection());
-        System.out.println(player.getWalkAwayDirection());
-        assertTrue(player.getWalkAwayDirection().equals(Direction.NO_DIRECTION));
+        assertFalse(player.getWalkAwayDirection().equals(Direction.NO_DIRECTION));
     }
-    */
+
 
     @Test
     public void testGetWorld(){

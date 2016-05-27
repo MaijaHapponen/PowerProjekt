@@ -3,7 +3,12 @@ package test;
 import com.crap.game.model.Constants;
 import com.crap.game.model.Direction;
 import com.crap.game.model.Mascot;
+import com.crap.game.model.Question;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -11,14 +16,12 @@ import static org.junit.Assert.*;
  */
 public class MascotTest {
 
-
     @Test
     public void testUpdateDirections(){
         Mascot mascot = new Mascot("hej");
         mascot.setWalkAwayDirection(Direction.DOWN);
         mascot.updateDirections();
         assertTrue(mascot.getWalkAwayDirection() == Direction.NO_DIRECTION);
-
     }
 
     @Test

@@ -53,7 +53,7 @@ public class InteractHumanView extends ScreenAdapter {
         generator.dispose();
 
         options = new String[]{TextForInteraction.talkAboutProgramme, TextForInteraction.whereIsMascot,
-                TextForInteraction.exit};
+                TextForInteraction.cancel};
         interactHuman = new InteractHuman(options, TextForInteraction.talkAboutProgramme);
     }
 

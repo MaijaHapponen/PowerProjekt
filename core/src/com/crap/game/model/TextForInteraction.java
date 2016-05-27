@@ -47,6 +47,7 @@ public final class TextForInteraction {
     //General
     public static String returnMenu = "Press backspace to return to menu";
     public static String exit = "Exit";
+    public static String cancel = "Cancel";
 
     //MenuView
     public static String playTheGame = "Play the game";

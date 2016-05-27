@@ -110,7 +110,7 @@
   <object id="16" x="13" y="8" width="5" height="3"/>
  </objectgroup>
  <objectgroup name="NewWorld">
-  <object id="15" name="horsalmaskin" x="2" y="676" width="93" height="62"/>
+  <object id="15" name="horsalmaskin" x="0" y="673" width="109" height="62"/>
  </objectgroup>
  <objectgroup name="CharacterPositions">
   <object id="17" x="723.974" y="188.199" width="11.8684" height="11.8684">

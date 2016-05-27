@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.crap.game.model.Constants;
 import com.crap.game.model.Game;
 import com.crap.game.model.GameStates;
 import com.crap.game.model.Mascot;
@@ -34,7 +35,6 @@ public class GameController extends InputAdapter {
 
         this.view = view;
         this.model = game;
-        game.setStartPositionPlayer(width/2, height/2);
 
         this.view.setPlayer(this.model.player);
         this.view.getPlayerView().setCamera(this.camera);
@@ -47,7 +47,8 @@ public class GameController extends InputAdapter {
         this.worldController = new WorldController(this.model, this.playerController, this.characterController, this.view);
 
         worldController.setWorld(HORSAL);
-        model.player.setPosition(width/2, height/2);
+        model.player.setPosition(Constants.START_X_COORDINATE_PLAYER, Constants.START_Y_COORDINATE_PLAYER);
+        playerController.updateCamera();
 
         Gdx.input.setInputProcessor(this);
     }

@@ -41,6 +41,12 @@ public class PlayerController extends CharacterController{
             super.moveRight();
         }
         updateSprite();
+        updateCamera();
+//        playerView.moveCamera(getCharacter().getPosition().getX(), getCharacter().getPosition().getY(),
+//                getGameView().getWorldHeight()+ PIXEL_PER_TILE, getGameView().getWorldWidth()+PIXEL_PER_TILE);
+    }
+
+    public void updateCamera(){
         playerView.moveCamera(getCharacter().getPosition().getX(), getCharacter().getPosition().getY(),
                 getGameView().getWorldHeight()+ PIXEL_PER_TILE, getGameView().getWorldWidth()+PIXEL_PER_TILE);
     }

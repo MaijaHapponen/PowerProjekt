@@ -190,8 +190,4 @@ public class CharacterController{
     public CollisionController getCollisionController(){
         return this.collisionController;
     }
-
-    public void setCollisionController(CollisionController collisionController){
-        this.collisionController = collisionController;
-    }
 }

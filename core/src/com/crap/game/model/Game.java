@@ -117,10 +117,6 @@ public class Game {
         this.isEntrance = true;
     }
 
-    public void setEntrancePosition(float x, float y){
-        this.entrancePosition.setPosition(x,y);
-    }
-
     public Position getEntrancePosition(){
         return this.entrancePosition;
     }

@@ -104,6 +104,7 @@ public class GameController extends InputAdapter {
 
     public void updateIfInteraction(){
         if(playerController.isInteractionWithMascot() || playerController.isInteractionWithHuman()){
+            playerController.stopWalkingAnimation(keyCode);
             view.setInteraction(true);
         }else{
             view.setInteraction(false);

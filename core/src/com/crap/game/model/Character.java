@@ -42,7 +42,7 @@ public abstract class Character{
         this.world = world;
     }
 
-    private void decideNewDirection(){
+    public void decideNewDirection(){
         Random rand = new Random();
         int i = rand.nextInt(4);
         switch (i){
@@ -121,15 +121,18 @@ public abstract class Character{
     }
 
     public void updateDirections(){
-        lastDirection = walkAwayDirection;
-        walkAwayDirection = Direction.NO_DIRECTION;
+        this.lastDirection = walkAwayDirection;
+        this.walkAwayDirection = Direction.NO_DIRECTION;
     }
 
-    public void changeDirection(int walkAwayLength, int walkAwayState){
-        if(walkAwayState == walkAwayLength/3 || walkAwayState ==
-                (walkAwayLength/3)*2){
-            this.lastDirection = this.walkAwayDirection;
-            this.walkAwayDirection = Direction.NO_DIRECTION;
+    public Direction getLastDirection(){
+        return this.lastDirection;
+    }
+
+    public void changeDirection(int walkAwayState){
+        if(walkAwayState == Constants.WALK_AWAY_LENGTH/3 || walkAwayState ==
+                (Constants.WALK_AWAY_LENGTH/3)*2){
+            updateDirections();
         }
         if (this.walkAwayDirection == null || this.walkAwayDirection == Direction.NO_DIRECTION){
             decideNewDirection();
@@ -167,6 +170,10 @@ public abstract class Character{
 
     public Game.Worlds getWorld(){
         return this.world;
+    }
+
+    public void setWorld(Game.Worlds world) {
+        this.world = world;
     }
 
     public void setNormalSpeed(){

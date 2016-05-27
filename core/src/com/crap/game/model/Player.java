@@ -6,13 +6,10 @@ package com.crap.game.model;
 
 public class Player extends Character{
 
-//    private Position nextPlayerPos;
-
     public Player(String name, float x, float y){
         super(name);
         this.position = new Position(x, y);
         super.setNextPlayerPos(new Position());
-//        this.nextPlayerPos = new Position();
     }
 
     public boolean canMoveCameraUp(float y, float boarderTop) {
@@ -30,8 +27,6 @@ public class Player extends Character{
     public boolean canMoveCameraRight(float x, float boarderRight){
         return (x < boarderRight);
     }
-
-    public Position getPosition(){return this.position;  }
 
     public void setPosition(float x, float y){
         this.position.setPosition(x,y);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="58">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="60">
  <tileset firstgid="1" name="open_tileset" tilewidth="32" tileheight="32" tilecount="1710" columns="45">
   <image source="open_tileset.png" trans="878787" width="1440" height="1216"/>
  </tileset>
@@ -173,6 +173,11 @@
   <object id="62" x="122.866" y="702.495" width="9.3791" height="8.44119">
    <properties>
     <property name="ZHumanStartPosition" value=""/>
+   </properties>
+  </object>
+  <object id="58" x="745.639" y="299.193" width="8.44119" height="7.50328">
+   <properties>
+    <property name="PlayerStartPosition" value=""/>
    </properties>
   </object>
  </objectgroup>

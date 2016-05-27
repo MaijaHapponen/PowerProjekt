@@ -160,7 +160,7 @@ public class CharacterController{
     }
 
     public void walkAwayOneStep(){
-        character.changeDirection(Constants.WALK_AWAY_LENGTH, this.walkAwayState);
+        character.changeDirection(this.walkAwayState);
         this.move(character.getWalkAwayDirection());
 
         if(walkAwayState == Constants.WALK_AWAY_LENGTH -1 && !(character.getWalkAwayDirection() ==

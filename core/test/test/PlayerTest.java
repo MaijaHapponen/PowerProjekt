@@ -1,9 +1,11 @@
 package test;
 
+import static com.crap.game.model.Constants.NORMAL_SPEED;
 import static org.junit.Assert.*;
 
 import com.crap.game.model.*;
 
+import com.crap.game.model.Character;
 import org.junit.Test;
 
 /**
@@ -91,5 +93,34 @@ public class PlayerTest {
         assertFalse(player.canMoveCameraRight(500, 500));
     }
 
+    /*
+    //Can't be tested because of random?
+    @Test
+    public void testChangeDirection() {
+        Player player = new Player("HEJ", 200, 200);
+        player.setWalkAwayDirection(Direction.LEFT);
+        int walkAwayState = 20;
+        player.changeDirection(walkAwayState);
+        System.out.println(player.getLastDirection());
+        System.out.println(player.getWalkAwayDirection());
+        assertTrue(player.getWalkAwayDirection().equals(Direction.NO_DIRECTION));
+    }
+    */
 
+    @Test
+    public void testGetWorld(){
+        Game.Worlds world = Game.Worlds.EDIT;
+        Player player = new Player("HEJ", 50, 50);
+        player.setWorld(world);
+        assertTrue(player.getWorld().equals(Game.Worlds.EDIT));
+    }
+
+    @Test
+    public void testDecideNewDirection() {
+        Player player = new Player("HEJ", 50, 50);
+        player.setWalkAwayDirection(Direction.DOWN);
+        player.updateDirections();
+        player.decideNewDirection();
+        assertFalse(player.getWalkAwayDirection().equals(Direction.UP));
+    }
 }

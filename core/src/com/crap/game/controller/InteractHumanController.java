@@ -44,7 +44,8 @@ public class InteractHumanController extends InputAdapter {
             else if(interactHuman.getCurrentString().equals(TextForInteraction.whereIsMascot)){
                 interactHuman.setIsMascot(true);
             }
-            else if(interactHuman.getCurrentString().equals(TextForInteraction.exit)){
+            else if(interactHuman.getCurrentString().equals(TextForInteraction.exit) ||
+                    interactHuman.getCurrentString().equals(TextForInteraction.cancel)){ //TODO try this ??
                 StateController.updateState(GameStates.PLAY);
             }
         }

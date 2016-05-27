@@ -12,17 +12,16 @@ import org.junit.Test;
  */
 public class GameTest {
 
-
     @Test
     public void testIsGameOver(){
         Game game = new Game();
-        game.getProgress().mascotCaught(game.getMascots().get(3));
-        game.getProgress().mascotCaught(game.getMascots().get(2));
-        game.getProgress().mascotCaught(game.getMascots().get(1));
-        assertTrue(!game.isGameOver());
-        //game.getProgress().mascotCaught(game.getMascots().get(0));
-        //assertTrue(game.isGameOver());
 
+        game.mascotCaught(game.getMascots().get(3));
+        game.mascotCaught(game.getMascots().get(2));
+        game.mascotCaught(game.getMascots().get(1));
+        assertTrue(!game.isGameOver());
+        //game.mascotCaught(game.getMascots().get(0));
+        //assertTrue(game.isGameOver());
     }
 
     @Test

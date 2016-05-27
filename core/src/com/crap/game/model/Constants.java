@@ -7,6 +7,11 @@ public final class Constants {
 
     public static final int WALK_AWAY_LENGTH = 60;
 
+    public static int SCREEN_WIDTH;
+    public static int SCREEN_HEIGHT;
+
+    public static final int PROGRESS_BAR_HEIGHT = 70;
+
     public static final int NBR_OF_TEXTURE_IMAGES_HORIZONTALLY = 4;
     public static final int NBR_OF_TEXTURE_IMAGES_VERTICALLY = 4;
 

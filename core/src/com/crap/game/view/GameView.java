@@ -40,8 +40,8 @@ public class GameView extends ScreenAdapter{
     private boolean isStart;
     private Viewport viewport;
 
-    private int worldWidth = Gdx.graphics.getWidth();
-    private int worldHeight = Gdx.graphics.getHeight();
+    private int worldWidth = Constants.SCREEN_WIDTH;
+    private int worldHeight = Constants.SCREEN_HEIGHT;
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();

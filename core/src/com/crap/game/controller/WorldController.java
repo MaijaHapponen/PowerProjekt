@@ -82,7 +82,7 @@ public class WorldController {
             model.player.setPosition(model.getEntrancePosition().getX(), model.getEntrancePosition().getY());
         }
 
-        if(x > view.getWorldWidth() - TEMP_COLLISION_LAYER_WIDTH) {
+        else if(x > view.getWorldWidth() - TEMP_COLLISION_LAYER_WIDTH) {
             model.player.setPosition(TEMP_COLLISION_LAYER_WIDTH, y);
         }
 

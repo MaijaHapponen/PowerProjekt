@@ -5,8 +5,8 @@ import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.crap.game.model.CollisionModel;
-import com.crap.game.model.TileType;
+import com.crap.game.model.*;
+import com.crap.game.model.Character;
 
 import java.util.Iterator;
 
@@ -29,8 +29,8 @@ public class CollisionController {
     private MapObject newWorldObject;
     private String newWorldName;
 
-    private float spriteWidth;
-    private float spriteHeight;
+    private float characterWidth;
+    private float halfCharacterHeight;
 
     public CollisionController(TiledMap map) {
         collisionModel = new CollisionModel();
@@ -45,10 +45,9 @@ public class CollisionController {
         newWorldObjects = newWorldLayer.getObjects();
     }
 
-    //TODO: Move to model
-    public void setPlayerWidthAndHeight(float width, float height){
-        this.spriteWidth = width;
-        this.spriteHeight = height;
+    public void setCharacterWidthAndHeight(float width, float height){
+        characterWidth = width;
+        halfCharacterHeight = height/2;
     }
 
     public boolean isSlowerTerrain(float x, float y){
@@ -81,7 +80,7 @@ public class CollisionController {
         }
     }
 
-    public boolean isMapObjectHit(Iterator iter, float x, float y){
+    public boolean isMapObjectHit(Iterator iter, float characterX, float characterY){
         while(iter.hasNext()) {
             MapObject mapObject = (MapObject) iter.next();
             Float posX = (Float) mapObject.getProperties().get("x");
@@ -89,12 +88,26 @@ public class CollisionController {
             Float width = (Float) mapObject.getProperties().get("width");
             Float height = (Float) mapObject.getProperties().get("height");
 
-            if( checkIfCollide(posX,posY,width,height,x,y)||
-                    checkIfCollide(posX,posY,width,height,x+ spriteWidth,y)||
-                    checkIfCollide(posX,posY,width,height,x+ spriteWidth,y+ spriteHeight)||
-                    checkIfCollide(posX,posY,width,height,x,y+ spriteHeight) ||
-                    checkIfCollide(posX,posY,width,height,x,y+ spriteHeight /2)||
-                    checkIfCollide(posX,posY,width,height,x+ spriteWidth,y+ spriteHeight /2) ){
+            if( checkIfCollide(posX,posY,width,height,characterX,characterY) ||
+                    checkIfCollide(posX,posY,width,height, characterX + characterWidth, characterY) ||
+                    checkIfCollide(posX,posY,width,height, characterX + characterWidth, characterY + halfCharacterHeight) ||
+                    checkIfCollide(posX,posY,width,height, characterX, characterY + halfCharacterHeight) ||
+                    //left side of character
+                    checkIfCollide(posX,posY,width,height, characterX, characterY + 3*(halfCharacterHeight / 4)) ||
+                    checkIfCollide(posX,posY,width,height, characterX, characterY + halfCharacterHeight / 2) ||
+                    checkIfCollide(posX,posY,width,height, characterX, characterY + halfCharacterHeight / 4) ||
+                    //right side of character
+                    checkIfCollide(posX,posY,width,height, characterX + characterWidth, characterY + 3*(halfCharacterHeight / 4)) ||
+                    checkIfCollide(posX,posY,width,height, characterX + characterWidth, characterY + halfCharacterHeight / 2) ||
+                    checkIfCollide(posX,posY,width,height, characterX + characterWidth, characterY + halfCharacterHeight / 4) ||
+                    //bottom of character
+                    checkIfCollide(posX,posY,width,height, characterX + characterWidth / 4, characterY) ||
+                    checkIfCollide(posX,posY,width,height, characterX + characterWidth / 2, characterY) ||
+                    checkIfCollide(posX,posY,width,height, characterX + 3*(characterWidth / 4), characterY) ||
+                    //top of character
+                    checkIfCollide(posX,posY,width,height, characterX + characterWidth / 4, characterY + halfCharacterHeight)||
+                    checkIfCollide(posX,posY,width,height, characterX + characterWidth / 2, characterY + halfCharacterHeight)||
+                    checkIfCollide(posX,posY,width,height, characterX + 3*(characterWidth / 4), characterY + halfCharacterHeight)){
                 newWorldObject = mapObject;
                 return true;
             }
@@ -102,8 +115,9 @@ public class CollisionController {
         return false;
     }
 
-    public boolean checkIfCollide(float x, float y, float width, float height, float playerPositionX, float playerPositionY) {
-        return collisionModel.checkIfCollide(x,y,width,height,playerPositionX,playerPositionY);
+    public boolean checkIfCollide(float objectX, float objectY, float objectWidth, float objectHeight,
+                                  float characterPositionX, float characterPositionY) {
+        return collisionModel.checkIfCollide(objectX,objectY,objectWidth,objectHeight,characterPositionX,characterPositionY);
     }
 
     //TODO: Move to model

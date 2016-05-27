@@ -22,6 +22,7 @@ public class CharacterView extends ScreenAdapter {
     private Animation animation;
     private AnimationState animationState = AnimationState.STANDING_FRONT;
 
+    //TODO: remove somehow
     public CharacterView(){
     }
 

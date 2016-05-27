@@ -96,7 +96,7 @@ public abstract class Character{
     }
 
     public void moveDown(){
-        if(!(this.getPosition().getY() <0)) {
+        if(!(this.getPosition().getY() < Constants.PROGRESS_BAR_HEIGHT)) {
             getPosition().setPosition(getX(), getY() - speed);
         }
     }

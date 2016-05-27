@@ -7,9 +7,9 @@ import java.util.List;
 /**
  * Created by andrea on 2016-05-23.
  */
-public class Questions {
+public class InformationForQuestion {
 
-    public Questions(ArrayList<Mascot> mascots){
+    public InformationForQuestion(ArrayList<Mascot> mascots){
         setQuestions(mascots);
     }
 

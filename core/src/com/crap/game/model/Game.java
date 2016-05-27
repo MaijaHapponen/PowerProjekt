@@ -15,7 +15,7 @@ public class Game {
     private float startPositionY;
     private Progress progress;
     public Player player;
-    private Questions questions;
+    private InformationForQuestion questions;
     private Information information;
     private Worlds currectWorld;
 
@@ -42,7 +42,7 @@ public class Game {
         this.player = new Player("player",startPositionX,startPositionY);
         createHumans();
         createMascots();
-        this.questions = new Questions(mascots);
+        this.questions = new InformationForQuestion(mascots);
         this.information = new Information(humans);
 
         this.progress = new Progress(mascots);

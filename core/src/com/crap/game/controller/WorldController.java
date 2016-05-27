@@ -69,6 +69,11 @@ public class WorldController {
                 characterController.updateCollisionController();
                 break;
 
+            case HIDDEN_ROOM:
+                model.setEntrance(x, y);
+                playerController.updateCollisionController();
+                characterController.updateCollisionController();
+                break;
             default:
 
                 System.out.println("Ohoh! Something went wrong");

@@ -9,7 +9,7 @@ import static com.crap.game.model.Constants.*;
  */
 public class Game {
 
-    public enum Worlds{HORSAL, EDIT, HUBBEN, ZALOONEN}
+    public enum Worlds{HORSAL, EDIT, HUBBEN, ZALOONEN, HIDDEN_ROOM}
 
     private float startPositionX;
     private float startPositionY;

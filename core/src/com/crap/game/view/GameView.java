@@ -93,6 +93,8 @@ public class GameView extends ScreenAdapter{
         batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime, true), playerView.getPlayerPosition().getX(),
                 playerView.getPlayerPosition().getY());
 
+
+
         batch.end();
 
         if(progress.newUpdate()){
@@ -129,6 +131,7 @@ public class GameView extends ScreenAdapter{
 
             }
         }
+
     }
 
     public void drawHumans(){
@@ -232,6 +235,10 @@ public class GameView extends ScreenAdapter{
             interactionView.setWelcomeLabel("zaloonen");
         }if(world.equals("hörsalsvägen")){
             interactionView.setWelcomeLabel("hörsalsvägen");
+        }if(world.equals("hiddenroom")){
+            interactionView.setWelcomeLabel(("hiddenroom"));
         }
     }
+
+
 }

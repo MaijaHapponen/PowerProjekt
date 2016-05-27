@@ -52,7 +52,7 @@ public class WorldController {
                 break;
 
             case HUBBEN:
-                model.setEntrance(x,y);
+                model.setEntrance(x, y);
                 model.enterHubben();
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();

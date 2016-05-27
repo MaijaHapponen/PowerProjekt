@@ -6,53 +6,53 @@ package com.crap.game.model;
 public final class TextForInteraction {
 
     //Fontsize for the text
-    public static int titleFontSize = 27;
-    public static int instructionFontSize = 18;
-    public static int informationFontSize = 13;
-    public static int interactionFontSize = 12;
-    public static int returnFontSize = 15;
+    public static final int titleFontSize = 27;
+    public static final int instructionFontSize = 18;
+    public static final int informationFontSize = 13;
+    public static final int interactionFontSize = 12;
+    public static final int returnFontSize = 15;
 
     //Placement for the text
-    public static int titlePlacementX = 40;
-    public static int alternativesPlacementX = 60;
-    public static int titlePlacementY = 420;
-    public static int humanGreetingY = 470;
-    public static int onlyInformationY = 340;
-    public static int mainMenuAlternativesX = 80;
-    public static int alternativesPlacementY = 250;
-    public static int howToPlayInstructionsPlacementY = 350;
-    public static int menuAlternativesPlacementY = 280;
-    public static int returnPlacementY = 50;
-    public static int menuSpaceBetweenAlternatives =80;
-    public static int spaceBetweenAlternatives = 60;
+    public static final int titlePlacementX = 40;
+    public static final int alternativesPlacementX = 60;
+    public static final int titlePlacementY = 420;
+    public static final int humanGreetingY = 470;
+    public static final int onlyInformationY = 340;
+    public static final int mainMenuAlternativesX = 80;
+    public static final int alternativesPlacementY = 250;
+    public static final int howToPlayInstructionsPlacementY = 350;
+    public static final int menuAlternativesPlacementY = 280;
+    public static final int returnPlacementY = 50;
+    public static final int menuSpaceBetweenAlternatives =80;
+    public static final int spaceBetweenAlternatives = 60;
 
     //In HowToPlayView
-    public static String howToPlay1 = "-Catch all the mascots to win.";
-    public static String howToPlay2 = "-Answer the questions\n right to catch the mascot.";
-    public static String howToPlay3 = "\n-Interact with characters by\n pressing space.";
-    public static String howToPlay4 = "\n\n-Move with the arrowkeys.";
-    public static String howToPlayTitle = "This is how you play:";
+    public static final String howToPlay1 = "-Catch all the mascots to win.";
+    public static final String howToPlay2 = "-Answer the questions\n right to catch the mascot.";
+    public static final String howToPlay3 = "\n-Interact with characters by\n pressing space.";
+    public static final String howToPlay4 = "\n\n-Move with the arrowkeys.";
+    public static final String howToPlayTitle = "This is how you play:";
 
     //In InteractHumanView
-    public static String talkAboutProgramme = "Ask about programme";
-    public static String whereIsMascot = "Ask where mascot could be";
-    public static String returnToGame = "Press backspace to return to game";
+    public static final String talkAboutProgramme = "Ask about programme";
+    public static final String whereIsMascot = "Ask where mascot could be";
+    public static final String returnToGame = "Press backspace to return to game";
 
     //In InteractionView
-    public static String talkToCharacter = "Press SPACE to talk";
-    public static String welcomeToHubben = "Welcome to Hubben 2.1";
-    public static String welcomeToZaloonen = "Welcome to Zaloonen";
-    public static String welcomeToHorsalsvagen = "Welcome to Hörsalsvägen";
+    public static final String talkToCharacter = "Press SPACE to talk";
+    public static final String welcomeToHubben = "Welcome to Hubben 2.1";
+    public static final String welcomeToZaloonen = "Welcome to Zaloonen";
+    public static final String welcomeToHorsalsvagen = "Welcome to Hörsalsvägen";
 
     //General
-    public static String returnMenu = "Press backspace to return to menu";
-    public static String exit = "Exit";
+    public static final String returnMenu = "Press backspace to return to menu";
+    public static final String exit = "Exit";
 
     //MenuView
-    public static String playTheGame = "Play the game";
-    public static String howToPlay = "How to play";
-    public static String winTheGame = "You win! :)";
-    public static String returnToMainMenu = "Press enter to \n return to \n main menu";
-    public static String gameName = "C.R.A.P.";
+    public static final String playTheGame = "Play the game";
+    public static final String howToPlay = "How to play";
+    public static final String winTheGame = "You win! :)";
+    public static final String returnToMainMenu = "Press enter to \n return to \n main menu";
+    public static final String gameName = "C.R.A.P.";
 
 }

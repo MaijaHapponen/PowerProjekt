@@ -45,9 +45,9 @@ public final class TextForInteraction {
     public static final String welcomeToHorsalsvagen = "Welcome to Hörsalsvägen";
 
     //General
-    public static String returnMenu = "Press backspace to return to menu";
-    public static String exit = "Exit";
-    public static String cancel = "Cancel";
+    public static final String returnMenu = "Press backspace to return to menu";
+    public static final String exit = "Exit";
+    public static final String cancel = "Cancel";
 
     //MenuView
     public static final String playTheGame = "Play the game";

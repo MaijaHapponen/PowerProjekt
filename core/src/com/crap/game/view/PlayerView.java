@@ -1,8 +1,6 @@
 package com.crap.game.view;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,9 +12,6 @@ import com.crap.game.model.Position;
 
 import static com.crap.game.model.Constants.*;
 
-/**
- * Created by Maija on 2016-05-02.
- */
 public class PlayerView extends ScreenAdapter{
 
     private Player player;

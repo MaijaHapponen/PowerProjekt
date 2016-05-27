@@ -5,8 +5,8 @@ import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.crap.game.model.CollisionModel;
-import com.crap.game.model.TileType;
+import com.crap.game.model.*;
+import com.crap.game.model.Character;
 
 import java.util.Iterator;
 
@@ -29,8 +29,8 @@ public class CollisionController {
     private MapObject newWorldObject;
     private String newWorldName;
 
-    private float spriteWidth;
-    private float spriteHeight;
+    private int characterWidth;
+    private int characterHeight;
 
     public CollisionController(TiledMap map) {
         collisionModel = new CollisionModel();
@@ -45,18 +45,17 @@ public class CollisionController {
         newWorldObjects = newWorldLayer.getObjects();
     }
 
-    //TODO: Move to model
-    public void setPlayerWidthAndHeight(float width, float height){
-        this.spriteWidth = width;
-        this.spriteHeight = height;
+    public void setPlayerWidthAndHeight(int width, int height){
+        characterWidth = width;
+        characterHeight = height;
     }
 
-    public boolean isSlowerTerrain(float x, float y){
+    public boolean isSlowerTerrain(){
         return collisionModel.isSlow();
     }
 
-    public boolean isCollison(float x, float y){
-        updateTileValues(x, y);
+    public boolean isCollison(Character thisCharacter, float x, float y){
+        updateTileValues(thisCharacter,x, y);
         return collisionModel.isBlocked();
     }
 
@@ -64,24 +63,24 @@ public class CollisionController {
         return collisionModel.isNewWorld();
     }
 
-    public void updateTileValues(float x, float y){
-        if(isMapObjectHit(collisionObjects.iterator(), x, y)){
+    public void updateTileValues(Character thisCharacter, float x, float y){
+        if(isMapObjectHit(collisionObjects.iterator(),thisCharacter, x, y)){
             collisionModel.setTypeOfTile(TileType.SOLID_TILE);
         }
-        else if(isMapObjectHit(slowObjects.iterator(), x, y)) {
+        else if(isMapObjectHit(slowObjects.iterator(),thisCharacter, x, y)) {
             collisionModel.setTypeOfTile(TileType.SLOWER_TILE);
         }
         else{
             collisionModel.setTypeOfTile(TileType.WALKABLE_TILE);
         }
 
-        if(isMapObjectHit(newWorldObjects.iterator(), x, y)) {
+        if(isMapObjectHit(newWorldObjects.iterator(),thisCharacter, x, y)) {
             collisionModel.setTypeOfTile(TileType.NEW_WORLD);
             newWorldName = newWorldObject.getName();
         }
     }
 
-    public boolean isMapObjectHit(Iterator iter, float x, float y){
+    public boolean isMapObjectHit(Iterator iter, Character thisCharacter){
         while(iter.hasNext()) {
             MapObject mapObject = (MapObject) iter.next();
             Float posX = (Float) mapObject.getProperties().get("x");
@@ -89,12 +88,25 @@ public class CollisionController {
             Float width = (Float) mapObject.getProperties().get("width");
             Float height = (Float) mapObject.getProperties().get("height");
 
-            if( checkIfCollide(posX,posY,width,height,x,y)||
-                    checkIfCollide(posX,posY,width,height,x+ spriteWidth,y)||
-                    checkIfCollide(posX,posY,width,height,x+ spriteWidth,y+ spriteHeight)||
-                    checkIfCollide(posX,posY,width,height,x,y+ spriteHeight) ||
-                    checkIfCollide(posX,posY,width,height,x,y+ spriteHeight /2)||
-                    checkIfCollide(posX,posY,width,height,x+ spriteWidth,y+ spriteHeight /2) ){
+            float characterX = thisCharacter.getX();
+            float characterY = thisCharacter.getY();
+            float characterWidth
+
+            if( checkIfCollide(posX, posY, width, height, thisCharacter.getX(), thisCharacter.getY()) ||
+                    checkIfCollide(posX, posY, width, height, thisCharacter.getX() + thisCharacter.getWidth(), thisCharacter.getY()) ||
+                    checkIfCollide(posX, characterX + otherCharacterWidth, characterY + otherCharacterHeight) ||
+                    checkIfCollide(posX, characterX, characterY + otherCharacterHeight) ||
+                    //nextStepLeft side of character
+                    checkIfCollide(posX, characterX, characterY + 3 * (otherCharacterHeight / 4)) ||
+                    checkIfCollide(posX, characterX, characterY + otherCharacterHeight / 2) ||
+                    checkIfCollide(posX, characterX, characterY + otherCharacterHeight / 4) ||
+                    //nextStepRight side of character
+                    checkIfCollide(posX, characterX + otherCharacterWidth, characterY + 3 * (otherCharacterHeight / 4)) ||
+                    checkIfCollide(posX, characterX + otherCharacterWidth, characterY + otherCharacterHeight / 2) ||
+                    checkIfCollide(posX, characterX + otherCharacterWidth, characterY + otherCharacterHeight / 4) ||
+                    //middle in top and bottom of character
+                    checkIfCollide(posX, characterX + otherCharacterWidth / 2, characterY) ||
+                    checkIfCollide(posX, characterX + otherCharacterWidth / 2, characterY + otherCharacterHeight); ){
                 newWorldObject = mapObject;
                 return true;
             }
@@ -102,8 +114,9 @@ public class CollisionController {
         return false;
     }
 
-    public boolean checkIfCollide(float x, float y, float width, float height, float playerPositionX, float playerPositionY) {
-        return collisionModel.checkIfCollide(x,y,width,height,playerPositionX,playerPositionY);
+    public boolean checkIfCollide(float objectX, float objectY, float objectWidth, float objectHeight,
+                                  float characterPositionX, float characterPositionY) {
+        return collisionModel.checkIfCollide(objectX,objectY,objectWidth,objectHeight,characterPositionX,characterPositionY);
     }
 
     //TODO: Move to model

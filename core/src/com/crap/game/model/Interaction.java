@@ -10,44 +10,44 @@ public class Interaction {
 
     private boolean isInteracting = false;
 
-    public Interaction(float playerWidth, float playerHeight) {
+    public Interaction(float otherCharacterWidth, float otherCharacterHeight) {
         this.collisionModel = new CollisionModel();
-        this.otherCharacterWidth = playerWidth;
-        this.otherCharacterHeight = playerHeight;
+        this.otherCharacterWidth = otherCharacterWidth;
+        this.otherCharacterHeight = otherCharacterHeight;
     }
 
-    public boolean isInteraction(Character character, float x, float y) {
-        return checkEveryPositionForInteraction(character, x, y);
+    public boolean isInteraction(Character otherCharacter, float characterX, float characterY) {
+        return checkEveryPositionForInteraction(otherCharacter, characterX, characterY);
     }
 
-    private boolean checkEveryPositionForInteraction(Character character, float x, float y) {
+    private boolean checkEveryPositionForInteraction(Character otherCharacter, float characterX, float characterY) {
 
-        return checkIfInteraction(character, x, y) ||
-                checkIfInteraction(character, x + otherCharacterWidth, y) ||
-                checkIfInteraction(character, x + otherCharacterWidth, y + otherCharacterHeight) ||
-                checkIfInteraction(character, x, y + otherCharacterHeight) ||
+        return checkIfInteraction(otherCharacter, characterX, characterY) ||
+                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth, characterY) ||
+                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth, characterY + otherCharacterHeight) ||
+                checkIfInteraction(otherCharacter, characterX, characterY + otherCharacterHeight) ||
                 //nextStepLeft side of character
-                checkIfInteraction(character, x, y + 3*(otherCharacterHeight / 4)) ||
-                checkIfInteraction(character, x, y + otherCharacterHeight / 2) ||
-                checkIfInteraction(character, x, y + otherCharacterHeight / 4) ||
+                checkIfInteraction(otherCharacter, characterX, characterY + 3*(otherCharacterHeight / 4)) ||
+                checkIfInteraction(otherCharacter, characterX, characterY + otherCharacterHeight / 2) ||
+                checkIfInteraction(otherCharacter, characterX, characterY + otherCharacterHeight / 4) ||
                 //nextStepRight side of character
-                checkIfInteraction(character, x + otherCharacterWidth, y + 3*(otherCharacterHeight / 4)) ||
-                checkIfInteraction(character, x + otherCharacterWidth, y + otherCharacterHeight / 2) ||
-                checkIfInteraction(character, x + otherCharacterWidth, y + otherCharacterHeight / 4) ||
+                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth, characterY + 3*(otherCharacterHeight / 4)) ||
+                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth, characterY + otherCharacterHeight / 2) ||
+                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth, characterY + otherCharacterHeight / 4) ||
                 //middle in top and bottom of character
-                checkIfInteraction(character, x + otherCharacterWidth / 2, y) ||
-                checkIfInteraction(character, x + otherCharacterWidth / 2, y + otherCharacterHeight);
+                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth / 2, characterY) ||
+                checkIfInteraction(otherCharacter, characterX + otherCharacterWidth / 2, characterY + otherCharacterHeight);
     }
 
 
-    private boolean checkIfInteraction(Character character, float thisX, float thisY) {
+    private boolean checkIfInteraction(Character otherCharacter, float characterX, float characterY) {
 
-        Float width = character.getWidth();
-        Float height = character.getHeight();
-        Float x = character.getPosition().getX();
-        Float y = character.getPosition().getY();
+        Float width = otherCharacter.getWidth();
+        Float height = otherCharacter.getHeight();
+        Float x = otherCharacter.getPosition().getX();
+        Float y = otherCharacter.getPosition().getY();
 
-        return collisionModel.checkIfCollide(x, y, width, height, thisX, thisY);
+        return collisionModel.checkIfCollide(x, y, width, height, characterX, characterY);
     }
 
     public void setIsInteracting(boolean state){

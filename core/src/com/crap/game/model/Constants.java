@@ -5,6 +5,11 @@ package com.crap.game.model;
  */
 public final class Constants {
 
+    public static int SCREEN_WIDTH;
+    public static int SCREEN_HEIGHT;
+
+    public static int PROGRESS_BAR_HEIGHT = 70;
+
     public static int walkAwayLength = 60;
 
     public static int NBR_OF_TEXTURE_IMAGES_HORIZONTALLY = 4;

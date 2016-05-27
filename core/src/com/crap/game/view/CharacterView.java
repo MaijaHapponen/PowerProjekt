@@ -35,17 +35,6 @@ public class CharacterView extends ScreenAdapter {
                 this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
     }
 
-    //TODO:Not used
-    public CharacterView(Character character,Texture texture){
-        this.character = character;
-        this.texture = texture;
-        this.sprite = new Sprite(texture);
-        sprite.setPosition(character.getPosition().getX(), character.getPosition().getY());
-
-        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
-                this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
-    }
-
     public Character getCharacter(){
         return this.character;
     }

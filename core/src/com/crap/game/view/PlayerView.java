@@ -1,12 +1,9 @@
 package com.crap.game.view;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.crap.game.model.AnimationState;
 import com.crap.game.model.Player;
@@ -17,54 +14,21 @@ import static com.crap.game.model.Constants.*;
 /**
  * Created by Maija on 2016-05-02.
  */
-public class PlayerView extends ScreenAdapter{
+public class PlayerView extends CharacterView implements Screen{
 
     private Player player;
-    private Sprite playerSprite;
-    private Texture texture;
     private OrthographicCamera camera;
 
     private float halfOfScreen = Gdx.graphics.getWidth()/2;
 
-    private GameAnimation gameAnimation = new GameAnimation();
-    private Animation animation;
-    private AnimationState animationState = AnimationState.STANDING_FRONT;
-
     public void initPlayerView(){
-        this.texture = new Texture(Gdx.files.internal("characters/"+player.getName()+".png"));
-        this.playerSprite = new Sprite(texture);
-        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, this.texture.getWidth(),
-                this.texture.getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
-    }
-
-    public void setPlayer(Player player){
-        this.player=player;
-        initPlayerView();
-        player.setWidthAndHeight(getPlayerSpriteWidth(), getPlayerSpriteHeight());
-
-    }
-
-    public Sprite getSprite(){
-        return playerSprite;
-    }
-
-    public Player getPlayer(){
-        return player;
-    }
-
-    public int getPlayerSpriteWidth(){
-        return this.texture.getWidth()/NBR_OF_TEXTURE_IMAGES_HORIZONTALLY;
-    }
-    public int getPlayerSpriteHeight(){
-        return this.texture.getHeight()/NBR_OF_TEXTURE_IMAGES_VERTICALLY;
-    }
-
-    public void setCamera(OrthographicCamera camera){
-        this.camera = camera;
+        setTexture(new Texture(Gdx.files.internal("characters/"+player.getName()+".png")));
+        setSprite(new Sprite(getTexture()));
+        setAnimation(getGameAnimation().getAnimation(getAnimationState(), getTexture(), getTexture().getWidth(),
+                getTexture().getHeight(), NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY));
     }
 
     public void moveCamera(float x,float y, float worldWidth, float worldHeight) {
-
         float boarderLeft = halfOfScreen;
         float boarderRight = worldWidth - halfOfScreen;
         float boarderTop = worldHeight - halfOfScreen;
@@ -105,8 +69,28 @@ public class PlayerView extends ScreenAdapter{
                 camera.position.set(boarderRight, boarderTop, 0);
             }
         }
-
         camera.update();
+    }
+
+    public void setPlayer(Player player){
+        this.player=player;
+        initPlayerView();
+        player.setWidthAndHeight(getPlayerSpriteWidth(), getPlayerSpriteHeight());
+    }
+
+    public Player getPlayer(){
+        return player;
+    }
+
+    public int getPlayerSpriteWidth(){
+        return getTexture().getWidth()/NBR_OF_TEXTURE_IMAGES_HORIZONTALLY;
+    }
+    public int getPlayerSpriteHeight(){
+        return getTexture().getHeight()/NBR_OF_TEXTURE_IMAGES_VERTICALLY;
+    }
+
+    public void setCamera(OrthographicCamera camera){
+        this.camera = camera;
     }
 
     public Position getPlayerPosition(){
@@ -117,18 +101,9 @@ public class PlayerView extends ScreenAdapter{
         return this.camera;
     }
 
-    public Animation getAnimation(){
-        return this.animation;
-    }
-
     public void setAnimationState(AnimationState animationState){
-        this.animationState = animationState;
-        this.animation = this.gameAnimation.getAnimation(this.animationState, this.texture, 129, 190,
-                NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY);
-    }
-
-    @Override
-    public void dispose(){
-        texture.dispose();
+        super.setAnimationState(animationState);
+        setAnimation(getGameAnimation().getAnimation(getAnimationState(), getTexture(), 129, 190,
+                NBR_OF_TEXTURE_IMAGES_VERTICALLY, NBR_OF_TEXTURE_IMAGES_HORIZONTALLY));
     }
 }

@@ -28,8 +28,8 @@ public class WorldController {
 
     public void setWorld(Game.Worlds worlds){
 
-        float x = playerController.getPlayer().getPosition().getX();
-        float y = playerController.getPlayer().getPosition().getY();
+        float x = playerController.getCharacter().getPosition().getX();
+        float y = playerController.getCharacter().getPosition().getY();
         model.setCurrectWorld(worlds);
 
         switch (worlds) {

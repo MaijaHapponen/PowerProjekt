@@ -16,10 +16,18 @@ public class CharacterController{
     private InteractionController interactionController;
     private int walkAwayState = Constants.WALK_AWAY_LENGTH;
 
-    public CharacterController(GameView view){
-        this.gameView = view;
-        this.collisionController = new CollisionController(view.getWorld());
-        interactionController = new InteractionController(view);
+    public CharacterController(GameView gameView){
+        this.gameView = gameView;
+        this.collisionController = new CollisionController(gameView.getWorld());
+        interactionController = new InteractionController(gameView);
+    }
+
+    public CharacterController(GameView gameView, Character character, CharacterView characterView){
+        this.character = character;
+        this.characterView = characterView;
+        this.gameView = gameView;
+        this.collisionController = new CollisionController(gameView.getWorld());
+        interactionController = new InteractionController(gameView);
     }
 
     public void interactsWith(Character character, CharacterView characterView){
@@ -38,42 +46,39 @@ public class CharacterController{
     }
 
     public void move(Direction direction){
-        float movement = character.getSpeed()*2;
+        float movement = character.getSpeed()*Constants.NORMAL_SPEED;
 
-        switch (direction){
+        switch (direction) {
             case UP:
-                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()+movement)){
+                if (isPositionEmpty(character.getPosition().getX(), character.getPosition().getY() + movement)) {
                     this.moveUp();
-                }
-                else{
+                } else {
                     character.updateDirections();
                 }
                 break;
             case DOWN:
-                if(isPositionEmpty(character.getPosition().getX(), character.getPosition().getY()-movement)){
+                if (isPositionEmpty(character.getPosition().getX(), character.getPosition().getY() - movement)) {
                     this.moveDown();
-                }
-                else{
+                } else {
                     character.updateDirections();
                 }
                 break;
             case LEFT:
-                if(isPositionEmpty(character.getPosition().getX()-movement, character.getPosition().getY())){
+                if (isPositionEmpty(character.getPosition().getX() - movement, character.getPosition().getY())) {
                     this.moveLeft();
-                }
-                else{
+                } else {
                     character.updateDirections();
                 }
                 break;
             case RIGHT:
-                if(isPositionEmpty(character.getPosition().getX()+movement, character.getPosition().getY())){
+                if (isPositionEmpty(character.getPosition().getX() + movement, character.getPosition().getY())) {
                     this.moveRight();
-                }
-                else{
+                } else {
                     character.updateDirections();
                 }
                 break;
         }
+        this.characterView.updateAnimation();
     }
 
     //Returns true if there is a collision.
@@ -90,30 +95,25 @@ public class CharacterController{
     public void moveUp() {
         character.moveUp(gameView.getWorldHeight());
         this.characterView.setAnimationState(AnimationState.WALKING_BACK);
-        this.characterView.updateAnimation();
     }
 
     public void moveDown(){
         character.moveDown();
         this.characterView.setAnimationState(AnimationState.WALKING_FRONT);
-        this.characterView.updateAnimation();
     }
 
     public void moveLeft(){
         character.moveLeft();
         this.characterView.setAnimationState(AnimationState.WALKING_LEFT);
-        this.characterView.updateAnimation();
     }
 
     public void moveRight(){
         character.moveRight(gameView.getWorldWidth());
         this.characterView.setAnimationState(AnimationState.WALKING_RIGHT);
-        this.characterView.updateAnimation();
     }
 
     public void updateSprite() {
-        characterView.getSprite().setPosition(this.character.getPosition().getX(),
-                this.character.getPosition().getY());
+        characterView.getSprite().setPosition(this.character.getPosition().getX(), this.character.getPosition().getY());
     }
 
     public void resetWalkAwayState(){
@@ -142,23 +142,20 @@ public class CharacterController{
         switch (character.getWalkAwayDirection()){
             case UP:
                 this.characterView.setAnimationState(AnimationState.STANDING_BACK);
-                this.characterView.updateAnimation();
                 break;
             case DOWN:
                 this.characterView.setAnimationState(AnimationState.STANDING_FRONT);
-                this.characterView.updateAnimation();
                 break;
             case LEFT:
                 this.characterView.setAnimationState(AnimationState.STANDING_LEFT);
-                this.characterView.updateAnimation();
                 break;
             case RIGHT:
                 this.characterView.setAnimationState(AnimationState.STANDING_RIGHT);
-                this.characterView.updateAnimation();
                 break;
             case NO_DIRECTION:
                 break;
         }
+        this.characterView.updateAnimation();
         interactionController.getInteractionModel().setIsInteracting(false);
     }
 
@@ -166,10 +163,31 @@ public class CharacterController{
         character.changeDirection(Constants.WALK_AWAY_LENGTH, this.walkAwayState);
         this.move(character.getWalkAwayDirection());
 
-        if(walkAwayState == Constants.WALK_AWAY_LENGTH -1 && !(character.getWalkAwayDirection()== Direction.NO_DIRECTION)){
+        if(walkAwayState == Constants.WALK_AWAY_LENGTH -1 && !(character.getWalkAwayDirection() ==
+                Direction.NO_DIRECTION)){
             stopWalkingAnimation();
         }
         updateSprite();
         walkAwayState++;
+    }
+
+    public GameView getGameView() {
+        return this.gameView;
+    }
+
+    public Character getCharacter(){
+        return this.character;
+    }
+
+    public void setCharacter(Character character){
+        this.character = character;
+    }
+
+    public InteractionController getInteractionController(){
+        return this.interactionController;
+    }
+
+    public CollisionController getCollisionController(){
+        return this.collisionController;
     }
 }

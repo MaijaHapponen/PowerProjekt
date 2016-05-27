@@ -22,5 +22,4 @@ public final class Constants {
 
     public static float NORMAL_SPEED = 2;
     public static float SLOWER_SPEED = 1;
-
 }

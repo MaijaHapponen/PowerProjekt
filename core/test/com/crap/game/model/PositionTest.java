@@ -1,5 +1,6 @@
 package com.crap.game.model;
 
+import com.crap.game.model.primary.Position;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

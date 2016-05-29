@@ -1,6 +1,8 @@
 package com.crap.game.model;
 
 
+import com.crap.game.model.character.Human;
+import com.crap.game.model.character.humaninteraction.Information;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

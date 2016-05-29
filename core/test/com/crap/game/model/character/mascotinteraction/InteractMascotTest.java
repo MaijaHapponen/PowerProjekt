@@ -12,9 +12,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by rebeccafinne on 16-05-24.
- */
+
 public class InteractMascotTest {
 
 

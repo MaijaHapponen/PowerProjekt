@@ -1,7 +1,7 @@
 package com.crap.game.model.primary;
 
 import static org.junit.Assert.*;
-
+import com.crap.game.model.information.enums.Worlds;
 import com.crap.game.model.character.Mascot;
 import com.crap.game.model.information.Constants;
 import org.junit.Test;
@@ -9,15 +9,13 @@ import org.junit.Test;
 public class CRAPTest {
 
     @Test
-    public void testIsGameOver(){
+    public void testIsGameOver() {
         CRAP CRAP = new CRAP();
 
         CRAP.mascotCaught(CRAP.getMascots().get(3));
         CRAP.mascotCaught(CRAP.getMascots().get(2));
         CRAP.mascotCaught(CRAP.getMascots().get(1));
         assertTrue(!CRAP.isGameOver());
-        //CRAP.mascotCaught(CRAP.getMascots().get(0));
-        //assertTrue(CRAP.isGameOver());
     }
 
     @Test
@@ -46,16 +44,16 @@ public class CRAPTest {
         CRAP CRAP = new CRAP();
         CRAP.setNewWorld(true);
         assertTrue(CRAP.getNewWorld());
-        CRAP.setPreviousRoom(com.crap.game.model.primary.CRAP.Worlds.EDIT);
-        assertTrue(CRAP.getPreviousRoom().equals(com.crap.game.model.primary.CRAP.Worlds.EDIT));
+        CRAP.setPreviousRoom(Worlds.EDIT);
+        assertTrue(CRAP.getPreviousRoom().equals(Worlds.EDIT));
         CRAP.setEntrance(50,50);
         assertTrue((CRAP.getEntrancePosition().getX() == 50) && (CRAP.getEntrancePosition().getY() == 50));
         CRAP.createHumans();
         assertTrue(CRAP.getHumans().equals(CRAP.humans));
         CRAP.createMascots();
         assertTrue(CRAP.getMascots().equals(CRAP.mascots));
-        CRAP.setCurrentWorld(com.crap.game.model.primary.CRAP.Worlds.EDIT);
-        assertTrue(CRAP.getCurrentWorld().equals(com.crap.game.model.primary.CRAP.Worlds.EDIT));
+        CRAP.setCurrentWorld(Worlds.EDIT);
+        assertTrue(CRAP.getCurrentWorld().equals(Worlds.EDIT));
 
     }
 

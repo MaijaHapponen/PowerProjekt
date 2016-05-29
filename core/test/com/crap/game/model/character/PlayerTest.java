@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import com.crap.game.model.information.Constants;
 import com.crap.game.model.information.enums.Direction;
+import com.crap.game.model.information.enums.Worlds;
 import com.crap.game.model.primary.CRAP;
 import org.junit.Test;
 
@@ -101,10 +102,10 @@ public class PlayerTest {
 
     @Test
     public void testGetWorld(){
-        CRAP.Worlds world = CRAP.Worlds.EDIT;
+        Worlds world = Worlds.EDIT;
         Player player = new Player("HEJ", 50, 50);
         player.setWorld(world);
-        assertTrue(player.getWorld().equals(CRAP.Worlds.EDIT));
+        assertTrue(player.getWorld().equals(Worlds.EDIT));
     }
 
     @Test

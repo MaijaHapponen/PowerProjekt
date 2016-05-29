@@ -1,9 +1,5 @@
 package com.crap.game.model;
 
-/**
- * Created by andrea on 2016-04-11.
- */
-
 public class Player extends Character{
 
     public Player(String name, float x, float y){

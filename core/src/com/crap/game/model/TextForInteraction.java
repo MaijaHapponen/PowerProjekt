@@ -1,8 +1,5 @@
 package com.crap.game.model;
 
-/**
- * Created by andrea on 2016-05-26.
- */
 public final class TextForInteraction {
 
     //Fontsize for the text

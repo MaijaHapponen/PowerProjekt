@@ -1,8 +1,5 @@
 package com.crap.game.model;
 
-/**
- * Created by Lisa on 14/04/16.
- */
 public class Position {
     private float x;
     private float y;

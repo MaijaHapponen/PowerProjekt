@@ -8,9 +8,6 @@ import com.crap.game.model.InteractHuman;
 import com.crap.game.model.TextForInteraction;
 import com.crap.game.view.InteractHumanView;
 
-/**
- * Created by rebeccafinne on 16-05-23.
- */
 public class InteractHumanController extends InputAdapter {
 
     private InteractHumanView interactHumanView;

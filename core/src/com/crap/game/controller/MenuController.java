@@ -8,9 +8,6 @@ import com.crap.game.model.Menu;
 import com.crap.game.model.TextForInteraction;
 import com.crap.game.view.MenuView;
 
-/**
- * Created by Maija on 2016-05-11.
- */
 public class MenuController extends InputAdapter{
 
     MenuView menuView;

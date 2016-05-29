@@ -7,9 +7,6 @@ import com.crap.game.view.CRAPView;
 import static com.crap.game.model.Constants.*;
 import static com.crap.game.model.CRAP.Worlds.*;
 
-/**
- * Created by andrea on 2016-04-28.
- */
 public class WorldController {
 
     private CRAP model;

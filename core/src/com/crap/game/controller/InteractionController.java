@@ -6,9 +6,6 @@ import com.crap.game.model.Mascot;
 import com.crap.game.view.CharacterView;
 import com.crap.game.view.CRAPView;
 
-/**
- * Created by andrea on 2016-05-11.
- */
 public class InteractionController {
     private Interaction interactionModel;
     private CRAPView CRAPView;

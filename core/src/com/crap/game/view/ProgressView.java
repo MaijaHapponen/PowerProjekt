@@ -15,9 +15,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crap.game.model.*;
 
-/**
- * Created by rebeccafinne on 2016-05-05.
- */
 public class ProgressView extends ScreenAdapter {
 
     private Progress progress;

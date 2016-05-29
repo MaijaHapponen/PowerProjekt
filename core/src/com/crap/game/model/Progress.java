@@ -2,9 +2,6 @@ package com.crap.game.model;
 
 import java.util.ArrayList;
 
-/**
- * Created by Lisa on 24/04/16.
- */
 public class Progress {
 
     private ArrayList<Mascot> allMascots = new ArrayList<Mascot>();

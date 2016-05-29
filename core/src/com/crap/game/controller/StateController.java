@@ -7,9 +7,6 @@ import com.crap.game.model.Constants;
 import com.crap.game.model.GameStates;
 import com.crap.game.view.*;
 
-/**
- * Created by Maija on 2016-05-19.
- */
 public class StateController {
 
     public static CRAPView worldView;

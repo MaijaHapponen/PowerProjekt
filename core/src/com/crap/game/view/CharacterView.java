@@ -9,10 +9,6 @@ import com.crap.game.model.Character;
 
 import static com.crap.game.model.Constants.*;
 
-/**
- * Created by andrea on 2016-04-28.
- */
-
 public class CharacterView extends ScreenAdapter {
 
     private Character character;

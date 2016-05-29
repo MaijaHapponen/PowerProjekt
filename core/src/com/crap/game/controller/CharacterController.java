@@ -5,9 +5,6 @@ import com.crap.game.model.Character;
 import com.crap.game.view.CharacterView;
 import com.crap.game.view.CRAPView;
 
-/**
- * Created by Lisa on 29/05/16.
- */
 public abstract class CharacterController {
 
     private CRAPView CRAPView;

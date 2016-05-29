@@ -5,9 +5,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.crap.game.model.AnimationState;
 
-/**
- * Created by Lisa on 09/05/16.
- */
 public class GameAnimation {
 
     private TextureRegion[][] tmpFrames;

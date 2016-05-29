@@ -13,9 +13,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crap.game.model.TextForInteraction;
 
-/**
- * Created by Maija on 2016-05-11.
- */
 public class InteractionView extends ScreenAdapter{
 
     private Stage stage;

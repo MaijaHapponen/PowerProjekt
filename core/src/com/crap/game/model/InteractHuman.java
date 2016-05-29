@@ -1,8 +1,5 @@
 package com.crap.game.model;
 
-/**
- * Created by rebeccafinne on 16-05-23.
- */
 public class InteractHuman {
 
     String [] options;

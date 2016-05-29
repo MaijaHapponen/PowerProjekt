@@ -1,8 +1,5 @@
 package com.crap.game.model;
 
-/**
- * Created by rebeccafinne on 2016-04-22.
- */
 public class CollisionModel {
 
     private boolean blocked;

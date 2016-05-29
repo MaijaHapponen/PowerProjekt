@@ -8,9 +8,6 @@ import com.crap.game.view.CRAPView;
 import com.crap.game.view.PlayerView;
 import static com.crap.game.model.Constants.PIXEL_PER_TILE;
 
-/**
- * Created by rebeccafinne on 2016-04-30.
- */
 public class PlayerController extends CharacterController {
 
     private PlayerView playerView;

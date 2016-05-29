@@ -11,9 +11,6 @@ import com.crap.game.model.Mascot;
 import com.crap.game.view.CRAPView;
 import static com.crap.game.model.CRAP.Worlds.*;
 
-/**
- * Created by Lisa on 18/04/16.
- */
 public class CRAPController extends InputAdapter {
 
     private WorldController worldController;

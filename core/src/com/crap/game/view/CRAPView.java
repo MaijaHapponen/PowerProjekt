@@ -16,9 +16,6 @@ import java.util.ArrayList;
 
 import static com.crap.game.model.Constants.PIXEL_PER_TILE;
 
-/**
- * Created by Maija on 2016-04-21.
- */
 public class CRAPView extends ScreenAdapter{
 
     private SpriteBatch batch;

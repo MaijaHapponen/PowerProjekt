@@ -1,8 +1,5 @@
 package com.crap.game.model;
 
-/**
- * Created by Maija on 2016-05-18.
- */
 public class Menu {
 
     private String gameName;

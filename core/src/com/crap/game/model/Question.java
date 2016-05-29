@@ -2,9 +2,6 @@ package com.crap.game.model;
 
 import java.util.List;
 
-/**
- * Created by Lisa on 15/05/16.
- */
 public class Question {
     private String question;
     private List<String> alternatives;

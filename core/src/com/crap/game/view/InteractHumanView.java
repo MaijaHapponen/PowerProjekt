@@ -13,9 +13,6 @@ import com.crap.game.model.Human;
 import com.crap.game.model.InteractHuman;
 import com.crap.game.model.TextForInteraction;
 
-/**
- * Created by rebeccafinne on 16-05-23.
- */
 public class InteractHumanView extends ScreenAdapter {
 
     private SpriteBatch batch;

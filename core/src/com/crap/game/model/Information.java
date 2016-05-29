@@ -2,9 +2,6 @@ package com.crap.game.model;
 
 import java.util.ArrayList;
 
-/**
- * Created by Lisa on 17/05/16.
- */
 public class Information {
 
     public Information(ArrayList<Human> humans){

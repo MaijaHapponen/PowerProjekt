@@ -13,9 +13,6 @@ import com.crap.game.model.InteractMascot;
 
 import java.util.List;
 
-/**
- * Created by Maija on 2016-05-11.
- */
 public class InteractMascotView extends ScreenAdapter {
 
     private SpriteBatch batch;

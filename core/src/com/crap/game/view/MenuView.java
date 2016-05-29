@@ -10,9 +10,6 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.crap.game.model.Menu;
 import com.crap.game.model.TextForInteraction;
 
-/**
- * Created by Maija on 2016-05-11.
- */
 public class MenuView extends ScreenAdapter{
 
     private SpriteBatch batch;

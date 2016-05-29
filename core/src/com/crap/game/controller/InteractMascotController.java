@@ -9,9 +9,6 @@ import com.crap.game.model.Mascot;
 import com.crap.game.view.InteractMascotView;
 import com.crap.game.model.Character;
 
-/**
- * Created by Maija on 2016-05-18.
- */
 public class InteractMascotController extends InputAdapter {
 
     private InteractMascotView interactMascotView;

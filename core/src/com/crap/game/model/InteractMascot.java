@@ -2,9 +2,6 @@ package com.crap.game.model;
 
 import java.util.List;
 
-/**
- * Created by rebeccafinne on 16-05-20.
- */
 public class InteractMascot {
 
     private String currentString;

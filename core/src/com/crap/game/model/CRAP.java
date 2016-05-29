@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 import static com.crap.game.model.Constants.*;
 
-/**
- * Created by Lisa on 24/04/16.
- */
 public class CRAP {
 
     public enum Worlds{HORSAL, EDIT, HUBBEN, ZALOONEN, HIDDEN_ROOM}

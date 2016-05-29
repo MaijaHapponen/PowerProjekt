@@ -3,9 +3,6 @@ package com.crap.game.model;
 import static com.crap.game.model.Constants.*;
 import java.util.Random;
 
-/**
- * Created by Lisa on 25/04/16.
- */
 public abstract class Character{
 
     private String name;

@@ -11,9 +11,6 @@ import com.crap.game.model.Position;
 
 import static com.crap.game.model.Constants.*;
 
-/**
- * Created by Maija on 2016-05-02.
- */
 public class PlayerView extends CharacterView implements Screen{
 
     private Player player;

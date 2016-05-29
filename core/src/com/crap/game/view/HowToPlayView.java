@@ -9,9 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-/**
- * Created by rebeccafinne on 2016-05-17.
- */
+
 public class HowToPlayView extends ScreenAdapter{
 
     private String[] instructionItems;

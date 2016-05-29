@@ -8,9 +8,6 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.crap.game.model.*;
 import java.util.Iterator;
 
-/**
- * Created by rebeccafinne on 2016-04-22.
- */
 public class CollisionController {
 
     CollisionModel collisionModel;

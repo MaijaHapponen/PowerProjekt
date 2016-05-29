@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by andrea on 2016-05-23.
- */
 public class InformationForQuestion {
 
     public InformationForQuestion(ArrayList<Mascot> mascots){

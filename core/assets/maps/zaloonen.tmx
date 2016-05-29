@@ -95,36 +95,36 @@
   <object id="2" x="96" y="674" width="14" height="69"/>
   <object id="3" x="96" y="737" width="140" height="6"/>
   <object id="4" x="225" y="741" width="12" height="60"/>
-  <object id="5" x="124" y="2" width="67" height="124"/>
-  <object id="6" x="224" y="6" width="196" height="86"/>
-  <object id="7" x="417" y="1" width="65" height="289"/>
-  <object id="8" x="222" y="222" width="252" height="69"/>
-  <object id="10" x="492" y="14" width="40" height="40"/>
-  <object id="11" x="669" y="1" width="128" height="122"/>
-  <object id="12" x="736" y="446" width="65" height="131"/>
-  <object id="13" x="556" y="675" width="41" height="49"/>
-  <object id="14" x="606" y="609" width="64" height="109"/>
-  <object id="23" x="492" y="77" width="40" height="40"/>
-  <object id="24" x="494" y="141" width="40" height="40"/>
-  <object id="25" x="737" y="287" width="60" height="87"/>
-  <object id="27" x="542" y="447" width="64" height="129"/>
-  <object id="28" x="607" y="450.5" width="127" height="107.5"/>
+  <object id="5" x="124" y="2" width="67" height="114"/>
+  <object id="6" x="224" y="6" width="196" height="77"/>
+  <object id="7" x="417" y="1" width="65" height="280"/>
+  <object id="8" x="222" y="222" width="252" height="59"/>
+  <object id="10" x="492" y="14" width="40" height="33"/>
+  <object id="11" x="669" y="1" width="128" height="112"/>
+  <object id="12" x="736" y="446" width="65" height="122"/>
+  <object id="13" x="556" y="675" width="41" height="43"/>
+  <object id="14" x="606" y="609" width="64" height="103"/>
+  <object id="23" x="492" y="77" width="40" height="34"/>
+  <object id="24" x="494" y="141" width="40" height="32"/>
+  <object id="25" x="737" y="287" width="60" height="76"/>
+  <object id="27" x="542" y="447" width="64" height="121"/>
+  <object id="28" x="607" y="450.5" width="127" height="104.5"/>
   <object id="29" x="555.5" y="610.5" width="41" height="49"/>
-  <object id="30" x="681.5" y="675.5" width="41" height="49"/>
+  <object id="30" x="681.5" y="675.5" width="41" height="42.5"/>
   <object id="31" x="681.5" y="609.5" width="41" height="49"/>
-  <object id="32" x="458.5" y="673.5" width="41" height="49"/>
+  <object id="32" x="458.5" y="673.5" width="41" height="43.5"/>
   <object id="33" x="458.5" y="610.5" width="41" height="49"/>
-  <object id="34" x="330.5" y="674.5" width="41" height="49"/>
+  <object id="34" x="330.5" y="674.5" width="41" height="41.5"/>
   <object id="35" x="331.5" y="610.5" width="41" height="49"/>
-  <object id="36" x="140.5" y="482.5" width="41" height="49"/>
-  <object id="37" x="265.5" y="418.5" width="41" height="49"/>
-  <object id="38" x="266.5" y="483.5" width="41" height="49"/>
-  <object id="39" x="138.5" y="419.5" width="41" height="49"/>
+  <object id="36" x="140.5" y="482.5" width="41" height="41.5"/>
+  <object id="37" x="265.5" y="418.5" width="41" height="42.5"/>
+  <object id="38" x="266.5" y="483.5" width="41" height="39.5"/>
+  <object id="39" x="138.5" y="419.5" width="41" height="45.5"/>
   <object id="40" x="190.5" y="418.5" width="62.5" height="105.5"/>
-  <object id="41" x="383" y="611.5" width="64" height="109"/>
+  <object id="41" x="383" y="611.5" width="64" height="101.5"/>
   <object id="42" x="130" y="332" width="123" height="60"/>
   <object id="44" x="786" y="162" width="16" height="20"/>
-  <object id="46" x="1.5" y="189" width="90.5" height="97"/>
+  <object id="46" x="1.5" y="189" width="90.5" height="89"/>
  </objectgroup>
  <objectgroup name="SlowLayer">
   <object id="16" x="13" y="8" width="5" height="3"/>

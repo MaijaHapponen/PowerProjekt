@@ -25,7 +25,7 @@ public class InteractionController {
         for (int i = 0; i < gameView.getHumansList().size(); i++) {
             CharacterView characterView = gameView.getHumansList().get(i);
 
-            if(characterView.getCharacter().getWorld() == gameView.getGame().getCurrectWorld()) {
+            if(characterView.getCharacter().getWorld() == gameView.getCRAP().getCurrectWorld()) {
                 if (interactionModel.isInteraction(characterView.getCharacter(), x, y)) {
                     if (!interactionModel.getIsInteracting()) {
                         setInteractingCharacter(characterView.getCharacter(), characterView);
@@ -41,7 +41,7 @@ public class InteractionController {
         for(int i=0; i< gameView.getMascotsList().size(); i++){
             CharacterView characterView = gameView.getMascotsList().get(i);
 
-            if(characterView.getCharacter().getWorld() == gameView.getGame().getCurrectWorld() &&
+            if(characterView.getCharacter().getWorld() == gameView.getCRAP().getCurrectWorld() &&
                     !((Mascot) characterView.getCharacter()).isCaught()) {
                 if (interactionModel.isInteraction(characterView.getCharacter(), x, y)) {
                     if (!interactionModel.getIsInteracting()) {
@@ -58,7 +58,7 @@ public class InteractionController {
         for (int i = 0; i < gameView.getHumansList().size(); i++) {
             CharacterView characterView = gameView.getHumansList().get(i);
 
-            if(characterView.getCharacter().getWorld() == gameView.getGame().getCurrectWorld()) {
+            if(characterView.getCharacter().getWorld() == gameView.getCRAP().getCurrectWorld()) {
                 if (interactionModel.isInteraction(characterView.getCharacter(), x, y) &&
                         !characterView.getCharacter().equals(characterMoving)) {
                     return true;

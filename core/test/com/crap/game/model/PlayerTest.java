@@ -102,10 +102,10 @@ public class PlayerTest {
 
     @Test
     public void testGetWorld(){
-        Game.Worlds world = Game.Worlds.EDIT;
+        CRAP.Worlds world = CRAP.Worlds.EDIT;
         Player player = new Player("HEJ", 50, 50);
         player.setWorld(world);
-        assertTrue(player.getWorld().equals(Game.Worlds.EDIT));
+        assertTrue(player.getWorld().equals(CRAP.Worlds.EDIT));
     }
 
     @Test

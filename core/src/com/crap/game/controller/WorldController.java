@@ -1,32 +1,32 @@
 package com.crap.game.controller;
 
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.crap.game.model.Game;
+import com.crap.game.model.CRAP;
 import com.crap.game.view.GameView;
 
 import static com.crap.game.model.Constants.*;
-import static com.crap.game.model.Game.Worlds.*;
+import static com.crap.game.model.CRAP.Worlds.*;
 
 /**
  * Created by andrea on 2016-04-28.
  */
 public class WorldController {
 
-    private Game model;
+    private CRAP model;
     private PlayerController playerController;
     private HumanMascotController humanMascotController;
     private GameView view;
 
-    public WorldController(Game game, PlayerController controller, HumanMascotController humanMascotController, GameView view) {
+    public WorldController(CRAP CRAP, PlayerController controller, CharacterController characterController, GameView view) {
 
         this.playerController = controller;
         this.humanMascotController = humanMascotController;
 
-        this.model = game;
+        this.model = CRAP;
         this.view = view;
     }
 
-    public void setWorld(Game.Worlds worlds){
+    public void setWorld(CRAP.Worlds worlds){
 
         float x = playerController.getCharacter().getPosition().getX();
         float y = playerController.getCharacter().getPosition().getY();

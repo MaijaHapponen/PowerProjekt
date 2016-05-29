@@ -4,13 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.crap.game.model.CRAP;
 import com.crap.game.model.Constants;
-import com.crap.game.model.Game;
 import com.crap.game.model.GameStates;
 import com.crap.game.model.Mascot;
 import com.crap.game.view.GameView;
 
-import static com.crap.game.model.Game.Worlds.*;
+import static com.crap.game.model.CRAP.Worlds.*;
 
 /**
  * Created by Lisa on 18/04/16.
@@ -19,14 +19,14 @@ public class GameController extends InputAdapter {
 
     private WorldController worldController;
     private GameView view;
-    private Game model;
+    private CRAP model;
     private OrthographicCamera camera;
     private PlayerController playerController;
     private int keyCode;
     private HumanMascotController humanMascotController;
 
 
-    public GameController(GameView view, Game game){
+    public GameController(GameView view, CRAP CRAP){
 
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
@@ -35,7 +35,7 @@ public class GameController extends InputAdapter {
         camera.setToOrtho(false, width, height);
 
         this.view = view;
-        this.model = game;
+        this.model = CRAP;
 
         this.view.setPlayer(this.model.player);
         this.view.getPlayerView().setCamera(this.camera);

@@ -1,8 +1,6 @@
-package test;
+package com.crap.game.model;
 
-import com.crap.game.model.InteractMascot;
-import com.crap.game.model.Mascot;
-import com.crap.game.model.Question;
+
 import org.junit.Test;
 
 import java.util.ArrayList;

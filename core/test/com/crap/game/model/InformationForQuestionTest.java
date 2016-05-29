@@ -1,6 +1,5 @@
-package test;
-import com.crap.game.model.Mascot;
-import com.crap.game.model.Question;
+package com.crap.game.model;
+
 import org.junit.Test;
 
 

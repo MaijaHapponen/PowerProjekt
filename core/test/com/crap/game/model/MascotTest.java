@@ -1,9 +1,6 @@
-package test;
+package com.crap.game.model;
 
-import com.crap.game.model.Constants;
-import com.crap.game.model.Direction;
-import com.crap.game.model.Mascot;
-import com.crap.game.model.Question;
+
 import org.junit.Test;
 
 import java.util.Arrays;

@@ -1,7 +1,6 @@
-package test;
+package com.crap.game.model;
 
-import com.crap.game.model.Mascot;
-import com.crap.game.model.Progress;
+
 import org.junit.Test;
 
 import java.util.ArrayList;

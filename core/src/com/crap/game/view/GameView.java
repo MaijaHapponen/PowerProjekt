@@ -237,6 +237,8 @@ public class GameView extends ScreenAdapter{
             interactionView.setWelcomeLabel("hörsalsvägen");
         }if(world.equals("hiddenroom")){
             interactionView.setWelcomeLabel(("hiddenroom"));
+        }if(world.equals("remove")){
+            interactionView.setWelcomeLabel("remove");
         }
     }
 

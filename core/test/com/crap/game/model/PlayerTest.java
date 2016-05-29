@@ -1,11 +1,8 @@
-package test;
+package com.crap.game.model;
 
-import static com.crap.game.model.Constants.NORMAL_SPEED;
 import static org.junit.Assert.*;
 
-import com.crap.game.model.*;
 
-import com.crap.game.model.Character;
 import org.junit.Test;
 
 /**

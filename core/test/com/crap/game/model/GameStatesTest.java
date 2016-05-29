@@ -1,6 +1,5 @@
-package test;
+package com.crap.game.model;
 
-import com.crap.game.model.GameStates;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

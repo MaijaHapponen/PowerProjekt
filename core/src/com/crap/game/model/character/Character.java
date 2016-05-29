@@ -1,6 +1,6 @@
 package com.crap.game.model.character;
 
-import com.crap.game.model.primary.CRAP;
+import com.crap.game.model.information.enums.Worlds;
 import com.crap.game.model.primary.Position;
 import com.crap.game.model.information.Constants;
 import com.crap.game.model.information.enums.Direction;
@@ -15,7 +15,7 @@ public abstract class Character{
 
     private float width;
     private float height;
-    private CRAP.Worlds world;
+    private Worlds world;
 
     private Direction walkAwayDirection;
     private Direction lastDirection;
@@ -33,7 +33,7 @@ public abstract class Character{
         this.position = new Position(0,0);
     }
 
-    public Character(String name, Position position, CRAP.Worlds world){
+    public Character(String name, Position position, Worlds world){
         this.name = name;
         this.position = position;
         this.world = world;
@@ -186,11 +186,11 @@ public abstract class Character{
         return this.name;
     }
 
-    public CRAP.Worlds getWorld(){
+    public Worlds getWorld(){
         return this.world;
     }
 
-    public void setWorld(CRAP.Worlds world) {
+    public void setWorld(Worlds world) {
         this.world = world;
     }
 

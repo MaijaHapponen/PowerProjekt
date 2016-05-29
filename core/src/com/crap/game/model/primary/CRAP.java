@@ -5,6 +5,7 @@ import com.crap.game.model.character.mascotinteraction.InformationForQuestion;
 import com.crap.game.model.character.Human;
 import com.crap.game.model.character.Mascot;
 import com.crap.game.model.character.Player;
+import com.crap.game.model.information.enums.Worlds;
 
 import java.util.ArrayList;
 
@@ -12,7 +13,6 @@ import static com.crap.game.model.information.Constants.*;
 
 public class CRAP {
 
-    public enum Worlds{HORSAL, EDIT, HUBBEN, ZALOONEN, HIDDEN_ROOM}
 
     private float startPositionX;
     private float startPositionY;
@@ -25,7 +25,7 @@ public class CRAP {
 
     private boolean isEntrance;
     private Position entrancePosition;
-    private CRAP.Worlds previousRoom;
+    private Worlds previousRoom;
 
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
@@ -117,7 +117,7 @@ public class CRAP {
         return this.entrancePosition;
     }
 
-    public CRAP.Worlds getPreviousRoom(){
+    public Worlds getPreviousRoom(){
         return this.previousRoom;
     }
 
@@ -125,7 +125,7 @@ public class CRAP {
         isEntrance = false;
     }
 
-    public void setPreviousRoom(CRAP.Worlds lastRoom) {
+    public void setPreviousRoom(Worlds lastRoom) {
         this.previousRoom = lastRoom;
     }
 

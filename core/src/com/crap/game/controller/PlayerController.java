@@ -46,7 +46,7 @@ public class PlayerController extends CharacterController {
 
     public void updateCamera(){
         playerView.moveCamera(getCharacter().getPosition().getX(), getCharacter().getPosition().getY(),
-                getCRAPView().getWorldHeight()+ PIXEL_PER_TILE, getCRAPView().getWorldWidth()+PIXEL_PER_TILE);
+                getCRAPView().getWorldWidth()+PIXEL_PER_TILE, getCRAPView().getWorldHeight()+PIXEL_PER_TILE);
     }
 
     //Returns true if there is a collision.

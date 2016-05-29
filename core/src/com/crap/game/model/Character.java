@@ -78,26 +78,26 @@ public abstract class Character{
     }
 
     public void moveUp(float mapHeight){
-        if(!(this.getPosition().getY() > mapHeight)) {
-            getPosition().setPosition(getX(), getY() + speed);
+        if(!(this.position.getY() > mapHeight)) {
+            position.setPosition(getX(), getY() + speed);
         }
     }
 
     public void moveDown(){
-        if(!(this.getPosition().getY() < Constants.PROGRESS_BAR_HEIGHT)) {
-            getPosition().setPosition(getX(), getY() - speed);
+        if(!(this.position.getY() < Constants.PROGRESS_BAR_HEIGHT)) {
+            position.setPosition(getX(), getY() - speed);
         }
     }
 
     public void moveLeft(){
         if(!(this.position.getX() <0)) {
-            getPosition().setPosition(getX() - speed, getY());
+            position.setPosition(getX() - speed, getY());
         }
     }
 
     public void moveRight(float mapWidth){
-        if(!(this.getPosition().getX() > mapWidth)) {
-            getPosition().setPosition(getX() + speed, getY());
+        if(!(this.position.getX() > mapWidth)) {
+            position.setPosition(getX() + speed, getY());
         }
     }
 

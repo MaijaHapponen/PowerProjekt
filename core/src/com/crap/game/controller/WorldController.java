@@ -20,7 +20,7 @@ public class WorldController {
     public WorldController(CRAP CRAP, PlayerController controller, CharacterController characterController, CRAPView view) {
 
         this.playerController = controller;
-        this.humanMascotController = humanMascotController;
+        this.humanMascotController = (HumanMascotController) characterController;
 
         this.model = CRAP;
         this.view = view;

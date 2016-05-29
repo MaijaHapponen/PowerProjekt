@@ -38,6 +38,7 @@ public class InteractHumanController extends InputAdapter {
             else if(interactHuman.getCurrentString().equals(TextForInteraction.exit) ||
                     interactHuman.getCurrentString().equals(TextForInteraction.cancel)){
                 StateController.updateState(GameStates.PLAY);
+                interactHumanView.dispose();
             }
         }
 

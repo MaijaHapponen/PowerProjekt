@@ -1,7 +1,6 @@
-package test;
+package com.crap.game.model;
 
-import com.crap.game.model.Constants;
-import com.crap.game.model.Game;
+
 import static org.junit.Assert.*;
 
 import com.crap.game.model.Mascot;

@@ -1,7 +1,6 @@
-package test;
+package com.crap.game.model;
 
 import static org.junit.Assert.*;
-import com.crap.game.model.*;
 import org.junit.Test;
 
 /**

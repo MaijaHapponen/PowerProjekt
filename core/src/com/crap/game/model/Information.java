@@ -25,7 +25,7 @@ public class Information {
             else if(humans.get(i).getName() == "DHuman") {  
 
                 humans.get(i).setGreetingInformation("Hello! I study the programme \n of Datateknik. " +
-                        "Can I help you\n with some information? " + "What would \n you like to know more about?");
+                        "Can I help you\n with some information? " + "What\n would you like to know\n more about?");
 
                 humans.get(i).setProgrammeInformation("Hacke Hackspetts favorite \n color is Orange");
                 humans.get(i).setLocationInformation("Hacke Hackspett is \n fascinated by cars");

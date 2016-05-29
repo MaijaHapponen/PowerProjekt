@@ -1,8 +1,6 @@
-package test;
+package com.crap.game.model;
 
-import com.crap.game.model.CollisionModel;
-import com.crap.game.model.Player;
-import com.crap.game.model.TileType;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,6 +1,9 @@
 package com.crap.game.model;
 
 
+import com.crap.game.model.character.Player;
+import com.crap.game.model.character.collision.CollisionModel;
+import com.crap.game.model.information.enums.TileType;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

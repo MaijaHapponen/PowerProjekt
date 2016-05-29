@@ -1,5 +1,7 @@
 package com.crap.game.model;
 
+import com.crap.game.model.character.Mascot;
+import com.crap.game.model.character.mascotinteraction.Question;
 import org.junit.Test;
 
 

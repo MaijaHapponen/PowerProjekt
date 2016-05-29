@@ -1,6 +1,8 @@
 package com.crap.game.model;
 
 
+import com.crap.game.model.character.Mascot;
+import com.crap.game.model.primary.Progress;
 import org.junit.Test;
 
 import java.util.ArrayList;

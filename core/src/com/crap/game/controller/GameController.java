@@ -25,6 +25,7 @@ public class GameController extends InputAdapter {
     private int keyCode;
     private CharacterController characterController;
 
+
     public GameController(GameView view, Game game){
 
         float width = Gdx.graphics.getWidth();
@@ -58,6 +59,7 @@ public class GameController extends InputAdapter {
         if(view.isInteraction() && keycode == Input.Keys.SPACE){
             StateController.updateState(GameStates.INTERACT);
         }
+
         this.keyCode=keycode;
         return true;
     }
@@ -75,7 +77,6 @@ public class GameController extends InputAdapter {
 
         }else if(playerController.getCollisionController().getNewWorldName().equals("hubben")){
             view.setLabel("hubben");
-
             worldController.setWorld(HUBBEN);
 
         }else if(playerController.getCollisionController().getNewWorldName().equals("zaloonen")){
@@ -83,6 +84,8 @@ public class GameController extends InputAdapter {
 
             worldController.setWorld(ZALOONEN);
 
+        }else if(playerController.getCollisionController().getNewWorldName().equals("hiddenroom")){
+            view.setLabel("hiddenroom");
         }
     }
 
@@ -104,6 +107,7 @@ public class GameController extends InputAdapter {
 
     public void updateIfInteraction(){
         if(playerController.isInteractionWithMascot() || playerController.isInteractionWithHuman()){
+            playerController.stopWalkingAnimation(keyCode);
             view.setInteraction(true);
         }else{
             view.setInteraction(false);

@@ -63,6 +63,19 @@ public class InteractMascotTest {
     }
 
     @Test
+    public void testGetQuestion(){
+        Mascot mascot = new Mascot("hej");
+        List<String> answers = new ArrayList<String>() ;
+        answers.add("hej");
+        answers.add("tjo");
+        InteractMascot interactMascot = new InteractMascot(answers);
+        String question = "tjotjo";
+        Question forMascot = new Question(question, answers, 1);
+        mascot.setQuestion(forMascot);
+        assertTrue(interactMascot.getQuestion(mascot).equals(question));
+    }
+
+    @Test
     public void testSettersAndGetters() {
         List<String> answers = new ArrayList<String>() ;
         answers.add("hej");

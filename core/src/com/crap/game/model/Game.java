@@ -9,7 +9,7 @@ import static com.crap.game.model.Constants.*;
  */
 public class Game {
 
-    public enum Worlds{HORSAL, EDIT, HUBBEN, ZALOONEN}
+    public enum Worlds{HORSAL, EDIT, HUBBEN, ZALOONEN, HIDDEN_ROOM}
 
     private float startPositionX;
     private float startPositionY;
@@ -34,7 +34,7 @@ public class Game {
     private Worlds[] mascotsWorlds = {Worlds.HUBBEN, Worlds.EDIT, Worlds.HORSAL, Worlds.ZALOONEN};
 
     private String[] humansNames = {"ITHuman","EHuman","DHuman","ZHuman"};
-    private float[][] humanCoordinates = {{436, 503},{194, 87},{583, 51},{123, 98}};
+    private float[][] humanCoordinates = {{436, 503},{194, 87},{583, 101},{123, 98}};
     private Worlds[] humansWorlds = {Worlds.HORSAL, Worlds.EDIT, Worlds.HUBBEN, Worlds.HORSAL};
 
     public Game(){
@@ -91,11 +91,6 @@ public class Game {
         return progress;
     }
 
-    public void setStartPositionPlayer(float x, float y) {
-        this.startPositionX = x;
-        this.startPositionY = y;
-    }
-
     public void setCurrectWorld(Worlds currectWorld){
         this.currectWorld = currectWorld;
     }
@@ -115,10 +110,6 @@ public class Game {
     public void setEntrance(float x, float y){
         this.entrancePosition.setPosition(x,y);
         this.isEntrance = true;
-    }
-
-    public void setEntrancePosition(float x, float y){
-        this.entrancePosition.setPosition(x,y);
     }
 
     public Position getEntrancePosition(){

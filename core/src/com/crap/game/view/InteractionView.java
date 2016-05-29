@@ -39,6 +39,8 @@ public class InteractionView extends ScreenAdapter{
     private Label hubbenLabel;
     private Label zaloonenLabel;
     private Label horsalLabel;
+    private Label hiddenRoomLabel;
+
 
     public InteractionView(){
         batch = new SpriteBatch();
@@ -47,6 +49,8 @@ public class InteractionView extends ScreenAdapter{
         createInteraction();
         createWelcome();
     }
+
+
 
     public void createLabels(){
 
@@ -63,6 +67,8 @@ public class InteractionView extends ScreenAdapter{
         horsalLabel = new Label(String.format(TextForInteraction.welcomeToHorsalsvagen),
                 new Label.LabelStyle(font, Color.WHITE));
         talkLable = new Label(String.format(TextForInteraction.talkToCharacter),
+                new Label.LabelStyle(font, Color.WHITE));
+        hiddenRoomLabel = new Label(String.format(TextForInteraction.hiddenRoom),
                 new Label.LabelStyle(font, Color.WHITE));
 
     }
@@ -103,6 +109,8 @@ public class InteractionView extends ScreenAdapter{
             welcomeLabel = zaloonenLabel;
         }if(world.equals("hörsalsvägen")){
             welcomeLabel = horsalLabel;
+        }if(world.equals("hiddenroom")){
+            welcomeLabel = hiddenRoomLabel;
         }
     }
 
@@ -115,4 +123,6 @@ public class InteractionView extends ScreenAdapter{
         welcomeStage.dispose();
         batch.dispose();
     }
+
+
 }

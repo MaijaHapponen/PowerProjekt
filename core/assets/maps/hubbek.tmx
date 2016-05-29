@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="71">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="73">
  <tileset firstgid="1" name="open_tileset_2x" tilewidth="32" tileheight="32" tilecount="6840" columns="90">
   <image source="open_tileset_2x.png" width="2880" height="2432"/>
  </tileset>
@@ -118,6 +118,7 @@
  <objectgroup name="NewWorld">
   <object id="55" name="hubbeneditsand" x="4" y="691" width="25" height="90"/>
   <object id="56" x="148" y="566" height="14"/>
+  <object id="72" name="hiddenroom" x="3" y="302" width="60" height="369"/>
  </objectgroup>
  <objectgroup name="CharacterPositions">
   <object id="62" x="446.797" y="318.944" width="13.7476" height="9.62332">

@@ -52,7 +52,7 @@ public class WorldController {
                 break;
 
             case HUBBEN:
-                model.setEntrance(x,y);
+                model.setEntrance(x, y);
                 model.enterHubben();
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
@@ -69,6 +69,11 @@ public class WorldController {
                 characterController.updateCollisionController();
                 break;
 
+            case HIDDEN_ROOM:
+                model.setEntrance(x, y);
+                playerController.updateCollisionController();
+                characterController.updateCollisionController();
+                break;
             default:
 
                 System.out.println("Ohoh! Something went wrong");

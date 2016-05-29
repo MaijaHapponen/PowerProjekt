@@ -34,7 +34,7 @@ public class InteractMascotController extends InputAdapter {
             StateController.updateState(GameStates.PLAY);
             interactMascotView.dispose();
             if(!answeredCorrect) {
-                gameController.getCharacterController().resetWalkAwayState();
+                gameController.getHumanMascotController().resetWalkAwayState();
             }
         }
 

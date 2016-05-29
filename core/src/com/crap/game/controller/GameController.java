@@ -23,7 +23,7 @@ public class GameController extends InputAdapter {
     private OrthographicCamera camera;
     private PlayerController playerController;
     private int keyCode;
-    private CharacterController characterController;
+    private HumanMascotController humanMascotController;
 
 
     public GameController(GameView view, CRAP CRAP){
@@ -44,8 +44,8 @@ public class GameController extends InputAdapter {
         this.view.setMascots(this.model.mascots);
 
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
-        this.characterController = new CharacterController(view);
-        this.worldController = new WorldController(this.model, this.playerController, this.characterController, this.view);
+        this.humanMascotController = new HumanMascotController(view);
+        this.worldController = new WorldController(this.model, this.playerController, this.humanMascotController, this.view);
 
         worldController.setWorld(HORSAL);
         model.player.setPosition(Constants.START_X_COORDINATE_PLAYER, Constants.START_Y_COORDINATE_PLAYER);
@@ -89,8 +89,8 @@ public class GameController extends InputAdapter {
         }
     }
 
-    public CharacterController getCharacterController(){
-        return this.characterController;
+    public HumanMascotController getHumanMascotController(){
+        return this.humanMascotController;
     }
 
     public PlayerController getPlayerController(){
@@ -133,7 +133,7 @@ public class GameController extends InputAdapter {
             playerController.stopWalkingAnimation(keyCode);
         }
 
-        characterController.walkAway(playerController.getInteractionController().getInteractingCharacter(),
+        humanMascotController.walkAway(playerController.getInteractionController().getInteractingCharacter(),
                 playerController.getInteractionController().getInteractingCharacterView());
     }
 

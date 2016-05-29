@@ -1,16 +1,11 @@
-package com.crap.game.model;
+package com.crap.game.model.character;
 
-
-import com.crap.game.model.character.Mascot;
 import com.crap.game.model.information.Constants;
 import com.crap.game.model.information.enums.Direction;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by rebeccafinne on 16-05-26.
- */
 public class MascotTest {
 
     @Test

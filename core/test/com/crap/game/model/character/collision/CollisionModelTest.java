@@ -1,16 +1,12 @@
-package com.crap.game.model;
+package com.crap.game.model.character.collision;
 
 
 import com.crap.game.model.character.Player;
-import com.crap.game.model.character.collision.CollisionModel;
 import com.crap.game.model.information.enums.TileType;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by rebeccafinne on 2016-04-22.
- */
 public class CollisionModelTest {
 
     @Test

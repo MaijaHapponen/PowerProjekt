@@ -1,13 +1,9 @@
-package com.crap.game.model;
+package com.crap.game.model.information.enums;
 
-import com.crap.game.model.information.enums.GameStates;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created by rebeccafinne on 2016-04-22.
- */
 public class GameStatesTest {
 
     @Test

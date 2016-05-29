@@ -1,12 +1,9 @@
-package com.crap.game.model;
+package com.crap.game.model.menu;
 
 
-import com.crap.game.model.menu.Menu;
 import org.junit.Test;
 import static org.junit.Assert.*;
-/**
- * Created by rebeccafinne on 16-05-24.
- */
+
 public class MenuTest {
 
 

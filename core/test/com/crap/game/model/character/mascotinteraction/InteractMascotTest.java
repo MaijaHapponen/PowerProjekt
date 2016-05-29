@@ -1,4 +1,4 @@
-package com.crap.game.model;
+package com.crap.game.model.character.mascotinteraction;
 
 
 import com.crap.game.model.character.Mascot;

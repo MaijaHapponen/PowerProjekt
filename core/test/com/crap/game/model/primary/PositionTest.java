@@ -1,13 +1,9 @@
-package com.crap.game.model;
+package com.crap.game.model.primary;
 
-import com.crap.game.model.primary.Position;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by se on 22/04/16.
- */
 public class PositionTest {
 
     @Test

@@ -1,17 +1,13 @@
-package com.crap.game.model;
+package com.crap.game.model.character.humaninteraction;
 
 
 import com.crap.game.model.character.Human;
-import com.crap.game.model.character.humaninteraction.Information;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 
 import java.util.ArrayList;
 
-/**
- * Created by rebeccafinne on 16-05-24.
- */
 public class InformationTest {
 
 

@@ -1,14 +1,10 @@
-package com.crap.game.model;
+package com.crap.game.model.character.collision;
 
 import static org.junit.Assert.*;
 
 import com.crap.game.model.character.Player;
-import com.crap.game.model.character.collision.Interaction;
 import org.junit.Test;
 
-/**
- * Created by rebeccafinne on 2016-05-16.
- */
 public class InteractionTest {
 
     @Test

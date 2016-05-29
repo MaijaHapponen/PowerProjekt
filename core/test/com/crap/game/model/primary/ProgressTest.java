@@ -1,16 +1,12 @@
-package com.crap.game.model;
+package com.crap.game.model.primary;
 
 
 import com.crap.game.model.character.Mascot;
-import com.crap.game.model.primary.Progress;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import static org.junit.Assert.*;
 
-/**
- * Created by rebeccafinne on 2016-05-10.
- */
 public class ProgressTest {
 
     @Test

@@ -1,18 +1,13 @@
-package com.crap.game.model;
+package com.crap.game.model.character.mascotinteraction;
 
 import com.crap.game.model.character.Mascot;
-import com.crap.game.model.character.mascotinteraction.Question;
 import org.junit.Test;
-
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 import static org.junit.Assert.*;
-/**
- * Created by rebeccafinne on 16-05-24.
- */
 public class InformationForQuestionTest {
 
     @Test

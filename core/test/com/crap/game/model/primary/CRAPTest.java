@@ -1,15 +1,11 @@
-package com.crap.game.model;
+package com.crap.game.model.primary;
 
 import static org.junit.Assert.*;
 
 import com.crap.game.model.character.Mascot;
 import com.crap.game.model.information.Constants;
-import com.crap.game.model.primary.CRAP;
 import org.junit.Test;
 
-/**
- * Created by rebeccafinne on 2016-05-10.
- */
 public class CRAPTest {
 
     @Test
@@ -58,13 +54,8 @@ public class CRAPTest {
         assertTrue(CRAP.getHumans().equals(CRAP.humans));
         CRAP.createMascots();
         assertTrue(CRAP.getMascots().equals(CRAP.mascots));
-<<<<<<< HEAD
-        CRAP.setCurrectWorld(com.crap.game.model.primary.CRAP.Worlds.EDIT);
-        assertTrue(CRAP.getCurrectWorld().equals(com.crap.game.model.primary.CRAP.Worlds.EDIT));
-=======
-        CRAP.setCurrentWorld(com.crap.game.model.CRAP.Worlds.EDIT);
-        assertTrue(CRAP.getCurrentWorld().equals(com.crap.game.model.CRAP.Worlds.EDIT));
->>>>>>> 51bfcf2d64a859a2c39b8aa75f125a0250c4477d
+        CRAP.setCurrentWorld(com.crap.game.model.primary.CRAP.Worlds.EDIT);
+        assertTrue(CRAP.getCurrentWorld().equals(com.crap.game.model.primary.CRAP.Worlds.EDIT));
 
     }
 

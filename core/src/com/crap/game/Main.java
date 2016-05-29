@@ -1,6 +1,6 @@
 package com.crap.game;
 
-import com.crap.game.controller.StateController;
+import com.crap.game.controller.game.primary.StateController;
 
 public class Main extends com.badlogic.gdx.Game {
 

@@ -1,10 +1,10 @@
 package com.crap.game.model;
 
 
+import com.crap.game.model.character.Mascot;
+import com.crap.game.model.information.Constants;
+import com.crap.game.model.information.enums.Direction;
 import org.junit.Test;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.Assert.*;
 

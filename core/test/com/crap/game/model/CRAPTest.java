@@ -2,6 +2,9 @@ package com.crap.game.model;
 
 import static org.junit.Assert.*;
 
+import com.crap.game.model.character.Mascot;
+import com.crap.game.model.information.Constants;
+import com.crap.game.model.primary.CRAP;
 import org.junit.Test;
 
 /**
@@ -47,16 +50,21 @@ public class CRAPTest {
         CRAP CRAP = new CRAP();
         CRAP.setNewWorld(true);
         assertTrue(CRAP.getNewWorld());
-        CRAP.setPreviousRoom(com.crap.game.model.CRAP.Worlds.EDIT);
-        assertTrue(CRAP.getPreviousRoom().equals(com.crap.game.model.CRAP.Worlds.EDIT));
+        CRAP.setPreviousRoom(com.crap.game.model.primary.CRAP.Worlds.EDIT);
+        assertTrue(CRAP.getPreviousRoom().equals(com.crap.game.model.primary.CRAP.Worlds.EDIT));
         CRAP.setEntrance(50,50);
         assertTrue((CRAP.getEntrancePosition().getX() == 50) && (CRAP.getEntrancePosition().getY() == 50));
         CRAP.createHumans();
         assertTrue(CRAP.getHumans().equals(CRAP.humans));
         CRAP.createMascots();
         assertTrue(CRAP.getMascots().equals(CRAP.mascots));
-        CRAP.setCurrectWorld(com.crap.game.model.CRAP.Worlds.EDIT);
-        assertTrue(CRAP.getCurrectWorld().equals(com.crap.game.model.CRAP.Worlds.EDIT));
+<<<<<<< HEAD
+        CRAP.setCurrectWorld(com.crap.game.model.primary.CRAP.Worlds.EDIT);
+        assertTrue(CRAP.getCurrectWorld().equals(com.crap.game.model.primary.CRAP.Worlds.EDIT));
+=======
+        CRAP.setCurrentWorld(com.crap.game.model.CRAP.Worlds.EDIT);
+        assertTrue(CRAP.getCurrentWorld().equals(com.crap.game.model.CRAP.Worlds.EDIT));
+>>>>>>> 51bfcf2d64a859a2c39b8aa75f125a0250c4477d
 
     }
 

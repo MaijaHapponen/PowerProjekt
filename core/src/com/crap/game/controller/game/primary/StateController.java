@@ -49,14 +49,16 @@ public class StateController {
                 setGameMode(false);
                 if(controller.getPlayerController().isInteractionWithMascot()) {
                     InteractMascotView interactMascotView = new InteractMascotView(
-                            controller.getPlayerController().getInteractionController().getInteractingCharacter());
+                            controller.getInteractingCharacter());
                     new InteractMascotController(interactMascotView, controller);
+
                     game.setScreen(interactMascotView);
                 }
                 else if(controller.getPlayerController().isInteractionWithHuman()) {
                      InteractHumanView interactHumanView = new InteractHumanView(
-                             controller.getPlayerController().getInteractionController().getInteractingCharacter());
+                             controller.getInteractingCharacter());
                      new InteractHumanController(interactHumanView);
+
                      game.setScreen(interactHumanView);
                  }
                 break;

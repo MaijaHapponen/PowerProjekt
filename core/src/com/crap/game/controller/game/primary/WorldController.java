@@ -3,11 +3,12 @@ package com.crap.game.controller.game.primary;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.controller.game.character.CharacterController;
 import com.crap.game.controller.game.character.PlayerController;
+import com.crap.game.model.information.enums.Worlds;
 import com.crap.game.model.primary.CRAP;
 import com.crap.game.view.primary.CRAPView;
 
 import static com.crap.game.model.information.Constants.*;
-import static com.crap.game.model.primary.CRAP.Worlds.*;
+import static com.crap.game.model.information.enums.Worlds.*;
 
 public class WorldController {
 
@@ -25,7 +26,7 @@ public class WorldController {
         this.view = view;
     }
 
-    public void setWorld(CRAP.Worlds worlds){
+    public void setWorld(Worlds worlds){
         float x = playerController.getCharacter().getPosition().getX();
         float y = playerController.getCharacter().getPosition().getY();
         model.setCurrentWorld(worlds);

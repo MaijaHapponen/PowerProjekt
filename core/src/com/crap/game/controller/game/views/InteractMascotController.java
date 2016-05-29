@@ -14,7 +14,7 @@ import com.crap.game.model.character.Character;
 public class InteractMascotController extends InputAdapter {
 
     private InteractMascotView interactMascotView;
-    private com.crap.game.controller.game.primary.CRAPController CRAPController;
+    private CRAPController CRAPController;
     private InteractMascot interactMascot;
     private boolean answeredCorrect;
 

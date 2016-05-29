@@ -6,13 +6,14 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.crap.game.controller.game.character.HumanMascotController;
 import com.crap.game.controller.game.character.PlayerController;
+import com.crap.game.model.character.*;
+import com.crap.game.model.character.Character;
 import com.crap.game.model.primary.CRAP;
 import com.crap.game.model.information.Constants;
 import com.crap.game.model.information.enums.GameStates;
-import com.crap.game.model.character.Mascot;
 import com.crap.game.view.primary.CRAPView;
 
-import static com.crap.game.model.primary.CRAP.Worlds.*;
+import static com.crap.game.model.information.enums.Worlds.*;
 
 public class CRAPController extends InputAdapter {
 
@@ -120,11 +121,15 @@ public class CRAPController extends InputAdapter {
         } else {
             playerController.stopWalkingAnimation(keyCode);
         }
-        humanMascotController.walkAway(playerController.getInteractionController().getInteractingCharacter(),
-                playerController.getInteractionController().getInteractingCharacterView());
+        humanMascotController.walkAway(playerController.getInteractingCharacter(),
+                playerController.getInteractingCharacterView());
     }
     public void mascotCaught(Mascot caughtMascot){
         model.mascotCaught(caughtMascot);
+    }
+
+    public Character getInteractingCharacter(){
+        return playerController.getInteractingCharacter();
     }
 }
 

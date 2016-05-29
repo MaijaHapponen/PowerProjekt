@@ -2,8 +2,11 @@ package com.crap.game.controller.game.character;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.MapObject;
+import com.crap.game.model.character.*;
+import com.crap.game.model.character.Character;
 import com.crap.game.model.information.enums.AnimationState;
 import com.crap.game.model.primary.Position;
+import com.crap.game.view.character.CharacterView;
 import com.crap.game.view.primary.CRAPView;
 import com.crap.game.view.character.PlayerView;
 
@@ -111,5 +114,11 @@ public class PlayerController extends CharacterController {
                 playerView.setAnimationState(AnimationState.STANDING_RIGHT);
                 break;
         }
+    }
+    public Character getInteractingCharacter(){
+        return interactionController.getInteractingCharacter();
+    }
+    public CharacterView getInteractingCharacterView(){
+        return interactionController.getInteractingCharacterView();
     }
 }

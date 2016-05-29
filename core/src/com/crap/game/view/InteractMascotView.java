@@ -4,15 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.*;
 
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crap.game.model.*;
 import com.crap.game.model.Character;
 import com.crap.game.model.InteractMascot;
@@ -94,18 +88,18 @@ public class InteractMascotView extends ScreenAdapter {
         else if(((Mascot)interactionCharacter).isCaught()) {
 
             font.setColor(Color.BLACK);
-            font.draw(batch, interactMascot.getRight(), TextForInteraction.alternativesPlacementX,
+            font.draw(batch, TextForInteraction.rightAnswer, TextForInteraction.alternativesPlacementX,
                     TextForInteraction.onlyInformationY);
-            font.draw(batch, interactMascot.getBack(), TextForInteraction.alternativesPlacementX,
+            font.draw(batch, TextForInteraction.returnToGame, TextForInteraction.alternativesPlacementX,
                     TextForInteraction.returnPlacementY);
             interactMascot.updateMascotCaught();
         }
 
         else{
             font.setColor(Color.BLACK);
-            font.draw(batch, interactMascot.getWrong(), TextForInteraction.alternativesPlacementX,
+            font.draw(batch, TextForInteraction.wrongAnswer, TextForInteraction.alternativesPlacementX,
                     TextForInteraction.onlyInformationY);
-            font.draw(batch, interactMascot.getBack(), TextForInteraction.alternativesPlacementX,
+            font.draw(batch, TextForInteraction.returnToGame, TextForInteraction.alternativesPlacementX,
                     TextForInteraction.returnPlacementY);
         }
 

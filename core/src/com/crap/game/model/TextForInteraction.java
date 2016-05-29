@@ -33,6 +33,10 @@ public final class TextForInteraction {
     public static final String howToPlay4 = "\n\n-Move with the arrowkeys.";
     public static final String howToPlayTitle = "This is how you play:";
 
+    //In InteractMascot
+    public static String rightAnswer = "You are right!";
+    public static String wrongAnswer = "You were wrong :(";
+
     //In InteractHumanView
     public static final String talkAboutProgramme = "Ask about programme";
     public static final String whereIsMascot = "Ask where mascot could be";
@@ -43,11 +47,13 @@ public final class TextForInteraction {
     public static final String welcomeToHubben = "Welcome to Hubben 2.1";
     public static final String welcomeToZaloonen = "Welcome to Zaloonen";
     public static final String welcomeToHorsalsvagen = "Welcome to Hörsalsvägen";
+    public static final String hiddenRoom = "This is the compound room, it \n is where the compound\n students hangs out.\n For you"+
+            "this will\n be secret a little\n while longer.";
 
     //General
-    public static String returnMenu = "Press backspace to return to menu";
-    public static String exit = "Exit";
-    public static String cancel = "Cancel";
+    public static final String returnMenu = "Press backspace to return to menu";
+    public static final String exit = "Exit";
+    public static final String cancel = "Cancel";
 
     //MenuView
     public static final String playTheGame = "Play the game";

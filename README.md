@@ -22,11 +22,11 @@ Build command
 
 Navigate to top folder of the project.
 
-gradle desktop:run
+./gradlew run
 
 ####To run the tests for the application:
 
-gradle core:test
+./gradlew test
 
 ####To view the test coverage report
 

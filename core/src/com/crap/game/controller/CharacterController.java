@@ -3,35 +3,35 @@ package com.crap.game.controller;
 import com.crap.game.model.AnimationState;
 import com.crap.game.model.Character;
 import com.crap.game.view.CharacterView;
-import com.crap.game.view.GameView;
+import com.crap.game.view.CRAPView;
 
 /**
  * Created by Lisa on 29/05/16.
  */
 public abstract class CharacterController {
 
-    private GameView gameView;
+    private CRAPView CRAPView;
     private Character character;
     private CharacterView characterView;
     private CollisionController collisionController;
     private InteractionController interactionController;
 
-    public CharacterController(GameView gameView){
-        this.gameView = gameView;
-        this.collisionController = new CollisionController(gameView.getWorld());
-        interactionController = new InteractionController(gameView);
+    public CharacterController(CRAPView CRAPView){
+        this.CRAPView = CRAPView;
+        this.collisionController = new CollisionController(CRAPView.getWorld());
+        interactionController = new InteractionController(CRAPView);
     }
 
-    public CharacterController(GameView gameView, Character character, CharacterView characterView){
+    public CharacterController(CRAPView CRAPView, Character character, CharacterView characterView){
         this.character = character;
         this.characterView = characterView;
-        this.gameView = gameView;
-        this.collisionController = new CollisionController(gameView.getWorld());
-        interactionController = new InteractionController(gameView);
+        this.CRAPView = CRAPView;
+        this.collisionController = new CollisionController(CRAPView.getWorld());
+        interactionController = new InteractionController(CRAPView);
     }
 
     public void updateCollisionController(){
-        this.collisionController = new CollisionController(gameView.getWorld());
+        this.collisionController = new CollisionController(CRAPView.getWorld());
         if(characterView != null) {
             collisionController.setCharacterWidthAndHeight(character.getWidth(),
                     character.getHeight());
@@ -39,7 +39,7 @@ public abstract class CharacterController {
     }
 
     public void moveUp() {
-        character.moveUp(gameView.getWorldHeight());
+        character.moveUp(CRAPView.getWorldHeight());
         this.characterView.setAnimationState(AnimationState.WALKING_BACK);
     }
 
@@ -54,7 +54,7 @@ public abstract class CharacterController {
     }
 
     public void moveRight(){
-        character.moveRight(gameView.getWorldWidth());
+        character.moveRight(CRAPView.getWorldWidth());
         this.characterView.setAnimationState(AnimationState.WALKING_RIGHT);
     }
 
@@ -62,8 +62,8 @@ public abstract class CharacterController {
         characterView.getSprite().setPosition(this.character.getPosition().getX(), this.character.getPosition().getY());
     }
 
-    public GameView getGameView() {
-        return this.gameView;
+    public CRAPView getCRAPView() {
+        return this.CRAPView;
     }
 
     public Character getCharacter(){

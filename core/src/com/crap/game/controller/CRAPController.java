@@ -8,17 +8,17 @@ import com.crap.game.model.CRAP;
 import com.crap.game.model.Constants;
 import com.crap.game.model.GameStates;
 import com.crap.game.model.Mascot;
-import com.crap.game.view.GameView;
+import com.crap.game.view.CRAPView;
 
 import static com.crap.game.model.CRAP.Worlds.*;
 
 /**
  * Created by Lisa on 18/04/16.
  */
-public class GameController extends InputAdapter {
+public class CRAPController extends InputAdapter {
 
     private WorldController worldController;
-    private GameView view;
+    private CRAPView view;
     private CRAP model;
     private OrthographicCamera camera;
     private PlayerController playerController;
@@ -26,7 +26,7 @@ public class GameController extends InputAdapter {
     private HumanMascotController humanMascotController;
 
 
-    public GameController(GameView view, CRAP CRAP){
+    public CRAPController(CRAPView view, CRAP crap){
 
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
@@ -35,7 +35,7 @@ public class GameController extends InputAdapter {
         camera.setToOrtho(false, width, height);
 
         this.view = view;
-        this.model = CRAP;
+        this.model = crap;
 
         this.view.setPlayer(this.model.player);
         this.view.getPlayerView().setCamera(this.camera);

@@ -2,7 +2,7 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.crap.game.model.CRAP;
-import com.crap.game.view.GameView;
+import com.crap.game.view.CRAPView;
 
 import static com.crap.game.model.Constants.*;
 import static com.crap.game.model.CRAP.Worlds.*;
@@ -15,9 +15,9 @@ public class WorldController {
     private CRAP model;
     private PlayerController playerController;
     private HumanMascotController humanMascotController;
-    private GameView view;
+    private CRAPView view;
 
-    public WorldController(CRAP CRAP, PlayerController controller, CharacterController characterController, GameView view) {
+    public WorldController(CRAP CRAP, PlayerController controller, CharacterController characterController, CRAPView view) {
 
         this.playerController = controller;
         this.humanMascotController = humanMascotController;

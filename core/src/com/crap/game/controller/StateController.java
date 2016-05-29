@@ -13,8 +13,8 @@ import com.crap.game.view.*;
 public class StateController {
     private GameStates currentState;
 
-    public static GameView worldView;
-    public static GameController controller;
+    public static CRAPView worldView;
+    public static CRAPController controller;
     public static CRAP world;
     public static boolean gameMode = false;
 
@@ -90,8 +90,8 @@ public class StateController {
 
     public static void initPlay(){
         world = new CRAP();
-        worldView = new GameView(world);
-        controller = new GameController(worldView, world);
+        worldView = new CRAPView(world);
+        controller = new CRAPController(worldView, world);
         gameMode = true;
     }
 
@@ -107,7 +107,7 @@ public class StateController {
         return gameMode;
     }
 
-    public GameController getController(){
+    public CRAPController getController(){
         return controller;
     }
 }

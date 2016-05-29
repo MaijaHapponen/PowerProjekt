@@ -5,7 +5,7 @@ import com.crap.game.model.Character;
 import com.crap.game.model.Constants;
 import com.crap.game.model.Direction;
 import com.crap.game.view.CharacterView;
-import com.crap.game.view.GameView;
+import com.crap.game.view.CRAPView;
 
 public class HumanMascotController extends CharacterController{
 
@@ -13,10 +13,10 @@ public class HumanMascotController extends CharacterController{
     private InteractionController interactionController;
     private int walkAwayState = Constants.WALK_AWAY_LENGTH;
 
-    public HumanMascotController(GameView gameView){
-        super(gameView);
-        this.collisionController = new CollisionController(gameView.getWorld());
-        interactionController = new InteractionController(gameView);
+    public HumanMascotController(CRAPView CRAPView){
+        super(CRAPView);
+        this.collisionController = new CollisionController(CRAPView.getWorld());
+        interactionController = new InteractionController(CRAPView);
     }
 
     public void interactsWith(Character character, CharacterView characterView){
@@ -89,7 +89,7 @@ public class HumanMascotController extends CharacterController{
     }
 
     public boolean isPositionEmpty(float x, float y){
-        if(getCharacter().positionOutOfBounds(getGameView().getWorldWidth(), getGameView().getWorldHeight())){
+        if(getCharacter().positionOutOfBounds(getCRAPView().getWorldWidth(), getCRAPView().getWorldHeight())){
             return false;
         }
         if(checkIfCollision(x, y) ){

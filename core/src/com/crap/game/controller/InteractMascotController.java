@@ -15,13 +15,13 @@ import com.crap.game.model.Character;
 public class InteractMascotController extends InputAdapter {
 
     private InteractMascotView interactMascotView;
-    private GameController gameController;
+    private CRAPController CRAPController;
     private InteractMascot interactMascot;
 
     private boolean answeredCorrect;
 
-    public InteractMascotController(InteractMascotView interactMascotView, GameController gameController){
-        this.gameController = gameController;
+    public InteractMascotController(InteractMascotView interactMascotView, CRAPController CRAPController){
+        this.CRAPController = CRAPController;
         this.interactMascot = interactMascotView.getInteractModel();
         this.interactMascotView = interactMascotView;
         Gdx.input.setInputProcessor(this);
@@ -34,23 +34,23 @@ public class InteractMascotController extends InputAdapter {
             StateController.updateState(GameStates.PLAY);
             interactMascotView.dispose();
             if(!answeredCorrect) {
-                gameController.getHumanMascotController().resetWalkAwayState();
+                CRAPController.getHumanMascotController().resetWalkAwayState();
             }
         }
 
         else if(keycode == Input.Keys.ENTER) {
             Character interactingCharacter =
-                    gameController.getPlayerController().getInteractionController().getInteractingCharacter();
+                    CRAPController.getPlayerController().getInteractionController().getInteractingCharacter();
 
             if (interactMascot.isRightAnswer(interactingCharacter, interactMascot.getCurrentStringNbr())) {
 
                 if(interactingCharacter instanceof Mascot){
                     Mascot caughtMascot = ((Mascot) interactingCharacter);
                     caughtMascot.setCaught(true);
-                    gameController.mascotCaught(caughtMascot);
+                    CRAPController.mascotCaught(caughtMascot);
                 }
                 answeredCorrect = true;
-                gameController.getPlayerController().getInteractionController().getInteractingCharacterView().dispose();
+                CRAPController.getPlayerController().getInteractionController().getInteractingCharacterView().dispose();
             }
             else{
                 answeredCorrect = false;

@@ -21,7 +21,7 @@ import static com.crap.game.model.Constants.PIXEL_PER_TILE;
 /**
  * Created by Maija on 2016-04-21.
  */
-public class GameView extends ScreenAdapter{
+public class CRAPView extends ScreenAdapter{
 
     private SpriteBatch batch;
     private OrthogonalTiledMapRenderer renderer;
@@ -46,7 +46,7 @@ public class GameView extends ScreenAdapter{
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
 
-    public GameView(CRAP CRAP){
+    public CRAPView(CRAP CRAP){
         this.isStart = true;
 
         this.CRAP = CRAP;

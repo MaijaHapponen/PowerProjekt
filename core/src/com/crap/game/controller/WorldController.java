@@ -1,32 +1,32 @@
 package com.crap.game.controller;
 
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.crap.game.model.Game;
-import com.crap.game.view.GameView;
+import com.crap.game.model.CRAP;
+import com.crap.game.view.CRAPView;
 
 import static com.crap.game.model.Constants.*;
-import static com.crap.game.model.Game.Worlds.*;
+import static com.crap.game.model.CRAP.Worlds.*;
 
 /**
  * Created by andrea on 2016-04-28.
  */
 public class WorldController {
 
-    private Game model;
+    private CRAP model;
     private PlayerController playerController;
-    private CharacterController characterController;
-    private GameView view;
+    private HumanMascotController humanMascotController;
+    private CRAPView view;
 
-    public WorldController(Game game, PlayerController controller, CharacterController characterController, GameView view) {
+    public WorldController(CRAP CRAP, PlayerController controller, CharacterController characterController, CRAPView view) {
 
         this.playerController = controller;
-        this.characterController = characterController;
+        this.humanMascotController = humanMascotController;
 
-        this.model = game;
+        this.model = CRAP;
         this.view = view;
     }
 
-    public void setWorld(Game.Worlds worlds){
+    public void setWorld(CRAP.Worlds worlds){
 
         float x = playerController.getCharacter().getPosition().getX();
         float y = playerController.getCharacter().getPosition().getY();
@@ -48,7 +48,7 @@ public class WorldController {
                 view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
                 playerController.updateCollisionController();
                 model.setPreviousRoom(EDIT);
-                characterController.updateCollisionController();
+                humanMascotController.updateCollisionController();
                 break;
 
             case HUBBEN:
@@ -57,7 +57,7 @@ public class WorldController {
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
                 model.setPreviousRoom(HUBBEN);
-                characterController.updateCollisionController();
+                humanMascotController.updateCollisionController();
                 break;
 
             case ZALOONEN:
@@ -66,13 +66,13 @@ public class WorldController {
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();
                 model.setPreviousRoom(ZALOONEN);
-                characterController.updateCollisionController();
+                humanMascotController.updateCollisionController();
                 break;
 
             case HIDDEN_ROOM:
                 model.setEntrance(x, y);
                 playerController.updateCollisionController();
-                characterController.updateCollisionController();
+                humanMascotController.updateCollisionController();
                 break;
             default:
 

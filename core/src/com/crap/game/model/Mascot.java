@@ -14,7 +14,7 @@ public class Mascot extends Character{
         this.isCaught = false;
     }
 
-    public Mascot(String name, Position position, Game.Worlds world){
+    public Mascot(String name, Position position, CRAP.Worlds world){
         super(name, position, world);
         this.isCaught = false;
     }

@@ -7,7 +7,7 @@ import static com.crap.game.model.Constants.*;
 /**
  * Created by Lisa on 24/04/16.
  */
-public class Game {
+public class CRAP {
 
     public enum Worlds{HORSAL, EDIT, HUBBEN, ZALOONEN, HIDDEN_ROOM}
 
@@ -23,8 +23,8 @@ public class Game {
 
     private boolean isEntrance;
     private Position entrancePosition;
-    private Game.Worlds previousRoom;
-    private Game.Worlds currentWorld;
+    private CRAP.Worlds previousRoom;
+    private CRAP.Worlds currentWorld;
 
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
@@ -37,7 +37,7 @@ public class Game {
     private float[][] humanCoordinates = {{436, 503},{194, 87},{583, 101},{123, 98}};
     private Worlds[] humansWorlds = {Worlds.HORSAL, Worlds.EDIT, Worlds.HUBBEN, Worlds.HORSAL};
 
-    public Game(){
+    public CRAP(){
 
         this.player = new Player("player",startPositionX,startPositionY);
         createHumans();
@@ -116,7 +116,7 @@ public class Game {
         return this.entrancePosition;
     }
 
-    public Game.Worlds getPreviousRoom(){
+    public CRAP.Worlds getPreviousRoom(){
         return this.previousRoom;
     }
 
@@ -124,7 +124,7 @@ public class Game {
         isEntrance = false;
     }
 
-    public void setPreviousRoom(Game.Worlds lastRoom) {
+    public void setPreviousRoom(CRAP.Worlds lastRoom) {
         this.previousRoom = lastRoom;
     }
 

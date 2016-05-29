@@ -2,98 +2,44 @@ package com.crap.game.controller;
 
 import com.crap.game.model.AnimationState;
 import com.crap.game.model.Character;
-import com.crap.game.model.Constants;
-import com.crap.game.model.Direction;
 import com.crap.game.view.CharacterView;
-import com.crap.game.view.GameView;
+import com.crap.game.view.CRAPView;
 
-public class CharacterController{
+/**
+ * Created by Lisa on 29/05/16.
+ */
+public abstract class CharacterController {
 
-    private GameView gameView;
+    private CRAPView CRAPView;
     private Character character;
     private CharacterView characterView;
     private CollisionController collisionController;
     private InteractionController interactionController;
-    private int walkAwayState = Constants.WALK_AWAY_LENGTH;
 
-    public CharacterController(GameView gameView){
-        this.gameView = gameView;
-        this.collisionController = new CollisionController(gameView.getWorld());
-        interactionController = new InteractionController(gameView);
+    public CharacterController(CRAPView CRAPView){
+        this.CRAPView = CRAPView;
+        this.collisionController = new CollisionController(CRAPView.getWorld());
+        interactionController = new InteractionController(CRAPView);
     }
 
-    public CharacterController(GameView gameView, Character character, CharacterView characterView){
+    public CharacterController(CRAPView CRAPView, Character character, CharacterView characterView){
         this.character = character;
         this.characterView = characterView;
-        this.gameView = gameView;
-        this.collisionController = new CollisionController(gameView.getWorld());
-        interactionController = new InteractionController(gameView);
-    }
-
-    public void interactsWith(Character character, CharacterView characterView){
-        collisionController.setCharacterWidthAndHeight(character.getWidth(),
-                character.getHeight());
-        this.character = character;
-        this.characterView = characterView;
+        this.CRAPView = CRAPView;
+        this.collisionController = new CollisionController(CRAPView.getWorld());
+        interactionController = new InteractionController(CRAPView);
     }
 
     public void updateCollisionController(){
-        this.collisionController = new CollisionController(gameView.getWorld());
+        this.collisionController = new CollisionController(CRAPView.getWorld());
         if(characterView != null) {
             collisionController.setCharacterWidthAndHeight(character.getWidth(),
                     character.getHeight());
         }
     }
 
-    public void move(Direction direction){
-        float movement = character.getSpeed()*Constants.NORMAL_SPEED;
-
-        switch (direction) {
-            case UP:
-                if (isPositionEmpty(character.getPosition().getX(), character.getPosition().getY() + movement)) {
-                    this.moveUp();
-                } else {
-                    character.updateDirections();
-                }
-                break;
-            case DOWN:
-                if (isPositionEmpty(character.getPosition().getX(), character.getPosition().getY() - movement)) {
-                    this.moveDown();
-                } else {
-                    character.updateDirections();
-                }
-                break;
-            case LEFT:
-                if (isPositionEmpty(character.getPosition().getX() - movement, character.getPosition().getY())) {
-                    this.moveLeft();
-                } else {
-                    character.updateDirections();
-                }
-                break;
-            case RIGHT:
-                if (isPositionEmpty(character.getPosition().getX() + movement, character.getPosition().getY())) {
-                    this.moveRight();
-                } else {
-                    character.updateDirections();
-                }
-                break;
-        }
-        this.characterView.updateAnimation();
-    }
-
-    //Returns true if there is a collision.
-    public boolean checkIfCollision(float x, float y) {
-        if (collisionController.isCollison(x, y) || collisionController.isNewWorld(x,y) ||
-                interactionController.isInteractionWithAnotherCharacter(this.character, x, y) ||
-                //TODO: perhaps remove or explain
-                interactionController.isInteractionWithPlayer(x, y + (character.getHeight()/2))) {
-            return true;
-        }
-        return false;
-    }
-
     public void moveUp() {
-        character.moveUp(gameView.getWorldHeight());
+        character.moveUp(CRAPView.getWorldHeight());
         this.characterView.setAnimationState(AnimationState.WALKING_BACK);
     }
 
@@ -108,7 +54,7 @@ public class CharacterController{
     }
 
     public void moveRight(){
-        character.moveRight(gameView.getWorldWidth());
+        character.moveRight(CRAPView.getWorldWidth());
         this.characterView.setAnimationState(AnimationState.WALKING_RIGHT);
     }
 
@@ -116,63 +62,8 @@ public class CharacterController{
         characterView.getSprite().setPosition(this.character.getPosition().getX(), this.character.getPosition().getY());
     }
 
-    public void resetWalkAwayState(){
-        this.walkAwayState = 0;
-    }
-
-    public void walkAway(Character character, CharacterView characterView){
-        if(walkAwayState<Constants.WALK_AWAY_LENGTH){
-            interactionController.getInteractionModel().setIsInteracting(true);
-            interactsWith(character, characterView);
-            walkAwayOneStep();
-        }
-    }
-
-    public boolean isPositionEmpty(float x, float y){
-        if(character.positionOutOfBounds(gameView.getWorldWidth(), gameView.getWorldHeight())){
-            return false;
-        }
-        if(checkIfCollision(x, y) ){
-            return false;
-        }
-        return true;
-    }
-
-    public void stopWalkingAnimation(){
-        switch (character.getWalkAwayDirection()){
-            case UP:
-                this.characterView.setAnimationState(AnimationState.STANDING_BACK);
-                break;
-            case DOWN:
-                this.characterView.setAnimationState(AnimationState.STANDING_FRONT);
-                break;
-            case LEFT:
-                this.characterView.setAnimationState(AnimationState.STANDING_LEFT);
-                break;
-            case RIGHT:
-                this.characterView.setAnimationState(AnimationState.STANDING_RIGHT);
-                break;
-            case NO_DIRECTION:
-                break;
-        }
-        this.characterView.updateAnimation();
-        interactionController.getInteractionModel().setIsInteracting(false);
-    }
-
-    public void walkAwayOneStep(){
-        character.changeDirection(this.walkAwayState);
-        this.move(character.getWalkAwayDirection());
-
-        if(walkAwayState == Constants.WALK_AWAY_LENGTH -1 && !(character.getWalkAwayDirection() ==
-                Direction.NO_DIRECTION)){
-            stopWalkingAnimation();
-        }
-        updateSprite();
-        walkAwayState++;
-    }
-
-    public GameView getGameView() {
-        return this.gameView;
+    public CRAPView getCRAPView() {
+        return this.CRAPView;
     }
 
     public Character getCharacter(){
@@ -189,5 +80,13 @@ public class CharacterController{
 
     public CollisionController getCollisionController(){
         return this.collisionController;
+    }
+
+    public CharacterView getCharacterView(){
+        return this.characterView;
+    }
+
+    public void setCharacterView(CharacterView characterView){
+        this.characterView = characterView;
     }
 }

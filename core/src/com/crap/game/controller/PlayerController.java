@@ -4,7 +4,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.MapObject;
 import com.crap.game.model.AnimationState;
 import com.crap.game.model.Position;
-import com.crap.game.view.GameView;
+import com.crap.game.view.CRAPView;
 import com.crap.game.view.PlayerView;
 
 import static com.crap.game.model.Constants.PIXEL_PER_TILE;
@@ -12,12 +12,12 @@ import static com.crap.game.model.Constants.PIXEL_PER_TILE;
 /**
  * Created by rebeccafinne on 2016-04-30.
  */
-public class PlayerController extends CharacterController{
+public class PlayerController extends CharacterController {
     private PlayerView playerView;
     public MapObject newWorldObject;
 
-    public PlayerController(PlayerView playerView, GameView gameView){
-        super(gameView, playerView.getPlayer(), playerView);
+    public PlayerController(PlayerView playerView, CRAPView CRAPView){
+        super(CRAPView, playerView.getPlayer(), playerView);
         this.playerView = playerView;
         this.newWorldObject = getCollisionController().getNewWorldObject();
     }
@@ -46,7 +46,7 @@ public class PlayerController extends CharacterController{
 
     public void updateCamera(){
         playerView.moveCamera(getCharacter().getPosition().getX(), getCharacter().getPosition().getY(),
-                getGameView().getWorldHeight()+ PIXEL_PER_TILE, getGameView().getWorldWidth()+PIXEL_PER_TILE);
+                getCRAPView().getWorldHeight()+ PIXEL_PER_TILE, getCRAPView().getWorldWidth()+PIXEL_PER_TILE);
     }
 
     //Returns true if there is a collision.

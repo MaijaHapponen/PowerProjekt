@@ -13,17 +13,13 @@ public abstract class Character{
 
     private float width;
     private float height;
-    private Game.Worlds world;
+    private CRAP.Worlds world;
 
     private Direction walkAwayDirection;
     private Direction lastDirection;
 
     private float speed;
     private Position nextPlayerPos;
-
-    public void setNextPlayerPos(Position pos){
-        nextPlayerPos = pos;
-    }
 
     public Character(){
         this.position = new Position();
@@ -35,7 +31,7 @@ public abstract class Character{
         this.position = new Position(0,0);
     }
 
-    public Character(String name, Position position, Game.Worlds world){
+    public Character(String name, Position position, CRAP.Worlds world){
         this.speed = NORMAL_SPEED;
         this.name = name;
         this.position = position;
@@ -81,14 +77,6 @@ public abstract class Character{
         }
     }
 
-    public float getX(){
-        return getPosition().getX();
-    }
-
-    public float getY(){
-        return getPosition().getY();
-    }
-
     public void moveUp(float mapHeight){
         if(!(this.getPosition().getY() > mapHeight)) {
             getPosition().setPosition(getX(), getY() + speed);
@@ -125,10 +113,6 @@ public abstract class Character{
         this.walkAwayDirection = Direction.NO_DIRECTION;
     }
 
-    public Direction getLastDirection(){
-        return this.lastDirection;
-    }
-
     public void changeDirection(int walkAwayState){
         if(walkAwayState == Constants.WALK_AWAY_LENGTH/3 || walkAwayState ==
                 (Constants.WALK_AWAY_LENGTH/3)*2){
@@ -137,55 +121,6 @@ public abstract class Character{
         if (this.walkAwayDirection == null || this.walkAwayDirection == Direction.NO_DIRECTION){
             decideNewDirection();
         }
-    }
-
-    public void setWidthAndHeight(float width, float height){
-        this.width=width;
-        this.height=height;
-    }
-
-    public Direction getWalkAwayDirection(){
-        return  this.walkAwayDirection;
-    }
-
-    public void setWalkAwayDirection(Direction walkAwayDirection){
-        this.walkAwayDirection = walkAwayDirection;
-    }
-
-    public float getWidth(){
-        return this.width;
-    }
-
-    public float getHeight(){
-        return this.height;
-    }
-
-    public Position getPosition(){
-        return this.position;
-    }
-
-    public String getName(){
-        return this.name;
-    }
-
-    public Game.Worlds getWorld(){
-        return this.world;
-    }
-
-    public void setWorld(Game.Worlds world) {
-        this.world = world;
-    }
-
-    public void setNormalSpeed(){
-        this.speed = NORMAL_SPEED;
-    }
-
-    public void setSlowerSpeed(){
-        this.speed = SLOWER_SPEED;
-    }
-
-    public float getSpeed(){
-        return this.speed;
     }
 
     public Position nextStepUp(){
@@ -208,4 +143,64 @@ public abstract class Character{
         return nextPlayerPos;
     }
 
+    public void setNextPlayerPos(Position pos){
+        nextPlayerPos = pos;
+    }
+
+    public void setWidthAndHeight(float width, float height){
+        this.width=width;
+        this.height=height;
+    }
+
+    public Direction getWalkAwayDirection(){
+        return  this.walkAwayDirection;
+    }
+
+    public void setWalkAwayDirection(Direction walkAwayDirection){
+        this.walkAwayDirection = walkAwayDirection;
+    }
+
+    public float getWidth(){
+        return this.width;
+    }
+
+    public float getX(){
+        return getPosition().getX();
+    }
+
+    public float getY(){
+        return getPosition().getY();
+    }
+
+    public float getHeight(){
+        return this.height;
+    }
+
+    public Position getPosition(){
+        return this.position;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public CRAP.Worlds getWorld(){
+        return this.world;
+    }
+
+    public void setWorld(CRAP.Worlds world) {
+        this.world = world;
+    }
+
+    public void setNormalSpeed(){
+        this.speed = NORMAL_SPEED;
+    }
+
+    public void setSlowerSpeed(){
+        this.speed = SLOWER_SPEED;
+    }
+
+    public float getSpeed(){
+        return this.speed;
+    }
  }

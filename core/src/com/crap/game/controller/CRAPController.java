@@ -4,29 +4,29 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.crap.game.model.CRAP;
 import com.crap.game.model.Constants;
-import com.crap.game.model.Game;
 import com.crap.game.model.GameStates;
 import com.crap.game.model.Mascot;
-import com.crap.game.view.GameView;
+import com.crap.game.view.CRAPView;
 
-import static com.crap.game.model.Game.Worlds.*;
+import static com.crap.game.model.CRAP.Worlds.*;
 
 /**
  * Created by Lisa on 18/04/16.
  */
-public class GameController extends InputAdapter {
+public class CRAPController extends InputAdapter {
 
     private WorldController worldController;
-    private GameView view;
-    private Game model;
+    private CRAPView view;
+    private CRAP model;
     private OrthographicCamera camera;
     private PlayerController playerController;
     private int keyCode;
-    private CharacterController characterController;
+    private HumanMascotController humanMascotController;
 
 
-    public GameController(GameView view, Game game){
+    public CRAPController(CRAPView view, CRAP crap){
 
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
@@ -35,7 +35,7 @@ public class GameController extends InputAdapter {
         camera.setToOrtho(false, width, height);
 
         this.view = view;
-        this.model = game;
+        this.model = crap;
 
         this.view.setPlayer(this.model.player);
         this.view.getPlayerView().setCamera(this.camera);
@@ -44,8 +44,8 @@ public class GameController extends InputAdapter {
         this.view.setMascots(this.model.mascots);
 
         this.playerController = new PlayerController(this.view.getPlayerView(), this.view);
-        this.characterController = new CharacterController(view);
-        this.worldController = new WorldController(this.model, this.playerController, this.characterController, this.view);
+        this.humanMascotController = new HumanMascotController(view);
+        this.worldController = new WorldController(this.model, this.playerController, this.humanMascotController, this.view);
 
         worldController.setWorld(HORSAL);
         model.player.setPosition(Constants.START_X_COORDINATE_PLAYER, Constants.START_Y_COORDINATE_PLAYER);
@@ -89,8 +89,8 @@ public class GameController extends InputAdapter {
         }
     }
 
-    public CharacterController getCharacterController(){
-        return this.characterController;
+    public HumanMascotController getHumanMascotController(){
+        return this.humanMascotController;
     }
 
     public PlayerController getPlayerController(){
@@ -133,7 +133,7 @@ public class GameController extends InputAdapter {
             playerController.stopWalkingAnimation(keyCode);
         }
 
-        characterController.walkAway(playerController.getInteractionController().getInteractingCharacter(),
+        humanMascotController.walkAway(playerController.getInteractionController().getInteractingCharacter(),
                 playerController.getInteractionController().getInteractingCharacterView());
     }
 

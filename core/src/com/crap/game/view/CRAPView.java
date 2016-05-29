@@ -21,7 +21,7 @@ import static com.crap.game.model.Constants.PIXEL_PER_TILE;
 /**
  * Created by Maija on 2016-04-21.
  */
-public class GameView extends ScreenAdapter{
+public class CRAPView extends ScreenAdapter{
 
     private SpriteBatch batch;
     private OrthogonalTiledMapRenderer renderer;
@@ -31,7 +31,7 @@ public class GameView extends ScreenAdapter{
     public TiledMap world;
     private PlayerView playerView;
 
-    private Game game;
+    private CRAP CRAP;
     private ProgressView progressView;
     private Progress progress;
     private InteractionView interactionView;
@@ -46,14 +46,14 @@ public class GameView extends ScreenAdapter{
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
 
-    public GameView(Game game){
+    public CRAPView(CRAP CRAP){
         this.isStart = true;
 
-        this.game = game;
+        this.CRAP = CRAP;
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
         this.playerView = new PlayerView();
         batch = new SpriteBatch();
-        this.progress = game.getProgress();
+        this.progress = CRAP.getProgress();
         this.progressView = new ProgressView(progress);
 
         renderer = new OrthogonalTiledMapRenderer(world);
@@ -63,11 +63,6 @@ public class GameView extends ScreenAdapter{
         viewport = new FitViewport(worldWidth, worldHeight, new OrthographicCamera());
 
         createWelcome();
-    }
-
-
-    public void createWelcome(){
-        interactionView.createWelcome();
     }
 
     @Override
@@ -93,8 +88,6 @@ public class GameView extends ScreenAdapter{
         batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime, true), playerView.getPlayerPosition().getX(),
                 playerView.getPlayerPosition().getY());
 
-
-
         batch.end();
 
         if(progress.newUpdate()){
@@ -110,7 +103,7 @@ public class GameView extends ScreenAdapter{
             batch.setProjectionMatrix(interactionView.getWelcomeStage().getCamera().combined);
             interactionView.getWelcomeStage().draw();
             if(interaction){
-                game.setNewWorld(false);
+                CRAP.setNewWorld(false);
                 interactionView.getWelcomeStage().dispose();
 
             }
@@ -121,22 +114,25 @@ public class GameView extends ScreenAdapter{
             interactionView.getStage().draw();
         }
 
-        if(game.getNewWorld()){
+        if(CRAP.getNewWorld()){
             interactionView.getWelcomeLabel();
             batch.setProjectionMatrix(interactionView.getWelcomeStage().getCamera().combined);
             interactionView.getWelcomeStage().draw();
             if(interaction){
-                game.setNewWorld(false);
+                CRAP.setNewWorld(false);
                 interactionView.getWelcomeStage().dispose();
 
             }
         }
+    }
 
+    public void createWelcome(){
+        interactionView.createWelcome();
     }
 
     public void drawHumans(){
         for(int i = 0; i<humansList.size(); i++){
-            if(humansList.get(i).getCharacter().getWorld() == game.getCurrectWorld()){
+            if(humansList.get(i).getCharacter().getWorld() == CRAP.getCurrectWorld()){
                 batch.draw(humansList.get(i).getAnimation().getKeyFrame(elapsedTime, true),
                         humansList.get(i).getCharacter().getPosition().getX(),
                         humansList.get(i).getCharacter().getPosition().getY());
@@ -147,7 +143,7 @@ public class GameView extends ScreenAdapter{
     public void drawMascots(){
         for(int i = 0; i<mascotsList.size(); i++){
             Mascot tempMascot = (Mascot) mascotsList.get(i).getCharacter();
-            if(tempMascot.getWorld() == game.getCurrectWorld() && !tempMascot.isCaught()){
+            if(tempMascot.getWorld() == CRAP.getCurrectWorld() && !tempMascot.isCaught()){
                 batch.draw(mascotsList.get(i).getAnimation().getKeyFrame(elapsedTime,true),
                         tempMascot.getPosition().getX(),
                         tempMascot.getPosition().getY());
@@ -172,8 +168,8 @@ public class GameView extends ScreenAdapter{
         }
     }
 
-    public Game getGame(){
-        return this.game;
+    public CRAP getCRAP(){
+        return this.CRAP;
     }
 
     public void setPlayer(Player player){
@@ -241,6 +237,4 @@ public class GameView extends ScreenAdapter{
             interactionView.setWelcomeLabel("remove");
         }
     }
-
-
 }

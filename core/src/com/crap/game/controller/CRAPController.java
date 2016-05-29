@@ -9,7 +9,6 @@ import com.crap.game.model.Constants;
 import com.crap.game.model.GameStates;
 import com.crap.game.model.Mascot;
 import com.crap.game.view.CRAPView;
-
 import static com.crap.game.model.CRAP.Worlds.*;
 
 /**
@@ -20,7 +19,6 @@ public class CRAPController extends InputAdapter {
     private WorldController worldController;
     private CRAPView view;
     private CRAP model;
-    private OrthographicCamera camera;
     private PlayerController playerController;
     private int keyCode;
     private HumanMascotController humanMascotController;
@@ -31,14 +29,14 @@ public class CRAPController extends InputAdapter {
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
 
-        this.camera = new OrthographicCamera();
+        OrthographicCamera camera = new OrthographicCamera();
         camera.setToOrtho(false, width, height);
 
         this.view = view;
         this.model = crap;
 
         this.view.setPlayer(this.model.player);
-        this.view.getPlayerView().setCamera(this.camera);
+        this.view.getPlayerView().setCamera(camera);
 
         this.view.setHumans(this.model.humans);
         this.view.setMascots(this.model.mascots);
@@ -67,23 +65,16 @@ public class CRAPController extends InputAdapter {
     public void enterNewWorld() {
         if(playerController.getCollisionController().getNewWorldName().equals("hubbeneditsand")) {
             view.setLabel("hörsalsvägen");
-
             worldController.setWorld(EDIT);
-
         }else if(playerController.getCollisionController().getNewWorldName().equals("horsalmaskin")){
             view.setLabel("hörsalsvägen");
-
             worldController.setWorld(HORSAL);
-
         }else if(playerController.getCollisionController().getNewWorldName().equals("hubben")){
             view.setLabel("hubben");
             worldController.setWorld(HUBBEN);
-
         }else if(playerController.getCollisionController().getNewWorldName().equals("zaloonen")){
             view.setLabel("zaloonen");
-
             worldController.setWorld(ZALOONEN);
-
         }else if(playerController.getCollisionController().getNewWorldName().equals("hiddenroom")){
             view.setLabel("hiddenroom");
         }
@@ -122,22 +113,16 @@ public class CRAPController extends InputAdapter {
 
     public void render() {
         updateIfGameOver();
-
         updateIfNewWorld();
         updateIfInteraction();
-
         if(Gdx.input.isKeyPressed(keyCode)) {
             playerController.movePlayer(keyCode);
-        }
-        else {
+        } else {
             playerController.stopWalkingAnimation(keyCode);
         }
-
         humanMascotController.walkAway(playerController.getInteractionController().getInteractingCharacter(),
                 playerController.getInteractionController().getInteractingCharacterView());
     }
-
-    //TODO: Move to model
     public void mascotCaught(Mascot caughtMascot){
         model.mascotCaught(caughtMascot);
     }

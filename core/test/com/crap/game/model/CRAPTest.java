@@ -55,8 +55,8 @@ public class CRAPTest {
         assertTrue(CRAP.getHumans().equals(CRAP.humans));
         CRAP.createMascots();
         assertTrue(CRAP.getMascots().equals(CRAP.mascots));
-        CRAP.setCurrectWorld(com.crap.game.model.CRAP.Worlds.EDIT);
-        assertTrue(CRAP.getCurrectWorld().equals(com.crap.game.model.CRAP.Worlds.EDIT));
+        CRAP.setCurrentWorld(com.crap.game.model.CRAP.Worlds.EDIT);
+        assertTrue(CRAP.getCurrentWorld().equals(com.crap.game.model.CRAP.Worlds.EDIT));
 
     }
 

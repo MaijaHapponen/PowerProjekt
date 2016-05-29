@@ -21,19 +21,15 @@ public class WorldController {
 
         this.playerController = controller;
         this.humanMascotController = humanMascotController;
-
         this.model = CRAP;
         this.view = view;
     }
 
     public void setWorld(CRAP.Worlds worlds){
-
         float x = playerController.getCharacter().getPosition().getX();
         float y = playerController.getCharacter().getPosition().getY();
-        model.setCurrectWorld(worlds);
-
+        model.setCurrentWorld(worlds);
         switch (worlds) {
-
             case HORSAL:
                 enterHorsal(x,y);
                 model.setExit();
@@ -74,38 +70,32 @@ public class WorldController {
                 playerController.updateCollisionController();
                 humanMascotController.updateCollisionController();
                 break;
-            default:
 
+            default:
                 System.out.println("Ohoh! Something went wrong");
                 break;
         }
     }
 
     public void enterHorsal(float x, float y){
-
         if(model.getPreviousRoom() == ZALOONEN){
             model.player.setPosition(model.getEntrancePosition().getX(), model.getEntrancePosition().getY());
         }
-
         else if(x > view.getWorldWidth() - TEMP_COLLISION_LAYER_WIDTH) {
             model.player.setPosition(TEMP_COLLISION_LAYER_WIDTH, y);
         }
-
         else if(x < TEMP_COLLISION_LAYER_WIDTH){
             model.player.setPosition(view.getWorldWidth()+ TEMP_COLLISION_LAYER_WIDTH, y);
         }
     }
 
     public void enterEdit(float x, float y){
-
         if(model.getPreviousRoom() == HUBBEN){
             model.player.setPosition(model.getEntrancePosition().getX(), model.getEntrancePosition().getY());
         }
-
         else if(x < TEMP_COLLISION_LAYER_WIDTH) {
             model.player.setPosition(view.getWorldWidth()- TEMP_COLLISION_LAYER_WIDTH, y);
         }
-
         else if (x > view.getWorldWidth() - TEMP_COLLISION_LAYER_WIDTH){
             model.player.setPosition(view.getWorldWidth()+ TEMP_COLLISION_LAYER_WIDTH, y);
         }

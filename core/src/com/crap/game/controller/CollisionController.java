@@ -6,8 +6,6 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.crap.game.model.*;
-import com.crap.game.model.Character;
-
 import java.util.Iterator;
 
 /**
@@ -16,32 +14,24 @@ import java.util.Iterator;
 public class CollisionController {
 
     CollisionModel collisionModel;
-
-    private MapLayers allLayers;
-    private MapLayer collisionLayer;
     private MapObjects collisionObjects;
-
-    private MapLayer slowLayer;
     private MapObjects slowObjects;
-
-    private MapLayer newWorldLayer;
     private MapObjects newWorldObjects;
     private MapObject newWorldObject;
     private String newWorldName;
-
     private float characterWidth;
     private float halfCharacterHeight;
 
     public CollisionController(TiledMap map) {
         collisionModel = new CollisionModel();
-        allLayers = map.getLayers();
-        collisionLayer = allLayers.get("Collision");
+        MapLayers allLayers = map.getLayers();
+        MapLayer collisionLayer = allLayers.get("Collision");
         collisionObjects = collisionLayer.getObjects();
 
-        slowLayer = allLayers.get("SlowLayer");
+        MapLayer slowLayer = allLayers.get("SlowLayer");
         slowObjects = slowLayer.getObjects();
 
-        newWorldLayer = allLayers.get("NewWorld");
+        MapLayer newWorldLayer = allLayers.get("NewWorld");
         newWorldObjects = newWorldLayer.getObjects();
     }
 
@@ -120,7 +110,6 @@ public class CollisionController {
         return collisionModel.checkIfCollide(objectX,objectY,objectWidth,objectHeight,characterPositionX,characterPositionY);
     }
 
-    //TODO: Move to model
     public String getNewWorldName(){
         return this.newWorldName;
     }

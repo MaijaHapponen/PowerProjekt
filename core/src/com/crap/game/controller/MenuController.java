@@ -16,11 +16,11 @@ public class MenuController extends InputAdapter{
     MenuView menuView;
     Menu menuModel;
     HowToPlayController howToPlayController;
+
     public MenuController(MenuView menuView){
         this.menuView=menuView;
         this.menuModel = menuView.getMenuModel();
         this.howToPlayController = new HowToPlayController();
-
         Gdx.input.setInputProcessor(this);
     }
 
@@ -30,8 +30,7 @@ public class MenuController extends InputAdapter{
                 StateController.updateState(GameStates.STARTMENU);
                 menuView.dispose();
             }
-        }
-        else {
+        } else {
             if (keycode == Input.Keys.ENTER) {
                 changeScreen();
             }

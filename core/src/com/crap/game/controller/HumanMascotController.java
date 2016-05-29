@@ -65,11 +65,10 @@ public class HumanMascotController extends CharacterController{
         this.getCharacterView().updateAnimation();
     }
 
-    //Returns true if there is a collision.
     public boolean checkIfCollision(float x, float y) {
+        //Only checks collision on the lower half of the player
         if (collisionController.isCollison(x, y) || collisionController.isNewWorld(x,y) ||
                 interactionController.isInteractionWithAnotherCharacter(getCharacter(), x, y) ||
-                //TODO: perhaps remove or explain
                 interactionController.isInteractionWithPlayer(x, y + (getCharacter().getHeight()/2))) {
             return true;
         }

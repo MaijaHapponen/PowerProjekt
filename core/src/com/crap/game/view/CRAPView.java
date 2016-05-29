@@ -132,7 +132,7 @@ public class CRAPView extends ScreenAdapter{
 
     public void drawHumans(){
         for(int i = 0; i<humansList.size(); i++){
-            if(humansList.get(i).getCharacter().getWorld() == CRAP.getCurrectWorld()){
+            if(humansList.get(i).getCharacter().getWorld() == CRAP.getCurrentWorld()){
                 batch.draw(humansList.get(i).getAnimation().getKeyFrame(elapsedTime, true),
                         humansList.get(i).getCharacter().getPosition().getX(),
                         humansList.get(i).getCharacter().getPosition().getY());
@@ -143,7 +143,7 @@ public class CRAPView extends ScreenAdapter{
     public void drawMascots(){
         for(int i = 0; i<mascotsList.size(); i++){
             Mascot tempMascot = (Mascot) mascotsList.get(i).getCharacter();
-            if(tempMascot.getWorld() == CRAP.getCurrectWorld() && !tempMascot.isCaught()){
+            if(tempMascot.getWorld() == CRAP.getCurrentWorld() && !tempMascot.isCaught()){
                 batch.draw(mascotsList.get(i).getAnimation().getKeyFrame(elapsedTime,true),
                         tempMascot.getPosition().getX(),
                         tempMascot.getPosition().getY());

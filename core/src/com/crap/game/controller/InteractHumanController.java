@@ -24,20 +24,13 @@ public class InteractHumanController extends InputAdapter {
 
     @Override
     public boolean keyDown(int keyCode){
-
         if(keyCode == Input.Keys.BACKSPACE){
             StateController.updateState(GameStates.PLAY);
-        }
-
-        if(keyCode == Input.Keys.DOWN){
+        }if(keyCode == Input.Keys.DOWN){
             interactHuman.setCurrentString("down");
-        }
-
-        if(keyCode == Input.Keys.UP){
+        }if(keyCode == Input.Keys.UP){
             interactHuman.setCurrentString("up");
-        }
-
-        if(keyCode == Input.Keys.ENTER){
+        }if(keyCode == Input.Keys.ENTER){
             if(interactHuman.getCurrentString().equals(TextForInteraction.talkAboutProgramme)){
                 interactHuman.setIsProgramme(true);
             }

@@ -15,16 +15,15 @@ public class CRAP {
     private float startPositionY;
     private Progress progress;
     public Player player;
-    private InformationForQuestion questions;
+    //private InformationForQuestion questions;
     private Information information;
-    private Worlds currectWorld;
+    private Worlds currentWorld;
 
     private boolean newWorld;
 
     private boolean isEntrance;
     private Position entrancePosition;
     private CRAP.Worlds previousRoom;
-    private CRAP.Worlds currentWorld;
 
     public static ArrayList<Human> humans = new ArrayList<Human>();
     public static ArrayList<Mascot> mascots = new ArrayList<Mascot>();
@@ -42,7 +41,7 @@ public class CRAP {
         this.player = new Player("player",startPositionX,startPositionY);
         createHumans();
         createMascots();
-        this.questions = new InformationForQuestion(mascots);
+        InformationForQuestion questions = new InformationForQuestion(mascots);
         this.information = new Information(humans);
 
         this.progress = new Progress(mascots);
@@ -91,12 +90,12 @@ public class CRAP {
         return progress;
     }
 
-    public void setCurrectWorld(Worlds currectWorld){
-        this.currectWorld = currectWorld;
+    public void setCurrentWorld(Worlds currentWorld){
+        this.currentWorld = currentWorld;
     }
 
-    public Worlds getCurrectWorld(){
-        return this.currectWorld;
+    public Worlds getCurrentWorld(){
+        return this.currentWorld;
     }
 
     public void enterHubben(){

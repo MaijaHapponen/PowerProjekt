@@ -26,16 +26,16 @@ public abstract class Character{
     }
 
     public Character(String name){
-        this.speed = NORMAL_SPEED;
         this.name = name;
+        this.speed = NORMAL_SPEED;
         this.position = new Position(0,0);
     }
 
     public Character(String name, Position position, CRAP.Worlds world){
-        this.speed = NORMAL_SPEED;
         this.name = name;
         this.position = position;
         this.world = world;
+        this.speed = NORMAL_SPEED;
     }
 
     public void decideNewDirection(){

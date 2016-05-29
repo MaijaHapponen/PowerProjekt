@@ -65,11 +65,6 @@ public class GameView extends ScreenAdapter{
         createWelcome();
     }
 
-
-    public void createWelcome(){
-        interactionView.createWelcome();
-    }
-
     @Override
     public void render(float delta) {
         elapsedTime += Gdx.graphics.getDeltaTime();
@@ -92,8 +87,6 @@ public class GameView extends ScreenAdapter{
 
         batch.draw(playerView.getAnimation().getKeyFrame(elapsedTime, true), playerView.getPlayerPosition().getX(),
                 playerView.getPlayerPosition().getY());
-
-
 
         batch.end();
 
@@ -131,7 +124,10 @@ public class GameView extends ScreenAdapter{
 
             }
         }
+    }
 
+    public void createWelcome(){
+        interactionView.createWelcome();
     }
 
     public void drawHumans(){
@@ -241,6 +237,4 @@ public class GameView extends ScreenAdapter{
             interactionView.setWelcomeLabel("remove");
         }
     }
-
-
 }

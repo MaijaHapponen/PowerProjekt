@@ -19,17 +19,17 @@ public class InteractHuman {
     }
 
     public void setCurrentString(String direction){
-        int amoutOfStrings = options.length - 1;
+        int amountOfStrings = options.length - 1;
 
         if(direction.equals("down")){
-            if(currentStringNbr == amoutOfStrings){
+            if(currentStringNbr == amountOfStrings){
                 currentStringNbr = 0;
             }else{
                 currentStringNbr ++;
             }
         }if(direction.equals("up")){
             if(currentStringNbr == 0){
-                currentStringNbr = amoutOfStrings;
+                currentStringNbr = amountOfStrings;
             }else{
                 currentStringNbr --;
             }

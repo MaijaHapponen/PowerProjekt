@@ -10,8 +10,6 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.crap.game.model.*;
 
 import java.util.ArrayList;
@@ -25,7 +23,6 @@ public class CRAPView extends ScreenAdapter{
 
     private SpriteBatch batch;
     private OrthogonalTiledMapRenderer renderer;
-    private OrthographicCamera camera;
     private float elapsedTime;
 
     public TiledMap world;
@@ -38,17 +35,13 @@ public class CRAPView extends ScreenAdapter{
 
     private boolean interaction;
     private boolean isStart;
-    private Viewport viewport;
-
-    private int worldWidth = Constants.SCREEN_WIDTH;
-    private int worldHeight = Constants.SCREEN_HEIGHT;
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
 
     public CRAPView(CRAP CRAP){
-        this.isStart = true;
 
+        this.isStart = true;
         this.CRAP = CRAP;
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
         this.playerView = new PlayerView();
@@ -59,9 +52,6 @@ public class CRAPView extends ScreenAdapter{
         renderer = new OrthogonalTiledMapRenderer(world);
 
         this.interactionView = new InteractionView();
-        
-        viewport = new FitViewport(worldWidth, worldHeight, new OrthographicCamera());
-
         createWelcome();
     }
 
@@ -73,11 +63,10 @@ public class CRAPView extends ScreenAdapter{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
-        this.camera = playerView.getCamera();
+        OrthographicCamera camera = playerView.getCamera();
         renderer.setView(camera);
 
         batch.setProjectionMatrix(camera.combined);
-
         renderer.render();
 
         batch.begin();

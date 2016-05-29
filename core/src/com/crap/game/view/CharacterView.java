@@ -22,7 +22,6 @@ public class CharacterView extends ScreenAdapter {
     private Animation animation;
     private AnimationState animationState = AnimationState.STANDING_FRONT;
 
-    //TODO: remove somehow
     public CharacterView(){
     }
 
@@ -79,14 +78,6 @@ public class CharacterView extends ScreenAdapter {
 
     public void setAnimationState(AnimationState animationState){
         this.animationState = animationState;
-    }
-
-    public int getCharacterSpriteWidth(){
-        return this.texture.getWidth()/NBR_OF_TEXTURE_IMAGES_HORIZONTALLY;
-    }
-
-    public int getCharacterSpriteHeight(){
-        return this.texture.getHeight()/NBR_OF_TEXTURE_IMAGES_VERTICALLY;
     }
 
     public Texture getTexture(){

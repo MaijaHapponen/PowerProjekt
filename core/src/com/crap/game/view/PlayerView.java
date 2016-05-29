@@ -45,7 +45,6 @@ public class PlayerView extends CharacterView implements Screen{
                 camera.position.set(boarderRight, y, 0);
             }
         }
-
         else if(player.canMoveCameraUp(y, boarderTop)){
             if (player.canMoveCameraLeft(x, boarderLeft) && player.canMoveCameraRight(x, boarderRight)) {
                 camera.position.set(x, boarderBottom, 0);
@@ -57,7 +56,6 @@ public class PlayerView extends CharacterView implements Screen{
                 camera.position.set(boarderRight, boarderBottom, 0);
             }
         }
-
         else{
             if (player.canMoveCameraLeft(x, boarderLeft) && player.canMoveCameraRight(x, boarderRight)) {
                 camera.position.set(x, boarderTop, 0);

@@ -53,7 +53,6 @@ public class HowToPlayView extends ScreenAdapter{
         batch.begin();
 
         titleFont.setColor(Color.BLACK);
-
         titleFont.draw(batch, TextForInteraction.howToPlayTitle, TextForInteraction.titlePlacementX,
                 TextForInteraction.titlePlacementY);
 

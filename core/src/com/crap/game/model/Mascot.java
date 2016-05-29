@@ -6,7 +6,6 @@ package com.crap.game.model;
 public class Mascot extends Character{
 
     private boolean isCaught;
-
     private Question question;
 
     public Mascot(String name){

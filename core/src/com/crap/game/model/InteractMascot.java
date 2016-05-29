@@ -12,7 +12,6 @@ public class InteractMascot {
     private List<String> stringsInScreen;
 
     private boolean hasAnswered;
-
     private boolean caughtMascot;
 
     public InteractMascot(List<String> stringsInScreen){

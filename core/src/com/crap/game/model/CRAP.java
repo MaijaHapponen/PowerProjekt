@@ -15,7 +15,6 @@ public class CRAP {
     private float startPositionY;
     private Progress progress;
     public Player player;
-    //private InformationForQuestion questions;
     private Information information;
     private Worlds currentWorld;
 

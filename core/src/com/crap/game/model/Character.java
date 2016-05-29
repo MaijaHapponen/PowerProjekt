@@ -13,7 +13,7 @@ public abstract class Character{
 
     private float width;
     private float height;
-    private Game.Worlds world;
+    private CRAP.Worlds world;
 
     private Direction walkAwayDirection;
     private Direction lastDirection;
@@ -35,7 +35,7 @@ public abstract class Character{
         this.position = new Position(0,0);
     }
 
-    public Character(String name, Position position, Game.Worlds world){
+    public Character(String name, Position position, CRAP.Worlds world){
         this.speed = NORMAL_SPEED;
         this.name = name;
         this.position = position;
@@ -168,11 +168,11 @@ public abstract class Character{
         return this.name;
     }
 
-    public Game.Worlds getWorld(){
+    public CRAP.Worlds getWorld(){
         return this.world;
     }
 
-    public void setWorld(Game.Worlds world) {
+    public void setWorld(CRAP.Worlds world) {
         this.world = world;
     }
 

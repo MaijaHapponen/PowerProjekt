@@ -2,6 +2,7 @@ package com.crap.game.controller;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.crap.game.model.CRAP;
 import com.crap.game.model.Constants;
 import com.crap.game.model.GameStates;
 import com.crap.game.view.*;
@@ -14,10 +15,10 @@ public class StateController {
 
     public static GameView worldView;
     public static GameController controller;
-    public static com.crap.game.model.Game world;
+    public static CRAP world;
     public static boolean gameMode = false;
 
-    //Game-class from libGDX, not our model
+    //CRAP-class from libGDX, not our model
     public static Game game;
     public static boolean paused;
 
@@ -88,7 +89,7 @@ public class StateController {
     }
 
     public static void initPlay(){
-        world = new com.crap.game.model.Game();
+        world = new CRAP();
         worldView = new GameView(world);
         controller = new GameController(worldView, world);
         gameMode = true;

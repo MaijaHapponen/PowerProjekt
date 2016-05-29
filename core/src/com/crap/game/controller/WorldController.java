@@ -14,13 +14,13 @@ public class WorldController {
 
     private Game model;
     private PlayerController playerController;
-    private CharacterController characterController;
+    private HumanMascotController humanMascotController;
     private GameView view;
 
-    public WorldController(Game game, PlayerController controller, CharacterController characterController, GameView view) {
+    public WorldController(Game game, PlayerController controller, HumanMascotController humanMascotController, GameView view) {
 
         this.playerController = controller;
-        this.characterController = characterController;
+        this.humanMascotController = humanMascotController;
 
         this.model = game;
         this.view = view;
@@ -48,7 +48,7 @@ public class WorldController {
                 view.setWorld(new TmxMapLoader().load("maps/hubbeneditsand.tmx"));
                 playerController.updateCollisionController();
                 model.setPreviousRoom(EDIT);
-                characterController.updateCollisionController();
+                humanMascotController.updateCollisionController();
                 break;
 
             case HUBBEN:
@@ -57,7 +57,7 @@ public class WorldController {
                 view.setWorld(new TmxMapLoader().load("maps/hubbek.tmx"));
                 playerController.updateCollisionController();
                 model.setPreviousRoom(HUBBEN);
-                characterController.updateCollisionController();
+                humanMascotController.updateCollisionController();
                 break;
 
             case ZALOONEN:
@@ -66,13 +66,13 @@ public class WorldController {
                 view.setWorld(new TmxMapLoader().load("maps/zaloonen.tmx"));
                 playerController.updateCollisionController();
                 model.setPreviousRoom(ZALOONEN);
-                characterController.updateCollisionController();
+                humanMascotController.updateCollisionController();
                 break;
 
             case HIDDEN_ROOM:
                 model.setEntrance(x, y);
                 playerController.updateCollisionController();
-                characterController.updateCollisionController();
+                humanMascotController.updateCollisionController();
                 break;
             default:
 

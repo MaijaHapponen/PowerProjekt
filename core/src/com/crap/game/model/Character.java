@@ -21,10 +21,6 @@ public abstract class Character{
     private float speed;
     private Position nextPlayerPos;
 
-    public void setNextPlayerPos(Position pos){
-        nextPlayerPos = pos;
-    }
-
     public Character(){
         this.position = new Position();
     }
@@ -81,14 +77,6 @@ public abstract class Character{
         }
     }
 
-    public float getX(){
-        return getPosition().getX();
-    }
-
-    public float getY(){
-        return getPosition().getY();
-    }
-
     public void moveUp(float mapHeight){
         if(!(this.getPosition().getY() > mapHeight)) {
             getPosition().setPosition(getX(), getY() + speed);
@@ -125,10 +113,6 @@ public abstract class Character{
         this.walkAwayDirection = Direction.NO_DIRECTION;
     }
 
-    public Direction getLastDirection(){
-        return this.lastDirection;
-    }
-
     public void changeDirection(int walkAwayState){
         if(walkAwayState == Constants.WALK_AWAY_LENGTH/3 || walkAwayState ==
                 (Constants.WALK_AWAY_LENGTH/3)*2){
@@ -137,6 +121,30 @@ public abstract class Character{
         if (this.walkAwayDirection == null || this.walkAwayDirection == Direction.NO_DIRECTION){
             decideNewDirection();
         }
+    }
+
+    public Position nextStepUp(){
+        nextPlayerPos.setPosition(getPosition().getX(), (getPosition().getY() + getSpeed()));
+        return nextPlayerPos;
+    }
+
+    public Position nextStepDown(){
+        nextPlayerPos.setPosition(getPosition().getX(), getPosition().getY() - getSpeed());
+        return nextPlayerPos;
+    }
+
+    public Position nextStepLeft(){
+        nextPlayerPos.setPosition(getPosition().getX() - getSpeed(), getPosition().getY());
+        return nextPlayerPos;
+    }
+
+    public Position nextStepRight(){
+        nextPlayerPos.setPosition(getPosition().getX() + getSpeed(), getPosition().getY());
+        return nextPlayerPos;
+    }
+
+    public void setNextPlayerPos(Position pos){
+        nextPlayerPos = pos;
     }
 
     public void setWidthAndHeight(float width, float height){
@@ -154,6 +162,14 @@ public abstract class Character{
 
     public float getWidth(){
         return this.width;
+    }
+
+    public float getX(){
+        return getPosition().getX();
+    }
+
+    public float getY(){
+        return getPosition().getY();
     }
 
     public float getHeight(){
@@ -187,25 +203,4 @@ public abstract class Character{
     public float getSpeed(){
         return this.speed;
     }
-
-    public Position nextStepUp(){
-        nextPlayerPos.setPosition(getPosition().getX(), (getPosition().getY() + getSpeed()));
-        return nextPlayerPos;
-    }
-
-    public Position nextStepDown(){
-        nextPlayerPos.setPosition(getPosition().getX(), getPosition().getY() - getSpeed());
-        return nextPlayerPos;
-    }
-
-    public Position nextStepLeft(){
-        nextPlayerPos.setPosition(getPosition().getX() - getSpeed(), getPosition().getY());
-        return nextPlayerPos;
-    }
-
-    public Position nextStepRight(){
-        nextPlayerPos.setPosition(getPosition().getX() + getSpeed(), getPosition().getY());
-        return nextPlayerPos;
-    }
-
  }

@@ -19,7 +19,6 @@ public class InteractMascotController extends InputAdapter {
     private InteractMascotView interactMascotView;
     private com.crap.game.controller.game.primary.CRAPController CRAPController;
     private InteractMascot interactMascot;
-
     private boolean answeredCorrect;
 
     public InteractMascotController(InteractMascotView interactMascotView, CRAPController CRAPController){
@@ -31,7 +30,6 @@ public class InteractMascotController extends InputAdapter {
 
     @Override
     public boolean keyDown(int keycode){
-
         if(keycode == Input.Keys.BACKSPACE){
             StateController.updateState(GameStates.PLAY);
             interactMascotView.dispose();
@@ -39,13 +37,12 @@ public class InteractMascotController extends InputAdapter {
                 CRAPController.getHumanMascotController().resetWalkAwayState();
             }
         }
-
         else if(keycode == Input.Keys.ENTER) {
             Character interactingCharacter =
                     CRAPController.getPlayerController().getInteractionController().getInteractingCharacter();
 
-            if (interactMascot.isRightAnswer(interactingCharacter, interactMascot.getCurrentStringNbr())) {
 
+            if (interactMascot.isRightAnswer(interactingCharacter, interactMascot.getCurrentStringNbr())) {
                 if(interactingCharacter instanceof Mascot){
                     Mascot caughtMascot = ((Mascot) interactingCharacter);
                     caughtMascot.setCaught(true);
@@ -57,7 +54,6 @@ public class InteractMascotController extends InputAdapter {
             else{
                 answeredCorrect = false;
             }
-
             interactMascot.setHasAnswered();
         }
 

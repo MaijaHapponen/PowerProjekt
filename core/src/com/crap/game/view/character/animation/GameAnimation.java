@@ -9,9 +9,9 @@ import com.crap.game.model.information.enums.AnimationState;
  * Created by Lisa on 09/05/16.
  */
 public class GameAnimation {
+
     private TextureRegion[][] tmpFrames;
     private TextureRegion[] animationFrames;
-
 
     public Animation createAnimation(Texture texture, int rows, int columns, int startRow,
                                      int endRow) {

@@ -24,21 +24,17 @@ public class ProgressView extends ScreenAdapter {
     private Progress progress;
     private SpriteBatch batch;
     private Image progressBarImage;
+
     private Table table;
-
-
-    private int progressbarWidth = Gdx.graphics.getWidth();
-    private int progressbarHeight = Gdx.graphics.getHeight();
-
-    private Viewport viewPort;
     private Stage stage;
-
     private Group group;
 
     public ProgressView(Progress progress){
 
         batch = new SpriteBatch();
-        viewPort = new FitViewport(progressbarWidth, progressbarHeight, new OrthographicCamera());
+        int progressbarWidth = Gdx.graphics.getWidth();
+        int progressbarHeight = Gdx.graphics.getHeight();
+        Viewport viewPort = new FitViewport(progressbarWidth, progressbarHeight, new OrthographicCamera());
         stage = new Stage(viewPort, batch);
         this.progress = progress;
         table = new Table();
@@ -49,7 +45,6 @@ public class ProgressView extends ScreenAdapter {
 
         this.progressBarImage = new Image(new Texture("progressbar/progressbar.png"));
         updateProgressBar();
-
     }
 
     public void drawStage(){

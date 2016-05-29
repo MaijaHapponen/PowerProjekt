@@ -13,6 +13,7 @@ import static com.crap.game.model.information.Constants.PIXEL_PER_TILE;
  * Created by rebeccafinne on 2016-04-30.
  */
 public class PlayerController extends CharacterController {
+
     private PlayerView playerView;
     public MapObject newWorldObject;
 

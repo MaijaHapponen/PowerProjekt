@@ -10,18 +10,11 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import com.crap.game.model.character.Human;
-import com.crap.game.model.character.Mascot;
-import com.crap.game.model.character.Player;
-import com.crap.game.model.information.Constants;
+import com.crap.game.model.character.*;
 import com.crap.game.model.primary.CRAP;
 import com.crap.game.model.primary.Progress;
-import com.crap.game.view.character.CharacterView;
-import com.crap.game.view.character.PlayerView;
+import com.crap.game.view.character.*;
 import com.crap.game.view.interaction.InteractionView;
-
 import java.util.ArrayList;
 
 import static com.crap.game.model.information.Constants.PIXEL_PER_TILE;
@@ -33,7 +26,6 @@ public class CRAPView extends ScreenAdapter{
 
     private SpriteBatch batch;
     private OrthogonalTiledMapRenderer renderer;
-    private OrthographicCamera camera;
     private float elapsedTime;
 
     public TiledMap world;
@@ -46,17 +38,13 @@ public class CRAPView extends ScreenAdapter{
 
     private boolean interaction;
     private boolean isStart;
-    private Viewport viewport;
-
-    private int worldWidth = Constants.SCREEN_WIDTH;
-    private int worldHeight = Constants.SCREEN_HEIGHT;
 
     private ArrayList<CharacterView> humansList = new ArrayList<CharacterView>();
     private ArrayList<CharacterView> mascotsList = new ArrayList<CharacterView>();
 
     public CRAPView(CRAP CRAP){
-        this.isStart = true;
 
+        this.isStart = true;
         this.CRAP = CRAP;
         this.world = new TmxMapLoader().load("maps/horsalmaskin.tmx");
         this.playerView = new PlayerView();
@@ -67,9 +55,6 @@ public class CRAPView extends ScreenAdapter{
         renderer = new OrthogonalTiledMapRenderer(world);
 
         this.interactionView = new InteractionView();
-        
-        viewport = new FitViewport(worldWidth, worldHeight, new OrthographicCamera());
-
         createWelcome();
     }
 
@@ -81,11 +66,10 @@ public class CRAPView extends ScreenAdapter{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
-        this.camera = playerView.getCamera();
+        OrthographicCamera camera = playerView.getCamera();
         renderer.setView(camera);
 
         batch.setProjectionMatrix(camera.combined);
-
         renderer.render();
 
         batch.begin();
@@ -140,7 +124,7 @@ public class CRAPView extends ScreenAdapter{
 
     public void drawHumans(){
         for(int i = 0; i<humansList.size(); i++){
-            if(humansList.get(i).getCharacter().getWorld() == CRAP.getCurrectWorld()){
+            if(humansList.get(i).getCharacter().getWorld() == CRAP.getCurrentWorld()){
                 batch.draw(humansList.get(i).getAnimation().getKeyFrame(elapsedTime, true),
                         humansList.get(i).getCharacter().getPosition().getX(),
                         humansList.get(i).getCharacter().getPosition().getY());
@@ -151,7 +135,7 @@ public class CRAPView extends ScreenAdapter{
     public void drawMascots(){
         for(int i = 0; i<mascotsList.size(); i++){
             Mascot tempMascot = (Mascot) mascotsList.get(i).getCharacter();
-            if(tempMascot.getWorld() == CRAP.getCurrectWorld() && !tempMascot.isCaught()){
+            if(tempMascot.getWorld() == CRAP.getCurrentWorld() && !tempMascot.isCaught()){
                 batch.draw(mascotsList.get(i).getAnimation().getKeyFrame(elapsedTime,true),
                         tempMascot.getPosition().getX(),
                         tempMascot.getPosition().getY());

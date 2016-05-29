@@ -29,6 +29,7 @@ public class MenuView extends ScreenAdapter{
         batch = new SpriteBatch();
         create();
     }
+
     public void create(){
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -61,18 +62,15 @@ public class MenuView extends ScreenAdapter{
         if(!gameOver) {
             titleFont.draw(batch, menuModel.getGameName(), TextForInteraction.titlePlacementX,
                     TextForInteraction.titlePlacementY);
-
             for (int i = 0; i < menuModel.amountOfItems(); i++) {
                 if (menuModel.currentItemNumber() == i) {
                     font.setColor(Color.PINK);
                 } else {
                     font.setColor(Color.BLACK);
                 }
-
                 font.draw(batch, menuModel.getMenuItem(i), TextForInteraction.mainMenuAlternativesX,
                         TextForInteraction.menuAlternativesPlacementY - TextForInteraction.menuSpaceBetweenAlternatives * i);
             }
-
         }
         else{
             titleFont.draw(batch,TextForInteraction.winTheGame, TextForInteraction.titlePlacementX,
@@ -86,7 +84,6 @@ public class MenuView extends ScreenAdapter{
         batch.end();
     }
 
-    //TODO: Move to Menu
     public boolean getGameOver(){
         return this.gameOver;
     }

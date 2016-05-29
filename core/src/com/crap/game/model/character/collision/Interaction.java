@@ -6,6 +6,7 @@ import com.crap.game.model.character.Character;
  * Created by rebeccafinne on 2016-04-26.
  */
 public class Interaction {
+
     private CollisionModel collisionModel;
     private float characterWidth;
     private float halfCharacterHeight;

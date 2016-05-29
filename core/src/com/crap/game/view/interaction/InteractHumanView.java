@@ -66,13 +66,10 @@ public class InteractHumanView extends ScreenAdapter {
         batch.begin();
 
         if(!interactHuman.getIsProgramme() && !interactHuman.getIsMascot()) {
-
             title.draw(batch, informationGreeting, TextForInteraction.titlePlacementX, TextForInteraction.humanGreetingY);
-
             for (int i = 0; i < options.length; i++) {
                 if (interactHuman.getCurrentStringNbr() == i) {
                     font.setColor(Color.PINK);
-
                 } else {
                     font.setColor(Color.BLACK);
                 }
@@ -80,8 +77,6 @@ public class InteractHumanView extends ScreenAdapter {
                         TextForInteraction.alternativesPlacementY - TextForInteraction.spaceBetweenAlternatives * i);
             }
         }
-
-
         else if(interactHuman.getIsProgramme()) {
             font.setColor(Color.BLACK);
             font.draw(batch, informationProgramme, TextForInteraction.alternativesPlacementX,
@@ -89,7 +84,6 @@ public class InteractHumanView extends ScreenAdapter {
             font.draw(batch, TextForInteraction.returnToGame, TextForInteraction.alternativesPlacementX,
                     TextForInteraction.returnPlacementY);
         }
-
         else if(interactHuman.getIsMascot()){
             font.setColor(Color.BLACK);
             font.draw(batch, informationLocation, TextForInteraction.alternativesPlacementX,
@@ -97,10 +91,8 @@ public class InteractHumanView extends ScreenAdapter {
             font.draw(batch, TextForInteraction.returnToGame, TextForInteraction.alternativesPlacementX,
                     TextForInteraction.returnPlacementY);
         }
-
         batch.end();
     }
-
     public InteractHuman getInteractHuman(){
         return this.interactHuman;
     }

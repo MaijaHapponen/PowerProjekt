@@ -18,30 +18,22 @@ import com.crap.game.model.information.TextForInteraction;
  */
 public class InteractionView extends ScreenAdapter{
 
-    private Table table;
-    private Table welcomeTable;
     private Stage stage;
     private Stage welcomeStage;
     private Viewport viewport;
 
-    private int worldWidth = Gdx.graphics.getWidth();
-    private int worldHeight = Gdx.graphics.getHeight();
-
     private SpriteBatch batch;
-
-    private BitmapFont font;
 
     private Label talkLable;
     private Label welcomeLabel;
-
-
     private Label hubbenLabel;
     private Label zaloonenLabel;
     private Label horsalLabel;
     private Label hiddenRoomLabel;
 
-
     public InteractionView(){
+        int worldWidth = Gdx.graphics.getWidth();
+        int worldHeight = Gdx.graphics.getHeight();
         batch = new SpriteBatch();
         viewport = new FitViewport(worldWidth, worldHeight, new OrthographicCamera());
         createLabels();
@@ -49,15 +41,13 @@ public class InteractionView extends ScreenAdapter{
         createWelcome();
     }
 
-
-
     public void createLabels(){
 
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator( Gdx.files.internal("fonts/Candy Shop.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
         parameter.size = TextForInteraction.interactionFontSize;
-        font = generator.generateFont(parameter);
+        BitmapFont font = generator.generateFont(parameter);
 
         hubbenLabel = new Label(String.format(TextForInteraction.welcomeToHubben),
                 new Label.LabelStyle(font, Color.WHITE));
@@ -75,7 +65,7 @@ public class InteractionView extends ScreenAdapter{
     public void createInteraction(){
         getWelcomeLabel();
         stage = new Stage(viewport, batch);
-        table = new Table();
+        Table table = new Table();
         table.top();
         table.setFillParent(true);
         table.add(talkLable);
@@ -84,7 +74,7 @@ public class InteractionView extends ScreenAdapter{
 
     public void createWelcome(){
         welcomeStage = new Stage(viewport, batch);
-        welcomeTable = new Table();
+        Table welcomeTable = new Table();
         welcomeTable.top();
         welcomeTable.setFillParent(true);
         welcomeTable.add(welcomeLabel);

@@ -1,5 +1,5 @@
 ﻿System Design Document 
-for C.R.A.P. the game
+for C.R.A.P. the CRAP
 
 
 
@@ -43,13 +43,13 @@ This version overrides all previous versions
 1 Introduction
 
 1.1 Design goals
-The application is divided with clearly seperated modules. As much as possible the application is also general, as to be able to switch models and frameworks quite easily. The application currently loads tmx files as maps. made in the program Tiled[a], therefore the landscape of the game could easily be switched to a different setting than Chalmers campus Johanneberg. Creating maps in this tools also gives the possibility of adding multiple more types of collision.
+The application is divided with clearly seperated modules. As much as possible the application is also general, as to be able to switch models and frameworks quite easily. The application currently loads tmx files as maps. made in the program Tiled[a], therefore the landscape of the CRAP could easily be switched to a different setting than Chalmers campus Johanneberg. Creating maps in this tools also gives the possibility of adding multiple more types of collision.
 1.2 Definitions, acronyms and abbreviations 
 MVC - Model-View-Controller. The structure of the code.
 libGDX - library for Gradle projects.
 Gradle - special kind of project helping with compiling etc.
 Tiled map - a map build up by different tiles.
-Mascot - the characters to be caught in the game
+Mascot - the characters to be caught in the CRAP
 Tmx-files - type of file that tiled maps are saved as. 
 Collision
 Interaction
@@ -88,7 +88,7 @@ References to the model goes through the view and the controller.
 2.2 Software decomposition
 
 2.2.1 General
-A main class will be used when the game is starting and create the main controller, view  and model. 
+A main class will be used when the CRAP is starting and create the main controller, view  and model.
 The main controller, view and model will create the rest of the controllers, views and models. [d]
 
 
@@ -115,7 +115,7 @@ More should be filled in
 To be filled in
 
 2.4 Persistent data management
-The tmx files and other files used in the game will be stored in a folder assets. 
+The tmx files and other files used in the CRAP will be stored in a folder assets.
 
 
 
